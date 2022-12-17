@@ -1,0 +1,221 @@
+\chapter*{\chapterstyle{R\&E {:} Raisonnements}}
+Soit \(\P\) une proposition et \(n\) un entier naturel.
+
+\section*{\subsecstyle{Disjonctions \& Conjonctions {:}}}
+Si \(\P\) est une disjonction de la forme \(\A \lor \B\), il suffit alors de supposer \textbf{l'une des deux propriétés fausse} et de montrer que l'autre est vraie, en effet on a:
+
+\[
+   \begin{cases}
+      \B \implies \A \lor \B \\
+      \lnot \B \land \A \implies \A \lor \B&
+   \end{cases} 
+\]
+Si \(\P\) est une conjonction de la forme \(\A \land \B\), il faut simplement prouver \(\A\) et \(\B\).
+\section*{\subsecstyle{Raisonnement par l'absurde {:}}}
+Raisonner par l'absurde revient à utiliser le principe du \textbf{tiers exclu}, ie l'axiome qui affirme que la proposition ci-dessous est toujours vraie:
+\[
+   \P \, \lor \, \lnot \P
+\]
+Donc si on veut prouver \(\P\), on peut alors simplement montrer que \(\lnot\P \implies \bot\) avec ''\(\bot\)'' comme notation d'une contradiction logique. Alors on peut conclure d'aprés l'axiome du tiers exclu que \(\P\) est vraie. 
+\section*{\subsecstyle{Raisonnement par Analyse / Synthèse {:}}}
+Le raisonnement par Analyse / Synthèse permet de déterminer \textbf{l'ensemble des solutions d'un problème}, il s'effectue en deux étapes, tout d'abord l'étape d'analyse suppose qu'une telle solution existe, alors on circonscrit son existence à des propriétés connues qu'elle vérifie nécessairement. Cette étape permet de ''cerner'' les solutions en question. Si les propriétés sont assez contraignantes, alors on peut même prouver \textbf{l'unicité}, ie l'ensemble des solutions se réduit à un singleton.\<
+
+Puis lors de l'étape de synthèse, on considère un objet vérifiant les propriétés qu'on a utilisé lors de l'étape d'analyse, et on \textbf{vérifie} que cet objet est bien une solution au problème initial. C'est lors de cette étape qu'on prouve bien \textbf{l'existence} de solutions. Si aucun des objets circonscrits par l'analyse ne conviennent, le problême n'a alors pas de solutions.
+\section*{\subsecstyle{Implications \& Equivalences {:}}}
+Si \(\P\) est une implication de la forme \(\A \implies \B\), on a les équivalences suivantes:
+\[
+   \P \Longleftrightarrow \lnot \A \lor \B \Longleftrightarrow \lnot \B \implies \lnot \A
+\]
+Aussi en raisonnant par l'absurde, il suffit alors de prouver:
+\[
+   \A \land \lnot \B \implies \bot 
+\]
+Ces propriétés sont utilisables pour des implications de la forme:
+\[
+   \A_1 \implies \A_2 \implies \cdots \implies \A_{n-1} \implies \A_n
+\]
+On peut alors regrouper les termes et par exemple:
+\[
+   \A_1 \land \lnot(\A_2 \implies \cdots \implies \A_{n-1} \implies \A_n) \implies \bot
+\]
+Nous donnera par l'absurde que \(\P\) est vraie. La contraposée est aussi utilisable en regroupant les \(n-1\) premiers termes.
+Prouver une équivalence revient à prouver une \textbf{double implication} dans la majorité des cas.\<
+
+\underline{Cas particulier {:}}
+Si \(\P\) est de la forme \( A_1 \Longleftrightarrow A_2 \Longleftrightarrow \cdots \Longleftrightarrow \A_{n-1} \Longleftrightarrow \A_n \), il suffit alors de montrer qu'on a:
+\[
+   \A_1 \implies \A_2 \implies \cdots \implies \A_{n-1} \implies \A_n \implies \boxed{\A_1}
+\]
+Ainsi pour toute paire de \(\A_i\), on a bien double implication entre les deux membres et donc la chaîne d'équivalence est démontrée.
+\section*{\subsecstyle{Récurrences {:}}}
+Soit \(\P_n\) une propriété dépendante de \(n\), soit \(k\) en entier fixé, démontrer \(\P\) par récurrence simple sur 
+\(\inticc{\alpha}{\infty}\) revient à utiliser \textbf{l'axiome de récurrence} (issu de la construction de \(\N\)) ci-dessous:
+\[
+   \Bigr[ \P_{\alpha} \; \land \; \bigr( \P_k \implies \P_k+1 \bigr) \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+
+Si la propriété à prouver est plus complexe, on peut avoir besoin de récurrences d'une autre type, en effet si \(\P\) est de la forme \(\P_{n, n + 1}\), alors \(\P\) dépend \textbf{des deux rangs précédents}, et on utilise alors une récurrence à deux pas qui s'exprime:
+\[
+   \Bigr[ \P_{\alpha} \; \land \; \P_{\alpha + 1} \; \land \; \bigr( \P_k  \land \P_{k-1}\implies \P_k+1 \bigr) \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+
+Enfin pour le cas limite, soit \(\Fam := (0, 1, 2, \ldots , n-1)\), alors si \(\P\) est de la forme \(\P_\F\), ie \(\P\) dépends de tout les rangs précédents, alors on peut utiliser une \textbf{récurrence forte} dont l'étape d'hérédité s'exprime:
+\[
+   \Bigr[ \P_\F \implies \P_{k+1} \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+Pour la récurrence forte, le nombre de cas initiaux à démontrer est \textbf{variable et dépend du contexte}, certaines proposition ne requièrent qu'une seule initialisation, d'autres plusieurs.\<
+
+Un dernier type de récurrence appelé récurrence limitée permet simplement d'utiliser la récurrence sur un intervalle entier fini, et donc lors on initialise et on prouve l'héridité avec la contrainte de cette intervalle.
+   
+\chapter*{\chapterstyle{R\&E {:} Ensembles}}
+Soit \(\E\), \(\F\) et \(\mathcal{X}\) trois ensembles quelconques.
+On note tout d'abord que l'intesection est prioritaire sur la réunion lors d'opérations sur les ensembles et que les deux opérations sont \textbf{distributives} l'une par rapport à l'autre.
+
+\section*{\subsecstyle{Propriétés de l'inclusion {:}}}
+L'inclusion est une \textbf{relation d'ordre} sur l'ensemble des parties de \(\E\), et donc on en déduit qu'elle est réfléxive, transitive et antisymétrique. Si l'inclusion est stricte, on parle de \textbf{sous-ensemble propre}.\<
+
+On a aussi les propriétés élémentaires suivantes:
+\begin{flalign*}
+   &\F \subseteq \F \cup \mathcal{X} \shorteqnote{(\(\F\) est inclus dans toute union de lui-même avec d'autres ensembles)} \\
+   &\F \cap \mathcal{X} \subseteq \F \shorteqnote{(Toute intesection de \(\F\) avec d'autres ensembles est incluse dans \(\F\))} \\
+   &\E \subseteq \F \Longleftrightarrow \E \cap \F = \E \\
+   &\E \subseteq \F \Longleftrightarrow \E \cup \F = \F  \\
+\end{flalign*}
+
+Si \(\E \subseteq \F\), on a aussi: 
+\begin{align*}
+   \E \cap \mathcal{X} &\subseteq \F \cap \mathcal{X} \\
+   \E \cup \mathcal{X} &\subseteq \F \cup \mathcal{X}
+\end{align*}
+\section*{\subsecstyle{Propriétés du complémentaire et de la différence {:}}}
+Si \(\F \subseteq \E\), alors \(\overline{\F}\) est l'ensemble qui contient tout les éléments de \(\E\) qui \textbf{ne sont pas} dans \(\F\) et on a la définition de la différence ensembliste:
+\[
+   \E \;\backslash\; \F = \E \cap \overline{\F}   
+\]
+Par ailleurs, les lois de De Morgan nous donnent:
+\begin{align*}
+   \overline{\E \cap \F} = \overline{E} \cup \overline{F} \\
+   \overline{\E \cup \F} = \overline{E} \cap \overline{F} \\
+\end{align*}
+
+\underline{Cas particulier {:}}
+On peut aussi définir la différence symétrique notée \(\Delta\) qui contient tout les élément qui appartient exactement à un seul des deux ensemble et qui est définie par:
+\[
+   \E \Delta \F = (\E \cup \F) \;\backslash\; (\E \cap \F)   
+\]
+\section*{\subsecstyle{Produit cartésien {:}}}
+Soit \(n\) une entier naturel, le produit cartésien des ensembles \(\E_1,\, \E_2,\, \ldots\,,\, \E_{n-1},\, \E_n\) est l'ensemble des n-uplets de la forme (\(e_1, e_2, \ldots, e_{n-1}, e_n\)) avec \(e_i \in \E_i\) pour \(i \in \inticc{1}{n}\).
+Il y a \textbf{unicité} de ces n-uplets (cf. Axiomes de ZFC).
+
+Plus formellement, on note:
+\[
+     \prod_{i=1}^{n} \E_i = \Bigl\{ (e_1, e_2, \ldots, e_{n-1}, e_n) \; ; \; e_1 \in \E_1, e_2 \in \E_2, \ldots,  e_n \in \E_n \Bigl\}
+\]
+\section*{\subsecstyle{Cardinalités {:}}}
+Supposons que \(\E\) et \(\F\) tout deux inclus dans \(\mathcal{X}\) et ayant \textbf{un nombre fini d'éléments}. On a alors différentes propriétés:
+\begin{align*}
+   |\E \cup \F| &= |\E| + |\F| - |\E \cap \F| \\
+   |\overline{E}| &= |\mathcal{X}| - |E| \\
+   |\E \times \F| &= |\E| \times |\F|
+\end{align*}
+En regard de l'ensemble des parties, on a aussi:
+\[
+   |\Pow_\E| = 2^{|\E|}  
+\]
+
+\chapter*{\chapterstyle{R\&E {:} Fonctions \& Applications}}
+On note \(F^E\) l'ensemble des \textbf{applications} de E vers F.\+
+Soit \(f, g\) deux fonctions telles que:
+\[
+   \begin{aligned}
+      f: E &\longrightarrow F\\
+      x &\longmapsto f(x)
+   \end{aligned}
+      \hspace{50pt}
+   \begin{aligned}
+      g: G&\longrightarrow H\\
+      x&\longmapsto g(x)
+   \end{aligned}
+\]
+
+On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe et \(f\) est une \textbf{application} si et seulement si \(E = D_f\).\<
+
+On définit le graphe de \(f\) comme suit:
+\[
+   G_f:= \Bigl\{ (x, f(x)) \in E \times F \; ; \; x \in E\Bigl\}   
+\]
+
+\section*{\subsecstyle{Composition {:}}}
+Supposons \(F \subseteq G\), alors on définit la composée \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\) et on a:
+\[
+   D_{g \circ f} := \Bigl\{ x \in D_f \; ; \; f(x) \in D_g \Bigl\}   
+\]
+On peut itérer la composition et on note \(f^{n}\) la composée n-ième de f avec elle même (pour \(n \in \N\), et en posant \(f^0 = Id_E\))
+\section*{\subsecstyle{Restriction \& Prolongement {:}}}
+On note \(f|_A\) la restriction de \textbf{l'ensemble de départ} de \(f\) à une partie \(A\) de \(E\).\+
+On note \(f|^B\) la restriction de \textbf{l'ensemble d'arivée} de \(f\) à une partie \(B\) de \(F\).\<
+
+Soit \(x \in D_f\), on apelle prolongement de \(f\), l'application \(g\) telle que \(D_f \subset D_g\) et \(g(x) = f(x)\)
+\section*{\subsecstyle{Image directe {:}}}
+L'image directe d'une partie \(A\) de \(E\) est l'ensemble des images par \(f\) des éléments de \(A\), ie:
+\[
+   f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\}   
+\]
+Et on a l'equivalence suivante:
+\[
+   \forall y \in F \; ; \; y \in f(A) \Longleftrightarrow \exists x \in A \; ; \; f(x) = y
+\]
+Si \(A = E\), on note Im(\(f\))
+\section*{\subsecstyle{Image reciproque {:}}}
+L'image réciproque d'une partie \(B\) de \(F\) est l'ensemble des antécédents par \(f\) des éléments de \(B\), ie:
+\[
+   f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\}   
+\]
+Et on a l'equivalence suivante:
+\[
+   \forall x \in E \; ; \; x \in f^{-1}(B) \Longleftrightarrow f(x) \in B
+\]
+Si \(f\) est une application, on a \(f^{-1}(F) = E\). 
+\section*{\subsecstyle{Injections {:}}}
+Soit \(A \subseteq E\).\+
+L'application \(f\) est injective si et seulement si:
+\[
+   \forall x_1, x_2 \in E^2 \; ; \; f(x_1) = f(x_2) \implies x_1 = x_2 
+\]
+En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au maximum une solution dans E} pour montrer que \(f\) est injective.\+
+Si \(f\) et \(g\) sont injectives, alors la composée \(g \circ f\) est aussi injective. \<
+
+Il existe aussi beaucoup d'autres propriétés pour prouver qu'une application est injective, par exemple:
+\[
+   f^{-1}(f(A)) = A \Longleftrightarrow f \text{ injective} \\
+\]
+
+Aussi, si \(g \circ f\) est injective alors \(f\) est injective.
+
+Si \(E\) et \(F\) sont des ensembles finis, alors on a nécessairement \(|E| \leq |F|\)
+\section*{\subsecstyle{Surjections {:}}}
+\(f\) est surjective ssi:
+\[
+   \forall y \in F \; , \; \exists x \in E \; ; \; f(x) = y 
+\]
+En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au moins une solution dans E} pour montrer que \(f\) est surjective.\+
+Si \(f\) et \(g\) sont surjectives, alors la composée \(g \circ f\) est aussi surjective. \<
+
+Il existe aussi beaucoup d'autres propriétés pour prouver qu'une application est surjective, par exemple:
+\[
+   f(f^{-1}(A)) = A \Longleftrightarrow f \text{ surjective} \\
+\]
+
+Aussi, si \(g \circ f\) est surjective alors \(g\) est surjective.
+
+Si \(E\) et \(F\) sont des ensembles finis, alors on a nécessairement \(|F| \leq |E|\)
+\section*{\subsecstyle{Bijections {:}}}
+L'application \(f\) est bijective si et seulement si elle est surjective et injective.  
+Dans ce cas, une application reciproque \(g\) existe et elle vérifie:
+\begin{align*}
+   f \circ g &= Id_F \\
+   g \circ f &= Id_E
+\end{align*}
+
+Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective.\+
+Aussi, si \(f\) et \(g\) sont bijectives, alors \(f \circ g\) est bijective et \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\)

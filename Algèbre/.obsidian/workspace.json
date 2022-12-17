@@ -1,0 +1,136 @@
+{
+  "main": {
+    "id": "e1463f4c6a12b40f",
+    "type": "split",
+    "children": [
+      {
+        "id": "9aa333624c93d52f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e56032ad386781d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fb2754bc570699f3",
+    "type": "split",
+    "children": [
+      {
+        "id": "f6246f83656a8398",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a54242356ca2515",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d3a05d8181b01695",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4a6117810930ef9c",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1b86be3793ba7ff7",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d8fafd230b81932",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "03a4d9730695f20e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "200d9f7f03733acc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "661a7e493fdf611f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a342c49602ed8b68",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "8e56032ad386781d",
+  "lastOpenFiles": [
+    "Algebre.pdf",
+    "source/main.pdf"
+  ]
+}
