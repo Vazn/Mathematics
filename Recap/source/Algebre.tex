@@ -4,7 +4,7 @@ On note \(\C\) l'extension du corps \(\R\) avec les deux lois usuelles. Une des 
 Soit \(z, z' \in \C\) et \(\theta \in \R/2\pi\). On notera \(\rho\) le module de \(z\) pour faciliter la lecture et \(a + bi\) la forme algébrique de \(z\).
 
 \section*{\subsecstyle{Module {:}}}
-On apelle \textbf{module} de \(z\) le nombre réel positif \(|z|\) tel que :
+On apelle \textbf{module} de \(z\) le nombre réel positif \(|z|\) tel que {:}
 \[
    |z| = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
 \]
@@ -103,17 +103,103 @@ Le nombre \(j\) est singulier, car il vérifie:
    j^2 = j^{-1} = \overline{j}
 \]
 Graphiquement, on peut observer que les images des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
-
-
 \chapter*{\chapterstyle{Algebre I {:} Anneau des Polynômes}}
-\section*{\subsecstyle{Propriétés générales {:}}}
+Soit K un corps, et \(n \in \N\), on apelle anneau des polynômes à coefficient dans K en \textbf{l'indéterminée} \(X\) l'ensemble:
+\[
+   K[X] := \Biggl\{ \; \sum_{i=0}^n a_{i}X^{i} \; ; \; a_i \in K \;\Biggl\}
+\]
+On adjoint à cet ensemble deux lois + et \(\times\) qui \textbf{prolonge} les opérations correspondantes de K, pour obtenir l'anneau \textbf{(K, +, \(\times\))}. Cet anneau est intègre car K est un corps, donc un anneau intègre.\<
+
+Soit \(P, Q, R \in K[X]\).
+
 \section*{\subsecstyle{Degré et Valuation {:}}}
+On définit tout d'abord une propriété fondamentale apellée \textbf{degré} de \(P\) telle que si \(P\) est défini comme la somme des \(a_{i}X^{i}\), on a deg\((P)\) qui est le plus grand coefficient non nul de P.
+On a alors les propriétés du degré ci-dessous:
+\begin{align*}
+   \deg(P + Q) &\leq \max(\deg(P), \deg(Q))\\
+   \deg(PQ) &= \deg(P) + \deg(Q)
+\end{align*}
+La valuation est définie de manière analogue comme le plus petit coefficient non nul de P.
+\section*{\subsecstyle{Opérations {:}}}
+On considère ci-dessous que deg\((P)\) = \(n\) et deg\((Q)\) = \(m\) et on note \(a_i, b_i\) les coefficients de \(P\) resp. \(Q\).\+
+La lci d'addition est simplement effectuée terme à termes.\+
+La lci de multiplication se définit explicitement comme suit:
+\[
+   PQ := \sum_{k=0}^{n+m}\sum_{i+j = k} a_{i}b_{i}X^{k}
+\]
+
+On ajoute aussi une opération apellée \textbf{dérivation formelle} d'un polynôme qui s'effectue comme la dérivation analytique usuelle.
 \section*{\subsecstyle{Divisibilité {:}}}
+On définit tout d'abord une \textbf{division euclidienne} de deux polynômes qui se comporte comme la division euclidienne usuelle, à la différence que la condition d'arrêt porte sur le \textbf{degré du reste} qui doit être inférieur à celui du diviseur.\<
+
+Soit \(U, V \in R[X]^2\), on peut aussi définir une relation de \textbf{divisibilité} entre deux polynômes, cette relation est \textbf{transitive et reflexive} mais aussi \textbf{linéaire}, ie on a:
+\[
+   D|A \land D|B \implies D| UA + VB   
+\]
 \section*{\subsecstyle{Racines et Factorisation {:}}}
+On dit que \(\alpha\) est une \textbf{racine} de \(P\) si \(P(\alpha) = 0\).\+
+On montre alors le théorème fondamental ci-dessous:
+\[
+   \boxed{
+      (X - \alpha) | P \Longleftrightarrow P(\alpha) = 0 
+   }
+\]
+Et on apelle \textbf{multiplicité d'une racine} \(\alpha\) l'entier \(m\) tel que:
+\[
+   \Bigr[ (X - \alpha)^m | P \Bigr] \; \land \; \Bigr[(X - \alpha)^{m+1} \nmid P\Bigr]
+\]
+Ou aussi (si \(m\) vérifie la caractérisation ci-dessous, où \(P^{m}\) indique la dérivée n-ième de \(P\)):
+\[
+   P^{m}(\alpha) = 0 \; \land \; P^{m + 1}(\alpha) \neq 0
+\]
+On en déduis que pour une racine \(\alpha\) de multiplicité \(m\), on peut \textbf{factoriser} \(P\) par \((X-\alpha)^m\).
+Si on considère maintenant plusieurs racines \textbf{distinctes} \(a_0, a_1, \ldots, a_{n-1}, a_n\) de multiplicité respectivement \(m_0, m_1, \ldots, m_{n-1}, m_n\), on peut montrer la propriété suivante:
+\begin{flalign*}
+   \Bigr[ \prod_{i=0}^{n}(X-\alpha_i)^{m_i} \Bigr] \; \Biggr| \; P \shorteqnote{(On peut factoriser par le produit des \((X-\alpha_i)^{m_i}\))}
+\end{flalign*}
+\section*{\subsecstyle{Décomposition {:}}}
+On apelle décomposition d'un polynôme \(P\), une factorisation \textbf{irréductible} de \(P\), cette décomposition dépend du corps considéré, en effet si on considére \(\C[X]\), on peut montrer le \textbf{théorème fondamental de l'Algèbre} ci-dessous:\<
+
+\textbf{Tout polynôme de degré supérieur à 1 admet au moins une racine dans \(\C\)}.\<
+
+Par suite, on peut montrer que tout les polynômes de \(\C\) sont \textbf{scindés}, ie que tout les polynômes irréductibles de \(\C[X]\) sont de degré 1.
+Par contre dans \(\R[X]\), il existe des polynômes de degré 2 irréductibles (ceux dont le discriminant est négatif).
+Soit \(z \in \C\), il existe une propriété trés utile pour décomposer un polynôme réel qui est:
+\[
+   P(z) = 0 \implies P(\overline{z}) = 0
+\]
+\section*{\subsecstyle{Fonctions symétriques des racines {:}}}
 
 \chapter*{\chapterstyle{Algebre I {:} Espaces Vectoriels}}
-\section*{\subsecstyle{Généralités {:}}}
-\section*{\subsecstyle{Sous-espace Engendré {:}}}
+Soit \(E\) un ensemble \textbf{non-vide}, \(K\) un corps commutatif, et \(u \in E\), on dit alors que \((E, +, \cdot)\) est un \textbf{espace vectoriel sur K} si les conditions ci-dessous sont réunies:
+\begin{align*}
+   &\bullet \;\;\; (E, +) \text{ est un \textbf{groupe abélien}} \\
+   &\bullet \;\; \text{ La loi \(\cdot\) est une application de \(K \times E \longrightarrow E\)} \\
+   &\bullet \;\; \text{ La loi \(\cdot\) vérifie \textbf{la distributivité mixte et l'associativité mixte}} \\
+   &\bullet \;\;\; 1 \cdot u = u
+\end{align*}
+
+On apelle alors \textbf{vecteurs} les éléments de \(E\) et \textbf{scalaires} les éléments de \(K\). \+
+Dans la suite, on notera \(\lambda_i\) des scalaires quelconques et \(u_i\) des vecteurs quelconques, tout deux indicés pour \(i\) allant de \(0\) à \(n\).
+
+\section*{\subsecstyle{Sous-espaces vectoriels {:}}}
+Soit \(F \subseteq E\), on dit que \(F\) est un \textbf{sous-espace vectoriel} ssi:
+\begin{align*}
+   &\bullet \;\; F \text{ est non vide.} \\
+   &\bullet \;\; F \text{ est stable par somme.} \\
+   &\bullet \;\; F \text{ est stable par multiplication externe.}
+\end{align*}
+
+Un cas particulier est celui du \textbf{sous-espace vectoriel engendré} par \(F\) qu'on note:
+\[
+   \text{Vect(\(F\))} := \Biggl\{ \sum_{i=0}^{n} \lambda_i u_i\; ; \; \lambda_{i} \in K \; , \; u_{i} \in E \Biggl\}
+\]
+Plus concrètement, Vect(\(F\)) est \textbf{l'ensemble des combinaisons linéaires} des vecteurs de \(F\).\<
+
+On a aussi le \textbf{Lemme d'expansion} qui affirme que:
+\[
+   F \subseteq E \implies \text{Vect(\(F\))} \subseteq E   
+\]
 \section*{\subsecstyle{Intersections et Sommes {:}}}
 \section*{\subsecstyle{Familles {:}}}
 \section*{\subsecstyle{Bases {:}}}

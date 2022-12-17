@@ -769,6 +769,8 @@ INPUT .\Algebre.tex
 INPUT Algebre.tex
 INPUT .\Algebre.tex
 INPUT Algebre.tex
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm10.tfm
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\euler\eufm7.tfm
 INPUT .\Analyse.tex
 INPUT Analyse.tex
 INPUT .\Analyse.tex
@@ -809,8 +811,12 @@ INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\Vazn\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb

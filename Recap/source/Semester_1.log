@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.9.15)  17 DEC 2022 12:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.9.15)  17 DEC 2022 15:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -454,30 +454,30 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 
 ] [8] [9
 
-]) [10
+] [10]) [11
 
-] (Analyse.tex [11
+] (Analyse.tex [12
 
-] [12
+] [13
 
-]) [13
+]) [14
 
 ] (Semester_1.aux)
 Package rerunfilecheck Info: File `Semester_1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12287 strings out of 475389
- 197702 string characters out of 2777472
+ 12292 strings out of 475389
+ 197750 string characters out of 2777472
  563956 words of memory out of 3000000
- 33369 multiletter control sequences out of 15000+600000
- 486817 words of font info for 106 fonts, out of 8000000 for 9000
+ 33372 multiletter control sequences out of 15000+600000
+ 487289 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,14n,80p,622b,441s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/hoekwater/stmary10.pfb>
-Output written on Semester_1.pdf (13 pages, 229944 bytes).
+ 77i,16n,80p,622b,441s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10.pfb><C:/Users/Vazn/AppData/Local/Programs/MiKTeX/fonts/type1/public/hoekwater/stmary10.pfb>
+Output written on Semester_1.pdf (14 pages, 264042 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
+ 234 PDF objects out of 1000 (max. 8388607)
+ 69 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
