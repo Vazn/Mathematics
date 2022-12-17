@@ -1,9 +1,109 @@
 \chapter*{\chapterstyle{Algebre I {:} Corps des Complexes}}
+On note \(\C\) l'extension du corps \(\R\) avec les deux lois usuelles. Une des propriétés fondamentales de \(\C\) est qu'il est algébriquement clos, ie tout polyômes non trivial à coefficient dans \(\C\) admet au moins une racine. \<
+
+Soit \(z, z' \in \C\) et \(\theta \in \R/2\pi\). On notera \(\rho\) le module de \(z\) pour faciliter la lecture et \(a + bi\) la forme algébrique de \(z\).
+
+\section*{\subsecstyle{Module {:}}}
+On apelle \textbf{module} de \(z\) le nombre réel positif \(|z|\) tel que :
+\[
+   |z| = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
+\]
+C'est un \textbf{prolongement} de la fonction valeur absolue à \(\C\).
+On note que c'est une opération \textbf{multiplicative} mais \textbf{pas} additive, en effet on a l'inégalité triangulaire:
+\[
+   |z + z'| \leq |z| + |z'|   
+\]
 \section*{\subsecstyle{Conjugé {:}}}
-\section*{\subsecstyle{Modules {:}}}
+On apelle \textbf{conjugaison} l'automorphisme involutif qui à \(z\) associe son \textbf{conjugué}, noté \(\overline{z}\) tel que:
+\[
+      \overline{z} := a - bi = \rho\cos\theta - i\sin\theta = \rho e^{-i\theta}
+\]
+C'est un morphisme \textbf{additif} et \textbf{multiplicatif}.
+
+Graphiquement, le conjugué d'un nombre complexe est \textbf{le symétrique} de \(z\) par rapport à l'axe réel.\<
+
+(\(\ast\)) On a alors la propriété suivante {:}
+\[
+   \boxed{
+      \begin{aligned}
+         \Re(z) := \frac{z + \overline{z}}{2}
+      \end{aligned}
+      \hspace*{40pt}
+      \begin{aligned}
+         \Im(z) := \frac{z - \overline{z}}{2i}
+      \end{aligned}
+   }
+\]
 \section*{\subsecstyle{Forme trigonométrique {:}}}
+On montre qu'il existe un angle \(\theta\) tel que:
+\[
+   z := \rho(\cos\theta+i\sin\theta)   
+\]
+Cette forme est apellée \textbf{forme trigonométrique} de \(z\) et elle est unique modulo \(2\pi\).\+
+Elle se déduit du nombre \(\frac{z}{|z|} \in \U\) et de l'identité trigonométrique fondamentale.\<
+
+On peut noter qu'on apelle \(\theta\) ainsi obtenu \textbf{l'argument} de \(z\).
 \section*{\subsecstyle{Forme exponentielle {:}}}
+De même pour \(\theta\) l'argument de \(z\), on a:
+\[
+   z := \rho e^{i\theta}   
+\]
+Cette forme est apellée \textbf{forme exponentielle} de \(z\) est également unique modulo \(2\pi\).\<
+
+On montre alors les \textbf{formules d'Euler}:
+\[
+   \boxed{
+      \begin{aligned}
+         \cos\theta := \frac{e^{i\theta}+e^{-i\theta}}{2}
+      \end{aligned}
+      \hspace*{40pt}
+      \begin{aligned}
+         \sin\theta := \frac{e^{i\theta}-e^{-i\theta}}{2i}
+      \end{aligned}
+   }
+\]
+Ces formules se déduisent de (\(\ast\)). Elle sont trés importantes car elle permettent de \textbf{linéariser} des expression trigonométriques.\<
+
+Les propriétés de l'exponentielle nous permettent aussi d'obtenir:
+\begin{align*}
+   \arg(zz') &\eqmod{2\pi} \arg(z) + \arg(z') \\
+   \arg(\frac{z}{z'}) &\eqmod{2\pi} \arg(z) - \arg(z')
+\end{align*}
+\section*{\subsecstyle{Formule de Moivre {:}}}
+Un propriété importante des formes trigonométriques et exponentielle est:
+\[
+   {(e^{i\theta})}^n = e^{n(i\theta)}
+\]
+De manière analogue, on a:
+\[
+   {(\cos\theta + i\sin\theta)}^n = \cos n\theta + i\sin n\theta
+\]
+Ici, on a choisi de considérer \(z \in \U\) mais ces propriétés sont vraies pour \textbf{tout nombre complexe}, il suffit alors de factoriser par le module pour se ramener au cas ci-dessus.
 \section*{\subsecstyle{Racines n-ièmes {:}}}
+Soit \(n \in \N\), une partie importante des problèmes impliquant des nombres complexes proviennent d'équations d'inconnue \(Z\) de la forme:
+\[
+   Z^n = z
+\]
+On peut montrer que l'ensemble des solutions de ce type de problème est:
+\[
+   \boxed{
+      S := \Bigl\{ \sqrt[n]{\rho}e^{i\frac{\theta + 2k\pi}{n}}\; ; \; k \in \bigl\{0, 1, \ldots , n-1 \bigl\} \Bigl\}   
+   }
+\]
+\underline{Cas particulier {:}}
+Si on a une racine n-ième \(Z_0\) de \(Z\) et qu'on connait les racines n-ièmes de l'unité, alors on peut obtenir toutes les racines n-ièmes de \(Z\) gràce à:
+
+\[
+   \Bigl\{ Z \in \C \; ; \; Z^n = z \Bigl\} = \Bigl\{ Z_0u \; ; \; u \in \U_n \Bigl\}   
+\]
+\section*{\subsecstyle{Le nombre complexe \(j\) {:}}}
+On note \(j\) la première racine troisième de l'unité.
+Le nombre \(j\) est singulier, car il vérifie:
+\[
+   j^2 = j^{-1} = \overline{j}
+\]
+Graphiquement, on peut observer que les images des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
+
 
 \chapter*{\chapterstyle{Algebre I {:} Anneau des Polynômes}}
 \section*{\subsecstyle{Propriétés générales {:}}}
