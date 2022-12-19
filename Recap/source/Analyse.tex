@@ -18,19 +18,21 @@ Soit \(M^+\) \textbf{l'ensemble des majorants} de la partie \(A\), alors on appe
         \sup(A) := \min(M^+)
     }
 \]
-Soit \(m\) un majorant de \(A\), alors \(m\) est la borne supérieure de \(A\) si et seulement si:
-\[
-    \boxed{
-    \begin{aligned}
-        &\bullet \, \forall \epsilon \in \R_+ \; , \; \exists a \in A \; ; \; m - \epsilon \leq a \leq m
-   \end{aligned}
-      \hspace{50pt}
-   \begin{aligned}
-        &\bullet \, \exists (u_n) \in A^\N \; ; \; u_n \longrightarrow m
-   \end{aligned}
-   }
-\]
+Soit \(m\) un majorant de \(A\) et \(\epsilon\) strictement positif, alors \(m\) est la borne supérieure de \(A\) si et seulement si il vérifie l'une des conditions équivalentes:
 
+\[
+    \begin{aligned}
+    \framebox(140,15){
+        \exists a \in A \; ; \; m - \epsilon \leq a \leq m
+    }
+    \end{aligned}
+    \hspace{40pt}
+    \begin{aligned}
+    \framebox(140,15){
+        \exists (u_n) \in A^\N \; ; \; u_n \longrightarrow m
+    }
+    \end{aligned}
+\]
 La propriété fondamentale de l'ensemble \(\R\) est que \textbf{toute partie non vide et majorée admet une borne supérieure}.
 
 \subsection*{\subsecstyle{Propriété d'Archimède}}
