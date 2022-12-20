@@ -1,0 +1,98 @@
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{interval}
+\usepackage[x11names]{xcolor}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{newclude}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{centernot}
+\usepackage{esvect}
+\usepackage{stmaryrd}
+\usepackage{accents}
+\usepackage{centernot, cancel}
+\usepackage{commath}
+\usepackage{tcolorbox}
+
+\setcounter{secnumdepth}{-1}
+
+% PAGE SETTINGS
+
+\geometry{left=25mm, right=25mm, top= 15mm, bottom= 30mm}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0cm}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+
+% MATHS SHORTHANDS
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\A}{\mathbf{\mathscr{A}}}
+\newcommand{\B}{\mathbf{\mathscr{B}}}
+\newcommand{\Fam}{\mathbf{\mathscr{F}}}
+\renewcommand{\P}{\mathbf{\mathscr{P}}}
+
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\rho}{\varrho}
+
+\newcommand{\E}{\mathbf{\mathcal{E}}}
+\newcommand{\F}{\mathbf{\mathcal{F}}}
+\newcommand{\Pow}{\mathbf{\mathfrak{P}}}
+\newcommand{\G}{\mathbf{\mathfrak{G}}}
+
+\newcommand{\<}{\bigskip}
+\newcommand{\+}{\par}
+
+% INTERVALS
+
+\intervalconfig{soft open fences}
+\intervalconfig{separator symbol =  \,; \,}
+
+\newcommand{\ioo}[2]{\interval[open]{#1}{#2}}
+\newcommand{\ioc}[2]{\interval[open left]{#1}{#2}}
+\newcommand{\ico}[2]{\interval[open right]{#1}{#2}}
+\newcommand{\icc}[2]{\interval{#1}{#2}}
+
+\newcommand{\intioo}[2]{\big\rrbracket{#1}\;;\;{#2}\big\llbracket}
+\newcommand{\intioc}[2]{\big\rrbracket{#1}\;;\;{#2}\big\rrbracket}
+\newcommand{\intico}[2]{\big\llbracket{#1}\;;\;{#2}\big\llbracket}
+\newcommand{\inticc}[2]{\big\llbracket{#1}\;;\;{#2}\big\rrbracket}
+
+% EQUATIONS NOTES
+
+\newcommand{\shorteqnote}[1]{ &  & \text{\small\llap{#1}}}
+\newcommand{\longeqnote}[1]{& & \\ \notag&  &  &  &  & \text{\small\llap{#1}}}
+
+% FUNCTIONS NOTATIONS
+
+\newcommand{\inject}{\hookrightarrow} 
+\newcommand{\surject}{\twoheadrightarrow}
+
+% MOD NOTATION
+
+\newcommand{\eqmod}[1]{\underset{#1}{\equiv}} 
+
+% STYLING
+
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+\newcommand{\chapterstyle}[1]{
+    \setlength{\fboxsep}{0.3em}
+    \setlength{\fboxrule}{3pt}
+    \centering\vspace{-70pt}
+    
+    \color{DarkBlue1}\huge\fbox{\fontseries{b}\selectfont{#1}}
+}
+\newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
+\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
+\newcommand{\subsubsecstyle}[1]{\color{DarkBlue3}\underline{#1}}
