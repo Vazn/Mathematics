@@ -21,9 +21,10 @@
 
 % PAGE SETTINGS
 
-\geometry{left=10mm, top= 10mm}
+\geometry{left=25mm, right=25mm, top= 15mm, bottom= 30mm}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0cm}
+
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0pt}
 
@@ -46,7 +47,7 @@
 
 \newcommand{\E}{\mathbf{\mathcal{E}}}
 \newcommand{\F}{\mathbf{\mathcal{F}}}
-\newcommand{\Pow}{\mathbf{\mathfrak{P}}}
+\newcommand{\Pow}{\mathbf{\mathcal{P}}}
 \newcommand{\G}{\mathbf{\mathfrak{G}}}
 
 \newcommand{\<}{\bigskip}
@@ -83,7 +84,42 @@
 
 % STYLING
 
-\newcommand{\chapterstyle}[1]{\centering\vspace{-60pt}\color{DodgerBlue4}\LARGE\textbf{#1}}
-\newcommand{\secstyle}[1]{\color{DodgerBlue4}\fbox{#1}}
-\newcommand{\subsecstyle}[1]{\color{SteelBlue4}\underline{#1}}
-\newcommand{\subsubsecstyle}[1]{\color{SteelBlue3}\underline{#1}}
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
+\newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
+\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
+\newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\underline{#1}}
+
+\newcommand{\mathbox}[1]{
+    \setlength{\fboxrule}{0.7pt}
+    \boxed{
+        #1
+    }
+}
+\newcommand{\textbox}[1]{
+    \setlength{\fboxrule}{0.7pt}
+    \fbox{
+        #1
+    }
+}
+
+\newcommand{\chapterstyle}[1]{
+    \setlength{\fboxsep}{0.3em}
+    \setlength{\fboxrule}{3pt}
+    \centering\vspace{-70pt}
+    
+    \color{DarkBlue1}\huge\fbox{\fontseries{b}\selectfont{#1}}
+}
+
+\newcommand{\multiparbox}[3]{
+    \begin{center}
+        \setlength{\fboxsep}{#1}
+        \textbox{
+            \parbox{#2\linewidth}{%
+                #3
+            }
+        }
+    \end{center}
+}

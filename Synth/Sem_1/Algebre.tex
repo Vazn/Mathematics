@@ -13,7 +13,7 @@ On appelle \textbf{module} de \(z\) le \textbf{prolongement} de la fonction vale
 \]
 
 \subsection*{\subsecstyle{Forme trigonométrique {:}}}
-On montre qu'il existe un unique angle \(\theta\) (modulo \(2\pi\)) et on appelle \textbf{forme trigonométrique} de \(z\) l'expression:
+Il existe un unique angle \(\theta\) (modulo \(2\pi\)) tel que:
 \[
     z = \rho(\cos\theta+i\sin\theta)   
 \]
@@ -40,13 +40,15 @@ C'est un morphisme \textbf{additif} et \textbf{multiplicatif}. Graphiquement, le
 
 On a alors les formules suivantes {:}
 \multiparbox{0.5em}{0.37}{
-  \begin{aligned}
-     \Re(z) := \frac{z + \overline{z}}{2}
-  \end{aligned}
-  \hspace*{40pt}
-  \begin{aligned}
-     \Im(z) := \frac{z - \overline{z}}{2i}
-  \end{aligned}
+     \[
+         \begin{aligned}
+               \Re(z) := \frac{z + \overline{z}}{2}
+         \end{aligned}
+         \hspace*{40pt}
+         \begin{aligned}
+               \Im(z) := \frac{z - \overline{z}}{2i}
+         \end{aligned}
+     \]
 }
 En utilisant ces formules pour \(z\) sous forme exponentielle, on a alors les \textbf{formules d'Euler} qui sont très importantes car elle permettent de \textbf{linéariser} des expression trigonométriques.\<
 
@@ -142,7 +144,9 @@ Si on note \(P^{m}\) la dérivée n-ième de \(P\), on a aussi:
 \[
    P^{m}(\alpha) = 0 \; \land \; P^{m + 1}(\alpha) \neq 0
 \]
-On en déduit que pour une racine \(\alpha\) de multiplicité \(m\), on peut \textbf{factoriser} \(P\) par \((X-\alpha)^m\).
+
+On en déduit que pour une racine \(\alpha\) de multiplicité \(m\), on peut \textbf{factoriser} \(P\) par \((X-\alpha)^m\).\<
+
 Si on considère maintenant plusieurs racines \textbf{distinctes} \(a_0, a_1, \ldots, a_{n-1}, a_n\) de multiplicité respectivement \(m_0, m_1, \ldots, m_{n-1}, m_n\), on peut montrer la propriété suivante:
 \begin{flalign*}
    \Bigr[ \prod_{i=0}^{n}(X-\alpha_i)^{m_i} \Bigr] \; \Biggr| \; P \shorteqnote{(On peut factoriser par le produit des \((X-\alpha_i)^{m_i}\))}
@@ -287,7 +291,7 @@ Alors on a alors le théorème suivant:
 \end{align*}
 \begin{center}
     \textbox{
-        Si \textbf{l'espace tout entier} est engendré par la somme, alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
+        Si \textbf{l'espace entier} est engendré par \(S_n\), alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
     }
 \end{center}
 

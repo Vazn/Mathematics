@@ -15,15 +15,16 @@ Soit \(M^+\) \textbf{l'ensemble des majorants} de la partie \(A\), alors on appe
     \sup(A) := \min(M^+)
 \]
 Soit \(M\) un majorant de \(A\) et \(\epsilon\) strictement positif, alors \(M\) est la borne supérieure de \(A\) si et seulement si il vérifie l'une des conditions équivalentes:
-\begin{center}
-    \setlength{\fboxsep}{0.3em}
-    \textbox{
-        \[
-        \exists a \in A \; ; \; M - \epsilon \leq a \leq M \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-        \exists (u_n) \in A^\N \; ; \; u_n \longrightarrow M 
-        \]
+\[
+    \setlength{\fboxsep}{0.1em}
+    \mathbox{
+        \;\vphantom{\Bigl(\Bigl)} \exists a \in A \; ; \; M - \epsilon \leq a \leq M \;
     }
-\end{center}
+    \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+    \mathbox{
+        \;\vphantom{\Bigl(\Bigl)}\exists (u_n) \in A^\N \; ; \; u_n \longrightarrow M \;
+    }
+\]
 
 Soit \(A, B\) deux parties bornées de \(\R\), alors l'application qui associe sa borne supérieure à une partie est \textbf{croissante} et celle qui associe sa borne inférieure à une partie est \textbf{décroissante}.
 
@@ -52,7 +53,8 @@ Aussi, \(I \subseteq \R\) est un intervalle si et seulement si:
         \forall (a, b) \in I^2 \; , \; \forall x \in \R \; ; \; a \leq x \leq b \implies x \in I
     }
 \end{align*}
-Intuitivement, cela signifie qu'un intervalle contient \textbf{tout les points} entre ses bornes. On dit plus généralement que les intervalles sont les parties \textbf{convexes} de \(\R\).\<
+Intuitivement, cela signifie qu'un intervalle contient \textbf{tout les points} entre ses bornes.\+
+On dit plus généralement que les intervalles sont les parties \textbf{convexes} de \(\R\).\<
 
 On a aussi les propriétés suivantes:
 \multiparbox{-0.3em}{0.6}{
@@ -303,7 +305,7 @@ Si une suite est de Cauchy, alors elle vérifie les propriétés suivantes:
     &\bullet \text{Si elle admet une valeur d'adhérence, alors elle converge.}
 \end{align*}
 
-\multiparbox{}{0.7}{
+\multiparbox{0}{0.7}{
     \begin{center}
         On appelle \textbf{espace complet} tout espace métrique dans lequel \textbf{tout suite de Cauchy} converge.\<
     
