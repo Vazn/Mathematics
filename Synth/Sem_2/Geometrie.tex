@@ -1,0 +1,246 @@
+\chapter*{\chapterstyle{Géométrie {:} Espaces affines}}
+Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.\+
+On appelle les éléments de \(\mathscr{E}\) des \textbf{points}.
+
+\subsection*{\subsecstyle{Définition {:}}}
+On appelle \textbf{espace affine de direction} \(V\) le couple \((\mathscr{E}, +)\) avec:
+\[
+   \begin{aligned}
+      + : &&\mathscr{E} \times V &\longrightarrow \mathscr{E}\\
+      &&(\,A, \, u\,) &\longmapsto A + u
+   \end{aligned}
+\]
+La loi + doit vérifer les axiomes suivants 
+\footnote{Une action d'un groupe \((G, \star)\) sur \(E\) est une application \(+\) de \(G \times E \) dans \(E\) qui vérifie: \[
+   \forall g, g' \in G  \; , \; \forall x \in E \; ; \; x + (g \star g') = (x + g) \star g'
+\]}:
+\multiparbox{-0.8em}{0.8}{
+    \begin{align*}
+      &\textbf{Existence d'un neutre} && \forall A \in \mathscr{E} \; ; \; A + 0_V = A\\
+      &\textbf{Action de groupe} && \forall A \in \mathscr{E} \; , \; \forall u,v \in V \; ; \; A + (u + v) = (A + u) + v \\
+      &\textbf{Unicité du translaté} && \forall A, B \in \mathscr{E} \; , \; \exists !u \in V \; ; \; A + u = B 
+    \end{align*}
+}
+Etant donné deux points \(A, B \in \mathscr{E}\), on note alors \(\overrightarrow{AB}\) l'unique vecteur \(u\) qui vérifie:
+\[
+   \mathbox{A + u = B}   
+\]
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+Si \(\mathscr{E}\) est un espace affine de direction \(V\), on a alors les propriétés suivantes:
+\multiparbox{-0.3em}{0.4}{
+    \begin{align*}
+      &\textbf{Relation de Chasles} && \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC} \\
+      &\textbf{Existence d'un neutre} && \overrightarrow{AB} + \overrightarrow{BA} = O_V
+    \end{align*}
+}
+
+\subsection*{\subsecstyle{Repères {:}}}
+Un repère de \(\mathscr{E}\) est un couple \(\mathscr{R} = (O, \mathscr{B})\) formé d'un point \(O \in \mathscr{E}\) et d'une base \(\mathscr{B} = (e_1, \ldots, e_n)\) de \(V\). On appelle alors le point \(O\) \textbf{origine} du repère, et les vecteurs \(e_1, \ldots, e_n\) \textbf{vecteurs de base} du repère.\<
+
+Soit \(i\in\inticc{1}{n}\), alors pour tout point \(A \in \mathscr{E}\), on appelle \textbf{coordonées} de \(A\) dans le repère \(\mathscr{R}\), les composantes \((x_i)_i\) du vecteur qui représente la translation de \(O\) vers \(A\) dans la base \(\mathscr{B}\), et on a la caractérisation élémentaire suivante:
+\[
+   \overrightarrow{OA} = x_1e_1 + \ldots + x_ne_n 
+\]
+
+\subsection*{\subsecstyle{Cas particulier des espaces vectoriels {:}}}
+Il est important de noter que le couple \((V, +)\) forme un espace affine de \textbf{direction lui-même}. En effet, si on considère un élément de \(V\) comme un point, alors le couple  \((V, +)\) forme un espace affine de direction \(V\) et la loi \(+\) est alors exactement la loi de composition interne de \(V\).\<
+
+L'unique vecteur \(u\) tel que \(A + u = B\) est exactement \(B - A\) (ici \(A, B\) sont des points de \(V\) qui se trouvent être des vecteurs dans ce cas particulier). \<\<
+
+
+\chapter*{\chapterstyle{Géométrie {:} Espaces euclidiens}}
+Soit \(E\) un \(\R\)-espace vectoriel de dimension \(n\) finie. On considère \(E\) avec sa structure d'espace affine canonique.
+On appelle \textbf{espace euclidien} un tel espace vectoriel si il est muni d'un \textbf{produit scalaire}.\<
+
+Soit \(u, v\) deux vecteurs de \(E\) et \((u_i)_i\) pour \(i \in \inticc{1}{n}\) les composantes de \(u\) dans la base canonique de \(E\).
+
+\subsection*{\subsecstyle{Vecteurs {:}}}
+Soit deux points \(A, B\), on note \(\overrightarrow{AB}\) l'unique vecteur \(u\) de \(E\) tel que \(A + u = B\), on appelle alors \(A\) le \textbf{point initial} et \(B\) le \textbf{point final}. \<
+
+On peut alors considérer l'application \(\phi\) qui associe aux points \(A, B\) le vecteur \(\overrightarrow{AB}\) en \textbf{position standard}, et on a:
+\[
+   \begin{aligned}
+      \phi: E \times E &\longrightarrow E\\
+      (A, B) &\longmapsto B - A
+   \end{aligned}
+\]
+Ici, \(A, B\) sont des points qui trouvent aussi être des vecteurs, car l'espace affine sous-jacent est un espace vectoriel, et donc la soustractrion ci-dessus est bien définie.
+
+
+\subsection*{\subsecstyle{Produit scalaire {:}}}
+Soit \(\phi : E^2 \longrightarrow \R\) une forme \textbf{bilinéaire}. On dit que l'application \(\phi\) est un \textbf{produit scalaire} si et seulement si il vérifie:
+
+\multiparbox{-0.3em}{0.4}{
+    \begin{align*}
+      &\textbf{Symétrique} &&\dotproduct{u}{v} = \dotproduct{v}{u} \\
+      &\textbf{Définie} &&\dotproduct{u}{u} = 0 \implies u = 0 \\
+      &\textbf{Positive} &&\dotproduct{u}{v} \geq 0
+    \end{align*}
+}
+
+Par exemple, si on considère \(E = \R^n\), alors on peut définir le produit scalaire canonique de \(\R^n\) comme ci-dessous:
+\[
+   \phi : (u, v) \longmapsto \sum_{k=1}^{n} u_iv_i 
+\]
+Par ailleurs, on a \textbf{l'inégalité de Cauchy-Schwartz}:
+\[
+    |\dotproduct{u}{v}| \leq \vectNorm{u} \vectNorm{v}
+\]
+
+\subsection*{\subsecstyle{Norme{:}}}
+On appelle \textbf{norme} une application \(\vectNorm{\cdot}\) de E vers \(\R\) qui vérifie:
+\multiparbox{-0.3em}{0.4}{
+    \begin{align*}
+      &\textbf{Séparation} &&\vectNorm{u} = 0 \implies u = 0\\
+      &\textbf{Absolue Homogénéité} &&\vectNorm{\lambda u} = |\lambda| \vectNorm{u}\\
+      &\textbf{Sous-Additivité} &&\vectNorm{u + v} \leq \vectNorm{u} + \vectNorm{v}
+    \end{align*}
+}
+Un espace vectoriel muni d'une norme est alors appelé \textbf{espace vectoriel normé}. Dans le cas d'un espace euclidien, on définit la norme euclidienne usuelle:
+\[
+   \mathbox{\vectNorm{u} = \sqrt{\sum_{i=1}^n u_i^2}}
+\]
+Cette norme induit alors une \textbf{métrique} sur \(E\)  comme suit:
+\[
+   \begin{aligned}
+      d: E \times E &\longrightarrow E\\
+      (u, v) &\longmapsto \vectNorm{v - u}
+   \end{aligned}
+\]
+Muni de cette métrique, l'espace euclidien \(E\) est alors un \textbf{espace métrique homogène}.
+
+\subsection*{\subsecstyle{Angles{:}}}
+Dans un espace euclidien, on définit \textbf{l'angle} \(\theta := \angle AOC\) comme étant l'angle entre les bipoints \(OA\) et \(OC\) et on a alors la formule de \textbf{Pythagore généralisée}:
+\[
+   \vectNorm{BC}^2 = \vectNorm{AB}^2 + \vectNorm{AC}^2 - 2\vectNorm{AB}\vectNorm{AC}\cos(\theta)
+\]
+Puis par suite on peut montrer la caractérisation du produit scalaire:
+\[
+    \mathbox{\dotproduct{u}{v} = \vectNorm{u} \vectNorm{v} \cos{(\theta)}}
+\]
+
+\subsection*{\subsecstyle{Composantes scalaires et projections{:}}}
+Soit \(\alpha\) l'angle entre les deux vecteurs \(u\) et \(v\).
+On appelle \textbf{composante scalaire} de \(u\) par rapport à \(v\) le scalaire:
+\[
+   \text{comp}_v(u) = \vectNorm{u}\cos(\alpha)   
+\]
+On définit alors la \textbf{projection orthogonale} de \(u\) sur \(v\):
+\[
+   \mathbox{\text{proj}_v(u) = \text{comp}_v(u)\frac{v}{\vectNorm{v}}}   
+\]
+Visuellement, si on considère deux vecteurs de \(E = \R^2\), on a:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (-1,0) -- (9,0);
+      \draw[->] (0,-1) -- (0, 5.5);
+   
+      \draw foreach \X in {3,6}{
+         (\X, 0.1) -- (\X, -0.1) node[below]{$\X$}
+      };
+      \draw foreach \Y in {2,4}{
+         (0.1,\Y) -- (-0.1,\Y) node[left]{$\Y$}
+      };
+   
+      \draw[->]  (0,0) coordinate (O) -- (3,4) coordinate (B) node[above]{$u$};
+      \draw[->]  (0,0) coordinate (O) -- (6,2) coordinate (A) node[above]{$v$};
+
+      \draw[dashed, color=DarkBlue1] (3, 4) -- (3.9, 1.3);
+
+      \draw[->, line width=2pt, color=DarkBlue1]  (0,0) -- (3.9, 1.3);
+      \path (2,1.2) node[color=DarkBlue1]{$\text{proj}_v(u)$};
+      \draw[solid, line width=2pt, color=BrightBlue1]  (0,0) -- (4.111, 0) node[above]{$\text{comp}_v(u)$};
+      \draw pic["$\alpha$", draw, gray, angle radius=1cm] {angle = A--O--B};
+
+   \end{tikzpicture}   
+\end{center}
+On remarque alors que \textbf{la composante scalaire de \(u\) est exactement la norme du projeté de \(u\) sur \(v\)}
+
+\subsection*{\subsecstyle{Orientation{:}}}
+On se place dans \(E = \R^3\), soit deux vecteur \(u, v\) non parallèles, on appelle \textbf{orientation directe} l'orientation de l'espace suivante \textbf{la règle de la main droite}, et orientation indirecte celle suivant la règle de la main gauche.
+\pagebreak
+
+\subsection*{\subsecstyle{Produit vectoriel{:}}}
+On définit le \textbf{produit vectoriel} de deux vecteurs \(u, v\) comme l'unique vecteur \(w\) qui vérifie:
+\multiparbox{-0.3em}{0.4}{
+    \begin{center}
+      $\vectNorm{w} = \vectNorm{u}\vectNorm{v}|\sin(\theta)|$\\
+      $w$ \textbf{est orthogonal à }$u$\textbf{ et à }$v$\\
+      \textbf{La base } $(u, v, w)$ \textbf{ est directe}
+    \end{center}
+}
+
+C'est une application de \(E \times E \longrightarrow E\) qui vérfie:
+\multiparbox{-0.5em}{0.6}{
+    \begin{align*}
+      &\textbf{Homogénéité} && \lambda_1 u \times v = \lambda_1 (u \times v)\\
+      &\textbf{Anticommutativité} && u \times v = - (v \times u)\\
+      &\textbf{Distributivité} && u \times (v + w) = u \times v + u \times w
+    \end{align*}
+}
+Néanmoins, le produit vectoriel n'est en général \textbf{pas associatif}. En particulier, on a:
+\[
+    u \times (v \times w) = \dotproduct{u}{w}v - \dotproduct{u}{v}w
+\]
+
+\underline{Calcul d'un produit vectoriel:}\<
+
+On note \(\begin{vmatrix} M \end{vmatrix}\) le déterminant d'une matrice, alors on a:
+\[
+   \begin{cases}
+      u := (u_1, u_2, u_3)\\ 
+      v := (v_1, v_2, v_3)
+   \end{cases} \implies 
+   u \times v = \Biggl(\mdetTwo{u_2}{u_3}{v_2}{v_3} ; -\mdetTwo{u_1}{u_3}{v_1}{v_3} ; \mdetTwo{u_1}{u_2}{v_1}{v_2}\Biggl)
+\]
+Ce résultat donne une méthode efficace pour calculer des produits vectoriels.
+
+\subsection*{\subsecstyle{Volumes \& Produit triple{:}}}
+On peut remarque que la norme du vecteur resultant d'un produit vectoriel est \textbf{l'aire du parallélogramme} formé par \(u\) et \(v\).\<
+
+On peut alors montrer que le produit \(\dotproduct{u \times v}{w}\) est \textbf{le volume du parallélépipède} formé par \(u, v, w\). En effet, on a:
+\[
+   \dotproduct{u \times v}{w} = \vectNorm{u \times v} \vectNorm{w} \cos(\alpha) = \vectNorm{u \times v}h
+\]
+Avec \(\vectNorm{u \times v}\) qui est l'aire de la base est \(h\) la hauteur du parallélépipède.
+
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \coordinate (A) at (0, 0, 0);
+      \coordinate (B) at (8, 0, 0);
+      \coordinate (C) at (8, 0, -8);
+      \coordinate (D) at (0, 0, -8);
+      \coordinate (E) at (0, 2, -10);
+      \coordinate (F) at (0, 2, -2);
+      \coordinate (G) at (8, 2, -2);
+      \coordinate (H) at (8, 2, -10);
+
+      \draw[->] (A) -- (B) node[below right]{\(u\)};
+      \draw[->] (A) -- (D) node[above left]{\(v\)};
+      \draw[->] (A) -- (F) node[below right]{\(w\)};
+
+      \draw[dashed, color=gray] (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (E);
+      \draw[dashed, color=gray] (B) -- (G);
+      \draw[dashed, color=gray] (C) -- (H);
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (E) -- (F) -- (G) -- (H) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.15] (A) -- (B) -- (C) -- (D) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (A) -- (B) -- (G) -- (F) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (B) -- (C) -- (H) -- (G) -- cycle;
+
+      \draw[->] (A) -- (0, 4, 0) coordinate (X) node[below right]{\(u \times v\)};
+      \draw[gray] pic ["$\alpha$", draw, angle radius=2cm] {angle = F--A--X};
+
+      \draw[->, color = DarkBlue3, line width = 1.2pt] (0, 0.01, 0) -- (0, 2.7, 0) coordinate (X) node[left]{\(h\)};
+   \end{tikzpicture}   
+\end{center}
+Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\mdetThree{u_1}{u_2}{u_3}{v_1}{v_2}{v_3}{w_1}{w_2}{w_3}\)
+
+
+\chapter*{\chapterstyle{Géométrie {:} Courbes paramétriques}}

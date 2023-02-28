@@ -17,6 +17,9 @@
 \usepackage{commath}
 \usepackage{tcolorbox}
 
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes, 3d}
+
 \setcounter{secnumdepth}{-1}
 
 % PAGE SETTINGS
@@ -82,7 +85,16 @@
 
 \newcommand{\eqmod}[1]{\underset{#1}{\equiv}} 
 
+% LINEAR ALGEBRA
+
+\newcommand{\dotproduct}[2]{\langle\, #1 \; | \; #2 \, \rangle}
+\newcommand{\vectNorm}[1]{\Vert#1 \Vert}
+\newcommand{\mdetTwo}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
+\newcommand{\mdetThree}[9]{\begin{vmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{vmatrix}}
+
+
 % STYLING
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
 
 \definecolor{DarkBlue1}{RGB}{83, 108, 132}
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
