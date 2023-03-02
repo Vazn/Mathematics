@@ -1,7 +1,374 @@
 \chapter*{\chapterstyle{Probabilités {:} Dénombrement}}
+Soit \(E\) un ensemble, on dit que \(E\) est \textbf{fini} si il existe une bijection de \(\inticc{1}{n}\) sur \(E\).\<
+
+On considère maintenant que \(E\) est fini, dénombrer \(E\) consiste à déterminer sa cardinalité. Informellement il s'agit souvent de compter le nombres \textbf{d'issues possibles} d'une situation donnée, on dispose alors de trois grands modèles, les \textbf{listes}, les \textbf{arrangements} et les \textbf{combinaisons}.
+
+\subsection*{\subsecstyle{Listes}}
+On appelle \textbf{liste} à \(p\) éléments de \(E\) un p-uplet constitué d'éléments de \(E\), c'est à dire \textbf{un élément du produit cartésien} \(E^p\) on remarque alors la propriété:
+\begin{center}
+   \textbox{
+      Dans une liste, l'ordre compte et les répétitions sont possibles
+   }
+\end{center}
+En effet, dans \(\N^2\) par exemple, on sait que \((1, 2) \neq (2, 1)\) et que \((1, 1)\) est un 2-uplet valide.\<
+
+On peut alors montrer que le nombre d'applications d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(p^n\)
+
+\subsection*{\subsecstyle{Arrangements}}
+On appelle \textbf{arrangement} tout liste à \(p\) éléments \textbf{distincts} de \(E\), on remarque alors:
+\begin{center}
+   \textbox{
+      Dans un arrangement, l'ordre compte mais les répétitions sont impossibles
+   }
+\end{center}
+On note alors \(A_n^p\) le nombre d'arrangements de \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
+\[
+   \mathbox{A_n^p = \frac{n!}{(n - p)!}}   
+\]
+Et on peut alors montrer que le nombre d'applications \textbf{injectives} d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(A_n^p\).\<
+
+Un arrangement de la forme \(A_n^n\) est apellée une \textbf{permutation} de \(E\) qui est simplement donné par \(n!\), c'est aussi le nombre de \textbf{bijections} de \(E\) dans \(E\).
+
+\subsection*{\subsecstyle{Combinaisons}}
+On appelle \textbf{combinaison} de \(p\) éléments tout \textbf{partie} de \(E\) à \(p\) éléments, on remarque alors:
+\begin{center}
+   \textbox{
+      Dans une combinaison, l'ordre ne compte pas et les répétitions sont impossibles
+   }
+\end{center}
+On apelle alors \textbf{coefficient binomial} et on note \(\binom{n}{p}\) le nombre de parties à \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
+\[
+   \mathbox{\binom{n}{p} = \frac{n!}{p!(n - p)!}}   
+\]
+On peut remarquer que le nombre de parties à \(p\) éléménts de \(E\) est exactement le nombre d'arrangements à \(p\) éléménts de \(E\) auquel on retire toutes les permutations des \(p\) éléments choisis, ce qui revient exactement à \textbf{retirer la contrainte d'ordre}.
+
+\subsection*{\subsecstyle{Propriétés du coefficient binomial}}
+Le coefficient binomial possède plusieurs propriétés intéréssantes, on peut tout d'abord remarquer une \textbf{symétrie} évidente mais aussi:
+\multiparbox{0em}{1}{
+   \begin{align*}
+      &\text{Formule de Pascal} &&\binom{n}{p} = \binom{n - 1}{p} + \binom{n - 1}{p - 1}      
+      &\text{Formule du capitaine} && p\binom{n}{p} = n\binom{n - 1}{p - 1} 
+   \end{align*}
+}
+La formule de Pascal se comprends en remarquant que le nombre de parties à \(p\) éléments est exactement la somme du nombre de parties qui ne contiennent pas un certain \(x\) et du nombre de partie qui contiennent ce \(x\), ie on a:
+\begin{center}
+   \textit{Soit la partie ne contient pas \(x\) et est donc formée de \(p\) éléments parmi \(n - 1\).\+ Soit la partie contient \(x\) et \(p - 1\) éléménts parmi les \(n - 1\) restants.}
+\end{center} 
+
+La formule du capitaine se comprends aisément si on considère le choix d'une équipe sportive de \(p\) joueurs (dont un capitaine) parmi un groupe de \(n\) candidats:
+\begin{center}
+   \textit{Choisir une équipe de \(p\) joueurs puis un capitaine parmi les \(p\) joueurs\+ revient à choisir un capitaine parmi les \(n\) candidats, puis les \(p - 1\) joueurs restants.}
+\end{center} 
+Enfin on a aussi:
+\[
+   \sum_{p=0}^n \binom{n}{p} = 2^n       
+\]
+Qui revient à dire que le cardinal de l'ensemble des parties d'un ensemble à \(n\) éléments est exactement la somme des parties qui ont respectivement \(1, 2, \ldots, n\) éléments. 
+
+\subsection*{\subsecstyle{Généralisation}}
+On peut remarquer que le coefficient binomial est le nombre de partitions en deux parties de \(E\) telles que le cardinal de la première soit \(p\). Par exemple si on considère les partitions de \(E := \bigl\{1, 2, 3\bigl\}\) en deux parties dont la première ait \(1\) élément, on remarque qu'il y a 3 telles partitions:
+\[
+   P = \bigl(\{1\}, \{2, 3\}\bigl) \text{ ou } \bigl(\{2\}, \{1, 2\}\bigl) \text{ ou } \bigl(\{3\}, \{1, 2\}\bigl)
+\]
+
+On peut alors généraliser cette idée et définir le \textbf{coefficient multinomial} \(\binom{n}{k_1, \ldots, k_p}\) qui sera le nombre de partitions en \(p\) parties telles que la p-ième partie soit de cardinal \(k_p\) avec la somme des \(k_p\) \textbf{qui soit égale au cardinal total}:
+\[
+   \mathbox{
+      \binom{n}{k_1, \ldots, k_p} = \frac{n!}{k_1! k_2!\ldots k_p!}
+   }
+\]
+
+Pour fixer les idées on remarque que si \(p = 2\) on a bien notre coefficient binomial usuel \footnote{
+   La première égalité vient de la contrainte sur la somme des \(k_p\).
+}\footnote{La seconde égalité se comprends par symétrie, compter le nombre de partitions en deux parties dont la première contient \(k_1\) éléments revient à compter le nombre de parties à \(k_1\) éléments et le reste sera nécessairement dans la seconde partie.}:
+\[
+   \binom{n}{k_1, k_2} =  \binom{n}{k_1, n - k_1} = \binom{n}{k_1} = \frac{n!}{k_1!(n-k_1)} = \frac{n!}{k_1!k_2!}
+\]
+On peut alors utiliser ce coefficient multinomial, pour compter le nombre d'anagramme d'un mot de \(n\) lettres avec \(m\) lettres distinctes répétées \(k_m\) fois, ou encore le nombre de façon de mettre \(n\) objets dans \(m\) boites qui peuvent en contenir \(k_m\).\+
+Par exemple, le nombre d'anagrammes de MISSISSIPI est donné par \(\binom{11}{1 , 4, 4, 1}  = \frac{11!}{4!4!} = 34650\)\<
+
+On peut même pour définir la \textbf{formule du multinôme de Newton} qui généralise celle du binôme:
+\[
+   (x_1 + x_2 + \ldots + x_p)^n = \sum_{k_1+k_2+\ldots+k_p = n} \binom{n}{k_1, k_2 \ldots, k_n} x_1^{k_1} x_2^{k_2} \ldots x_p^{k_p}
+\]
 
 \chapter*{\chapterstyle{Probabilités {:} Espaces probabilisés}}
+On appelle \textbf{expérience aléatoire} une expérience dont toutes les \textbf{issues} possibles sont connues a priori mais
+dont le résultat peut varier lorsqu'on la répète (lancer de dés, tirage dans une urne ...).
+
+\subsection*{\subsecstyle{Univers et Tribus}}
+On appelle \textbf{univers} et on note \(\Omega\) l'ensemble de toutes les issues de l'expérience. Dans cette partie on considérera uniquement un univers \textbf{fini}.\<
+
+On appelle \textbf{tribu} sur \(\Omega\) ou encore \(\sigma\)-algèbre tout partie \textbf{non vide} \(\mathscr{A}\) de \(\Pow(\Omega)\) telle que:
+\multiparbox{-0.3em}{0.4}{
+   \begin{align*}
+      &\textbf{Stable par complémentaire}\\
+      &\textbf{Stable par union dénombrable}
+   \end{align*}
+}
+Dans le cas fini on choisira la tribu \(\Pow(\Omega)\) et la notion de tribu n'est pas pertinente à priori (l'utilité des axiomes ci-dessus apparaît lorsque l'univers est indénombrable).\+
+Les éléments d'une tribu sont alors appelés de manière générale \textbf{ensemble mesurables} et dans le cas des probabilités, \textbf{évenements}.\<
+
+Le couple \((\Omega, \Pow(\Omega))\) est alors appelé de manière générale \textbf{espace mesurable} et dans le cas des probabilités, \textbf{espace probabilisable}. 
+
+\subsection*{\subsecstyle{Système complet d'évenements}}
+Soit \((A_n)_{n \in \N}\) une famille d'évenements et \(k, p\) deux entiers distincts, on dit que \(A_k\) et \(A_p\) sont \textbf{incompatibles} si ils sont \textbf{disjoints}.
+
+\multiparbox{0em}{0.7}{
+   \begin{center}
+   On appelle \textbf{système complet d'évenements} une \textbf{partition} de \(\Omega\) par \+ 
+   des évenements deux à deux incompatibles.
+   \end{center}
+}
+
+\subsection*{\subsecstyle{Mesure de probabilité}}
+On appelle \textbf{mesure de probabilité} sur \((\Omega, \Pow(\Omega))\) toute application \textbf{\(\sigma\)-additive} \(\mathbb{P} : \Pow(\Omega)\longrightarrow \icc{0}{1}\) qui vérifie \(\mathbb{P}(\Omega) = 1\).\< 
+
+Soit \((A_n)_{n \in \N}\) une famille dénombrable d'évenements \textbf{deux à deux incompatibles}, \(\mathbb{P}\) est \textbf{\(\sigma\)-additive} si et seulement si:
+\[
+   \mathbb{P}\Biggl(\,\bigcup_{i \in \N} A_k\Biggl) = \sum_{i \in \N}\mathbb{P}(A_k)
+\]
+De ces axiomes on peut déduire plusieurs propriétés:
+\multiparbox{-0.5em}{0.75}{
+   \begin{align*}
+      &\textbf{Probabiblité de l'ensemble vide} \;\; &&\mathbb{P}(\varnothing) = 0\\
+      &\textbf{Probabiblité du complémentaire}  \;\; &&\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)\\
+      &\textbf{Probabiblité de l'union}  \;\; &&\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) \\
+      &\textbf{Croissance pour l'inclusion}  \;\; &&A \subseteq B \implies \mathbb{P}(A) \leq \mathbb{P}(B)
+   \end{align*}
+}
+Muni de cette mesure de probabilité, le triplet \((\Omega, \Pow(\Omega), \mathbb{P})\) est appelé \textbf{espace probabilisé}.
+
+\subsection*{\subsecstyle{Distribution de probabilité}}
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé, on appelle \textbf{distribution de probabilités discrète} sur \(\Omega\) toute famille de réels positifs
+indexée par \(\Omega\) et de somme égale à 1. En particulier si on pose:
+\[
+   \forall \omega \in \Omega \; ; \; p_\omega = \mathbb{P}(\{\omega\})   
+\]
+Alors \((p_\omega)_{\omega \in \Omega}\) est une \textbf{distribution de probabilités} sur \(\Omega\), cela signifie que la mesure de probabilité des évenements élémentaires définit une distribution de probabilité (dans le cas discret).\<
+
+Réciproquement, si \((p_\omega)_{\omega \in \Omega}\) est une distribution de probabilité, alors il existe une mesure de probabilité \(\mathbb{P}\) telle que chaque \(p_{\omega}\) soit égal à la mesure de probabilité le l'évenement élémentaire \(\omega\) par \(\mathbb{P}\).
+
+\begin{center}
+   \textit{En résumé, on connaît tout d'une probabilité discrète quand on connaît\+ la distribution de probabilités 
+   (des événements élémentaires) qui lui est associée. }
+\end{center}
+
+\subsection*{\subsecstyle{Probabilités conditionnelles}}
+Lorsque l'on dispose d'informations sur le résultat d'une expérience donnée, il est possible d'affiner nos
+prédictions. \+
+Soit \(X\) un évenement qui n'est pas négligeable, alors si on définit l'application:
+\[
+   \begin{aligned}
+      \mathbb{P}_X: \Pow(\Omega) &\longrightarrow \icc{0}{1}\\
+      A &\longmapsto \frac{\mathbb{P}(A \cap X)}{\mathbb{P}(X)}
+   \end{aligned}
+\]
+On peut montrer que c'est une mesure de probabilité sur \(\Omega\) et on l'appelle \textbf{probabilité de A sachant X}.\+
+On a alors la \textbf{formule des probabilités composées}:
+\[
+   \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}_A(B) = \mathbb{P}(B)\mathbb{P}_B(A)
+\]
+Qui se généralise pour une famille finie d'évenements \((A_n)_{n \in I}\) d'intersection non nulle:
+\[
+   \mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1)\mathbb{P}_{A_1}(A_2)\mathbb{P}_{A_1\cap A_2}(A_3)\ldots\mathbb{P}_{A_1\cap \ldots \cap A_{n-1}}(A_n)
+\]
+De la symétrie de l'intersection on peut alors en déduire la \textbf{formule de Bayes}:
+\[   
+   \mathbb{P}_B(A) = \frac{\mathbb{P}(A) \mathbb{P}_A(B)}{\mathbb{P}(B)}
+\]
+Cette formule permet alors \textbf{d'inverser le conditionnement} et de déterminer les \textbf{probabilités des causes sachant les conséquences}.
+
+\subsection*{\subsecstyle{Formule des probabilités totales}}
+Soit \((A_n)_n \in I\) un système complet d'évenements de \(\Omega\), alors on montre la \textbf{formule des probabilités totales}:
+\[
+   \mathbb{P}(B) = \sum_{k=1}^{n} \mathbb{P}(A_k) \mathbb{P}_{A_k}(B)
+\]
+
+\subsection*{\subsecstyle{Indépendance}}
+On dit que deux évenements \(A, B\) sont \textbf{indépendants} si et seulement si:
+\[
+   \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
+\]
+Si deux évenements sont indépendants, alors n'importe quelle paire de \(A, B, \overline{A}, \overline{B}\) est indépendante.
 
 \chapter*{\chapterstyle{Probabilités {:} Variables aléatoires}}
+Ce furent les jeux de hasard qui amenèrent à concevoir les variables aléatoires, en associant à une issue (résultat du lancer d'un ou plusieurs dés, d'un tirage à pile ou face, d'une roulette, etc.) un gain.\<
 
-\chapter*{\chapterstyle{Probabilités {:} Dispersion}}
+En voici des exemples : la valeur d'un dé entre 1 et 6, le côté de la pièce dans un pile ou face, le temps d'attente dans la queue du cinéma.
+
+\subsection*{\subsecstyle{Définition}}
+Soit \((\Omega, \mathscr{A}, \mathbb{P})\) un espace probabilisé au plus dénombrable, avec \(\mathscr{A} = \Pow(\Omega)\).\+
+On appelle \textbf{variable aléatoire discrète} toute application \(X: \Omega \longrightarrow E\) de telle que \(E\) soit au plus \textbf{dénombrable} et que \(X\) soit \textbf{mesurable}, ie qu'on ait:
+\[
+   \mathbox{
+      \forall a \in X(\Omega) \; ; \; X^{-1}(\{a\}) \in \mathscr{A}
+   }
+\]
+En d'autres termes:
+\begin{center}
+   \textit{L'image réciproque des images de \(X\) sont des évenements.}
+\end{center}
+Cette contrainte s'explique par le fait qu'on veut pouvoir calculer la probabilité que \(X\) prenne la valeur \(a\), or si \(X^{-1}(\{a\})\) est bien un évenement, alors sa probabilité est bien définie, on utilise alors usuellement la \textbf{notation} suivante:
+\[
+   X^{-1}(\{a\}) = \Bigl\{ \omega \in \Omega \; ; \;  X(\omega) = a\Bigl\} \notationEq (X = a)  
+\]
+Cette évenement n'est en général \textbf{pas} un évenement élémentaire, mais bien une \textbf{partie} de \(\Omega\).\<
+
+Plus généralement, l'image réciproque de toute partie de \(X(\Omega)\) est un événement et dans le cas de variables aléatoires \textbf{réelles}, on peut alors créer une notation qui s'applique si \(A\) est un intervalle, et on a:
+\begin{align*}
+   X^{-1}(A) &= \Bigl\{ \omega \in \Omega \; ; \;  X(\omega) \in A\Bigl\} \notationEq (X \in A) \\
+   X^{-1}\bigl(\ioo{-\infty}{a}\bigl) &= \Bigl\{ \omega \in \Omega \; ; \;  X(\omega) < a\Bigl\} \notationEq (X < a)
+\end{align*}
+La deuxième notation se décline évidemment dans tout les cas d'intervalles connus (ouverts, fermés, semi-ouverts ...) et sur les encadrements.\+
+
+\subsection*{\subsecstyle{Propriétés}}
+La famille \(((X = a))_{a \in X(\Omega)}\) est un \textbf{système complet d'évenements}, en effet car si on considère une issue \(\omega \in \Omega\), on a:
+\[
+   \begin{cases}
+      X(\omega) = x \implies \omega \in (X = x)\\  
+      X(\omega) \neq x \implies \omega \notin (X = x)   
+   \end{cases} 
+\]
+En résumé:
+\begin{center}
+   \textit{On peut partitionner les éléments de \(\Omega\) selon leur image par \(X\)}
+\end{center}
+On peut aussi noter que si \(f\) est une application quelconque de \(E\) vers \(F\), alors \(f \circ X\) \textbf{est une variable aléatoire}.
+
+\subsection*{\subsecstyle{Loi d'une variable aléatoire}}
+On a vu que \(\mathbb{P}\) mesure la vraisemblance de tous les événements, donc en particulier de tous les événements qu'on peut construire à partir d'une variable aléatoire \(X\) sur \(\Omega\).\<
+
+On considérera ici uniquement des variables aléatoires réelles, on apelle \textbf{loi} de \(X\) pour la probabilité \(\mathbb{P}\) l'application:
+\[
+   \begin{aligned}
+      \mathbb{P}_X: \Pow(X(\Omega)) &\longrightarrow \icc{0}{1}\\
+      A &\longmapsto \mathbb{P}(X \in A)
+   \end{aligned}
+\]
+C'est une mesure de probabilité sur \(E' := X(\Omega)\), le triplet \((E', \Pow(E'), \mathbb{P}_X)\) est alors un espace probabilisé à part entière et les parties de \(E'\) sont alors des \textbf{évenements}.\+
+Cette loi est alors \textbf{entièrement déterminée par la distribution} \((\mathbb{P}_X(\{a\}))_{a \in X(\Omega)}\)\< 
+
+On appelle \textbf{support} de la loi l'ensemble des éléments \(a\) de \(X(\Omega)\) tels que  \(\mathbb{P}_X(\{a\}) \neq 0\).\+
+\subsection*{\subsecstyle{Lois usuelles}}
+On note \(X \sim \mathcal{U}(E)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi uniforme} si la loi \(\mathbb{P}_X\) est la probabilité uniforme sur \(E\), ie si pour tout évenement \(A\), on ait:
+\[
+   \mathbb{P}_X(A) = \frac{|A|}{|E|}  
+\]
+On note \(X \sim \mathcal{B}(n, p)\)\footnote{On peut remarquer ici que la loi de Bernoulli est un cas particulier de la loi binomiale pour \(n = 1\) et alors on a \(\mathbb{P}_X(\{k\}) = p\)} et on dit que la variable aléatoire \(X\) suit une \textbf{loi binomiale} de paramètre \((n, p)\) et  si \(X\) a ses images dans \(\{0, 1\}\) et si pour tout entier naturel \(k \leq n\) on a :
+\[
+   \mathbb{P}_X(\{k\}) = \binom{n}{k} \; p^k(1-p)^{n-k}
+\]
+
+On note \(X \sim \mathcal{G}(p)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi géométrique} sur \(\N^*\) de paramètre \(p\) si pour tout entier naturel \(k \geq 1\) on a :
+\[
+   \mathbb{P}_X(\{k\}) = p(1 - p)^{k - 1}
+\]
+On note \(X \sim \mathcal{H}(p, n, N)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi hypergéométrique} sur \(\N^*\) de paramètre \((p, n, N)\) si pour tout entier naturel \(k \geq 1\) on a :
+\[
+   \mathbb{P}_X(\{k\}) = \frac{\binom{pN}{k}\binom{(1-p)N}{n - k}}{\binom{N}{n}}
+\]
+
+Une \textbf{épreuve de Bernoulli} est une expérience aléatoire qui n'a que deux issues, usuellement nommées \textbf{succés et échec}.\<
+
+La \textbf{loi binomiale} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de Bernoulli. \+
+La \textbf{loi géométrique} est utilisée pour déterminer la probabilité d'obtenir le premier succés à la \(k\)-ième itérations d'une épreuve de Bernoulli.\+
+La \textbf{loi hypergéométrique} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de tirage sans remise dans une urne contenant \(N\) boules, dont \(pN\) boules gagantes, et \((1-p)N\) boules perdantes, avec la contrainte que \(pN\) soit un entier.\+
+
+
+\chapter*{\chapterstyle{Probabilités {:} Position \& Dispersion}}
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \(X\) une variable aléatoire réelle finie, on note \(\mathbb{P}_X\) la loi de \(X\). \<
+
+On appelle \textbf{indicateur de position} un nombre réel permettant de situer les valeurs d'une série statistique, par exemple \textbf{la moyenne et la médiane} sont des indicateurs de position.\<
+
+On appelle \textbf{indicateur de dispersion} un nombre réel permettant de mesurer \textbf{la variabilité} des valeurs d'une série statistique autour d'une valeur (généralement autour de la moyenne), par exemple \textbf{la variance, l'écart-type ou l'écart interquartile} sont des indicateurs de dispersion.
+
+\subsection*{\subsecstyle{Esperance}}
+L'espérance mathématique correspond à la moyenne théorique du résultat qu'on peut espérer avoir en répétant une expérience aléatoire un grand nombre de fois, c'est \textbf{la moyenne des valeurs de la variable aléatoire, pondérées par leur probabilités respectives}, ie on définit:
+\[
+   \mathbox{
+      \expectancy{X} := \sum_{x \in X(\Omega)} x\cdot\mathbb{P}_X(\{x\})
+   }   
+\]
+L'esperance existe toujours dans le cas d'une variable aléatoire \textbf{finie} mais ce n'est pas le cas dans d'autres contextes. \<
+
+L'espérance possède plusieurs propriétés remarquables, l'espérance d'une constante est une constante, elle est \textbf{linéaire et croissante}\footnote{Croissante pour l'ordre des variables aléatoires, ie \(X \leq Y \Longleftrightarrow \forall \omega \in \Omega \; ; \; X(\omega) \leq Y(\omega)\)}.\+
+Mais en général, l'espérance \textbf{n'est pas multiplicative}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
+
+Par ailleurs, on a le \textbf{théorème de transfert}:
+\[
+   \expectancy{\varphi(X)} = \sum_{x \in X(\Omega)} \varphi(x)\cdot\mathbb{P}_X(\{x\})
+\]
+Qui implique alors la considération suivante:
+\begin{center}
+   \textit{L'espérance de la composée dépent uniquement de la loi de \(X\)}
+\end{center}
+Enfin, on appelle \textbf{variable centrée} une variable aléatoire d'espérance nulle, qui consiste en un changement de repère et place la moyenne au point d'absisse 0.
+
+\subsection*{\subsecstyle{Variance}}
+On manque alors d'informations sur les valeurs de \(X\), elles peuvent tout aussi bien rester toujours très
+proches de \(\expectancy{X}\), ou s'en éloigner beaucoup, on a donc besoin de mesurer la distance moyenne entre \(X\) et \(\expectancy{X}\), qui serait alors \(\expectancy{| X - \expectancy{X} |}\).\+
+Cette formule est techniquement impraticable du fait de la valeur absolue, on utile donc \textbf{la moyenne des carrés des distances} entre \(X\) et \(\expectancy{X}\), et on définit alors la variance:
+\[
+   \mathbox{
+      \variance{X} = \expectancy{(X - \expectancy{X})^2}
+   }   
+\]
+Alors la variance est \textbf{positive} (ou nulle si \(X\) est constante presque partout).\<
+\pagebreak
+
+La variance vérifie alors les propriétés suivantes:
+\multiparbox{-0.5em}{0.6}{
+   \begin{align*}
+      &\textbf{Invariante par translation} \;\; &&\variance{X + a} = \variance{X}\\
+      &\textbf{Quadratique}  \;\; &&\variance{\lambda X} = \lambda^2\variance{X}
+   \end{align*}
+}
+Mais en général, la variance \textbf{n'est pas additive}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
+
+On peut alors définir \textbf{l'écart-type} de la variable \(X\) qui est:
+\[
+   \mathbox{
+      \sigma(X) = \sqrt{\variance{X}}  
+   }
+\]
+Enfin, on appelle \textbf{variable réduite} une variable aléatoire de variance 1 et on peut alors définir la \textbf{variable centrée réduite} associée à X:
+\[
+   \mathbox{
+     X^*= \frac{X - \expectancy{X}}{\sigma(X)} 
+   }   
+\]
+
+\subsection*{\subsecstyle{Espérance \& variances usuelles}}
+Il est intéressant de considérer les différents indicateurs de position et de dispersion des lois usuelles\footnote{Pour la loi uniforme on considère \(X\) à valeurs dans \(\inticc{1}{n}\)}
+
+\begin{center}
+   \begin{tabular}{|c||c|c|}
+      \hline
+      Lois & \cellcolor{BrightBlue1!40} Espérance & \cellcolor{BrightBlue1!40} Variance \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{U}(E)\) & \(\frac{n+1}{2}\) & \(\frac{n^2 - 1}{12}\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{B}(n, p)\) & \(n\cdot p\) &  \(n\cdot p(1-p)\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{G}(p)\) & \(\frac{1}{p}\) & \(\frac{1-p}{p^2}\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{H}(p, n, N)\) & \(n\cdot p\) & \(n\cdot p(1-p)\frac{N - n}{N - 1}\) \\ 
+      \hline
+   \end{tabular}
+\end{center}
+
+\subsection*{\subsecstyle{Inégalités}}
+Soit \(\alpha \in \R^{+*}\).\+
+Si \(X\) est une variable aléatoire à valeurs dans \(\R^+\) on a \textbf{l'inégalité de Markov}:
+\[
+   \mathbox{
+      \mathbb{P}(|X| \geq \alpha) \leq \frac{\expectancy{X}}{\alpha}
+   }
+\]
+Et pour toute variable aléatoire, on a aussi \textbf{l'inégalité de Bienaymé-Tchebychev}:
+\[
+   \mathbox{
+      \mathbb{P}(|X - \expectancy{X}| \geq \alpha) \leq \frac{\variance{X}}{\alpha^2}
+   }
+\]

@@ -2,8 +2,9 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{interval}
-\usepackage[x11names]{xcolor}
+\usepackage[x11names, table]{xcolor}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{newclude}
@@ -18,7 +19,7 @@
 \usepackage{tcolorbox}
 
 \usepackage{tikz}
-\usetikzlibrary{angles, quotes, 3d}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows}
 
 \setcounter{secnumdepth}{-1}
 
@@ -56,9 +57,15 @@
 \newcommand{\<}{\bigskip}
 \newcommand{\+}{\par}
 
+\newcommand\notationEq{\stackrel{\mbox{
+    \begin{tiny}  
+        notation
+    \end{tiny}    
+}}{=}}
+
 % INTERVALS
 
-\intervalconfig{soft open fences}
+%\intervalconfig{soft open fences}
 \intervalconfig{separator symbol =  \,; \,}
 
 \newcommand{\ioo}[2]{\interval[open]{#1}{#2}}
@@ -92,6 +99,9 @@
 \newcommand{\mdetTwo}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
 \newcommand{\mdetThree}[9]{\begin{vmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{vmatrix}}
 
+% PROBABILITIES
+\newcommand{\expectancy}[1]{\mathbb{E}(#1)}
+\newcommand{\variance}[1]{\mathbb{V}(#1)}
 
 % STYLING
 \definecolor{BrightBlue1}{RGB}{95, 150, 210}
@@ -99,6 +109,9 @@
 \definecolor{DarkBlue1}{RGB}{83, 108, 132}
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
 \definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{18pt}
 
 \newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
 \newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
@@ -134,4 +147,13 @@
             }
         }
     \end{center}
+}
+
+\newcommand\irregularcircle[2]{% radius, irregularity
+  \pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
+  +(0:\len pt)
+  \foreach \a in {10,20,...,350}{
+    \pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
+    -- +(\a:\len pt)
+  } -- cycle
 }
