@@ -239,14 +239,14 @@ On peut aussi noter que si \(f\) est une application quelconque de \(E\) vers \(
 \subsection*{\subsecstyle{Loi d'une variable aléatoire}}
 On a vu que \(\mathbb{P}\) mesure la vraisemblance de tous les événements, donc en particulier de tous les événements qu'on peut construire à partir d'une variable aléatoire \(X\) sur \(\Omega\).\<
 
-On considérera ici uniquement des variables aléatoires réelles, on apelle \textbf{loi} de \(X\) pour la probabilité \(\mathbb{P}\) l'application:
+On considérera ici uniquement des variables aléatoires discrètes réelles, on apelle \textbf{loi} de \(X\) pour la probabilité \(\mathbb{P}\) l'application:
 \[
    \begin{aligned}
       \mathbb{P}_X: \Pow(X(\Omega)) &\longrightarrow \icc{0}{1}\\
       A &\longmapsto \mathbb{P}(X \in A)
    \end{aligned}
 \]
-C'est une mesure de probabilité sur \(E' := X(\Omega)\), le triplet \((E', \Pow(E'), \mathbb{P}_X)\) est alors un espace probabilisé à part entière et les parties de \(E'\) sont alors des \textbf{évenements}.\+
+C'est une mesure de probabilité sur \(X(\Omega)\), le triplet \((X(\Omega), \Pow(X(\Omega)), \mathbb{P}_X)\) est alors un espace probabilisé à part entière et les parties de \(X(\Omega)\) sont alors des \textbf{évenements}.\+
 Cette loi est alors \textbf{entièrement déterminée par la distribution} \((\mathbb{P}_X(\{a\}))_{a \in X(\Omega)}\)\< 
 
 On appelle \textbf{support} de la loi l'ensemble des éléments \(a\) de \(X(\Omega)\) tels que  \(\mathbb{P}_X(\{a\}) \neq 0\).\+
@@ -343,6 +343,9 @@ Enfin, on appelle \textbf{variable réduite} une variable aléatoire de variance
 Il est intéressant de considérer les différents indicateurs de position et de dispersion des lois usuelles\footnote{Pour la loi uniforme on considère \(X\) à valeurs dans \(\inticc{1}{n}\)}
 
 \begin{center}
+   \renewcommand{\arraystretch}{2}
+   \setlength{\tabcolsep}{18pt}
+   
    \begin{tabular}{|c||c|c|}
       \hline
       Lois & \cellcolor{BrightBlue1!40} Espérance & \cellcolor{BrightBlue1!40} Variance \\ 

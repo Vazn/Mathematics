@@ -1,3 +1,5 @@
+\usepackage[a]{esvect}
+
 \usepackage{mathrsfs}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -17,9 +19,8 @@
 \usepackage{centernot, cancel}
 \usepackage{commath}
 \usepackage{tcolorbox}
-
-\usepackage{tikz}
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows}
+\usepackage{tikz, tkz-euclide}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc}
 
 \setcounter{secnumdepth}{-1}
 
@@ -96,8 +97,27 @@
 
 \newcommand{\dotproduct}[2]{\langle\, #1 \; | \; #2 \, \rangle}
 \newcommand{\vectNorm}[1]{\Vert#1 \Vert}
-\newcommand{\mdetTwo}[4]{\begin{vmatrix} #1 & #2 \\ #3 & #4 \end{vmatrix}}
-\newcommand{\mdetThree}[9]{\begin{vmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{vmatrix}}
+
+\newcommand{\mdetTwo}[4]{
+    \begin{vmatrix} 
+        #1 & #2 \\
+        #3 & #4
+    \end{vmatrix}
+}
+\newcommand{\mdetThree}[9]{
+    \begin{vmatrix} 
+        #1 & #2 & #3 \\ 
+        #4 & #5 & #6 \\ 
+        #7 & #8 & #9 
+    \end{vmatrix}
+}
+
+% GEOMETRY
+
+\newcommand{\RightAngle}[4][5pt]
+{%
+    \draw ($#3!#1!#2$) --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)  --($#3!#1!#4$);
+}
 
 % PROBABILITIES
 \newcommand{\expectancy}[1]{\mathbb{E}(#1)}
@@ -109,9 +129,6 @@
 \definecolor{DarkBlue1}{RGB}{83, 108, 132}
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
 \definecolor{DarkBlue3}{RGB}{90, 126, 162}
-
-\renewcommand{\arraystretch}{2}
-\setlength{\tabcolsep}{18pt}
 
 \newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
 \newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
