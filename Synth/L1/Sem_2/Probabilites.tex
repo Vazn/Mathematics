@@ -207,7 +207,7 @@ On appelle \textbf{variable aléatoire discrète} toute application \(X: \Omega 
 \]
 En d'autres termes:
 \begin{center}
-   \textit{L'image réciproque des images de \(X\) sont des évenements.}
+   \textit{L'image réciproque des valeurs de \(X\) sont des évenements.}
 \end{center}
 Cette contrainte s'explique par le fait qu'on veut pouvoir calculer la probabilité que \(X\) prenne la valeur \(a\), or si \(X^{-1}(\{a\})\) est bien un évenement, alors sa probabilité est bien définie, on utilise alors usuellement la \textbf{notation} suivante:
 \[
@@ -250,6 +250,7 @@ C'est une mesure de probabilité sur \(X(\Omega)\), le triplet \((X(\Omega), \Po
 Cette loi est alors \textbf{entièrement déterminée par la distribution} \((\mathbb{P}_X(\{a\}))_{a \in X(\Omega)}\)\< 
 
 On appelle \textbf{support} de la loi l'ensemble des éléments \(a\) de \(X(\Omega)\) tels que  \(\mathbb{P}_X(\{a\}) \neq 0\).\+
+
 \subsection*{\subsecstyle{Lois usuelles}}
 On note \(X \sim \mathcal{U}(E)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi uniforme} si la loi \(\mathbb{P}_X\) est la probabilité uniforme sur \(E\), ie si pour tout évenement \(A\), on ait:
 \[
@@ -275,15 +276,106 @@ La \textbf{loi binomiale} est utilisée pour déterminer la probabilité d'obten
 La \textbf{loi géométrique} est utilisée pour déterminer la probabilité d'obtenir le premier succés à la \(k\)-ième itérations d'une épreuve de Bernoulli.\+
 La \textbf{loi hypergéométrique} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de tirage sans remise dans une urne contenant \(N\) boules, dont \(pN\) boules gagantes, et \((1-p)N\) boules perdantes, avec la contrainte que \(pN\) soit un entier.\+
 
+\chapter*{\chapterstyle{Probabilités {:} Couples aléatoires}}
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \((X_i)_{i \in \N}\) une famille de variables aléatoires discrètes définies sur cet univers.\+ 
+On appelle \textbf{vecteur aléatoire} le n-uplet \((X_1, X_2, \ldots, X_n)\). Dans ce chapite nous considérerons seulement les couples de variables aléatoires, la plupart des propriétés se généralisant relativement aisément dans le cas général.
+
+\subsection*{\subsecstyle{Lois marginales \& Loi conjointe}}
+On appelle \textbf{loi conjointe}\footnote[1]{Trés souvent formalisée par un tableau en \(X / Y\)} du couple \((X, Y)\) la loi de probabilité définie qui a tout couple \(x, y \in (X, Y)(\Omega)\) associe sa probabilité:
+\[
+   \mathbox{\mathbb{P}(X = x, Y = y)}
+\]
+On appelle \textbf{loi marginale}\footnote[2]{Correspondrait à la somme d'une colonne du tableau évoqué (par exemple).} du couple \((X, Y)\) les lois de probabilités de \(X\) et de \(Y\). On les obtient\footnote[3]{L'évenement \(X = x\) est exactement l'ensemble des couples \((x, y)\) pour toutes les valeurs possibles de \(y\).} par:
+\[
+   \mathbox{\mathbb{P}(X = x) = \sum_{y \in Y(\Omega)} \mathbb{P}(X = x, Y = y)}
+\]
+
+\subsection*{\subsecstyle{Indépendance}}
+De manière analogue au cas d'une variable simple, deux variables aléatoires \(X, Y\) sont indépendantes si et seulement si pour tout couple \(x, y\):
+\[
+   \mathbb{P}(X = x, Y = y) = \mathbb{P}(X = x)\mathbb{P}(Y = y)  
+\]
+Par ailleurs, si \(X, Y\) sont deux variables aléatoires, il existe une mesure de la dépendance (corrélation) de deux variables aléatoires appellée \textbf{covariance} explicitée au dernier chapitre.
+
+\subsection*{\subsecstyle{Loi d'une composée}}
+Soit \(f\) une fonction définie sur \(X(\Omega) \times Y(\Omega)\) à valeurs réelles. Alors on peut considérer la variable aléatoire \(Z = f(X, Y)\) qui est aussi une variable aléatoire réelle.\<
+
+Alors, pour tout \(z \in Z(\Omega)\) sa loi est donné par:
+\[
+   \mathbb{P}(Z = z) = \sum_{(x, y)\in (X, Y)(\Omega) ; f(x,y) = z} \mathbb{P}(X = x, Y = y)
+\]
+\begin{center}
+   \textit{
+      En d'autres termes, la probabilité d'avoir un \(z\) donné est la somme des probabiltiés des couples dont l'image est \(z\).
+   }
+\end{center}
+Exemple: On considère \(X, Y\) indépendantes et suivant la loi de Bernoulli de paramétres respectivement \(p, p'\), et on pose \(Z = f(X, Y) = XY\), alors on remarque que \(Z(\Omega) = \{0, 1\}\), calculons la probabilité de \((Z = 0)\):b
+\begin{align*}
+   \mathbb{P}(Z = 0) &= \sum_{(x, y)\in (X, Y)(\Omega) ; f(x,y) = 0} \mathbb{P}(X = x, Y = y) \\ 
+   &= \mathbb{P}(X = 0, Y = 1) + \mathbb{P}(X = 1, Y = 0) + \mathbb{P}(X = 0, Y = 0) \\
+   &= (1-p)p' + p(1-p') + (1-p)(1-p')
+\end{align*}
+
+\chapter*{\chapterstyle{Probabilités {:} Variables à densité}}
+On considère maintenant un espace probabilisé \((\Omega, \mathcal{B}(\R), \mathbb{P})\) où l'ensemble des évènements \(\mathcal{B}(\R)\) est la \textbf{tribu borélienne} de \(\Omega\).
+
+\subsection*{\subsecstyle{Définition}}
+On apelle \textbf{variable aléatoire continue} toute application \(X: \Omega \longrightarrow \R\) telle que \(X\) soit \textbf{mesurable}, ie qu'on ait pour tout \textbf{intervalle} \(I\):
+\[
+   \mathbox{
+      X^{-1}(I) \in \mathcal{B}(\R)
+   }
+\]
+En d'autres termes:
+\begin{center}
+   \textit{L'image réciproque des valeurs de \(X\) sont des évenements.}
+\end{center}
+
+\subsection*{\subsecstyle{Fonction de densité}}
+On appelle \textbf{variable aléatoire à densité} toute variable aléatoire continue telle qu'il existe une fonction \textbf{intégrable} \(f\) qui donne la probabilité de tout évemenement \(I\)\footnote[1]{En particulier, on remarquera que la probabilité d'un intervalle réduit à un singleton est nulle, ie \(\mathbb{P}(X = x) = 0\).}, elle définit alors la loi de \(X\) par:
+\[
+   \mathbox{\mathbb{P}(X \in I) = \int_{I} f(t) \d t}   
+\]
+
+Réciproquement, on dit que \(f\) est une \textbf{densité de probabilité} si elle est positive, intégrable, et qu'elle vérifie:
+\[
+   \mathbox{\int_{-\infty}^{+\infty} f(t) \d t = 1}   
+\]
+
+Exemple: La variable aléatoire continue dont la densité est constante sur
+un intervalle \(I\)  est appellée loi continue uniforme sur \(I = \icc{a}{b}\) est définie\footnote[2]{La densité est contrainte par le fait de devoir être égale à 1, en particulier il suffit d'intégrer l'idéntité au dessus pour \(f(t)\) constante.} par la densité suivante:
+\[
+   \begin{aligned}
+      f: x &\longmapsto \begin{cases}
+         0 \text{ si } x  \notin I\\
+         \frac{1}{b - a} \text{ si } x \in I
+      \end{cases}
+   \end{aligned}
+\]
+
+\subsection*{\subsecstyle{Fonction de répartition}}
+On appelle \textbf{fonction de repartition} la fonction définie par:
+\[
+   \mathbox{F_X(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^{x} f(t) \d t}
+\]
+Intuitivement, la fonction de répartition associe à tout réel \(x\) la probabilité que la variable aléatoire ait une valeur inférieure ou égale.\<
+
+Cette fonction est continue, croissante et \textbf{dérivable presque partout} et sa dérivée est presque partout égale à \(f_X\).\+
+\begin{center}
+   \textit{En pratique, grossièrement tout se passe comme si \(F_X\) était simplement une primitive de \(f_X\)}
+\end{center}
 
 \chapter*{\chapterstyle{Probabilités {:} Position \& Dispersion}}
-Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \(X\) une variable aléatoire réelle finie, on note \(\mathbb{P}_X\) la loi de \(X\). \<
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \(X, Y\) deux variables aléatoires réelles finies, on note \(\mathbb{P}_X\) et \(\mathbb{P}_Y\) leurs lois respectives. \+
+Soit \((\Omega, \mathcal{B}(\R), \mathbb{P})\) un espace probabilisé et \(W\) une variable aléatoires à densité dont on note la densité \(f\). \<
 
 On appelle \textbf{indicateur de position} un nombre réel permettant de situer les valeurs d'une série statistique, par exemple \textbf{la moyenne et la médiane} sont des indicateurs de position.\<
 
 On appelle \textbf{indicateur de dispersion} un nombre réel permettant de mesurer \textbf{la variabilité} des valeurs d'une série statistique autour d'une valeur (généralement autour de la moyenne), par exemple \textbf{la variance, l'écart-type ou l'écart interquartile} sont des indicateurs de dispersion.
 
 \subsection*{\subsecstyle{Esperance}}
+Dans toute la suite, on peut remplacer \(X\) (variable simple) par \(Z = (X, Y)\) vecteur aléatoire, et calculer alors l'espérance de ce vecteur connaissant sa loi.\<
+
 L'espérance mathématique correspond à la moyenne théorique du résultat qu'on peut espérer avoir en répétant une expérience aléatoire un grand nombre de fois, c'est \textbf{la moyenne des valeurs de la variable aléatoire, pondérées par leur probabilités respectives}, ie on définit:
 \[
    \mathbox{
@@ -292,17 +384,14 @@ L'espérance mathématique correspond à la moyenne théorique du résultat qu'o
 \]
 L'esperance existe toujours dans le cas d'une variable aléatoire \textbf{finie} mais ce n'est pas le cas dans d'autres contextes. \<
 
-L'espérance possède plusieurs propriétés remarquables, l'espérance d'une constante est une constante, elle est \textbf{linéaire et croissante}\footnote{Croissante pour l'ordre des variables aléatoires, ie \(X \leq Y \Longleftrightarrow \forall \omega \in \Omega \; ; \; X(\omega) \leq Y(\omega)\)}.\+
+L'espérance possède plusieurs propriétés remarquables, l'espérance d'une constante est une constante, elle est \textbf{linéaire et croissante}\footnote[1]{Croissante pour l'ordre des variables aléatoires, ie \(X \leq Y \Longleftrightarrow \forall \omega \in \Omega \; ; \; X(\omega) \leq Y(\omega)\)}.\+
 Mais en général, l'espérance \textbf{n'est pas multiplicative}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
 
 Par ailleurs, on a le \textbf{théorème de transfert}:
 \[
    \expectancy{\varphi(X)} = \sum_{x \in X(\Omega)} \varphi(x)\cdot\mathbb{P}_X(\{x\})
 \]
-Qui implique alors la considération suivante:
-\begin{center}
-   \textit{L'espérance de la composée dépent uniquement de la loi de \(X\)}
-\end{center}
+
 Enfin, on appelle \textbf{variable centrée} une variable aléatoire d'espérance nulle, qui consiste en un changement de repère et place la moyenne au point d'absisse 0.
 
 \subsection*{\subsecstyle{Variance}}
@@ -311,10 +400,11 @@ proches de \(\expectancy{X}\), ou s'en éloigner beaucoup, on a donc besoin de m
 Cette formule est techniquement impraticable du fait de la valeur absolue, on utile donc \textbf{la moyenne des carrés des distances} entre \(X\) et \(\expectancy{X}\), et on définit alors la variance:
 \[
    \mathbox{
-      \variance{X} = \expectancy{(X - \expectancy{X})^2}
+      \variance{X} = \expectancy{(X - \expectancy{X})^2} = \expectancy{X^2} - \expectancy{X}^2
    }   
 \]
-Alors la variance est \textbf{positive} (ou nulle si \(X\) est constante presque partout).\<
+La deuxième expression apellée \textbf{formule de Koenig-Huygens} se déduit facilement de la première.\+
+On voit par ailleurs que la variance est \textbf{positive} (ou nulle si \(X\) est constante presque partout).\<
 \pagebreak
 
 La variance vérifie alors les propriétés suivantes:
@@ -324,14 +414,8 @@ La variance vérifie alors les propriétés suivantes:
       &\textbf{Quadratique}  \;\; &&\variance{\lambda X} = \lambda^2\variance{X}
    \end{align*}
 }
-Mais en général, la variance \textbf{n'est pas additive}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
+On peut alors définir \textbf{l'écart-type} de la variable \(X\) qui est défini par \(\sigma(X) = \sqrt{\variance{X}}\)\<
 
-On peut alors définir \textbf{l'écart-type} de la variable \(X\) qui est:
-\[
-   \mathbox{
-      \sigma(X) = \sqrt{\variance{X}}  
-   }
-\]
 Enfin, on appelle \textbf{variable réduite} une variable aléatoire de variance 1 et on peut alors définir la \textbf{variable centrée réduite} associée à X:
 \[
    \mathbox{
@@ -339,8 +423,34 @@ Enfin, on appelle \textbf{variable réduite} une variable aléatoire de variance
    }   
 \]
 
+\subsection*{\subsecstyle{Covariance}}
+Dans le cas d'un couple aléatoire et contrairement à l'espérance, le concept de variance perds son sens. Plutôt que de chercher un écart par rapport à la moyenne, on va préférer chercher \textbf{un écart moyen entre les deux variables}\footnote[1]{On remarque que la variance n'est alors que la covariance de \(X\) avec elle-même.} qui se définit par:
+\[
+   \mathbox{\text{Cov}(X, Y) = \mathbb{E}\bigl[(X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\bigl] = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)}
+\]
+On remarque alors que si les deux variables aléatoires sont \textbf{indépendantes}\footnote[2]{Dans ce cas l'espérance est multiplicative.}, alors on a:
+\[
+   \mathbox{\text{Cov}(X, Y) = 0}
+\]
+Gràce à la covariance on peut aussi définir la variance d'une somme:
+\[
+   \mathbox{\variance{X + Y} =   \variance{X} + \variance{Y} +  2\text{Cov}(X, Y)}
+\]
+En particulier, la variance est alors \textbf{linéaire} quand les variables sont indépendantes.\<
+
+On peut montrer que la covariance est \textbf{bilinéaire, symétrique et positive}. Informellement c'est un \textit{"pseudo produit scalaire"} sur les variables aléatoires, néanmoins suffisament proche du produit scalaire pour avoir \textbf{l'inégalité de Cauchy-Schwartz}:
+\begin{align*}
+   |\text{Cov}(X, Y)| \leq \sigma(X)\sigma(Y)
+\end{align*}
+Plus précisément, considérons l'espace des variables aléatoires centrées réduites, alors c'est \textbf{un espace euclien}, et la covariance définit \textbf{produit scalaire} sur cet espace, l'écart type définit alors une \textbf{norme} et on peut définir le coefficient de corrélaition linéaire par:
+\[
+   \rho_{X, Y} = \frac{\text{Cov}(X, Y)}{\sigma(X)\sigma(Y)}
+\]
+Qui s'intérpréterait alors comme \textit{l'angle} entre les variable aléatoires.
+\pagebreak
+
 \subsection*{\subsecstyle{Espérance \& variances usuelles}}
-Il est intéressant de considérer les différents indicateurs de position et de dispersion des lois usuelles\footnote{Pour la loi uniforme on considère \(X\) à valeurs dans \(\inticc{1}{n}\)}
+Il est intéressant de considérer les différents indicateurs de position et de dispersion des lois usuelles\footnote[1]{Pour la loi uniforme on considère \(X\) à valeurs dans \(\inticc{1}{n}\)}
 
 \begin{center}
    \renewcommand{\arraystretch}{2}
@@ -375,3 +485,13 @@ Et pour toute variable aléatoire, on a aussi \textbf{l'inégalité de Bienaymé
       \mathbb{P}(|X - \expectancy{X}| \geq \alpha) \leq \frac{\variance{X}}{\alpha^2}
    }
 \]
+
+\subsection*{\subsecstyle{Cas des variables à densité}}
+On étudie ici la variable à densité \(W\) dont la densité est notée \(f\), on considère \(W\) bornée à valeurs dans un intervalle \(I\).\+
+De manière analogue au cas discret\footnote[2]{Informellement, on somme "continument" les produits des valeurs prises par la variable pondérées par leurs probabilités (données par la densité).}, l'espérance de \(W\) est donnée par:
+\[
+   \mathbox{\expectancy{W} := \int_{I} t \cdot f(t) \d t}   
+\]
+Les propriétés de l'espérance (linéarité, croissance) sont conservées, en particulier, le \textbf{théorème de transfet} sont aussi conservées.\<
+
+La définition de la variance et de l'écart-type se déduisant directement de celle de l'éspérance, on peut les définir avec la définition ci-dessus, et on montre que toutes leur propriétés sont conservées.

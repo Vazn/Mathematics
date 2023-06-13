@@ -19,12 +19,14 @@
 \usepackage{centernot, cancel}
 \usepackage{commath}
 \usepackage{tcolorbox}
-\usepackage{tikz, tkz-euclide}
+\usepackage{subcaption}
+\usepackage{tikz, tkz-fct, tkz-euclide}
 \usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc}
 
 \setcounter{secnumdepth}{-1}
 
 % PAGE SETTINGS
+\renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
 
 \geometry{left=25mm, right=25mm, top= 15mm, bottom= 30mm}
 \setlength{\parindent}{0cm}
@@ -41,6 +43,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\U}{\mathbb{U}}
+\newcommand{\K}{\mathbb{K}}
+
 \newcommand{\A}{\mathbf{\mathscr{A}}}
 \newcommand{\B}{\mathbf{\mathscr{B}}}
 \newcommand{\Fam}{\mathbf{\mathscr{F}}}
@@ -57,6 +61,9 @@
 
 \newcommand{\<}{\bigskip}
 \newcommand{\+}{\par}
+
+% Differential formating
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
 
 \newcommand\notationEq{\stackrel{\mbox{
     \begin{tiny}  
@@ -116,19 +123,22 @@
 
 \newcommand{\RightAngle}[4][5pt]
 {%
-    \draw ($#3!#1!#2$) --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $)  --($#3!#1!#4$);
+    \draw($#3!#1!#2$)-- ($#3!2! ($ ($#3!#1!#2$)!.5! ($#3!#1!#4$)$)$)-- ($#3!#1!#4$);
 }
 
 % PROBABILITIES
-\newcommand{\expectancy}[1]{\mathbb{E}(#1)}
-\newcommand{\variance}[1]{\mathbb{V}(#1)}
+\newcommand{\expectancy}[1]{\mathbb{E} (#1)}
+\newcommand{\variance}[1]{\mathbb{V} (#1)}
 
 % STYLING
 \definecolor{BrightBlue1}{RGB}{95, 150, 210}
 
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+
 \definecolor{DarkBlue1}{RGB}{83, 108, 132}
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
 \definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
 
 \newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
 \newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
@@ -164,13 +174,4 @@
             }
         }
     \end{center}
-}
-
-\newcommand\irregularcircle[2]{% radius, irregularity
-  \pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
-  +(0:\len pt)
-  \foreach \a in {10,20,...,350}{
-    \pgfextra {\pgfmathsetmacro\len{(#1)+rand*(#2)}}
-    -- +(\a:\len pt)
-  } -- cycle
 }
