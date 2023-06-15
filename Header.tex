@@ -6,7 +6,9 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{interval}
+\usepackage{multicol}
 \usepackage[x11names, table]{xcolor}
+\usepackage{blkarray}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{newclude}
@@ -21,7 +23,7 @@
 \usepackage{tcolorbox}
 \usepackage{subcaption}
 \usepackage{tikz, tkz-fct, tkz-euclide}
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing}
 
 \setcounter{secnumdepth}{-1}
 
@@ -105,19 +107,6 @@
 \newcommand{\dotproduct}[2]{\langle\, #1 \; | \; #2 \, \rangle}
 \newcommand{\vectNorm}[1]{\Vert#1 \Vert}
 
-\newcommand{\mdetTwo}[4]{
-    \begin{vmatrix} 
-        #1 & #2 \\
-        #3 & #4
-    \end{vmatrix}
-}
-\newcommand{\mdetThree}[9]{
-    \begin{vmatrix} 
-        #1 & #2 & #3 \\ 
-        #4 & #5 & #6 \\ 
-        #7 & #8 & #9 
-    \end{vmatrix}
-}
 
 % GEOMETRY
 
