@@ -1,4 +1,6 @@
 \usepackage[a]{esvect}
+\usepackage{tocloft}
+\usepackage{titletoc}
 
 \usepackage{mathrsfs}
 \usepackage{amssymb}
@@ -23,12 +25,24 @@
 \usepackage{tcolorbox}
 \usepackage{subcaption}
 \usepackage{tikz, tkz-fct, tkz-euclide}
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy}
+
+\usepackage[bottom]{footmisc}
+
+\tikzset{
+  withparens/.style = {draw, outer sep=0pt,
+    left delimiter= (, right delimiter=),
+    above delimiter= (, below delimiter=),
+    align=center},
+  withbraces/.style = {draw, outer sep=0pt,
+    left delimiter=\{, right delimiter=\},
+    above delimiter=\{, below delimiter=\},
+    align=center}
+}
 
 \setcounter{secnumdepth}{-1}
 
 % PAGE SETTINGS
-\renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
 
 \geometry{left=25mm, right=25mm, top= 15mm, bottom= 30mm}
 \setlength{\parindent}{0cm}
@@ -163,4 +177,11 @@
             }
         }
     \end{center}
+}
+
+\renewcommand{\contentsname}{\hfill
+\setlength{\fboxsep}{0.3em}\setlength{\fboxrule}{3pt}\vspace{20pt}
+\color{DarkBlue1}\Huge
+\fbox{\fontseries{b}\selectfont{Table des matières}}
+\hfill
 }

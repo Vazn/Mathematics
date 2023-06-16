@@ -66,7 +66,6 @@ On peut alors considérer l'application \(\phi\) qui associe aux points \(A, B\)
 \]
 Ici, \(A, B\) sont des points qui trouvent aussi être des vecteurs, car l'espace affine sous-jacent est un espace vectoriel, et donc la soustractrion ci-dessus est bien définie.
 
-
 \subsection*{\subsecstyle{Produit scalaire {:}}}
 Soit \(\phi : E^2 \longrightarrow \R\) une forme \textbf{bilinéaire}. On dit que l'application \(\phi\) est un \textbf{produit scalaire} si et seulement si il vérifie:
 
@@ -194,7 +193,7 @@ On note \(\big|M\big|\)  le déterminant d'une matrice, alors on a une méthode 
       u := (u_1, u_2, u_3)\\ 
       v := (v_1, v_2, v_3)
    \end{cases} \implies 
-   u \times v = \Biggl(\mdetTwo{u_2}{u_3}{v_2}{v_3} ; -\mdetTwo{u_1}{u_3}{v_1}{v_3} ; \mdetTwo{u_1}{u_2}{v_1}{v_2}\Biggl)
+   u \times v = \Biggl(\begin{vmatrix}u_2 & u_3 \\ v_2 & v_3\end{vmatrix} ; -\begin{vmatrix}u_1 & u_3 \\ v_1 & v_3\end{vmatrix} ; \begin{vmatrix}u_1 & u_2 \\ v_1 & v_2\end{vmatrix}\Biggl)
 \]
 \subsection*{\subsecstyle{Volumes \& Produit triple{:}}}
 On peut remarque que la norme du vecteur resultant d'un produit vectoriel est \textbf{l'aire du parallélogramme} formé par \(u\) et \(v\).\<
@@ -237,7 +236,7 @@ Avec \(\vectNorm{u \times v}\) qui est l'aire de la base est \(h\) la hauteur du
       \draw[->, color = DarkBlue3, line width = 1.2pt] (0, 0.01, 0) -- (0, 2.7, 0) coordinate (X) node[left]{\(h\)};
    \end{tikzpicture}   
 \end{center}
-Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\mdetThree{u_1}{u_2}{u_3}{v_1}{v_2}{v_3}{w_1}{w_2}{w_3}\)
+Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\begin{vmatrix}u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\end{vmatrix}\)
 
 \chapter*{\chapterstyle{Géométrie {:} Droites \& Plans}}
 Dans l'espace euclidien \(\R^3\) , nous savons qu'on peut définir des droites vectorielles, des plans ou des volumes, dans ce chapitre nous allons examiner comment les exprimer mathématiquement, calculer des distances entre ces figures ou des intersections. \<
@@ -427,6 +426,7 @@ Tout point du plan peut alors être identifié par ses \textbf{coordonées polai
 
 Une façon fréquente de définir une courbe géométrique est alors de donner son \textbf{equation polaire} de la forme \(r = f(\theta)\) pour \(\theta \in I\) qui est alors un cas particulier d'arc paramétré de la forme \((I, (f(\theta)\cos(\theta), f(\theta)\sin(\theta)))\) par passage en coordonées cartésiennes.
 \pagebreak
+
 \subsection*{\subsecstyle{Courbes remarquables{:}}}
 On peut considèrer alors quelques courbes remarquables:
 \begin{figure}[h]
