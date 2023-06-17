@@ -1,2 +1,0 @@
-\contentsline {chapter}{Algèbre Générale}{1}{Doc-Start}%
-\contentsfinish 
