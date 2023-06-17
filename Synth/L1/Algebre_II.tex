@@ -1,4 +1,4 @@
-\chapter*{\chapterstyle{Algèbre II {:} Applications Linéaires}} % Fini 99%
+\chapter*{\chapterstyle{Applications Linéaires}} % Fini 99%
 \addcontentsline{toc}{section}{Applications linéaires}
 
 Soit deux \(\K\)-espaces vectoriels \(E\) et \(F\), et \(f : E \longrightarrow F \).
@@ -114,12 +114,12 @@ On peut généraliser le concept de linéarité à celui de \textbf{multilinéar
 \end{align*}
 Une telle application est dite:
 \begin{itemize}
-   \item \textbf{Symétrique} si permuter deux variables préserve le résultat.\footnote[1]{Exemple: \(f(e_1, e_2) = f(e_2, e_1)\)}
-   \item \textbf{Antisymétrique} si permuter deux variables change le signe du résultat.\footnote[2]{Exemple: \(f(e_1, e_2) = -f(e_2, e_1)\), en particulier, le signe du résultat aprés une permutation \(\sigma\) dépends alors de \textbf{la signature de la permutation} (la parité du nombre de permutations effectuées).}
-   \item  \textbf{Altérnée} si elle s'annule à chaque fois qu'on l'évalue sur un k-uplet contenant deux vecteurs identiques.\footnote[3]{Exemple: \(f(e_1, e_1) = 0\)}
+   \item \textbf{Symétrique} si permuter deux variables préserve le résultat.\footnote[1]{\underline{Exemple:} \(f(e_1, e_2) = f(e_2, e_1)\)}
+   \item \textbf{Antisymétrique} si permuter deux variables change le signe du résultat.\footnote[2]{\underline{Exemple:} \(f(e_1, e_2) = -f(e_2, e_1)\), en particulier, le signe du résultat aprés une permutation \(\sigma\) dépends alors de \textbf{la signature de la permutation} (la parité du nombre de permutations effectuées).}
+   \item  \textbf{Altérnée} si elle s'annule à chaque fois qu'on l'évalue sur un k-uplet contenant deux vecteurs identiques.\footnote[3]{\underline{Exemple:} \(f(e_1, e_1) = 0\)}
 \end{itemize}
 
-\chapter*{\chapterstyle{Algèbre II {:} Théorie de la dimension}} % Fini 99%
+\chapter*{\chapterstyle{Théorie de la dimension}} % Fini 99%
 \addcontentsline{toc}{section}{Théorie de la dimension}
 
 Dans ce chapitre, on considérera un espace vectoriel \(E\) qui admet une famille génératrice \textbf{finie}. On dira alors que \(E\) est de \textbf{dimension finie}.\<
@@ -215,7 +215,7 @@ En particulier, si \(E\) et \(F\) sont deux espaces vectoriels \textbf{de même 
 \end{center}
 On caractérise ainsi \textbf{les isomorphismes en dimension finie}\footnote[2]{Toutes ces propriétés n'étant que de simples applications du théorème du rang.}.
 
-\chapter*{\chapterstyle{Algèbre II {:} Espace des matrices}} % Fini 99%
+\chapter*{\chapterstyle{Espace des matrices}} % Fini 99%
 \addcontentsline{toc}{section}{Espace des matrices}
 
 On appelle \textbf{matrice} à \(n\) lignes et \(p\) colonnes à coefficients dans \(\K\) toute application \(M : \inticc{1}{n} \times \inticc{1}{p} \longrightarrow \K\), en d'autres termes \textbf{tout famille de scalaires indexée par }\(\inticc{1}{n} \times \inticc{1}{p}\).\<
@@ -376,7 +376,7 @@ Alors on peut associer à l'application \(f\) \textbf{une unique matrice} dans l
    }
 \end{center}
 
-Exemple: Considérons un endomorphisme de \(\R^3\) et sa base canonique notée \((e_1, e_2, e_3)\), telle que \(f(x, y, z) = (2x+1, 3x, z-1)\). Alors on calcule l'image des vecteurs de la base de départ, ie:
+\underline{Exemple:} Considérons un endomorphisme de \(\R^3\) et sa base canonique notée \((e_1, e_2, e_3)\), telle que \(f(x, y, z) = (2x+1, 3x, z-1)\). Alors on calcule l'image des vecteurs de la base de départ, ie:
 \begin{multicols}{3}
 \begin{itemize}
    \item \(f(1, 0, 0) = (3, 3, -1)\)
@@ -442,7 +442,7 @@ Alors, appliquer une transformation linéaire à un vecteur \(u \in E\) revient 
       [f(u)]_{\mathscr{C}} = M \times [u]_{\mathscr{C}}
    }
 \]
-Exemple: Soit \(f\) de matrice 
+\underline{Exemple:} Soit \(f\) de matrice 
 \(M = \begin{pmatrix}
    1 & 2\\
    3 & 4\\
@@ -556,7 +556,7 @@ On appelle \textbf{matrice de passage} de \(\Fam\) à \(\Fam'\) la matrice \(P\)
    }
 \end{center}
 
-Exemple: Considèrons deux bases de \(\R^2\) telles que \(\Fam = [(1, 2), (3, 4)]\) et \(\Fam' = [(5, 6), (7, 8)]\), alors on a:
+\underline{Exemple:} Considèrons deux bases de \(\R^2\) telles que \(\Fam = [(1, 2), (3, 4)]\) et \(\Fam' = [(5, 6), (7, 8)]\), alors on a:
 \[
    [5, 6]_\Fam = \begin{pmatrix} -1 \\ 2\end{pmatrix}
    \quad\quad\quad\quad
@@ -847,7 +847,7 @@ Soit \(M = (C_1, C_2, C_3) = \begin{pmatrix} 1 & 2 & 1\\ 3 & 4 & 2\\ 5 & 6 & 3\e
 
 \end{itemize}\<
 
-\chapter*{\chapterstyle{Algèbre II {:} Déterminant}} % Fini 99%
+\chapter*{\chapterstyle{Déterminant}} % Fini 99%
 \addcontentsline{toc}{section}{Déterminant}
 
 Soit \(A = (a_{i,j})\) une matrice carrée de taille \(n\), nous cherchons à définir une application \(\phi: \mathcal{M}_n(\K) \longrightarrow \R\) telle que:
@@ -929,7 +929,7 @@ En pratique pour trouver le signe du cofacteur, on ne calcule pas \((-1)^{i + j}
    \begin{vmatrix} + & - & + & - & \ldots \\ - & + & - & + &\ldots \\ + & - & + & - &\ldots \\ \vdots & \vdots & \vdots & \vdots \\\end{vmatrix}
 \]
 
-Exemple: Pour \(\begin{pmatrix}
+\underline{Exemple:} Pour \(\begin{pmatrix}
    1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
 \end{pmatrix}\), le cofacteur du coefficient en position \((2, 1)\) est 
 \(- \begin{vmatrix} 4 & 6 \\ 7 & 9\end{vmatrix} \)
@@ -966,7 +966,7 @@ Alors on montre que sa i-ème inconnue \(x_i\) (et par suite la solution tout en
 \]
 Dans laquelle \(A_i\) désigne la matrice obtenue en remplaçant la i-ème colonne de \(A\) par le second membre \(B\)\<
 
-Exemple:
+\underline{Exemple:}
 \[
    \begin{cases} 
       x + 4y + 8z = 2 \\
@@ -1027,4 +1027,5 @@ Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf
 
 Le lien avec l'orientation de l'espace quand à lui s'explique par le caractère \textbf{alterné} du déterminant.\+
 En effet, en reprenant l'exemple ci-dessus, on voit que si on permute \(e_1\) et \(e_2\), alors l'aire géométrique reste la même, mais le déterminant change de signe, on dira alors que cette permutation a donc changé l'orientation de l'espace.\<
+
 En particulier, on dira qu'une application linéaire \textbf{préserve l'orientation de l'espace}, si son déterminant est positif.

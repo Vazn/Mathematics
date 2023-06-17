@@ -1,21 +1,34 @@
-\chapter*{\chapterstyle{R\&E {:} Raisonnements}}
+\chapter*{\chapterstyle{Raisonnements}}
+\addcontentsline{toc}{section}{Raisonnements}
+
 Soit \(\P\) une proposition et \(n\) un entier naturel.
 
 \subsection*{\subsecstyle{Disjonctions \& Conjonctions {:}}}
+\addcontentsline{toc}{subsection}{Disjonctions \& Conjonctions}
+
 Si \(\P\) est une disjonction de la forme \(\A \lor \B\), il suffit alors de supposer \textbf{l'une des deux propriétés fausse} et de montrer que l'autre est vraie.\<
 
 Si \(\P\) est une conjonction de la forme \(\A \land \B\), il faut simplement prouver \(\A\) et \(\B\).
-\subsection*{\subsecstyle{Raisonnement par l'absurde {:}}}
+
+\subsection*{\subsecstyle{Raisonnements par l'absurde {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par l'absurde}
+
 Raisonner par l'absurde revient à utiliser le principe du \textbf{tiers exclu}, ie l'axiome qui affirme que la proposition ci-dessous est toujours vraie:
 \[
    \P \, \lor \, \lnot \P
 \]
 Donc si on veut prouver \(\P\), on peut alors simplement montrer que \(\lnot\P \implies \bot\) avec ''\(\bot\)'' comme notation d'une contradiction logique. Alors on peut conclure d'après l'axiome du tiers exclu que \(\P\) est vraie. 
+
 \subsection*{\subsecstyle{Raisonnement par Analyse / Synthèse {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par Analyse / Synthèse}
+
 Le raisonnement par Analyse / Synthèse permet de déterminer \textbf{l'ensemble des solutions d'un problème}, il s'effectue en deux étapes, tout d'abord l'étape d'analyse suppose qu'une telle solution existe, alors on circonscrit son existence à des propriétés connues qu'elle vérifie nécessairement. Cette étape permet de ''cerner'' les solutions en question. Si les propriétés sont assez contraignantes, alors on peut même prouver \textbf{l'unicité}, ie l'ensemble des solutions se réduit à un singleton.\<
 
 Puis lors de l'étape de synthèse, on considère un objet vérifiant les propriétés qu'on a utilisé lors de l'étape d'analyse, et on \textbf{vérifie} que cet objet est bien une solution au problème initial. C'est lors de cette étape qu'on prouve bien \textbf{l'existence} de solutions. Si aucun des objets circonscrits par l'analyse ne conviennent, le problème n'a alors pas de solutions.
+
 \subsection*{\subsecstyle{Implications \& Équivalences {:}}}
+\addcontentsline{toc}{subsection}{Implications \& Équivalences}
+
 Si \(\P\) est une implication de la forme \(\A \implies \B\), on a les équivalences suivantes:
 \[
    \P \Longleftrightarrow \lnot \A \lor \B \Longleftrightarrow \lnot \B \implies \lnot \A
@@ -40,7 +53,10 @@ Si \(\P\) est de la forme \( A_1 \Longleftrightarrow A_2 \Longleftrightarrow \cd
    \A_1 \implies \A_2 \implies \cdots \implies \A_{n-1} \implies \A_n \implies \mathbox{\A_1}
 \]
 Ainsi pour toute paire de \(\A_i\), on a bien double implication entre les deux membres et donc la chaîne d'équivalence est démontrée.
-\subsection*{\subsecstyle{Récurrences {:}}}
+
+\subsection*{\subsecstyle{Raisonnements par récurrence {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par récurrence}
+
 Soit \(\P\) une propriété dépendante de \(n\) qu'on veut démontrer sur \(\inticc{\alpha}{+\infty}\), soit \(k\) en entier fixé supérieur à \(\alpha\), démontrer \(\P\) par récurrence simple revient à utiliser \textbf{l'axiome de récurrence} (issu de la construction de \(\N\)) ci-dessous:
 \[
    \Bigr[ \P_{\alpha} \; \land \; \bigr[ \P_{k} \implies \P_{k+1} \bigr] \Bigr] \implies \forall n \in \N \; ; \; \P_n   
@@ -79,13 +95,19 @@ Et donc, les initialisations et l'intervalle de notre hypothèse de récurrence 
 Une \textbf{vraie} récurrence forte n'est alors qu'une récurrence qui \textbf{nécessite des hypothèses sur \underline{tout} les rangs précédents.}
    
 \subsection*{\subsecstyle{Récurrences imbriquées {:}}}
+\addcontentsline{toc}{subsection}{Récurrences imbriquées}
+
 Soit \(\P_{n,m}\) une propriété qui dépend \textbf{de deux variables entières}, alors on pourrait prouver \(\P_{n, 0}\) par récurrence et alors cela constituerait l'initialisation d'une récurrence imbriquée qui supposerait par exemple \(\P_{n, k}\) vraie pour prouver \(\P_{n, k+1}\).
 
-\chapter*{\chapterstyle{R\&E {:} Ensembles}}
+\chapter*{\chapterstyle{Ensembles}}
+\addcontentsline{toc}{section}{Ensembles}
+
 Soit \(E\), \(F\) et \(X\) trois ensembles quelconques.
 On note tout d'abord que l'intersection est prioritaire sur la réunion lors d'opérations sur les ensembles et que les deux opérations sont \textbf{distributives} l'une par rapport à l'autre.
 
-\subsection*{\subsecstyle{Propriétés de l'inclusion {:}}}
+\subsection*{\subsecstyle{Inclusion {:}}}
+\addcontentsline{toc}{subsection}{Inclusion}
+
 L'inclusion est une \textbf{relation d'ordre} sur l'ensemble des parties de \(E\), et donc on en déduit qu'elle est \textbf{réflexive, transitive et antisymétrique}. Si l'inclusion est stricte, on parle de \textbf{sous-ensemble propre}.\<
 
 Si \(E \subseteq F\), on a:
@@ -101,8 +123,10 @@ Aussi, les opérations élémentaires préservent l'inclusion:
     \end{align*}
 }
 
+\subsection*{\subsecstyle{Complémentaire et de la différence {:}}}
+\addcontentsline{toc}{subsection}{Complémentaire et différence}
 
-\subsection*{\subsecstyle{Propriétés du complémentaire et de la différence {:}}}
+
 Si \(F \subseteq E\), alors \(F^c\) est l'ensemble qui contient tout les éléments de \(E\) qui \textbf{ne sont pas} dans \(F\) et on a définit alors \textbf{la différence ensembliste}:
 \[
    E \;\backslash\; F = E \cap F^c  
@@ -120,7 +144,10 @@ On peut aussi définir l'opération de \textbf{différence symétrique} notée \
 \[
    E \Delta F = (E \cup F) \;\backslash\; (E \cap F)   
 \]
+
 \subsection*{\subsecstyle{Produit cartésien {:}}}
+\addcontentsline{toc}{subsection}{Produit cartésien}
+
 Soit \(n\) une entier naturel, le produit cartésien des ensembles \(E_1,\, E_2,\, \ldots\,,\, E_{n-1},\, E_n\) est l'ensemble des n-uplets de la forme (\(e_1, e_2, \ldots, e_{n-1}, e_n\)) avec \(e_i \in E_i\) pour \(i \in \inticc{1}{n}\).
 Il y a \textbf{unicité} de ces n-uplets.
 
@@ -129,7 +156,10 @@ Plus formellement, on note:
      \prod_{i=1}^{n} E_i = \Bigl\{ (e_1, e_2, \ldots, e_{n-1}, e_n) \; ; \; e_1 \in E_1, e_2 \in E_2, \ldots,  e_n \in E_n \Bigl\}
 \]
 \pagebreak
+
 \subsection*{\subsecstyle{Cardinalité {:}}}
+\addcontentsline{toc}{subsection}{Cardinalité}
+
 Supposons que \(E\) et \(F\) tout deux inclus dans \(X\) et ayant \textbf{un nombre fini d'éléments}. On a alors différentes propriétés:
 \multiparbox{-0.3em}{0.4}{
     \begin{align*}
@@ -140,7 +170,9 @@ Supposons que \(E\) et \(F\) tout deux inclus dans \(X\) et ayant \textbf{un nom
     \end{align*}
 }
 
-\subsection*{\subsecstyle{Partition {:}}}
+\subsection*{\subsecstyle{Partitions et recouvrements{:}}}
+\addcontentsline{toc}{subsection}{Partitions et recouvrements}
+
 Soit \((P_i)_{i \in \N}\) une famille de parties \textbf{non vides et deux à deux disjointes} de \(E\).\+
 On dit que \((P_i)\) est une \textbf{partition} de E si et seulement si:
 \[
@@ -151,9 +183,13 @@ On remarque immédiatement deux partitions singulières:
     &\bullet \text{ La famille contenant uniquement } E \text{ qu'on appelle \textbf{partition grossière}.} \\
     &\bullet \text{ La famille contenant tout les singletons de } E \text{ qui est la partition \textbf{la plus fine}.}
 \end{align*}
-On peut donc intuitivement parler de \textbf{finesse} d'une partition, en regard de la taille des parties de la famille.
+On peut donc intuitivement parler de \textbf{finesse} d'une partition, en regard de la taille des parties de la famille.\<
+
+On peut généraliser le concept de partitition à celui de \textbf{recouvrement}, alors \(E\) ne nécessite que d'être contenu par l'union des \((P_i)\).
 
 \subsection*{\subsecstyle{Algèbre de Boole {:}}}
+\addcontentsline{toc}{subsection}{Algèbre de Boole}
+
 On peut montrer que l'ensemble \textbf{ordonné} des parties de \(E\) muni de l'union, l'intersection, le complémentaires forment une \textbf{Algèbre de Boole}.\<
 
 Cela signifie que la structure \((\Pow(E), \cup, \cap, X^c)\) vérifie les axiomes suivants:
@@ -179,8 +215,9 @@ A partir de ces axiomes, on peut déduire \textbf{tout les principes logiques}, 
 
 Intuitivement, on comprends alors pourquoi les règles de la logique formelle semblent si ``proches`` des règles de manipulation ensemblistes. 
 
+\chapter*{\chapterstyle{Relations}}
+\addcontentsline{toc}{section}{Relations}
 
-\chapter*{\chapterstyle{R\&E {:} Relations }}
 Une \textbf{relation} entre des objets d'un ensemble est une propriété que vérifient ces objets \textbf{entre eux}.\+
 On peut alors parler de relations entre deux ensembles, où de relations entre les éléments d'un même ensemble (appelée alors \textbf{relation interne}).\+
 Les relations sont des objets \textbf{fondamentaux} en mathématiques, elles sont entre autres des objets primitifs de la théorie des ensembles.\<
@@ -193,6 +230,8 @@ On appelle \textbf{arité} le nombre d'éléments mis en jeu par la relation.\+ 
 Formellement une classe n'est pas un ensemble mais un élément primitif de la théorie ZFC, mais ici on verra qu'on appelle classe des objets qui \textbf{sont} des ensembles.
 
 \subsection*{\subsecstyle{Zoologie {:}}}
+\addcontentsline{toc}{subsection}{Zoologie}
+
 Il existe un grand nombre de relations très connues et élémentaires, par exemple:
 \begin{align*}
     &\bullet \text{ La relation d'appartenance à un ensemble} \\
@@ -205,6 +244,8 @@ Il existe un grand nombre de relations très connues et élémentaires, par exem
 On peut remarque que la relation d'appartenance à un ensemble est une relation binaire fondamentale, à la base de la théorie des ensembles.
 
 \subsection*{\subsecstyle{Relations binaires {:}}}
+\addcontentsline{toc}{subsection}{Relations binaires}
+
 Soit \(x, y, z \in E\), une relation entre deux éléments peut vérifier plusieurs propriétés remarquables:
 \[
     \begin{aligned}
@@ -225,22 +266,28 @@ On appelle aussi relation \textbf{totale} une relation qui vérifie:
 \[
     \forall x, y \in E \; ; \; \mathscr{R}(x, y) \lor \mathscr{R}(y, x)\\
 \]
-De ces propriétés on peut déduire les deux types fondamentaux de relation ci-dessous.
+De ces propriétés on peut déduire les deux types fondamentaux de relation qui suivent.
 \pagebreak
 
 \subsection*{\subsecstyle{Relations d'ordre {:}}}
+\addcontentsline{toc}{subsection}{Relations d'ordre}
+
 Une \textbf{relation d'ordre} est une relation \textbf{réflexive, antisymétrique et transitive}. Elle induit un ordre sur l'ensemble \(E\), qui peut potentiellement être \textbf{total}.\<
 
-Des relations d'ordre très connues sont la relation \(\mathbox{\leq}\) sur les ensembles de nombres, ou encore la relation \(\mathbox{\subseteq}\) sur l'ensemble des parties de \(E\).\<
+Des relations d'ordre très connues sont la relation \(\mathbox{\leq}\) sur les ensembles de nombres ou la relation \(\mathbox{\subseteq}\) sur l'ensemble des parties de \(E\).\<
 
 On appelle relation de \textbf{préordre} toute relation relation d'ordre qui n'est pas antisymétrique. Intuitivement, une relation de préordre est une relation d'ordre à ``équivalence près`` des éléments.
 
 \subsection*{\subsecstyle{Relations d'équivalence {:}}}
-Une \textbf{relation d'ordre} est une relation \textbf{réflexive, symétrique et transitive}. Intuitivement, elle met en relation les éléments des ensembles qui sont ``similaires``.\<
+\addcontentsline{toc}{subsection}{Relations d'équivalence}
 
-Des relations d'équivalence très connues sont la relation \(\mathbox{=}\) et \(\mathbox{\equiv}\) sur les ensembles de nombres, ou encore la relation \(\mathbox{\sim}\) sur l'ensemble des suites.\<
+Une \textbf{relation d'équivalence} est une relation \textbf{réflexive, symétrique et transitive}. Intuitivement, elle met en relation les éléments des ensembles qui sont ``similaires``.\<
+
+Des relations d'équivalence très connues sont la relation \(\mathbox{=}\) et \(\mathbox{\equiv}\) sur les ensembles de nombres, ou encore la relation \(\mathbox{\sim}\) sur l'ensemble des suites.
 
 \subsection*{\subsecstyle{Classes d'équivalence {:}}}
+\addcontentsline{toc}{subsection}{Classes d'équivalence}
+
 Soit \((E, \sim)\) un ensemble muni d'une relation d'équivalence.\+
 Les \textbf{classes d'équivalence} de \(E\) par rapport à la relation \(\sim\) sont alors les parties de \(E\) contenant des éléments en relation.\<
 
@@ -256,7 +303,9 @@ D'après les propriété de la relation, on a alors:
 \]
 Et on appelle \textbf{représentant} de \([x]\) tout élément qui appartient à \([x]\).
 
-\subsection*{\subsecstyle{Ensemble quotient {:}}}
+\subsection*{\subsecstyle{Ensembles quotient {:}}}
+\addcontentsline{toc}{subsection}{Ensembles quotient}
+
 L'ensemble des classes d'équivalence de \(E\) forme alors une \textbf{partition} de \(E\), et on appelle \textbf{ensemble quotient}, ou encore \textbf{ensemble quotienté par la relation d'équivalence} l'ensemble:
 \[
     E / \sim \; := \Bigr\{ [x] \in \Pow(E) \; ; \; x \in E \Bigr\}
@@ -272,10 +321,10 @@ Quelques exemples connus de structures quotient:
     &\bullet \textbf{ Le corps } \Q := ((\Z \, ; \, \Z \, \backslash \, \{0\}) \, / \, \sim, +, \times) \textbf{ pour la relation } (a, b) \sim (c, d) \Longleftrightarrow ad = bc
 \end{align*}
 
-\chapter*{\chapterstyle{R\&E {:} Fonctions \& Applications}}
-On appelle \textbf{fonction} ou \textbf{application} des cas particulier de relation entre deux ensembles.\<
+\chapter*{\chapterstyle{Fonctions \& Applications}}
+\addcontentsline{toc}{section}{Fonctions \& Applications}
 
-Soit \(f, g\) deux fonctions telles que:
+On appelle \textbf{fonction} ou \textbf{application} des cas particulier de relation entre deux ensembles, soit \(f, g\) deux fonctions telles que:
 \[
    \begin{aligned}
       f: E &\longrightarrow F\\
@@ -288,48 +337,65 @@ Soit \(f, g\) deux fonctions telles que:
    \end{aligned}
 \]
 
-On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe, alors \(f\) est une \textbf{application} si et seulement si \(E = D_f\).\+
-On note \(F^E\) l'ensemble des \textbf{applications} de E vers F.\<
+On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe, alors \(f\) est une \textbf{application} si et seulement si \(E = D_f\) et on note alors \(\mathscr{F}(E, F)\) l'ensemble des \textbf{applications} de E vers F.\<
 
 On définit \textbf{le graphe} de \(f\) comme suit:
 \[
    G_f:= \Bigl\{ (x, f(x)) \in E \times F \; ; \; x \in E\Bigl\}   
 \]
-
 \subsection*{\subsecstyle{Composition {:}}}
+\addcontentsline{toc}{subsection}{Composition}
+
 Supposons \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\) et on a:
 \[
    D_{g \circ f} := \Bigl\{ x \in D_f \; ; \; f(x) \in D_g \Bigl\}   
 \]
-Soit \(n \in \N\), on peut itérer la composition et on note \(f^{n}\) la composée n-ième de f avec elle même et on pose \(f^0 = Id_E\).
-\subsection*{\subsecstyle{Restriction \& Prolongement {:}}}
+On peut itérer la composition de \(f\) avec elle même et on pose alors \(f^0 = Id_E\).
+
+\subsection*{\subsecstyle{Restrictions \& Prolongements {:}}}
+\addcontentsline{toc}{subsection}{Restrictions \& Prolongements}
+
 On note \(f|_A\) la restriction de \textbf{l'ensemble de départ} de \(f\) à une partie \(A\) de \(E\).\+
 On note \(f|^B\) la restriction de \textbf{l'ensemble d'arrivée} de \(f\) à une partie \(B\) de \(F\).\<
 
 Soit \(x \in D_f\), on appelle \textbf{prolongement} de \(f\), l'application \(g\) telle que \(D_f \subset D_g\) et \(g(x) = f(x)\)
+
 \subsection*{\subsecstyle{Image directe {:}}}
+\addcontentsline{toc}{subsection}{Image directe}
+
 On appelle \textbf{image directe} d'une partie \(A\) de \(E\) l'ensemble des images par \(f\) des éléments de \(A\), ie:
 \[
-    f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\}   
-\]
-Et on a l'équivalence suivante:
-\[
     \mathbox{
-       \forall y \in F \; ; \; y \in f(A) \Longleftrightarrow \exists x \in A \; ; \; f(x) = y
-    }
+        f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\} 
+    }  
 \]
-\subsection*{\subsecstyle{Image réciproque {:}}}
+L'image directe est compatible avec \textbf{certaines opérations ensemblistes}, ie elle vérifie:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \(f(A \cap B) = f(A) \cap f(B)\)
+        \item \(f(A \cup B) \subset f(A) \cup f(B)\)
+    \end{itemize}
+\end{multicols}
+
+\subsection*{\subsecstyle{Image Réciproque {:}}}
+\addcontentsline{toc}{subsection}{Image Réciproque}
 On appelle \textbf{image réciproque} d'une partie \(B\) de \(F\) l'ensemble des antécédents par \(f\) des éléments de \(B\), ie:
 \[
-    f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\}   
-\]
-Et on a l'équivalence suivante:
-\[
     \mathbox{
-       \forall x \in E \; ; \; x \in f^{-1}(B) \Longleftrightarrow f(x) \in B
+        f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\}   
     }
 \]
+L'image réciproque est \textbf{compatible avec toutes les opérations ensemblistes}, ie elle vérifie:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\)
+        \item \(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\)
+    \end{itemize}
+\end{multicols}
+
 \subsection*{\subsecstyle{Injections {:}}}
+\addcontentsline{toc}{subsection}{Injections}
+
 L'application \(f\) est injective si et seulement si:
 \[
     \mathbox{
@@ -337,10 +403,13 @@ L'application \(f\) est injective si et seulement si:
     }
 \]
 En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au maximum une solution dans E} pour montrer que \(f\) est injective.\+
-Si \(g \circ f\) est injective alors \(f\) est injective.\<
+Si \(g \circ f\) est injective alors \(f\) est nécessairement injective.\<
 
 Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une injection, alors on a nécessairement \(|E| \leq |F|\)
+
 \subsection*{\subsecstyle{Surjections {:}}}
+\addcontentsline{toc}{subsection}{Surjections}
+
 L'application \(f\) est surjective si et seulement si:
 \[
     \mathbox{
@@ -348,24 +417,34 @@ L'application \(f\) est surjective si et seulement si:
     }
 \]
 En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au moins une solution dans E} pour montrer que \(f\) est surjective.\+
-Si \(g \circ f\) est surjective alors \(g\) est surjective.\<
+Si \(g \circ f\) est surjective alors \(g\) est nécessairement surjective.\<
 
 Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une surjection, alors on a nécessairement \(|F| \leq |E|\)
+
 \subsection*{\subsecstyle{Bijections {:}}}
+\addcontentsline{toc}{subsection}{Bijections}
+
 L'application \(f\) est bijective si et seulement si elle est surjective et injective.\+  
 Dans ce cas, \textbf{une application réciproque} \(g\) existe et elle vérifie:
-    \begin{align*}
+\[
+    \begin{cases}
         f \circ g &= Id_F \\
         g \circ f &= Id_E
-    \end{align*}
+    \end{cases}
+\]
 
 
-Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective.\+
-Intuitivement, les bijections sont exactement \textbf{les applications inversibles à gauche et à droite} par une même application.\<
-
+Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective.
+\begin{center}
+    \textit{
+        Intuitivement, les bijections sont exactement \textbf{les applications inversibles à gauche et à droite} par une même application.
+    }
+\end{center}
 Si \(f\) et \(g\) sont bijectives, alors \(f \circ g\) est bijective et \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\)
 
 \subsection*{\subsecstyle{Equipotence {:}}}
+\addcontentsline{toc}{subsection}{Equipotence}
+
 Soit \(E\) et \(F\) deux ensembles quelconques.\+
 Si il existe une bijection de \(E\) vers \(F\), alors on dit que ces ensembles sont \textbf{équipotents}, et on a:
 \[

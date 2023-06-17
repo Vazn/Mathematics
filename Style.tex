@@ -1,0 +1,43 @@
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
+
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
+\newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
+\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
+\newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\underline{#1}}
+
+\newcommand{\mathbox}[1]{
+    \setlength{\fboxrule}{0.7pt}
+    \boxed{
+        #1
+    }
+}
+\newcommand{\textbox}[1]{
+    \setlength{\fboxrule}{0.7pt}
+    \fbox{
+        #1
+    }
+}
+
+\newcommand{\chapterstyle}[1]{
+    \setlength{\fboxsep}{0.3em}
+    \setlength{\fboxrule}{3pt}
+    \centering\vspace{-70pt}
+    
+    \color{DarkBlue1}\huge\fbox{\textbf{\textsc{#1}}}
+}
+
+\newcommand{\multiparbox}[3]{
+    \begin{center}
+        \setlength{\fboxsep}{#1}
+        \textbox{
+            \parbox{#2\linewidth}{%
+                #3
+            }
+        }
+    \end{center}
+}

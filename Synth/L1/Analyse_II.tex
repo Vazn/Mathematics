@@ -1,16 +1,6 @@
-\chapter*{\chapterstyle{Analyse II {:} Limites}} % 99% Fini
+\chapter*{\chapterstyle{Limites}} % 99% Fini
 \addcontentsline{toc}{section}{Limites}
-
-On appelle \textbf{voisinage} d'un point \(a \in \R\) toute partie \(V\) de \(\R\) telle que pour un certain \(\epsilon\) on ait \(\ioo{a - \epsilon}{a + \epsilon} \subset V\).\+
-On appelle \textbf{voisinage} de \(+\infty\) toute partie \(V\) de \(\R\) telle que pour un certain \(A\) on ait \(\ioo{A}{+\infty} \subset V\).\+
-On appelle \textbf{voisinage} de \(-\infty\) toute partie \(V\) de \(\R\) telle que pour un certain \(A\) on ait \(\ioo{-\infty}{A} \subset V\).\+
-\begin{center}
-   \textit{
-      Un voisinage d'un point est donc une partie qui contient un ouvert qui contient ce point. Grossièrement, on peut généralement se réprésenter un voisinage comme un de ces ouverts.
-   }
-\end{center}
-Dans la suite on notera \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).\+
-Exemple: \(\ioo{-2}{3}\) est un voisinage de \(3\) et de \(0\).
+On rapelle qu'un \textbf{voisinage} du point \(a\) est une partie qui contient \textbf{un ouvert} qui contient ce point et on note \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).
 
 \subsection*{\subsecstyle{Définition{:}}}
 \addcontentsline{toc}{subsection}{Définition}
@@ -50,7 +40,7 @@ Graphiquement, cela signifie simplement que peu importe l'ouvert \(O\) qu'on con
       \draw[color=BrightRed1, domain=1.5:1.95, thick] plot (\x,{\x^2});
    \end{tikzpicture}
 \end{center}
-La nature de l'ensemble des nombres réels comme espace métrique nous permet de caractériser cette définition et d'en déduire que \(f\) tends vers \(l\) en \(a\) si et seulement si:
+La nature de l'ensemble des nombres réels nous permet de caractériser cette définition et d'en déduire que \(f\) tends vers \(l\) en \(a\) si et seulement si:
 \[
    \mathbox{\forall \epsilon \in \R^+ \; , \; \exists \delta \in \R^+ \; , \; \forall x \in D \; ; \; |x - a| < \delta \implies |f(x) - l| < \epsilon}  
 \]
@@ -62,6 +52,19 @@ Enfin si la limite est \(+ \infty\) (analogue pour le cas \(-\infty\)) on obtien
 \[
    \mathbox{\forall M \in \R \; , \; \exists \delta \in \R^+ \; , \; \forall x \in D \; ; \; |x - a| < \delta \implies f(x) > M}  
 \]
+
+\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
+\addcontentsline{toc}{subsection}{Caractérisation séquentielle}
+
+Soit \(f\) une fonction, alors elle tends vers \(l\) en \(a\) si et seulement si pour toute suite \((u_n)_{n \in \N}\) qui tends vers \(a\) on a:
+\[
+   \mathbox{f(u_n) \underset{+\infty}{\longrightarrow} l}
+\] 
+\begin{center}
+   \textit{
+      En particulier, si on arrive à trouver deux suites qui tendent vers \(a\) telles que \(f(u_n)\) et \(f(v_n)\) tendent vers deux valeurs différentes, alors la limite de \(f\) ne peut pas exister.
+   }
+\end{center}
 \pagebreak
 
 \subsection*{\subsecstyle{Propriétés{:}}}
@@ -80,19 +83,6 @@ En effet, pour \(a, b, l \in \overline{\R}\) et deux fonctions telles que \(f \u
 Enfin, tout les théorèmes d'encadrements des suites s'étendent dans le cadre des fonctions.\<
 
 On peut considérer les restrictions de \(f\) à droite ou à gauche de \(a\) et ainsi définir \textbf{les limites latérales} de \(f\) en \(a\) qui sont analogues à la définition principale.
-
-\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
-\addcontentsline{toc}{subsection}{Caractérisation séquentielle}
-
-Soit \(f\) une fonction, alors elle tends vers \(l\) en \(a\) si et seulement si pour toute suite \((u_n)_{n \in \N}\) qui tends vers \(a\) on a:
-\[
-   \mathbox{f(u_n) \underset{+\infty}{\longrightarrow} l}
-\] 
-\begin{center}
-   \textit{
-      En particulier, si on arrive à trouver deux suites qui tendent vers \(a\) telles que \(f(u_n)\) et \(f(v_n)\) tendent vers deux valeurs différentes, alors la limite de \(f\) ne peut pas exister.
-   }
-\end{center}
 
 \subsection*{\subsecstyle{Comparaison asymptotique II{:}}}
 \addcontentsline{toc}{subsection}{Comparaison asymptotique II}
@@ -132,7 +122,7 @@ Enfin, il est utile de connaître ces équivalents usuels, on considère le cas 
    }
 \end{center}
 
-\chapter*{\chapterstyle{Analyse II {:} Continuité}} % 99% Fini
+\chapter*{\chapterstyle{Continuité}} % 99% Fini
 \addcontentsline{toc}{section}{Continuité}
 
 On rapelle qu'une partie de \(\R\) est \textbf{connexe} si elle ne peut pas être écrite comme réunion d'ouverts disjoints, informellement, c'est un ensemble "d'un seul tenant".\+
@@ -298,9 +288,9 @@ Soit \(\varphi\) une application entre deux tels espaces telle que \(\varphi\) s
       C'est une application fondamentale du concept de continuité car les homémorphismes permettent exactement de caractériser des espaces identiques à déformation continue près\footnote[3]{Formellement, les homéomorphismes sont exactement les isomorphismes d'espaces topologiques.}.
    }
 \end{center}
-Exemple: Du point de vue de la topologie, un donut est une tasse c'est à dire que l'on peut déformer un donut continument pour obtenir une tasse.
+\underline{Exemple:} Du point de vue de la topologie, un donut est une tasse c'est à dire que l'on peut déformer un donut continument pour obtenir une tasse.
 
-\chapter*{\chapterstyle{Analyse II {:} Dérivabilité}} % 99% Fini
+\chapter*{\chapterstyle{Dérivabilité}} % 99% Fini
 \addcontentsline{toc}{section}{Dérivabilité}
 
 \subsection*{\subsecstyle{Définition {:}}}
@@ -380,7 +370,7 @@ Par ailleurs, si on pose \(f\) une fonction dérivable sur \(I\) et que \(f'\) n
 On peut généraliser ce résultat\footnote[2]{Même début de preuve que ci-dessus, avec une récurrence pour conclure.} en montrant que si \(f\) est une fonction de classe \(\mathscr{C}^k\) et si \(f'\) \textbf{ne s'annule pas}, alors \(f^{-1}\) est aussi de classe \(\mathscr{C}^k\).\<
 
 Cette propriété permet de prouver la dérivabilité d'une réciproque, ainsi que de trouver sa dérivée.\+
-Exemple: \(f: x \mapsto x^2\) est dérivable et sa dérivée ne s'annule pas sur cet \(\icc{1}{2}\), donc elle est bijective sur \(\icc{1}{4}\) et sa réciproque est dérivable de dérivée \(\frac{1}{2\sqrt{x}}\).
+\underline{Exemple:} \(f: x \mapsto x^2\) est dérivable et sa dérivée ne s'annule pas sur cet \(\icc{1}{2}\), donc elle est bijective sur \(\icc{1}{4}\) et sa réciproque est dérivable de dérivée \(\frac{1}{2\sqrt{x}}\).
 
 \subsection*{\subsecstyle{Accroissements finis {:}}}
 \addcontentsline{toc}{subsection}{Accroissements finis}
@@ -420,7 +410,7 @@ On montre aussi \textbf{l'inégalité des accroissements finis}:
 \begin{center}
    Si \(f'\) est bornée, alors \(f\) est \(K\)-lipschitzienne avec \(K = \sup|f'|\)
 \end{center}
-Exemple: \(|\sin(x)'| = |\cos(x)| \leq 1\) donc sinus est une fonction \(1\)-lipschitzienne et donc on montre par exemple que \(|\sin(x) - \sin(0)| \leq |x - 0| \Longleftrightarrow |\sin(x)| \leq |x|\)
+\underline{Exemple:} \(|\sin(x)'| = |\cos(x)| \leq 1\) donc sinus est une fonction \(1\)-lipschitzienne et donc on montre par exemple que \(|\sin(x) - \sin(0)| \leq |x - 0| \Longleftrightarrow |\sin(x)| \leq |x|\)
 
 \subsection*{\subsecstyle{Théorème de la limite de la dérivée{:}}}
 \addcontentsline{toc}{subsection}{Théorème de la limite de la dérivée}
@@ -443,7 +433,7 @@ Soit \(\varphi\) une application entre deux tels espaces telle que \(\varphi\) s
 \end{center}
 Par exemple les difféomorphismes permettent de préserver le caractère \textbf{tangent} entre deux espaces.
 
-\chapter*{\chapterstyle{Analyse II {:} Convexité}} % 99% Fini
+\chapter*{\chapterstyle{Convexité}} % 99% Fini
 \addcontentsline{toc}{section}{Convexité}
 
 \subsection*{\subsecstyle{Définition {:}}}
@@ -481,7 +471,7 @@ Graphiquement, voici un exemple de fonction convexe:
 \end{center}
 Par ailleurs il existe une caractérisation trés utile de la convexité, pour montrer qu'une fonction \textbf{dérivable} est convexe, il suffit de montrer que sa \textbf{dérivée est croissante}, ou alors, si elle est deux fois dérivable, que sa \textbf{dérivée seconde est positive}.\<
 
-Exemple:  La fonction logarithme est concave sur \(\R\) car sa dérivée seconde est négative, donc pour tous \(a, b > 0\), on a \(\ln(\frac{a + b}{2}) \leq \frac{1}{2}\ln(a) + \frac{1}{2}\ln(b)\).
+\underline{Exemple:}  La fonction logarithme est concave sur \(\R\) car sa dérivée seconde est négative, donc pour tous \(a, b > 0\), on a \(\ln(\frac{a + b}{2}) \leq \frac{1}{2}\ln(a) + \frac{1}{2}\ln(b)\).
 
 \subsection*{\subsecstyle{Propriétés {:}}}
 \addcontentsline{toc}{subsection}{Propriétés}
@@ -498,7 +488,7 @@ Finalement on peut généraliser l'inégalité de la définition par \textbf{l'i
 \]
 Qui généralise l'intuition selon laquelle \textbf{l'image d'un barycentre est en dessous du barycentre des images}.
 
-\chapter*{\chapterstyle{Analyse II {:} Développements limités}} % 99% Fini
+\chapter*{\chapterstyle{Développements limités}} % 99% Fini
 \addcontentsline{toc}{section}{Développements limités}
 
 Dans ce chapitre nous cherchons à approximer \textbf{localement} des fonctions par des polynômes au voisinage d'un point ou de l'infini.
@@ -525,7 +515,7 @@ Aussi, les développements limités se comportent de manière intuitive par rapp
    Pour la multiplication (la composition), il suffit de faire le produit (la composée) des parties principales.\footnote[1]{\textbf{Attention:} Cette méthode produira dans la plupart des cas des termes inutiles, il faut donc tronquer et/ou anticiper le degré du produit final, pour faciliter les calculs, voir l'exemple.} }
 \end{center}
 
-Exemple: Cherchons un \(DL_2(e^x\cos(x))\), on a \(e^x\cos(x) = [1 + x + \frac{x^2}{2}+o(x^2)] [1 - \frac{x^2}{2} + o(x^2)]  \) = \(1 + x + o(x^2)\)
+\underline{Exemple:} Cherchons un \(DL_2(e^x\cos(x))\), on a \(e^x\cos(x) = [1 + x + \frac{x^2}{2}+o(x^2)] [1 - \frac{x^2}{2} + o(x^2)]  \) = \(1 + x + o(x^2)\)
 
 \subsection*{\subsecstyle{Changement de voisinage {:}}}
 \addcontentsline{toc}{subsection}{Changement de voisinage}
@@ -535,7 +525,7 @@ On peut ramener la recherche d'un déveoppement limité en un point à un dével
 On peut ramener la recherche d'un déveoppement asymptotique en \(\pm \infty\), à un développement limité en \(0\) par le changement de variable
 \( X = \frac{1}{x}\).\<
 
-Exemple: La fonction \(e^\frac{1}{x}\) est définie au voisinage de \(+ \infty\), on pose \(X = \frac{1}{x}\), alors un \(DL_2(0)\) de \(f(X)\) est \(1 + X + \frac{X^2}{2}+o(X^2) = 1 + \frac{1}{x} + \frac{1}{2x^2} + o(\frac{1}{x^2})\) aprés substitution.
+\underline{Exemple:} La fonction \(e^\frac{1}{x}\) est définie au voisinage de \(+ \infty\), on pose \(X = \frac{1}{x}\), alors un \(DL_2(0)\) de \(f(X)\) est \(1 + X + \frac{X^2}{2}+o(X^2) = 1 + \frac{1}{x} + \frac{1}{2x^2} + o(\frac{1}{x^2})\) aprés substitution.
 \pagebreak
 
 \subsection*{\subsecstyle{Formule de Taylor-Young {:}}}
@@ -594,7 +584,7 @@ Il est utile de connapitre les développements limités en \(0\) des fonctions u
    \end{tabular}
 \end{center} 
 
-\chapter*{\chapterstyle{Analyse II {:} Intégration}} % 99% Fini
+\chapter*{\chapterstyle{Intégration}} % 99% Fini
 \addcontentsline{toc}{section}{Intégration}
 
 On définira dans ce chapitre l'intégration d'une fonction \textbf{bornée définie sur un segment}.\<
@@ -704,7 +694,7 @@ Par ailleurs, si \(f\) est intégrable et que l'on en connaît une primitive \(F
 \[
    \mathbox{\int_{a}^{b} f(t) \d t = F(b) - F(a)}  
 \]
-Exemple: Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(x) - F(2x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
+\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(x) - F(2x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
 
 \subsection*{\subsecstyle{{Formule de la moyenne:}}}
 \addcontentsline{toc}{subsection}{Formule de la moyenne}
@@ -729,7 +719,7 @@ Alors la suite \((S_n)\) \textbf{converge} vers \(\int_{a}^{b} f(t) \d t\).\<
 
 Une somme de Riemann représente la somme d'aires de rectangles dans le cas particulier d'une subdivision régulière et dans le cas où la hauteur des rectangle est simplement \(f(x_k)\). Cette propriété de convergence nous permet d'évaluer des séries gràce à des intégrales.\<
 
-Exemple: Dans le cas le plus courant où on est dans l'intervalle \(\icc{0}{1}\). Calculons la somme \(S := \sum_{k=0}^{+\infty} \frac{1}{n + k}\). On a:
+\underline{Exemple:} Dans le cas le plus courant où on est dans l'intervalle \(\icc{0}{1}\). Calculons la somme \(S := \sum_{k=0}^{+\infty} \frac{1}{n + k}\). On a:
 \[
    S =  \frac{1}{n}\sum_{k=0}^{+\infty} \frac{1}{1 + \frac{k}{n}} = \frac{1}{n}\sum_{k=0}^{+\infty} f\Bigl(\frac{k}{n}\Bigl) = \int_{0}^{1} f(t) \d t = \ln(1 + x) \Bigl|_{0}^{1} = \ln(2)
 \]
@@ -757,7 +747,7 @@ Alors on peut utiliser les propriétés suivantes et profiter des propriétés d
    \quad\quad\quad\quad
    \int_{a}^{b} \mathscr{I}(f(t)) \d t = \mathscr{I}\Bigl(\int_{a}^{b} f(t) \d t\Bigl) 
 \]
-Exemple: Calculons \(I := \int e^{-x}\cos(x) \d x\)
+\underline{Exemple:} Calculons \(I := \int e^{-x}\cos(x) \d x\)
 \[
    I = \int e^{-x}\mathscr{R}(e^{ix}) \d x = \int \mathscr{R}(e^{x(i- 1)}) \d x = \mathscr{R}(\int e^{x(i - 1)} \d x) = \mathscr{R}(\frac{1}{i - 1}e^{x(i - 1)}) = \frac{e^{-x}}{2}(\sin(x) - \cos(x))
 \]
@@ -783,7 +773,7 @@ Si on considère les primitives de fractions rationnelles de la forme \(\frac{P}
 
 Finalement, on obtient une somme d'éléments simples avec des coefficients indéterminés aux numérateurs. Pour déterminer ces coefficients, plusieurs méthodes sont possibles, réduire au même dénominateur et identifier, évaluer en des valeurs annulatrices ou encore utiliser \textbf{la méthode du cache}\footnote[2]{Cette méthode permet de calculer les coefficients d'un élément dont le dénominateur est de plus haut degré de son groupe, elle consiste à multiplier l'égalité obtenue par le dénominateur en question, puis à évaluer en une de ces racines, annulant ainsi \textbf{tout les éléments simples} sauf celui dont on a choisi le dénominateur, cette procédure permet alors de trouver les coefficients de cet élémént.}.\< 
 
-Exemple: Décomposons \(\frac{2X+1}{(X-1)(X+1)^2(X^2+1)}\)\+
+\underline{Exemple:} Décomposons \(\frac{2X+1}{(X-1)(X+1)^2(X^2+1)}\)\+
 On a:
    \begin{align*}
       \frac{2X+1}{(X-1)(X+1)^2(X^2+1)} &= \frac{\lambda_1}{X-1} + \frac{\lambda_2}{X+1}+ \frac{\lambda_3}{(X+1)^2} + \frac{\lambda_4X+ \lambda_5}{X^2+1}
@@ -814,7 +804,7 @@ Pour se ramener à la forme ci-dessus, pour \(E = \frac{P}{Q^n}\) un élément d
    \item[$\bullet$] On obtient alors une intégrale simple et un reste de la forme \(\frac{1}{Q^n}\).
    \item[$\bullet$] On ramene le reste à la forme souhaitée en mettant \(Q\) sous \textbf{forme canonique}.
 \end{description}
-Exemple: L'élément de seconde espèce de l'exemple précédent est \(E = \frac{-X - 3}{4(X^2+1)}\), on fait la division euclidienne du numérateur par la dérivée du dénominateur \(8X + 4\) et on a:
+\underline{Exemple:} L'élément de seconde espèce de l'exemple précédent est \(E = \frac{-X - 3}{4(X^2+1)}\), on fait la division euclidienne du numérateur par la dérivée du dénominateur \(8X + 4\) et on a:
 \[
    E = \frac{\frac{-1}{8}(8X - 4) + \frac{-5}{2}}{4(X^2+1)} =  \frac{-1}{8} \cdot \frac{2X - 1}{X^2+1} - \frac{-5}{8(X^2 +1)}
 \]

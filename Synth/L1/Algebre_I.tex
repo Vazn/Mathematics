@@ -1,4 +1,6 @@
-\chapter*{\chapterstyle{Algèbre I {:} Corps des Complexes}}
+\chapter*{\chapterstyle{Corps des Complexes}} % 99% Fini
+\addcontentsline{toc}{section}{Corps des Complexes}
+
 On note \(\C\) l'extension du corps \(\R\) avec les deux lois usuelles. \< 
 
 Est introduit le nombre imaginaire \(i\) dont le carré vaut \(-1\) et chaque nombre complexe se définit alors comme des sommes ou produits de réels et du nombre imaginaire.\+
@@ -9,11 +11,11 @@ Soit \(z, z' \in \C\) et \(\theta \in \R/2\pi\). On notera \(\rho\) le module de
 \subsection*{\subsecstyle{Module {:}}}
 On appelle \textbf{module} de \(z\) le \textbf{prolongement} de la fonction valeur absolue à \(\C\), c'est donc une \textbf{métrique} et on la définit telle que {:}
 \[
-    |z| = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
+    \rho = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
 \]
 
 \subsection*{\subsecstyle{Forme trigonométrique {:}}}
-Il existe un unique angle \(\theta\) (modulo \(2\pi\)) tel que:
+On montre alors qu'il existe un unique angle \(\theta\) (modulo \(2\pi\)) qu'on appelle \textbf{argument} de \(z\) tel que:
 \[
     z = \rho(\cos\theta+i\sin\theta)   
 \]
@@ -31,6 +33,7 @@ Les propriétés de l'exponentielle nous permettent aussi d'obtenir:
        \arg(\frac{z}{z'}) &\eqmod{2\pi} \arg(z) - \arg(z')
     \end{align*}
 }
+
 \subsection*{\subsecstyle{Conjugué {:}}}
 On appelle \textbf{conjugaison} l'automorphisme involutif qui à \(z\) associe son \textbf{conjugué}, noté \(\overline{z}\) tel que:
 \[
@@ -53,15 +56,47 @@ On a alors les formules suivantes {:}
 En utilisant ces formules pour \(z\) sous forme exponentielle, on a alors les \textbf{formules d'Euler} qui sont très importantes car elle permettent de \textbf{linéariser} des expression trigonométriques.\<
 
 \subsection*{\subsecstyle{Formule de Moivre {:}}}
-Un propriété importante des formes trigonométriques et exponentielles est:
+Un propriété importante des formes trigonométriques et exponentielles apellée \textbf{formule de Moivre}\footnote[1]{Ici, on a choisi de considérer \(z \in \U\) mais ces propriétés sont vraies pour \textbf{tout nombre complexe}, il suffit alors d'appliquer la puissance au module.} est:
 \multiparbox{-0.5em}{0.6}{
     \begin{align*}
         (e^{i\theta})^n &= e^{n(i\theta)}\\
         (\cos\theta + i\sin\theta)^n &= \cos n\theta + i\sin n\theta
     \end{align*}
 }
+\begin{center}
+    \textit{Les différentes puissances d'un nombre complexe (de module 1) s'interprétent alors comme des points situées à equidistance sur un cercle.}
+\end{center}
+Graphiquement:
+\begin{center}
+    \begin{tikzpicture}[yscale=2, xscale=2]
+        \coordinate (O) at (0,0);
+        \coordinate (X) at (1.5,0);
+        \coordinate (Z1) at (0.86, 0.5);
+        \coordinate (Z2) at (0.5, 0.86);
 
-Ici, on a choisi de considérer \(z \in \U\) mais ces propriétés sont vraies pour \textbf{tout nombre complexe}, il suffit alors d'appliquer la puissance au module.
+        \draw[-latex] (-1.5,0) -- (X) node [right] {$\mathbb{R}$};
+        \draw[-latex] (0, -1.5) -- (0,1.5) node [above] {$i\mathbb{R}$};
+    
+        \draw[color = DarkBlue1, thick] (0,0) circle (1cm);
+    
+        \draw node[color = BrightRed1] at (1.25, 0.6) {$z = e^{i\cdot\theta_1}$}; 
+        \draw node[color = BrightRed1] at (0.95, 1) {$z^2 = e^{i\cdot 2\theta_1}$}; 
+
+        \draw[color = BrightRed1!75, thick] (O) -- (Z1);
+        \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.5cm] {angle = X--O--Z1};
+
+        \draw[color = BrightRed1!75, thick] (O) -- (Z2);
+        \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.75cm] {angle = Z1--O--Z2};
+
+        \fill[color = BrightRed1!100] (0.21, 0.67) circle[radius=0.5pt];
+        \fill[color = BrightRed1!80] (0.073, 0.70) circle[radius=0.5pt];
+        \fill[color = BrightRed1!60] (-0.07, 0.70) circle[radius=0.5pt];
+        \fill[color = BrightRed1!40] (-0.21, 0.67) circle[radius=0.5pt];
+        \fill[color = BrightRed1!20] (-0.35, 0.61) circle[radius=0.5pt];
+ 
+    \end{tikzpicture}  
+\end{center}
+
 \subsection*{\subsecstyle{Racines n-ièmes {:}}}
 Soit \(n \in \N\), une partie importante des problèmes impliquant des nombres complexes proviennent d'équations d'inconnue \(Z\) de la forme:
 \[
@@ -79,6 +114,7 @@ Si on a une racine n-ième \(Z_0\) de \(Z\) et qu'on connaît les racines n-ièm
 \[
    \Bigl\{ Z \in \C \; ; \; Z^n = z \Bigl\} = \Bigl\{ Z_0u \; ; \; u \in \U_n \Bigl\}   
 \]
+
 \subsection*{\subsecstyle{Le nombre complexe \(j\) {:}}}
 On note \(j\) la première racine troisième de l'unité.
 Le nombre \(j\) est singulier, car il vérifie:
@@ -89,16 +125,18 @@ Le nombre \(j\) est singulier, car il vérifie:
 \]
 Graphiquement, on peut observer que les images des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
 
-\chapter*{\chapterstyle{Algèbre I {:} Anneau des Polynômes}}
-Soit K un corps, et \(n \in \N\), on appelle \textbf{polynômes} à coefficients dans K en l'indéterminée \(X\) les éléments de l'ensemble:
+\chapter*{\chapterstyle{Anneau des Polynômes}} % 75% Fini
+\addcontentsline{toc}{section}{Anneau des Polynômes}
+
+\subsection*{\subsecstyle{Définition {:}}}
+
+Soit \(K\) un corps, et \(n \in \N\), on appelle \textbf{polynômes} à coefficients dans \(K\) en l'indéterminée \(X\) les éléments de l'ensemble:
 \[
    K[X] := \Biggl\{ \; \sum_{i=0}^n a_{i}X^{i} \; ; \; a_i \in K \;\Biggl\}
 \]
-On adjoint à cet ensemble deux lois + et \(\times\) qui \textbf{prolongent} les opérations correspondantes de K, pour obtenir \textbf{l'anneau des polynômes} (K[X], +, \(\times\)). Cet anneau est intègre car K est un corps, donc un anneau intègre.\<
-
-Soit \(P, Q, R \in K[X]\).
 
 \subsection*{\subsecstyle{Degré et Valuation {:}}}
+Soit \(P, Q, R \in K[X]\).\+
 On définit tout d'abord une propriété fondamentale appelée \textbf{degré} de \(P\) telle que deg\((P)\) est le plus grand coefficient non nul de P.
 On a alors les propriétés du degré ci-dessous:
 \multiparbox{-0.3em}{0.5}{
@@ -109,18 +147,21 @@ On a alors les propriétés du degré ci-dessous:
 }
 La valuation est définie de manière analogue comme le plus petit coefficient non nul de P.
 \subsection*{\subsecstyle{Opérations {:}}}
-On considère ci-dessous que deg\((P)\) = \(n\) et deg\((Q)\) = \(m\) et on note \(a_i, b_i\) les coefficients de \(P\) resp. \(Q\).\+
-La lci d'addition est simplement effectuée terme à termes.\+
-La lci de multiplication se définit explicitement comme suit:
+On considère ci-dessous que deg\((P)\) = \(n\) et deg\((Q)\) = \(m\) et on note \(a_i, b_i\) les coefficients de \(P\) (resp. \(Q\)).\<
+
+On adjoint à cet ensemble une loi d'addition qui est simplement effectuée terme à termes.\+
+On adjoint à cet ensemble une loi de multiplication se définit explicitement comme suit:
 \[
    PQ := \sum_{k=0}^{n+m}\sum_{i+j = k} a_{i}b_{i}X^{k}
 \]
+
+Muni de ces deux opérations, on donne à cet ensemble une structure \textbf{d'anneau}\footnote[1]{Intègre car les coefficients viennent d'un corps.}.\<
 
 On ajoute aussi une opération appelée \textbf{dérivation formelle} d'un polynôme qui s'effectue comme la dérivation analytique usuelle.
 \subsection*{\subsecstyle{Divisibilité {:}}}
 On définit tout d'abord une \textbf{division euclidienne} de deux polynômes qui se comporte comme la division euclidienne usuelle, à la différence que la condition d'arrêt porte sur le \textbf{degré du reste} qui doit être inférieur à celui du diviseur.\<
 
-Soit \(U, V \in R[X]^2\), on peut aussi définir une relation de \textbf{divisibilité} entre deux polynômes, cette relation est \textbf{transitive et réflexive} mais aussi \textbf{linéaire}, ie on a:
+Soit \(U, V \in R[X]^2\), on peut aussi définir une relation de \textbf{divisibilité} entre deux polynômes, cette relation est \textbf{transitive et réflexive} et on a aussi:
 \[
     \mathbox{
         D|A \land D|B \implies D| UA + VB   
@@ -158,8 +199,8 @@ On appelle décomposition d'un polynôme \(P\) une factorisation \textbf{irrédu
         Tout polynôme de degré supérieur à un admet au moins une racine dans \(\C\).
     }
 \end{center}
-Par suite, on peut montrer que tout les polynômes de \(\C\) sont \textbf{scindés}, ie que tout les polynômes irréductibles de \(\C[X]\) sont de degré 1.
-Par contre dans \(\R[X]\), il existe des polynômes de degré 2 irréductibles (ceux dont le discriminant est négatif).\<
+Par suite, on peut montrer que tout les polynômes de \(\C[X]\) sont \textbf{scindés}\footnote[1]{C'est à dire que tout les polynômes irréductibles de \(\C[X]\) sont de degré 1.}.\+
+Par contre dans \(\R[X]\), il existe des polynômes de degré 2 irréductibles\footnote[2]{Ceux dont le discriminant est négatif}.\<
 
 Soit \(z \in \C\), il existe une propriété très utile pour décomposer un polynôme \textbf{à coefficients réel} qui est:
 \[
@@ -168,12 +209,11 @@ Soit \(z \in \C\), il existe une propriété très utile pour décomposer un pol
 \subsection*{\subsecstyle{Fonctions symétriques des racines {:}}}
 On définit le \(k\)-ième \textbf{polynôme symétrique} à \(n\) indéterminées comme la somme des produits à \(k\) facteurs de ses indéterminées, et on le note \(\sigma_k\). \<
 
-Par exemple pour un polynôme en quatre indéterminées \(a, b, c, d\), on a successivement:
+Par exemple pour un polynôme en trois indéterminées \(a, b, c\), on a successivement:
 \begin{flalign*}
-    &\sigma_1 = a + b  + c + d \shorteqnote{(Somme des produits à 1 facteur)}\\
-    &\sigma_2 = ab + ac + ad + bc + bc + cd \shorteqnote{(Somme des produits à 2 facteurs)}\\
-    &\sigma_3 = abc + abd + acd + bcd \shorteqnote{(Somme des produits à 3 facteurs)}\\
-    &\sigma_4 = abcd \shorteqnote{(Somme des produits à 4 facteurs)}
+    &\sigma_1 = a + b  + c\shorteqnote{(Somme des produits à 1 facteur)}\\
+    &\sigma_2 = ab + ac + bc \shorteqnote{(Somme des produits à 2 facteurs)}\\
+    &\sigma_3 = abc\shorteqnote{(Somme des produits à 3 facteurs)}
 \end{flalign*}
 De manière générale on a:
 \[
@@ -187,17 +227,18 @@ Alors, pour tout \(k \in \inticc{0}{n}\), on a le \textbf{théorème}:
     }
 \]
 
-Ce théorème permet d'obtenir une relation \textbf{coefficient-racines}.\+
-Par exemple:
-\begin{flalign*}
+Ce théorème permet d'obtenir une relation \textbf{coefficient-racines}.\<
+
+\underline{Exemple:} \(\begin{cases}
     &\text{Pour \(k = 1\), on trouve que la somme des racines de \(P\) vaut \(-\frac{a_{n-1}}{a_n}\)}\\
     &\text{Pour \(k = 2\), on trouve que la somme des doubles produits des racines de \(P\) vaut \(\frac{a_{n-2}}{a_n}\)}\\
     &\ldots\ldots\ldots\ldots\ldots\ldots
-\end{flalign*}
+\end{cases}\)\<
 
+\chapter*{\chapterstyle{Espaces Vectoriels}} % 99% Fini
+\addcontentsline{toc}{section}{Espaces Vectoriels}
 
-
-\chapter*{\chapterstyle{Algèbre I {:} Espaces Vectoriels}}
+\subsection*{\subsecstyle{Définition {:}}}
 Soit \(E\) un ensemble \textbf{non-vide}, \(K\) un corps commutatif, et \(u \in E\), on dit alors que \((E, +, \cdot)\) est un \textbf{espace vectoriel sur K} si les conditions ci-dessous sont réunies:
 \begin{align*}
    &\bullet \;\;\; (E, +) \text{ est un \textbf{groupe abélien}} \\
@@ -209,22 +250,24 @@ Soit \(E\) un ensemble \textbf{non-vide}, \(K\) un corps commutatif, et \(u \in 
 On appelle alors \textbf{vecteurs} les éléments de \(E\) et \textbf{scalaires} les éléments de \(K\).
 
 \subsection*{\subsecstyle{Sous-espaces vectoriels {:}}}
-Soit \(F \subseteq E\), on dit que \(F\) est un \textbf{sous-espace vectoriel} ssi:
+Soit \(F \subseteq E\), on dit que \(F\) est un \textbf{sous-espace vectoriel} si et seulement si:
 \begin{align*}
    &\bullet \;\; F \text{ est non vide.} \\
    &\bullet \;\; F \text{ est stable par somme.} \\
    &\bullet \;\; F \text{ est stable par multiplication externe.}
 \end{align*}
 
-Il est utile de noter que \textbf{l'intersection} de deux sous-espaces vectoriels est aussi un sous-espace vectoriel et que par contre, l'union de deux sous-espaces vectoriels n'est \textbf{en général} pas un sous-espace vectoriel.\<
+Il est utile de noter que \textbf{l'intersection} de deux sous-espaces vectoriels est aussi un sous-espace vectoriel mais que l'union de deux sous-espaces vectoriels n'est \textbf{en général} pas un sous-espace vectoriel.\<
 
 Un cas particulier est celui du \textbf{sous-espace vectoriel engendré} par \(F\) qu'on note:
 \[
    \text{Vect(\(F\))} := \Biggl\{ \sum_{i=0}^{n} \lambda_i u_i\; ; \; \lambda_{i} \in K \; , \; u_{i} \in F \Biggl\}
 \]
-Plus concrètement, Vect(\(F\)) est \textbf{l'ensemble des combinaisons linéaires} des vecteurs de \(F\).\<
-
-Une propriété fondamentale est que Vect(\(F\)) est un \textbf{opérateur de clôture} par combinaison linéaire, ie c'est une application \textbf{idempotente, croissante et extensive}.\<
+\begin{center}
+    \textit{
+        C'est \textbf{l'ensemble des combinaisons linéaires} des vecteurs de \(F\).
+    }
+\end{center}
 
 Soit \((A_n)_{n \in \N}\) une famille de parties de \(E\), alors on a la propriété suivante:
 \[
@@ -232,21 +275,23 @@ Soit \((A_n)_{n \in \N}\) une famille de parties de \(E\), alors on a la propri�
         \sum_{i \in \N} \text{Vect(\(A_i\))} = \text{Vect\(\Bigl(\bigcup_{i \in \N} A_i\Bigl)\)}
     }
 \]
-
+Une propriété fondamentale est que Vect(\(F\)) est un \textbf{opérateur de clôture} par combinaison linéaire, ie c'est une application \textbf{idempotente, croissante et extensive}.
 
 \subsection*{\subsecstyle{Familles libre et génératrices {:}}}
 Soit \(\Fam := (u_1, u_2, \ldots, u_{n-1}, u_n)\) une famille de vecteurs de \(E\).\<
 
 On dit que \(\Fam\) est \textbf{génératrice} de E si on a \(E = \text{Vect(\(\Fam\))}\).\+
-On dit que \(\Fam\) est \textbf{libre} si tout combinaison linéaire nulle de vecteurs de \(\Fam\) est nécessairement à coefficient tous nuls.\+
+On dit que \(\Fam\) est \textbf{libre} si tout combinaison linéaire nulle de vecteurs de \(\Fam\) est à coefficient tous nuls.\<
+
 Formellement, \(\Fam\) est libre si et seulement si on a:
 \[
-    \forall (\lambda_1, \lambda_2, \ldots, \lambda_{n-1}, \lambda_n) \in K^n \; ; \; \Biggr[ \sum_{i=0}^n \lambda_i u_i = 0_E \implies (\lambda_1, \lambda_2, \ldots, \lambda_{n-1}, \lambda_n) = (0, 0, \ldots, 0, 0) \Biggr]  
+    \forall (\lambda_1, \ldots, \lambda_n) \in K^n \; ; \; \Biggr[ \sum_{i=0}^n \lambda_i u_i = 0_E \implies (\lambda_1, \ldots, \lambda_n) = (0, \ldots, 0) \Biggr]  
 \]
+\pagebreak
 
-Soit \(\Fam := (u_1, u_2, \ldots, u_k, \ldots, u_{n-1}, u_n)\) une famille libre et génératrice.\<
+Soit \(\Fam := (u_1, \ldots, u_k, \ldots, u_n)\) une famille libre et génératrice.\<
 
-Si un vecteur \(v\) n'appartient pas à \(\text{Vect(\(\Fam\))}\), alors la famille étendue \((u_1, u_2, \ldots, u_{n-1}, u_n, v)\) est toujours libre.\+
+Si un vecteur \(v\) n'appartient pas à \(\text{Vect(\(\Fam\))}\), alors la famille étendue \((u_1, \ldots, u_n, v)\) est toujours libre.\+
 Si un vecteur \(u_k\) appartient à \(\text{Vect(\(\Fam\))}\), alors la famille réduite \((u_1, \ldots, u_{k-1}, u_{k+1}, \ldots, u_n)\) est toujours génératrice.
 
 \subsection*{\subsecstyle{Bases {:}}}
@@ -289,12 +334,8 @@ Alors on a alors le théorème suivant:
 \begin{align*}
         \Fam_n \text{ est une base de } S_n \Longleftrightarrow S_n = \bigoplus_{n\in\N} F_n
 \end{align*}
-\begin{center}
-    \textbox{
-        Si \textbf{l'espace entier} est engendré par \(S_n\), alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
-    }
-\end{center}
-
+Si \textbf{l'espace entier} est engendré par \(S_n\) et que la somme est \textbf{directe}, alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
+    
 \subsection*{\subsecstyle{Hyperplans {:}}}
 Soit \(F\) un sous-espace vectoriel de \(E\).\+
 \(F\) est un \textbf{hyperplan} de E si et seulement si il vérifie l'une des conditions équivalentes suivantes:
@@ -302,6 +343,10 @@ Soit \(F\) un sous-espace vectoriel de \(E\).\+
     &\bullet \text{ Il existe \textbf{une droite vectorielle} \(G\) de \(E\) telle que \(F \oplus G = E\).} \\
     &\bullet \text{ \(H\) est défini par une \textbf{équation linéaire homogène} non triviale.}
 \end{align*}
-Informellement, les hyperplans sont les \textbf{sous-espaces propres maximaux} de \(E\). \<
+Les hyperplans donc les \textbf{sous-espaces propres maximaux} de \(E\). \<
 
-On remarque alors que résoudre un système d'équations homogène revient à chercher \textbf{l'intersection} des hyperplans qui sont décrits par ces équations et donc l'ensemble des solutions est lui aussi nécessairement \textbf{un sous-espace vectoriel}.\<
+\begin{center}
+    \textit{
+        Résoudre un système d'équations homogènes revient donc à chercher \textbf{l'intersection} des hyperplans que représentent ces équations et donc l'ensemble des solutions est lui aussi nécessairement \textbf{un sous-espace vectoriel}.
+    }
+\end{center}

@@ -1,9 +1,8 @@
-\chapter*{\chapterstyle{Géométrie {:} Espaces affines}}
-Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.\+
-On appelle les éléments de \(\mathscr{E}\) des \textbf{points}.
-
+\chapter*{\chapterstyle{Espaces affines}} % 90 Fini
+\addcontentsline{toc}{section}{Espaces affines}
+Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.
 \subsection*{\subsecstyle{Définition {:}}}
-On appelle \textbf{espace affine de direction} \(V\) le couple \((\mathscr{E}, +)\) avec:
+On appelle \textbf{espace affine\footnote[1]{Ses éléments sont alors appelés des \textbf{points}.} de direction} \(V\) le couple \((\mathscr{E}, +)\) avec:
 \[
    \begin{aligned}
       + : &&\mathscr{E} \times V &\longrightarrow \mathscr{E}\\
@@ -11,10 +10,10 @@ On appelle \textbf{espace affine de direction} \(V\) le couple \((\mathscr{E}, +
    \end{aligned}
 \]
 La loi + doit vérifer les axiomes suivants 
-\footnote{Une action d'un groupe \((G, \star)\) sur \(E\) est une application \(+\) de \(G \times E \) dans \(E\) qui vérifie: \[
+\footnote[2]{Une action d'un groupe \((G, \star)\) sur \(E\) est une application \(+\) de \(G \times E \) dans \(E\) qui vérifie: \[
    \forall g, g' \in G  \; , \; \forall x \in E \; ; \; x + (g \star g') = (x + g) \star g'
-\]}:
-\multiparbox{-0.8em}{0.8}{
+\] \hspace{15pt} En d'autres termes, additionner d'abord les vecteurs, ou d'abord le point avec le vecteur n'importe pas.}:
+\multiparbox{-0.3em}{0.8}{
     \begin{align*}
       &\textbf{Existence d'un neutre} && \forall A \in \mathscr{E} \; ; \; A + 0_V = A\\
       &\textbf{Action de groupe} && \forall A \in \mathscr{E} \; , \; \forall u,v \in V \; ; \; A + (u + v) = (A + u) + v \\
@@ -28,7 +27,7 @@ Etant donné deux points \(A, B \in \mathscr{E}\), on note alors \(\overrightarr
 
 \subsection*{\subsecstyle{Propriétés {:}}}
 Si \(\mathscr{E}\) est un espace affine de direction \(V\), on a alors les propriétés suivantes:
-\multiparbox{-0.3em}{0.4}{
+\multiparbox{-0.3em}{0.5}{
     \begin{align*}
       &\textbf{Relation de Chasles} && \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC} \\
       &\textbf{Existence d'un neutre} && \overrightarrow{AB} + \overrightarrow{BA} = O_V
@@ -48,11 +47,13 @@ Il est important de noter que le couple \((V, +)\) forme un espace affine de \te
 
 L'unique vecteur \(u\) tel que \(A + u = B\) est exactement \(B - A\) (ici \(A, B\) sont des points de \(V\) qui se trouvent être des vecteurs dans ce cas particulier). \<\<
 
-\chapter*{\chapterstyle{Géométrie {:} Espaces euclidiens}}
+\chapter*{\chapterstyle{Espaces euclidiens}} % 90 Fini
+\addcontentsline{toc}{section}{Espaces euclidiens}
+
 Soit \(E\) un \(\R\)-espace vectoriel de dimension \(n\) finie. On considère \(E\) avec sa structure d'espace affine canonique.
 On appelle \textbf{espace euclidien} un tel espace vectoriel si il est muni d'un \textbf{produit scalaire}.\<
 
-Soit \(u, v\) deux vecteurs de \(E\) et \((u_i)_i\) pour \(i \in \inticc{1}{n}\) les composantes de \(u\) dans la base canonique de \(E\).
+Soit \(u, v\) deux vecteurs de \(E\) et \((u_i)_{i \leq n}\) et \((v_i)_{i \leq n}\) les composantes de \(u\) et de \(v\) dans la base canonique de \(E\).
 
 \subsection*{\subsecstyle{Vecteurs {:}}}
 Soit deux points \(A, B\), on note \(\overrightarrow{AB}\) l'unique vecteur \(u\) de \(E\) tel que \(A + u = B\), on appelle alors \(A\) le \textbf{point initial} et \(B\) le \textbf{point final}. \<
@@ -88,7 +89,7 @@ Par ailleurs, on a \textbf{l'inégalité de Cauchy-Schwartz}:
 
 \subsection*{\subsecstyle{Norme{:}}}
 On appelle \textbf{norme} une application \(\vectNorm{\cdot}\) de E vers \(\R\) qui vérifie:
-\multiparbox{-0.3em}{0.4}{
+\multiparbox{-0.3em}{0.5}{
     \begin{align*}
       &\textbf{Séparation} &&\vectNorm{u} = 0 \implies u = 0\\
       &\textbf{Absolue Homogénéité} &&\vectNorm{\lambda u} = |\lambda| \vectNorm{u}\\
@@ -185,9 +186,7 @@ Néanmoins, le produit vectoriel n'est en général \textbf{pas associatif}. En 
     u \times (v \times w) = \dotproduct{u}{w}v - \dotproduct{u}{v}w
 \]
 
-\underline{Calcul d'un produit vectoriel:}\<
-
-On note \(\big|M\big|\)  le déterminant d'une matrice, alors on a une méthode efficace pour calculer des produits vectoriels:
+\underline{Exemple:} On note \(\big|M\big|\) le déterminant d'une matrice, alors on a une caractérisation utlie pour calculer des produits vectoriels:
 \[
    \begin{cases}
       u := (u_1, u_2, u_3)\\ 
@@ -195,6 +194,7 @@ On note \(\big|M\big|\)  le déterminant d'une matrice, alors on a une méthode 
    \end{cases} \implies 
    u \times v = \Biggl(\begin{vmatrix}u_2 & u_3 \\ v_2 & v_3\end{vmatrix} ; -\begin{vmatrix}u_1 & u_3 \\ v_1 & v_3\end{vmatrix} ; \begin{vmatrix}u_1 & u_2 \\ v_1 & v_2\end{vmatrix}\Biggl)
 \]
+
 \subsection*{\subsecstyle{Volumes \& Produit triple{:}}}
 On peut remarque que la norme du vecteur resultant d'un produit vectoriel est \textbf{l'aire du parallélogramme} formé par \(u\) et \(v\).\<
 
@@ -236,9 +236,11 @@ Avec \(\vectNorm{u \times v}\) qui est l'aire de la base est \(h\) la hauteur du
       \draw[->, color = DarkBlue3, line width = 1.2pt] (0, 0.01, 0) -- (0, 2.7, 0) coordinate (X) node[left]{\(h\)};
    \end{tikzpicture}   
 \end{center}
-Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\begin{vmatrix}u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3\end{vmatrix}\)
+Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\begin{vmatrix}u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3\end{vmatrix}\)
 
-\chapter*{\chapterstyle{Géométrie {:} Droites \& Plans}}
+\chapter*{\chapterstyle{Droites \& Plans}} % 90 Fini
+\addcontentsline{toc}{section}{Droites \& Plans}
+
 Dans l'espace euclidien \(\R^3\) , nous savons qu'on peut définir des droites vectorielles, des plans ou des volumes, dans ce chapitre nous allons examiner comment les exprimer mathématiquement, calculer des distances entre ces figures ou des intersections. \<
 
 Dans la suite, on considère un point \(P_0\) de coordonées \((x_0, y_0, z_0)\) et une vecteur \(\vv{v}\) de composantes \((a, b, c)\).
@@ -248,9 +250,9 @@ Une droite de l'espace en trois dimensions est caractérisée par la donnée d'u
 
 Formellement, la droite \(\mathscr{D}\) passant par \(A\) de direction \(\vv{v}\) est l'ensemble des points \(P\) tels que le vecteur 
 \(\vv{PQ}\) est paralléle à \(\vv{v}\).\+
-Si on considère une fonction \(\vv{f}(t)\) qui donne la position d'un point de la droite \(\mathscr{D}\), avec \(\vv{f}(0)\) la position de \(P_0\), on peut alors montrer que les points de la droite vérifient l'équation:
+Si on considère une fonction \(f(t)\) qui donne la position d'un point de la droite \(\mathscr{D}\), avec \(f(0)\) la position de \(P_0\), on peut alors montrer que les points de la droite vérifient l'équation:
 \[
-   \mathbox{f(t) = \vv{f}(0) + t\vv{v}}   
+   \mathbox{f(t) = f(0) + t\vv{v}}   
 \]
 Si on décompose les vecteurs obtenus avec cette equation en composantes, on obtient que \textbf{les coordonées} des points de la droite vérifient:
 \[
@@ -284,11 +286,13 @@ On peut alors considérer le lien avec l'espace vectoriel sous-jacent:
    }
 \end{center}
 
+\pagebreak
+
 \subsection*{\subsecstyle{Distances \& Angles{:}}}
 Nous sommes amenés à calculer des distances et des angles en géométrie euclidienne, par exemple calculer la distance entre un point \(P\) et une droite \(\mathscr{D}\).
 Si nous connaissons un point \(A\) de la droite et un vecteur directeur \(\vv{v}\) de la droite, il suffit alors de calculer:
 \begin{flalign*}
-   &&\mathbox{\vectNorm{\vv{AP}}\sin(\alpha)} &\shorteqnote{\(\bigstar\)}
+   &&\mathbox{\vectNorm{\vv{AP}}\sin(\alpha)} &\shorteqnote{\(\color{DarkBlue1}\bigstar\)}
 \end{flalign*}
 
 
@@ -335,9 +339,9 @@ On remarque alors une symétrie conceptuelle avec la projection vue plus haut:
       Chercher la distance entre un point \(P\) et une droite contenant \(A\) revient à\+ projeter \(\vv{AP}\) sur un vecteur orthogonal à la droite (en utilisant l'angle complémentaire).
    }
 \end{center}
-Par ailleurs, de la formule \(\star\) et de la définition du produit vectoriel, on peut en déduire une autre expression de la distance:
+Par ailleurs, de la formule \(\color{DarkBlue1}(\bigstar)\) et de la définition du produit vectoriel, on peut en déduire une autre expression de la distance:
 \[
-   \frac{\vectNorm{\vv{PS} \times \vv{v}}}{\vectNorm{\vv{v}}}   
+   \frac{\vectNorm{\vv{AP} \times \vv{v}}}{\vectNorm{\vv{v}}}   
 \]
 Sachant l'aire du parallélogramme et un de ses cotés, cette formule consiste exactement à retrouver la hauteur du parallèlogramme, qui constitura ici la distance recherchée. \<
 
@@ -388,18 +392,21 @@ Visullement cela donne:
 
 Finalement, il peut être utile de savoir calculer \textbf{l'angle entre deux plans}, il suffit alors de calculer \textbf{l'angle entre leurs vecteurs normaux}.
 
-\chapter*{\chapterstyle{Géométrie {:} Arcs paramétrés}}
-Dans le chapitre précédent, en considérant l'espace euclidien \(\R^2\), on a vu qu'on pouvait définir une droite comme étant une \textbf{fonction vectorielle} qui a chaque réel \(t\) associe un point de \(\R^2\) sur la droite.\<
+\chapter*{\chapterstyle{Arcs paramétrés}} % 95 Fini
+\addcontentsline{toc}{section}{Arcs paramétrés}
 
-Soit \(I \subset \R\) un intervalle et \(x, y \in \mathscr{F}(I, \R)\), alors on définit la fonction vectorielle suivante:
+Dans le chapitre précédent, en considérant l'espace euclidien \(\R^2\), on a vu qu'on pouvait définir une droite comme étant une \textbf{fonction vectorielle}.\+
+Dans ce chapitre on généralise cette construction à des courbes quelconques.
+
+\subsection*{\subsecstyle{Définition{:}}}
+Soit \(I \subset \R\) un intervalle et \(x, y \in \mathcal{C}^1(I, \R)\), alors on définit la fonction vectorielle suivante:
 \[
    \begin{aligned}
       f: I &\longrightarrow \R^2\\
       t &\longmapsto (x(t), y(t))
    \end{aligned}
 \]
-On apelle alors \textbf{arc paramétré} le couple \((I, f)\) et \textbf{trajectoire ou support} l'ensemble des points \(f(I)\) des points géométriques.\+
-Inversement, si on a une courbe \(C \subset \R^2\) et qu'il existe une fonction \(f\) telle que \(C = f(I)\), alors \((I, f)\) est apellé \textbf{paramétrage de la courbe}.\<
+On apelle alors \textbf{arc paramétré} le couple \((I, f)\) et \textbf{courbe} l'ensemble des points \(f(I)\). Réciproquement, si on a une courbe \(C \subset \R^2\) et qu'il existe une fonction \(f\) telle que \(C = f(I)\), alors \((I, f)\) est apellé \textbf{paramétrage de la courbe}.\<
 
 Par ailleurs, on dit qu'une fonction vectorielle \(f\) est \textbf{dérivable sur I} (par extension de classe \(\mathcal{C}^k\)) si chacune de ses composantes sont dérivables sur \(I\) (ou de classe \(\mathcal{C}^k\) sur \(I\)) et on note alors \(f'\) sa \textbf{dérivée} qui s'obtient simplement en dérivant composante par composante.\<
 
@@ -408,15 +415,15 @@ Géométriquement \(f'(t)\) représente \textbf{le vecteur tangent} à l'arc par
 \subsection*{\subsecstyle{Propriétés{:}}}
 Si \(I\) est un intervalle fermé de la forme \(\icc{a}{b}\), alors on appelle \textbf{point initial} (respectivement \textbf{point final}) le point \(f(a)\) (respectivement \(f(b)\)).\<
 
-Pour un support donné, il existe une infinité d'arc paramétrés décrivant ce support, par exemple les deux arcs paramétrés suivants sont bien différents mais ont \textbf{même support} (le cercle unité).
+Pour une courbe donnée, il existe une infinité d'arc paramétrés décrivant cette courbe, par exemple les deux arcs paramétrés suivants sont bien différents mais ont \textbf{même courbe} (le cercle unité).
 \begin{align*}
    \lambda_1 &:= \bigl(\icc{0}{2\pi}, (\cos(t), \sin(t))\bigl) \\
    \lambda_2 &:= \bigl(\icc{2\pi}{4\pi}, (\cos(t), \sin(t))\bigl)
 \end{align*}
-On peut aussi remarquer que tout graphe d'une fonction \(g\) peut être considéré comme le support d'un arc paramétré \((I, f)\) où \(f(t) = (t, g(t))\). \<
+On peut aussi remarquer que tout graphe d'une fonction \(g\) peut être considéré comme la courbe d'un arc paramétré \((I, f)\) où \(f(t) = (t, g(t))\). \<
 
 Si \(f\) est injective, on dit alors que l'arc paramétré est \textbf{simple}\footnote[1]{Qui consiste à dire que la courbe n'a pas de point multiples}. \+
-Si \(f'\) ne s'annule pas, on dit alors que l'arc paramétré est \textbf{régulier}\footnote[2]{Qui consiste à dire que la courbe n'a pas de point stationnaires}. \+
+Si \(f'\) ne s'annule pas, on dit alors que l'arc paramétré est \textbf{régulier}\footnote[2]{Qui consiste à dire que la courbe n'a pas de point stationnaires, ie de points ou l'on ``arrête de se déplacer'' sur la courbe.}. \+
 
 On appelle \textbf{courbe fermée} la trajectoire d'une arc paramétré par une fonction périodique.
 
@@ -424,7 +431,7 @@ On appelle \textbf{courbe fermée} la trajectoire d'une arc paramétré par une 
 On fixe une origine \(O\) du plan et une demi-droite partant de l'origine.
 Tout point du plan peut alors être identifié par ses \textbf{coordonées polaires} \((r, \theta)\) avec \(r\) la distance dirigée\footnote[3]{ On autorise alors une rayon négatif qui signifie simplement que le point a pour coordonées \((r, \pi + \theta)\), ie le point se situe toujours sur la droite d'angle \(\theta\) mais "de l'autre coté" de l'orgine.} entre \(P\) et l'origine et \(\theta\) l'angle entre \(\vv{OP}\) et la demi-droite.\<
 
-Une façon fréquente de définir une courbe géométrique est alors de donner son \textbf{equation polaire} de la forme \(r = f(\theta)\) pour \(\theta \in I\) qui est alors un cas particulier d'arc paramétré de la forme \((I, (f(\theta)\cos(\theta), f(\theta)\sin(\theta)))\) par passage en coordonées cartésiennes.
+Une façon fréquente de définir une courbe est alors de donner son \textbf{equation polaire}\footnote[4]{C'est un cas particulier d'arc paramétré de la forme \((I, (f(\theta)\cos(\theta), f(\theta)\sin(\theta)))\) par passage en coordonées cartésiennes.} de la forme \(r = f(\theta)\) pour \(\theta \in I\). 
 \pagebreak
 
 \subsection*{\subsecstyle{Courbes remarquables{:}}}
@@ -505,9 +512,9 @@ Quand le support de l'arc paramétré est une partie de \(\R^2\), on peut aussi 
    \mathbox{L := \int_I \sqrt{r'(\theta)^2 + r(\theta)^2}\, d\theta}
 \]
 
-\pagebreak
 \subsection*{\subsecstyle{Aires de courbes paramétrées{:}}}
-Soit \((I, f)\) un arc paramétré de classe \(\mathcal{C}^1\) qui a pour support une partie de \(\R^2\) et \(I\) un segment. On s'intéresse à \textbf{l'aire entre l'arc paramétré} et l'axe des abcisses qu'on notera \(A\).\<
+Soit \((I, f)\) un arc paramétré \textbf{régulier} de classe \(\mathcal{C}^1\) qui a pour courbe une partie de \(\R^2\) et \(I\) un segment. On s'intéresse à \textbf{l'aire entre l'arc paramétré} et l'axe des abcisses qu'on notera \(A\).
+\pagebreak
 
 On peut alors subdiviser \(I\) en différents intervalles et approximer l'aire sous la courbe par la somme d'aires de rectangles de largeur \(x(t_i)-x(t_{i-1})\) et de hauteur \(y(x(\overline{t}_i))\) avec \(\overline{t}_i\) une valeur quelconque dans la i-ème subdivision. En faisant alors tendre la longueur des subdivisions vers 0, on obtient une intégrale de Riemann\footnote[1]{\label{note1}L'intégrande est bien intégrable (et même continue) en tant que somme produit et composées de fonctions intégrables (continues)}, et la définition suivante:
 \[
@@ -520,7 +527,7 @@ Par exemple pour l'arc paramétré \((I, f)\) avec \(I = \icc{0}{1}\) et \(f(t) 
 
 Dans le cas des courbes en coordonées polaires, on peut calculer l'aire bornée par la courbe, on subdivise alors \(I\) en \((\theta_i)_{i \in \N}\), et on calcule la somme de \textbf{secteurs circulaires} de rayon \(r(\theta_k)\). Or on sait que l'aire d'une cercle de rayon \(r\) est donnée par \(\pi r^2\) donc l'aire d'un secteur circulaire d'angle \(\theta\) est donné par \(A = \frac{1}{2}\theta r^2\).\<
 
-Pour obtenir l'aire délimitée par la courbe polaire on peut alors sommer les aires des secteurs circulaires, on obtient alors, à la limite, une intégrale de Riemann et la définition suivante:
+Pour obtenir l'aire délimitée par la courbe polaire on peut alors sommer les aires des secteurs circulaires, on obtient alors, à la limite, une intégrale de Riemann\footnoteref{note1} et la définition suivante:
 \[
    \mathbox{A := \frac{1}{2} \int_I r(\theta)^2\, d\theta}  
 \]
@@ -533,17 +540,16 @@ Pour obtenir l'aire délimitée par la courbe polaire on peut alors sommer les a
 \subsection*{\subsecstyle{Reparamétrage{:}}}
 Soit \(\gamma = (I, f)\) un arc paramétré de classe \(\mathcal{C}^k\). Soit \(\phi\) un \(\mathcal{C}^k\)-diféomorphisme d'un certain intervalle \(J\) dans \(I\), alors on appelle la fonction \(f \circ \phi\) un \textbf{paramétrage admissible} de l'arc et on dit alors que les arcs sont \(\mathcal{C}^k\)\textbf{-équivalents}.\<
 
-Deux arcs \(\mathcal{C}^k\)\textbf{-équivalents} ont même support, mêmes tangentes, même longueur d'arcs (entre deux points d'une part, et deux image de l'autres) et même points réguliers\footnote[2]{Ceci justifie de contraindre \(\phi\) à être un difféomorphisme.}.
-
+Deux arcs \(\mathcal{C}^k\)\textbf{-équivalents} ont même courbes, mêmes tangentes, même longueur d'arcs (entre deux points d'une part, et deux image de l'autres) et même points réguliers\footnote[2]{Ceci justifie de contraindre \(\phi\) à être un difféomorphisme.}.
 
 \subsection*{\subsecstyle{Abcisse curviligne et paramétrage normal{:}}}
-Soit \(\gamma = (I, f)\) un arc paramétré de classe \(\mathcal{C}^1\). On appelle \textbf{abcisse curviligne} d'origine \(t_0\) la fonction\footnote[3]{Voir 1.}:
+Soit \(\gamma = (I, f)\) un arc paramétré de classe \(\mathcal{C}^1\). On appelle \textbf{abcisse curviligne} d'origine \(t_0\) la fonction\footnoteref{note1}:
 \[
    \mathbox{s(t) = \int_{t_0}^{t} \vectNorm{v'(x)} \d x}  
 \]
-En particulier, on voit que l'abcisse curviligne évaluée en en réel \(t\), est exactement \textbf{la longueur de l'arc} entre \(t_0\) et \(t\), ce qui explique notamment la dénomination anglophone \textit{arc-length function}.\<
+En particulier, on voit que l'abcisse curviligne évaluée en en réel \(t\), est exactement \textbf{la longueur algébrique de l'arc} entre \(t_0\) et \(t\), ce qui explique notamment la dénomination anglophone \textit{arc-length function}.\<
 
-Si \(s\) est l'abcisse curviligne d'un arc régulier \(\gamma = (I, f)\) de classe \(\mathcal{C}^1\), alors on peut montrer que \(s\) est un \(\mathcal{C}^1\)-difféomorphisme de \(I\) sur \(J\), et en particulier, on peut alors paramétrer l'arc par l'abcisse curviligne en:
+Si \(s\) est l'abcisse curviligne d'un arc régulier \(\gamma = (I, f)\) de classe \(\mathcal{C}^1\), alors on peut montrer\footnote[3]{Elle est continue et strictement croissante et sa dérivée ne s'annule pas, donc bijective à dérivée dérivable. Voir le chapitre sur la dérivation, partie ``Dérivée d'une réciproque''.} que \(s\) est un \(\mathcal{C}^1\)-difféomorphisme de \(I\) sur \(J = f(I)\), et en particulier, on peut alors reparamétrer par l'abcisse curviligne:
 \[
    \mathbox{\gamma' = (J, f \circ s^{-1})}   
 \]
