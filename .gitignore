@@ -5,3 +5,11 @@
 ./**.out
 ./**.gz
 ./**.synctex.gz
+
+**.aux
+**.fdb_latexmk
+**.fls
+**.log
+**.out
+**.gz
+**.synctex.gz
