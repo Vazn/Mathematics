@@ -2,5 +2,5 @@
 
 Synthesis of the content of my major in mathematics at INUC of Albi.
 
-✅ Semester 1 full recap <br>
+✅ Year 1 <br>
 
