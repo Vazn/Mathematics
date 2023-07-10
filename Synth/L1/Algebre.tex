@@ -1,4 +1,4 @@
-\chapter*{\chapterstyle{Corps des Complexes}} % 99% Fini
+\chapter*{\chapterstyle{II --- Corps des Complexes}} % 99% Fini
 \addcontentsline{toc}{section}{Corps des Complexes}
 
 On note \(\C\) l'extension du corps \(\R\) avec les deux lois usuelles. \< 
@@ -27,11 +27,11 @@ De même on appelle \textbf{forme exponentielle} de \(z\) l'expression:
 \]
 
 Les propriétés de l'exponentielle nous permettent aussi d'obtenir:
-\multiparbox{-0.5em}{0.4}{
-    \begin{align*}
-       \arg(zz') &\eqmod{2\pi} \arg(z) + \arg(z') \\
-       \arg(\frac{z}{z'}) &\eqmod{2\pi} \arg(z) - \arg(z')
-    \end{align*}
+\customBox{width=6cm}{
+   \begin{align*}
+      \arg(zz') &\eqmod{2\pi} \arg(z) + \arg(z')\\
+      \arg(\frac{z}{z'}) &\eqmod{2\pi} \arg(z) - \arg(z')
+   \end{align*}
 }
 
 \subsection*{\subsecstyle{Conjugué {:}}}
@@ -42,59 +42,55 @@ On appelle \textbf{conjugaison} l'automorphisme involutif qui à \(z\) associe s
 C'est un morphisme \textbf{additif} et \textbf{multiplicatif}. Graphiquement, le conjugué d'un nombre complexe est \textbf{le symétrique} de \(z\) par rapport à l'axe réel.\<
 
 On a alors les formules suivantes {:}
-\multiparbox{0.5em}{0.37}{
-     \[
-         \begin{aligned}
-               \Re(z) := \frac{z + \overline{z}}{2}
-         \end{aligned}
-         \hspace*{40pt}
-         \begin{aligned}
-               \Im(z) := \frac{z - \overline{z}}{2i}
-         \end{aligned}
-     \]
+\customBox{width=7.5cm}{
+   \[
+      \Re(z) := \frac{z + \overline{z}}{2}
+      \quad\quad\quad\quad\quad\quad
+      \Im(z) := \frac{z - \overline{z}}{2i}
+   \]
 }
+
 En utilisant ces formules pour \(z\) sous forme exponentielle, on a alors les \textbf{formules d'Euler} qui sont très importantes car elle permettent de \textbf{linéariser} des expression trigonométriques.\<
 
 \subsection*{\subsecstyle{Formule de Moivre {:}}}
 Un propriété importante des formes trigonométriques et exponentielles apellée \textbf{formule de Moivre}\footnote[1]{Ici, on a choisi de considérer \(z \in \U\) mais ces propriétés sont vraies pour \textbf{tout nombre complexe}, il suffit alors d'appliquer la puissance au module.} est:
-\multiparbox{-0.5em}{0.6}{
-    \begin{align*}
-        (e^{i\theta})^n &= e^{n(i\theta)}\\
-        (\cos\theta + i\sin\theta)^n &= \cos n\theta + i\sin n\theta
-    \end{align*}
+\customBox{width=9cm}{
+   \begin{align*}
+      (e^{i\theta})^n &= e^{n(i\theta)}\\
+      (\cos\theta + i\sin\theta)^n &= \cos n\theta + i\sin n\theta
+  \end{align*}  
 }
 \begin{center}
     \textit{Les différentes puissances d'un nombre complexe (de module 1) s'interprétent alors comme des points situées à equidistance sur un cercle.}
 \end{center}
 Graphiquement:
 \begin{center}
-    \begin{tikzpicture}[yscale=2, xscale=2]
-        \coordinate (O) at (0,0);
-        \coordinate (X) at (1.5,0);
-        \coordinate (Z1) at (0.86, 0.5);
-        \coordinate (Z2) at (0.5, 0.86);
-
-        \draw[-latex] (-1.5,0) -- (X) node [right] {$\mathbb{R}$};
-        \draw[-latex] (0, -1.5) -- (0,1.5) node [above] {$i\mathbb{R}$};
-    
-        \draw[color = DarkBlue1, thick] (0,0) circle (1cm);
-    
-        \draw node[color = BrightRed1] at (1.25, 0.6) {$z = e^{i\cdot\theta_1}$}; 
-        \draw node[color = BrightRed1] at (0.95, 1) {$z^2 = e^{i\cdot 2\theta_1}$}; 
-
-        \draw[color = BrightRed1!75, thick] (O) -- (Z1);
-        \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.5cm] {angle = X--O--Z1};
-
-        \draw[color = BrightRed1!75, thick] (O) -- (Z2);
-        \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.75cm] {angle = Z1--O--Z2};
-
-        \fill[color = BrightRed1!100] (0.21, 0.67) circle[radius=0.5pt];
-        \fill[color = BrightRed1!80] (0.073, 0.70) circle[radius=0.5pt];
-        \fill[color = BrightRed1!60] (-0.07, 0.70) circle[radius=0.5pt];
-        \fill[color = BrightRed1!40] (-0.21, 0.67) circle[radius=0.5pt];
-        \fill[color = BrightRed1!20] (-0.35, 0.61) circle[radius=0.5pt];
- 
-    \end{tikzpicture}  
+   \begin{tikzpicture}[yscale=2, xscale=2]
+      \coordinate (O) at (0,0);
+      \coordinate (X) at (1.5,0);
+      \coordinate (Z1) at (0.86, 0.5);
+      \coordinate (Z2) at (0.5, 0.86);
+   
+      \draw[-latex] (-1.5,0) -- (X) node [right] {$\mathbb{R}$};
+      \draw[-latex] (0, -1.5) -- (0,1.5) node [above] {$i\mathbb{R}$};
+   
+      \draw[color = DarkBlue1, thick] (0,0) circle (1cm);
+   
+      \draw node[color = BrightRed1] at (1.25, 0.6) {$z = e^{i\cdot\theta_1}$}; 
+      \draw node[color = BrightRed1] at (0.95, 1) {$z^2 = e^{i\cdot 2\theta_1}$}; 
+   
+      \draw[color = BrightRed1!75, thick] (O) -- (Z1);
+      \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.5cm] {angle = X--O--Z1};
+   
+      \draw[color = BrightRed1!75, thick] (O) -- (Z2);
+      \pic [color = BrightRed1, draw, thick, "$\theta_1$", angle eccentricity=1.5, angle radius=0.75cm] {angle = Z1--O--Z2};
+   
+      \fill[color = BrightRed1!100] (0.21, 0.67) circle[radius=0.5pt];
+      \fill[color = BrightRed1!80] (0.073, 0.70) circle[radius=0.5pt];
+      \fill[color = BrightRed1!60] (-0.07, 0.70) circle[radius=0.5pt];
+      \fill[color = BrightRed1!40] (-0.21, 0.67) circle[radius=0.5pt];
+      \fill[color = BrightRed1!20] (-0.35, 0.61) circle[radius=0.5pt];
+   \end{tikzpicture}  
 \end{center}
 
 \subsection*{\subsecstyle{Racines n-ièmes {:}}}
@@ -103,11 +99,11 @@ Soit \(n \in \N\), une partie importante des problèmes impliquant des nombres c
    Z^n = z
 \]
 On peut montrer que l'ensemble des solutions de ce type de problème est:
-\[
-   \mathbox{
+\customBox{width=8cm}{
+   \begin{align*}
       S = \Bigl\{ \sqrt[n]{\rho}e^{i\frac{\theta + 2k\pi}{n}}\; ; \; k \in \bigl\{0, 1, \ldots , n-1 \bigl\} \Bigl\}   
-   }
-\]
+  \end{align*}  
+}
 \underline{Cas particulier {:}}
 Si on a une racine n-ième \(Z_0\) de \(Z\) et qu'on connaît les racines n-ièmes de l'unité, alors on peut obtenir toutes les racines n-ièmes de \(Z\) grâce à:
 
@@ -118,14 +114,15 @@ Si on a une racine n-ième \(Z_0\) de \(Z\) et qu'on connaît les racines n-ièm
 \subsection*{\subsecstyle{Le nombre complexe \(j\) {:}}}
 On note \(j\) la première racine troisième de l'unité.
 Le nombre \(j\) est singulier, car il vérifie:
-\[
-    \mathbox{
-       j^2 = j^{-1} = \overline{j}
-    }
-\]
-Graphiquement, on peut observer que les images des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
+\customBox{width=4cm}{
+   \(
+      j^2 = j^{-1} = \overline{j}
+   \)
+}
 
-\chapter*{\chapterstyle{Anneau des Polynômes}} % 75% Fini
+Graphiquement, on peut observer que les affixes des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
+
+\chapter*{\chapterstyle{II --- Anneau des Polynômes}} % 75% Fini
 \addcontentsline{toc}{section}{Anneau des Polynômes}
 
 \subsection*{\subsecstyle{Définition {:}}}
@@ -139,12 +136,13 @@ Soit \(K\) un corps, et \(n \in \N\), on appelle \textbf{polynômes} à coeffici
 Soit \(P, Q, R \in K[X]\).\+
 On définit tout d'abord une propriété fondamentale appelée \textbf{degré} de \(P\) telle que deg\((P)\) est le plus grand coefficient non nul de P.
 On a alors les propriétés du degré ci-dessous:
-\multiparbox{-0.3em}{0.5}{
-    \begin{align*}
-        \deg(P + Q) &\leq \max(\deg(P), \deg(Q))\\
-        \deg(PQ) &= \deg(P) + \deg(Q)
-    \end{align*}
+\customBox{width=7cm}{
+   \begin{align*}
+      \deg(P + Q) &\leq \max(\deg(P), \deg(Q))\\
+      \deg(PQ) &= \deg(P) + \deg(Q)
+  \end{align*}
 }
+
 La valuation est définie de manière analogue comme le plus petit coefficient non nul de P.
 \subsection*{\subsecstyle{Opérations {:}}}
 On considère ci-dessous que deg\((P)\) = \(n\) et deg\((Q)\) = \(m\) et on note \(a_i, b_i\) les coefficients de \(P\) (resp. \(Q\)).\<
@@ -162,19 +160,20 @@ On ajoute aussi une opération appelée \textbf{dérivation formelle} d'un polyn
 On définit tout d'abord une \textbf{division euclidienne} de deux polynômes qui se comporte comme la division euclidienne usuelle, à la différence que la condition d'arrêt porte sur le \textbf{degré du reste} qui doit être inférieur à celui du diviseur.\<
 
 Soit \(U, V \in R[X]^2\), on peut aussi définir une relation de \textbf{divisibilité} entre deux polynômes, cette relation est \textbf{transitive et réflexive} et on a aussi:
-\[
-    \mathbox{
-        D|A \land D|B \implies D| UA + VB   
-    }
-\]
+\customBox{width=6.5cm}{
+  \(
+      D|A \land D|B \implies D| UA + VB   
+  \)
+}
+
 \subsection*{\subsecstyle{Racines et Factorisation {:}}}
 On dit que \(\alpha\) est une \textbf{racine} de \(P\) si \(P(\alpha) = 0\).\+
 On montre alors le théorème fondamental ci-dessous:
-\[
-   \mathbox{
+\customBox{width=5cm}{
+  \(
       P(\alpha) = 0 \Longleftrightarrow (X - \alpha) | P  
-   }
-\]
+   \)
+}
 \pagebreak
 
 On appelle \textbf{multiplicité d'une racine} \(\alpha\) l'entier \(m\) tel que:
@@ -194,13 +193,12 @@ Si on considère maintenant plusieurs racines \textbf{distinctes} \(a_0, a_1, \l
 \end{flalign*}
 \subsection*{\subsecstyle{Décomposition {:}}}
 On appelle décomposition d'un polynôme \(P\) une factorisation \textbf{irréductible} de \(P\), cette décomposition dépend du corps considéré, en effet si on considère \(\C[X]\), on peut montrer le \textbf{théorème fondamental de l'Algèbre} ci-dessous:
-\begin{center}
-    \textbox{
-        Tout polynôme de degré supérieur à un admet au moins une racine dans \(\C\).
-    }
-\end{center}
+\customBox{width=11cm}{
+   Tout polynôme de degré \(n\) admet \(n\) racines dans \(\C\).
+}
+
 Par suite, on peut montrer que tout les polynômes de \(\C[X]\) sont \textbf{scindés}\footnote[1]{C'est à dire que tout les polynômes irréductibles de \(\C[X]\) sont de degré 1.}.\+
-Par contre dans \(\R[X]\), il existe des polynômes de degré 2 irréductibles\footnote[2]{Ceux dont le discriminant est négatif}.\<
+Par contre dans \(\R[X]\), il existe évidemment des polynômes de degré 2 irréductibles.\<
 
 Soit \(z \in \C\), il existe une propriété très utile pour décomposer un polynôme \textbf{à coefficients réel} qui est:
 \[
@@ -221,11 +219,9 @@ De manière générale on a:
 \]
 Soit \(P \in K[X]\) un polynôme de degré \(n\), on note \(x_1, x_2, \ldots, x_{n-1}, x_n\) ses \(n\) racines et \(a_1, a_2, \ldots, a_{n-1}, a_n\) ses \(n\) coefficients.\+
 Alors, pour tout \(k \in \inticc{0}{n}\), on a le \textbf{théorème}:
-\[
-    \mathbox{
-        \sigma_k(x_1, x_2, \ldots, x_{n-1}, x_n) = (-1)^{k}\frac{a_{n-k}}{a_n}
-    }
-\]
+\customBox{width=8cm}{
+   \[\sigma_k(x_1, x_2, \ldots, x_{n-1}, x_n) = (-1)^{k}\frac{a_{n-k}}{a_n}\]
+}
 
 Ce théorème permet d'obtenir une relation \textbf{coefficient-racines}.\<
 
@@ -235,7 +231,7 @@ Ce théorème permet d'obtenir une relation \textbf{coefficient-racines}.\<
     &\ldots\ldots\ldots\ldots\ldots\ldots
 \end{cases}\)\<
 
-\chapter*{\chapterstyle{Espaces Vectoriels}} % 99% Fini
+\chapter*{\chapterstyle{II --- Espaces Vectoriels}} % 99% Fini
 \addcontentsline{toc}{section}{Espaces Vectoriels}
 
 \subsection*{\subsecstyle{Définition {:}}}
@@ -270,11 +266,12 @@ Un cas particulier est celui du \textbf{sous-espace vectoriel engendré} par \(F
 \end{center}
 
 Soit \((A_n)_{n \in \N}\) une famille de parties de \(E\), alors on a la propriété suivante:
-\[
-    \mathbox{
-        \sum_{i \in \N} \text{Vect(\(A_i\))} = \text{Vect\(\Bigl(\bigcup_{i \in \N} A_i\Bigl)\)}
-    }
-\]
+\customBox{width=5.5cm}{
+   \[
+      \sum_{i \in \N} \text{Vect(\(A_i\))} = \text{Vect\(\Bigl(\bigcup_{i \in \N} A_i\Bigl)\)}
+   \]
+}
+
 Une propriété fondamentale est que Vect(\(F\)) est un \textbf{opérateur de clôture} par combinaison linéaire, ie c'est une application \textbf{idempotente, croissante et extensive}.
 
 \subsection*{\subsecstyle{Familles libre et génératrices {:}}}
@@ -296,11 +293,9 @@ Si un vecteur \(u_k\) appartient à \(\text{Vect(\(\Fam\))}\), alors la famille 
 
 \subsection*{\subsecstyle{Bases {:}}}
 On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}, et on a le théorème suivant:
-\begin{center}
-    \textbox{
-        Tout espace vectoriel possède une base.
-    }
-\end{center}
+\customBox{width=8cm}{
+   Tout espace vectoriel possède une base.
+}
 
 Soit \(\mathscr{B} = (e_1, e_2, \ldots, e_{n-1}, e_{n})\) une base de \(E\).\+
 On appelle \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\) les coefficients de la décomposition de \(u\) dans la base \(\mathscr{B}\) et on note:
@@ -319,11 +314,12 @@ Soit \(n\) un entier naturel et \((F_n)_{n \in \N}\) une famille de \(n\) sous-e
     S_n := \sum_{n\in\N} F_n := \Biggl\{ \sum_{n\in\N} u_n \; ; \; u_n \in F_n\Biggl\}
 \]
 Soit \((u_1, u_2, \ldots, u_n)\) un n-uplet de vecteurs quelconques du produit cartésien des \(F_n\), alors la somme est dite \textbf{directe} si et seulement si:
-\[
-    \mathbox{
-        u_1 + u_2 + \ldots + u_n = 0_E \implies (u_1, u_2, \ldots, u_n) = (0, 0, \ldots, 0)
-    }
-\]
+\customBox{width=10cm}{
+   \(
+      u_1 + u_2 + \ldots + u_n = 0_E \implies (u_1, u_2, \ldots, u_n) = (0, 0, \ldots, 0)
+  \)
+}
+
 Et on la note alors:
 \[
     S_n = \bigoplus_{n\in\N} F_n
@@ -331,9 +327,12 @@ Et on la note alors:
 
 Soit \(\B_n\) des bases des \(F_n\), soit la famille \(\Fam_n = (\B_1, \B_2, \ldots, \B_n)\), \textbf{ie les bases des \(F_n\) mises ``bout à bout``}.\+
 Alors on a alors le théorème suivant:
-\begin{align*}
-        \Fam_n \text{ est une base de } S_n \Longleftrightarrow S_n = \bigoplus_{n\in\N} F_n
-\end{align*}
+\customBox{width=7.5cm}{
+   \[
+      \Fam_n \text{ est une base de } S_n \Longleftrightarrow S_n = \bigoplus_{n\in\N} F_n
+  \]
+}
+
 Si \textbf{l'espace entier} est engendré par \(S_n\) et que la somme est \textbf{directe}, alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
     
 \subsection*{\subsecstyle{Hyperplans {:}}}
@@ -343,7 +342,7 @@ Soit \(F\) un sous-espace vectoriel de \(E\).\+
     &\bullet \text{ Il existe \textbf{une droite vectorielle} \(G\) de \(E\) telle que \(F \oplus G = E\).} \\
     &\bullet \text{ \(H\) est défini par une \textbf{équation linéaire homogène} non triviale.}
 \end{align*}
-Les hyperplans donc les \textbf{sous-espaces propres maximaux} de \(E\). \<
+Les hyperplans donc les \textbf{sous-espaces propres maximaux} de \(E\).
 
 \begin{center}
     \textit{
@@ -351,7 +350,7 @@ Les hyperplans donc les \textbf{sous-espaces propres maximaux} de \(E\). \<
     }
 \end{center}
 
-\chapter*{\chapterstyle{Applications Linéaires}} % Fini 99%
+\chapter*{\chapterstyle{II --- Applications Linéaires}} % Fini 99%
 \addcontentsline{toc}{section}{Applications linéaires}
 
 Soit deux \(\K\)-espaces vectoriels \(E\) et \(F\), et \(f : E \longrightarrow F \).
@@ -360,15 +359,14 @@ Soit deux \(\K\)-espaces vectoriels \(E\) et \(F\), et \(f : E \longrightarrow F
 \addcontentsline{toc}{subsection}{Définition}
 
 On dit que \(f\) est une \textbf{application linéaire} ou \textbf{morphisme d'espaces vectoriels} si et seulement si pour tout couple de vecteurs \(u, v \in E\) et pour tout scalaire \(\lambda\) elle vérifie: 
-
-\[
-   \mathbox{
+\customBox{width=8cm}{
+   \[
       \begin{aligned}
-          &\bullet \textbf{ Additivité : } f(u + v) = f(u) + f(v)\\
-          &\bullet \textbf{ Homogénéité : } f(\lambda u) = \lambda f(u)\\
-      \end{aligned}
-   }
-\]
+         &\bullet \textbf{ Additivité : } f(u + v) = f(u) + f(v)\\
+         &\bullet \textbf{ Homogénéité : } f(\lambda u) = \lambda f(u)\\
+     \end{aligned}
+  \]
+}
 On note alors \(\mathcal{L}(E, F)\) l'ensemble des applications linéaires de \(E\) vers \(F\).\<
 
 On appelle \textbf{isomorphisme} tout application linéaire bijective.\+
@@ -401,14 +399,16 @@ On appelle \textbf{noyau} d'une application linéaire tout \textbf{les antécéd
 On voit directement que \(\text{Im}(f)\) est un \textbf{sous-espace vectoriel} de l'ensemble d'arrivée et que \(\text{Ker}(f)\) est un \textbf{sous-espace vectoriel} de l'ensemble de départ.\<
 
 En particulier si \(E = \text{Vect}(e_1, e_2, \ldots, e_n)\) pour une certaine famille \((e_i)_{i\in \N}\), alors on a\footnote[5]{Idem.}:
-\[
-      \mathbox{\text{Im}(f) = f(\text{Vect}(e_1, e_2, \ldots, e_n)) = \text{Vect}(f(e_1), f(e_2), \ldots, f(e_n))}
-\]
+\customBox{width=11cm}{
+   \(
+      \text{Im}(f) = f(\text{Vect}(e_1, e_2, \ldots, e_n)) = \text{Vect}(f(e_1), f(e_2), \ldots, f(e_n))
+  \)
+}
 
 Une propriété fondamentale du noyau\footnote[6]{De manière générale, cette propriété est vraie pour le noyau de tout morphisme de groupe, on peut alors voir la ``taille'' du noyau comme \textbf{une mesure de la non-injectivité} du morphisme.} est la suivante:
-\begin{center}
-   \textbox{Une application linéaire est injective si et seulement si son noyau est réduit au vecteur nul.}   
-\end{center}
+\customBox{width=15.5cm}{
+   Une application linéaire est injective si et seulement si son noyau est réduit au vecteur nul.
+}
 \pagebreak
 
 \subsection*{\subsecstyle{Caractérisations par les familles{:}}}
@@ -419,7 +419,6 @@ Soit \(\mathscr{F} = (e_i)_{i \in \N}\) une famille de \(E\) et un endomorphisme
    \item L'image d'une famille libre est libre \(\Longleftrightarrow f\) est injective.
    \item L'image d'une famille génératice est génératice \(\Longleftrightarrow f\) est surjective.      
 \end{itemize}
-Informellement, dans chaque cas, \(f\) \textbf{préserve} le caractère libre, générateur ou les deux et alors c'est une bijection.
 
 \subsection*{\subsecstyle{Endomorphismes remarquables{:}}}
 \addcontentsline{toc}{subsection}{Endomorphismes remarquables}
@@ -452,7 +451,7 @@ Graphiquement, pour \(\varphi\) le projecteur de direction \(F\) sur \(G\):
       \draw[color=BrightRed1, dashed] (3/14, 6/7) -- (1.5, 1.5);
 
       \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (1.5,1.5) node[above left] {$u$};
-   \end{tikzpicture}
+   \end{tikzpicture} 
 \end{center}
 
 \subsection*{\subsecstyle{Applications multilinéaires{:}}}
@@ -472,10 +471,10 @@ Une telle application est dite:
    \item  \textbf{Altérnée} si elle s'annule à chaque fois qu'on l'évalue sur un k-uplet contenant deux vecteurs identiques.\footnote[3]{\underline{Exemple:} \(f(e_1, e_1) = 0\)}
 \end{itemize}
 
-\chapter*{\chapterstyle{Théorie de la dimension}} % Fini 99%
+\chapter*{\chapterstyle{II --- Théorie de la dimension}} % Fini 99%
 \addcontentsline{toc}{section}{Théorie de la dimension}
 
-Dans ce chapitre, on considérera un espace vectoriel \(E\) qui admet une famille génératrice \textbf{finie}. On dira alors que \(E\) est de \textbf{dimension finie}.\<
+Dans ce chapitre, on considérera un espace vectoriel \(E\) qui admet une famille génératrice \textbf{finie}. On dira alors que \(E\) est de \textbf{dimension finie}.
 
 \subsection*{\subsecstyle{Théorème de la base incomplète{:}}}
 \addcontentsline{toc}{subsection}{Théorème de la base incomplète}
@@ -491,9 +490,9 @@ Ce théorème permet alors d'assurer \textbf{l'existence} d'une base d'une espac
 \addcontentsline{toc}{subsection}{Théorème de la dimension}
 
 Il est évident que le cardinal d'une partie libre est toujours inférieur au cardinal d'une partie génératrice \footnote[1]{Aussi appellé \textbf{lemme de Steiniz}.}, de cette considération, on peut alors montrer \textbf{le théorème de la dimension}:
-\begin{center}
-   \textbox{Toutes les bases d'un espace vectoriel de dimensions fini ont \textbf{même cardinal}.}
-\end{center}
+\customBox{width=13cm}{
+   Toutes les bases d'un espace vectoriel de dimensions fini ont \textbf{même cardinal}.
+}
 Ce théorème permet alors d'assurer \textbf{l'unicité} du cardinal des bases d'une espace vectoriel de dimension finie.
 
 \subsection*{\subsecstyle{Définition de la dimension{:}}}
@@ -514,9 +513,9 @@ On peut alors en déduire la dimension des espaces vectoriels communs:
 
 Considérons maintenant \(E\) un espace vectoriel de dimension finie \(n\) est \(\Fam = (e_i)_{i \in \N}\) une famille de \(n\) vecteurs de \(E\).\+
 Alors par déduction immédiate\footnote[2]{En effet par exemple sachant qu'elle est libre et possède \(n\) vecteurs, si ce n'était pas une base, on pourrait rajouter un/des vecteur pour obtenir une base, et donc dim\((E) \neq n \implies \bot\).} de la définition de dimension, on a:
-\begin{center}
-   \textbox{\(\Fam\) est libre \(\Longleftrightarrow\) \(\Fam\) est génératrice \(\Longleftrightarrow\) \(\Fam\) est une base}
-\end{center}
+\customBox{width=11cm}{
+   \(\Fam\) est libre \(\Longleftrightarrow\) \(\Fam\) est génératrice \(\Longleftrightarrow\) \(\Fam\) est une base.
+}
 En effet, intuitivement on comprends que si une famille possède \textbf{le bon nombre de vecteurs}, alors il suffit qu'elle soit libre (ou génératrice) pour que ce soit une base.\<
 
 Soient \(F, G\) deux sous-espaces de \(E\). La dimension permet aussi de prouver des \textbf{égalités} d'espaces vectoriels, gràce à la propriété:
@@ -534,17 +533,21 @@ Aussi, on peut alors \textbf{caractériser} le fait que \(F\) et \(G\) soient \t
    \end{cases}
 \]
 Enfin on peut calculer \textbf{la dimension d'une somme}\footnote[1]{Le cas d'égalité est intéressant car il intervient pour des sous-espaces d'intersection nulle, et alors la dimension de la somme est simplement égale à la somme des dimensions.} avec la \textbf{formule de Grassmann}:
-\[
-   \mathbox{\text{dim}(F + G) = \text{dim}(F) + \text{dim}(G) - \text{dim}(F \cap G)}   
-\]
+\customBox{width=8cm}{
+   \(
+      \text{dim}(F + G) = \text{dim}(F) + \text{dim}(G) - \text{dim}(F \cap G)
+   \)
+}
+
 
 \subsection*{\subsecstyle{Rang {:}}}
 \addcontentsline{toc}{subsection}{Rang}
 
 Soit \(E\) un espace vectoriel de dimension finie et \(\Fam = (e_i)_{i \in \N}\) une famille de vecteurs de cet espace, alors on appelle \textbf{rang} de \(\Fam\) l'entier:
-\[
-   \mathbox{\text{rg}(\Fam) = \text{dim}(\text{Vect}(\Fam))}   
-\]
+\customBox{width=5cm}{
+   \(\text{rg}(\Fam) = \text{dim}(\text{Vect}(\Fam))\)
+}
+
 Informellement, le rang est simplement \textbf{la dimension de l'espace engendré par la famille}.\<
 
 On étends cette définition à celle du \textbf{rang d'une application linéaire}, qu'on note \(\text{rg}(f)\), qui correspond à \textbf{la dimension de son image}, et on définit ainsi une application linéaire \textbf{de rang fini}.
@@ -553,9 +556,12 @@ On étends cette définition à celle du \textbf{rang d'une application linéair
 \addcontentsline{toc}{subsection}{Applications linéaires en dimension finie}
 
 Soit \(f \in \mathcal{L}(E, F)\) une telle application, alors on peut montrer le \textbf{théorème du rang}:
-\[
-   \mathbox{\text{dim}(E) = \text{rg}(f) + \text{dim}(\text{Ker}(f))}
-\]
+\customBox{width=7cm}{
+   \(
+      \text{dim}(E) = \text{rg}(f) + \text{dim}(\text{Ker}(f))
+   \)
+}
+
 Ce thèorème permet alors de caractériser l'injectivité et la surjectivité d'une application linéaire par:
 \begin{itemize}
    \item \(f\) est injective si et seulement si \(\text{rg}(f) = \text{dim}(E)\)
@@ -563,12 +569,12 @@ Ce thèorème permet alors de caractériser l'injectivité et la surjectivité d
 \end{itemize}
 
 En particulier, si \(E\) et \(F\) sont deux espaces vectoriels \textbf{de même dimension} alors:
-\begin{center}
-   \textbox{\(f\) est injective \(\Longleftrightarrow\) \(f\) est surjective \(\Longleftrightarrow\) \(f\) est bijective}
-\end{center}
+\customBox{width=10cm}{
+   \(f\) est injective \(\Longleftrightarrow\) \(f\) est surjective \(\Longleftrightarrow\) \(f\) est bijective
+}
 On caractérise ainsi \textbf{les isomorphismes en dimension finie}\footnote[2]{Toutes ces propriétés n'étant que de simples applications du théorème du rang.}.
 
-\chapter*{\chapterstyle{Espace des matrices}} % Fini 99%
+\chapter*{\chapterstyle{II --- Espace des matrices}} % Fini 99%
 \addcontentsline{toc}{section}{Espace des matrices}
 
 On appelle \textbf{matrice} à \(n\) lignes et \(p\) colonnes à coefficients dans \(\K\) toute application \(M : \inticc{1}{n} \times \inticc{1}{p} \longrightarrow \K\), en d'autres termes \textbf{tout famille de scalaires indexée par }\(\inticc{1}{n} \times \inticc{1}{p}\).\<
@@ -592,47 +598,50 @@ Pour ces deux lois l'ensemble \((\mathcal{M}_{n, p}(\K), +, \cdot)\) est alors m
 
 Soit \(A = (a_{i, j}) \in \mathcal{M}_{n, m}(\K)\) et \(B = (b_{k, j}) \in \mathcal{M}_{m, p}(\K)\).\+
 Alors on définit\footnote[1]{Il faut que le nombre de colonnes de la première soit égal au nombre de lignes de la seconde pour que les matrices soient dites \textbf{compatibles}.}  la matrice \(C := AB = (c_{i,j})\) comme étant la matrice telle que:
-\[
-   \mathbox{c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}}   
-\]
+\customBox{width=3.5cm}{
+   \[
+      c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}
+   \]
+}
+
 En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui se comprends visuellement par:\+
 \begin{center}
    \begin{tikzpicture}[    
       every left delimiter/.style={xshift=.55em},
       every right delimiter/.style={xshift=-.55em}
-   ]
+    ]
       \matrix[
-         matrix of math nodes, ampersand replacement=\&,
-         left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
+        matrix of math nodes, ampersand replacement=\&,
+        left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
       ](A){
-         a_{1, 1} \& a_{1, 2}\\ 
-         a_{2, 1} \& a_{2, 2}\\ 
-         a_{3, 1} \& a_{3, 2}\\  
+        a_{1, 1} \& a_{1, 2}\\ 
+        a_{2, 1} \& a_{2, 2}\\ 
+        a_{3, 1} \& a_{3, 2}\\  
       };
       \draw[color=BrightBlue1, line width=0.5mm] (A-3-1.south west) rectangle (A-3-2.north east);
       \draw node at (1.5, 0) {\(\times\)};
-
+  
       \matrix[
-         matrix of math nodes, ampersand replacement=\&,
-         left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
+        matrix of math nodes, ampersand replacement=\&,
+        left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
       ] (B) at (3.4, 0) {
-         b_{1, 1} \& b_{1, 2} \& b_{1, 3}\\ 
-         b_{2, 1} \& b_{2, 2} \& b_{2, 3}\\ 
+        b_{1, 1} \& b_{1, 2} \& b_{1, 3}\\ 
+        b_{2, 1} \& b_{2, 2} \& b_{2, 3}\\ 
       };
       \draw[color=BrightBlue1, line width=0.5mm] (B-1-1.north west) rectangle (B-2-1.south east);
-
+  
       \draw node at (5.25, 0) {\(=\)};
-   
+  
       \matrix[
-         matrix of math nodes, ampersand replacement=\&,
-         left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
+        matrix of math nodes, ampersand replacement=\&,
+        left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
       ] (C) at (7.1, 0) {
-         c_{1, 1} \& c_{1, 2} \& c_{1, 3}\\ 
-         c_{2, 1} \& c_{2, 2} \& c_{2, 3}\\ 
-         c_{3, 1} \& c_{3, 2} \& c_{3, 3}\\
+        c_{1, 1} \& c_{1, 2} \& c_{1, 3}\\ 
+        c_{2, 1} \& c_{2, 2} \& c_{2, 3}\\ 
+        c_{3, 1} \& c_{3, 2} \& c_{3, 3}\\
       };
       \draw[color=BrightRed1, line width=0.5mm] (C-3-1.north west) rectangle (C-3-1.south east);
-   \end{tikzpicture}   
+    \end{tikzpicture}
 \end{center}
 Le coefficient à \color{BrightRed1} la troisième ligne, première colonne \color{black} est obtenu en multipliant \color{BrightBlue1} la troisième ligne par la première colonne.\color{black}\<
 
@@ -664,9 +673,12 @@ Considérons maintenant des matrices \textbf{carrées} de même taille, le produ
 \addcontentsline{toc}{subsection}{Transposition}
 
 Soit \(M = (x_{i,j})\in \mathcal{M}_{n, m}(\K)\), on définit maintenant \textbf{l'opération de transposition} d'une matrice notée \(M^\mathsf{T}\), c'est \textbf{une application linéaire involutive} définie par:
-\[
-   \mathbox{M^\mathsf{T} = (x_{j,i})}   
-\]
+\customBox{width=3cm}{
+   \(
+      M^\mathsf{T} = (x_{j,i})
+   \)
+}
+
 Intuitivement, cette application transforme \textbf{chaque ligne en colonne et invérsement}. Par exemple:
 \[
    \begin{pmatrix}
@@ -680,11 +692,12 @@ Intuitivement, cette application transforme \textbf{chaque ligne en colonne et i
    \end{pmatrix}
 \]
 Il faut aussi noter son comportement par rapport au produit matriciel de deux matrices \(A, B\), précisément on a:
-\[
-   \mathbox{
+\customBox{width=3.5cm}{
+   \(
       (AB)^\top = B^\top A^\top
-   }
-\]
+   \)
+}
+
 
 \subsection*{\subsecstyle{Trace{:}}}
 \addcontentsline{toc}{subsection}{Trace}
@@ -694,17 +707,22 @@ On définit aussi une autre application linéaire appellée \textbf{trace d'une 
    \text{tr}(A) := \sum_{i=1}^{n} a_{i, i}   
 \]
 Elle est donc linéaire mais on a aussi:
-\[
-   \text{tr}(AB) = \text{tr}(BA)   
-\]
+\customBox{width=3.5cm}{
+   \(
+      \text{tr}(AB) = \text{tr}(BA)  
+   \)
+}
+
 
 \subsection*{\subsecstyle{Matrice d'une famille de vecteurs{:}}}
 \addcontentsline{toc}{subsection}{Matrice d'une famille de vecteurs}
 
 Soit \(\mathscr{F} = (e_i)_{i\in\N}\), alors on peut définir \textbf{la matrice de la famille} dans une base \(\mathscr{B}\) par:
-\[
-   \mathbox{\text{Mat}_{\mathscr{B}}(\mathscr{F}) = ([e_1]_{\mathscr{B}}, [e_2]_{\mathscr{B}}, \ldots, [e_n]_{\mathscr{B}})}
-\]
+\customBox{width=7cm}{
+   \(
+      \text{Mat}_{\mathscr{B}}(\mathscr{F}) = ([e_1]_{\mathscr{B}}, [e_2]_{\mathscr{B}}, \ldots, [e_n]_{\mathscr{B}})  
+   \)
+}
 
 \begin{center}
    \textit{
@@ -720,9 +738,11 @@ Soit \(\mathscr{F} = (e_i)_{i\in\N}\), alors on peut définir \textbf{la matrice
 Soit \(E, F\) deux espaces vectoriels (de bases \(\mathscr{B} = (e_i)_{i \in \N}\) et \(\mathscr{C}=(f_i)_{i \in \N}\)) et \(f \in \mathcal{L}(E, F)\).\<
 
 Alors on peut associer à l'application \(f\) \textbf{une unique matrice} dans les bases \(\mathscr{B, C}\), qu'on note alors Mat\(_{\mathscr{B, C}}(f)\) qu'on construit comme suit:
-\[
-   \mathbox{\text{Mat}_{\mathscr{B, C}}(f) = ([f(e_1)]_{\mathscr{C}}, [f(e_2)]_{\mathscr{C}}, \ldots, [f(e_n)]_{\mathscr{C}})}   
-\]
+\customBox{width=9cm}{
+   \(
+      \text{Mat}_{\mathscr{B, C}}(f) = ([f(e_1)]_{\mathscr{C}}, [f(e_2)]_{\mathscr{C}}, \ldots, [f(e_n)]_{\mathscr{C}})
+   \)
+}
 \begin{center}
    \textit{
       La matrice d'une application linéaire est donc constituée des coordonées dans la base d'arrivée de l'image des vecteurs de la base de départ (en colonnes).
@@ -742,59 +762,61 @@ Puis on calcule les coordonées de ces vecteurs dans la base d'arrivée, et on l
    \begin{tikzpicture}[      
       every left delimiter/.style={xshift=.55em},
       every right delimiter/.style={xshift=-.55em}
-   ]
-   \draw node[color = BrightBlue1] at (-1.05, 1.75) {$f(e_1)$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (-1.05, 1.5) -- (-1.05, 1.1);
-
-   \draw node[color = BrightBlue1] at (0, 1.75) {$f(e_2)$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (0, 1.5) -- (0, 1.1);
-
-   \draw node[color = BrightBlue1] at (1.05, 1.75) {$f(e_3)$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.05, 1.5) -- (1.05, 1.1);
-
-   \draw node[color = BrightBlue1] at (2.3, 0.85) {$f_1$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, 0.85) -- (2.1, 0.85);
-
-   \draw node[color = BrightBlue1] at (2.3, 0) {$f_2$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, 0) -- (2.1, 0);
-
-   \draw node[color = BrightBlue1] at (2.3, -0.85) {$f_3$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, -0.85) -- (2.1, -0.85);
-
-   \matrix[
+    ]
+    \draw node[color = BrightBlue1] at (-1.05, 1.75) {$f(e_1)$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (-1.05, 1.5) -- (-1.05, 1.1);
+  
+    \draw node[color = BrightBlue1] at (0, 1.75) {$f(e_2)$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (0, 1.5) -- (0, 1.1);
+  
+    \draw node[color = BrightBlue1] at (1.05, 1.75) {$f(e_3)$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.05, 1.5) -- (1.05, 1.1);
+  
+    \draw node[color = BrightBlue1] at (2.3, 0.85) {$f_1$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, 0.85) -- (2.1, 0.85);
+  
+    \draw node[color = BrightBlue1] at (2.3, 0) {$f_2$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, 0) -- (2.1, 0);
+  
+    \draw node[color = BrightBlue1] at (2.3, -0.85) {$f_3$};
+    \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.7, -0.85) -- (2.1, -0.85);
+  
+    \matrix[
       matrix of math nodes, ampersand replacement=\&,
       left delimiter=(, right delimiter=), inner ysep=4pt, column sep=0.8em, row sep = 0.8em,
       nodes={
-         inner sep=0.5em,outer sep=0,text width=1.2em,align=center
+        inner sep=0.5em,outer sep=0,text width=1.2em,align=center
       }
-   ]{
+    ]{
       3 \& 0 \& 0\\ 
       3 \& 0 \& 0\\ 
       -1 \& -1 \& -2\\
-   };
-   \end{tikzpicture}
+    };
+    \end{tikzpicture}
 \end{center}
+
 
 Cette construction implique qu'il suffit donc, pour une base donnée, de \textbf{calculer les images des vecteurs de cette base}, puis leur coordonées pour décrire la transformation.\<
 
-Si \(E\) et \(F\) sont de dimensions respectives \(n\) et \(p\), alors on peut construire \textbf{un isomorphisme fondamental}:
-\[
-   \mathbox{
-      \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \xlongrightarrow{\sim} \mathcal{M}_{n, p}(\K)  
-   }
-\]
-On peut alors considèrer, que du point de vue de l'algèbre linéaire:
+Si \(E\) et \(F\) sont de dimensions respectives \(n\) et \(p\), on peut alors construire \textbf{un isomorphisme fondamental}:
+\customBox{width=7cm}{
+   \(
+      \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \xlongrightarrow{\sim} \mathcal{M}_{n, p}(\K) 
+   \)
+}
+
 \begin{center}
-   \textit{L'espace des application linéaires et l'espace des matrices sont identiques\footnote[1]{En dimension finie}.}
+   \textit{On peut alors considèrer, que du point de vue de l'algèbre linéaire, l'espace des application linéaires et l'espace des matrices sont identiques\footnote[1]{En dimension finie}.}
 \end{center}
 
 Dans la suite, pour plus de lisibilité, on considèrera un endomorphisme \(f\) de \(\R^2\) de matrice \(M\) dans la base canonique \(\mathscr{C}\).
 Alors, appliquer une transformation linéaire à un vecteur \(u \in E\) revient à \textbf{multiplier ce vecteur par la matrice associée}\footnote[2]{Il suffit de partir du produit matriciel et d'utiliser la définition de \(M\) comme étant la matrice de \(f\) et les règles de calculs sur les vecteurs colonnes.}, ie on a:
-\[
-   \mathbox{
+\customBox{width=4cm}{
+   \(
       [f(u)]_{\mathscr{C}} = M \times [u]_{\mathscr{C}}
-   }
-\]
+   \)
+}
+
 \underline{Exemple:} Soit \(f\) de matrice 
 \(M = \begin{pmatrix}
    1 & 2\\
@@ -821,9 +843,12 @@ Enfin l'isomorphisme entre ces deux espaces nous permet de définir \textbf{le n
 \addcontentsline{toc}{subsection}{Matrices inversibles}
 
 Soit \(M \in \mathcal{M}_n(\K)\) une matrice carrée, alors on dit que \(M\) est \textbf{inversible} si il existe un inverse pour la loi de multiplication des matrices, ie si il existe une matrice \(A^{-1}\) telle que:
-\[
-   \mathbox{AA^{-1}=Id_n}   
-\]
+\customBox{width=3.5cm}{
+   \(
+      AA^{-1}=\text{Id}_n
+   \)
+}
+
 En particulier, si on considère l'application linéaire associée à \(M\), alors:
 \begin{center}
    \(M\) inversible \(\Longleftrightarrow\) \(f\) est inversible
@@ -846,30 +871,32 @@ Visuellement, on comprends directement l'idée d'automorphisme d'un espace, son 
       \draw[-latex, color=BrightBlue1, thick] (0,0) -- (0,1.5) node[below left] {$y$};
       \draw[-latex, color=BrightBlue1, thick] (0,0) -- (1.5,0) node[below left] {$x$};
       \draw[-latex, color=BrightRed1, thick] (0,0) -- (1,1.2) node[below right] {$u$};
-   
+  
       \draw[-latex] (2,0) -- (3,0);
       \draw[] (2,-0.05) -- (2,0.05);
       \draw[] node[] at (2.5,0.3){$\varphi$};
-   
+  
       \draw[step=0.45cm, color=black!20, dashed, shift={(5.5 cm, 0)}, rotate=45] (-1.75,-1.75) grid (1.75,1.75);
       \draw[-latex, color=BrightBlue1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (0,1.5) node[below left] {$\varphi(y)$};
       \draw[-latex, color=BrightBlue1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (1.5,0) node[below right] {$\varphi(x)$};
       \draw[-latex, color=BrightRed1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (1,1.2) node[below right] {$\varphi(u)$};
-   
+  
       \draw[-latex] (8,0) -- (9,0);
       \draw[] (8,-0.05) -- (8,0.05);
       \draw[] node[] at (8.65,0.375){$\varphi^{-1}$};
-   
+  
       \draw[step=0.45cm, color=black!20, dashed, shift={(11 cm, 0)}] (-1.75,-1.75) grid (1.75,1.75);
       \draw[-latex, color=BrightBlue1, thick, shift={(11 cm, 0)}] (0,0) -- (0,1.5) node[below left] {$y$};
       \draw[-latex, color=BrightBlue1, thick, shift={(11 cm, 0)}] (0,0) -- (1.5,0) node[below left] {$x$};
       \draw[-latex, color=BrightRed1, thick, shift={(11 cm, 0)}] (0,0) -- (1,1.2) node[below right] {$u$};
-   \end{tikzpicture}   
+    \end{tikzpicture}   
 \end{center}
 Enfin, on peut montrer que \textbf{la transposition} est compatible avec l'inverse, ie on a:
-\[
-   \mathbox{(M^{-1})^{\top} = (M^{\top})^{-1}}   
-\]
+\customBox{width=4cm}{
+   \(
+      (M^{-1})^{\top} = (M^{\top})^{-1} 
+   \)
+}  
 Montrer qu'une matrice est inversible consiste simplement à calculer \textbf{le rang de la matrice}, comme expliqué dans la partie suivante.\+ 
 Par ailleurs, calculer l'inverse peut se réaliser de plusieurs manières, la méthode la plus générale consiste à résoudre l'équation d'inconnue \(X\) de la forme:
 \[
@@ -877,6 +904,7 @@ Par ailleurs, calculer l'inverse peut se réaliser de plusieurs manières, la m�
 \]
 
 On définira aussi une application fondamentale nommée \textbf{déterminant} qui sera définie dans le prochain chapitre et qui caractérise exactement toutes les matrices inversibles et donne une autre manière de calculer l'inverse.
+\pagebreak
 
 \subsection*{\subsecstyle{Rang d'une matrice{:}}}
 \addcontentsline{toc}{subsection}{Rang d'une matrice}
@@ -900,9 +928,11 @@ On remarque donc que le rang nous donne \textbf{énormément d'informations} sur
 
 On considère un espace vectoriel \(E\) et deux bases \(\Fam=(e_1, \ldots, e_n), \Fam'=({e}_1', \ldots, {e}_n')\) de cet espace.\+
 On appelle \textbf{matrice de passage} de \(\Fam\) à \(\Fam'\) la matrice \(P\) qu'on construit comme suit:
-\[
-   \mathbox{\text{Pass}(\Fam, \Fam') = ([e_1']_{\Fam}, [e_2']_{\Fam}, \ldots, [e_n']_{\Fam})}
-\]
+\customBox{width=7cm}{
+   \(
+      \text{Pass}(\Fam, \Fam') = ([e_1']_{\Fam}, [e_2']_{\Fam}, \ldots, [e_n']_{\Fam}) 
+   \)
+} 
 \begin{center}
    \textit{
       La matrice de passage est donc constituée des coordonées dans l'ancienne base des vecteurs de la nouvelle base(en colonnes).
@@ -950,22 +980,26 @@ On range ensuite ces coordonées en colonnes dans la matrice, et on obtient:
 \end{center}
 
 Une matrice de passage est alors \textbf{nécessairement inversible}\footnote[1]{Car son rang est égal à sa dimension par construction.}, et si on note \(U = [u]_{\Fam}\) et \(U' = [u]_{\Fam'}\)on a alors le théorème fondamental suivant:
-\[
-   \mathbox{U' = P^{-1}U}
-\]
+\customBox{width=3cm}{
+   \(
+      U' = P^{-1}U
+   \)
+} 
+
 \begin{center}
    \textit{La matrice de passage nous permet alors de représenter un même vecteur\+ 
    dans une base différente.}
 \end{center}
 Considérons maintenant un endomorphisme \(f\) de matrices \(M = \text{Mat}(\Fam, f), M' = \text{Mat}(\Fam', f)\) dans les deux bases respectivement, alors on a:
-\[
-   \mathbox{M' = P^{-1}MP}
-\]
+\customBox{width=3.5cm}{
+   \(
+      M' = P^{-1}MP
+   \)
+}
 \begin{center}
    \textit{La matrice de passage nous permet alors de représenter un même endomorphisme\+ 
    dans une base différente.}
 \end{center}
-
 \pagebreak
 
 \subsection*{\subsecstyle{Matrices semblables{:}}}
@@ -973,13 +1007,16 @@ Considérons maintenant un endomorphisme \(f\) de matrices \(M = \text{Mat}(\Fam
 
 On dira alors que deux matrices \(A, B \in \mathcal{M}_n(\K)\) sont \textbf{semblables} si il existe une matrice de passage telle que la relation ci-dessus soit vérifiée.
 Ce qui signifie exactement que:
-\begin{center}
-   \textit{Deux matrices semblables représentent \textbf{la même transformation géométrique} dans des bases différentes.}
-\end{center}
+\customBox{width=14cm}{
+   \textit{Deux matrices semblables représentent \textbf{la même transformation géométrique} \+
+   dans des bases différentes.}
+}
+
 En particulier on appelle alors \textbf{invariants de similitude} les propriétés qui \textbf{ne dépendent pas du choix de la base}, on peut alors montrer que:
-\begin{center}
-   \textit{Le rang et la trace d'une matrice (et donc d'une application linéaire) sont des invariants de similitude.}
-\end{center}
+\customBox{width=13cm}{
+   Le rang et la trace d'une matrice sont des invariants de similitude.
+}
+   
 Un cas remarquable de matrices semblables est celui de la transposée, en effet dans un corps, une matrice est sa transposée sont semblables.
 
 \subsection*{\subsecstyle{Matrices remarquables{:}}}
@@ -1070,7 +1107,7 @@ Puis on a deux types de matrices qui sont liées à la symétrie des coefficient
    \end{subfigure}
 \end{figure}
 
-Enfin on a \textbf{les matrices élémentaires} qui sont obtenus par \textbf{opérations élémentaires}\footnote[2]{Voir la partie suivante.} sur la matrice identité:
+On a aussi \textbf{les matrices élémentaires} qui sont obtenus par \textbf{opérations élémentaires}\footnote[2]{Voir la partie suivante.} sur la matrice identité:
 \begin{figure}[h]
    \color{DarkBlue1}
    \centering
@@ -1118,8 +1155,26 @@ Enfin on a \textbf{les matrices élémentaires} qui sont obtenus par \textbf{op�
    \end{subfigure}
 \end{figure}
 
-\pagebreak
+Enfin, on a \textbf{les matrices orthogonales} qui sont des matrices telles que leur inverse soit \textbf{leur transposée}, ce sont par exemple les matrices de rotation:
+\begin{figure}[H]
+   \color{DarkBlue1}
+   \centering   
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \matrix[
+            matrix of math nodes, ampersand replacement=\&,
+            left delimiter=(, right delimiter=)
+         ]{
+            \cos(\theta) \& -\sin(\theta)\\ 
+            \sin(\theta) \& \cos(\theta) \\
+         };
+      \end{tikzpicture}
+      \caption*{\color{DarkBlue1}Matrice de rotation}
+   \end{subfigure}
+\end{figure}
 
+\pagebreak
 \subsection*{\subsecstyle{Echelonnements \& Calculs{:}}}
 \addcontentsline{toc}{subsection}{Echelonnements et calculs}
 
@@ -1200,7 +1255,7 @@ Soit \(M = (C_1, C_2, C_3) = \begin{pmatrix} 1 & 2 & 1\\ 3 & 4 & 2\\ 5 & 6 & 3\e
 
 \end{itemize}\<
 
-\chapter*{\chapterstyle{Déterminant}} % Fini 99%
+\chapter*{\chapterstyle{II --- Déterminant}} % Fini 99%
 \addcontentsline{toc}{section}{Déterminant}
 
 Soit \(A = (a_{i,j})\) une matrice carrée de taille \(n\), nous cherchons à définir une application \(\phi: \mathcal{M}_n(\K) \longrightarrow \R\) telle que:
@@ -1236,13 +1291,13 @@ On peut montrer que cette application est \textbf{une forme multilinéaire alter
    \item Si deux colonnes sont égales ou qu'une des colonnes est nulle, le déterminant est nul.
 \end{itemize}
 En outre la multilinéarité sur les colonnes ou lignes implique:
-\[
-   \mathbox{|\lambda A| = \lambda^n |A|}   
-\]
+\customBox{width=3cm}{
+   \(|\lambda A| = \lambda^n |A|\)
+}
 Et on peut aussi montrer que le déterminant est multiplicatif, ie:
-\[
-   \mathbox{|A \times B| = |A|\times|B|}   
-\]
+\customBox{width=4cm}{
+   \(|A \times B| = |A|\times|B|\)
+}
 
 Si on considère une famille \(\Fam = (e_1 , \ldots, e_n)\) de vecteurs de coordonées \((C_1, \ldots, C_n)\) dans une certaine base \(\mathscr{B}\), alors on peut définir le déterminant \textbf{d'une famille de vecteurs} dans cette base par:
 \[
@@ -1253,11 +1308,11 @@ Si on considère une famille \(\Fam = (e_1 , \ldots, e_n)\) de vecteurs de coord
 \end{center}
 
 Soit deux bases \(\mathscr{B, B'}\), on pourrait alors considèrer \textbf{l'effet d'un changement de base} sur un tel déterminant et on a alors:
-\[
-   \mathbox{
+\customBox{width=5cm}{
+   \(
       |\Fam|_{\mathscr{B'}} = |\Fam|_{\mathscr{B}} \times |\mathscr{B'}|_{\mathscr{B}}
-   }
-\]
+   \)
+}
 
 \subsection*{\subsecstyle{Cofacteurs{:}}}
 \addcontentsline{toc}{subsection}{Cofacteurs}
@@ -1267,9 +1322,11 @@ Reprenons en simplifant la définition donnée plus haut du développement selon
    |A| := a_{1, 1}|A_{1, 1}| - a_{1, 2}|A_{1, 2}| + \ldots + (-1)^{n+1}a_{1, n}|A_{1, n}| = \sum_{j=1}^{n}a_{1, j}(-1)^{j+1}|A_{1, j}|
 \]
 On appelle alors \textbf{cofacteur} de l'élément \(a_{i, j}\) le scalaire:
-\[
-   \mathbox{\text{cof}(a_{i, j}) : =(-1)^{j+i}|A_{i, j}|}   
-\]
+\customBox{width=5cm}{
+   \(
+      \text{cof}(a_{i, j}) := (-1)^{j+i}|A_{i, j}|
+   \)
+}   
 Intuitivement en reprenant la visualisation exposée plus haut:
 \[
    a \begin{vmatrix} \square & \square & \square \\ \square & \color{BrightRed1}e & \color{BrightRed1}f \\ \square & \color{BrightRed1}h & \color{BrightRed1}i \end{vmatrix} - 
@@ -1297,9 +1354,11 @@ L'intérêt principal de la comatrice est de calculer l'inverse de matrices inve
    A \times \text{com}(A)^{\top} = |A|I_n   
 \]
 Et en particulier si le déterminant est non-nul (donc si \(A\) est inversible), on a:
-\[
-   \mathbox{A^{-1} = \frac{1}{|A|}\text{com}(A)^{\top}}   
-\]
+\customBox{width=4.5cm}{
+   \[
+      A^{-1} = \frac{1}{|A|}\text{com}(A)^{\top}  
+   \]
+}   
 Cette formule est néanmoins particulièrement inexploitable pour \(n > 3\) du fait de la quantité de calcul à réaliser.
 
 \subsection*{\subsecstyle{Formules de Cramer{:}}}
@@ -1309,14 +1368,17 @@ On considère un systême linéaire de \(n\) équations à \(n\) inconnues, alor
 \[
    AX = B   
 \]
-Pour \(A \in \mathcal{M}_n(\K)\), \(X\) un vecteur indéterminé, et \(B\) le vecteur fixé du second membre des équations.\<
+Pour \(A \in \mathcal{M}_n(\K)\), \(X\) un vecteur indéterminé, et \(B\) le vecteur fixé du second membre des équations.
+\pagebreak
 
 Un tel système est dit \textbf{système de Cramer} si la matrice \(A\) est inversible, il possède alors une unique solution qui s'écrit matriciellement \(X = A^{-1}B\). \<
 
 Alors on montre que sa i-ème inconnue \(x_i\) (et par suite la solution tout entière X = \((x_1, \ldots, x_n)\)) est donnée par:
-\[
-   \mathbox{x_i = \frac{|A_i|}{|A|}}   
-\]
+\customBox{width=2.5cm}{
+   \[
+      x_i = \frac{|A_i|}{|A|}
+   \]
+} 
 Dans laquelle \(A_i\) désigne la matrice obtenue en remplaçant la i-ème colonne de \(A\) par le second membre \(B\)\<
 
 \underline{Exemple:}
@@ -1376,9 +1438,409 @@ Considérons le cas simple d'une base \(\mathscr{B} = (e_1, e_2)\) de vecteurs d
 
    \end{tikzpicture}
 \end{center}
-Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf{l'aire algébrique} du parallélotope formé par ces \(n\) vecteurs.\<
+Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf{l'hypervolume algébrique} du parallélotope formé par ces \(n\) vecteurs.\<
 
 Le lien avec l'orientation de l'espace quand à lui s'explique par le caractère \textbf{alterné} du déterminant.\+
 En effet, en reprenant l'exemple ci-dessus, on voit que si on permute \(e_1\) et \(e_2\), alors l'aire géométrique reste la même, mais le déterminant change de signe, on dira alors que cette permutation a donc changé l'orientation de l'espace.\<
 
 En particulier, on dira qu'une application linéaire \textbf{préserve l'orientation de l'espace}, si son déterminant est positif.
+
+\chapter*{\chapterstyle{II --- Espaces affines}} % 90 Fini
+\addcontentsline{toc}{section}{Espaces affines}
+Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.
+\subsection*{\subsecstyle{Définition {:}}}
+On appelle \textbf{espace affine\footnote[1]{Ses éléments sont alors appelés des \textbf{points}.} de direction} \(V\) le couple \((\mathscr{E}, +)\) avec:
+\[
+   \begin{aligned}
+      + : &&\mathscr{E} \times V &\longrightarrow \mathscr{E}\\
+      &&(\,A, \, u\,) &\longmapsto A + u
+   \end{aligned}
+\]
+La loi + doit vérifer les axiomes suivants 
+\footnote[2]{Une action d'un groupe \((G, \star)\) sur \(E\) est une application \(+\) de \(G \times E \) dans \(E\) qui vérifie: \[
+   \forall g, g' \in G  \; , \; \forall x \in E \; ; \; x + (g \star g') = (x + g) \star g'
+\] \hspace{15pt} En d'autres termes, additionner d'abord les vecteurs, ou d'abord le point avec le vecteur n'importe pas.}:
+\customBox{width=13cm}{
+   \begin{align*}
+      &\textbf{Existence d'un neutre} && \forall A \in \mathscr{E} \; ; \; A + 0_V = A\\
+      &\textbf{Action de groupe} && \forall A \in \mathscr{E} \; , \; \forall u,v \in V \; ; \; A + (u + v) = (A + u) + v \\
+      &\textbf{Unicité du translaté} && \forall A, B \in \mathscr{E} \; , \; \exists !u \in V \; ; \; A + u = B 
+   \end{align*}
+}    
+
+Etant donné deux points \(A, B \in \mathscr{E}\), on note alors \(\overrightarrow{AB}\) l'unique vecteur \(u\) qui vérifie:
+\customBox{width=2.5cm}{
+   \(A + u = B\)
+}
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+Si \(\mathscr{E}\) est un espace affine de direction \(V\), on a alors les propriétés suivantes:
+\customBox{width=8cm}{
+   \begin{align*}
+      &\textbf{Relation de Chasles} && \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC} \\
+      &\textbf{Existence d'un neutre} && \overrightarrow{AB} + \overrightarrow{BA} = O_V
+    \end{align*}
+}
+
+\subsection*{\subsecstyle{Repères {:}}}
+Un repère de \(\mathscr{E}\) est un couple \(\mathscr{R} = (O, \mathscr{B})\) formé d'un point \(O \in \mathscr{E}\) et d'une base \(\mathscr{B} = (e_1, \ldots, e_n)\) de \(V\). On appelle alors le point \(O\) \textbf{origine} du repère, et les vecteurs \(e_1, \ldots, e_n\) \textbf{vecteurs de base} du repère.\<
+
+Soit \(i\in\inticc{1}{n}\), alors pour tout point \(A \in \mathscr{E}\), on appelle \textbf{coordonées} de \(A\) dans le repère \(\mathscr{R}\), les composantes \((x_i)_i\) du vecteur qui représente la translation de \(O\) vers \(A\) dans la base \(\mathscr{B}\), et on a la caractérisation élémentaire suivante:
+\[
+   \overrightarrow{OA} = x_1e_1 + \ldots + x_ne_n 
+\]
+
+\subsection*{\subsecstyle{Cas particulier des espaces vectoriels {:}}}
+Il est important de noter que le couple \((V, +)\) forme un espace affine de \textbf{direction lui-même}. En effet, si on considère un élément de \(V\) comme un point, alors le couple  \((V, +)\) forme un espace affine de direction \(V\) et la loi \(+\) est alors exactement la loi de composition interne de \(V\).\<
+
+L'unique vecteur \(u\) tel que \(A + u = B\) est exactement \(B - A\) (ici \(A, B\) sont des points de \(V\) qui se trouvent être des vecteurs dans ce cas particulier). \<\<
+
+\chapter*{\chapterstyle{II --- Espaces euclidiens}} % 90 Fini
+\addcontentsline{toc}{section}{Espaces euclidiens}
+
+Soit \(E\) un \(\R\)-espace vectoriel de dimension \(n\) finie. On considère \(E\) avec sa structure d'espace affine canonique.
+On appelle \textbf{espace euclidien} un tel espace vectoriel si il est muni d'un \textbf{produit scalaire}.\<
+
+Soit \(u, v\) deux vecteurs de \(E\) et \((u_i)_{i \leq n}\) et \((v_i)_{i \leq n}\) les composantes de \(u\) et de \(v\) dans la base canonique de \(E\).
+
+\subsection*{\subsecstyle{Vecteurs {:}}}
+Soit deux points \(A, B\), on note \(\overrightarrow{AB}\) l'unique vecteur \(u\) de \(E\) tel que \(A + u = B\), on appelle alors \(A\) le \textbf{point initial} et \(B\) le \textbf{point final}. \<
+
+On peut alors considérer l'application \(\phi\) qui associe aux points \(A, B\) le vecteur \(\overrightarrow{AB}\) en \textbf{position standard}, et on a:
+\[
+   \begin{aligned}
+      \phi: E \times E &\longrightarrow E\\
+      (A, B) &\longmapsto B - A
+   \end{aligned}
+\]
+Ici, \(A, B\) sont des points qui trouvent aussi être des vecteurs, car l'espace affine sous-jacent est un espace vectoriel, et donc la soustractrion ci-dessus est bien définie.
+
+\subsection*{\subsecstyle{Produit scalaire {:}}}
+Soit \(\phi : E^2 \longrightarrow \R\) une forme \textbf{bilinéaire}. On dit que l'application \(\phi\) est un \textbf{produit scalaire} si et seulement si il vérifie:
+
+\customBox{width=7cm}{
+   \begin{align*}
+      &\textbf{Symétrique} &&\dotproduct{u}{v} = \dotproduct{v}{u} \\
+      &\textbf{Définie} &&\dotproduct{u}{u} = 0 \implies u = 0 \\
+      &\textbf{Positive} &&\dotproduct{u}{v} \geq 0
+   \end{align*}
+}   
+
+
+Par exemple, si on considère \(E = \R^n\), alors on peut définir le produit scalaire canonique de \(\R^n\) comme ci-dessous:
+\[
+   \phi : (u, v) \longmapsto \sum_{k=1}^{n} u_iv_i 
+\]
+Par ailleurs, on a \textbf{l'inégalité de Cauchy-Schwartz}:
+\[
+    |\dotproduct{u}{v}| \leq \vectNorm{u} \vectNorm{v}
+\]
+
+\subsection*{\subsecstyle{Norme{:}}}
+On appelle \textbf{norme} une application \(\vectNorm{\cdot}\) de E vers \(\R\) qui vérifie:
+\customBox{width=8.5cm}{
+   \begin{align*}
+      &\textbf{Séparation} &&\vectNorm{u} = 0 \implies u = 0\\
+      &\textbf{Absolue Homogénéité} &&\vectNorm{\lambda u} = |\lambda| \vectNorm{u}\\
+      &\textbf{Sous-Additivité} &&\vectNorm{u + v} \leq \vectNorm{u} + \vectNorm{v}
+   \end{align*}
+}    
+
+Un espace vectoriel muni d'une norme est alors appelé \textbf{espace vectoriel normé}. Dans le cas d'un espace euclidien, on définit la norme euclidienne usuelle:
+\[
+   \vectNorm{u} = \sqrt{\sum_{i=1}^n u_i^2}
+\]
+Cette norme induit alors une \textbf{métrique} sur \(E\)  comme suit:
+\[
+   \begin{aligned}
+      d: E \times E &\longrightarrow E\\
+      (u, v) &\longmapsto \vectNorm{v - u}
+   \end{aligned}
+\]
+Muni de cette métrique, l'espace euclidien \(E\) est alors un \textbf{espace métrique homogène}.
+
+\subsection*{\subsecstyle{Angles{:}}}
+Dans un espace euclidien, on définit \textbf{l'angle} \(\theta := \angle AOC\) comme étant l'angle entre les bipoints \(OA\) et \(OC\) et on a alors la formule de \textbf{Pythagore généralisée}:
+\[
+   \vectNorm{BC}^2 = \vectNorm{AB}^2 + \vectNorm{AC}^2 - 2\vectNorm{AB}\vectNorm{AC}\cos(\theta)
+\]
+Puis par suite on peut montrer la caractérisation du produit scalaire:
+\customBox{width=4.6cm}{
+   \(\dotproduct{u}{v} = \vectNorm{u} \vectNorm{v} \cos{(\theta)}\)
+}
+
+\subsection*{\subsecstyle{Composantes scalaires et projections{:}}}
+Soit \(\alpha\) l'angle entre les deux vecteurs \(u\) et \(v\).
+On appelle \textbf{composante scalaire} de \(u\) par rapport à \(v\) le scalaire:
+\[
+   \text{comp}_v(u) = \vectNorm{u}\cos(\alpha)   
+\]
+On définit alors la \textbf{projection orthogonale} de \(u\) sur \(v\):
+\customBox{width=5.1cm}{
+   \[\text{proj}_v(u) = \text{comp}_v(u)\frac{v}{\vectNorm{v}}\]
+}
+Visuellement, si on considère deux vecteurs de \(E = \R^2\), on a:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (-1,0) -- (9,0);
+      \draw[->] (0,-1) -- (0, 5.5);
+   
+      \draw foreach \X in {3,6}{
+         (\X, 0.1) -- (\X, -0.1) node[below]{$\X$}
+      };
+      \draw foreach \Y in {2,4}{
+         (0.1,\Y) -- (-0.1,\Y) node[left]{$\Y$}
+      };
+   
+      \draw[->]  (0,0) coordinate (O) -- (3,4) coordinate (B) node[above]{$u$};
+      \draw[->]  (0,0) coordinate (O) -- (6,2) coordinate (A) node[above]{$v$};
+
+      \draw[dashed, color=DarkBlue1] (3, 4) -- (3.9, 1.3);
+
+      \draw[->, line width=2pt, color=DarkBlue1]  (0,0) -- (3.9, 1.3);
+      \path (2,1.2) node[color=DarkBlue1]{$\text{proj}_v(u)$};
+      \draw[solid, line width=2pt, color=BrightBlue1]  (0,0) -- (4.111, 0) node[above]{$\text{comp}_v(u)$};
+      \draw pic["$\alpha$", draw, gray, angle radius=1cm] {angle = A--O--B};
+
+   \end{tikzpicture}   
+\end{center}
+On remarque alors que \textbf{la composante scalaire de \(u\) est exactement la norme du projeté de \(u\) sur \(v\)}
+
+\subsection*{\subsecstyle{Orientation{:}}}
+Pour la suite du chaptire, on se place dans \(E = \R^3\), soit deux vecteur \(u, v\) non parallèles, on appelle \textbf{orientation directe} l'orientation de l'espace suivante \textbf{la règle de la main droite}, et orientation indirecte celle suivant la règle de la main gauche.\<
+
+Plus formellement, l'orientation d'un espace euclidien de base \(\Fam\) est donné par le signe du déterminant de cette base:
+\begin{itemize}
+   \item Si le déterminant est positif, la base est en \textbf{orientation directe}.
+   \item Si le déterminant est négatif, la base est en \textbf{orientation indirecte}.
+\end{itemize}
+\pagebreak
+
+\subsection*{\subsecstyle{Produit vectoriel{:}}}
+On définit le \textbf{produit vectoriel} de deux vecteurs \(u, v\) comme l'unique vecteur \(w\) de \(\R^3\) qui vérifie:
+\customBox{width=6.5cm}{
+    \begin{center}
+      $\vectNorm{w} = \vectNorm{u}\vectNorm{v}|\sin(\theta)|$\\
+      $w$ \textbf{est orthogonal à }$u$\textbf{ et à }$v$\\
+      \textbf{La base } $(u, v, w)$ \textbf{ est directe}
+    \end{center}
+}
+
+C'est une application de \(E \times E \longrightarrow E\) qui vérfie:
+\customBox{width=9.5cm}{
+   \begin{align*}
+      &\textbf{Homogénéité} && \lambda_1 u \times v = \lambda_1 (u \times v)\\
+      &\textbf{Anticommutativité} && u \times v = - (v \times u)\\
+      &\textbf{Distributivité} && u \times (v + w) = u \times v + u \times w
+    \end{align*}
+}
+
+Néanmoins, le produit vectoriel n'est en général \textbf{pas associatif}. En particulier, on a:
+\[
+    u \times (v \times w) = \dotproduct{u}{w}v - \dotproduct{u}{v}w
+\]
+
+\underline{Exemple:} On note \(\big|M\big|\) le déterminant d'une matrice, alors on a une caractérisation utlie pour calculer des produits vectoriels:
+\[
+   \begin{cases}
+      u := (u_1, u_2, u_3)\\ 
+      v := (v_1, v_2, v_3)
+   \end{cases} \implies 
+   u \times v = \Biggl(\begin{vmatrix}u_2 & u_3 \\ v_2 & v_3\end{vmatrix} ; -\begin{vmatrix}u_1 & u_3 \\ v_1 & v_3\end{vmatrix} ; \begin{vmatrix}u_1 & u_2 \\ v_1 & v_2\end{vmatrix}\Biggl)
+\]
+
+\subsection*{\subsecstyle{Volumes \& Produit triple{:}}}
+On peut remarque que la norme du vecteur resultant d'un produit vectoriel est \textbf{l'aire du parallélogramme} formé par \(u\) et \(v\).\<
+
+On peut alors montrer que le produit \(\dotproduct{u \times v}{w}\) est \textbf{le volume du parallélépipède} formé par \(u, v, w\). En effet, on a:
+\[
+   \dotproduct{u \times v}{w} = \vectNorm{u \times v} \vectNorm{w} \cos(\alpha) = \vectNorm{u \times v}h
+\]
+Avec \(\vectNorm{u \times v}\) qui est l'aire de la base est \(h\) la hauteur du parallélépipède.
+
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \coordinate (A) at (0, 0, 0);
+      \coordinate (B) at (8, 0, 0);
+      \coordinate (C) at (8, 0, -8);
+      \coordinate (D) at (0, 0, -8);
+      \coordinate (E) at (0, 2, -10);
+      \coordinate (F) at (0, 2, -2);
+      \coordinate (G) at (8, 2, -2);
+      \coordinate (H) at (8, 2, -10);
+
+      \draw[->] (A) -- (B) node[below right]{\(u\)};
+      \draw[->] (A) -- (D) node[above left]{\(v\)};
+      \draw[->] (A) -- (F) node[below right]{\(w\)};
+
+      \draw[dashed, color=gray] (B) -- (C) -- (D) -- (E) -- (F) -- (G) -- (H) -- (E);
+      \draw[dashed, color=gray] (B) -- (G);
+      \draw[dashed, color=gray] (C) -- (H);
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (E) -- (F) -- (G) -- (H) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.15] (A) -- (B) -- (C) -- (D) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (A) -- (B) -- (G) -- (F) -- cycle;
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.2] (B) -- (C) -- (H) -- (G) -- cycle;
+
+      \draw[->] (A) -- (0, 4, 0) coordinate (X) node[below right]{\(u \times v\)};
+      \draw[gray] pic ["$\alpha$", draw, angle radius=2cm] {angle = F--A--X};
+
+      \draw[->, color = DarkBlue3, line width = 1.2pt] (0, 0.01, 0) -- (0, 2.7, 0) coordinate (X) node[left]{\(h\)};
+   \end{tikzpicture}   
+\end{center}
+Un autre manière de déterminer le volume d'un parallélépipède est de calculer le déterminant \(\begin{vmatrix}u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3\end{vmatrix}\)
+
+\chapter*{\chapterstyle{II --- Droites \& Plans}} % 90 Fini
+\addcontentsline{toc}{section}{Droites \& Plans}
+
+Dans l'espace vectoriel \(\R^3\), nous savons qu'on peut définir des droites et des plans vectoriels, dans ce chapitre nous allons examiner comment exprimer mathématiquement les droites et plans plus généralement \textbf{affines} et calculer des distances entre ces figures ou des intersections. \<
+
+Dans la suite, on considère un point \(A\) de coordonées \((x_0, y_0, z_0)\) et une vecteur \(\vv{v}\) de composantes \((a, b, c)\).
+
+\subsection*{\subsecstyle{Droites{:}}}
+Une droite de l'espace en trois dimensions est caractérisée par la donnée d'un \textbf{point} sur la droite, et d'un \textbf{vecteur directeur} de cette droite.\<
+
+Si on considère une fonction vectorielle \(f(t)\) telle que \(f(0)\) soit la position de \(A\), on peut alors montrer que les points de la droite sont donnés par:
+\customBox{width=3.5cm}{
+   \(f(t) = f(0) + t\vv{v}\)
+}
+Cette fonction vectorielle est un cas particulier de \textbf{courbe paramétrée}, et cette notion est formalisée dans le chapitre au nom correspondant.\footnote[1]{On peut développer cette expression en composantes pour avoir une forme plus explicite.\label{developpement}} 
+
+\subsection*{\subsecstyle{Plans{:}}}
+Un plan de l'espace en trois dimensions peut être caractérisé par la donnée d'un \textbf{point} sur le plan et de \textbf{deux vecteurs} engendrant le plan.\<
+
+Si on considère une fonction vectorielle \(f(t)\) telle que \(f(0)\) soit la position de \(A\), on peut alors montrer que les points de la droite sont donnés par:
+\customBox{width=5cm}{
+   \(f(t, t') = f(0) + t\vv{u} + t'\vv{v}\)
+}
+Cette fonction vectorielle est un cas particulier de \textbf{surface paramétrée}, et cette notion est formalisée dans le chapitre au nom correspondant.\footref{developpement}\<
+
+Mais un plan de l'espace en trois dimensions peut aussi être caractérisé par la donnée d'un \textbf{point} sur le plan, et d'un \textbf{vecteur normal} au plan, en effet un plan est l'ensemble des vecteurs orthogonaux à un vecteur normal donné, on en déduit que les points \(P\) du plan \(\mathscr{P}\) vérifient l'équation vectorielle:
+\customBox{width=3.5cm}{
+   \(\dotproduct{\vv{v}}{\vv{AP}} = 0  \)
+}
+
+Si on déploie le produit sclaire en composantes, on obtient que \textbf{les coordonées} des points du plan vérifient:
+\[
+   a(x - x_0) + b(y - y_0) + c(z - z_0) = 0 \Longleftrightarrow ax + by + cz = C
+\]
+
+\begin{center}
+   \textit{
+      On peut alors remarque que les plans et les droites de l'espace affines sont exactement des translations des droites et plans linéaires de l'espace vectoriel sous-jacent. 
+   }
+\end{center}
+
+\pagebreak
+
+\subsection*{\subsecstyle{Distances \& Angles{:}}}
+Nous sommes amenés à calculer des distances et des angles en géométrie euclidienne, par exemple calculer la distance entre un point \(P\) et une droite \(\mathscr{D}\).
+Si nous connaissons un point \(A\) de la droite et un vecteur directeur \(\vv{v}\) de la droite, il suffit alors de calculer:
+\begin{flalign*}
+   &&\text{\customBox{width = 3cm}{$\vectNorm{\vv{AP}}\sin(\alpha)$}} &\hspace{-1cm}\shorteqnote{\raisebox{0.35cm}{\(\color{DarkBlue1}\bigstar\)}}
+\end{flalign*}
+
+
+L'apparition du sinus s'explique par le fait que la distance entre \(P\) et \(\mathscr{D}\) est \textbf{invariante par rotation}, et alors on peut se ramener à un problème trigonométrique sur un cercle de rayon \(\vectNorm{\vv{AP}}\).\+
+Visuellement, on a:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (6,2);
+      \coordinate (A') at (4.5, 1.5);
+      \coordinate (P) at (3,4);
+
+      \coordinate (V') at (-1.5, 4.5);
+      \coordinate (Proj1) at (3.9, 1.3);
+      \coordinate (Proj2) at (-0.9, 2.7);
+
+      \draw[]  (-2, -2/3)  -- (8, 8/3) coordinate (A) node[above]{$\mathscr{D}$};
+
+      \draw[->, color=DarkBlue1, line width = 1pt]  (O)  node[below]{$A$} -- (P) node[above]{$P$};
+      \draw[->, color=DarkBlue1, line width = 1pt]  (O) -- (A') node[above]{$v$};
+      \draw[->, color=DarkBlue1, line width = 1pt]  (O) -- (V') node[above]{$v^\perp$};
+      \draw[solid, line width=2pt, color=BrightBlue1] (P) -- (Proj1);
+
+      \draw node[color=BrightBlue1] at (-1.8, 1.7) {$\vectNorm{\vv{AP}}\sin(\alpha)$};
+
+      \draw[solid, line width=2pt, color=BrightBlue1]  (O) -- (Proj2);
+      \draw[dashed, color=DarkBlue1] (Proj2) -- (P);
+
+      \draw pic["$\alpha$", draw, gray, angle radius=1cm] {angle = A--O--P};
+      \draw pic["$\alpha'$", draw, gray, angle radius=1.2cm] {angle = P--O--Proj2};
+
+      \RightAngle{(-2, -2/3)}{(0,0)}{(-1.5, 4.5)};
+      \tkzMarkSegment[color=black, pos=0.5, size=5pt, mark=||](O, Proj2)
+      \tkzMarkSegment[color=black, pos=0.5, size=5pt,mark=||](P, Proj1)
+
+   \end{tikzpicture}   
+\end{center}
+On remarque alors une symétrie conceptuelle avec la projection vue plus haut: 
+\begin{center}
+   \textit{
+      Chercher la distance entre un point \(P\) et une droite contenant \(A\) revient à\+ projeter \(\vv{AP}\) sur un vecteur orthogonal à la droite (en utilisant l'angle complémentaire).
+   }
+\end{center}
+Par ailleurs, de la formule \(\color{DarkBlue1}(\bigstar)\) et de la définition du produit vectoriel, on peut en déduire une autre expression de la distance:
+\customBox{width=3cm}{
+   \[
+      \frac{\vectNorm{\vv{AP} \times \vv{v}}}{\vectNorm{\vv{v}}}  
+   \]
+}
+Sachant l'aire du parallélogramme et un de ses cotés, cette formule consiste exactement à retrouver la hauteur du parallèlogramme, qui constitura ici la distance recherchée. \<
+
+Nous pouvons aussi être amenés à calculer la distance entre un point \(P\) et un plan \(\mathscr{P}\)\+
+Si on connait un point \(A\) et un vecteur normal \(\vv{v}\) du plan, alors on peut trouver l'angle entre \(\vv{AP}\) et \(\vv{v}\) et il suffit de calculer la composante scalaire du vecteur \(\vv{AP}\) par rapport au vecteur normal.\+
+Visullement cela donne:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \coordinate (P1) at (0, 0, 0);
+      \coordinate (P2) at (12, 0, 0);
+      \coordinate (P3) at (12, 0, -8);  
+      \coordinate (P4) at (0, 0, -8);      
+    
+      \coordinate (X) at (3, 1, -4);
+
+      \coordinate (V1) at (8, 0, -4);
+      \coordinate (V2) at (8, 2, -4);
+
+      \coordinate (Proj1) at (8, 1, -4);
+      \coordinate (Proj2) at (3, 0, -4);
+
+      \draw[->] (V1) node[below right]{\(A\)} -- (V2) node[above left]{\(\vv{v}\)};
+      \draw[->] (V1) -- (X) node[above left]{\(P\)};
+
+      \draw[solid, line width=1pt, color=BrightBlue1] (V1) -- (Proj1);
+      \draw node[color=BrightBlue1] at (9.25, 0.5, -4) {\(\vectNorm{\vv{AP}}\cos(\alpha)\)};
+      \draw[dashed, color=gray] (X) -- (Proj1);
+      \draw[solid, line width=1pt, color=BrightBlue1] (X) -- (Proj2);
+      \draw[dashed, color=gray] (Proj2) -- (V1);
+
+      %4,58
+      \draw[->] (V1) -- (X) node[above left]{\(P\)};
+
+      \draw[dashed, color=gray] (P1) -- (P2) -- (P3) -- (P4) -- (P1);
+      \draw[dashed, color=black!10, fill=BrightBlue1, opacity=0.15] (P1) -- (P2) -- (P3) -- (P4) -- cycle;
+      \RightAngle{(10, 0, -4)}{(V1)}{(V2)};
+      \RightAngle{(X)}{(Proj2)}{(V1)};
+
+      \draw pic["$\alpha$", draw, gray, angle radius=0.8cm] {angle = V2--V1--X};
+      \tkzMarkSegment[color=black, pos=0.5, size=3pt, mark=||](Proj2, X)
+      \tkzMarkSegment[color=black, pos=0.5, size=3pt, mark=||](V1, Proj1)
+
+   \end{tikzpicture}   
+\end{center}\<
+
+Finalement, il peut être utile de savoir calculer \textbf{l'angle entre deux plans}, il suffit alors de calculer \textbf{l'angle entre leurs vecteurs normaux}.
+

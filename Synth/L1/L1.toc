@@ -1,4 +1,4 @@
-\contentsline {chapter}{Fondements}{1}{Doc-Start}%
+\contentsline {chapter}{I --- Fondements}{1}{Doc-Start}%
 \contentsline {section}{Raisonnements}{2}{chapter*.1}%
 \contentsline {subsection}{Disjonctions \& Conjonctions}{2}{section*.2}%
 \contentsline {subsection}{Raisonnements par l'absurde}{2}{section*.3}%
@@ -21,7 +21,6 @@
 \contentsline {subsection}{Classes d'équivalence}{7}{section*.20}%
 \contentsline {subsection}{Ensembles quotient}{7}{section*.21}%
 \contentsline {section}{Fonctions \& Applications}{8}{chapter*.22}%
-\contentsline {subsection}{Composition}{8}{section*.23}%
 \contentsline {subsection}{Restrictions \& Prolongements}{8}{section*.24}%
 \contentsline {subsection}{Image directe}{8}{section*.25}%
 \contentsline {subsection}{Image Réciproque}{8}{section*.26}%
@@ -29,103 +28,102 @@
 \contentsline {subsection}{Surjections}{9}{section*.28}%
 \contentsline {subsection}{Bijections}{9}{section*.29}%
 \contentsline {subsection}{Equipotence}{9}{section*.30}%
-\contentsline {chapter}{Analyse}{10}{section*.30}%
-\contentsline {section}{Corps des Réels}{10}{chapter*.31}%
-\contentsline {section}{Suites numériques}{12}{chapter*.39}%
-\contentsline {section}{Topologie de \(\mathbb {R}\)}{14}{chapter*.46}%
-\contentsline {section}{Limites}{16}{chapter*.55}%
-\contentsline {subsection}{Définition}{16}{section*.56}%
-\contentsline {subsection}{Caractérisation séquentielle}{16}{section*.57}%
-\contentsline {subsection}{Propriétés}{17}{section*.58}%
-\contentsline {subsection}{Comparaison asymptotique II}{17}{section*.59}%
-\contentsline {section}{Continuité}{18}{chapter*.60}%
+\contentsline {section}{Dénombrement}{10}{chapter*.31}%
+\contentsline {chapter}{II --- Algèbre Linéaire \& Géométrie}{12}{section*.36}%
+\contentsline {section}{Corps des Complexes}{12}{chapter*.37}%
+\contentsline {section}{Anneau des Polynômes}{14}{chapter*.45}%
+\contentsline {section}{Espaces Vectoriels}{16}{chapter*.53}%
+\contentsline {section}{Applications linéaires}{18}{chapter*.60}%
 \contentsline {subsection}{Définition}{18}{section*.61}%
 \contentsline {subsection}{Propriétés}{18}{section*.62}%
-\contentsline {subsection}{Caractérisation séquentielle}{18}{section*.63}%
-\contentsline {subsection}{Prolongement par continuité}{18}{section*.64}%
-\contentsline {subsection}{Théorèmes généraux}{19}{section*.65}%
-\contentsline {subsection}{Continuité uniforme}{19}{section*.66}%
-\contentsline {subsection}{Lipschitzianité}{20}{section*.67}%
-\contentsline {subsection}{Homéomorphismes}{20}{section*.68}%
-\contentsline {section}{Dérivabilité}{21}{chapter*.69}%
-\contentsline {subsection}{Définition}{21}{section*.70}%
-\contentsline {subsection}{Propriétés}{21}{section*.71}%
-\contentsline {subsection}{Etudes des variations}{21}{section*.72}%
-\contentsline {subsection}{Classes de régularité}{22}{section*.73}%
-\contentsline {subsection}{Dérivation}{22}{section*.74}%
-\contentsline {subsection}{Accroissements finis}{22}{section*.75}%
-\contentsline {subsection}{Théorème de la limite de la dérivée}{23}{section*.76}%
-\contentsline {subsection}{Difféomorphismes}{23}{section*.77}%
-\contentsline {section}{Convexité}{24}{chapter*.78}%
-\contentsline {subsection}{Définition}{24}{section*.79}%
-\contentsline {subsection}{Propriétés}{24}{section*.80}%
-\contentsline {section}{Développements limités}{25}{chapter*.81}%
-\contentsline {subsection}{Définition}{25}{section*.82}%
-\contentsline {subsection}{Propriétés}{25}{section*.83}%
-\contentsline {subsection}{Changement de voisinage}{25}{section*.84}%
-\contentsline {subsection}{Formule de Taylor-Young}{26}{section*.85}%
-\contentsline {subsection}{Intégration d'un développement limité}{26}{section*.86}%
-\contentsline {subsection}{Développements limmités usuels}{26}{section*.87}%
-\contentsline {section}{Intégration}{27}{chapter*.88}%
-\contentsline {subsection}{Définition}{27}{section*.89}%
-\contentsline {subsection}{Caractérisation}{28}{section*.90}%
-\contentsline {subsection}{Propriétés}{28}{section*.91}%
-\contentsline {subsection}{Théorème fondamental du calcul intégral}{28}{section*.92}%
-\contentsline {subsection}{Formule de la moyenne}{29}{section*.93}%
-\contentsline {subsection}{Sommes de Riemann}{29}{section*.94}%
-\contentsline {subsection}{Techniques de calcul générales}{29}{section*.95}%
-\contentsline {subsection}{Intégration de fonctions complexes}{30}{section*.96}%
-\contentsline {subsection}{Décomposition en éléments simples}{30}{section*.97}%
-\contentsline {subsection}{Intégration des éléments simples}{31}{section*.98}%
-\contentsline {subsection}{Parité}{31}{section*.99}%
-\contentsline {chapter}{Algèbre Linéaire}{32}{section*.99}%
-\contentsline {section}{Corps des Complexes}{32}{chapter*.100}%
-\contentsline {section}{Anneau des Polynômes}{34}{chapter*.108}%
-\contentsline {section}{Espaces Vectoriels}{36}{chapter*.116}%
-\contentsline {section}{Applications linéaires}{38}{chapter*.123}%
-\contentsline {subsection}{Définition}{38}{section*.124}%
-\contentsline {subsection}{Propriétés}{38}{section*.125}%
-\contentsline {subsection}{Image et Noyau}{38}{section*.126}%
-\contentsline {subsection}{Caractérisations par les familles}{39}{section*.127}%
-\contentsline {subsection}{Endomorphismes remarquables}{39}{section*.128}%
-\contentsline {subsection}{Applications multilinéaires}{39}{section*.129}%
-\contentsline {section}{Théorie de la dimension}{41}{chapter*.130}%
-\contentsline {subsection}{Théorème de la base incomplète}{41}{section*.131}%
-\contentsline {subsection}{Théorème de la dimension}{41}{section*.132}%
-\contentsline {subsection}{Définition de la dimension}{41}{section*.133}%
-\contentsline {subsection}{Espaces de dimension finie}{41}{section*.134}%
-\contentsline {subsection}{Rang}{42}{section*.135}%
-\contentsline {subsection}{Applications linéaires en dimension finie}{42}{section*.136}%
-\contentsline {section}{Espace des matrices}{43}{chapter*.137}%
-\contentsline {subsection}{Définition}{43}{section*.138}%
-\contentsline {subsection}{Produit matriciel}{43}{section*.139}%
-\contentsline {subsection}{Transposition}{44}{section*.140}%
-\contentsline {subsection}{Trace}{44}{section*.141}%
-\contentsline {subsection}{Matrice d'une famille de vecteurs}{44}{section*.142}%
-\contentsline {subsection}{Matrice d'une application linéaire}{45}{section*.143}%
-\contentsline {subsection}{Matrices inversibles}{46}{section*.144}%
-\contentsline {subsection}{Rang d'une matrice}{47}{section*.145}%
-\contentsline {subsection}{Matrice de passage}{47}{section*.146}%
-\contentsline {subsection}{Matrices semblables}{48}{section*.147}%
-\contentsline {subsection}{Matrices remarquables}{48}{section*.148}%
-\contentsline {subsection}{Echelonnements et calculs}{49}{section*.152}%
-\contentsline {section}{Déterminant}{51}{chapter*.153}%
-\contentsline {subsection}{Définition}{51}{section*.154}%
-\contentsline {subsection}{Propriétés}{51}{section*.155}%
-\contentsline {subsection}{Cofacteurs}{52}{section*.156}%
-\contentsline {subsection}{Comatrice}{52}{section*.157}%
-\contentsline {subsection}{Formules de Cramer}{52}{section*.158}%
-\contentsline {subsection}{Interprétation géométrique}{53}{section*.159}%
-\contentsline {chapter}{Probabilités}{54}{section*.159}%
-\contentsline {section}{Dénombrement}{54}{chapter*.160}%
-\contentsline {section}{Espaces probabilisés}{56}{chapter*.166}%
-\contentsline {section}{Variables aléatoires}{58}{chapter*.175}%
-\contentsline {section}{Couples aléatoires}{60}{chapter*.180}%
-\contentsline {section}{Variables à densité}{61}{chapter*.184}%
-\contentsline {section}{Indicateurs}{62}{chapter*.188}%
-\contentsline {chapter}{Géométrie}{65}{section*.194}%
-\contentsline {section}{Espaces affines}{65}{chapter*.195}%
-\contentsline {section}{Espaces euclidiens}{66}{chapter*.200}%
-\contentsline {section}{Droites \& Plans}{69}{chapter*.209}%
-\contentsline {section}{Arcs paramétrés}{71}{chapter*.213}%
+\contentsline {subsection}{Image et Noyau}{18}{section*.63}%
+\contentsline {subsection}{Caractérisations par les familles}{19}{section*.64}%
+\contentsline {subsection}{Endomorphismes remarquables}{19}{section*.65}%
+\contentsline {subsection}{Applications multilinéaires}{19}{section*.66}%
+\contentsline {section}{Théorie de la dimension}{20}{chapter*.67}%
+\contentsline {subsection}{Théorème de la base incomplète}{20}{section*.68}%
+\contentsline {subsection}{Théorème de la dimension}{20}{section*.69}%
+\contentsline {subsection}{Définition de la dimension}{20}{section*.70}%
+\contentsline {subsection}{Espaces de dimension finie}{20}{section*.71}%
+\contentsline {subsection}{Rang}{21}{section*.72}%
+\contentsline {subsection}{Applications linéaires en dimension finie}{21}{section*.73}%
+\contentsline {section}{Espace des matrices}{22}{chapter*.74}%
+\contentsline {subsection}{Définition}{22}{section*.75}%
+\contentsline {subsection}{Produit matriciel}{22}{section*.76}%
+\contentsline {subsection}{Transposition}{23}{section*.77}%
+\contentsline {subsection}{Trace}{23}{section*.78}%
+\contentsline {subsection}{Matrice d'une famille de vecteurs}{23}{section*.79}%
+\contentsline {subsection}{Matrice d'une application linéaire}{24}{section*.80}%
+\contentsline {subsection}{Matrices inversibles}{25}{section*.81}%
+\contentsline {subsection}{Rang d'une matrice}{26}{section*.82}%
+\contentsline {subsection}{Matrice de passage}{26}{section*.83}%
+\contentsline {subsection}{Matrices semblables}{27}{section*.84}%
+\contentsline {subsection}{Matrices remarquables}{27}{section*.85}%
+\contentsline {subsection}{Echelonnements et calculs}{28}{section*.90}%
+\contentsline {section}{Déterminant}{30}{chapter*.91}%
+\contentsline {subsection}{Définition}{30}{section*.92}%
+\contentsline {subsection}{Propriétés}{30}{section*.93}%
+\contentsline {subsection}{Cofacteurs}{31}{section*.94}%
+\contentsline {subsection}{Comatrice}{31}{section*.95}%
+\contentsline {subsection}{Formules de Cramer}{31}{section*.96}%
+\contentsline {subsection}{Interprétation géométrique}{32}{section*.97}%
+\contentsline {section}{Espaces affines}{33}{chapter*.98}%
+\contentsline {section}{Espaces euclidiens}{34}{chapter*.103}%
+\contentsline {section}{Droites \& Plans}{37}{chapter*.112}%
+\contentsline {chapter}{III --- Analyse}{39}{section*.115}%
+\contentsline {section}{Corps des Réels}{39}{chapter*.116}%
+\contentsline {section}{Suites numériques}{41}{chapter*.124}%
+\contentsline {section}{Topologie de \(\mathbb {R}\)}{43}{chapter*.131}%
+\contentsline {section}{Limites}{45}{chapter*.140}%
+\contentsline {subsection}{Définition}{45}{section*.141}%
+\contentsline {subsection}{Caractérisation séquentielle}{45}{section*.142}%
+\contentsline {subsection}{Propriétés}{46}{section*.143}%
+\contentsline {subsection}{Comparaison asymptotique II}{46}{section*.144}%
+\contentsline {section}{Continuité}{47}{chapter*.145}%
+\contentsline {subsection}{Définition}{47}{section*.146}%
+\contentsline {subsection}{Propriétés}{47}{section*.147}%
+\contentsline {subsection}{Caractérisation séquentielle}{47}{section*.148}%
+\contentsline {subsection}{Prolongement par continuité}{47}{section*.149}%
+\contentsline {subsection}{Théorèmes généraux}{48}{section*.150}%
+\contentsline {subsection}{Continuité uniforme}{48}{section*.151}%
+\contentsline {subsection}{Lipschitzianité}{48}{section*.152}%
+\contentsline {subsection}{Homéomorphismes}{49}{section*.153}%
+\contentsline {section}{Dérivabilité}{50}{chapter*.154}%
+\contentsline {subsection}{Définition}{50}{section*.155}%
+\contentsline {subsection}{Propriétés}{50}{section*.156}%
+\contentsline {subsection}{Etudes des variations}{50}{section*.157}%
+\contentsline {subsection}{Classes de régularité}{51}{section*.158}%
+\contentsline {subsection}{Dérivation}{51}{section*.159}%
+\contentsline {subsection}{Accroissements finis}{51}{section*.160}%
+\contentsline {subsection}{Théorème de la limite de la dérivée}{52}{section*.161}%
+\contentsline {subsection}{Difféomorphismes}{52}{section*.162}%
+\contentsline {section}{Convexité}{53}{chapter*.163}%
+\contentsline {subsection}{Définition}{53}{section*.164}%
+\contentsline {subsection}{Propriétés}{53}{section*.165}%
+\contentsline {section}{Développements limités}{54}{chapter*.166}%
+\contentsline {subsection}{Définition}{54}{section*.167}%
+\contentsline {subsection}{Propriétés}{54}{section*.168}%
+\contentsline {subsection}{Changement de voisinage}{54}{section*.169}%
+\contentsline {subsection}{Formule de Taylor-Young}{55}{section*.170}%
+\contentsline {subsection}{Intégration d'un développement limité}{55}{section*.171}%
+\contentsline {subsection}{Développements limmités usuels}{55}{section*.172}%
+\contentsline {section}{Intégration}{56}{chapter*.173}%
+\contentsline {subsection}{Définition}{56}{section*.174}%
+\contentsline {subsection}{Caractérisation}{57}{section*.175}%
+\contentsline {subsection}{Propriétés}{57}{section*.176}%
+\contentsline {subsection}{Théorème fondamental du calcul intégral}{57}{section*.177}%
+\contentsline {subsection}{Formule de la moyenne}{58}{section*.178}%
+\contentsline {subsection}{Sommes de Riemann}{58}{section*.179}%
+\contentsline {subsection}{Techniques de calcul générales}{58}{section*.180}%
+\contentsline {subsection}{Intégration de fonctions complexes}{59}{section*.181}%
+\contentsline {subsection}{Décomposition en éléments simples}{59}{section*.182}%
+\contentsline {subsection}{Intégration des éléments simples}{60}{section*.183}%
+\contentsline {subsection}{Parité}{60}{section*.184}%
+\contentsline {section}{Arcs paramétrés}{61}{chapter*.185}%
+\contentsline {chapter}{IV --- Probabilités}{64}{section*.194}%
+\contentsline {section}{Espaces probabilisés}{64}{chapter*.195}%
+\contentsline {section}{Variables aléatoires}{66}{chapter*.204}%
+\contentsline {section}{Couples aléatoires}{68}{chapter*.209}%
+\contentsline {section}{Variables à densité}{69}{chapter*.213}%
+\contentsline {section}{Indicateurs}{70}{chapter*.217}%
 \contentsfinish 

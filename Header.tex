@@ -1,18 +1,19 @@
 % Maths Packages
-\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval,stmaryrd, centernot, esvect, cancel, commath, blkarray}
+\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval,stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
 
 % TOC Packages
 \usepackage{tocloft, titletoc, hyperref}
-
+\usepackage{bookmark}
 % Formatting / Style Packages
-\usepackage{geometry, multicol, subcaption, graphicx, fix-cm, accents}    
+\usepackage{geometry, multicol, subcaption, graphicx, fix-cm, accents, float, varwidth}    
 \usepackage[T1]{fontenc}
-\usepackage[x11names, table]{xcolor}
 \usepackage[bottom]{footmisc}
+\usepackage[x11names, table]{xcolor}
+\usepackage[most, skins]{tcolorbox}
 
 % Tikz
 \usepackage{tikz, tkz-fct, tkz-euclide}
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy, external}
 
 \tikzset{
   withparens/.style = {draw, outer sep=0pt,
@@ -24,10 +25,14 @@
     above delimiter=\{, below delimiter=\},
     align=center}
 }
+\tikzexternalize[prefix=Figures/] % activate
 
 % PAGE SETTINGS
 
-\geometry{left=25mm, right=25mm, top= 15mm, bottom= 30mm}
+\geometry{
+  left=25mm, right=25mm, top= 15mm, bottom= 15mm,
+  footskip=30pt
+  }
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0cm}
 
@@ -37,15 +42,7 @@
 \setcounter{secnumdepth}{-1}
 
 % STYLE
-\input{../../Style.tex}
+\input{C:/Users/Christophe/Desktop/Work/Style.tex}
 
-\makeatletter % Crée une trés grosse taille de police pour la page de garde
-\newcommand\HUGE{\@setfontsize\Huge{40}{60}}
-\makeatother   
-
-\makeatletter
-\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
-\makeatother
 % COMMANDS
-\input{../../Commands.tex}
-
+\input{C:/Users/Christophe/Desktop/Work/Commands.tex}

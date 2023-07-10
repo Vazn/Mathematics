@@ -1,106 +1,8 @@
-\chapter*{\chapterstyle{Dénombrement}} % 75% Fini
-\addcontentsline{toc}{section}{Dénombrement}
-
-Soit \(E\) un ensemble, on dit que \(E\) est \textbf{fini} si il existe une bijection de \(\inticc{1}{n}\) sur \(E\).\<
-
-On considère maintenant que \(E\) est fini, dénombrer \(E\) consiste à déterminer sa cardinalité. Informellement il s'agit souvent de compter le nombres \textbf{d'issues possibles} d'une situation donnée, on dispose alors de trois grands modèles, les \textbf{listes}, les \textbf{arrangements} et les \textbf{combinaisons}.
-
-\subsection*{\subsecstyle{Listes}}
-On appelle \textbf{liste} à \(p\) éléments de \(E\) un p-uplet constitué d'éléments de \(E\), c'est à dire \textbf{un élément du produit cartésien} \(E^p\) on remarque alors la propriété:
-\begin{center}
-   \textit{
-      Dans une liste, l'ordre compte et les répétitions sont possibles
-   }
-\end{center}
-En effet, dans \(\N^2\) par exemple, on sait que \((1, 2) \neq (2, 1)\) et que \((1, 1)\) est un 2-uplet valide.\<
-
-On peut alors montrer que le nombre d'applications d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(p^n\)
-
-\subsection*{\subsecstyle{Arrangements}}
-On appelle \textbf{arrangement} tout liste à \(p\) éléments \textbf{distincts} de \(E\), on remarque alors:
-\begin{center}
-   \textit{
-      Dans un arrangement, l'ordre compte mais les répétitions sont impossibles
-   }
-\end{center}
-On note alors \(A_n^p\) le nombre d'arrangements de \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
-\[
-   \mathbox{A_n^p = \frac{n!}{(n - p)!}}   
-\]
-Et on peut alors montrer que le nombre d'applications \textbf{injectives} d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(A_n^p\).\<
-
-Un arrangement de la forme \(A_n^n\) est apellée une \textbf{permutation} de \(E\) qui est simplement donnée par \(n!\), c'est aussi le nombre de \textbf{bijections} de \(E\) dans \(E\).
-
-\subsection*{\subsecstyle{Combinaisons}}
-On appelle \textbf{combinaison} de \(p\) éléments tout \textbf{partie} de \(E\) à \(p\) éléments, on remarque alors:
-\begin{center}
-   \textit{
-      Dans une combinaison, l'ordre ne compte pas et les répétitions sont impossibles
-   }
-\end{center}
-On apelle alors \textbf{coefficient binomial} et on note \(\binom{n}{p}\) le nombre de parties à \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
-\[
-   \mathbox{\binom{n}{p} = \frac{n!}{p!(n - p)!}}   
-\]
-On peut remarquer que le nombre de parties à \(p\) éléménts de \(E\) est exactement le nombre d'arrangements à \(p\) éléménts de \(E\) auquel on retire toutes les permutations des \(p\) éléments choisis, ce qui revient exactement à \textbf{retirer la contrainte d'ordre}.
-
-\subsection*{\subsecstyle{Propriétés du coefficient binomial}}
-Le coefficient binomial possède plusieurs propriétés intéréssantes, on peut tout d'abord remarquer une \textbf{symétrie} évidente mais aussi:
-\[
-   \textbf{Formule de Pascal:} \;\; \binom{n}{p} = \binom{n - 1}{p} + \binom{n - 1}{p - 1}\quad      
-   \textbf{Formule du capitaine:} \;\; p\binom{n}{p} = n\binom{n - 1}{p - 1} \;\;
-\]
-
-La \textbf{formule de Pascal} se comprends si on considère un élément fixé de l'ensemble et qu'on dénombreux tout ceux qui le contiennent, et les autres, ie: 
-\begin{center}
-   \textit{Le nombre de parties à \(p\) éléments est exactement la somme du nombre de parties qui ne contiennent pas un certain \(x\) et du nombre de partie qui contiennent ce \(x\).}
-\end{center} 
-
-La \textbf{formule du capitaine} se comprends si on considère le choix d'une équipe sportive de \(p\) joueurs (dont un capitaine) parmi un groupe de \(n\) candidats:
-\begin{center}
-   \textit{Choisir une équipe de \(p\) joueurs puis un capitaine parmi les \(p\) joueurs\+ revient à choisir un capitaine parmi les \(n\) candidats, puis les \(p - 1\) joueurs restants.}
-\end{center} 
-Enfin on a aussi:
-\[
-   \sum_{p=0}^n \binom{n}{p} = 2^n       
-\]
-\begin{center}
-   \textit{Le cardinal de l'ensemble des parties d'un ensemble à \(n\) éléments est donc exactement la somme des parties qui ont respectivement \(1, 2, \ldots, n\) éléments.}
-\end{center} 
-
-
-\subsection*{\subsecstyle{Généralisation}}
-On peut remarquer que le coefficient binomial est le nombre de partitions en deux parties de \(E\) telles que le cardinal de la première soit \(p\). Par exemple si on considère les partitions de \(E := \bigl\{1, 2, 3\bigl\}\) en deux parties dont la première ait \(1\) élément, on remarque qu'il y a 3 telles partitions:
-\[
-   P = \bigl(\{1\}, \{2, 3\}\bigl) \text{ ou } \bigl(\{2\}, \{1, 2\}\bigl) \text{ ou } \bigl(\{3\}, \{1, 2\}\bigl)
-\]
-
-On peut alors généraliser cette idée et définir le \textbf{coefficient multinomial} \(\binom{n}{k_1, \ldots, k_p}\) qui sera le nombre de partitions en \(p\) parties telles que la p-ième partie soit de cardinal \(k_p\) avec la somme des \(k_p\) \textbf{qui soit égale au cardinal total}:
-\[
-   \mathbox{
-      \binom{n}{k_1, \ldots, k_p} = \frac{n!}{k_1! k_2!\ldots k_p!}
-   }
-\]
-
-Pour fixer les idées on remarque que si \(p = 2\) on a bien notre coefficient binomial usuel\footnote{
-   La première égalité vient de la contrainte sur la somme des \(k_p\).
-}\footnote{La seconde égalité se comprends par symétrie, compter le nombre de partitions en deux parties dont la première contient \(k_1\) éléments revient à compter le nombre de parties à \(k_1\) éléments et le reste sera nécessairement dans la seconde partie.}:
-\[
-   \binom{n}{k_1, k_2} =  \binom{n}{k_1, n - k_1} = \binom{n}{k_1} = \frac{n!}{k_1!(n-k_1)} = \frac{n!}{k_1!k_2!}
-\]
-On peut alors utiliser ce coefficient multinomial, pour compter le nombre d'anagramme d'un mot de \(n\) lettres avec \(m\) lettres distinctes répétées \(k_m\) fois, ou encore le nombre de façon de mettre \(n\) objets dans \(m\) boites qui peuvent en contenir \(k_m\).\+
-Par exemple, le nombre d'anagrammes de MISSISSIPI est donné par \(\binom{11}{1 , 4, 4, 1}  = \frac{11!}{4!4!} = 34650\)\<
-
-On peut même pour définir la \textbf{formule du multinôme de Newton} qui généralise celle du binôme:
-\[
-   (x_1 + x_2 + \ldots + x_p)^n = \sum_{k_1+k_2+\ldots+k_p = n} \binom{n}{k_1, k_2 \ldots, k_n} x_1^{k_1} x_2^{k_2} \ldots x_p^{k_p}
-\]
-
-\chapter*{\chapterstyle{Espaces probabilisés}} % 75% Fini
+\chapter*{\chapterstyle{IV --- Espaces probabilisés}} % 75% Fini
 \addcontentsline{toc}{section}{Espaces probabilisés}
 
 On appelle \textbf{expérience aléatoire} une expérience dont toutes les \textbf{issues} possibles sont connues à priori mais
-dont le résultat peut varier lorsqu'on la répète (lancer de dés, tirage dans une urne...).
+dont le résultat peut varier lorsqu'on la répète (lancer de dés, tirage dans une urne\ldots).
 
 \subsection*{\subsecstyle{Univers et Tribus}}
 On appelle \textbf{univers} et on note \(\Omega\) l'ensemble de toutes les issues de l'expérience.\+
@@ -118,12 +20,9 @@ Le couple \((\Omega, \Pow(\Omega))\) est alors appelé de manière générale \t
 
 \subsection*{\subsecstyle{Système complet d'évenements}}
 Soit \((A_n)_{n \in \N}\) une famille d'évenements et \(k, p\) deux entiers distincts, on dit que \(A_k\) et \(A_p\) sont \textbf{incompatibles} si ils sont \textbf{disjoints}.
-
-\multiparbox{0em}{0.7}{
-   \begin{center}
+\customBox{width=12cm}{
    On appelle \textbf{système complet d'évenements} une \textbf{partition} de \(\Omega\) par \+ 
    des évenements deux à deux incompatibles.
-   \end{center}
 }
 
 \subsection*{\subsecstyle{Mesure de probabilité}}
@@ -136,7 +35,7 @@ Elle doit aussi être \textbf{\(\sigma\)-additive}, ie elle doit vérifier:
 \]
 De ces axiomes on peut déduire plusieurs propriétés:
 
-\multiparbox{-0.5em}{0.75}{
+\customBox{width=13cm}{
    \begin{align*}
       &\textbf{Probabiblité de l'ensemble vide} \;\; &&\mathbb{P}(\varnothing) = 0\\
       &\textbf{Probabiblité du complémentaire}  \;\; &&\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)\\
@@ -144,6 +43,7 @@ De ces axiomes on peut déduire plusieurs propriétés:
       &\textbf{Croissance pour l'inclusion}  \;\; &&A \subseteq B \implies \mathbb{P}(A) \leq \mathbb{P}(B)
    \end{align*}
 }
+
 Muni de cette mesure de probabilité, le triplet \((\Omega, \Pow(\Omega), \mathbb{P})\) est appelé \textbf{espace probabilisé}.
 
 \subsection*{\subsecstyle{Distribution de probabilité}}
@@ -170,20 +70,22 @@ Soit \(X\) un évenement qui n'est pas négligeable, alors on définit l'applica
 On peut montrer que c'est une mesure de probabilité sur \(\Omega\) et on l'appelle \textbf{probabilité de A sachant X}.\+
 
 De la symétrie de l'intersection on peut alors en déduire la \textbf{formule de Bayes}:
-\[   
-   \mathbox{
+\customBox{width=4.5cm}{
+   \[
       \mathbb{P}_B(A) = \frac{\mathbb{P}(A) \mathbb{P}_A(B)}{\mathbb{P}(B)}
-   }
-\]
+   \]
+}
+
 Cette formule permet alors \textbf{d'inverser le conditionnement} et de déterminer les \textbf{probabilités des causes sachant les conséquences}.
 
 \subsection*{\subsecstyle{Formule des probabilités composées}}
 On en déduit directement la \textbf{formule des probabilités composées}:
-\[
-   \mathbox{
+\customBox{width=7cm}{
+   \(
       \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}_A(B) = \mathbb{P}(B)\mathbb{P}_B(A)
-   }
-\]
+   \)
+}
+
 Qui se généralise pour une famille finie d'évenements \((A_n)_{n \in I}\) d'intersection non nulle:
 \[
    \mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1)\mathbb{P}_{A_1}(A_2)\mathbb{P}_{A_1\cap A_2}(A_3)\ldots\mathbb{P}_{A_1\cap \ldots \cap A_{n-1}}(A_n)
@@ -191,22 +93,24 @@ Qui se généralise pour une famille finie d'évenements \((A_n)_{n \in I}\) d'i
 
 \subsection*{\subsecstyle{Formule des probabilités totales}}
 Soit \((A_n)_n \in I\) un système complet d'évenements de \(\Omega\), alors on montre la \textbf{formule des probabilités totales}:
-\[
-   \mathbox{
+\customBox{width=5cm}{
+   \[
       \mathbb{P}(B) = \sum_{k=1}^{n} \mathbb{P}(A_k) \mathbb{P}_{A_k}(B)
-   }
-\]
+   \]
+}
+
 
 \subsection*{\subsecstyle{Indépendance}}
 On dit que deux évenements \(A, B\) sont \textbf{indépendants} si et seulement si:
-\[
-   \mathbox{
+\customBox{width=4.5cm}{
+   \(
       \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
-   }
-\]
+   \)
+}
+
 Si deux évenements sont indépendants, alors n'importe quelle paire de \(A, B, \overline{A}, \overline{B}\) est indépendante.
 
-\chapter*{\chapterstyle{Variables aléatoires}} % 95% Fini
+\chapter*{\chapterstyle{IV --- Variables aléatoires}} % 95% Fini
 \addcontentsline{toc}{section}{Variables aléatoires}
 
 Les jeux de hasard qui amenèrent à concevoir les variables aléatoires, en associant à une issue (résultat du lancer d'un ou plusieurs dés, d'un tirage à pile ou face, d'une roulette, etc.) un gain.
@@ -214,14 +118,14 @@ Les jeux de hasard qui amenèrent à concevoir les variables aléatoires, en ass
 \subsection*{\subsecstyle{Définition}}
 Soit \((\Omega, \mathscr{A}, \mathbb{P})\) un espace probabilisé au plus dénombrable, avec \(\mathscr{A} = \Pow(\Omega)\).\+
 On appelle \textbf{variable aléatoire discrète} toute application \(X: \Omega \longrightarrow E\) de telle que \(E\) soit au plus \textbf{dénombrable} et que \(X\) soit \textbf{mesurable}, ie qu'on ait:
-\[
-   \mathbox{
+\customBox{width=5.5cm}{
+   \(
       \forall a \in X(\Omega) \; ; \; X^{-1}(\{a\}) \in \mathscr{A}
-   }
-\]
-En d'autres termes:
+   \)
+}
+
 \begin{center}
-   \textit{L'image réciproque des valeurs de \(X\) sont des évenements.}
+   \textit{En d'autres termes, l'image réciproque des valeurs de \(X\) est un évenement.}
 \end{center}
 Cette contrainte s'explique par le fait qu'on veut pouvoir calculer la probabilité que \(X\) prenne la valeur \(a\), or si \(X^{-1}(\{a\})\) est bien un évenement\footnote[1]{Cette évenement n'est en général \textbf{pas} un évenement élémentaire, mais bien une \textbf{partie} de \(\Omega\).}, alors sa probabilité est bien définie, on utilise alors usuellement la \textbf{notation} suivante:
 \[
@@ -288,7 +192,7 @@ La \textbf{loi binomiale} est utilisée pour déterminer la probabilité d'obten
 La \textbf{loi géométrique} est utilisée pour déterminer la probabilité d'obtenir le premier succés à la \(k\)-ième itérations d'une épreuve de Bernoulli.\+
 La \textbf{loi hypergéométrique} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de tirage sans remise dans une urne contenant \(N\) boules, dont \(pN\) boules gagantes, et \((1-p)N\) boules perdantes, avec la contrainte que \(pN\) soit un entier.\+
 
-\chapter*{\chapterstyle{Couples aléatoires}} % 95% Fini
+\chapter*{\chapterstyle{IV --- Couples aléatoires}} % 95% Fini
 \addcontentsline{toc}{section}{Couples aléatoires}
 
 Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \((X_i)_{i \in \N}\) une famille de variables aléatoires discrètes définies sur cet univers, on appelle alors \textbf{vecteur aléatoire} une telle famille.\< 
@@ -297,13 +201,18 @@ Dans ce chapite nous considérerons seulement les couples de variables aléatoir
 
 \subsection*{\subsecstyle{Lois marginales \& Loi conjointe}}
 On appelle \textbf{loi conjointe}\footnote[1]{Trés souvent formalisée par un tableau en \(X / Y\)} du couple \((X, Y)\) la loi de probabilité définie qui a tout couple \(x, y \in (X, Y)(\Omega)\) associe sa probabilité:
-\[
-   \mathbox{\mathbb{P}(X = x, Y = y)}
-\]
+\customBox{width=4cm}{
+   \(
+      \mathbb{P}(X = x, Y = y)
+   \)
+}
+
 On appelle \textbf{loi marginale}\footnote[2]{Correspondrait à la somme d'une colonne du tableau évoqué (par exemple).} du couple \((X, Y)\) les lois de probabilités de \(X\) et de \(Y\). On les obtient\footnote[3]{L'évenement \(X = x\) est exactement l'ensemble des couples \((x, y)\) pour toutes les valeurs possibles de \(y\).} par:
-\[
-   \mathbox{\mathbb{P}(X = x) = \sum_{y \in Y(\Omega)} \mathbb{P}(X = x, Y = y)}
-\]
+\customBox{width=7cm}{
+   \[
+      \mathbb{P}(X = x) = \sum_{y \in Y(\Omega)} \mathbb{P}(X = x, Y = y)
+   \]
+}
 
 \subsection*{\subsecstyle{Indépendance}}
 De manière analogue au cas d'une variable simple, deux variables aléatoires \(X, Y\) sont indépendantes si et seulement si pour tout couple \(x, y\):
@@ -330,18 +239,19 @@ Alors on peut considérer la variable aléatoire \(Z = f(X, Y)\) qui est aussi u
    &= (1-p)p' + p(1-p') + (1-p)(1-p')
 \end{align*}
 
-\chapter*{\chapterstyle{Variables à densité}} % 95% Fini
+\chapter*{\chapterstyle{IV --- Variables à densité}} % 95% Fini
 \addcontentsline{toc}{section}{Variables à densité}
 
 On considère maintenant un espace probabilisé \((\Omega, \mathcal{B}(\R), \mathbb{P})\) où l'ensemble des évènements \(\mathcal{B}(\R)\) est la \textbf{tribu borélienne} de \(\Omega\).
 
 \subsection*{\subsecstyle{Définition}}
 On apelle \textbf{variable aléatoire continue} toute application \(X: \Omega \longrightarrow \R\) telle que \(X\) soit \textbf{mesurable}, ie qu'on ait pour tout \textbf{intervalle} \(I\):
-\[
-   \mathbox{
+\customBox{width=4cm}{
+   \(
       X^{-1}(I) \in \mathcal{B}(\R)
-   }
-\]
+   \)
+}
+
 \begin{center}
    \textit{Les images réciproques des valeurs de \(X\) sont des évenements.}
 \end{center}
@@ -349,12 +259,16 @@ On apelle \textbf{variable aléatoire continue} toute application \(X: \Omega \l
 \subsection*{\subsecstyle{Fonction de densité}}
 On dit alors que \(f\) est une \textbf{densité de probabilité} si elle est positive, intégrable, et qu'elle vérifie:
 \[
-   \mathbox{\int_{-\infty}^{+\infty} f(t) \d t = 1}   
+   \int_{-\infty}^{+\infty} f(t) \d t = 1
 \]
+
+
 On appelle alors \textbf{variable aléatoire à densité} toute variable aléatoire continue telle qu'il existe une telle fonction \(f\) qui donne la probabilité de tout évemenement \(I\)\footnote[1]{En particulier, on remarquera que la probabilité d'un intervalle réduit à un singleton est nulle, ie \(\mathbb{P}(X = x) = 0\).}, elle définit alors la loi de \(X\) par:
-\[
-   \mathbox{\mathbb{P}(X \in I) = \int_{I} f(t) \d t}   
-\]
+\customBox{width=4.5cm}{
+   \[
+      \mathbb{P}(X \in I) = \int_{I} f(t) \d t
+   \]
+}
 
 \underline{Exemple:} La variable aléatoire continue dont la densité est constante sur
 un intervalle \(I\)  est appellée loi continue uniforme sur \(I = \icc{a}{b}\) est définie\footnote[2]{La densité est contrainte par le fait de devoir être égale à 1, en particulier il suffit d'intégrer l'idéntité au dessus pour \(f(t)\) constante.} par la densité suivante:
@@ -369,9 +283,11 @@ un intervalle \(I\)  est appellée loi continue uniforme sur \(I = \icc{a}{b}\) 
 
 \subsection*{\subsecstyle{Fonction de répartition}} 
 On appelle \textbf{fonction de repartition} la fonction définie par:
-\[
-   \mathbox{F_X(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^{x} f(t) \d t}
-\]
+\customBox{width=6cm}{
+   \[
+      F_X(x) = \mathbb{P}(X \leq x) = \int_{-\infty}^{x} f(t) \d t
+   \]
+}
 Intuitivement, la fonction de répartition associe à tout réel \(x\) la probabilité que la variable aléatoire ait une valeur inférieure ou égale.\<
 
 Cette fonction est continue, croissante et \textbf{dérivable presque partout} et sa dérivée est presque partout égale à \(f_X\).
@@ -379,7 +295,7 @@ Cette fonction est continue, croissante et \textbf{dérivable presque partout} e
    \textit{En pratique, tout se passe comme si \(F_X\) était simplement\+ une primitive de \(f_X\)\footnote[3]{Ce qui est le cas quand \(f\) est continue.}}
 \end{center}
 
-\chapter*{\chapterstyle{Indicateurs}} % 95% Fini
+\chapter*{\chapterstyle{IV --- Indicateurs}} % 95% Fini
 \addcontentsline{toc}{section}{Indicateurs}
 
 Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \(X, Y\) deux variables aléatoires réelles finies, on note \(\mathbb{P}_X\) et \(\mathbb{P}_Y\) leurs lois respectives. \+
@@ -393,22 +309,23 @@ On appelle \textbf{indicateur de dispersion} un nombre réel permettant de mesur
 Dans cette partie, on peut remplacer \(X\) (variable simple) par \(Z = (X, Y)\) vecteur aléatoire, et calculer alors l'espérance de ce vecteur connaissant sa loi.\<
 
 L'espérance mathématique correspond à la moyenne théorique du résultat qu'on peut espérer avoir en répétant une expérience aléatoire un grand nombre de fois, c'est \textbf{la moyenne des valeurs de la variable aléatoire, pondérées par leur probabilités respectives}, ie on définit:
-\[
-   \mathbox{
+\customBox{width=5.5cm}{
+   \[
       \expectancy{X} := \sum_{x \in X(\Omega)} x\cdot\mathbb{P}_X(\{x\})
-   }   
-\]
+   \]
+}
+
 L'esperance existe toujours dans le cas d'une variable aléatoire \textbf{finie} mais ce n'est pas le cas dans d'autres contextes. \<
 
 L'espérance possède plusieurs propriétés remarquables, elle est \textbf{linéaire et croissante}\footnote[1]{Croissante pour l'ordre des variables aléatoires, ie \(X \leq Y \Longleftrightarrow \forall \omega \in \Omega \; ; \; X(\omega) \leq Y(\omega)\)} et l'espérance d'une constante est cette constante,.\+
 Mais en général, l'espérance \textbf{n'est pas multiplicative}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
 
 Par ailleurs, on a le \textbf{théorème de transfert}:
-\[
-   \mathbox{
+\customBox{width=6.5cm}{
+   \[
       \expectancy{\varphi(X)} = \sum_{x \in X(\Omega)} \varphi(x)\cdot\mathbb{P}_X(\{x\})
-   }
-\]
+   \]
+}
 
 Enfin, on appelle \textbf{variable centrée} une variable aléatoire d'espérance nulle\footnote[2]{On peut alors centrer une variable aléatoire par la translation \(X' = X - \expectancy{X}\).}.
 
@@ -416,44 +333,54 @@ Enfin, on appelle \textbf{variable centrée} une variable aléatoire d'espéranc
 On manque alors d'informations sur les valeurs de \(X\), elles peuvent tout aussi bien rester toujours très
 proches de \(\expectancy{X}\), ou s'en éloigner beaucoup, on a donc besoin de mesurer la distance moyenne entre \(X\) et \(\expectancy{X}\), qui serait alors \(\expectancy{| X - \expectancy{X} |}\).\+
 Cette formule est techniquement impraticable du fait de la valeur absolue, on utile donc \textbf{la moyenne des carrés des distances} entre \(X\) et \(\expectancy{X}\), et on définit alors la variance:
-\[
-   \mathbox{
+\customBox{width=8cm}{
+   \(
       \variance{X} := \expectancy{(X - \expectancy{X})^2} = \expectancy{X^2} - \expectancy{X}^2
-   }   
-\]
+   \)
+}
+
 La deuxième expression apellée \textbf{formule de Koenig-Huygens} se déduit facilement de la première.
 \pagebreak
 
 On voit directement que la variance est \textbf{positive} (ou nulle si \(X\) est constante presque partout). \+
 La variance vérifie aussi les propriétés suivantes:
-\multiparbox{-0.5em}{0.6}{
+\customBox{width=9cm}{
    \begin{align*}
       &\textbf{Invariante par translation} \;\; &&\variance{X + a} = \variance{X}\\
       &\textbf{Quadratique}  \;\; &&\variance{\lambda X} = \lambda^2\variance{X}
    \end{align*}
-}
+}   
+
 On peut alors définir \textbf{l'écart-type} de la variable \(X\) qui est défini par \(\sigma(X) = \sqrt{\variance{X}}\)\<
 
 Enfin, on appelle \textbf{variable réduite} une variable aléatoire d'écart type \(1\) et on peut alors définir la \textbf{variable centrée réduite} associée à \(X\):
-\[
-   \mathbox{
-     X^*= \frac{X - \expectancy{X}}{\sigma(X)} 
-   }   
-\]
+\customBox{width=3.5cm}{
+   \[
+      X^*= \frac{X - \expectancy{X}}{\sigma(X)}  
+   \]
+}   
+
 
 \subsection*{\subsecstyle{Covariance}}
 Dans le cas d'un couple aléatoire et contrairement à l'espérance, le concept de variance perds son sens. Plutôt que de chercher un écart par rapport à la moyenne, on va préférer chercher \textbf{un écart moyen entre les deux variables}\footnote[1]{On remarque que la variance n'est alors que la covariance de \(X\) avec elle-même.} qui se définit par:
-\[
-   \mathbox{\text{Cov}(X, Y) = \mathbb{E}\bigl[(X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\bigl] = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)}
-\]
+\customBox{width=11cm}{
+   \(
+      \text{Cov}(X, Y) = \mathbb{E}\bigl[(X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\bigl] = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) 
+   \)
+}
+
 On remarque alors que si les deux variables aléatoires sont \textbf{indépendantes}\footnote[2]{Dans ce cas l'espérance est multiplicative.}, alors on a:
-\[
-   \mathbox{\text{Cov}(X, Y) = 0}
-\]
+\customBox{width=3.5cm}{
+   \(
+      \text{Cov}(X, Y) = 0
+   \)
+}
 Gràce à la covariance on peut aussi définir la variance d'une somme:
-\[
-   \mathbox{\variance{X + Y} =   \variance{X} + \variance{Y} +  2\text{Cov}(X, Y)}
-\]
+\customBox{width=7.5cm}{
+   \(
+      \variance{X + Y} =   \variance{X} + \variance{Y} +  2\text{Cov}(X, Y)
+   \)
+}
 En particulier, la variance est alors \textbf{additive} quand les variables sont indépendantes.\<
 
 On peut montrer que la covariance est \textbf{bilinéaire, symétrique et positive}. Informellement c'est un \textit{``pseudo produit scalaire''} sur les variables aléatoires, néanmoins suffisament proche du produit scalaire pour avoir \textbf{l'inégalité de Cauchy-Schwartz}:
@@ -491,29 +418,35 @@ Il est intéressant de considérer les différents indicateurs de position et de
 
 \subsection*{\subsecstyle{Inégalités}}
 Soit \(\alpha \in \R^{+*}\), alors si \(X\) est une variable aléatoire à valeurs dans \(\R^+\) on a \textbf{l'inégalité de Markov}:
-\[
-   \mathbox{
+\customBox{width=4.2cm}{
+   \[
       \mathbb{P}(|X| \geq \alpha) \leq \frac{\expectancy{X}}{\alpha}
-   }
-\]
+   \]
+}
+
 Et pour toute variable aléatoire, on a aussi \textbf{l'inégalité de Bienaymé-Tchebychev}:
-\[
-   \mathbox{
+\customBox{width=5.5cm}{
+   \[
       \mathbb{P}(|X - \expectancy{X}| \geq \alpha) \leq \frac{\variance{X}}{\alpha^2}
-   }
-\]
+   \]
+}
+
 
 \subsection*{\subsecstyle{Cas des variables à densité}}
 On étudie ici la variable à densité \(W\) dont la densité est notée \(f\), on considère \(W\) bornée à valeurs dans un intervalle \(I\).\+
 De manière analogue au cas discret\footnote[2]{Informellement, on somme ``continument'' les produits des valeurs prises par la variable pondérées par leurs probabilités (données par la densité).}, l'espérance de \(W\) est donnée par:
-\[
-   \mathbox{\expectancy{W} := \int_{I} t \cdot f(t) \d t}   
-\]
+\customBox{width=4.5cm}{
+   \[
+      \expectancy{W} := \int_{I} t \cdot f(t) \d t
+   \]
+}
 L'existence même de cette intégrale n'est pas acquise à priori, ie il est possible que \(f\) n'admette pas d'éspérance.
 Dans le cas où elle existe, les propriétés de l'espérance (linéarité, croissance) sont conservées, en particulier, le \textbf{théorème de transfet} est aussi conservé.\<
 
 Pour définir la variance d'une telle variable aléatoire, il faut alors que l'intégrale \(\expectancy{W^2}\) existe, et d'aprés le théorème de Koenig-Huyghens, on a alors: 
-\[
-   \mathbox{\variance{W} := \expectancy{W^2} - \expectancy{W}^2 = \int_{I} t^2 \cdot f(t) \d t - \Bigl(\int_{I} t\cdot f(t) \d t\Bigl)^2}   
-\]
+\customBox{width=10cm}{
+   \[
+      \variance{W} := \expectancy{W^2} - \expectancy{W}^2 = \int_{I} t^2 \cdot f(t) \d t - \Bigl(\int_{I} t\cdot f(t) \d t\Bigl)^2
+   \]
+}
 Alors les propriétés de la variance sont elles aussi conservées.

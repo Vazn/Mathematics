@@ -5,23 +5,11 @@
 \definecolor{DarkBlue1}{RGB}{83, 108, 132}
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
 \definecolor{DarkBlue3}{RGB}{90, 126, 162}
-
+\tcbset{shield externalize, enhanced, sharp corners, halign=center, center}
+%drop shadow southwest=black!100!black
 \newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
 \newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
 \newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\underline{#1}}
-
-\newcommand{\mathbox}[1]{
-    \setlength{\fboxrule}{0.7pt}
-    \boxed{
-        #1
-    }
-}
-\newcommand{\textbox}[1]{
-    \setlength{\fboxrule}{0.7pt}
-    \fbox{
-        #1
-    }
-}
 
 \newcommand{\chapterstyle}[1]{
     \setlength{\fboxsep}{0.3em}
@@ -31,13 +19,18 @@
     \color{DarkBlue1}\huge\fbox{\textbf{\textsc{#1}}}
 }
 
-\newcommand{\multiparbox}[3]{
-    \begin{center}
-        \setlength{\fboxsep}{#1}
-        \textbox{
-            \parbox{#2\linewidth}{%
-                #3
-            }
-        }
-    \end{center}
+\newcommand{\customBox}[2]{
+    \tcbset{boxrule=1.5pt, boxsep=-0.2mm, colframe=DarkBlue1, colback=BrightBlue1!05}
+    \begin{tcolorbox}[#1]
+        \abovedisplayskip=0pt % remove vertical space above align
+        #2
+    \end{tcolorbox}
 }
+
+\makeatletter % Crée une trés grosse taille de police pour la page de garde
+\newcommand\HUGE{\@setfontsize\Huge{40}{60}}
+\makeatother   
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother

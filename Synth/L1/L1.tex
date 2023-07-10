@@ -1,40 +1,20 @@
 \documentclass{report}
 \input{../../Header.tex}
+\setcounter{tocdepth}{1}
 
 \begin{document}
-   \input{Titre.tex}
+   \input{Titre}
+   \tableofcontents
 
-   {
-      \renewcommand{\cftchapfont}{\large \bfseries \scshape}
-      \renewcommand{\cftsecfont}{}
-      \renewcommand{\contentsname}{\hfill
-      \setlength{\fboxsep}{0.3em}\setlength{\fboxrule}{3pt}\vspace{20pt}
-      \color{DarkBlue1}\Huge
-      \fbox{\textbf{\textsc{Table des matières}}}
-      \hfill
-      }
-   
-      \setcounter{tocdepth}{1}
-      \tableofcontents
-   }
+   \addcontentsline{toc}{chapter}{I --- Fondements}
+   \input{Fondements} \pagebreak
 
-   \addcontentsline{toc}{chapter}{Fondements}
-   \input{Fondements.tex}
-   \pagebreak
+   \addcontentsline{toc}{chapter}{II --- Algèbre Linéaire \& Géométrie}
+   \input{Algebre} \pagebreak
 
-   \addcontentsline{toc}{chapter}{Analyse}
-   \input{Analyse.tex}
-   \pagebreak 
+   \addcontentsline{toc}{chapter}{III --- Analyse}
+   \input{Analyse} \pagebreak
 
-   \addcontentsline{toc}{chapter}{Algèbre Linéaire}
-   \input{Algebre.tex}
-   \pagebreak
-
-   \addcontentsline{toc}{chapter}{Probabilités}
-   \input{Probabilites.tex}
-   \pagebreak
-
-   \addcontentsline{toc}{chapter}{Géométrie}
-   \input{Geometrie.tex}
-   \pagebreak
+   \addcontentsline{toc}{chapter}{IV --- Probabilités}
+   \input{Probabilites} \pagebreak
 \end{document}
