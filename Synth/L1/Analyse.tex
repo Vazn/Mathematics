@@ -1060,12 +1060,14 @@ Une somme de Riemann représente la somme d'aires de rectangles dans le cas part
 \subsection*{\subsecstyle{Techniques de calcul générales{:}}}
 \addcontentsline{toc}{subsection}{Techniques de calcul générales}
 
-Du théorème fondamental on peut déduire plusieurs formules utiles pour calculer des intégrales, en premier lieu on montre facilement la formule \textbf{d'intégration par parties} qui nous permet de caculer \textbf{l'intégrale d'un produit}\footnote[3]{On peut souvent trouver une relation de récurrence par IPP successives, ou alors annuler un facteur polynomial par les dérivations successives que permettent les IPP.} dans certains cas:
+Du théorème fondamental on peut déduire plusieurs formules utiles pour calculer des intégrales, dans toute cette section, \(f, g\) sont \textbf{continues} et \(\phi\) est \textbf{continue, dérivable à dérivée continue}\footnote[3]{De telle sorte que toutes les intégrales soient bien définies.}.\< 
+
+En premier lieu on montre facilement la formule \textbf{d'intégration par parties} qui nous permet de caculer \textbf{l'intégrale d'un produit}\footnote[4]{On peut souvent trouver une relation de récurrence par IPP successives, ou alors annuler un facteur polynomial par les dérivations successives que permettent les IPP.} dans certains cas:
 \customBox{width=8cm}{
    \[\int_{a}^{b} f(t)g'(t) \d y = f(t)g(t) \Bigl|_{a}^{b} \; - \int_{a}^{b} f'(t)g(t) \d t\]
 }  
 
-On montre par ailleurs la formule du \textbf{changement de variable}, elle nous permet de calculer \textbf{l'intégrale d'une composée}\footnote[4]{De gauche à droite, elle nous permet de poser \textbf{une nouvelle variable} comme fonction de la variable d'intégration, de droite à gauche on pose alors notre variable d'intégration comme \textbf{l'image d'une nouvelle variable par une fonction} (nécéssite alors la surjectivé sur le segment).} dans certains cas:
+On montre par ailleurs la formule du \textbf{changement de variable}, elle nous permet de calculer \textbf{l'intégrale d'une composée}\footnote[5]{De gauche à droite, elle nous permet de poser \textbf{une nouvelle variable} comme fonction de la variable d'intégration, de droite à gauche on pose alors notre variable d'intégration comme \textbf{l'image d'une nouvelle variable par une fonction} (nécéssite alors la surjectivé sur le segment).} dans certains cas:
 \customBox{width=6.5cm}{
    \[\int_{a}^{b} f(\varphi(t))\varphi'(t) \d t = \int_{\varphi(a)}^{\varphi(b)} f(x) \d x\]
 }  
