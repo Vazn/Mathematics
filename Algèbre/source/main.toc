@@ -1,4 +1,0 @@
-\contentsline {chapter}{Chapitre I}{2}{chapter*.1}%
-\contentsline {section}{Demonstrations}{2}{section*.2}%
-\contentsline {section}{Exercices}{2}{section*.3}%
-\contentsfinish 
