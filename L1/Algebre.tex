@@ -1,32 +1,34 @@
 \chapter*{\chapterstyle{II --- Corps des Complexes}} % 99% Fini
 \addcontentsline{toc}{section}{Corps des Complexes}
 
-On note \(\C\) l'extension du corps \(\R\) avec les deux lois usuelles. \< 
+On définit le nombre imaginaire \(i\) dont le carré vaut \(-1\), et on construit alors \(\C\) comme l'extension du corps\footnote[1]{La motivation principale de l'introduction de \(i\) et de cette construction est que \(\C\) est algébriquement clos, ie tout les polynomes de degré \(n\) de \(\C[X]\) ont \(n\) racines.} \(\R\) avec les deux lois usuelles, ie on définit:
+\[
+   \C := \R[i] = \Bigl\{a + ib \; ; \; a, b \in \R \Bigl\}
+\]
+On peut alors montrer que c'est un ensemble stable pour les lois usuelles et qu'il vérifie toutes les propriétés qui font de lui un \textbf{corps}.\+
+Chaque nombre complexe se définit alors comme des sommes ou produits de réels et du nombre imaginaire et on appelle alors cette expression la \textbf{forme algébrique} d'un nombre complexe et on appelle \(a\) \textbf{la partie réelle} et \(b\) \textbf{la partie imaginaire} de ce nombre. \<
 
-Est introduit le nombre imaginaire \(i\) dont le carré vaut \(-1\) et chaque nombre complexe se définit alors comme des sommes ou produits de réels et du nombre imaginaire.\+
-On définit ainsi la \textbf{forme algébrique} d'un nombre complexe comme \(a + bi\) avec \(a, b \in \R\). \<
-
-Soit \(z, z' \in \C\) et \(\theta \in \R/2\pi\). On notera \(\rho\) le module de \(z\) pour faciliter la lecture.
+Géométriquement, on peut identifier les nombres complexes à des points du plan, en effet, \(a + ib\) peut se comprendre comme une combinaison linéaire d'un nombre de l'axe réel, et d'un nombre de l'axe imaginaire.
 
 \subsection*{\subsecstyle{Module {:}}}
-On appelle \textbf{module} de \(z\) le \textbf{prolongement} de la fonction valeur absolue à \(\C\), c'est donc une \textbf{métrique} et on la définit telle que {:}
+On appelle \textbf{module} de \(z \in \C\) le \textbf{prolongement} de la fonction valeur absolue à \(\C\), c'est donc une \textbf{norme} et on la définit telle que {:}
 \[
-    \rho = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
+   |z| = \sqrt{a^2 + b^2} = \sqrt{z\overline{z}} 
 \]
+Dans la suite, on notera \(\rho\) le module de \(z\) pour faciliter la lecture.
 
 \subsection*{\subsecstyle{Forme trigonométrique {:}}}
-On montre alors qu'il existe un unique angle \(\theta\) (modulo \(2\pi\)) qu'on appelle \textbf{argument} de \(z\) tel que:
+L'interprétation géométrique permet alors de montrer par passage en coordonées polaires qu'il existe un unique angle \(\theta\) (modulo \(2\pi\)) qu'on appelle \textbf{argument} de \(z\) tel que:
 \[
     z = \rho(\cos\theta+i\sin\theta)   
 \]
 
 \subsection*{\subsecstyle{Forme exponentielle {:}}}
-De même on appelle \textbf{forme exponentielle} de \(z\) l'expression:
+De même on définit alors \textbf{la forme exponentielle} de \(z\) l'expression:
 \[
-    z = \rho e^{i\theta} 
+    z = \rho e^{i\theta} := \rho(\cos\theta+i\sin\theta)
 \]
-
-Les propriétés de l'exponentielle nous permettent aussi d'obtenir:
+On peut alors étendre les propriétés usuelles de l'exponentielle à \(\C\) et on en déduit:
 \customBox{width=6cm}{
    \begin{align*}
       \arg(zz') &\eqmod{2\pi} \arg(z) + \arg(z')\\
@@ -35,13 +37,11 @@ Les propriétés de l'exponentielle nous permettent aussi d'obtenir:
 }
 
 \subsection*{\subsecstyle{Conjugué {:}}}
-On appelle \textbf{conjugaison} l'automorphisme involutif qui à \(z\) associe son \textbf{conjugué}, noté \(\overline{z}\) tel que:
+On appelle conjugaison \textbf{l'involution} qui à \(z\) associe son \textbf{conjugué}, noté \(\overline{z}\) tel que:
 \[
     \overline{z} := a - bi = \rho(\cos\theta - i\sin\theta) = \rho e^{-i\theta}
 \]
-C'est un morphisme \textbf{additif} et \textbf{multiplicatif}. Graphiquement, le conjugué d'un nombre complexe est \textbf{le symétrique} de \(z\) par rapport à l'axe réel.\<
-
-On a alors les formules suivantes {:}
+C'est une application \textbf{additive} et \textbf{multiplicative}, on montre alors les formules suivantes {:}
 \customBox{width=7.5cm}{
    \[
       \Re(z) := \frac{z + \overline{z}}{2}
@@ -61,7 +61,7 @@ Un propriété importante des formes trigonométriques et exponentielles apellé
   \end{align*}  
 }
 \begin{center}
-    \textit{Les différentes puissances d'un nombre complexe (de module 1) s'interprétent alors comme des points situées à equidistance sur un cercle.}
+    \textit{Les différentes puissances d'un nombre complexe (de module 1) s'interprétent alors comme des points situés à equidistance sur un cercle.}
 \end{center}
 Graphiquement:
 \begin{center}
@@ -1341,7 +1341,7 @@ En pratique pour trouver le signe du cofacteur, on ne calcule pas \((-1)^{i + j}
 
 \underline{Exemple:} Pour \(\begin{pmatrix}
    1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
-\end{pmatrix}\), le cofacteur du coefficient en position \((2, 1)\) est 
+\end{pmatrix}\), le cofacteur du coefficient en position \((1, 2)\) est 
 \(- \begin{vmatrix} 4 & 6 \\ 7 & 9\end{vmatrix} \)
 
 \subsection*{\subsecstyle{Comatrice{:}}}

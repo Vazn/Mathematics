@@ -86,7 +86,7 @@
 \contentsline {subsection}{Prolongement par continuité}{47}{section*.149}%
 \contentsline {subsection}{Théorèmes généraux}{48}{section*.150}%
 \contentsline {subsection}{Continuité uniforme}{48}{section*.151}%
-\contentsline {subsection}{Lipschitzianité}{48}{section*.152}%
+\contentsline {subsection}{Lipschitzianité}{49}{section*.152}%
 \contentsline {subsection}{Homéomorphismes}{49}{section*.153}%
 \contentsline {section}{Dérivabilité}{50}{chapter*.154}%
 \contentsline {subsection}{Définition}{50}{section*.155}%

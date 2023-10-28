@@ -6,10 +6,19 @@
 \definecolor{DarkBlue2}{RGB}{58, 94, 132}
 \definecolor{DarkBlue3}{RGB}{90, 126, 162}
 \tcbset{shield externalize, enhanced, sharp corners, halign=center, center}
+
+%Underline settings
+\setlength{\ULdepth}{2pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
 %drop shadow southwest=black!100!black
 \newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
-\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
-\newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\underline{#1}}
+\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\myuline{#1}}
+\newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\myuline{#1}}
 
 \newcommand{\chapterstyle}[1]{
     \setlength{\fboxsep}{0.3em}

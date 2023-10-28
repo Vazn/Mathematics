@@ -572,6 +572,7 @@ Un des théorèmes principaux en relation avec la continuité uniforme est \text
    Tout fonction continue sur un \textbf{compact} y est \textbf{uniformément continue}.
 }
 En particulier, tout fonction continue sur un segment y est uniformément continue.
+\pagebreak
 
 \subsection*{\subsecstyle{Lipschitzianité{:}}}
 \addcontentsline{toc}{subsection}{Lipschitzianité}
@@ -686,7 +687,7 @@ Et la formule du produit, appellée \textbf{formule de Liebniz} se généralise 
 }
 Par ailleurs, si on pose \(f\) une fonction dérivable sur \(I\) et que \(f'\) ne s'annule pas sur \(I\), alors la réciproque de \(f\) est dérivable\footnote[1]{Les deux hypothèses impliquent que \(f\) est bijective sur son image, puis on revient à la définition pour montrer que \(f^{-1}\) est dérivable en \(f(a)\), on peut effectuer un changement de variable dans le calcul de limite pour trouver la première identité. La seconde nécessite un second changement de variable évident.} pour tout \(y := f(a)\) sur cet intervalle et on a:
 \customBox{width=6cm}{
-   \[f^{-1})'(y) = \frac{1}{f'(a)} = \frac{1}{f'(f^{-1}(y))}\]
+   \[(f^{-1})'(y) = \frac{1}{f'(a)} = \frac{1}{f'(f^{-1}(y))}\]
 }
 On peut généraliser ce résultat\footnote[2]{Même début de preuve que ci-dessus, avec une récurrence pour conclure.} en montrant que si \(f\) est une fonction de classe \(\mathscr{C}^k\) et si \(f'\) \textbf{ne s'annule pas}, alors \(f^{-1}\) est aussi de classe \(\mathscr{C}^k\).\<
 
@@ -1026,7 +1027,7 @@ Par ailleurs, si \(f\) est intégrable et que l'on en connaît une primitive \(F
    \[\int_{a}^{b} f(t) \d t = F(b) - F(a)\]
 }   
 
-\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(x) - F(2x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
+\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(2x) - F(x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
 
 \subsection*{\subsecstyle{{Formule de la moyenne:}}}
 \addcontentsline{toc}{subsection}{Formule de la moyenne}
@@ -1334,7 +1335,7 @@ Soit \(\gamma = (I, f)\) un arc paramétré de classe \(\mathcal{C}^1\). On appe
 }
 En particulier, on voit que l'abcisse curviligne évaluée en en réel \(t\), est exactement \textbf{la longueur algébrique de l'arc} entre \(t_0\) et \(t\), ce qui explique notamment la dénomination anglophone \textit{arc-length function}.\<
 
-Si \(s\) est l'abcisse curviligne d'un arc régulier \(\gamma = (I, f)\) de classe \(\mathcal{C}^1\), alors on peut montrer\footnote[3]{Elle est continue et strictement croissante et sa dérivée ne s'annule pas, donc bijective à dérivée dérivable. Voir le chapitre sur la dérivation, partie ``Dérivée d'une réciproque''.} que \(s\) est un \(\mathcal{C}^1\)-difféomorphisme de \(I\) sur \(J = f(I)\), et en particulier, on peut alors reparamétrer par l'abcisse curviligne:
+Si \(s\) est l'abcisse curviligne d'un arc régulier \(\gamma = (I, f)\) de classe \(\mathcal{C}^1\), alors on peut montrer\footnote[3]{Elle est continue et strictement croissante et sa dérivée ne s'annule pas, donc bijective à réciproque dérivable. Voir le chapitre sur la dérivation, partie ``Dérivée d'une réciproque''.} que \(s\) est un \(\mathcal{C}^1\)-difféomorphisme de \(I\) sur \(J = f(I)\), et en particulier, on peut alors reparamétrer par l'abcisse curviligne:
 \customBox{width=3.5cm}{
    \(
       \gamma' = (J, f \circ s^{-1})

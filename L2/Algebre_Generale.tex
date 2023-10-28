@@ -1,0 +1,338 @@
+\chapter*{\chapterstyle{I --- Arithmetique}}
+\addcontentsline{toc}{section}{Arithmetique}
+
+\subsection*{\subsecstyle{Division Euclidienne {:}}}
+Soit \(a, b \in \Z \times \Z^*\), on montre qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
+
+\customBox{width=4cm}{
+   \(
+      a = bq + r
+   \)
+}
+On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\).
+
+\subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
+
+Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(d\) qui vérifie:
+\customBox{width=5cm}{
+   \begin{align*}
+      &\bullet \;\; d \, | \, a \text{ et } d \, | \, b \\
+      &\bullet \;\; d' \, | \, a \text{ et } d' \, | \, b \implies d' \leq d
+   \end{align*}
+}
+Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. \<
+
+Une caractérisation utile permet de montrer que si \(d\) est un diviseur commun à \(a\) et \(b\), alors \(d = \text{pgcd}(a , b)\) si et seulement si pour tout diviseur commun \(d'\) de \(a\) et \(b\):
+\customBox{width=2cm}{
+   \(
+      d' \, | \, d   
+   \)
+}
+
+\subsection*{\subsecstyle{Théorème de Bézout {:}}}
+Soit \(a, b\in \Z^2\), on peut montrer qu'il existe deux entiers \(n_1, n_2 \in \Z^2\) tels que:
+\customBox{width=5cm}{
+   \(
+      n_1a+n_2b = a \wedge b
+   \)
+}
+\begin{center}
+   \textit{
+       Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
+   }
+\end{center}
+
+\subsection*{\subsecstyle{Lemme de Gauss {:}}}
+Soit 3 entiers \(a, b, c \in \Z\), alors\footnote[1]{Partir d'une combinaison linéaire donnée par Bézout.}:
+\customBox{width=5.5cm}{
+   \[
+      \begin{cases} 
+         a \, | \, bc \\
+         a \wedge b = 1
+      \end{cases} \implies a \, | \, c
+   \]
+}
+
+\chapter*{\chapterstyle{I --- Introduction}}
+\addcontentsline{toc}{section}{Structures primitives}
+
+On appelle \textbf{structure algébrique} un ensemble muni d'une (ou plusieurs) opérations appelées \textbf{lois}, c'est l'étude de telles structures mathématiques, des relations entre celles-ci (que nous appeleront morphismes), et de leurs propriétés que nous appeleront \textbf{algèbre générale}.\<
+
+Soit \(M\) un ensemble non-vide, on appelle \textbf{loi de composition interne} une opération binaire sur les éléments de \(M\) (qu'on notera temporairement \(\star\)) telle que:
+\customBox{width=5cm}{
+   \(\forall a, b \in M \; ; \; a \star b \in M\)
+}
+Soit \(E\) un ensemble non-vide, on appelle \textbf{loi de composition externe} une opération binaire entre un élément de \(E\) et un élément de \(M\) (qu'on notera temporairement \(\cdot\)) telle que:
+\customBox{width=5cm}{
+   \(\forall \lambda, a \in E \times M \; ; \; \lambda \cdot a \in M\)
+}
+
+On appelle \textbf{élément neutre} pour la loi un élément\footnote[1]{Dans la suite on notera l'élément neutre d'une structure \(M\) par \(e_M\)} \(e \in M\) tel que pour tout élément de \(a \in M\), on ait:
+\[a \star e = e \star a = a\]
+
+On appelle \textbf{inverse} pour la loi (si elle admet un élément neutre) un élément \(a^{-1} \in M\) tel que pour tout élément de \(a \in M\), on ait 
+\[a \star a^{-1} = a^{-1} \star a = e\]
+
+\subsection*{\subsecstyle{Monoides {:}}}
+Soit \(M\) un ensemble qu'on munit d'une \textbf{loi de composition interne}, alors le couple \((M, \star)\) est appelé un \textbf{magma}, c'est la structure algébrique primitive la plus faible, en effet la seule contrainte étant que la loi soit interne.\<
+
+On peut alors enrichir la structure de magma par les deux contraintes supplémentaires suivantes:
+\begin{align*}
+   &\bullet \;\; \text{La loi est \textbf{associative}.}\\
+   &\bullet \;\; \text{Il existe \textbf{un élément neutre} pour la loi.}
+\end{align*}
+Cette structure plus riche, qu'on appelle \textbf{monoide} nous permet alors d'identifier des exemples remarquables:
+\begin{align*}
+   &\bullet \;\; \text{Les entiers naturels munis de l'addition forment un monoide.}\\
+   &\bullet \;\; \text{L'ensemble des chaines de caractères muni de la concaténation forme un monoide.}
+\end{align*}
+Les éléments neutres respectifs de ces exemples sont \(0_\N\) et la chaine de caractère vide.
+
+\subsection*{\subsecstyle{Morphismes {:}}}
+Aprés avoir défini une structure, on peut alors définir les transformations qui \textbf{préservent cette structure}.\<
+
+Soit \((M, \star)\) et \((N, \cdot)\) deux ensembles munis de la meme structure\footnote[2]{Si les structures présentent plusieurs lois, alors les morphismes doivent vérifier la compatibilité pour \textbf{toutes les lois}.}, \(x, y \in M\) et \(\varphi: M \rightarrow N\), alors \(\varphi\) est appelée \textbf{morphisme}, si elle vérifie:
+\customBox{width=5cm}{
+   \(
+      \varphi(x \star y) = \varphi(x) \cdot \varphi(y)
+   \)
+}
+Dans le cas particulier de structures qui requièrent l'existence d'un élément neutre, l'image de l'élement neutre de \(M\) par un morphisme doit etre l'élément neutre de \(N\).\<
+
+En termes de vocabulaire, on définit alors: 
+\begin{align*}
+   &\bullet \;\; \text{\textbf{Les endormorphismes} commme les morphismes de \(M\) dans lui-meme.}\\
+   &\bullet \;\; \text{\textbf{Les isomorphismes} commme les morphismes bijectifs.}\\
+   &\bullet \;\; \text{\textbf{Les automorphismes} commme les morphismes bijectifs de \(M\) dans lui-meme.}
+\end{align*}
+Moralement, on comprends que:
+\begin{center}
+   \textit{Les morphismes préservent dans une certaine mesure la structure opératoire.}
+\end{center}
+En particulier:
+\begin{center}
+   \textit{Si il existe un isomorphisme entre deux structures, cela signifie que ces structures se comportent de la meme manière par rapport à leurs lois respectives.}
+\end{center}
+De manière plus subtile, si il existe un morphisme injectif d'une structure dans une autre, alors cela signifie qu'une partie de la seconde se comporte de la meme manière que la première. \<
+
+Enfin, si il existe un morphisme surjectif d'une structure dans une autre, cela signifie qu'on peut regrouper des élements de la première structure et ces groupes d'éléments se comporteront commes les élements de la seconde\footnote[1]{Ces considérations plus avancées induiront l'idée générale des grands théorèmes de factorisation dans les groupes et les principaux morphismes canoniques.}.
+\subsection*{\subsecstyle{Propriétés des morphismes {:}}}
+Pour une structure donnée, si \(\varphi\) est un morphisme de \(E\) vers \(F\) et \(\psi\) est un morphisme de \(F\) vers \(G\), alors \(\psi \circ \varphi\) est un morphisme de \(E\) vers \(G\).\<
+
+Si la structure admet un élément neutre pour la loi, alors:
+\customBox{width=4cm}{
+   \(\varphi(e_E) = e_F\)
+}
+Si la structure admet un symétrique pour la loi, alors:
+\customBox{width=4cm}{
+   \(\quad\;\varphi(x^{-1}) = \varphi(x)^{-1}\)
+}
+Et meme plus généralement pour tout \(n\) entier relatif:
+\customBox{width=4cm}{
+   \(\quad\;\varphi(x^{n}) = \varphi(x)^{n}\)
+}
+
+\subsection*{\subsecstyle{Exemples {:}}}
+On peut considérer quelques exemples remarquables:
+\begin{align*}
+   &\bullet \;\; \text{\(\phi: n \in \N \longmapsto 2n \in 2\N\) est un morphisme (de monoide) de \((\N, +)\) dans \((2\N, +)\).}\\
+   &\bullet \;\; \text{\(\phi: x \in \R \longmapsto \exp(x) \in \R^{+*}\) est un isomorphisme (de groupe) de \((\R, +)\) dans \((\R^{+*}, \times)\).}\\  
+   &\bullet \;\; \text{\(\phi: M \in GL_{n}(\K) \longmapsto \det(M) \in \K^*\) est un morphisme (de groupe) de \((GL_{n}(\K), \times)\) dans \((\K, \times)\).}\\
+   &\bullet \;\; \text{\(\phi: z \in \C \longmapsto \overline{z} \in \C\) est un automorphisme (de corps) de \((\C, +, \times)\) dans \((\C, +, \times)\).}
+\end{align*}
+\chapter*{\chapterstyle{I --- Groupes}}
+\addcontentsline{toc}{section}{Groupes}
+
+Soit \(G\) un ensemble \textbf{non-vide} muni d'une loi de composition interne associative\footnote[1]{Dans la suite, la loi de composition des groupes sera notée multiplicativement sauf exceptions.} telle que:
+\begin{align*}
+   &\bullet \;\; \text{Il existe \textbf{un élément neutre} pour la loi.} \\
+   &\bullet \;\; \text{Tout élément de \(G\) admet \textbf{un inverse} pour la loi.}
+\end{align*}
+Alors le couple \((G, \star)\) est appellé \textbf{groupe}. De plus si le groupe est \textbf{commutatif}, on dira alors que c'est un groupe \textbf{abélien}.\<
+
+On appellera \textbf{ordre du groupe} le cardinal (potentiellement infini) de l'ensemble sous-jacent, noté \(|G|\).
+
+\subsection*{\subsecstyle{Exemples {:}}}
+On peut alors considérer plusieurs groupes remarquables:
+\begin{align*}
+   &\bullet \;\; \text{Les \textbf{entiers relatifs} muni de l'addition usuelle.}\\
+   &\bullet \;\; \text{Les \textbf{isométries du plan} muni de la composition, on l'apelle le \textbf{groupe dihédral}.}\\   
+   &\bullet \;\; \text{Les \textbf{matrices inversibles} muni de la multiplication, on l'apelle le \textbf{groupe linéaire}.}\\
+   &\bullet \;\; \text{Les \textbf{bijections} sur un ensemble muni de la composition, on l'apelle le \textbf{groupe symétrique}.}
+\end{align*}
+\subsection*{\subsecstyle{Morphismes de groupes {:}}}
+Soit \(G, H\) deux groupes et \(\varphi: G \rightarrow H\), l'existence d'un élément neutre nous permet de définir alors \textbf{le noyau d'un morphisme} par:
+\[
+   \text{Ker}(\varphi) := \Bigl\{ x \in G \; ; \; \varphi(x) = e_H \Bigl\}
+\]
+En particulier, on peut alors montrer:
+\customBox{width=15cm}{
+   Un morphisme est injectif si et seulement si son noyau est réduit à l'élément neutre.
+}
+\subsection*{\subsecstyle{Sous-groupes {:}}}
+Soit \(H \subseteq G\), une fois une structure algébrique définie, on peut alors définir s'intéresser aux parties de \(G\) qui conservent la structure, on les appellera alors \textbf{sous-structure} (ici sous-groupe) de \(G\).\<
+
+En particulier, on dira que \(H\) est un \textbf{sous-groupe} de \(G\) (et on notera \(H \leq G\)) si elle vérifie:
+\begin{align*}
+   &\bullet \;\; \text{L'élément neutre appartient à \(H\)} \\
+   &\bullet \;\; \text{La partie \(H\) est stable par la loi.} \\
+   &\bullet \;\; \text{La partie \(H\) est stable par passage à l'inverse.}
+\end{align*}
+\addtocounter{footnote}{1}
+On peut alors montrer les propositions suivante:
+\begin{align*}
+   &\bullet \;\; \text{L'image et la préimage d'un sous-groupe par un morphisme est un sous-groupe\footnotemark.} \\
+   &\bullet \;\; \text{L'intersection d'une famille de sous-groupe est un sous-groupe.}
+\end{align*}
+\footnotetext{En particulier le noyau d'un morphisme est un sous-groupe du groupe de départ.}
+\pagebreak
+
+Un cas particulier est celui du \textbf{sous-groupe engendré} par \(H\) qu'on note:
+\customBox{width=10cm}{
+   \(\langle H \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i = \pm 1 \Bigl\}\)
+}
+\begin{center}
+   \textit{C'est l'ensemble des combinaisons d'éléments de \(H\) et de leurs inverses.}
+\end{center}
+Une propriété fondamentale est que \(\langle H \rangle\) est un \textbf{opérateur de cloture} par la loi du groupe, ie c'est une application \textbf{idempotente, croissante et extensive}.\<
+
+On peut alors considérer le sous-groupe engendré par un élément\footnote[1]{On peut alors définir \textbf{l'ordre d'un élément} comme étant l'ordre du sous-groupe engendré associé (potentiellement infini).} \(h \in H\), en effet on a:
+\[
+   \langle h \rangle := \bigl\{ h^{k} \; ; \; k \in \Z \bigl\}
+\]
+Ce sous-groupe permet de définir des groupes remarquables, en effet si un groupe est engendré par un unique élément, il est appelé \textbf{groupe monogène}, de plus si un groupe monogène est fini, il est appelé \textbf{groupe cyclique}.\<
+
+Une des propriétés remarquables de ces groupes est que \textbf{tout groupe monogène est abélien}.
+\subsection*{\subsecstyle{Classes {:}}}
+Soit \(H \leq G\) et \(g \in G\), on appelle \textbf{classe à gauche}\footnote[2]{On définit de manière analogue les \textbf{classes à droite}.} de \(g\) suivant \(H\) l'ensemble:
+\customBox{width=4.5cm}{
+   \(gH := \Bigl\{ gh \; ; \; h \in H \Bigl\}\)
+}
+Ce sont les \textbf{classes d'équivalences} naturelles pour la relation \(a \sim b \Longleftrightarrow aH = bH\).\<
+
+\underline{Exemple:} Considèrons le groupe \((\Z, \times)\), alors \(2\Z\) est la classe à gauche de \(2\) suivant \(\Z\). Les classes à gauche de la forme \(n\Z\) seront utiles pour définir les groupes quotients associés à \textbf{l'arithmétique modulaire}.
+\subsection*{\subsecstyle{Conjugaison {:}}}
+\subsection*{\subsecstyle{Action de groupe {:}}}
+\subsection*{\subsecstyle{Groupes Quotients {:}}}
+\subsection*{\subsecstyle{Théorèmes d'isomorphismes {:}}}
+
+\chapter*{\chapterstyle{I --- Groupe Symétrique}}
+\addcontentsline{toc}{section}{Groupe Symétrique}
+On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<
+
+On remarque alors aisément que l'ordre de \(\mathfrak{S}_n\) est \(n!\).\<
+
+Soit \(\sigma \in \mathfrak{S}_n\) une permutation de \(\inticc{1}{n}\), alors c'est une fonction bijective sur cet ensemble. En particulier, sachant que l'ensemble est fini, c'est une fonction définie par cas qu'on note alors par commodité horizontalement dans un tableau:
+
+\[
+   \sigma =  \begin{pmatrix}
+      1 & 2 & \ldots & n\\
+      \sigma(1) & \sigma(2) & \ldots & \sigma(n)
+   \end{pmatrix}
+\]
+
+\subsection*{\subsecstyle{Support {:}}}
+On appelle alors \textbf{support} d'une permutation le complémentaire des points fixes de \(\sigma\), ie on a:
+\[
+   \text{Supp}(\sigma) := \bigl\{ i \in \N \; ; \; \sigma(i) \neq i \bigl\}   
+\]
+Une des propriétés fondamentale qu'on peut déduire de cette définition est que:
+\customBox{width=10cm}{
+   Deux permutations à supports disjoints \textbf{commutent}.
+}
+\subsection*{\subsecstyle{Cycles {:}}}
+On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_n\) tels que:
+\[
+   \begin{cases}
+      \forall i \in \inticc{1}{k-1} \; ; \; \sigma(a_i) = \sigma(a_{i+1}) \\
+      \forall i \notin \inticc{1}{k-1} \; ; \; \sigma(a_i) = \sigma(a_{i})
+   \end{cases} 
+\]
+\begin{center}
+   \textit{Un k-cycle laisse fixe tout les éléments sauf pour une certaine famille \((a_i)\) pour laquelle chaque élément est envoyé sur le suivant.}
+\end{center}
+On peut alors noter un tel cycle par la notation suivante qui décrit tout les éléments affectés par la permutation:
+\[
+   \sigma = (a_1, \ldots, a_n)  
+\]
+
+Le cas particulier des \(2\)-cycles est intéressant, en effet un \(2\)-cycle \textbf{échange deux valeurs} de \(\inticc{1}{n}\), ils sont d'une importance particulière et on les appelle \textbf{transpositions}.\<
+
+\underline{Exemple:} La permutation suivante est un 3-cycle:
+\[
+   \sigma =  \begin{pmatrix}
+      1 & 2 & 3 & 4\\
+      2 & 3 & 1 & 4
+   \end{pmatrix} = (1 \;\, 2 \;\, 3)
+\]
+Si \(\sigma\) est un \(k\)-cycle et que \(a\) n'est pas un point fixe, alors on en déduit\footnote[1]{En effet par exemple \(\sigma(a)\) est la valeur suivante dans le cycle, et le cycle parcourt tout les points non-fixes par construction} que le support de \(\sigma\) est donné par:
+\[
+   \text{Supp}(\sigma) = \bigl\{a, \sigma(a), \sigma^2(a), \ldots, \sigma^{k-1}(a) \bigl\}
+\]
+
+\subsection*{\subsecstyle{Ordre {:}}}
+On peut alors démontrer une propriété fondamentale de l'ordre des cycles:
+\customBox{width=7cm}{
+   \textbf{Un \(k\)-cycle est d'ordre \(k\)}.
+}
+En effet si on considère le sous-groupe engendré par un tel cycle, on remarque que pour tout élément \(a \in \inticc{1}{n}\) \(\sigma^{k}(a) = a\), donc \(\sigma^{k} = \text{Id}\).
+\subsection*{\subsecstyle{Théorèmes de décomposition {:}}}
+Une des problématiques principales à propos des groupes symétriques est la question de la \textbf{décomposition d'une permutation} en cycles. On peut en effet montrer que \textbf{toute permutation se décompose en produit de cycles à support disjoints}.\<
+
+Par la suite, on peut alors constater directement que pour tout \(k\)-cycle \(\sigma = (a_1 \;\, \ldots \;\, a_k)\), on a:
+\customBox{width=6cm}{
+   \(\sigma = (a_1 \;\, a_2)(a_2 \;\, a_3)\ldots(a_{k-1} \;\, a_k)\)
+}
+Enfin, on conclura de ces deux propositions que \textbf{toute permutation se décompose en produit de transpositions}, ou en d'autres termes si on note \(\mathfrak{T}_n\) l'ensemble des transpositions:
+\customBox{width=3cm}{
+   \(\langle \mathfrak{T}_n \rangle = \mathfrak{S}_n\)
+}
+\subsection*{\subsecstyle{Algorithme de décomposition {:}}}
+Dans cette section, on va présenter un algorithme permettant de décomposer une permutation quelconque en produit de transpositions.\+
+On considère la permutation suivante:
+\[
+   \sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4\\
+      4 & 3 & 1 & 2
+   \end{pmatrix}  
+\]
+On va chercher à créer un point fixe pour la dernière valeur du tableau, on remarque alors qu'il suffit de composer \(\sigma\) par \((2 \;\, 4)\) et on obtient:
+\[
+   (2 \;\, 4)\sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4\\
+      2 & 3 & 1 & 4
+   \end{pmatrix}  
+\]
+On va chercher à créer un point fixe pour la troisème valeur du tableau, on remarque alors qu'il suffit de composer \((2 \;\, 4)\sigma\) par \((1 \;\, 3)\) et on obtient:
+\[
+   (1 \;\, 3)(2 \;\, 4)\sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4\\
+      2 & 1 & 3 & 4
+   \end{pmatrix}  
+\]
+Enfin il suffit de composer par \((1 \;\, 2)\) pour obtenir:
+\customBox{width=5cm}{
+   \((1 \;\, 2)(1 \;\, 3)(2 \;\, 4)\sigma = \text{Id}\)
+}
+Et donc il suffit alors de passer les transpositions à l'inverse pour obtenir que:
+\[
+   \sigma = (2 \;\, 4)(1 \;\, 3)(1 \;\, 2)
+\]
+\subsection*{\subsecstyle{Signature {:}}}
+On appelle \textbf{inversion} par \(\sigma\) une paire \(\{i, j\} \in \inticc{1}{n}\) telle que:
+\[
+   i < j \text{ et } \sigma(i) > \sigma(j)  
+\] 
+On note alors \(\text{Inv}(\sigma)\) l'ensemble des inversions par \(\sigma\). On peut alors définir la \textbf{signature} de la permutation \(\sigma\) par:
+\customBox{width=4cm}{
+   \(\epsilon(\sigma) = (-1)^{|\text{Inv}(\sigma)|}\) 
+}
+Moralement:
+\begin{center}
+   \textit{La signature correspond à la parité du nombre d'inversions.}
+\end{center}
+\chapter*{\chapterstyle{I --- Anneaux}}
+\addcontentsline{toc}{section}{Anneaux}
+
+\chapter*{\chapterstyle{I --- Corps}}
+\addcontentsline{toc}{section}{Corps}
