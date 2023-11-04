@@ -1,8 +1,186 @@
 \chapter*{\chapterstyle{IV --- Intégrales Généralisées}}
 \addcontentsline{toc}{section}{Intégrales Généralisées}
+Aprés avoir défini précédemment l'intégrale de fonctions intégrables sur \textbf{sur un segment}, nous allons définir l'intégrale de fonction sur des intervalles \textbf{ouvert ou semi-ouvert}, ou encore les integrales de fonctions \textbf{non-bornées}, on les appellera alors \textbf{intégrales généralisées}.
+\subsection*{\subsecstyle{Définition {:}}}
+Soit \(I\) un intervalle \(\ioc{a}{b}\), et \(f\) une fonction intégrable sur \textbf{tout sous-segment} de \(\ioc{a}{b}\), alors on dira que \(f\) est \textbf{localement intégrable} et on définit alors une fonction auxiliaire \(\phi\) telle que :
+\[
+   \phi(x) = \int_{x}^{b} f(t) \d t
+\]
+Alors on peut définir l'intégrale généralisée, si elle existe, de \(f\) par:
+\customBox{width=3cm}{
+   \(\underset{x \rightarrow 0}{\lim} \; \phi(x)\)
+}
+Si cette limite existe, on dira alors que l'intégrale généralisée existe.\+ 
+Dans le cas où \(f\) est \textbf{non-bornée} sur un intervalle \(I\), on peut alors séparer l'intégrale en deux sous-intégrales (ou plusieurs si les discontinuités sont multiples), qui pourront être étudiées de cette manière.\<
+
+\underline{Exemple :} Etudions l'intégrale sur \(\ioc{0}{1}\) du logarithme. Cette fonction est bien localement intégrale sur l'intervalle, posons:
+\[
+   \phi(x) = \int_{x}^{1} \ln(t) \d t = - 1 - x\ln(x) + x 
+\]
+Or la limite quand \(x\) tends vers \(0\) existe et vaut \(-1\), et donc le logarithme est intégrable sur \(\ioc{0}{1}\) et on a \(\int_{x}^{1} \ln(t) \d t = -1\).
+\subsection*{\subsecstyle{Intégrales de référence{:}}}
+Dans cette section, on considère des intégrales sur un intervalle de \(\R_+\) ayant soit une borne supérieure infinie, soit un borne inférieure en 0.\+
+Il existe alors plusieurs intégrales généralisées de référence, une des plus importante étant \textbf{l'intégrale de Riemann}:
+\[
+   \int \frac{1}{t^\alpha} \d t   
+\]
+Par une simple intégration directe suivie d'une disjonction de cas sur la limite de la primitive, on en déduit des propriétés importantes pour la suite:
+\begin{align*}
+   &\bullet \;\; \text{Elle \textbf{converge} en \(+\infty\) si et seulement si \(\alpha > 1\).} \\
+   &\bullet \;\; \text{Elle \textbf{converge} en \(0\) si et seulement si \(\alpha < 1\).} \\
+   &\bullet \;\; \text{Si \(\alpha = 1\), elle \textbf{diverge toujours}}
+\end{align*}
+
+Une autre intégrale de référence est \textbf{l'intégrale de Bertrand}:
+\[
+   \int \frac{1}{t^\alpha \ln(t)^\beta} \d t   
+\]
+Par comparaison avec l'intégrale de Riemann ci-dessus, on peut alors en déduire les propriétés suivantes:
+\begin{align*}
+   &\bullet \;\; \text{Elle \textbf{converge} en \(+\infty\) si et seulement si \(\alpha > 1\).} \\
+   &\bullet \;\; \text{Elle \textbf{converge} en \(0\) si et seulement si \(\alpha < 1\).} \\
+   &\bullet \;\; \text{Si \(\alpha = 1\), elle \textbf{converge} si et seulement si \(\beta > 1\).}
+\end{align*}
+\subsection*{\subsecstyle{Théorèmes de comparaison {:}}}
+Soit \(f, g\) des fonctions \textbf{positives} sur l'intervalle considéré telles que \(f \leq g\), alors on a la propriété\footnote[1]{Ce cas découle directement de la positivité des fonctions considérées, en effet si \(f\) est positive, l'intégrale de \(f\) est \textbf{croissante}.} suivante:
+\begin{align*}
+   &\bullet \;\; \text{Si l'intégrale de \(g\) converge, alors l'integrale de \(f\) converge.} \\
+   &\bullet \;\; \text{Si l'intégrale de \(f\) diverge, alors l'integrale de \(g\) diverge.}
+\end{align*}
+En particulier, cette propriété s'étend aux relations de négligeabilité\footnote[2]{Découle du fait que ce sont des majorations à partir d'un certain rang.}, en effet si \(f = o(g)\), alors:
+\begin{align*}
+   &\bullet \;\; \text{Si l'intégrale de \(g\) converge, alors l'integrale de \(f\) converge.} \\
+   &\bullet \;\; \text{Si l'intégrale de \(f\) diverge, alors l'integrale de \(g\) diverge.}
+\end{align*}
+Enfin, on peut aussi considérer le cas de deux fonction \(f, g\) \textbf{équivalentes}\footnote[3]{En particulier, ce théorème nous permet d'utiliser tout l'arsenal des développements limités.} au point de discontinuité, et alors on a le théorème fondamental suivant:
+\customBox{width=9cm}{
+   Les intégrales de \(f\) et \(g\) sont \textbf{de même nature}.
+}
+\begin{center}
+   \textit{Munis de ces théorèmes de comparaison et des intégrales de référence, on peut alors étudier efficacement la convergence des intégrales de fonctions de signe constant.}
+\end{center}
+\subsection*{\subsecstyle{Absolue convergence {:}}}
+Dans le cas de fonction qui ne sont pas à signe constant sur l'intervalle étudié, on peut alors montrer le théorème suivant:
+\customBox{width=9cm}{
+   \(\text{Si } \int |f(t)| \d t \text{ converge, alors }  \int f(t) \d t \text{ converge}\)
+}
+On dira alors que \(f\) est \textbf{absolument convergente}\footnote[4]{La preuve utilise le fait que \(|f(t)| = f^+ + f^-\) avec \(f^+(t) = \max(f(t), 0)\) et \(f^+(t) = \max(-f(t), 0)\)}.
+\begin{center}
+   \textit{Cette propriété nous permet donc d'étendre nos théorèmes de comparaison aux fonctions qui changent de signe sur l'intervalle.}
+\end{center}
+\subsection*{\subsecstyle{Fonctions définies par une intégrale {:}}}
+On peut aussi définir des fonctions donc le l'image sera définie par une intégrale, et donc dont le domaine de défintion sera l'ensemble des points tels que \textbf{l'intégrale convergence}. Une telle fonction est de la forme:
+\customBox{width=6cm}{
+   \(f(x): x \mapsto \int_{a}^{b} g_x(t) \d t\)
+}
+\underline{Exemple:} On peut définir la \textbf{fonction gamma}, définie sur \(\R \backslash \Z_-\) telle que:
+\[
+   \Gamma(x): x \mapsto \int_{0}^{+\infty} e^{-t}t^{x-1} \d t   
+\]
+
 
 \chapter*{\chapterstyle{IV --- Séries Numériques}}
 \addcontentsline{toc}{section}{Séries Numériques}
+Soit \((u_n)_{n\in\N}\) une suite, on appelle \textbf{série numérique de terme général \(u_n\)} la suite \(S_n\) des \textbf{sommes partielles} des termes de \((u_n)_{n\in\N}\), plus formellement, on a:
+\[
+   S_n = \sum_{k=0}^{n} u_k   
+\]
+Ce chapitre consistera en l'étude de la convergence ou de la divergence de telles séries. 
+\subsection*{\subsecstyle{Propriétés{:}}}
+Il est tout d'abord important de remarquer que la fonction qui à une suite associe sa série est \textbf{linéaire}, aussi on peut remarquer une propriété élémentaire:
+\[
+   u_n = S_{n} - S_{n-1}   
+\]
+Cette propriété nous permet alors de montrer la propriété fondamentale suivante:
+\customBox{width=10cm}{
+   Si la série \textbf{converge} alors son terme général tends vers \(0\).
+}
+Enfin dans certains cas, on peut exprimer le terme général \(u_n\) sous la forme \(a_{n+1} - a_n\) pour \((a_n)\) une autre suite. On appelera une telle série \textbf{série téléscopique} et on a la simplification suivante par linéarité:
+\[
+   \sum_{k=0}^{n} u_k = \sum_{k=0}^{n} (a_{k+1} - a_k) = a_{n+1} - a_0   
+\]
+On peut aussi remarquer que les fonctions exponentielle et logarithme étant continues, on peut définir de manière analogue la \textbf{suite des produits partiels} d'une suite, qui se ramène alors par passage au logarithme à l'étude d'une série.
+\subsection*{\subsecstyle{Séries de référence{:}}}
+Le cas le plus élémentaire de série est le cas des \textbf{séries géométriques}:
+\[
+   S_n = \sum_{k=0}^{n} q^k
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si sa raison est inférieure à 1 en valeur absolue.}
+\end{center}
+
+Un second exemple remarquable est celui des \textbf{séries de Riemann} qui est analogue aux intégrales du même nom:
+\[
+   S_n = \sum_{k=0}^{n} \frac{1}{k^\alpha}
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si \(\alpha\) est strictement supérieur à \(1\).}
+\end{center}
+
+Enfin un dernier exemple remarquable est celui des \textbf{séries de Bertrand} qui est aussi analogue aux intégrales du même nom:
+\[
+   S_n = \sum_{k=0}^{n} \frac{1}{k^\alpha \ln(k)^\beta}
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si \(\alpha > 1\) ou si \(\alpha = 1\) et \(\beta > 1\).}
+\end{center}
+
+\subsection*{\subsecstyle{Théorèmes de comparaison {:}}}
+Soit \((u_n),(v_n)\) des suites \textbf{positives}, telles que \((u_n) \leq (v_n)\) alors de manière analogue aux intégrales généralisées, alors on a la propriété\footnote[1]{Ce cas découle directement de la positivité des suites considérées, en effet si \((u_n)\) est positive, sa série associée est \textbf{croissante}.} suivante:
+\begin{align*}
+   &\bullet \;\; \text{Si la série associée à \(v_n\) converge, alors la série associée à \(u_n\) converge.} \\
+   &\bullet \;\; \text{Si la série associée à \(u_n\) diverge, alors la série associée à \(v_n\) diverge.}
+\end{align*}
+En particulier, cette propriété s'étend aux relations de négligeabilité\footnote[2]{Découle du fait que ce sont des majorations à partir d'un certain rang.}, en effet si \(u_n = o(v_n)\), alors:
+\begin{align*}
+   &\bullet \;\; \text{Si la série associée à \(v_n\) converge, alors la série associée à \(u_n\) converge.} \\
+   &\bullet \;\; \text{Si la série associée à \(u_n\) diverge, alors la série associée à \(v_n\) diverge.}
+\end{align*}
+Enfin, on peut aussi considérer le cas de deux suites \((u_n), (v_n)\) \textbf{équivalentes}\footnote[3]{En particulier, ce théorème nous permet d'utiliser tout l'arsenal des développements limités.}, et alors on a le théorème fondamental suivant:
+\customBox{width=10cm}{
+   Les séries associées à \(u_n\) et \(v_n\) sont \textbf{de même nature}.
+}
+\begin{center}
+   \textit{Munis de ces théorèmes de comparaison et des séries de référence, on peut alors étudier efficacement la convergence des séries dont le terme général est de signe constant.}
+\end{center}
+
+\subsection*{\subsecstyle{Absolue convergence {:}}}
+Dans le cas de séries dont le terme général n'est pas à signe constant, on peut alors montrer le théorème suivant:
+\customBox{width=9cm}{
+   \(\text{Si } \sum_{k=0}^{n} |u_k| \text{ converge, alors }  \sum_{k=0}^{n} u_k \text{ converge}\)
+}
+On dira alors que \(S_n\) est \textbf{absolument convergente}\footnote[4]{La preuve utilise le fait que \(|(u_k)| = (u_k)^+ + (u_k)^-\) avec \((u_k)^+ = \max(u_k, 0)\) et \((u_k)^+ = \max(-u_k, 0)\)}.
+\begin{center}
+   \textit{Cette propriété nous permet donc d'étendre nos théorèmes de comparaison aux séries dont le terme général change de signe.}
+\end{center}
+
+\subsection*{\subsecstyle{Critères spécifiques {:}}}
+Soit \((u_n)\) une suite à termes \textbf{non-nuls}, alors si \(|\frac{u_{n+1}}{u_n}|\) admet une limite \(l\), alors\footnote[5]{\label{1}La preuve s'obtient en comparant \(u_n\) à une série géométrique} on a la \textbf{règle de d'Alembert}:
+\begin{align*}
+   &\bullet \;\; \text{Si \(l < 1\), la série associée converge.} \\
+   &\bullet \;\; \text{Si \(l > 1\), la série associée diverge.} \\
+   &\bullet \;\; \text{Sinon on ne peut pas conclure.}
+\end{align*}
+Soit \((u_n)\) une suite quelconque, alors si \(\sqrt[n]{|u_{n}|}\) admet une limite \(l\), alors\footref{1} on a la \textbf{règle de Cauchy}:
+\begin{align*}
+   &\bullet \;\; \text{Si \(l < 1\), la série associée converge.} \\
+   &\bullet \;\; \text{Si \(l > 1\), la série associée diverge.} \\
+   &\bullet \;\; \text{Sinon on ne peut pas conclure.}
+\end{align*}
+\begin{center}
+   \textit{Ces règles spécifiques permettent d'obtenir la nature d'une série en étudiant simplement le terme général.}
+\end{center}
+
+\pagebreak
+\subsection*{\subsecstyle{Familles sommables {:}}}
+On s'intéresse maintenant à la possiblité d'étendre les propriétés de l'addition et de la multiplication aux sommes infinies. En particulier, est-il possible de donner une condition pour que la somme d'une série soit \textbf{invariante par permutation des termes}, \textbf{associative}, ou encore que le \textbf{produit de Cauchy} de deux séries convergentes soit convergente ?\<
+
+On peut répondre affirmativement à ces question en introduisant le concept de \textbf{famille sommable}, et on peut alors montrer\footnote[6]{Hautement non trivial ...} que si la série associée à \(u_n\) est \textbf{absolument convergente}, alors:
+\begin{align*}
+   &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme} \\
+   &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme}
+\end{align*}
+
 
 \chapter*{\chapterstyle{IV --- Suites de fonctions}}
 \addcontentsline{toc}{section}{Suites de fonctions}

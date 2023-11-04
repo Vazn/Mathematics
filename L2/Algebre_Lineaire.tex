@@ -1,5 +1,138 @@
-\chapter*{\chapterstyle{III --- Diagonalisation}}
-\addcontentsline{toc}{section}{Diagonalisation}
+\chapter*{\chapterstyle{III --- Introduction à la réduction}}
+\addcontentsline{toc}{section}{Introduction à la réduction}
+Dans ce chapitre, nous étudirons un domaine vaste de l'algèbre linéaire appellé \textbf{réduction des endormorphismes}.\+
+En effet, sous une forme quelconque un endomorphisme représenté par une matrice présente plusieurs problèmes:
+\begin{align*}
+   &\bullet \;\; \text{Il est couteux de calculer les puissances d'une matrice quelconque.} \\
+   &\bullet \;\; \text{Une représentation quelconque donne peu d'informations sur l'endomorphisme.}
+\end{align*}
+L'objectif sera donc de réduire (comprendre simplifier) la représentation de l'endormorphisme, et de le représenter par une matrice plus simple. \<
+
+Soit \(f \in \mathcal{L}(E)\) et une famille \((E_i)\) de sous-espaces \textbf{supplémentaires}\footnote[1]{Comme tout sous-espace admet un supplémentaire (théorème de la base incomplète), on peut définir une base adaptée à \textbf{un seul} sous-espace comme étant une base adaptée à la somme directe de ce sous-espace et de son supplémentaire, qui revient à compléter la base en une base de \(E\).}, alors on peut construire une base \(\mathcal{B}\) dite \textbf{base adaptée à la décomposition} en concaténant des bases respectives des \(E_i\).
+
+\subsection*{\subsecstyle{Elements Propres {:}}}
+Soit \(\lambda \in \R\), on dit que \(\lambda\) est une \textbf{valeur propre}\footnote[2]{On appelle \textbf{specte}, noté Sp\((f)\) l'ensemble des valeurs propres de \(f\).} de l'endomorphisme \(f\) si et seulement si il existe un vecteur non-nul \(u \in E\) tel que:
+\customBox{width=2.5cm}{
+   \(f(u) = \lambda u\)
+}
+On dira alors qu'un tel vecteur est \textbf{vecteur propre} de l'endomorphisme et on appelle \textbf{sous-espace propre} associé à la valeur propre \(\lambda\) l'ensemble des vecteurs propres associés, qu'on note \(E_\lambda\) dont on déduit une expression\footnote[3]{Directement d'après la définition d'un vecteur propre associé à \(\lambda\).}:
+\customBox{width=5cm}{
+   \(E_\lambda = \text{Ker}(f - \lambda \text{Id})\)
+}
+Enfin, on peut montrer une propriété trés importante pour la suite:
+\customBox{width=10cm}{
+   Toute somme de sous-espaces propres est \textbf{directe}.
+}
+\begin{center}
+   \textit{L'image des sous-espaces propres par l'endomorphisme se réduit à une homotéthie de rapport la valeur propre.}
+\end{center}
+
+\subsection*{\subsecstyle{Sous-Espaces Stables {:}}}
+On dit que \(F\) est \textbf{stable par l'endormorphisme} si et seulement si:
+\customBox{width=2.5cm}{
+   \(f(F) \subseteq F\)
+}
+On considère maintant une base de \(F\) qu'on compléte en une base de \(E\) via le théorème de la base incomplète, alors dans une telle base, l'endormorphisme est représenté par la matrice par blocs:
+\[
+   \left(\begin{array}{c|c}
+      A & B\\
+      \hline\\[-1.7\medskipamount]
+      0 & C
+   \end{array}\right)
+\]
+\pagebreak
+
+Plus généralement, si on a une famille \((E_i)\) de sous-espaces \textbf{stables et supplémentaires}, ie \(E = \bigoplus_{i \in \N} E_i\), et \(\mathcal{B}\) est une base adaptée à cette décomposition, alors dans cette base, \(f\) est représentée par la matrice diagonale par blocs:
+\[
+   \left(\begin{array}{ccc}
+      A_1 & {} & {}\\
+      {} & \ddots & {}\\
+      {} & {} & A_n\\
+   \end{array}\right)
+\]
+On remarque donc que la stabilité des sous-espaces nous permet de reprénsenter notre transformation de manière plus simple, en particulier, on peut alors montrer une propriété fondamentale:
+\customBox{width=10cm}{
+   \textbf{Tout les sous-espaces propres sont stables.}
+}
+
+\subsection*{\subsecstyle{Polynôme caractéristique {:}}}
+On peut montrer\footnote[1]{\(E_\lambda\) est un noyau, il suffit de caractériser le fait qu'il soit non vide en termes de la bijectivité d'un certain endomorphisme.} que \(\lambda\) est valeur propre si et seulement si:
+\begin{align*}
+   E_\lambda \neq \bigl\{0_E\bigl\} \Longleftrightarrow \text{det}(f - \lambda \text{Id}) = 0
+\end{align*}
+On définit alors le \textbf{polynôme caractéristique} d'un endormorphisme par:
+\customBox{width=5cm}{
+   \(P_f=\text{det}(f - X \text{Id})\)
+}
+En particulier, on peut donc montrer que:
+\customBox{width=15cm}{
+   \textbf{Les valeurs propres sont exactement les racines du polynôme caractéristique.}
+}
+Ceci nous donne donc une méthode systématique pour trouver les valeurs propres d'un endomorphisme. En particulier, on peut alors montrer les identités suivantes, utiles dans la recherche de valeurs propres:
+\begin{align*}
+   &\bullet \;\; \text{La somme des valeurs propres est égale à \textbf{la trace de la matrice}.} \\
+   &\bullet \;\; \text{Le produit des valeurs propres est égale au \textbf{déterminant de la matrice}.}
+\end{align*}
+
+\subsection*{\subsecstyle{Diagonalisation {:}}}
+Les endomorphismes qu'on peut représenter le plus simplement sont ceux qui ceux réduisent (dans une base bien choisie) à une homotéthie des vecteurs de la base. On dira alors que ces endomorphismes sont \textbf{diagonalisables}, formellement:
+\customBox{width=16.5cm}{
+   Un endormorphisme est diagonalisable si il existe une base de \(E\) constituée de vecteurs propres de \(f\).
+}
+De manière équivalente:
+\customBox{width=16cm}{
+   Un endormorphisme est diagonalisable si ses matrices sont semblables à une matrice diagonale.
+}
+
+\underline{Exemple:} Soit \(f\) un tel endormorphisme de \(\R^3\) et \((e_{\lambda_1}, e_{\lambda_2}, e_{\lambda_3})\) des tels vecteurs propres, alors dans cette base, \(f\) est représenté par la matrice:
+\[
+   D = \left(\begin{array}{ccc}
+      \lambda_1 & {} & {}\\
+      {} & \lambda_2 & {}\\
+      {} & {} & \lambda_3
+   \end{array}\right) 
+\]
+Ou encore si \(A\) est la matrice de \(f\) dans la base canonique, alors \(A = PDP^{-1}\) avec:
+\[
+   P = ([e_{\lambda_1}]_\mathscr{C}, [e_{\lambda_2}]_\mathscr{C}, [e_{\lambda_3}]_\mathscr{C}) \text{ et } D = \left(\begin{array}{ccc}
+      \lambda_1 & {} & {}\\
+      {} & \lambda_2 & {}\\
+      {} & {} & \lambda_3
+   \end{array}\right) 
+\]
+\begin{center}
+   \textit{Diagonaliser un endomorphisme revient à \textbf{décomposer l'espace en somme directe de droites stables}.
+   }
+\end{center}
+\pagebreak
+\subsection*{\subsecstyle{Critères de diagonalisabilité {:}}}
+On sait qu'un endomorphisme \(f\) est diagonalisable si et seulement si il admet une base de vecteurs propres, alors on peut montrer\footnote[1]{En effet, si tel est le cas, alors il suffit de prendre une base pour chaque \(E_\lambda\) (qui est bien constituée de vecteurs propres par définition), et de les concaténer pour obtenir une base de \(E\) constituée de vecteurs propres.} que \(f\) est diagonalisable si et seulement si:
+\customBox{width=4cm}{
+   \(
+      E = \bigoplus_{\lambda \in \text{Sp}(f)} E_\lambda  
+   \)
+}
+En particulier on remarque alors que montrer la supplémentarité revient à montrer que \textbf{la somme des dimensions des sous-espaces propres est égale à la dimension totale} car toute somme de sous-espaces propres est directe.\<
+
+On peut alors montrer que si \(\lambda\) est une valeur propre de multiplicité \(\alpha\) pour le polynome caractéristique, alors:
+\[
+   1 \leq \text{dim}(E_\lambda) \leq \alpha   
+\]
+On a alors le théorème fondamental suivant:
+\begin{center}
+   \textbf{Un endomorphisme est diagonalisable si et seulement si son polynôme est scindé sur \(\K\) et que la dimension de chaque sous-espace propre est égale à la multiplicité de la valeur propre associée}.
+\end{center}
+On peut donc étudier si un endormorphisme est diagonalisable en calculant les valeurs propres et les dimensions des sous-espaces propres associés, ce qui revient à un calcul de polynôme caractéristique suivi de calculs de noyau.
+
+\underline{Exemple:} Diagonalisons la matrice \(A = \left(\begin{array}{ccc}
+   1 & 1 & 1\\
+   2 & 2 & 2\\
+   3 & 3 & 3
+\end{array}\right) \)\< 
+
+On peut calculer \(P_A = \text{det}(A - XI_3) = X^2(X-6)\), on a alors deux sous-espaces propres, \(E_0\) et \(E_6\) et on sait que \(E_0\) est de dimension \(1\), il suffit alors de vérifier que \(E_6\) est bien de dimension \(2\) pour conclure que \(\sum \dim(E_\lambda) = \dim(E)\) et donc que la matrice est diagonalisable.\<
+
+Pour trouver une base de vecteurs propres, il suffit alors de trouver une base de \(E_0, E_6\) et de la concaténer en une base de \(E\).
 
 \chapter*{\chapterstyle{III --- Polynomes d'endomorphismes}}
 \addcontentsline{toc}{section}{Polynomes d'endomorphismes}
@@ -7,8 +140,11 @@
 \chapter*{\chapterstyle{III --- Trigonalisation}}
 \addcontentsline{toc}{section}{Trigonalisation}
 
-\chapter*{\chapterstyle{III --- Formes de Dunford}}
+\chapter*{\chapterstyle{III --- Décomposition de Dunford}}
 \addcontentsline{toc}{section}{Trigonalisation}
+
+\chapter*{\chapterstyle{III --- Applications de la réduction}}
+\addcontentsline{toc}{section}{Applications de la réduction}
 
 \chapter*{\chapterstyle{III --- Espaces Euclidiens}}
 \addcontentsline{toc}{section}{Espaces Euclidiens}

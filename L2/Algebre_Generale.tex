@@ -1,60 +1,5 @@
-\chapter*{\chapterstyle{I --- Arithmetique}}
-\addcontentsline{toc}{section}{Arithmetique}
-
-\subsection*{\subsecstyle{Division Euclidienne {:}}}
-Soit \(a, b \in \Z \times \Z^*\), on montre qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
-
-\customBox{width=4cm}{
-   \(
-      a = bq + r
-   \)
-}
-On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\).
-
-\subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
-
-Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(d\) qui vérifie:
-\customBox{width=5cm}{
-   \begin{align*}
-      &\bullet \;\; d \, | \, a \text{ et } d \, | \, b \\
-      &\bullet \;\; d' \, | \, a \text{ et } d' \, | \, b \implies d' \leq d
-   \end{align*}
-}
-Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. \<
-
-Une caractérisation utile permet de montrer que si \(d\) est un diviseur commun à \(a\) et \(b\), alors \(d = \text{pgcd}(a , b)\) si et seulement si pour tout diviseur commun \(d'\) de \(a\) et \(b\):
-\customBox{width=2cm}{
-   \(
-      d' \, | \, d   
-   \)
-}
-
-\subsection*{\subsecstyle{Théorème de Bézout {:}}}
-Soit \(a, b\in \Z^2\), on peut montrer qu'il existe deux entiers \(n_1, n_2 \in \Z^2\) tels que:
-\customBox{width=5cm}{
-   \(
-      n_1a+n_2b = a \wedge b
-   \)
-}
-\begin{center}
-   \textit{
-       Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
-   }
-\end{center}
-
-\subsection*{\subsecstyle{Lemme de Gauss {:}}}
-Soit 3 entiers \(a, b, c \in \Z\), alors\footnote[1]{Partir d'une combinaison linéaire donnée par Bézout.}:
-\customBox{width=5.5cm}{
-   \[
-      \begin{cases} 
-         a \, | \, bc \\
-         a \wedge b = 1
-      \end{cases} \implies a \, | \, c
-   \]
-}
-
 \chapter*{\chapterstyle{I --- Introduction}}
-\addcontentsline{toc}{section}{Structures primitives}
+\addcontentsline{toc}{section}{Introduction}
 
 On appelle \textbf{structure algébrique} un ensemble muni d'une (ou plusieurs) opérations appelées \textbf{lois}, c'est l'étude de telles structures mathématiques, des relations entre celles-ci (que nous appeleront morphismes), et de leurs propriétés que nous appeleront \textbf{algèbre générale}.\<
 
@@ -333,6 +278,61 @@ Moralement:
 \end{center}
 \chapter*{\chapterstyle{I --- Anneaux}}
 \addcontentsline{toc}{section}{Anneaux}
+
+\chapter*{\chapterstyle{I --- Anneaux Euclidiens}}
+\addcontentsline{toc}{section}{Anneaux Euclidiens}
+
+\subsection*{\subsecstyle{Division Euclidienne {:}}}
+Soit \(a, b \in \Z \times \Z^*\), on montre qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
+
+\customBox{width=4cm}{
+   \(
+      a = bq + r
+   \)
+}
+On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\).
+
+\subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
+
+Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(d\) qui vérifie:
+\customBox{width=5cm}{
+   \begin{align*}
+      &\bullet \;\; d \, | \, a \text{ et } d \, | \, b \\
+      &\bullet \;\; d' \, | \, a \text{ et } d' \, | \, b \implies d' \leq d
+   \end{align*}
+}
+Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. \<
+
+Une caractérisation utile permet de montrer que si \(d\) est un diviseur commun à \(a\) et \(b\), alors \(d = \text{pgcd}(a , b)\) si et seulement si pour tout diviseur commun \(d'\) de \(a\) et \(b\):
+\customBox{width=2cm}{
+   \(
+      d' \, | \, d   
+   \)
+}
+
+\subsection*{\subsecstyle{Théorème de Bézout {:}}}
+Soit \(a, b\in \Z^2\), on peut montrer qu'il existe deux entiers \(n_1, n_2 \in \Z^2\) tels que:
+\customBox{width=5cm}{
+   \(
+      n_1a+n_2b = a \wedge b
+   \)
+}
+\begin{center}
+   \textit{
+       Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
+   }
+\end{center}
+
+\subsection*{\subsecstyle{Lemme de Gauss {:}}}
+Soit 3 entiers \(a, b, c \in \Z\), alors\footnote[1]{Partir d'une combinaison linéaire donnée par Bézout.}:
+\customBox{width=5.5cm}{
+   \[
+      \begin{cases} 
+         a \, | \, bc \\
+         a \wedge b = 1
+      \end{cases} \implies a \, | \, c
+   \]
+}
 
 \chapter*{\chapterstyle{I --- Corps}}
 \addcontentsline{toc}{section}{Corps}

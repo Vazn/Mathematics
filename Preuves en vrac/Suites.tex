@@ -1,0 +1,148 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \subsection*{\subsecstyle{Unicité de la limite}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n)\) une suite qui converge vers \(l, l'\), montrons que \(l = l'\).\<
+
+      Soit \(\epsilon > 0\), on a donc: 
+      \begin{align*}
+         &\bullet \;\; \text{On sait qu'il existe \(N_0\) tel que pour tout \(n > N_0\), on ait \(|u_n - l| < \frac{\epsilon}{2}\)}\\
+         &\bullet \;\; \text{On sait qu'il existe \(N_1\) tel que pour tout \(n > N_1\), on ait \(|u_n - l'| < \frac{\epsilon}{2}\)}
+      \end{align*}
+      Donc pour tout \(n > \max(N_0, N_1)\):
+      \[
+         |l - l'| \leq |l - u_n| + |l' - u_n| < \epsilon   
+      \]
+      Donc \(l = l'\)
+   \end{proof}
+
+   \subsection*{\subsecstyle{Toute suite convergente est bornée}}
+   \begin{proof}[\unskip\nopunct]
+   Soit \((u_n)\) une suite convergente vers \(l\in\R\), alors il existe un \(N_0\) tel que pour tout \(n > N_0\), on ait:
+   \[
+      |u_n - l| < 1    
+   \]
+   Or d'aprés la deuxième inégalité triangulaire, on a:
+   \[
+      |u_n| - |l| \leq |u_n - l| < 1
+   \]
+   Donc si \(n > N_0\), on a \(|u_n| < 1 + |l|\).\+
+   Aussi, si \(n \leq N_0\), alors \(|u_n| < \max(|u_0|, |u_1|, \ldots, |u_{N_0}|)\).\<
+
+   On note ces deux majorants respectivement \(M_1, M_2\), alors dans tout les cas \(|u_n| < \max(M_1, M_2)\)
+   \end{proof}
+
+   \subsection*{\subsecstyle{Limite de la somme}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n), (v_n)\) deux suites réelles qui convergent respectivement vers \(l, l'\), montrons que \((u_n + v_n)\) converge vers \(l + l'\).\<
+
+      Soit \(\epsilon > 0\), alors:
+      \begin{align*}
+         &\bullet \;\; \text{On sait qu'il existe \(N_0\) tel que pour tout \(n > N_0\), on ait \(|u_n - l| < \frac{\epsilon}{2}\)}\\
+         &\bullet \;\; \text{On sait qu'il existe \(N_1\) tel que pour tout \(n > N_1\), on ait \(|v_n - l'| < \frac{\epsilon}{2}\)}
+      \end{align*}
+      Alors pour \(N = \max(N_0, N_1)\), on a que pour tout \(n > N\), on a:
+      \[
+         |u_n + v_n - (l + l')| \leq |u_n - l| + |v_n - l'| < \epsilon
+      \]
+      Et on conclut alors par transitivité.
+   \end{proof}
+   \subsection*{\subsecstyle{Limite du produit avec un scalaire}}
+   \begin{proof}[\unskip\nopunct]
+   Soit \((u_n)\) une suite qui converge vers \(l\) et \(\lambda \in \R\), montrons que \((\lambda u_n)\) converge vers \(\lambda l\).\<
+
+   Soit \(\epsilon > 0\), on sait qu'il existe un rang \(N_0\) tel que pour tout \(n > N_0\), on ait:
+   \[
+      |u_n - l| < \frac{\epsilon}{|\lambda|}   
+   \] 
+   Et donc à partir de ce même \(N_0\), on conclut en multipliant l'inégalité par \(|\lambda|\) et utilisant les propriétés élémentaires de la valeur absolue.
+   \end{proof}
+
+   \subsection*{\subsecstyle{Limite du produit}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n), (v_n)\) deux suites réelles qui convergent respectivement vers \(l, l'\), montrons que \((u_nv_n)\) converge vers \(ll'\).\<
+
+      Soit \(\epsilon > 0\), cherchons une expression de \(u_nv_n - ll'\) qui nous permettrait d'utiliser leurs convergences individuelles, alors on a:
+      \[
+         |u_nv_n - ll'| = |u_n(v_n - l') + u_nl' - ll'| = |u_n{\color{BrightRed1}(v_n - l')} + l'{\color{BrightRed1}(u_n - l)}|   
+      \]
+      Or alors on a:
+      \begin{align*}
+         |u_nv_n - ll'| &= |u_n(v_n - l') + l'(u_n - l)|  \\
+         &\leq |u_n(v_n - l')| + |l'(u_n - l)|  \\
+         &= |u_n||(v_n - l')| + |l'||(u_n - l)|  
+      \end{align*}
+      Or on sait qu'il existe un rang \(N_0\) tel que pour tout \(n > N_0\), on ait \(|u_n - l| < \frac{\epsilon}{2|l'|}\).\+
+      Aussi, \(u_n\) converge donc est bornée par un \(M\) réel, et donc il existe un rang \(N_1\) tel que pour tout \(n > N_1\), on ait \(|v_n - l'| < \frac{\epsilon}{2M}\).\<
+
+      Alors pour tout \(n\) à partir du rang \(\max(N_0, N_1)\), on a alors:
+      \begin{align*}
+         |u_n||(v_n - l')| + |l'||(u_n - l)| &\leq |u_n|\frac{\epsilon}{2M} + |l'|\frac{\epsilon}{2|l'|}\\
+         &\leq |u_n|\frac{\epsilon}{2|u_n|} + \frac{\epsilon}{2} \\
+         &\leq \epsilon
+      \end{align*}
+   \end{proof}
+   \subsection*{\subsecstyle{Limite de l'inverse}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n)\) une suite qui tends vers \(+\infty\), montrons que \((\frac{1}{u_n})\) tends vers \(0\).\<
+
+      Soit \(\epsilon > 0\), on sait que pour tout \(M \in \R\), il existe \(N_0\) tel que pour tout \(n > N_0\), on ait:
+      \[
+         u_n > M   
+      \]
+      Alors en particulier pour \(M = \frac{1}{\epsilon} > 0\), il existe \(N_0\) tel que pour tout \(n > N_0\), on a:
+      \[
+         u_n > \frac{1}{\epsilon}
+      \]
+      Le passage à l'inverse permet alors de conclure. En particulier, à partir d'un certain rang, \(u_n\) n'est jamais nulle et donc le passage à l'inverse est valide.
+   \end{proof}
+
+   \subsection*{\subsecstyle{Théorème de la limite monotone}}
+   Soit \(u_n\) une suite croissante et majorée, montrons que \(u_n\) converge.\<
+
+   On pose \(E := \bigl\{ u_n \; ; \; n \in \N  \bigl\}\), alors \(E\) est majoré par hypothèse, et non-vide car \(u_0 \in E\), il admet donc une borne supérieure qu'on notera \(l\).\<
+
+   Soit \(\epsilon > 0\), alors d'aprés la caractérisation de la borne supérieure, il existe un élément \(u_{N_0} \in E\) tel que \(l - \epsilon\) ne soit pas un majorant, on a donc:
+   \[
+      l - \epsilon < u_{N_0}
+   \]
+   Or \((u_n)\) est croissante donc pour tout \(n > N_0\), on a \(u_n > u_{N_0}\), et \(l\) majore \(E\) donc a fortiori \(l + \epsilon\) majore aussi \(E\), donc pour tout \(n > N_0\) on a:
+   \[
+      l - \epsilon < u_n < l + \epsilon
+   \]
+   La suite \(u_n\) converge donc bien vers \(l\).
+   
+   \subsection*{\subsecstyle{Théorème des suites adjacentes}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n), (v_n)\) deux suites respectivement croissante et décroissante, avec \(u_n \leq v_n\) et \((v_n - u_n) \rightarrow 0\), montrons que ces deux suites convergent vers la même limite.\<
+
+      Par la monotonie de ces suites on trouve:
+      \[
+         u_0 \leq u_n \leq v_n \leq v_0   
+      \]
+      En particulier, \(u_n\) est croissante et majorée par \(v_0\), donc elle converge vers \(l\).
+      Aussi, \(v_n\) est décroissante et minorée par \(u_0\), donc elle converge vers \(l'\).\<
+   
+      De plus on sait que \((v_n - u_n) \rightarrow 0\) donc \((v_n - u_n) + u_n = v_n\) tends vers \(l\) donc \(l = l'\).
+   \end{proof}
+
+   \subsection*{\subsecstyle{Théorème des gendarmes}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((u_n), (w_n)\) deux suites qui tendent vers \(l \in \R\), et \((v_n)\) une suite telle que pour tout \(n \in \N\) on ait \(u_n \leq v_n \leq w_n\), montrons que \((v_n)\) tends vers \(l\).\<
+
+      Soit \(\epsilon > 0\), alors on sait que:
+      \begin{align*}
+         &\bullet \;\; \text{A partir d'un certain rang \(N_0\), on a \( -\epsilon < w_n - l < \epsilon\)}\\
+         &\bullet \;\; \text{A partir d'un certain rang \(N_1\), on a \(- \epsilon < u_n - l < \epsilon\)}
+      \end{align*}
+      Alors à partir de \(N = \max(N_0, N_1)\), on a:
+      \[
+         -\epsilon < u_n - l \leq v_n - l \leq w_n - l < \epsilon
+      \]
+      Et donc on conclut que \(|v_n - l| < \epsilon\).
+      
+   \end{proof}
+
+\end{document}
