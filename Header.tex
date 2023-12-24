@@ -1,5 +1,7 @@
 % Maths Packages
 \usepackage{mathtools, amsthm, amssymb, mathrsfs, interval,stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
+\usepackage{tabularx}
+\usepackage{multicol}
 
 % TOC Packages
 \usepackage{tocloft, titletoc, hyperref}
@@ -10,10 +12,12 @@
 \usepackage[bottom]{footmisc}
 \usepackage[x11names, table]{xcolor}
 \usepackage[most, skins]{tcolorbox}
+\usepackage{adjustbox}
 
 % Tikz
 \usepackage{tikz, tkz-fct, tkz-euclide}
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy, external}
+\usepackage{tikz-cd}
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy}
 
 \tikzset{
   withparens/.style = {draw, outer sep=0pt,
@@ -25,7 +29,10 @@
     above delimiter=\{, below delimiter=\},
     align=center}
 }
-\tikzexternalize[prefix=Figures/] % activate
+\tikzcdset{
+  arrow style=tikz,
+  diagrams={>={Straight Barb[scale=0.8]}}
+}
 
 % PAGE SETTINGS
 
@@ -42,7 +49,7 @@
 \setcounter{secnumdepth}{-1}
 
 % STYLE
-\input{C:/Users/Christophe/Desktop/Work/Style.tex}
+\input{C:/Users/Vazn/Desktop/Math/Style.tex}
 
 % COMMANDS
-\input{C:/Users/Christophe/Desktop/Work/Commands.tex}
+\input{C:/Users/Vazn/Desktop/Math/Commands.tex}

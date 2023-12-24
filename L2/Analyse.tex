@@ -124,7 +124,6 @@ Enfin un dernier exemple remarquable est celui des \textbf{séries de Bertrand} 
 \begin{center}
    \textit{Cette série converge si et seulement si \(\alpha > 1\) ou si \(\alpha = 1\) et \(\beta > 1\).}
 \end{center}
-
 \subsection*{\subsecstyle{Théorèmes de comparaison {:}}}
 Soit \((u_n),(v_n)\) des suites \textbf{positives}, telles que \((u_n) \leq (v_n)\) alors de manière analogue aux intégrales généralisées, alors on a la propriété\footnote[1]{Ce cas découle directement de la positivité des suites considérées, en effet si \((u_n)\) est positive, sa série associée est \textbf{croissante}.} suivante:
 \begin{align*}
@@ -143,7 +142,6 @@ Enfin, on peut aussi considérer le cas de deux suites \((u_n), (v_n)\) \textbf{
 \begin{center}
    \textit{Munis de ces théorèmes de comparaison et des séries de référence, on peut alors étudier efficacement la convergence des séries dont le terme général est de signe constant.}
 \end{center}
-
 \subsection*{\subsecstyle{Absolue convergence {:}}}
 Dans le cas de séries dont le terme général n'est pas à signe constant, on peut alors montrer le théorème suivant:
 \customBox{width=9cm}{
@@ -153,7 +151,6 @@ On dira alors que \(S_n\) est \textbf{absolument convergente}\footnote[4]{La pre
 \begin{center}
    \textit{Cette propriété nous permet donc d'étendre nos théorèmes de comparaison aux séries dont le terme général change de signe.}
 \end{center}
-
 \subsection*{\subsecstyle{Critères spécifiques {:}}}
 Soit \((u_n)\) une suite à termes \textbf{non-nuls}, alors si \(|\frac{u_{n+1}}{u_n}|\) admet une limite \(l\), alors\footnote[5]{\label{1}La preuve s'obtient en comparant \(u_n\) à une série géométrique} on a la \textbf{règle de d'Alembert}:
 \begin{align*}
@@ -181,15 +178,173 @@ On peut répondre affirmativement à ces question en introduisant le concept de 
    &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme}
 \end{align*}
 
-
 \chapter*{\chapterstyle{IV --- Suites de fonctions}}
 \addcontentsline{toc}{section}{Suites de fonctions}
+Soit \(E \subseteq F\), on appelle \textbf{suite de fonctions} une suite \((f_n)_n\in\N\) dont les éléments sont des fonctions de \(E\) dans \(F\). Dans ce chapitre, on cherchera à définir une notion de convergence de telle suites.
+
+\subsection*{\subsecstyle{Convergence simple{:}}}
+Une première approche serait de définir la convergence de la suite \((f_n)\) vers une fonction limite \(f\) comme:
+\[
+   \forall x \in \R \; , \; \forall \epsilon > 0 \; , \; \exists N \in \N \; , \; \forall n > N \; ; \; |f_n(x) - f(x)| < \epsilon
+\]
+Cela signifirait que pour un \(x_0\) fixé, la suite de \textbf{réels} \((f_n(x_0))\) converge vers \(f(x)\).\<
+
+Par exemple si on considère la suite de fonctions définie par \(f_n(x) = x^n\) sur \(\icc{0}{1}\) et qu'on fixe \(x_0 \in \icc{0}{1}\) on a:
+
+\begin{center}
+   \begin{tikzpicture}[domain=0:1, scale=3.25, xscale=2.5]
+      \draw[-latex] (0,0) -- (1,0) node [right] {$x$};
+      \draw[-latex] (0, 0) -- (0,1) node [above] {$y$};
+      \foreach \n in {1,...,15}
+      {
+         \draw[color=DarkBlue1] plot[smooth] (\x, {\x^\n});
+         \fill[color=BrightRed1] (0.75, 0.75^\n) circle[radius=0.35pt, xscale=0.5];  
+      }
+      \draw[dashed, color = BrightRed1] (0.75, 0) -- (0.75,1);
+      \draw[color=BrightRed1] node at (0.75, -0.1) {$x_0$}; 
+   \end{tikzpicture}
+\end{center}
+
+Alors cette suite converge vers la fonction:
+\[
+   \begin{aligned}
+      f : \icc{0}{1} &\longrightarrow \R\\
+      x &\longmapsto \begin{cases}
+         0 \text{ si } x < 1 \\
+         1 \text{ sinon}
+      \end{cases} 
+   \end{aligned}
+\]
+On remarque un premier problème venant de cette définition, en effet les fonctions \(f_n\) sont toutes continues mais la limite n'est plus continue. Cela motive une notion de convergence plus \textbf{forte}.
+\subsection*{\subsecstyle{Convergence uniforme{:}}}
+On dit que \((f_n)\) \textbf{converge uniformément} vers \(f\) sur \(\R\) et on note \((f_n) \rightrightarrows f\) si et seulement si:
+\[
+   \forall \epsilon > 0 \; , \; \exists N \in \N \; , \; \forall n > N \; , \; \forall x \in \R \; ; \; |f_n(x) - f(x)| < \epsilon
+\]
+L'inversion des quantificateurs nous donne alors un unique seuil à partir duquel \(|f_n(x) - f(x)| < \epsilon\), en particulier, on peut alors montrer que cette notion de convergence équivaut à un criète plus pratique. En effet \((f_n)\) converge uniformément vers \(f\) si et seulement si:
+\customBox{width = 4cm}{
+   \(
+      \vectNorm{f_n - f}_\infty^\R \rightarrow 0
+   \)
+}
+On rapelle que la norme infini est définie par:
+\[
+   \vectNorm{f_n - f}_\infty^\R = \underset{x \in \R}{\sup}\left\{\left|f_n(x) - f(x)\right|\right\}
+\]
+Géométriquement, les boules pour cette norme consistent en des "tunnels" autour de la fonction centrale, et la convergence pour cette norme implique donc qu'à partir d'un certain rang, la suite de fonction se trouve toujours dans un tunnel arbitrairement petit.
+\pagebreak
+
+Par exemple la suite de fonctions \(f_n(x) = \frac{n + 2}{n}\sin(x)\) converge uniformément vers \(f: x \mapsto \sin(x)\) et graphiquement on a:
+
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=0.75,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (0,-3) -- (0, 3);
+      \draw[] (-0.1,-3) -- (0.1, -3) node at (-0.45, -3) {$-3$};
+      \draw[] (-0.1,0) -- (0.1, 0) node at (-0.3, 0) {$0$};
+      \draw[] (-0.1,1) -- (0.1, 1) node at (-0.3, 1) {$1$};
+      \draw[] (-0.1,2) -- (0.1, 2) node at (-0.3, 2) {$2$};
+      \draw[] (-0.1,-2) -- (0.1, -2) node at (-0.45, -2) {$-2$};
+      \draw[] (-0.1,-1) -- (0.1, -1) node at (-0.45, -1) {$-1$};
+
+      \draw[color=black, domain=0:12, smooth, line width=0.45mm]   plot (\x,{sin(\x r)}) node[right] {$\sin(t)$}; 
+      \draw[color=black!70,name path=A, domain=0:12, smooth, dashed, line width=0.3mm]   plot (\x,{sin(\x r) + 1}); 
+      \draw[color=black!70,name path=B, domain=0:12, smooth, dashed, line width=0.3mm]   plot (\x,{sin(\x r) - 1}); 
+      \foreach \n in {1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24}
+      {
+         \draw[color=BrightRed1!95, domain=0:12] plot[smooth, tension=0.70] (\x, {(\n+2)/\n*sin(\x r)});
+      }
+   \end{tikzpicture}   
+\end{center}
+\subsection*{\subsecstyle{Propriétés de régularité conservées{:}}}
+Soit \((f_n)\) une suite de fonction qui converge uniformément vers \(f\), la valeur de notre définition est mise en lumière par les propriétés suivantes:
+\begin{itemize}
+   \item Si chaque\(f_n\) est \textbf{bornée}, alors \(f\) est \textbf{bornée}.
+   \item Si chaque\(f_n\) est \textbf{continue}, alors \(f\) est \textbf{continue}.   
+   \item Si chaque\(f_n\) est \textbf{uniformément continue}, alors \(f\) est \textbf{uniformément continue}.
+\end{itemize}
+\begin{center}
+   \textit{Beaucoup de propriétés de régularité passent à la limite uniforme.}
+\end{center}
+Néanmoins le cas de la dérivabilité est plus subtil, en effet considéront la suite \((f_n)\) définie par \(f_n(x) = x^{1+\frac{1}{2n+1}}\), alors elle est bien définie et dérivable\footnote[1]{Remarquer que \(2n+1\) est toujours impair, donc on prends des racines n-ièmes impaires.} sur \(\R\), mais on a:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,xscale=1.75, yscale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (0,0) -- (0, 5);
+      \draw[->] (-4,0) -- (4,0);
+      \draw[] (-0.1,1) -- (0.1, 1) node at (-0.3, 1) {$1$};
+      \draw[] (-0.1,2) -- (0.1, 2) node at (-0.3, 2) {$2$};      
+      \draw[] (-0.1,3) -- (0.1, 3) node at (-0.3, 3) {$3$};
+      \draw[] (-0.1,4) -- (0.1, 4) node at (-0.3, 4) {$4$};
+
+      \draw[color=black, domain=-3:3, smooth, line width=0.5mm]   plot (\x,{abs(\x)}) node[right] {$|t|$}; 
+      \foreach \n in {1,..., 10}
+      {
+         \draw[color=BrightRed1!95, domain=-3:3] plot[smooth, tension=0.70] (\x, {\x*\x^(1/(2*\n+1))});
+      }
+   \end{tikzpicture}   
+\end{center}
+\[
+   (f_n) \rightrightarrows f \text{ pour } f : x \mapsto |x|
+\]
+Et donc en particulier on a exhibé une suite de fonctions dérivables donc la limite uniforme \textbf{n'est pas dérivable} en un point.
+\subsection*{\subsecstyle{Limites en un point{:}}}
+On peut généraliser le résultat sur la continuité à un résultat sur les limites, en effet si \((f_n)\) est une suite de fonctions qui converge uniformément vers \(f\) et telles que \(f_n(x)\) admette une limite un un point \(a\), alors on a \textbf{le théorème d'interversion} suivant:
+\customBox{width=7.5cm}{
+   \[
+      \lim_{n \rightarrow +\infty}\left(\lim_{x \rightarrow a} f_n(x)\right) = \lim_{x \rightarrow a}\left(\lim_{n \rightarrow +\infty} f_n(x) \right)
+   \]
+}
+\subsection*{\subsecstyle{Intégrabilité{:}}}
+On peut alors aussi montrer que si \((f_n)\) est une suite de fonction intégrables qui convergent uniformément vers \(f\), alors \(f\) est intégrable et on a \textbf{le théorème d'interversion} suivant:
+\customBox{width=7cm}{
+   \[
+      \lim_{n \rightarrow +\infty}\int_{a}^{b} f_n(t) \d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} f_n(t) \d t
+   \]
+}
+\subsection*{\subsecstyle{Retour sur la dérivabilité{:}}}
+Aprés avoir montré que la dérivabilité ne passe pas à la limite uniforme, on veut néanmoins trouver des critères permettant de trouver la dérivée d'une limite de fonctions, on considère alors une suite de fonctions \((f_n)\) toutes dérivables, et on suppose en outre que:
+\begin{itemize}
+   \item La suite de fonctions converge simplement pour au moins un \(x_0\).
+   \item La suite des dérivées \((f_n')\) converge uniformément.
+\end{itemize}
+Alors \((f_n)\) converge uniformément vers une fonction dérivable \(f\) et:
+\[
+   f'(x) = \lim_{n \rightarrow +\infty} f_n'(x)
+\] 
+On note alors que pour que la dérivabilité passe à la limite, il nous faut la convergence uniforme de la suite des dérivées \textbf{et} la convergence de la suite en au moins un point.
+\subsection*{\subsecstyle{Approximations uniformes{:}}}
+On se demande maintenant quand peut-on dire qu'une fonction continue est limite uniforme d'une suite de fonctions. Le \textbf{théorème de Weierstrass} nous donne alors une réponse forte:
+\begin{center}
+   \textbf{Toute fonction continue sur un segment est limite uniforme d'une suite de fonctions polynomiales.}
+\end{center}
 
 \chapter*{\chapterstyle{IV --- Séries de fonctions}}
 \addcontentsline{toc}{section}{Séries de fonctions}
+On appelle série de fonctions de terme général \(f_n\) la suite \(S_n\) des \textbf{sommes partielles} des termes de la suite de fonctions \((f_n)_{n\in\N}\), plus formellement, on a:
+\[
+   S_n = \sum_{k=0}^{n} f_k   
+\]
+Ce chapitre consistera en l'étude de la convergence simple et/ou uniforme de telles séries. 
+\subsection*{\subsecstyle{Convergence simple{:}}}
+\subsection*{\subsecstyle{Convergence uniforme{:}}}
+\subsection*{\subsecstyle{Propriétés de régularité conservées{:}}}
+\subsection*{\subsecstyle{Convergence normale{:}}}
 
 \chapter*{\chapterstyle{IV --- Séries Entières}}
 \addcontentsline{toc}{section}{Séries Entières}
+On appelle série entières de terme général \(a_nz^n\) une série de fonctions \(S_n\) de variable complexe \(z\) de la forme:
+\[
+   S_n = \sum_{k=0}^{n} a_nz^n 
+\]
+\subsection*{\subsecstyle{Rayon de convergence{:}}}
+\subsection*{\subsecstyle{Convergence uniforme{:}}}
+\subsection*{\subsecstyle{Propriétés de régularité conservées{:}}}
+\subsection*{\subsecstyle{Convergence normale{:}}}
 
 \chapter*{\chapterstyle{IV --- Séries de Fourier}}
 \addcontentsline{toc}{section}{Séries de Fourier}

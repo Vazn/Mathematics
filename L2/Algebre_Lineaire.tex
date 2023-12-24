@@ -105,6 +105,7 @@ Ou encore si \(A\) est la matrice de \(f\) dans la base canonique, alors \(A = P
    }
 \end{center}
 \pagebreak
+
 \subsection*{\subsecstyle{Critères de diagonalisabilité {:}}}
 On sait qu'un endomorphisme \(f\) est diagonalisable si et seulement si il admet une base de vecteurs propres, alors on peut montrer\footnote[1]{En effet, si tel est le cas, alors il suffit de prendre une base pour chaque \(E_\lambda\) (qui est bien constituée de vecteurs propres par définition), et de les concaténer pour obtenir une base de \(E\) constituée de vecteurs propres.} que \(f\) est diagonalisable si et seulement si:
 \customBox{width=4cm}{
@@ -140,11 +141,212 @@ Pour trouver une base de vecteurs propres, il suffit alors de trouver une base d
 \chapter*{\chapterstyle{III --- Trigonalisation}}
 \addcontentsline{toc}{section}{Trigonalisation}
 
-\chapter*{\chapterstyle{III --- Décomposition de Dunford}}
-\addcontentsline{toc}{section}{Trigonalisation}
-
 \chapter*{\chapterstyle{III --- Applications de la réduction}}
 \addcontentsline{toc}{section}{Applications de la réduction}
 
+\chapter*{\chapterstyle{III --- Espaces Préhilbertiens Réels}}
+\addcontentsline{toc}{section}{Espaces Préhilbertiens Réels}
+On appelle \textbf{espace préhilbertien réel} un \(\R\)-espace vectoriel muni d'une forme \textbf{bilinéaire}\footnote[1]{Une application \(\dotproduct{\cdot}{\cdot} : E^2 \longrightarrow \R\) qui est linéaire en chaque variable} qui vérifie:
+
+\customBox{width=7cm}{
+   \begin{align*}
+      &\textbf{Symétrie} &&\dotproduct{u}{v} = \dotproduct{v}{u} \\
+      &\textbf{Définie} &&\dotproduct{u}{u} = 0 \implies u = 0 \\
+      &\textbf{Positivité} &&\dotproduct{u}{v} \geq 0
+   \end{align*}
+}   
+On dira alors qu'une telle forme est un \textbf{produit scalaire} sur \(E\).
+\subsection*{\subsecstyle{Exemples {:}}}
+\begin{itemize}
+   \item On définit sur \(\R^n\) le produit scalaire défini par:
+   \[
+      \dotproduct{u}{v} = \sum_{k=1}^{n} u_kv_k    
+   \]
+   \item On définit sur \(\mathcal{C}^1(\icc{0}{1}, \R)\) le produit scalaire défini par:
+   \[
+      \dotproduct{f}{g} = \int_{0}^{1} f(t)g(t) \d t    
+   \]
+   \item On définit sur \(\R_n[X]\) le produit scalaire défini pour \((x_n)\) \(n + 1\) points fixés par:
+   \[
+      \dotproduct{P}{Q} = \sum_{k=0}^{n}P(x_k)Q(x_k)
+   \]   
+   \item On définit sur \(\mathcal{M}_n(\R)\) le produit scalaire défini par:
+   \[
+      \dotproduct{A}{B} = \text{tr}(A^\top B)
+   \]
+\end{itemize}
+
+\subsection*{\subsecstyle{Norme induite {:}}}
+A partir de la définition d'un tel espace, on alors montrer que \(\dotproduct{\cdot}{\cdot}\) \textbf{induit une norme} sur \(E\) donnée par:
+\customBox{width=4.7cm}{
+   \(
+      \forall u \in E \; ; \; \vectNorm{u}^2 = \dotproduct{u}{u}  
+   \)
+}
+Cela fait donc de \(E\) un espace vectoriel normé.
+
+\subsection*{\subsecstyle{Angle et Orthogonalité{:}}}
+A partir d'une telle définition, on peut alors définir \textbf{l'angle non-orienté} \(\theta \in \icc{0}{\pi}\) entre deux vecteurs \(u, v\) par:
+\customBox{width=4cm}{
+   \[
+      \theta := \arccos{\frac{\dotproduct{u}{v}}{\vectNorm{u}\vectNorm{v}}}   
+   \]
+}
+Ce qui nous permet de définir \textbf{l'orthogonalité} de deux vecteurs par la nullité du produit scalaire, en effet \(\theta = \frac{\pi}{2}\) dans cette définition ssi \(\dotproduct{u}{v} = 0\)
+\begin{center}
+   \textit{L'interprétation de cet "angle" ou de "l'orthogonalité" entre deux vecteurs diffère selon le contexte, elle peut alors signifier une corrélation en probabilité, ou un réel angle géométrique dans \(\R^n\) par exemple.}
+\end{center}
+
+\subsection*{\subsecstyle{Inégalité de Cauchy-Schwarz{:}}}
+Dans tout espace préhilbertien réel, pour tout \(u, v \in E\) on a l'inégalité\footnote[1]{Trés puissante et permet d'obtenir des majorations dans des cas trés variés.} suivante:
+\customBox{width=4cm}{
+   \(
+      |\dotproduct{u}{v}| \leq \vectNorm{u}\,\vectNorm{v}
+   \)
+}
+Avec cas d'égalité quand \(u, v\) sont \textbf{liés}.
+
+\subsection*{\subsecstyle{Formules géométriques{:}}}
+Dans tout espace préhilbertien réel, pour tout \(u, v \in E\) on a les identités suivantes:
+\begin{itemize}
+   \item \textbf{Identité de polarisation :} \(\vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2 + 2 \dotproduct{x}{y}\).
+   \item \textbf{Identité du parallélogramme :} \(\vectNorm{x + y}^2 + \vectNorm{x - y}^2 = 2\vectNorm{x}^2 + 2\vectNorm{y}^2\).
+\end{itemize}
+Enfin, on a le \textbf{théorème de Pythagore}:
+\[
+   x \perp y \Longleftrightarrow \vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2
+\]
+
+\subsection*{\subsecstyle{Orthogonal d'une partie{:}}}
+Soit \(F\) une partie de \(E\), alors on peut définir l'orthogonal de \(F\) comme \textbf{le sous-espace vectoriel} défini par:
+\customBox{width=6cm}{
+   \(F^\perp := \bigl\{ u \in E \; ; \; \forall v \in F \, , \, u \perp v  \bigl\}\) 
+}
+\begin{center}
+   \textit{L'orthogonal d'une partie est l'ensemble des vecteurs qui sont orthogonaux à tout élément de cette partie.}
+\end{center}
+Dans le cas courant ou on connait une base \((e_1, \ldots, e_n)\) de \(F\), on a la caractérisation suivante:
+\customBox{width=7cm}{
+   \(F^\perp := \bigl\{ u \in E \; ; \; \forall i \in \inticc{1}{n} \, , \, u \perp e_i  \bigl\}\)
+}
+On peut alors montrer les propiétés suivantes sur l'orthogonal:
+\begin{itemize}
+   \item \(F \subseteq {(F^\perp)}^\perp\)
+   \item \(E^\perp = \{ 0_E \}\)
+   \item \(A \subseteq B \implies B^\perp \subseteq A^\perp\)
+   \item \((A \cup B)^\perp =  A^\perp \cap B^\perp\)
+\end{itemize}
+Enfin on peut aussi montrer la propriété fondamentale suivante:
+\begin{center}
+   \textbf{Une partie et son orthogonal sont toujours en somme directe.}
+\end{center}
+Attention dans un espace préhilbertien quelconque, ils ne sont pas toujours supplémentaires !
+
 \chapter*{\chapterstyle{III --- Espaces Euclidiens}}
 \addcontentsline{toc}{section}{Espaces Euclidiens}
+On appelle \textbf{espace euclidien} tout espace préhilbertien réel \textbf{de dimension finie}. Dans toute la suite on prendra \((e_1, \ldots, e_n)\) une base de \(E\).
+
+\subsection*{\subsecstyle{Forme analytique et matricielle du produit scalaire{:}}}
+En représentant les vecteurs \(x, y \in E\) dans la base, on peut alors développer leur produit scalaire par bilinéarité pour obtenir:
+\customBox{width=5.5cm}{
+   \[
+      \dotproduct{x}{y} = \sum_{i = 1}^{n}\sum_{j = 1}^{n}x_iy_j \dotproduct{e_i}{e_j}   
+   \]
+}
+En particulier on peut alors remarquer que le produit scalaire est parfaitement déterminé par la donnée des \(n^2\) produits scalaires des vecteurs de base. Il est donc représenter matriciellement le produit scalaire par la matrice
+\(
+   A = (a_{i,j}) \text{ telle que } a_{i, j} = \dotproduct{e_i}{e_j}   
+\)\<
+
+Et donc on obtient en identifiant \(\R\) à \(\mathcal{M}_{1, 1}(\R)\):
+\customBox{width = 3.7cm}{
+   \(
+      \dotproduct{x}{y} = X^\top A Y
+   \)
+}
+En particulier, dans une base \textbf{orthonormée}, on a \(\dotproduct{x}{e_i} = x_i\) et donc:
+\[
+   x = \sum_{k=1}^{n} \dotproduct{x}{e_i}e_i 
+\]
+\subsection*{\subsecstyle{Propriétés en dimension finie{:}}}
+En dimension finie, pour tout sous-espace vectoriel \(F\) de \(E\) on a le théorème fondamental suivant:
+\customBox{width = 5cm}{
+   \(
+      E = F \oplus F^\perp    
+   \)
+}
+\begin{center}
+   \textit{Tout sous-espace admet un unique supplémentaire orthogonal en dimension finie.}
+\end{center}
+On peut alors en déduire qu'en dimension finie on a:
+\[
+   (F^\perp)^\perp = F   
+\]
+
+\subsection*{\subsecstyle{Projection orthogonale{:}}}
+L'existence d'une unique décomposition nous permet alors de définir \textbf{la projection} sur \(F\) de direction \(F^\perp\) par:
+\[
+   \text{proj}_F : x = x_F + x_{F^\perp} \mapsto x_F   
+\]
+En particulier, on en déduit par l'unicité de la décomposition que \(\text{proj}_F(x)\) est \textbf{l'unique vecteur} de \(F\) qui vérifie:
+\customBox{width=4cm}{
+   \(x - \text{proj}_F(x) \in F^\perp\)
+}
+Le projeté orthogonal a une signification géométrique importante, en effet on a:
+\customBox{width=6cm}{
+   \(\vectNorm{x - \text{proj}_F(x)} = \min_{y\in F}(\vectNorm{x - y})\)
+}
+\begin{center}
+   \textit{C'est le vecteur "le plus proche" de \(F\) au sens du produit scalaire utilisé.}
+\end{center}
+\pagebreak
+
+\subsection*{\subsecstyle{Calcul de projeté orthogonal{:}}}
+On considère un sous-espace \(F\) de bases \((e_1, \ldots, e_p)\) et \(x \in E\), on sait d'aprés les propriétés précédentes que \(\text{proj}_F(x)\) est l'unique vecteur de \(F\) tel que \(x - \text{proj}_F(x) \in F^\perp\), ce qui est équivalent à dire que:
+\begin{align*}
+   &\forall j \in \inticc{1}{p} \; ; \; \dotproduct{x - \text{proj}_F(x)}{e_j} = 0 \Longleftrightarrow \\
+   &\forall j \in \inticc{1}{p} \; ; \; \dotproduct{\text{proj}_F(x)}{e_j} = \dotproduct{x}{e_j}
+\end{align*}
+On raisonne alors par coefficient indeterminés avec l'écriture de \(\text{proj}_F(x) = \sum_{i=1}^{n} \alpha_i e_i\) dans la base de \(F\) pour obtenir l'expression suivante:
+\[
+   \forall j \in \inticc{1}{p} \; ; \; \sum_{i=1}^{n}\alpha_k \dotproduct{e_i}{e_j} = \dotproduct{x}{e_i}
+\] 
+Enfin on obtient alors \textbf{le système des équations normales}:
+\[
+   \begin{cases}
+      \alpha_1 \dotproduct{e_1}{e_1} + \alpha_2 \dotproduct{e_2}{e_1} + \ldots + \alpha_p \dotproduct{e_p}{e_1} = \dotproduct{x}{e_1}\\
+      \vdots \\
+      \alpha_1 \dotproduct{e_1}{e_p} + \alpha_2 \dotproduct{e_2}{e_p} + \ldots + \alpha_p \dotproduct{e_p}{e_p} = \dotproduct{x}{e_p}
+   \end{cases} 
+\]
+Ou de manière équivalente pour \(M\) la matrice du produit scalaire dans la base de \((e_1, \ldots, e_p)\):
+\[
+   MY = 
+   \begin{bmatrix}
+      \dotproduct{x}{e_1}\\
+      \vdots \\
+      \dotproduct{x}{e_p}
+   \end{bmatrix}
+\]
+Dans le cas d'une base \textbf{orthogonale}, le système ci-dessus est beaucoup plus simple, en effet presque tout les produits scalaires sont nuls, et on obtient un système \textbf{diagonal} et donc dans ce cas précis, le projeté orthogonal s'obtient simplement par la formule:
+\customBox{width=5cm}{
+   \[
+      \text{proj}_F(x) = \sum_{k = 1}^{p} \frac{\dotproduct{x}{e_i}}{\dotproduct{e_i}{e_i}}e_i     
+   \]
+}
+Finalement, une remarque importante permet de comprendre la projection sur un sous espace doté d'une base orthogonale, en effet:
+\begin{center}
+   \textit{Projeter un vecteur sur un sous-espace revient à ajouter les projetés de ce vecteur sur les vecteurs de la base du sous-espace.}
+\end{center}
+\underline{Exemple:} Le projeté de \(x = (1, 2, 3)\) sur le plan \(\text{Vect}((1, 0, 0), (0, 1, 0))\) est donné par \(\text{proj}_{(1, 0, 0)}(x) + \text{proj}_{(0, 1, 0)}(x)\)
+\subsection*{\subsecstyle{Procédé de Gramm-Schmidt{:}}}
+Soit \((e_1, \ldots, e_n)\) une base de \(E\), on cherche alors à élaborer un procédé permettant \textbf{d'orthogonaliser cette base} en une base \((\epsilon_1, \ldots, \epsilon_n)\), on pose \(\epsilon_1 = e_1\) et \(H_i = \text{Vect}(e_1, \ldots, e_i)\) et on définit par récurrence:
+\customBox{width=12cm}{
+   \[
+      \epsilon_i = e_i - \text{proj}_{H_{i-1}}(e_i) = e_i - \left(\sum_{k=0}^{i - 1}\text{proj}_{\epsilon_k}(e_k)\right) = e_i - \left(\sum_{k=0}^{i - 1}\frac{\dotproduct{e_i}{\epsilon_i}}{\dotproduct{\epsilon_i}{\epsilon_i}}\epsilon_i \right)
+   \]
+}
+
+\begin{center}
+   \textit{Moralement, on "redresse" chaque vecteur de la base initiale en lui retirant son défaut d'orthogonalité représenté par sa projection sur le sous-espace précédent.}
+\end{center}

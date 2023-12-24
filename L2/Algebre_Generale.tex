@@ -72,11 +72,6 @@ Si la structure admet un symétrique pour la loi, alors:
 \customBox{width=4cm}{
    \(\quad\;\varphi(x^{-1}) = \varphi(x)^{-1}\)
 }
-Et meme plus généralement pour tout \(n\) entier relatif:
-\customBox{width=4cm}{
-   \(\quad\;\varphi(x^{n}) = \varphi(x)^{n}\)
-}
-
 \subsection*{\subsecstyle{Exemples {:}}}
 On peut considérer quelques exemples remarquables:
 \begin{align*}
@@ -85,6 +80,39 @@ On peut considérer quelques exemples remarquables:
    &\bullet \;\; \text{\(\phi: M \in GL_{n}(\K) \longmapsto \det(M) \in \K^*\) est un morphisme (de groupe) de \((GL_{n}(\K), \times)\) dans \((\K, \times)\).}\\
    &\bullet \;\; \text{\(\phi: z \in \C \longmapsto \overline{z} \in \C\) est un automorphisme (de corps) de \((\C, +, \times)\) dans \((\C, +, \times)\).}
 \end{align*}
+\pagebreak
+\subsection*{\subsecstyle{Sous-structures {:}}}
+
+Une fois une structure algébrique définie sur \(E\), on peut alors s'intéresser aux parties de \(E\) qui conservent cette structure, on les appellera alors \textbf{sous-structures} de \(E\).\<
+
+En particulier, on dira que \(F\) est une \textbf{sous-structure} de \(E\) (et on notera \(F < E\)) si elle vérifie:
+\begin{itemize}
+   \item La partie \(F\) est stable par les lois.
+   \item Les éléments neutres\footnote[1]{\label{struct}\textbf{Si la structure impose leur existence}} appartient à \(F\) 
+   \item Les inverses\footnoteref{struct} des éléments de \(F\) appartient à \(F\)
+\end{itemize}
+
+On peut alors montrer les propositions suivantes:
+\begin{itemize}
+   \item L'image et la préimage d'une sous-structure par un morphisme est une sous-structure.
+   \item L'intersection d'une famille de sous-structures est une sous-structure
+\end{itemize}
+En particulier les noyaux de morphismes sont des sous-structures de la structure de départ.
+
+\subsection*{\subsecstyle{Structures Quotients {:}}}
+Dans le domaine ensembliste, on sait créer des ensembles quotients via une relation d'équivalence, on cherche par la suite à créer des ensembles quotients qui \textbf{conservent les propriétés de structure}, en particulier, on cherche des conditions sur une relation d'équivalence \(\sim\) pour que \(G/_\sim\) soit un groupe, un anneau, ou un corps.
+
+On peut alors montrer qu'il faut et il suffit que \(\sim\) soit \textbf{compatible} avec les lois, ie que pour toute loi \(\star\), on ait:
+\customBox{width=9cm}{
+   \(
+      x_1 \sim x_2 \text{ et } y_1 \sim y_2 \implies x_1 \star y_1 \sim x_2 \star y_2  
+   \)
+}
+
+On peut alors montrer que \(G/_\sim\) conserve les propriétés de structure de \(G\).\<
+
+On peut alors définir la \textbf{surjection canonique} qui est le morphisme \(\pi : E \rightarrow E /\sim\) qui a chaque élément associe sa classe d'équivalence pour la relation\footnote[1]{Non spécifique aux structures, c'est une application générale liée aux ensembles quotients.}. 
+
 \chapter*{\chapterstyle{I --- Groupes}}
 \addcontentsline{toc}{section}{Groupes}
 
@@ -115,53 +143,133 @@ En particulier, on peut alors montrer:
    Un morphisme est injectif si et seulement si son noyau est réduit à l'élément neutre.
 }
 \subsection*{\subsecstyle{Sous-groupes {:}}}
-Soit \(H \subseteq G\), une fois une structure algébrique définie, on peut alors définir s'intéresser aux parties de \(G\) qui conservent la structure, on les appellera alors \textbf{sous-structure} (ici sous-groupe) de \(G\).\<
-
-En particulier, on dira que \(H\) est un \textbf{sous-groupe} de \(G\) (et on notera \(H \leq G\)) si elle vérifie:
-\begin{align*}
-   &\bullet \;\; \text{L'élément neutre appartient à \(H\)} \\
-   &\bullet \;\; \text{La partie \(H\) est stable par la loi.} \\
-   &\bullet \;\; \text{La partie \(H\) est stable par passage à l'inverse.}
-\end{align*}
-\addtocounter{footnote}{1}
-On peut alors montrer les propositions suivante:
-\begin{align*}
-   &\bullet \;\; \text{L'image et la préimage d'un sous-groupe par un morphisme est un sous-groupe\footnotemark.} \\
-   &\bullet \;\; \text{L'intersection d'une famille de sous-groupe est un sous-groupe.}
-\end{align*}
-\footnotetext{En particulier le noyau d'un morphisme est un sous-groupe du groupe de départ.}
-\pagebreak
-
-Un cas particulier est celui du \textbf{sous-groupe engendré} par \(H\) qu'on note:
+Les sous-structures dans le cas des groupes sont naturellement les \textbf{sous-groupes}. Un cas remarquable est celui du \textbf{sous-groupe engendré} par \(H\) qu'on note:
 \customBox{width=10cm}{
-   \(\langle H \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i = \pm 1 \Bigl\}\)
+   \(\langle H \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \Z \Bigl\}\)
 }
 \begin{center}
    \textit{C'est l'ensemble des combinaisons d'éléments de \(H\) et de leurs inverses.}
 \end{center}
 Une propriété fondamentale est que \(\langle H \rangle\) est un \textbf{opérateur de cloture} par la loi du groupe, ie c'est une application \textbf{idempotente, croissante et extensive}.\<
 
-On peut alors considérer le sous-groupe engendré par un élément\footnote[1]{On peut alors définir \textbf{l'ordre d'un élément} comme étant l'ordre du sous-groupe engendré associé (potentiellement infini).} \(h \in H\), en effet on a:
+On peut alors considérer le sous-groupe engendré par un élément \(h \in H\), en effet on a:
 \[
    \langle h \rangle := \bigl\{ h^{k} \; ; \; k \in \Z \bigl\}
 \]
-Ce sous-groupe permet de définir des groupes remarquables, en effet si un groupe est engendré par un unique élément, il est appelé \textbf{groupe monogène}, de plus si un groupe monogène est fini, il est appelé \textbf{groupe cyclique}.\<
+On peut alors définir \textbf{l'ordre d'un élément} comme étant l'ordre du sous-groupe engendré associé (potentiellement infini).\<
 
-Une des propriétés remarquables de ces groupes est que \textbf{tout groupe monogène est abélien}.
+Ce sous-groupe permet de définir des groupes remarquables, en effet si un groupe est engendré par un unique élément, il est appelé \textbf{groupe cyclique} dont nous parleront plus loin dans ce chapitre.
+\pagebreak
+\subsection*{\subsecstyle{Action de groupe {:}}}
+Soit \(E\) un ensemble et \(G\) un groupe noté multiplicativement, on peut définir une \textbf{action de groupe} de \(G\) sur \(E\) par une application de la forme:
+\[
+   \begin{aligned}
+      G \times E &\longrightarrow E\\
+      (g, x) &\longmapsto g \cdot x
+   \end{aligned}
+\]
+Elle doit alors vérifier les propriétés suivantes:
+\customBox{width = 10cm}{
+   \begin{align*}
+      &\textbf{Le neutre n'agit pas: }\forall x \in E \; ; \; e \cdot x = x\\
+      &\textbf{Associativité mixte: }\forall g, g' \in G \; ; \; g' \cdot (g \cdot x) = (g'g) \cdot x
+   \end{align*}
+}
+
+\underline{Exemple:} Considèrons le groupe \(\G_3\), il agit sur l'ensemble \(E = \left\{ A, B, C\right\}\) par l'action naturelle qui "mélange" l'ensemble \(E\), par exemple si on prends \(\sigma = (1, 2, 3)\), on associe \(\sigma(x)\) à chaque \(x \in E\).\+
+Composer des permutations et faire agir la composée reviendra alors à faire agir les composantes successivement, et la permutation identité n'agit pas. 
+\subsection*{\subsecstyle{Orbite {:}}}
+On considère un ensemble \(E\) et un groupe \(G\) qui agit sur \(E\), alors on définit \textbf{l'orbite} d'un élément \(x \in E\) par:
+\[
+   O_x := \Bigl\{ y \in E \; ; \; \exists g \in G \, , \, g \cdot x = y\Bigl\}   
+\]
+\begin{center}
+   \textit{L'orbite d'un élément est simplement l'ensemble des éléments atteint par l'action du groupe sur l'élément.}
+\end{center}
+\subsection*{\subsecstyle{Stabilisateur {:}}}
+On peut aussi définir \textbf{le stabilisateur} d'un élément \(x \in E\) par:
+\[
+   St_x := \Bigl\{ g \in G \; ; \; g \cdot x = x\Bigl\}   
+\]
+\begin{center}
+   \textit{Le stabilisateur d'un élément est simplement l'ensemble des éléments du groupe qui le laissent invariant.}
+\end{center}
 \subsection*{\subsecstyle{Classes {:}}}
-Soit \(H \leq G\) et \(g \in G\), on appelle \textbf{classe à gauche}\footnote[2]{On définit de manière analogue les \textbf{classes à droite}.} de \(g\) suivant \(H\) l'ensemble:
+Soit \(H < G\) et \(g \in G\), on appelle \textbf{classe à gauche}\footnote[1]{On définit de manière analogue les \textbf{classes à droite}.} de \(g\) suivant \(H\) l'ensemble:
 \customBox{width=4.5cm}{
    \(gH := \Bigl\{ gh \; ; \; h \in H \Bigl\}\)
 }
 Ce sont les \textbf{classes d'équivalences} naturelles pour la relation \(a \sim b \Longleftrightarrow aH = bH\).\<
 
 \underline{Exemple:} Considèrons le groupe \((\Z, \times)\), alors \(2\Z\) est la classe à gauche de \(2\) suivant \(\Z\). Les classes à gauche de la forme \(n\Z\) seront utiles pour définir les groupes quotients associés à \textbf{l'arithmétique modulaire}.
-\subsection*{\subsecstyle{Conjugaison {:}}}
-\subsection*{\subsecstyle{Action de groupe {:}}}
-\subsection*{\subsecstyle{Groupes Quotients {:}}}
-\subsection*{\subsecstyle{Théorèmes d'isomorphismes {:}}}
+\subsection*{\subsecstyle{Sous-groupes normaux{:}}}
+Soit \(H < G\) et \(g \in G\), on dit que \(H\) est un \textbf{sous-groupe normal} et on note \(H \lhd G\), si il vérifie:
+\customBox{width=5cm}{
+   \(
+      \forall g \in G \; ; \; gH = Hg     
+   \)
+}
+\begin{center}
+   \textit{Un sous-groupe est normal si et seulement si toutes classe à gauche est égale à sa classe à droite.}
+\end{center}
+On peut alors montrer la propriété suivante:
+\begin{center}
+   \textbf{La préimage d'un sous-groupe normal par un morphisme est un sous-groupe normal\footnote[2]{Donc en particulier, les noyaux de morphismes sont toujours des sous-groupes normaux.}.}
+\end{center}
+\subsection*{\subsecstyle{Conjugaison{:}}}
+On peut définir une action appellée \textbf{conjugaison} de \(G\) sur lui-meme par:
+\[
+   \begin{aligned}
+      G \times G &\longrightarrow G\\
+      (g, h) &\longmapsto ghg^{-1}
+   \end{aligned}
+\]
+On peut alors montrer la caracterisation suivante pour \(H < G\):
+\customBox{width=8cm}{
+   \(
+      H \unlhd G \Longleftrightarrow \forall g, h \in G \times H \; ; \; ghg^{-1} \in H   
+   \)
+}
+\begin{center}
+   \textit{Un sous-groupe est normal si et seulement si il est stable par conjugaison.}
+\end{center}
+\subsection*{\subsecstyle{Relations d'équivalence compatibles{:}}}
+L'intéret fondamental des sous-groupes normaux et qu'on peut alors caractériser les relations d'équivalences \textbf{compatibles} avec la loi de groupe.\<
 
-\chapter*{\chapterstyle{I --- Groupe Symétrique}}
+En effet si \(H \lhd G\), alors on définit:
+\[
+   x \sim y \Longleftrightarrow xH = yH
+\]
+On peut alors vérifier que la relation est compatible avec la loi du groupe et donc l'ensemble quotient suivant est bien un groupe pour la loi induite:
+\[
+   G/_\sim \underset{not.}{=} G/H
+\]
+\subsection*{\subsecstyle{Théorème de Lagrange{:}}}
+Pour tout \textbf{groupe fini} et muni des outils précédemment définis (notamment des concepts de classes\footnote[1]{On peut partitionner \(G\) en classes suivant \(H\) qui ont toutes le meme cardinal que \(H\) et donc on a:\[
+   |G| = |H| \times |G/H|\]}), on peut alors montrer la théorème fondamental suivant:
+\begin{center}
+   \customBox{width=11cm}{
+      \textbf{L'ordre d'un sous-groupre divise l'ordre du groupe.}
+   }
+\end{center}
+
+\chapter*{\chapterstyle{I --- Théorèmes d'isomorphismes}}
+\addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
+On considère ici deux groupes \(G, F\), et \(H\) un sous-groupe normal de \(G\), on sait que \(H\) induit une relation d'équivalence compatible et donc qu'on peut définir le groupe quotient \(G/H\).\<
+
+Soit \(\phi : G \longrightarrow F\) un morphisme, on peut alors montrer qu'il existe un unique morphisme \(\widetilde{\phi} : G/H \longrightarrow F\) tel que le diagramme soit commutatif\footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
+\begin{center}
+   \adjustbox{scale=1.5,center}{
+      \begin{tikzcd}[column sep=large, row sep=large]
+         G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
+         G/H \arrow[ru, "\widetilde{\phi}", swap, dashed]
+      \end{tikzcd}
+   }
+\end{center}
+
+\subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
+
+\chapter*{\chapterstyle{I --- Groupes Symétriques}}
 \addcontentsline{toc}{section}{Groupe Symétrique}
 On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<
 
@@ -276,11 +384,171 @@ Moralement:
 \begin{center}
    \textit{La signature correspond à la parité du nombre d'inversions.}
 \end{center}
+
+\chapter*{\chapterstyle{I --- Groupes Cycliques}}
+\addcontentsline{toc}{section}{Groupes Cycliques}
+On appelle \textbf{groupe cyclique} un groupe \(G\) engendré par un unique élément qu'on notera \(g\). Le but de ce chapitre est de classifier ces groupes et d'identifier leurs caractéristiques.\<
+
+Dans toute la suite, on utilisera le morphisme surjectif\footnote[1]{Car \(\langle g \rangle = G\) donc tout les éléments de \(G\) s'écrivent comme une puissance de \(g\).} suivant:
+\[
+   \begin{aligned}
+      \phi: \Z &\longrightarrow G\\
+      n &\longmapsto g^n
+   \end{aligned}
+\]
+
+\subsection*{\subsecstyle{Cas infini {:}}}
+Dans le cas ou \(G\) est infini, le morphisme \(\phi\) est injectif et donc on a la caractérisation suivante:
+\customBox{width=2cm}{
+   \(
+      G \cong \Z
+   \)
+}
+\begin{center}
+   \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre infini, celui des entiers naturels.}
+\end{center}
+\subsection*{\subsecstyle{Cas fini {:}}}
+Dans le cas ou \(G\) est d'ordre \(n \in \N\), on peut utiliser le \textbf{premier théorème d'isomorphisme} pour montrer qu'il existe un isomorphisme:
+\[
+   \psi : \Z/\Ker{\phi} \longrightarrow G
+\]
+Et donc en particulier sachant que \(\Ker{\phi} = n\Z\), on a:
+\customBox{width=3cm}{
+   \(
+      G \cong \Z/n\Z
+   \)
+}
+\begin{center}
+   \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre n, celui des classes de congruences modulo n.}
+\end{center}
+\subsection*{\subsecstyle{Indicatrice d'Euler {:}}}
+On définit \textbf{la fonction indicatrice d'Euler} par:
+\[
+   \begin{aligned}
+      \varphi: \N &\longrightarrow \N\\
+      n &\longmapsto n \prod_{p|n}{\left(1-\frac{1}{p}\right)}
+   \end{aligned}
+\]
+Le produit se faisant sur tout les diviseurs premiers distincts de \(n\). L'utilité de cette fonction vient de la propriété suivante:
+\customBox{width=13cm}{
+   \textbf{Le nombre d'entiers inférieurs à \(n\) et premiers avec \(n\) est de \(\varphi(n)\).}
+}
+
+\underline{Exemple:} \(\varphi(30) = \varphi(2\times3\times5) = 30\times\left(1-\frac{1}{2}\right)\left(1-\frac{1}{3}\right)\left(1-\frac{1}{5}\right) = 30\times\frac{1}{2}\times\frac{2}{3}\times\frac{4}{5} = 8\)
+\subsection*{\subsecstyle{Propriétés {:}}}
+On peut alors de démontrer les propriétés suivantes:
+
+\begin{center}
+   \begin{itemize}
+      \item Tout groupe cyclique est \textbf{abélien}.
+      \item Tout \textbf{sous-groupe} d'un groupe cyclique est cyclique.
+   \end{itemize}
+\end{center}
+
 \chapter*{\chapterstyle{I --- Anneaux}}
 \addcontentsline{toc}{section}{Anneaux}
+Soit \(A\) un ensemble \textbf{non-vide} muni de deux lois de composition internes associatives notées \(+, \times\) telles que:
+\begin{align*}
+   &\bullet \;\; (A, +) \text{ soit un groupe commutatif.} \\
+   &\bullet \;\; \text{La loi \(\times\) est associative.}\\
+   &\bullet \;\; \text{La loi \(\times\) est distributive sur la loi \(+\).}\\
+   &\bullet \;\; \text{Il existe \textbf{un élément neutre} pour la loi \(\times\).}
+\end{align*}
+Alors le triplet \((A, +, \times)\) est appellé \textbf{anneau}. Si la loi multiplicative est \textbf{commutative}, on dira alors que c'est un anneau commutatif.
+\subsection*{\subsecstyle{Exemples {:}}}
+On peut alors considérer plusieurs anneaux remarquables:
+\begin{itemize}
+   \item Les \textbf{entiers relatifs} muni des opérations usuelles.
+   \item Les \textbf{fonctions continues} muni de la somme et du produit.
+   \item Les \textbf{polynomes}\footnote{\label{coeff}A coefficients dans un anneau} muni de la somme et du produit.
+   \item Les \textbf{matrices}\footnoteref{coeff} muni de la somme et du produit.
+\end{itemize}
 
-\chapter*{\chapterstyle{I --- Anneaux Euclidiens}}
-\addcontentsline{toc}{section}{Anneaux Euclidiens}
+\subsection*{\subsecstyle{Propriétés Algébriques{:}}}
+Pour deux éléments \(a, b \in A\) qui commutent, on a \textbf{la formule du binome de Newton}:
+\[
+   (a + b)^n = \sum_{k=0}^{n}\binom{n}{k} a^k b^{n-k}   
+\]
+
+\subsection*{\subsecstyle{Sous-anneaux {:}}}
+Les sous-structures dans le cas des groupes sont naturellement les \textbf{sous-anneaux}. Un cas remarquable est celui du \textbf{sous-anneau engendré} par \(H\) qu'on note:
+\customBox{width=10cm}{
+   \(\langle H \rangle := \Bigl\{ \sum_{k=1}^{n} \pm h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \N \Bigl\}\)
+}
+\begin{center}
+   \textit{C'est l'ensemble des produits et sommes d'éléments de \(H\) et de leurs inverses pour la loi de groupe.}
+\end{center}
+Une propriété fondamentale est que \(\langle H \rangle\) est un \textbf{opérateur de cloture} par la loi du groupe, ie c'est une application \textbf{idempotente, croissante et extensive}.
+\subsection*{\subsecstyle{Idéaux{:}}}
+On appelle \textbf{idéal} tout sous groupe additif de \(A\) qui soit stable par multiplication (à droite et à gauche) par n'importe quel élément de l'anneau.
+\begin{center}
+   \textit{Les idéaux jouent alors le meme role que les sous-groupes normaux, ie on peut quotienter par ceux-ci.}
+\end{center}
+On peut alors montrer les propriétés suivantes:
+\begin{itemize}
+   \item La préimage d'un idéal par un morphisme est un idéal\footnote[2]{Donc en particulier, les noyaux de morphismes sont toujours des idéaux.}.
+   \item L'intesection d'une famille d'idéaux est un idéal.
+\end{itemize}
+
+\subsection*{\subsecstyle{Inversibles {:}}}
+On dit qu'un élément \(x \in A^*\) est \textbf{inversible} à droite\footnote[2]{On définit de meme les inversibles à gauche} si et seulement si il existe \(y \in A\) tel que:
+\[
+   xy = 1
+\]
+Si un élément est inversible bilatère, on dira alors simplement qu'il est inversible. L'ensemble des inversibles d'un anneau forme un groupe pour la loi multiplicative qu'on note \(\mathbb{U}(A)\).
+\subsection*{\subsecstyle{Diviseurs de zéro {:}}}
+On dit qu'un élément \(x \in A^*\) est \textbf{un diviseur de zéro} à droite\footnote[3]{On définit de meme les diviseurs de zéro à gauche} si et seulement si il existe \(y \in A^*\) tel que:
+\[
+   yx = 0
+\]
+\underline{Exemple}: Dans l'anneau \(\mathcal{M}_2(\R)\), la matrice \(\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}\) est un diviseur de zéro car \(\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}\begin{pmatrix}1 & 0 \\ -1 & 0\end{pmatrix} = 0\)
+\subsection*{\subsecstyle{Nilpotents {:}}}
+On dit qu'un élément \(a \in A\) est \textbf{nilpotent} si et seulement si il existe \(n \in \N\) tel que:
+\[
+   a^n = 0
+\]
+En particulier les nilpotents sont donc des diviseurs de zéro. \<
+
+\underline{Exemple}: Dans l'anneau \(\mathcal{M}_2(\R)\), la matrice \(A = \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}\) est nilpotente car \(A^2 = 0\)
+\subsection*{\subsecstyle{Caractéristique {:}}}
+On définit la caractéristique d'un anneau non-nul par:
+\[
+   \text{char}(A) := \min \left\{ n \in \N \; ; \;\underbrace{1 + \ldots + 1}_{\text{\(n\) sommandes}} = 0 \right\}
+\]
+Une autre formulation serait simplement que:
+\begin{center}
+   \textit{La caractéristique d'un anneau est l'ordre (additif) de l'unité multiplicative.}
+\end{center}
+\subsection*{\subsecstyle{Anneaux intègres {:}}}
+On appelle \textbf{anneau intègre} tout anneau \(A\) non-nul \textbf{commutatif} et \textbf{sans diviseurs de zéro}. En particulier, dans un anneau intègre, on a alors la propriété qu'un produit est nul si et seulement si \textbf{l'un des facteurs est nul}.
+\subsection*{\subsecstyle{Anneaux à PGCD {:}}}
+\subsection*{\subsecstyle{Anneaux Factoriels {:}}}
+\subsection*{\subsecstyle{Anneaux Principaux {:}}}
+\subsection*{\subsecstyle{Anneaux Euclidiens {:}}}
+On appelle \textbf{anneau Euclidiens} tout anneau \(A\) principal qui possède une \textbf{division euclidienne}. Dans un tel anneau, on peut alors faire \textbf{de l'arithmétique} comme dans l'anneau des entiers naturels.
+\subsection*{\subsecstyle{Schéma heuristique des structures d'anneaux {:}}}
+Pour mieux visualiser la hierarchie des différents types d'anneaux, on peut représenter la structure logique sous la forme de la suite d'implications suivantes:
+\begin{center}
+   \customBox{width = 16cm}{
+      \textbf{Euclidien} \(\implies\) \textbf{Principal} \(\implies\) \textbf{Factoriel} \(\implies\) \textbf{PGCD} \(\implies\) \textbf{Intégre} \(\implies\) \textbf{Commutatif}
+   }
+\end{center}
+
+\chapter*{\chapterstyle{I --- Corps}}
+\addcontentsline{toc}{section}{Corps}
+Soit \(A\) un anneau dont tout les éléments sauf \(0\) sont inversibles. Alors on dit que \(A\) est \textbf{un corps}.
+
+\subsection*{\subsecstyle{Exemples {:}}}
+On peut alors considérer plusieurs corps remarquables:
+\begin{itemize}
+   \item Les \textbf{réels} muni des opérations usuelles.
+   \item Les \textbf{quaternions}\footnote[1]{C'est un exemple de corps non commutatif} muni des opérations usuelles.
+   \item Les \textbf{corps finis} \(\mathbb{F}_p = \Z/p\Z\) pour \(p\) premier.
+   \item Les \textbf{nombres constructibles} à la règle et au compas.
+\end{itemize}
+
+\chapter*{\chapterstyle{I --- Arithmétique dans \(\Z\)}}
+\addcontentsline{toc}{section}{Arithmétique dans \(\Z\)}
 
 \subsection*{\subsecstyle{Division Euclidienne {:}}}
 Soit \(a, b \in \Z \times \Z^*\), on montre qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
@@ -333,6 +601,3 @@ Soit 3 entiers \(a, b, c \in \Z\), alors\footnote[1]{Partir d'une combinaison li
       \end{cases} \implies a \, | \, c
    \]
 }
-
-\chapter*{\chapterstyle{I --- Corps}}
-\addcontentsline{toc}{section}{Corps}
