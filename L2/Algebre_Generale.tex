@@ -112,7 +112,6 @@ On peut alors montrer qu'il faut et il suffit que \(\sim\) soit \textbf{compatib
 On peut alors montrer que \(G/_\sim\) conserve les propriétés de structure de \(G\).\<
 
 On peut alors définir la \textbf{surjection canonique} qui est le morphisme \(\pi : E \rightarrow E /\sim\) qui a chaque élément associe sa classe d'équivalence pour la relation\footnote[1]{Non spécifique aux structures, c'est une application générale liée aux ensembles quotients.}. 
-
 \chapter*{\chapterstyle{I --- Groupes}}
 \addcontentsline{toc}{section}{Groupes}
 
@@ -257,18 +256,20 @@ Pour tout \textbf{groupe fini} et muni des outils précédemment définis (notam
 \addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
 On considère ici deux groupes \(G, F\), et \(H\) un sous-groupe normal de \(G\), on sait que \(H\) induit une relation d'équivalence compatible et donc qu'on peut définir le groupe quotient \(G/H\).\<
 
-Soit \(\phi : G \longrightarrow F\) un morphisme, on peut alors montrer qu'il existe un unique morphisme \(\widetilde{\phi} : G/H \longrightarrow F\) tel que le diagramme soit commutatif\footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
+\subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
+Soit \(\phi : G \longrightarrow F\) un morphisme, on peut alors montrer qu'il existe un unique morphisme \(\widetilde{\phi} : G/\Ker{\phi} \longrightarrow F\) tel que le diagramme soit commutatif\footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
 \begin{center}
    \adjustbox{scale=1.5,center}{
       \begin{tikzcd}[column sep=large, row sep=large]
          G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
-         G/H \arrow[ru, "\widetilde{\phi}", swap, dashed]
+         G/\Ker{\phi} \arrow[ru, "\widetilde{\phi}", swap, dashed]
       \end{tikzcd}
    }
 \end{center}
-
-\subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
-
+En particulier, le morphisme \(\widetilde{\phi}'\) est injectif, et on montre qu'il surjectif sur \(\text{Im}(\phi)\) et donc on a le théorème suivant:
+\customBox{width=6cm}{
+   \(G/\Ker{\phi} \cong \text{Im}(\phi)\) 
+}
 \chapter*{\chapterstyle{I --- Groupes Symétriques}}
 \addcontentsline{toc}{section}{Groupe Symétrique}
 On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<

@@ -11,28 +11,29 @@
 \contentsline {section}{Espaces Topologiques}{16}{chapter*.56}%
 \contentsline {section}{Espaces Métriques}{18}{chapter*.63}%
 \contentsline {section}{Continuité}{20}{chapter*.69}%
-\contentsline {section}{Connexité}{21}{chapter*.70}%
-\contentsline {section}{Compacité}{22}{chapter*.71}%
-\contentsline {chapter}{Algèbre Linéaire}{23}{chapter*.71}%
-\contentsline {section}{Introduction à la réduction}{23}{chapter*.72}%
-\contentsline {section}{Polynomes d'endomorphismes}{26}{chapter*.78}%
-\contentsline {section}{Trigonalisation}{27}{chapter*.79}%
-\contentsline {section}{Applications de la réduction}{28}{chapter*.80}%
-\contentsline {section}{Espaces Préhilbertiens Réels}{29}{chapter*.81}%
-\contentsline {section}{Espaces Euclidiens}{31}{chapter*.88}%
-\contentsline {chapter}{Analyse}{33}{section*.93}%
-\contentsline {section}{Intégrales Généralisées}{33}{chapter*.94}%
-\contentsline {section}{Séries Numériques}{35}{chapter*.100}%
-\contentsline {section}{Suites de fonctions}{38}{chapter*.107}%
-\contentsline {section}{Séries de fonctions}{41}{chapter*.115}%
-\contentsline {section}{Séries Entières}{42}{chapter*.120}%
-\contentsline {section}{Séries de Fourier}{43}{chapter*.125}%
-\contentsline {chapter}{Calcul Différentiel}{44}{chapter*.125}%
-\contentsline {chapter}{Probabilités}{44}{chapter*.125}%
-\contentsline {chapter}{Analyse Numerique}{44}{chapter*.125}%
-\contentsline {section}{Introduction}{44}{chapter*.126}%
-\contentsline {section}{Résolution approchée}{45}{chapter*.129}%
-\contentsline {section}{Interpolation}{47}{chapter*.133}%
-\contentsline {section}{Dérivation Numérique}{50}{chapter*.138}%
-\contentsline {section}{Intégration Numérique}{52}{chapter*.142}%
+\contentsline {section}{Connexité}{22}{chapter*.75}%
+\contentsline {section}{Compacité}{23}{chapter*.80}%
+\contentsline {chapter}{Algèbre Linéaire}{24}{section*.84}%
+\contentsline {section}{Introduction à la réduction}{24}{chapter*.85}%
+\contentsline {section}{Polynomes d'endomorphismes}{27}{chapter*.91}%
+\contentsline {section}{Trigonalisation}{29}{chapter*.99}%
+\contentsline {section}{Applications de la réduction}{31}{chapter*.104}%
+\contentsline {chapter}{Algèbre Bilinéaire}{33}{section*.107}%
+\contentsline {section}{Espaces Préhilbertiens Réels}{33}{chapter*.108}%
+\contentsline {section}{Espaces Euclidiens}{35}{chapter*.115}%
+\contentsline {chapter}{Analyse}{37}{section*.120}%
+\contentsline {section}{Intégrales Généralisées}{37}{chapter*.121}%
+\contentsline {section}{Séries Numériques}{39}{chapter*.127}%
+\contentsline {section}{Suites de fonctions}{42}{chapter*.134}%
+\contentsline {section}{Séries de fonctions}{45}{chapter*.142}%
+\contentsline {section}{Séries Entières}{46}{chapter*.147}%
+\contentsline {section}{Séries de Fourier}{47}{chapter*.152}%
+\contentsline {chapter}{Calcul Différentiel}{48}{chapter*.152}%
+\contentsline {chapter}{Probabilités}{48}{chapter*.152}%
+\contentsline {chapter}{Analyse Numerique}{48}{chapter*.152}%
+\contentsline {section}{Introduction}{48}{chapter*.153}%
+\contentsline {section}{Résolution approchée}{49}{chapter*.156}%
+\contentsline {section}{Interpolation}{51}{chapter*.160}%
+\contentsline {section}{Dérivation Numérique}{54}{chapter*.165}%
+\contentsline {section}{Intégration Numérique}{56}{chapter*.169}%
 \contentsfinish 

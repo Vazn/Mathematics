@@ -115,7 +115,6 @@ On peut par ailleurs définir \textbf{la boule fermée} de centre \(x\) et de ra
 }
 La distance sur \(E\) induit alors naturellement une topologie sur \(E\) dont les ouverts sont \textbf{les boules ouvertes} (et les unions quelconques de boules ouvertes), la notion d'intérieur, d'adhérence, et de frontière s'étends alors aisément à ce cas particulier d'ouvert.
 
-
 \subsection*{\subsecstyle{Propriétés {:}}}
 On peut alors montrer que dans un espace métrique on a:
 \customBox{width=9cm}{
@@ -206,16 +205,146 @@ Si on considère maintenant l'ensemble des cases d'un échiquier \(6 \times 6\) 
    \end{tikzpicture}
 \end{center}
 
-
-
 \chapter*{\chapterstyle{II --- Continuité}}
 \addcontentsline{toc}{section}{Continuité}
+On rappelle la définition classique de la continuité d'une fonction réelle \(f\) en un point \(a\), qui sera cruciale pour comprendre la suite:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+\]
+\subsection*{\subsecstyle{Cas des espaces métriques{:}}}
+Si on considère la définition classique de la continuité d'une fonction \(f\) en un point \(a \in \R\), alors on trouve une généralisation naturelle aux fonctions d'un espace métrique \((E, d_E)\) dans un autre \((F, d_F)\) par la définition suivante qui nous donne que \(f\) est continue \(a \in E\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+\]
+\begin{center}
+   \textit{Si \(x\) est \(\delta\)-proche de \(a\) au sens de la distance de l'espace de départ alors \(f(x)\) est \(\epsilon\)-proche de \(f(a)\) au sens de la distance de l'espace d'arrivée.}
+\end{center}
+Cette définition analogue au cas des fonctions réelles nous permet alors de montrer le critère bien connu appellé \textbf{caractérisation séquentielle} de la continuité, ie si \(f\) est continue en \(a\) alors:
+\[
+   \forall (u_n) \in E^\N \; , \; (u_n) \longrightarrow a \implies f(u_n) \longrightarrow f(a)
+\]
+\subsection*{\subsecstyle{Cas général{:}}}
+Dans le cadre d'un espace topologique quelconque \((E, \mathcal{T})\), il est nécessaire de trouver une définition de la continuité qui ne dépend pas d'un notion de distance, on définit alors qu'une fonction \(f : E \longrightarrow F\) est continue si et seulement si pour tout ouvert \(\mathcal{O}\) de \(F\), on a:
+\[
+   f^{-1}(\mathcal{O}) \in \mathcal{T}   
+\]
+\begin{center}
+   \textit{Une application est continue si la préimage de tout ouvert de l'arrivée est un ouvert du départ.}
+\end{center}
+On peut alors montrer que dans le cas métrique, les deux définitions ci-dessus sont équivalentes, et que sous des hypothèses raisonnables dans la plupart des espaces topologiques, on a la \textbf{caractérisation séquentielle}.
+\subsection*{\subsecstyle{Applications ouvertes / fermées{:}}}
+Il est important de noter alors que si \(f\) est continue au sens topologique, cela \textbf{ne dit rien} de l'image d'un ouvert ou d'un fermé. Néanmoins, on peut alors définir la notion d'application ouverte et fermée:
+\begin{itemize}
+   \item On dit que \(f\) est \textbf{ouverte} si l'image d'un ouvert est ouvert.
+   \item On dit que \(f\) est \textbf{fermée} si l'image d'un fermé est fermé.
+\end{itemize}
+\subsection*{\subsecstyle{Homéomorphismes{:}}}
+On considère deux espaces topologiques \(E\) et \(F\), ainsi qu'une fonction \(f : E \longrightarrow F\), alors on dit que \(f\) est \textbf{un homéomorphisme} si et seulement si elle est \textbf{bijective, continue et à réciproque continue}.\<
+
+On dira alors que \(E\) et \(F\) sont \textbf{homéomorphes}, et on pourra alors en déduire qu'ils sont identiques du points de vu topologique, ie que toutes les propriétés intrinséquement topologiques\footnote[1]{Voir la partie "Invariants Topologiques" pour le détail des propriétés conservées.} sont conservées, plus précisément.
+\begin{center}
+   \textbf{Les homéomorphismes sont les isomorphismes pour la structure d'espace topologique.}
+\end{center}
+En particulier on notera alors \(E \cong F\)
+\subsection*{\subsecstyle{Invariants Topologiques{:}}}
+Quelles sont alors les propriétés \textbf{intrinséquement topologiques}, ie les propriétés conservées par homéomorphismes ? On peut alors montrer que les propriétés suivantes sont des propriétés topologiques:
+\begin{itemize}
+   \item La connexité.
+   \item La connexité par arcs.
+   \item La compacité.
+\end{itemize}
+Ces concepts fondamentaux en topologie sont définis dans les chapitres suivants.
+
 
 \chapter*{\chapterstyle{II --- Connexité}}
 \addcontentsline{toc}{section}{Connexité}
+On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".
+\subsection*{\subsecstyle{Partie connexe{:}}}
+On peut alors définir le fait qu'une partie \(F \subseteq E\) soit connexe par le fait qu'il n'existe \textbf{pas} d'ouverts disjoints \(A, B \subseteq E\) tels que:
+\begin{itemize}
+   \item \(F \subseteq A \cup B\)
+   \item \(F \cap A \neq \emptyset\)
+   \item \(F \cap B \neq \emptyset\)
+\end{itemize}
+Ici on considère donc \(F\) comme une partie de \(E\) et les conditions portent donc sur des ouverts de \(E\), mais on peut aussi définir la connexité de la partie \(F\) comme étant la connexité de \textbf{l'espace} \(F\) pour la topologie induite par \(E\), et on considèrera alors des ouverts de \(F\), et on aura une définition équivalente à la définition d'espace connexe\footnote[1]{Les conditions \(2\) et \(3\) contraingnent alors \(A, B\) à etre des ouverts non vides de \(F\) et l'inclusion se transforme en égalité car \(A, B\) sont alors des parties de \(F\).}.
+
+\subsection*{\subsecstyle{Composantes connexes{:}}}
+Si on considère un espace topologique \(E\) et un point \(x \in E\), alors toutes l'union des parties connexes qui contiennent \(x\) est connexe et c'est la plus grande partie connexe qui contient \(x\) pour l'ordre de l'inclusion, on l'appelle alors \textbf{composante connexe} de \(x\) dans \(E\) et on la note \(C_x\).\<
+
+On peut alors partitionner l'espace en les composantes connexes de ses points, en particulier si l'espace est lui-meme connexe, il n'y a qu'une seule composante connexe.
+
+\subsection*{\subsecstyle{Connexité par arcs{:}}}
+On peut alors définir une notion de connexité plus forte, qui utilise la notion de \textbf{chemin} que nous allons définir. On fixe deux points \(x, y \in E\), alors un chemin reliant \(x\) et \(y\) est une application \(\gamma: \icc{0}{1} \longrightarrow E\) qui est \textbf{continue} et qui vérifie:
+\[
+   \begin{cases}
+      \gamma(0) = x \\
+      \gamma(1) = y
+   \end{cases}
+\]
+On peut alors définir la notion de connexité par arcs, en effet on dira qu'un espace est \textbf{connexe par arcs} si et seulement si:
+\begin{center}
+   \textbf{Toute paire de points de \(E\) peut être réliée par un chemin.}
+\end{center}
+C'est une notion plus forte que la connexité, en effet on peut montrer l'implication suivante:
+\begin{center}
+   \(E\) connexe par arcs \(\implies\) \(E\) connexe
+\end{center}
+Mais la réciproque est fausse.
+
+\subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
+Les espaces connexes ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
+\begin{center}
+   \textbf{L'image d'un connexe par une application continue est un connexe.}
+\end{center}
+On peut alors commencer à distinguer l'intéret de la notion de connexité, en effet on peut alors généraliser le théorème des valeurs intermidéaires à des fonctions définies sur une partie de \(\R^n\) et on a:
+\begin{center}
+   \textbf{L'image par une fonction continue à valeurs rélles définie sur un connexe est un intervalle.}
+\end{center}
 
 \chapter*{\chapterstyle{II --- Compacité}}
 \addcontentsline{toc}{section}{Compacité}
+On considère un espace topologique \((E, \mathcal{T})\) et un \textbf{recouvrement ouvert} de cet espace, ie une famille quelconque \((A_i)_{i \in I}\) d'ouverts de \(E\) telle que:
+\[
+   E \subseteq \bigcup_{i \in I} A_i  
+\]
+On dira alors que l'espace est \textbf{compact} si il vérifie \textbf{la propriété de Borel-Lebesgue}, ie:
+\customBox{width=12cm}{
+   \begin{center}
+      \textbf{De tout recouvrement, on peut extraire un recouvrement fini.}
+   \end{center}
+}
 
+\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
+Dans les espaces métriques, on peut caractériser les parties compactes par les suites, en effet on dira que \(K \subseteq E\) est compact si et seulement si:
+\customBox{width=13cm}{
+   \begin{center}
+      \textbf{Toute suite à valeurs dans \(K\) admet une suite extraite convergente.}
+   \end{center}
+}
+Cette caractérisation permet alors parfois de démontrer plus facilement la compacité.
+\subsection*{\subsecstyle{Théorème de Borel-Lebesgue {:}}}
+On peut facilement montrer que tout compact est \textbf{borné et fermé}, mais la réciproque est fausse dans un espace topologique quelconque, néanmoins, dans \(\R^n\) on a l'équivalence, appelé théorème de Borel-Lebesgue:
+\begin{center}
+   \textbf{Une partie de \(\R^n\) est compacte si et seulement si elle est fermée est bornée.}
+\end{center}
+Cette caractérisation puissante admet alors comme corollaire le \textbf{théorème de Bolzano-Weierstrass}:
+\begin{center}
+   \textbf{Tout suite bornée de \(\R^n\) admet une suite extraite convergente.}
+\end{center}
+\subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
+Les espaces compacts ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
+\begin{center}
+   \textbf{L'image d'un compact par une application continue est un compact.}
+\end{center}
+On peut alors commencer à distinguer l'intéret de la notion de compacité, en effet l'image de compacts par des applications continues est alors toujours bornée et fermée ce qui rends l'étude d'extrema trés simple, en particulier on peut montrer la généralisation du théorème des bornes atteintes:
+\begin{center}
+   \textbf{Tout fonction continue à valeurs rélles définie sur un compact de \(\R^n\) est bornée et atteint ses bornes.}
+\end{center}
+\subsection*{\subsecstyle{Théorème de Heine{:}}}
+En outre on a aussi le \textbf{théorème de Heine} qui nous permet d'affirmer que les fonctions continues définies sur des compacts sont beaucoup plus régulières, ie:
+\begin{center}
+   \textbf{Tout fonction continue définie sur un compact y est uniformément continue.}
+
+\end{center}
 
 
