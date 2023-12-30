@@ -4,17 +4,114 @@
 \begin{document}
    \subsection*{\subsecstyle{La boule ouverte \& l'intérieur de la boule fermée}}
    \begin{proof}[\unskip\nopunct]
-   \end{proof}
+      Soit \((E, d)\) un espace métrique, \(a\) un point de \(E\) et \(r > 0\), on veut montrer que:
+      \[
+         \ball(a, r) \subseteq \text{int}(\ball[a, r])   
+      \]
+      Soit \(x \in \ball(a, r)\) alors il existe \(\epsilon > 0\) tel que:
+      \[
+         \ball(x, \epsilon) \subseteq \ball(a, r)   
+      \]
+      Or, on a \(\ball(a, r) \subseteq \ball[a, r]\) donc ce \(\epsilon\) convient pour montrer que \(x\) est bien à l'intérieur de la boule fermée.\<
 
+      Supposons maintenant que \(E\) est normé, et montrons que l'inclusion réciproque est valide, soit \(x \in \text{int}(\ball[a, r])\), on veut montrer que \(x \in \ball(a, r)\). 
+      
+      Pour commencer on sait par hypothèse qu'il existe \(\epsilon > 0\) tel que \(\ball(x, \epsilon) \subseteq \ball[a, r]\)\<
+
+      Une approche heuristique et géométrique\footnote[1]{Faire un dessin !} nous suggère alors qu'il suffit de choisir un \(\lambda\) assez petit, (ie tel que \(\lambda \vectNorm{x - a} < \epsilon\)) pour réussir à construire un point qui est dans la boule fermée tel que \(x\) soit plus proche de \(a\) que ce point, ie le point:
+      \[
+         y := x + \lambda(x - a) 
+      \]
+      \begin{center}
+         \textit{C'est le point qui part de \(x\), aligné avec \(a\) qui reste dans la boule fermée tout en s'éloignant d'une petite distance de \(x\).}
+      \end{center}
+      Alors on a bien que \(y\) est dans la boule ouverte car:
+      \[
+         \vectNorm{y - x} =  \lambda \vectNorm{x - a} < \epsilon  
+      \]
+      Alors \(y\) appartient à la boule fermée par hypothèse et on a:
+      \[
+         \vectNorm{y - a} =  \vectNorm{(x - a)(1 + \lambda)} = \left| 1 + \lambda\right|\vectNorm{x - a} \leq r
+      \]
+      Enfin on en conclut donc que:
+      \[
+         \vectNorm{x - a} \leq \frac{r}{\left| 1 + \lambda\right|} < r
+      \]
+      Qui signifie que \(x \in \ball(a, r)\).\<
+
+      Finalement, on a bien montré que dans le cas d'un espace normé, on a égalité, en particulier on a utilisé ici l'homégénéité de la norme pour conclure.
+   \end{proof}
    \subsection*{\subsecstyle{La boule fermée \& l'adhérence de la boule ouverte}}
    \begin{proof}[\unskip\nopunct]
-   \end{proof}   
+      Soit \((E, d)\) un espace métrique, \(a\) un point de \(E\) et \(r > 0\), on veut montrer que:
+      \[
+         \text{adh}(\ball(a, r)) \subseteq \ball[a, r]   
+      \]
+      Soit \(x \in \text{adh}(\ball(a, r))\) alors pour tout \(\epsilon > 0\) on a:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \neq \emptyset 
+      \]
+      Or, on a \(\ball(a, r) \subseteq \ball[a, r]\) donc par intersection on trouve que:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \subseteq  \ball(x, \epsilon) \cap \ball[a, r]
+      \]
+      Et donc le membre de droite est non vide ce qui signifie que \(x \in \text{adh}(\ball[a, r])\), on conclut alors par le fait que \(\ball[a, r]\) est fermé donc égal à son adhérence.\pagebreak
+
+      Supposons maintenat que \(E\) est normé, et montrons que l'inclusion réciproque est valide, soit \(x \in \ball[a, r]\), on veut montrer que pour tout \(\epsilon > 0\) on a:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \neq \emptyset
+      \]
+      Une approche heuristique et géométrique\footnote[1]{Faire un dessin !} nous suggère alors qu'il suffit de choisir un \(\lambda\) assez petit, (ie tel que \(\lambda \vectNorm{a - x} < \epsilon\)) pour réussir à construire un point qui est dans les deux boules, en particulier le point suivant convient:
+      \[
+         y := x + \lambda(a - x) 
+      \]
+      \begin{center}
+         \textit{C'est le point qui part de \(x\) et qui va dans la direction de \(a\) en parcourant une petite distance par rapport à \(\epsilon\)}
+      \end{center}
+      i) Vérifions qu'il appartient bien à la première boule:
+      \[
+         \vectNorm{y - x} = \vectNorm{\lambda(a - x)} < \epsilon 
+      \]
+      ii) Vérifions qu'il appartient bien à la deuxième boule:
+      \[
+         \vectNorm{y - a} = \vectNorm{x + \lambda(a - x) - a} = \vectNorm{x(1 - \lambda) - a(1 - \lambda)} = \left|1-\lambda\right|\vectNorm{a - x} < \vectNorm{a - x} \leq r
+      \]
+      La dernière inégalité s'obtient car on considère \(\lambda\) assez petit, et donc on obtient un nombre en valeur absolue plus petit que \(1\). Dans le cas où \(\epsilon\) est relativement grand, \(\lambda < 1\) convient.\<
+      
+      Finalement, on a bien montré que dans le cas d'un espace normé, on a égalité, en particulier on a utilisé ici l'homégénéité de la norme pour conclure.
+   \end{proof}     
    
+   \subsection*{\subsecstyle{Equivalence des notions de continuité}}
+   On considère une fonction \(f : (E, d_E) \longrightarrow (F, d_F)\) une fonction d'un espace métrique dans un autre. On veut montrer que \(f\) est continue si et seulement si pour tout ouvert \(\mathcal{O}\) de \(F\), \(f^{-1}(\mathcal{O})\) est ouvert.\<
+
+   \underline{Sens direct:} Supposons tout d'abord que \(f\) soit continue et fixons \(\mathcal{O}\) un ouvert quelconque de \(\R^p\), alors si \(x \in f^{-1}(\mathcal{O})\), on veut montrer qu'il existe un \(\delta > 0\) tel que:
+   \[
+      \ball(x, \delta) \subseteq f^{-1}(\mathcal{O})   
+   \]
+   On sait que \(x \in f^{-1}(\mathcal{O})\) donc \(f(x) \in \mathcal{O}\) qui est ouvert, donc il existe \(\epsilon > 0\) tel que:
+   \[
+      \ball(f(x), \epsilon) \subseteq \mathcal{O}        
+   \]
+   Mais alors \(f\) est continue, donc en utilisant la définition de la continuité appliquée à cet epsilon, il existe \(\delta > 0\) tel que:
+   \[
+      f\left(\ball(x, \delta)\right) \subseteq \ball(f(x), \epsilon) \subseteq \mathcal{O} 
+   \]
+   On en déduit que \(f\left(\ball(x, \delta)\right) \subseteq \mathcal{O}\) donc que \(\ball(x, \delta) \subseteq f^{-1}(\mathcal{O})\) et donc un tel \(\delta\) convient.\<
+
+   \underline{Réciproque:} Supposons que la préimage de tout ouvert est un ouvert montrons que \(f\) est continue. Soit \(\epsilon > 0\), on considère l'image \(f(x) \in F\) d'un point \(x\), alors \(\ball(f(x), \epsilon)\) est un ouvert, donc \(f^{-1}(\ball(f(x), \epsilon))\) est aussi un ouvert et il contient \(x\), alors il existe un \(\delta > 0\) tel que:
+   \[
+      \ball(x, \delta) \subseteq f^{-1}(\ball(f(x), \epsilon))
+   \] 
+   Et donc on en conclut que:
+   \[
+      f\left(\ball(x, \delta)\right) \subseteq \ball(f(x), \epsilon)
+   \]
+   C'est à dire que \(f\) est continue.
    \subsection*{\subsecstyle{L'image d'un compact est compact}}
    \begin{proof}[\unskip\nopunct]
       Soit \(E, F\) deux espaces métriques et \(f : E \rightarrow F\) une application continue, on veut montrer que si \(E\) est compact, \(f(E)\) est compact.\<
 
-      Soir \(f(x) \in f(E)\), on considère \((A_i)_{i \in I}\) un recouvrement ouvert quelconque de \(f(E)\), alors tout élément de \(f(E)\) est l'image d'un élément de \(E\) et tout les éléments de \(E\) ont une image donc on a:
+      On considère \((A_i)_{i \in I}\) un recouvrement ouvert quelconque de \(f(E)\), alors tout élément de \(f(E)\) est l'image d'un élément de \(E\) et tout les éléments de \(E\) ont une image donc on a:
       \[
          \forall x \in E \; ; \; x \in f^{-1}(A_k) 
       \] 
@@ -75,4 +172,6 @@
       \]
       Alors on a bien exhibé un chemin qui convient et \(f(E)\) est connexe par arcs.
    \end{proof}
-\end{document}
+
+
+   \end{document}
