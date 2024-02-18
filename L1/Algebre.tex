@@ -1415,10 +1415,10 @@ Alors on a:
    }{|A|} = \frac{6}{-3} = -2
 \]
 
-\subsection*{\subsecstyle{Interprétation géométrique{:}}}
-\addcontentsline{toc}{subsection}{Interprétation géométrique}
+\subsection*{\subsecstyle{Volume orienté{:}}}
+\addcontentsline{toc}{subsection}{Volume orienté}
 
-Le déterminant admet un interprétation géométrique intéressante liée au concept \textbf{d'orientation} d'un espace et celui d'aire, de volumes, et d'hypervolumes de manière générale\footnote[1]{Voir le chapitre géométrie pour plus de détails, en particulier la partie sur le produit vectoriel.}. \<
+Le déterminant admet un interprétation géométrique intéressante liée au concept d'aire, de volumes, et d'hypervolumes de manière générale. \<
 
 Considérons le cas simple d'une base \(\mathscr{B} = (e_1, e_2)\) de vecteurs de \(\R^2\), alors le déterminant de cette base correspond \textbf{à l'aire algébrique\footnote[2]{C'est une aire ``signée'', ie l'aire géométrique est donc la valeur absolue de cette aire algébrique.} du parallélogramme formé par les deux vecteurs}, ie:
 \begin{center}
@@ -1440,10 +1440,16 @@ Considérons le cas simple d'une base \(\mathscr{B} = (e_1, e_2)\) de vecteurs d
 \end{center}
 Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf{l'hypervolume algébrique} du parallélotope formé par ces \(n\) vecteurs.\<
 
-Le lien avec l'orientation de l'espace quand à lui s'explique par le caractère \textbf{alterné} du déterminant.\+
-En effet, en reprenant l'exemple ci-dessus, on voit que si on permute \(e_1\) et \(e_2\), alors l'aire géométrique reste la même, mais le déterminant change de signe, on dira alors que cette permutation a donc changé l'orientation de l'espace.\<
+\subsection*{\subsecstyle{Orientation{:}}}
+On peut alors définir \textbf{l'orientation d'un espace vectoriel}, en effet, on dira que deux bases \(\mathscr{B}, \mathscr{B'}\) ont meme orientation si et seulement si:
+\[
+   \text{det}(\text{Pass}(\mathscr{B}, \mathscr{B'})) > 0
+\]
+Si on fixe alors une base orientée canoniquement, on qualifie son orientation (et celles de toutes les bases de meme orientation) de \textbf{directe} et les bases d'orientation opposée sont alors d'orientation \textbf{indirecte}.\<
 
-En particulier, on dira qu'une application linéaire \textbf{préserve l'orientation de l'espace}, si son déterminant est positif.
+\underline{Exemple:} Dans le cas de \(\R^n\), la base canonique est la base qui, par convention, est d'orientation directe.\<
+
+On peut alors définir le \textbf{groupe spécial linéaire}, noté SL\((\R)\), des endomorphismes qui respectent l'orientation de l'espace.
 
 \chapter*{\chapterstyle{II --- Espaces affines}} % 90 Fini
 \addcontentsline{toc}{section}{Espaces affines}

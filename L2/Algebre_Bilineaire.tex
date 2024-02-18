@@ -204,3 +204,118 @@ Soit \((e_1, \ldots, e_n)\) une base de \(E\), on cherche alors à élaborer un 
 \begin{center}
    \textit{Moralement, on "redresse" chaque vecteur de la base initiale en lui retirant son défaut d'orthogonalité représenté par sa projection sur le sous-espace précédent.}
 \end{center}
+
+\chapter*{\chapterstyle{III --- Endomorphismes Euclidiens}}
+\addcontentsline{toc}{section}{Endomorphismes Euclidiens}
+Aprés avoir défini les espaces euclidiens, on cherche maintenant à s'intéresser aux endomorphismes qui on des propriétés intéressantes en regard du produit scalaire, on sera alors amené à les définir et les étudier.
+
+
+\subsection*{\subsecstyle{Isométries{:}}}
+Soit \(f \in \mathcal{L}(E)\), on dira que \(f\) est une \textbf{isométrie} et on note \(f \in O(E)\) si elle \textbf{préserve les angles}, ie si:
+\[
+   \forall x, y \in E \; ; \; \dotproduct{f(x)}{f(y)} = \dotproduct{x}{y}   
+\]
+On en déduit directement qu'elle \textbf{préserve aussi les longeurs}\footnote[1]{En particulier, elle est bijective et l'image d'une base orthonormée par une isométrie est toujours orthonormée.}.\<
+
+On peut alors facilement montrer que la composée de deux isométries est une isométrie et que la réciproque l'est aussi. Aussi on peut déduire de la définition les propriétés suivantes:
+\[
+   \text{Sp}(f) \subseteq \{-1, 1\}   
+\]
+Ainsi que comme corollaire immédiat:
+\[
+   \text{det}(f) \in \{-1, 1\}
+\]
+\subsection*{\subsecstyle{Matrices orthogonales{:}}}
+On considère la matrice d'une isométrie dans une base orthonormée, on a alors d'aprés l'expression matricielle du produit scalaire:
+\[
+   \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^t(MX)MY = {}^tX{}^tMMY = {}^tXY  
+\]
+On remarque \(f\) est une isométrie si et seulement si sa matrice dans une base orthonormée vérifie \({}^tM = M^{-1}\), on appelera de telles matrices \textbf{matrices orthogonales} et on notera ces matrices \(O_n(\R)\).
+On peut alors montrer que:
+\begin{center}
+   \textbf{Les matrices orthogonales forment un sous-groupe des matrices inversibles qu'on appelle groupe orthogonal.}
+\end{center}
+En particulier, la matrice de passage entre deux bases orthonormées est une matrice orthogonale, et les colonnes d'une telle matrice sont unitaires et deux à deux orthogonales.
+
+\subsection*{\subsecstyle{Classification des isométries{:}}}
+On peut alors classifier les isométries selon leur action sur l'orientation de l'espace:
+\begin{itemize}
+   \item Si det\(f = 1\) on dira que l'isométrie est directe, et on note l'ensemble de ces isométries SO\((E)\), appelé \textbf{groupe spécial orthogonal}.
+   \item Si det\(f = -1\) on dira que l'isométrie est \textbf{indirecte}, mais leur ensemble ne possède pas de structure particulière.
+\end{itemize}
+Géométriquement, les isométries directes sont donc celles qui préservent l'orientation de l'espace, c'est un sous-groupe du groupe spécial linéaire.
+\pagebreak
+
+\subsection*{\subsecstyle{Adjoint d'un endomoprhisme{:}}}
+On considère un endomorphisme \(f \in \mathcal{L}(E)\), alors le théorème de représentation de Riesz nous permet d'affirmer qu'il existe un unique endomorphisme \(f^*\) qui vérifie:
+\[
+   \forall x, y \in E \; ; \; \dotproduct{x}{f(y)} = \dotproduct{f^*(x)}{y}   
+\]
+On appelle alors cet endomorphisme \textbf{l'adjoint} de \(f\), en particulier si on représente \(f\) par une matrice \(M\) dans une base orthonormée, alors on défini de meme la \textbf{matrice adjointe} de \(M\) par:
+\[
+   \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^tXMY = {}^t(M^*X)Y  
+\] 
+On peut alors facilement montrer que dans le cas présent de matrices \textbf{réelles}\footnote[1]{L'adjoint d'un endomorphisme sera défini de manière plus générale dans le chapitre sur les espace Hermitiens, l'adjoint étant alors la matrice transconjuguée, qui explique la simplicité du cas réel.}, l'adjoint d'un endormorphisme est simplement sa \textbf{transposée}. On verra plus tard que la notion de matrice adjointe est une généralisation de la transposition. On peut alors entrevoir le role spécial que vont jouer les matrices symétriques.
+
+
+\subsection*{\subsecstyle{Endomorphismes auto-adjoints{:}}}
+On appelle \textbf{endomorphisme auto-adjoint} (ou encore endomorphisme symétrique) tout endomorphisme qui est égal à son adjoint et on a donc les propriétés suivantes, cas particuliers des définitions ci-dessus:
+\[
+   \forall x, y \in E \; ; \; \dotproduct{x}{f(y)} = \dotproduct{f(x)}{y}     
+\]
+Puis matriciellement dans une base ortonormée:
+\[
+   \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^tXMY = {}^t(MX)Y  
+\]
+En particulier dans le cas réel, le fait d'etre auto-adjoint est caractérisé par la propriété simple suivante sur la matrice de l'endomorphisme dans une base orthonormée:
+\begin{center}
+   \textbf{La matrice de l'endomorphisme est symétrique.}
+\end{center}
+
+L'ensemble des endomorphismes auto-adjoints, qu'on note \(\mathcal{S}(E)\) forme un \textbf{sous-espace vectoriel} de \(\mathcal{L}(E)\). Dans la suite on va étudier les propriétés de ces endomorphismes.
+
+
+\subsection*{\subsecstyle{Réduction \& Théorème Spectral{:}}}
+Une propriété fondamentale de ces endomorphismes est la suivante:
+\begin{center}
+   \textbf{Leurs sous-espaces propres sont orthogonaux.}
+\end{center}
+On peut alors énoncer un théorème puissant de réduction pour les endomorphismes auto-adjoints, en effet soit \(f\) un tel endomorphisme, alors:
+\begin{center}
+   \textbf{Il existe une base orthonormée formée de vecteurs propres.}
+\end{center}
+On a alors le corollaire matriciel pour la matrice réelle \(M\) de \(f\) dans une base, donné par l'existance d'une matrice de passage \(P \in O_n(\R)\) et d'une matrice diagonale \(D\) telles que:
+\[
+   M = PD{}^tP
+\]
+
+\pagebreak
+\subsection*{\subsecstyle{Endomorphismes auto-adjoints positifs{:}}}
+Une interprétation intéressante de ces endomorphismes (et donc des matrices symétriques) est la suivante:
+\begin{center}
+   \textbf{Les matrices symetriques définissent des formes bilinéaires symétriques.}
+\end{center}
+En particulier on s'intéressera alors à cerner les matrices symétriques qui représentent des formes bilinéaires symétriques définies positives, ie d'autres produits scalaires sur le meme espace.\<
+
+On définit alors les endomorphismes autoadjoints \textbf{positifs} qu'on note \(\mathcal{S}^+(E)\) définis par:
+\[
+   \mathcal{S}^+(E) := \{ f \in \mathcal{S}(E) \; ; \; \text{Sp}(f) \subseteq \R_+ \}  
+\]
+Cette définition est alors équivalente à la propriété suivante:
+\[
+   \forall x \in E \; \dotproduct{x}{f(x)} \geq 0
+\]
+Les matrices symetriques positives définissent alors des formes bilinéaires symétriques positives.
+
+\subsection*{\subsecstyle{Endomorphismes auto-adjoints définis positifs{:}}}
+On définit alors enfin les endomorphismes autoadjoints \textbf{définis positifs} qu'on note \(\mathcal{S}^{++}(E)\) définis par:
+\[
+   \mathcal{S}^{++}(E) := \{ f \in \mathcal{S}(E) \; ; \; \text{Sp}(f) \subseteq \R_+^* \}  
+\]
+Cette définition est alors équivalente à la propriété suivante:
+\[
+   \forall x \in E^* \; \dotproduct{x}{f(x)} > 0 
+\]
+\begin{center}
+   \textbf{Les matrices symetriques définies positives définissent alors des nouveaux produits scalaires.}
+\end{center}
