@@ -614,3 +614,40 @@ On peut interpréter ce théorème de manière plus naturelle sous la forme:
 
 \chapter*{\chapterstyle{VI --- Equations Aux Dérivées Partielles}}
 \addcontentsline{toc}{section}{Equations Aux Dérivées Partielles}   
+
+\chapter*{\chapterstyle{VI --- Formes différentielles}}
+
+\chapter*{\chapterstyle{VI --- Intégrales Curvilignes}}
+\addcontentsline{toc}{section}{Intégrale Curviligne} 
+
+Dans cette partie, nous allons généraliser l'intégrale de Riemann, c'est à dire l'intégrale d'une fonction le long d'un segment, aux \textbf{champs vectoriels}, avec en tête l'idée suivante:
+\begin{center}
+   \textit{On veut pouvoir intégrer un champ vectoriel le long d'une courbe lisse donnée.}
+\end{center}
+Nous verrons alors que l'approche sur les champs vectoriels sera une vraie généralisation, qui s'appliquera alors aux champs scalaires et donc aux intégrales réelles.\<
+
+Dans toute la suite, on considèrera un champ de scalaires \(f : \R^n \rightarrow \R^p\) ainsi qu'un \textbf{arc orienté} \(\Gamma\) paramétré par une fonction \(\gamma : t \mapsto \gamma(t)\) définie sur \(\icc{a}{b}\) et de classe \(\mathcal{C}^1\). On rapelle à toutes fins utiles que l'abcisse curviligne de \(\Gamma\) d'origine \(a\) est donnée par:
+\[
+   s(t) = \int_{a}^{t} \vectNorm{\gamma'(x)} \d x   
+\] 
+
+\subsection*{\subsecstyle{Compléments sur les différentielles{:}}}
+On considère tout d'abord une famille \((\phi_1, \ldots, \phi_p)\) de \textbf{formes linéaires} sur \(\R^n\), on aimerait alors donner un sens à l'expression suivante:
+\[
+   (\phi_1, \ldots, \phi_p)   
+\]
+On définit alors:
+\[
+   \begin{aligned}
+      (\phi_1, \ldots, \phi_p) : \R^n &\longrightarrow \R^p
+      x &\longmapsto (\phi_1(x), \ldots, \phi_p(x)) = \sum_{i=1}^{p} \phi_i(x)e_i
+   \end{aligned}
+\]
+On considère la différentielle du champ vectoriel \(f\), alors elle est donnée en composantes par:
+\[
+   df_a = (df_{(1, a)}, \ldots, df_{(p, a)})   
+\]
+Donc en particulier, dans le cas de la courbe paramétrée \(\Gamma\), on a:
+\[
+   d\gamma_t = (\gamma_1'(t) dt, \ldots, \gamma_n'(t) dt) = (\gamma_1'(t), \ldots, \gamma_n'(t))dt  
+\]

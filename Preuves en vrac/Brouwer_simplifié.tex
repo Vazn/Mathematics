@@ -1,0 +1,44 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \begin{proof}[\unskip\nopunct]
+      Soit l'application suivante de la sphère unité à valeurs scalaires:
+      \[
+         \begin{aligned}
+            \phi : S^2 &\longrightarrow \R \\
+            x &\longmapsto \phi(x) 
+         \end{aligned}
+      \]
+      Montrons qu'il existe deux points \(x, x'\) antipodaux de \(S^2\) tels que \(\phi(x) = \phi(x')\). Soit \(x\) un point de la sphère, définissons la propriété d'un point \(x'\) d'être "antipodal" à \(x\).\<
+
+      On considère la symétrie vectorielle \(s\) par rapport au vecteur nul, alors c'est une isométrie, on appelle alors point antipodal à \(x\) le point \(s(x) \in S^2\) (bien défini car \(s\) est une isométrie).\<
+
+      Montrons alors qu'il existe un \(x \in S^2\) tel que l'application suivante s'annule en ce point:
+      \[
+         \begin{aligned}
+            \psi : S^2 &\longrightarrow \R  \\
+            x &\longmapsto \phi(x) - \phi(s(x))
+         \end{aligned}
+      \]
+      En effet si il existe un tel \(x\), on aura bien montré que \(x, s(x)\) sont bien deux points antipodaux qui prennent la même valeur. On peut alors affirmer:
+      \begin{itemize}
+         \item \(\psi\) est continue comme composée et somme d'application continues sur \(S^2\).
+         \item \(S^2\) est connexe.
+      \end{itemize}
+      Donc en particulier \(\psi(S^2)\) est un connexe de \(\R\) donc un intervalle. Montrons qu'il contient \(0\).\<
+
+      Supposons que \(\psi(S^2) \subseteq \R_{-}^*\), alors si on applique cette propriété à \(x\) et \(s(x)\), on a:
+      \[
+         \begin{cases}
+            \phi(x) - \phi(s(x)) < 0\\
+            \phi(s(x)) - \phi(s(s(x))) < 0
+         \end{cases} \Longleftrightarrow 
+         \begin{cases}
+            \phi(x) - \phi(s(x)) < 0\\
+            \phi(x) - \phi(s(x)) > 0
+         \end{cases} 
+      \]
+      Ce qui est absurde, et symétriquement, on montre que \(\psi(S^2) \not\subseteq \R_{+}^*\), donc \(\psi\) s'annule, et il existe donc bien deux points antipodaux qui ont même valeur pour \(\phi\).
+   \end{proof}
+\end{document}
