@@ -1,0 +1,36 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Topologie Algébrique}}
+Dans toute la suite, on considèrera \(X, Y\) trois espaces topologiques quelconques, on cherche alors classifier les invariants algébriques des espaces topologiques. Mais aussi on cherchera à comprendre le comportement topologique des applications continues entre ces espaces, c'est ceci que nous appelerons \textbf{homotopie} et qui sera la pierre de voute de la topologie algébrique élémentaire car elle permettra de définir des \textbf{groupes} "classifiants" sur les espaces topologiques.\<
+
+\subsection*{\subsecstyle{Homotopie{:}}}
+On considère deux applications continues \(f, g : X \longrightarrow Y\), on considère alors les applications de la forme:
+\[
+   \begin{aligned}
+      H : \icc{0}{1} &\longrightarrow \mathscr{F}(X, Y)\\
+      t &\longmapsto H(t)
+   \end{aligned}
+\]
+Ces applications sont clairement des chemins dans l'espace fonctionnel \(\mathscr{F}(X, Y)\), on veut alors que la contrainte suivante soit vérifiée:
+\[
+   \begin{cases}
+      H(0) &= f\\
+      H(1) &= g
+   \end{cases}
+\]
+En d'autres termes, ce chemin \textbf{relie} \(f\) et \(g\). Mais on veut aussi que cette application soit \textbf{continue en ses deux variables}, ie que l'application \textbf{décurryfiée} suivant soit continue:
+\[
+   \begin{aligned}
+      H : \icc{0}{1} \times X &\longrightarrow Y\\
+      (t, x) &\longmapsto H(t)(x) = H(t, x)
+   \end{aligned}
+\]
+On dira alors que \(H\) est une \textbf{homotopie} entre \(f, g\) et que ces deux fonctions sont homotopes. Cela signifera alors moralement qu'on peut passer d'une de ses fonctions à l'autre continument par un chemin fonctionnel. On verra par la suite des exemples d'applications homotopes facilement illustrables.
+
+\subsection*{\subsecstyle{Homotopie des lacets{:}}}
+On définit alors un cas particulier d'homotopie trés important, il s'agit de l'homotopie des lacets de \(X\) de point base \(x_0 \in X\).
+
+
+\end{document}
