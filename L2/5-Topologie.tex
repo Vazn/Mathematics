@@ -1,0 +1,349 @@
+\chapter*{\chapterstyle{V --- Espaces Topologiques}}
+\addcontentsline{toc}{section}{Espaces Topologiques}
+
+Soit \(E\) un ensemble \textbf{non-vide} et \(\mathcal{T}\) une ensemble de parties de \(E\) (qu'on appelera \textbf{ouverts}) qui vérifient les propriétés suivantes:
+\begin{align*}
+   &\bullet \;\;\; \text{\(E\) et \(\emptyset\) sont des ouverts} \\
+   &\bullet \;\; \text{Toute union \textbf{quelconque} d'ouverts est un ouvert} \\
+   &\bullet \;\; \text{Toute intersection \textbf{finie} d'ouverts est un ouvert}
+\end{align*}
+Alors le couple \((E, \mathcal{T})\) est appellé \textbf{espace topologique} et \(\mathcal{T}\) est appellée \textbf{topologie} sur \(E\).\<
+
+On dit alors qu'une partie de \(E\) est \textbf{fermée} si son complémentaire est \textbf{ouvert}.
+\subsection*{\subsecstyle{Intérieur {:}}}
+Soit \(A \subseteq E\), alors on dit que \(x \in A\) est un point \textbf{intérieur} à \(A\) si et seulement si:
+\customBox{width=10cm}{
+   Il existe un ouvert \(\mathcal{O}\) qui contient \(x\) tel que \(\mathcal{O} \subseteq A\).
+}
+
+On peut alors définir \textbf{l'intérieur} d'une partie de \(E\) comme étant l'ensemble de ses points intérieurs. C'est une application de l'ensemble des parties de \(E\) dans lui-meme qui est \textbf{idempotente, croissante et anti-extensive}\footnote[2]{On appelle anti-extensive une application telle que \(\phi(S) \subseteq S\) (non-usuel)}.\<
+
+On peut alors caractériser l'intérieur de \(A\) comme étant \textbf{le plus grand ouvert contenu dans \(A\)}. En particulier, c'est l'union de tout les ouverts contenus dans \(A\) et on a:
+\[
+    \text{int}(A) := \bigcup_{\mathcal{O} \subseteq{A}} \mathcal{O}
+\]
+
+Enfin, on peut caractériser les ouverts par leur intérieur, en effet \(\mathcal{O}\) est un ouvert si et seulement si:
+\customBox{width=3cm}{
+   \(\mathcal{O} = \text{int}(\mathcal{O})\)
+}
+\subsection*{\subsecstyle{Adhérence {:}}}
+Soit \(A \subseteq E\), alors on dit que \(x \in A\) est un point \textbf{adhérent} à \(A\) si et seulement si:
+\customBox{width=10cm}{
+   Pour tout ouvert \(\mathcal{O}\) qui contient \(x\), alors \(\mathcal{O} \cap A \neq \emptyset\).
+}
+On peut alors définir \textbf{l'adhérence} d'une partie de \(E\) comme étant l'ensemble de ses points adhérents. C'est une application de l'ensemble des parties de \(E\) dans lui-meme qui est \textbf{idempotente, croissante, et extensive}\footnote[3]{On appelle extensive une application telle que \( S \subseteq \phi(S) \)}.\<
+
+On peut alors caractériser l'adhérence de \(A\) comme étant \textbf{le plus petit fermé qui contient \(A\)}. En particulier, c'est l'intersection de tout les fermés qui contiennent \(A\) et on a:
+\[
+    \text{adh}(A) := \bigcap_{\mathcal{F} \supseteq {A}} \mathcal{F}
+\]
+
+Enfin, on peut caractériser les fermés par leur adhérence, en effet \(\mathcal{F}\) est un fermé si et seulement si:
+\customBox{width=3cm}{
+   \(\mathcal{F} = \text{adh}(\mathcal{F})\)
+}
+\subsection*{\subsecstyle{Frontière {:}}}
+On appelle \textbf{frontière} d'une partie \(A\) de \(E\) et on note \(\partial A\) la partie qui vérifie:
+\customBox{width=5cm}{
+   \(\partial A = \text{adh}{A} \backslash \text{int}{A}\)
+}
+\subsection*{\subsecstyle{Propriétés {:}}}
+Soit \(A \subseteq E\), on peut alors montrer plusieurs propriétés de l'intérieur et de l'adhérence:
+\customBox{width=8cm}{
+   \( \text{int}(A)^c = \text{adh}(A^c)
+   \quad\quad\quad\quad
+   \text{adh}(A)^c = \text{int}(A^c)
+   \)
+}  
+On peut aussi montrer les différentes relations suivantes\footnote[1]{Pour comprendre les inclusions strictes, considérer \(\Q\) et \(\R \backslash \Q\) (en tant que parties de \(\R\)).} vis à vis des opérations ensemblistes:
+\customBox{width=12cm}{
+   \begin{align*}
+      \text{int}(A \cap B) = \text{int}(A) \cap \text{int}(B) \quad\quad\quad\quad \text{adh}(A \cup B) = \text{adh}(A) \cup \text{adh}(B) \\
+      \text{int}(A \cup B) \supseteq \text{int}(A) \cup \text{int}(B) \quad\quad\quad\quad \text{adh}(A \cap B) \subseteq \text{adh}(A) \cap \text{adh}(B)
+   \end{align*}
+}  
+\subsection*{\subsecstyle{Topologies usuelles {:}}}
+On peut distinguer plusieurs topologies usuelles:\<
+
+La \textbf{topologie grossière}, alors les ouverts sont seulements \(E\) et \(\emptyset\).\+
+La \textbf{topologie discrète}, alors les ouverts sont toutes les parties de \(E\).\+
+La \textbf{topologie de l'ordre} sur un ensemble ordonné, alors les ouverts sont les intervalles pour la relation\footnote[2]{C'est la topologie usuelle de \(\R\).}. 
+\subsection*{\subsecstyle{Topologie induite {:}}}
+Soit \(A \subseteq E\), alors \(E\) induit une topologie naturelle sur \(A\) appellée \textbf{topologie induite} définie par:
+\[
+   \mathcal{T}_A := \Bigl\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \subseteq \mathcal{T}_E \Bigl\}  
+\]
+\begin{center}
+   \textit{Un ouvert de \(A\) pour la topologie induite est l'intersection d'un ouvert de l'espace total avec \(A\)}
+\end{center}
+En particulier on peut facilement représenter cette topologie dans l'espace métrique \(\R^2\):
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \filldraw[color=BrightBlue1!60, fill=BrightBlue1!5, dashed] (4.25,2.75) circle (2) node {$\mathcal{O} \in \mathcal{T}_E$};
+      \draw[->] (-1,0) -- (9,0);
+      \draw[->] (0,-1) -- (0, 5.5);
+      \draw node at (8.25,5) {$E$};
+      \draw[color=DarkBlue1, domain=0:8, smooth]   plot (\x,{sin(\x r) + 1.5})   node[right] {$A$}; 
+      \draw[color=BrightRed1, domain=2.35:3.92, smooth, line width=0.5mm]   plot (\x,{sin(\x r) + 1.5})   node[below left] {$\mathcal{O} \in \mathcal{T}_A$}; 
+   \end{tikzpicture}   
+\end{center}
+
+\chapter*{\chapterstyle{V --- Espaces Métriques}}
+\addcontentsline{toc}{section}{Espaces Métriques}
+Soit \(E\) un ensemble, le cas le plus courant d'espace topologique est le cas des espaces munis d'une application apellée \textbf{distance} ou aussi métrique, c'est une application de \(E \times E\) dans \(\R^+\) qui vérifie:
+\begin{align*}
+   &\bullet \;\; \text{Elle est \textbf{symétrique}.} \\
+   &\bullet \;\; \text{Elle vérifie \textbf{l'inégalité triangulaire}.} \\
+   &\bullet \;\; \text{Deux points sont égaux si et seulement si la distance entre ces points est nulle.}
+\end{align*}
+Alors, l'espace \(E\) muni de cette distance notée \(d\) est alors appelé \textbf{espace métrique}, et on le note \((E, d)\).\<
+
+Si on considére le cas particulier des \textbf{espaces vectoriels normés} (et donc a fortiori des espaces euclidiens), alors la norme induit une distance sur \(E\) et en fait un espace métrique.
+
+\subsection*{\subsecstyle{Topologie {:}}}
+On appelle \textbf{boule ouverte} de centre \(x\) et de rayon \(r > 0\), la partie:
+\customBox{width=6cm}{
+   \(\mathcal{B}(x, r) := \Bigl\{ y \in E \; ; \; d(x, y) < r\Bigl\}\)
+}
+On peut par ailleurs définir \textbf{la boule fermée} de centre \(x\) et de rayon \(r > 0\) comme étant la partie:
+\customBox{width=6cm}{
+   \(\mathcal{B}[x, r] := \Bigl\{ y \in E \; ; \; d(x, y) \leq r\Bigl\}\)
+}
+La distance sur \(E\) induit alors naturellement une topologie sur \(E\) dont les ouverts sont \textbf{les boules ouvertes} (et les unions quelconques de boules ouvertes), la notion d'intérieur, d'adhérence, et de frontière s'étends alors aisément à ce cas particulier d'ouvert.
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+On peut alors montrer que dans un espace métrique on a:
+\customBox{width=9cm}{
+   \( \text{int}(\mathcal{B}[x, r]) \supseteq \mathcal{B}(x, r)
+   \quad\quad\quad\quad
+   \text{adh}(\mathcal{B}(x, r)) \subseteq \mathcal{B}[x, r]
+   \)
+}
+En particulier, dans le cas d'un \textbf{espace vectoriel normé}, l'homogénéité de la norme nous permet d'avoir l'égalité plutot que l'inclusion pour ces deux propriétés.
+
+\subsection*{\subsecstyle{Exemples de boules en dimension finie {:}}}
+On considère ici l'espace vectoriel usuel \(\R^2\), on peut alors définir les \textbf{normes de Hölder} définies comme suit:
+\customBox{width=6cm}{
+   \({||u||}_p = (|u_1|^p + |u_2|^p)^{\frac{1}{p}}\)
+}
+En particulier pour \(p=2\), on reconnait \textbf{la norme euclidienne standard}. On peut aussi définir \textbf{la norme infini} par:
+\customBox{width=6cm}{
+   \({||u||}_\infty = \sup\{|u_1|, |u_2|\}\)
+}
+\pagebreak
+
+On peut représenter les boules pour quelques valeurs de \(p\):
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (-2,0) -- (2,0);
+      \draw[->] (0,-2) -- (0, 2);
+
+      \draw[DarkBlue1] (-1.75,0)--(-1.75,1.75)--(0,1.75)--(1.75,1.75)--(1.75,0)--(1.75,-1.75)--(0,-1.75)--(-1.75,-1.75)--cycle;
+      \draw[BrightBlue1] (-1.75,0)--(0,1.75)--(1.75,0)--(0,-1.75)--cycle;
+      \draw[BrightRed1](0,0) circle (1.75);
+
+      \draw[DarkBlue1] node at (2.5, 1.60) {$p = \infty$};
+      \draw[BrightRed1] node at (2.4, 1.20) {$p = 2$};
+      \draw[BrightBlue1] node at (2.4, 0.75) {$p = 1$};
+   \end{tikzpicture}   
+\end{center}
+
+\subsection*{\subsecstyle{Exemples de boules en dimension infinie {:}}}
+On considère ici l'espace vectoriel des \textbf{fonction continues} sur l'intervalle \(\icc{a}{b}\), on peut alors étendre les \textbf{normes de Hölder} définies comme suit:
+\customBox{width=6cm}{
+   \({||f||}_p = (\int_{a}^{b} |f(t)|^p \d t)^{\frac{1}{p}}\)
+}
+En particulier pour \(p=2\), c'est \textbf{la norme euclidienne standard}. On peut aussi définir \textbf{la norme infini} (aussi appelée \textbf{norme de la convergence uniforme}) par:
+\customBox{width=6cm}{
+   \({||f||}_\infty = \underset{t\in \icc{a}{b}}{\sup}\{|f(t)|\}\)
+}
+Graphiquement, la boule ouverte de centre la fonction \(\sin\) et de rayon \(1\) pour la norme infini est alors:\<
+
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (0,-2) -- (0, 3);
+      \draw[] (-0.1,0) -- (0.1, 0) node at (-0.3, 0) {$0$};
+      \draw[] (-0.1,1) -- (0.1, 1) node at (-0.3, 1) {$1$};
+      \draw[] (-0.1,2) -- (0.1, 2) node at (-0.3, 2) {$2$};
+      \draw[] (-0.1,-2) -- (0.1, -2) node at (-0.45, -2) {$-2$};
+      \draw[] (-0.1,-1) -- (0.1, -1) node at (-0.45, -1) {$-1$};
+
+      \draw[color=BrightRed1, domain=0:12, smooth]   plot (\x,{sin(\x r)}) node[right] {$\sin(t)$}; 
+      \draw[color=BrightRed1!60,name path=A, domain=0:12, smooth, dashed]   plot (\x,{sin(\x r) + 1}); 
+      \draw[color=BrightRed1!60,name path=B, domain=0:12, smooth, dashed]   plot (\x,{sin(\x r) - 1}); 
+   \end{tikzpicture}   
+\end{center}
+
+\subsection*{\subsecstyle{Exemples de boules exotiques {:}}}
+Si on considère maintenant l'ensemble des cases d'un échiquier \(6 \times 6\) et qu'on définit la distance entre deux cases comme étant le nombre de coup qu'un cavalier doit effectuer pour arriver à la seconde en partant de la première, on définit alors un espace métrique et la boule de centre le centre d'un plateau et de rayon 1 est représentée par:
+\begin{center}
+   \begin{tikzpicture}[scale=0.5, every node/.style={minimum size=.5cm-\pgflinewidth, outer sep=0pt}]
+      \node[fill=BrightBlue1] at (0.5,1.5) {};      
+      \node[fill=BrightBlue1] at (1.5,0.5) {};      
+      
+      \node[fill=BrightBlue1] at (0.5,3.5) {};      
+      \node[fill=BrightBlue1] at (1.5,4.5) {};      
+      
+      \node[fill=BrightBlue1] at (4.5,1.5) {};      
+      \node[fill=BrightBlue1] at (3.5,0.5) {};
+
+      \node[fill=BrightBlue1] at (4.5,3.5) {};      
+      \node[fill=BrightBlue1] at (3.5,4.5) {};
+
+      \node[fill=BrightRed1] at (2.5,2.5) {};
+      \draw[step=1cm,color=black, line width = 0.2mm] (0,0) grid (5,5);
+   \end{tikzpicture}
+\end{center}
+
+\chapter*{\chapterstyle{V --- Continuité}}
+\addcontentsline{toc}{section}{Continuité}
+On rappelle la définition classique de la continuité d'une fonction réelle \(f\) en un point \(a\), qui sera cruciale pour comprendre la suite:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+\]
+\subsection*{\subsecstyle{Cas des espaces métriques{:}}}
+Si on considère la définition classique de la continuité d'une fonction \(f\) en un point \(a \in \R\), alors on trouve une généralisation naturelle aux fonctions d'un espace métrique \((E, d_E)\) dans un autre \((F, d_F)\) par la définition suivante qui nous donne que \(f\) est continue \(a \in E\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+\]
+\begin{center}
+   \textit{Si \(x\) est \(\delta\)-proche de \(a\) au sens de la distance de l'espace de départ alors \(f(x)\) est \(\epsilon\)-proche de \(f(a)\) au sens de la distance de l'espace d'arrivée.}
+\end{center}
+Cette définition analogue au cas des fonctions réelles nous permet alors de montrer le critère bien connu appellé \textbf{caractérisation séquentielle} de la continuité, ie si \(f\) est continue en \(a\) alors:
+\[
+   \forall (u_n) \in E^\N \; , \; (u_n) \longrightarrow a \implies f(u_n) \longrightarrow f(a)
+\]
+\subsection*{\subsecstyle{Cas général{:}}}
+Dans le cadre d'un espace topologique quelconque \((E, \mathcal{T})\), il est nécessaire de trouver une définition de la continuité qui ne dépend pas d'un notion de distance, on définit alors qu'une fonction \(f : E \longrightarrow F\) est continue si et seulement si pour tout ouvert \(\mathcal{O}\) de \(F\), on a:
+\[
+   f^{-1}(\mathcal{O}) \in \mathcal{T}   
+\]
+\begin{center}
+   \textit{Une application est continue si la préimage de tout ouvert de l'arrivée est un ouvert du départ.}
+\end{center}
+On peut alors montrer que dans le cas métrique, les deux définitions ci-dessus sont équivalentes, et que sous des hypothèses raisonnables dans la plupart des espaces topologiques, on a la \textbf{caractérisation séquentielle}.
+\subsection*{\subsecstyle{Applications ouvertes / fermées{:}}}
+Il est important de noter alors que si \(f\) est continue au sens topologique, cela \textbf{ne dit rien} de l'image d'un ouvert ou d'un fermé. Néanmoins, on peut alors définir la notion d'application ouverte et fermée:
+\begin{itemize}
+   \item On dit que \(f\) est \textbf{ouverte} si l'image d'un ouvert est ouvert.
+   \item On dit que \(f\) est \textbf{fermée} si l'image d'un fermé est fermé.
+\end{itemize}
+\subsection*{\subsecstyle{Homéomorphismes{:}}}
+On considère deux espaces topologiques \(E\) et \(F\), ainsi qu'une fonction \(f : E \longrightarrow F\), alors on dit que \(f\) est \textbf{un homéomorphisme} si et seulement si elle est \textbf{bijective, continue et à réciproque continue}.\<
+
+On dira alors que \(E\) et \(F\) sont \textbf{homéomorphes}, et on pourra alors en déduire qu'ils sont identiques du points de vu topologique, ie que toutes les propriétés intrinséquement topologiques\footnote[1]{Voir la partie "Invariants Topologiques" pour le détail des propriétés conservées.} sont conservées, plus précisément.
+\begin{center}
+   \textbf{Les homéomorphismes sont les isomorphismes pour la structure d'espace topologique.}
+\end{center}
+En particulier on notera alors \(E \cong F\)
+\subsection*{\subsecstyle{Invariants Topologiques{:}}}
+Quelles sont alors les propriétés \textbf{intrinséquement topologiques}, ie les propriétés conservées par homéomorphismes ? On peut alors montrer que les propriétés suivantes sont des propriétés topologiques:
+\begin{itemize}
+   \item La connexité.
+   \item La connexité par arcs.
+   \item La compacité.
+\end{itemize}
+Ces concepts fondamentaux en topologie sont définis dans les chapitres suivants.
+
+\chapter*{\chapterstyle{V --- Connexité}}
+\addcontentsline{toc}{section}{Connexité}
+On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".
+\subsection*{\subsecstyle{Partie connexe{:}}}
+On peut alors définir le fait qu'une partie \(F \subseteq E\) soit connexe par le fait qu'il n'existe \textbf{pas} d'ouverts disjoints \(A, B \subseteq E\) tels que:
+\begin{itemize}
+   \item \(F \subseteq A \cup B\)
+   \item \(F \cap A \neq \emptyset\)
+   \item \(F \cap B \neq \emptyset\)
+\end{itemize}
+Ici on considère donc \(F\) comme une partie de \(E\) et les conditions portent donc sur des ouverts de \(E\), mais on peut aussi définir la connexité de la partie \(F\) comme étant la connexité de \textbf{l'espace} \(F\) pour la topologie induite par \(E\), et on considèrera alors des ouverts de \(F\), et on aura une définition équivalente à la définition d'espace connexe\footnote[1]{Les conditions \(2\) et \(3\) contraingnent alors \(A, B\) à etre des ouverts non vides de \(F\) et l'inclusion se transforme en égalité car \(A, B\) sont alors des parties de \(F\).}.
+
+\subsection*{\subsecstyle{Composantes connexes{:}}}
+Si on considère un espace topologique \(E\) et un point \(x \in E\), alors toutes l'union des parties connexes qui contiennent \(x\) est connexe et c'est la plus grande partie connexe qui contient \(x\) pour l'ordre de l'inclusion, on l'appelle alors \textbf{composante connexe} de \(x\) dans \(E\) et on la note \(C_x\).\<
+
+On peut alors partitionner l'espace en les composantes connexes de ses points, en particulier si l'espace est lui-meme connexe, il n'y a qu'une seule composante connexe.
+
+\subsection*{\subsecstyle{Connexité par arcs{:}}}
+On peut alors définir une notion de connexité plus forte, qui utilise la notion de \textbf{chemin} que nous allons définir. On fixe deux points \(x, y \in E\), alors un chemin reliant \(x\) et \(y\) est une application \(\gamma: \icc{0}{1} \longrightarrow E\) qui est \textbf{continue} et qui vérifie:
+\[
+   \begin{cases}
+      \gamma(0) = x \\
+      \gamma(1) = y
+   \end{cases}
+\]
+On peut alors définir la notion de connexité par arcs, en effet on dira qu'un espace est \textbf{connexe par arcs} si et seulement si:
+\begin{center}
+   \textbf{Toute paire de points de \(E\) peut être réliée par un chemin.}
+\end{center}
+C'est une notion plus forte que la connexité, en effet on peut montrer l'implication suivante:
+\begin{center}
+   \(E\) connexe par arcs \(\implies\) \(E\) connexe
+\end{center}
+Mais la réciproque est fausse.
+
+\subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
+Les espaces connexes ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
+\begin{center}
+   \textbf{L'image d'un connexe par une application continue est un connexe.}
+\end{center}
+On peut alors commencer à distinguer l'intéret de la notion de connexité, en effet on peut alors généraliser le théorème des valeurs intermidéaires à des fonctions définies sur une partie de \(\R^n\) et on a:
+\begin{center}
+   \textbf{L'image par une fonction continue à valeurs rélles définie sur un connexe est un intervalle.}
+\end{center}
+
+\chapter*{\chapterstyle{V --- Compacité}}
+\addcontentsline{toc}{section}{Compacité}
+On considère un espace topologique \((E, \mathcal{T})\) et un \textbf{recouvrement ouvert} de cet espace, ie une famille quelconque \((A_i)_{i \in I}\) d'ouverts de \(E\) telle que:
+\[
+   E \subseteq \bigcup_{i \in I} A_i  
+\]
+On dira alors que l'espace est \textbf{compact} si il vérifie \textbf{la propriété de Borel-Lebesgue}, ie:
+\customBox{width=12cm}{
+   \begin{center}
+      \textbf{De tout recouvrement, on peut extraire un recouvrement fini.}
+   \end{center}
+}
+
+\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
+Dans les espaces métriques, on peut caractériser les parties compactes par les suites, en effet on dira que \(K \subseteq E\) est compact si et seulement si:
+\customBox{width=13cm}{
+   \begin{center}
+      \textbf{Toute suite à valeurs dans \(K\) admet une suite extraite convergente.}
+   \end{center}
+}
+Cette caractérisation permet alors parfois de démontrer plus facilement la compacité.
+\subsection*{\subsecstyle{Théorème de Borel-Lebesgue {:}}}
+On peut facilement montrer que tout compact est \textbf{borné et fermé}, mais la réciproque est fausse dans un espace topologique quelconque, néanmoins, dans \(\R^n\) on a l'équivalence, appelé théorème de Borel-Lebesgue:
+\begin{center}
+   \textbf{Une partie de \(\R^n\) est compacte si et seulement si elle est fermée est bornée.}
+\end{center}
+Cette caractérisation puissante admet alors comme corollaire le \textbf{théorème de Bolzano-Weierstrass}:
+\begin{center}
+   \textbf{Tout suite bornée de \(\R^n\) admet une suite extraite convergente.}
+\end{center}
+\subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
+Les espaces compacts ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
+\begin{center}
+   \textbf{L'image d'un compact par une application continue est un compact.}
+\end{center}
+On peut alors commencer à distinguer l'intéret de la notion de compacité, en effet l'image de compacts par des applications continues est alors toujours bornée et fermée ce qui rends l'étude d'extrema trés simple, en particulier on peut montrer la généralisation du théorème des bornes atteintes:
+\begin{center}
+   \textbf{Tout fonction continue à valeurs rélles définie sur un compact de \(\R^n\) est bornée et atteint ses bornes.}
+\end{center}
+\subsection*{\subsecstyle{Théorème de Heine{:}}}
+En outre on a aussi le \textbf{théorème de Heine} qui nous permet d'affirmer que les fonctions continues définies sur des compacts sont beaucoup plus régulières, ie:
+\begin{center}
+   \textbf{Tout fonction continue définie sur un compact y est uniformément continue.}
+
+\end{center}
+
+
