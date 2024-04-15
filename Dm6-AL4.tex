@@ -1,0 +1,124 @@
+\documentclass{report}
+\input{./Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Dualité}}
+
+   \subsection*{\subsecstyle{Exercice 1{:}}}
+
+   \subsection*{\subsecstyle{Exercice 2{:}}}
+   1) Soit \(E = \mathcal{M}_n(\K)\) et \(A \in E\), on pose alors:
+   \[
+      \begin{aligned}
+         \Phi_A : E &\longrightarrow \K\\
+         M &\longmapsto \text{tr}(AM)
+      \end{aligned}
+   \]
+   Alors \(\Phi_A \in E^*\), en effet c'est bien une \textbf{forme} par définition et elle est linéaire car pour \(M, N \in E\) et \(\alpha \in \K\), et d'aprés la linéarité de la trace, on a:
+   \[
+      \Phi_A(\alpha M + N) = \text{tr}(A(\alpha M + N)) = \text{tr}(\alpha AM + AN) = \alpha\text{tr}(AM) + \text{tr}(AN) = \alpha\Phi_A(M) + \Phi_A(N)
+   \]
+   2) On considère maintenant l'application suivante:
+   \[
+      \begin{aligned}
+         \Phi : E &\longrightarrow E^*\\
+         A &\longmapsto \Phi_A
+      \end{aligned} 
+   \]
+   a) Alors c'est une application linéaire, en effet pour pour \(A, B \in E\) et \(\alpha \in \K\), et en utilisant à nouveau la linéarité de la trace, on a:
+   \begin{align*}
+      \forall M \in E \; ; \;  \Phi_{\alpha A + B}(M) = \text{tr}((\alpha A + B)M) = \alpha \text{tr}(AM) + \text{tr}(BM) = \alpha\Phi_A(M) + \Phi_B(M)
+   \end{align*}
+   Donc finalement, on a:
+   \[
+      \forall M \in E \; ; \; \Phi_{\alpha A + B}(M) = \alpha\Phi_A(M) + \Phi_B(M)
+   \]
+   Ceci étant vrai pour tout \(M\), les deux application ci-dessous sont bien égales et donc \(\Phi\) est linéaire:
+   \[
+      \Phi_{\alpha A + B} = \alpha\Phi_A + \Phi_B
+   \]
+   b) On définit \((e_{i, j}) = E_{i, j}\) comme la matrice dont les coefficients sont nuls partout sauf en \((i, j)\) et \(A = (a_{k, l})\), on calcule alors le coefficient en position \((k, k)\) de \((m_{k, l}) = M = AE_{i, j}\):
+   \[
+      m_{k, k} = \sum_{l = 1}^{n}a_{k, l}e_{l, k}   
+   \]
+   Mais ce coefficient est nul si \(k \neq j\) car alors \(e_{l, k} = 0\), dont le seul coefficient diagonal non-nul est:
+   \[
+      m_{j, j} = \sum_{l = 1}^{n}a_{j, l}e_{l, j}   
+   \]
+   Et tout les termes de cette somme sont nuls si \(l \neq i\), et donc on en déduit qu'alors:
+   \[
+      m_{j, j} = a_{j ,i}   
+   \]
+   Donc finalement la trace, par somme de cet unique coefficient diagonal est:
+   \[
+      \text{tr}(AE_{i, j}) = a_{j, i}   
+   \]
+   On considère alors une matrice \((a_{i, j}) = A \in \Ker{\Phi}\), alors on a la suite d'implications suivante:
+   \begin{flalign*}
+      A \in \Ker{\Phi} &\implies \Phi_A = 0_{\mathcal{L}(E)}\\
+      &\implies \forall (i, j) \in \inticc{1}{n} \; ; \; \Phi_A(E_{i, j}) = 0 \shorteqnote{(Car si \(\Phi_A\) est nulle, elle l'est en particulier sur tout les \(E_{i, j}\).)}\\
+      &\implies \forall (i, j) \in \inticc{1}{n} \; ; \; \text{tr}(AE_{i, j}) = 0 \\
+      &\implies \forall (i, j) \in \inticc{1}{n} \; ; \; a_{j, i} = 0 \shorteqnote{(D'aprés la question intermédiaire.)}\\
+      &\implies A = 0
+   \end{flalign*}
+   Et donc on a bien que le noyau de \(\phi\) est réduit au vecteur nul, ie \(\phi\) est injective.
+   \pagebreak
+
+   3) D'aprés le cours, en dimension finie on a \(E \cong E^*\) et donc ils sont de même dimension, et donc d'aprés le théorème du rang, on en déduit que \(\Phi\) est \textbf{bijective}, c'est alors même un isomorphisme explicite entre \(E\) et son dual car elle est linéaire.\<
+   
+   On en conclut donc que si \(\psi \in E^*\), alors \(\psi = \Phi_A\) pour une certaine matrice unique \(A\), explicitement, on a \(A = \Phi^{-1}(\psi)\)
+
+   \subsection*{\subsecstyle{Exercice 3{:}}}
+   Soit \(E\) un \(\K\) espace vectoriel de dimension quelconque, et \(\phi \in E^*\) non-nulle. 
+   
+   1) La forme linéaire est non-nulle, donc il existe un élément \(x_0 \in E\) tel que:
+   \[
+      \phi(x_0) = y_0 \; ; \; y_0 \neq 0
+   \]
+   Mais alors par linéarite et non-nullité de \(y_0\), on a:
+   \[
+      \phi\left(\frac{x_0}{y_0}\right) = 1
+   \]
+   Donc en particulier soit \(\lambda \in \K\), il suffit alors de poser \(\tilde{\lambda} = \lambda\frac{x_0}{y_0}\) et on a:
+   \[
+      \phi(\tilde{\lambda}) = \lambda   
+   \]
+   Et donc \(\phi\) est bien surjective.\<
+
+   2) Si \(\dim(E) = 1\), on conclut directement par le théorème du rang, car l'application est surjective. Réciproquement, si \(\phi\) est injective, alors on a nécessairement
+   \subsection*{\subsecstyle{Exercice 4{:}}}
+   Soit \(n \in \N\), on se place dans \(E = \R_n[X]\) et on pose \(x_1, \ldots, x_n\) des réels fixés distincts et pour tout \(i \in \inticc{1}{n}\), on définit:
+   \[
+      \begin{aligned}
+         \phi_i : E &\longrightarrow \R\\
+         P &\longmapsto P(x_i)
+      \end{aligned}
+   \]
+   1) Soit \(P, Q \in E\) et \(\alpha\) un réel, alors d'aprés les règles opératoires entre applications, on a:
+   \[
+      \phi_i(\alpha P + Q) = (\alpha P + Q)(x_i) = \alpha P(x_i) + Q(x_i) =  \alpha\phi_i(P) + \phi_i(Q)
+   \]
+   Et les applications sont bien des formes par définition, donc ce sont bien des formes linéaires.\<
+
+   2) Montrons que la famille \((\phi_i)\) est libre, on considère une famille de \((\alpha_i)\) tels que:
+   \begin{flalign*}
+      F = \sum_{k=0}^{n}\alpha_i\phi_i = 0_{\mathcal{L}(E)}  \shorteqnote{(1)}
+   \end{flalign*}
+   Et on pose alors:
+   \[
+      P_{x_i} = \prod_{k \neq i}(X - x_k)   
+   \]
+   Alors ce polynôme s'annule pour tout les \((x_0, \ldots, x_n)\) sauf pour celui d'indice \(i\), et on a aussi \(P_{x_i}(x_i) \neq 0\) comme produit de réels tous non-nuls, car les \((x_0, \ldots, x_n)\) sont distincts.\<
+
+   On évalue alors l'application \(F\) de l'égalité \((1)\) en chaque \(P_{x_i}\) et en utilisant le fait que \(\phi_k(P_{x_i}) = 0\) si \(k \neq i\), on se ramène au système suivant:
+   \[
+      \begin{cases}
+         F(P_{x_0}) = \alpha_0 \phi_0(P_{x_0}) = \alpha_0P_{x_0}(x_0) = 0\\
+         \vdots\\
+         F(P_{x_n}) = \alpha_n \phi_n(P_{x_n}) = \alpha_0P_{x_n}(x_n) = 0
+      \end{cases}   
+   \]
+   Mais on sait que les \(P_{x_i}(x_i) \neq 0\) donc on les élimine dans le système ci-dessus et on en déduit que tout les \(\alpha_i\) sont nuls, la famille est donc libre, aussi elle possède \(n + 1\) vecteurs qui est la dimension de \(E\) et donc de \(E^*\), c'est donc une base.
+
+   3) On sait que 
+\end{document}
