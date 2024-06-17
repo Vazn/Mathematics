@@ -38,8 +38,8 @@ Géométriquement \(f'(t)\) représente \textbf{le vecteur tangent} (aussi appel
       \tkzInit[xmin=-2,xmax=2,ymin=-2,ymax=2]
       \draw[-latex] (-2,0) -- (2,0) node [right] {$x$};
       \draw[-latex] (0, -2) -- (0,2) node [above] {$y$};
-      \tkzFctPar[samples=400,domain=0:2*pi]{1.75*sin(2*t)}{1.75*sin(3*t)};
-      \draw[-Stealth, color=BrightRed1, line width=0.35mm] (1.75, 1.23) -- (1.75,2) node [right] {$\;\gamma'(\frac{\pi}{4})$};
+      \draw [thick] plot[color=DarkBlueX, variable=\t, domain=0:2*pi,smooth,thick] ({1.75*sin(2*\t r)},{1.75*sin(3*\t r)});   
+      \draw[-Stealth, color=BrightRed1, line width=0.35mm] (1.75, 1.23) -- (1.75,2.2) node [right] {$\;\gamma'(\frac{\pi}{4})$};
    \end{tikzpicture}
 \end{center}
 \pagebreak
@@ -158,11 +158,12 @@ C'est une courbe plane qui représente l'ensemble des points du plan ou la fonct
       \tkzInit[xmin=-2,xmax=2,ymin=-2,ymax=2]
       \draw[-latex] (-2,0) -- (2,0) node [right] {$x$};
       \draw[-latex] (0, -2) -- (0,2) node [above] {$y$};
-      \tkzFctPar[samples=400,domain=0:2*pi, color=BrightRed1, line width=0.3mm]{0.226480229573*cos(t)}{0.226480229573*sin(t)};       
-      \tkzFctPar[samples=400,domain=0:2*pi, color=BrightRed2, line width=0.3mm]{0.536360021303*cos(t)}{0.536360021303*sin(t)}; 
-      \tkzFctPar[samples=400,domain=0:2*pi, color=DarkGreen1, line width=0.3mm]{0.83255461115*cos(t)}{0.83255461115*sin(t)};      
-      \tkzFctPar[samples=400,domain=0:2*pi, color=DarkGreen2, line width=0.3mm]{1.17741002252*cos(t)}{1.17741002252*sin(t)};      
-      \tkzFctPar[samples=400,domain=0:2*pi, color=DarkGreen3, line width=0.3mm]{1.51742712939*cos(t)}{1.51742712939*sin(t)};
+
+      \draw [thick, color=BrightRed1] plot[domain=0:2*pi,variable=\t, line width=0.3mm, smooth] ({0.226480229573*cos(\t r)}, {0.226480229573*sin(\t r)});   
+      \draw [thick, color=BrightRed2] plot[domain=0:2*pi,variable=\t, line width=0.3mm, smooth] ({0.536360021303*cos(\t r)}, {0.536360021303*sin(\t r)});   
+      \draw [thick, color=DarkGreen1] plot[domain=0:2*pi,variable=\t, line width=0.3mm, smooth] ({0.83255461115*cos(\t r)}, {0.83255461115*sin(\t r)});   
+      \draw [thick, color=DarkGreen2] plot[domain=0:2*pi,variable=\t, line width=0.3mm, smooth] ({1.17741002252*cos(\t r)}, {1.17741002252*sin(\t r)});   
+      \draw [thick, color=DarkGreen3] plot[domain=0:2*pi,variable=\t, line width=0.3mm, smooth] ({1.51742712939*cos(\t r)}, {1.51742712939*sin(\t r)});    
       \draw node[color=BrightRed1] at (0.27, 0.27) {\scriptsize $L_{0.95}$};
       \draw node[color=BrightRed2] at (0.49, 0.49) {\scriptsize $L_{0.75}$};
       \draw node[color=DarkGreen1] at (0.7, 0.7) {\scriptsize $L_{0.50}$};
@@ -411,16 +412,20 @@ Mais le théorème de Schwarz donne alors une condition suffisante pour que l'or
 \begin{center}
    \textbf{Si les dérivées partielles sont toutes continues en un point, alors l'ordre de dérivation n'importe pas.}
 \end{center}
-\subsection*{\subsecstyle{Dérivées Directionnelles A REVOIR {:}}}
-On peut alors généraliser cette définition en considèrant une direction quelconque, dirigée par un vecteur \(v\), et on dira alors que \(f\) admet une \textbf{dérivée directionelle} au point \(a\) suivant le vecteur \(v\) si et seulement si l'application suivante est dérivable en \(0\):
+\subsection*{\subsecstyle{Dérivées Directionnelles {:}}}
+Si on considère les dérivées partielles d'une fonction \(f\), qu'on note \(a = (x_1, \ldots, x_n)\) le point d'étude et \((e_i)\) la base canonique, on peut alors les caractériser par:
 \[
-   \phi_v : t \mapsto f(a + tv) Uniformiser
-\]
-Dans ce cas, on notera alors:
+   \frac{\partial f}{\partial x_i}(a) = \lim_{h \rightarrow 0} \frac{f(a + he_i) - f(a)}{h}
+\] 
+En effet ce sont par définition les dérivées des applications partielles, donc des limites de taux d'accroissement\footnote[1]{Cette limite n'étant pas trés pratique pour des calculs concrets, on verra au chapitre suivant une caractérisation plus utile dans le cas de fonctions différentiables.} qui correspondent à la limite ci-dessus.\+
+Ce sont en fait des \textbf{dérivées directionnelles} dans des directions canoniques, mais on souhaite alors généraliser cette notion à tout vecteur unitaire \(v\), on pose alors simplement:
 \[
-   \partial_v f(a) = \phi_v'(a)   Uniformiser
+   D_vf(a) = \lim_{h \rightarrow 0} \frac{f(a + hv) - f(a)}{h}
 \]
-On peut alors remarquer que les dérivées partielles ne sont alors qu'un cas particulier de dérivée directionnelle pour \(v = e_k\) Uniformiser
+\begin{center}
+   \textit{C'est alors intuitivement la dérivée de la courbe obtenue par intersection avec le plan vertical suivant le vecteur choisi.}
+\end{center}
+
 \subsection*{\subsecstyle{Inconvénients de cette définition{:}}}
 On aimerait alors que cette définition remplisse les memes roles que ceux remplis par la dérivée usuelle, mais ce n'est pas du tout le cas, en particulier, on a les problèmes suivants:
 \begin{itemize}
@@ -520,7 +525,7 @@ Et donc la différentielle en \(a\) est donnée par:
 \]
 
 \subsection*{\subsecstyle{Propriétés opératoires{:}}}
-Tout d'abord, on peut montrer que \textbf{l'opérateur de différentiation} sur les applications différentiables sur un ouvert \(\mathcal{U}\), qu'on notera \(\mathscr{D}_a\), est un opérateur différentiel:
+Tout d'abord, on peut montrer que \textbf{l'opérateur de différentiation} sur les applications différentiables sur un ouvert \(\mathcal{U}\), qu'on notera \(\mathscr{D}_\mathcal{U}\), est un opérateur différentiel:
 \[
    \begin{aligned}
       d : \mathscr{D}_\mathcal{U} &\longrightarrow \mathcal{F}(\mathcal{U}, \mathcal{L}(\R^n, \R^p))\\
@@ -593,7 +598,7 @@ On va maintenant définir un autre opérateur différentiel sur l'ensemble des f
 \]
 Le gradient de \(f\) est donc un \textbf{champ de vecteurs}, dont on verra une interprétation ci-dessous, mais tout d'abord, on peut remarquer l'identité suivante en un point \(a\), qui le lie avec la différentielle:
 \[
-   \forall h \in \R^n \; ; \; \dotproduct{\nabla f(a)}{h} = \dotproduct{\left(\partialD{f}{x_1}, \ldots, \partialD{f}{x_n}\right)}{h} = df_a(h)
+   \forall h \in \R^n \; ; \; \dotproduct{\nabla f(a)}{h} = \dotproduct{\left(\partialD{f}{x_1}(a), \ldots, \partialD{f}{x_n}(a)\right)}{h} = df_a(h)
 \]
 
 On cherche maintenant à interpréter ce que représente le gradient par rapport au champs scalaire \(f\), et on peut alors montrer la propriété géométrique suivante:
@@ -624,6 +629,26 @@ On cherche maintenant à interpréter ce que représente le gradient par rapport
 \end{figure}
 Une autre propriété remarquable du gradient est qu'il est toujours \textbf{orthogonal} aux lignes de niveaux.
 
+\subsection*{\subsecstyle{Caractérisation des dérivées directionnelles{:}}}
+Pour un vecteur unitaire \(v\) donné, on peut alors montrer la caractérisation trés utile de la dérivée directionelle de \(f\) dans la direction de \(v\), en effet on a:
+\[
+   D_vf(a) = df_a(v) = \dotproduct{\nabla f(a)}{v}  
+\]
+En effet, il suffit alors d'écrire la formule de Taylor à l'ordre 1 sur la quantité ci-dessous et utiliser les différentes propriétés des objets considérés:
+\[
+   f(a + hv) - f(a) = df_a(hv) + o(\vectNorm{hv})
+\]
+\uline{Exemple:} Pour \(f(x,y) = xy + x\) et  \(v = \frac{1}{\sqrt{2}}(1, 1)\) alors on a:
+\[
+   df_{(x, y)} = (y+1)dx + xdy   
+\]
+Et donc finalement:
+\[
+   D_vf(x, y) = \frac{1}{\sqrt{2}}(y + x + 1)
+\]
+On peut remarque que si on prends \(v = e_i\), on retombe évidemment sur les dérivées partielles.
+\pagebreak
+
 \subsection*{\subsecstyle{Jacobienne{:}}}
 On considère maintenant plus généralement l'espace des fonctions de classe \(\mathcal{C}^1(\R^n, \R^p)\), et on définit alors l'opérateur suivant:
 \[
@@ -636,8 +661,7 @@ On considère maintenant plus généralement l'espace des fonctions de classe \(
       \end{pmatrix}
    \end{aligned}
 \]
-On appellera alors \textbf{jacobienne} de \(f\) la matrice \(Jf\), et on remarque que c'est simplement la matrice \footnote[1]{A coefficients dans l'anneau des fonctions.} constituée des dérivées partielles de \(f\).
-\pagebreak
+On appellera alors \textbf{jacobienne} de \(f\) la matrice \(Jf\), et on remarque que c'est simplement la matrice\footnote[1]{A coefficients dans l'anneau des fonctions.} constituée des dérivées partielles de \(f\).\<
 
 En particulier, on a donc l'identité suivante:
 \[
@@ -793,7 +817,7 @@ On peut alors généraliser le critère des fonctions réelles qui nous affirme 
 \end{center}
 
 \subsection*{\subsecstyle{Corollaire 3 : Applications constantes par rapport à une variable {:}}}
-On s'intéresse alors à ce qu'on peut déduire de l'annulation d'une seule des dérivées partielles, et en se ramenant à l'étude des application partielles on peut alors montrer que si \(f : \mathcal{U} \rightarrow \R\) différentiable sur \(\mathcal{U}\) ouvert et \textbf{convexe}\footnote[2]{\textbf{ATTENTION:} Ce résultat est faux sur un domaine juste connexe. Prendre la fonction qui définie sur \(\R^2\) privée des axes qui vaut \(0\) sur \(\{ (x, y), xy < 0\}\) et \(x^2\) ailleurs.} et que \(\partialD{f}{x_i}\) est \textbf{nulle} sur \(\mathcal{U}\), alors il existe une fonction \(g\) telle que:
+On s'intéresse alors à ce qu'on peut déduire de l'annulation d'une seule des dérivées partielles, et en se ramenant à l'étude des application partielles on peut alors montrer que si \(f : \mathcal{U} \rightarrow \R\) différentiable sur \(\mathcal{U}\) ouvert et \textbf{convexe}\footnote[2]{\textbf{ATTENTION:} Ce résultat est faux sur un domaine juste connexe. Prendre la fonction qui définie sur \(\R^2\) privée d'un axe bien choisi qui vaut \(0\) sur \(\{ (x, y), xy < 0\}\) et \(x^2\) ailleurs.} et que \(\partialD{f}{x_i}\) est \textbf{nulle} sur \(\mathcal{U}\), alors il existe une fonction \(g\) telle que:
 \[
    \forall (x_1, \ldots, x_n) \in \mathcal{U} \; f(x_1, \ldots, x_n) = g(x_1, \ldots, x_{i-1}, x_{i+1}, \ldots, x_n) 
 \]
@@ -887,8 +911,95 @@ Réciproquement, on montre facilement que cette fonction convient.
 
 \chapter*{\chapterstyle{VII --- Formes différentielles}}
 
+\chapter*{\chapterstyle{VII --- Intégrales Multiples}}
+\addcontentsline{toc}{section}{Intégrales Curvilignes} 
+Dans ce chapitre on cherche à généraliser la notion d'intégrale d'une fonction d'une seule variable sur un segment à la notion d'intégrale d'une fonction réelle \textbf{de plusieurs variables qu'on supposera bornée}, ici on considérera principalement \(f : \R^2 \rightarrow \R\) pour simplifier l'exposition. On a alors deux nouveaux concepts d'intégrales qui se présentent:
+\begin{itemize}
+   \item La notion d'intégrale \textbf{curviligne} qui se propose d'intégrer à nouveau sur un chemin (donc toujours sur un espace de dimension 1).
+   \item La notion d'intégrale \textbf{multiple} qui se propose d'intégrer sur une surface (donc sur un espace de dimension plus grande).
+\end{itemize}
+Ces deux notions différentes coexistent et permettent de résoudre des problèmes trés différents, nous nous proposons ici tout d'abord de définir la notion d'intégrale multiple. Moralement, l'idée consiste à se donner un domaine raisonnable \(\mathcal{D}\) de \(\R^2\), et de chercher à calculer le \textbf{volume} au dessus \(\mathcal{D}\) et contenu sous la nappe définie par l'image de \(f\). 
+
+Graphiquement, voila ce que l'on cherche à réaliser, ici le domaine d'intégration étant un simple rectangle:
+\begin{center}
+   \begin{tikzpicture}[
+      x=(215:2em/sqrt 2), y=(0:2em), z=(90:2em),
+      declare function={f(\x,\y)=((\x-3)^2+(-\y+3)^3)/8+3;}, 
+      very thick, line join=round]
+    \draw [-stealth, black!75] (0,0,0) -- (6,0,0) node [below left] {$x$};
+    \draw [-stealth, black!75] (0,0,0) -- (0,6,0) node [below right] {$y$};
+    \draw [-stealth, black!75] (0,0,0) -- (0,0,6) node [right] {$z$};
+    \foreach \x in {1,...,4}
+      \foreach \y [evaluate={\j=\x+.5; \i=\y+.5; \k=f(\j,\i);}] in {1,...,4}{
+        \path [fill=DarkBlue2!50, draw=white] (\x, \y+1, 0) -- (\x+1, \y+1, 0) -- 
+          (\x+1, \y+1, \k) -- (\x, \y+1, \k) -- cycle;
+        \path [fill=DarkBlue2!25, draw=white] (\x+1, \y, 0) -- (\x+1, \y+1, 0) -- 
+          (\x+1, \y+1, \k) -- (\x+1, \y, \k) -- cycle;
+        \path [fill=DarkBlue2!10, draw=white] (\x, \y, \k)  -- (\x+1, \y, \k) -- 
+          (\x+1, \y+1, \k) -- (\x, \y+1, \k) -- cycle;
+      }
+     \foreach \x in {1,...,4}
+       \foreach \y in {1,...,4}{
+     \draw [DarkBlue2, fill=DarkBlue2, fill opacity=0.125, 
+        domain=0:1, samples=20, variable=\t] 
+        plot (\x+\t, \y, {f(\x+\t,\y)}) -- 
+        plot (\x+1, \y+\t, {f(\x+1,\y+\t)}) -- 
+        plot (\x+1-\t, \y+1, {f(\x+1-\t,\y+1)}) --
+        plot (\x, \y+1-\t, {f(\x,\y+1-\t)}) -- cycle;
+      }
+
+
+    \end{tikzpicture}
+\end{center}
+
+\subsection*{\subsecstyle{Outils préliminaires{:}}}
+On souhaite intégrer \(f\) sur le rectangle \(R = [a, b] \times [c, d]\), on considère alors une \textbf{subdivision} de \(R\) c'est à dire un couple de subdivisions de \([a, b] \text{ et } [c, d]\) respectivement, ie on se donne \((a = t_0, t_1, \ldots, t_{n-1}, t_n = b)\) et \((c = t'_0, t'_1, \ldots, t'_{n-1}, t'_n = d)\), alors ces subdivisions définissent des \textbf{sous-rectangles} par:
+\[
+   R_ij = [t_i, t_{i+1}] \times [t'_j, t'_{j+1}]   
+\]
+On appellera la collection de ces sous-rectangles une \textbf{subdivision} du rectangle \(R\). On définit de manière évidente le \textbf{volume} (ici une aire) d'un rectangle \(R\) par:
+\[
+   \text{Vol}(R) = (b - a)(d - c) 
+\]
+Finalement on définit aussi les deux quantités suivantes pour tout rectangle \(R\):
+\[
+   \begin{cases}
+      m_R(f) &:= \left\{ \inf(f(x)) \, ; \, x \in R \right\}\\
+      M_R(f) &:= \left\{ \sup(f(x)) \, ; \, x \in R \right\}
+   \end{cases}   
+\]
+\pagebreak
+\subsection*{\subsecstyle{Intégrale sur un rectangle{:}}}
+Soit \(R\) le rectangle domaine d'intégration et \(P\) une subdivision de \(R\), alors on définit les \textbf{sommes de Darboux supérieure et inférieures} par:
+\[
+   \begin{cases}
+      S_P^+(f) = \sum_R M_R(f) \cdot \text{Vol}(R)\\
+      S_P^-(f) = \sum_R m_R(f) \cdot \text{Vol}(R) 
+   \end{cases}
+\] 
+Où la somme parcourt tout les rectangles de la subdivision. On définit alors les \textbf{intégrales de Darboux supérieure et inférieures} par:
+\[
+   \begin{cases}
+      \displaystyle\int_R^+{f} = \inf\left\{\, S_P^+(f)\; ; \; P \text{ est une subdivision de } R\right\}\\
+      \displaystyle\int_R^-{f} = \sup\left\{\, S_P^-(f)\; ; \; P \text{ est une subdivision de } R\right\}
+   \end{cases}
+\]
+\begin{center}
+   \textit{
+      L'intégrale supérieure (resp. inférieure) est la somme \textbf{minimale} (resp. maximale) obtenue en considérant \textbf{toutes les subdivisions possibles} du rectangle.
+   }
+\end{center}
+Enfin on dit que \(f\) est \textbf{intégrable} sur \(R\) si et seulement si \textbf{l'intégrale supérieure et inférieure} sont égales, et on la note formellement:
+\[
+   \int_R f \d x_1 \ldots \d x_n \overset{\text{def.}}{=} \int_R f 
+\]
+
+
+\subsection*{\subsecstyle{Intégrale sur un ensemble borné{:}}}
+
+
 \chapter*{\chapterstyle{VII --- Intégrales Curvilignes}}
-\addcontentsline{toc}{section}{Intégrale Curviligne} 
+\addcontentsline{toc}{section}{Intégrales Curvilignes} 
 
 Dans cette partie, nous allons généraliser l'intégrale de Riemann, c'est à dire l'intégrale d'une fonction le long d'un segment, aux \textbf{champs vectoriels}, avec en tête l'idée suivante:
 \begin{center}
