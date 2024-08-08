@@ -1569,19 +1569,11 @@ Il reste alors à caractériser ce rayon de convergence pour savoir exactement s
 \[
    R := \sup \Bigl\{ |z| \; ; \; \sum_{k=0}^{n} a_nz^n \text{ converge } \Bigl\}   
 \]
-On applique alors le critère de Cauchy à la série et on obtient alors que la série converge si:
+On simplifie ici l'étude en considérant le cas commun de séries telles que la limite de d'Alembert ou de Cauchy existe ou est infinie\footnote[2]{Dans le cas contraire (par exemple penser à \(a_n = sin(n)\)), on doit utiliser le "vrai" critère de Cauchy donné par:\[R:= \frac{1}{\limsup{\sqrt[n]{|a_n|}}}\]}, alors on applique le critère de Cauchy à la série et on obtient alors des informations sur le rayon de convergence:
 \[
-   \lim_{n \rightarrow +\infty}|x|\sqrt[n]{|a_n|} < 1
+   |x| < \lim_{n \rightarrow +\infty}\sqrt[n]{|a_n|}^{-1} = \lim_{n \rightarrow +\infty} \frac{|a_n|}{|a_{n+1}|} = l
 \]
-Si la limite du \textbf{critère de Cauchy} existe\footnote[2]{Avec la convention que si la limite est nulle, le rayon de convergence est infini.}, on a alors que:
-\[
-   R := \frac{1}{\lim_{n \rightarrow +\infty}\sqrt[n]{|a_n|}}   
-\]
-Si la limite du \textbf{critère de d'Alembert} existe, alors on a:
-\[
-   R = \lim_{n \rightarrow +\infty}\frac{|a_n|}{|a_{n+1}|}
-\]
-On a alors la propriété de régularité trés forte suivante:
+Alors dans ce cas on a \(R := l\) et on a aussi la propriété de régularité trés forte suivante:
 \begin{center}
    \textbf{Une série entière converge normalement sur tout compact strictement inclu dans le disque de convergence.}
 \end{center}
@@ -1631,21 +1623,17 @@ L'application principale des fonctions analytiques est la résolution des équat
 On se propose dans ce chapitre d'étudier des séries de fonctions particulières, qui sont à la base de \textbf{l'analyse harmonique} qui vise à étudier les signaux périodiques ou non et à le représenter comme \textbf{superpositions de signaux élémentaires}.
 
 \subsection*{\subsecstyle{Polynômes trigonométriques{:}}}
-On définit pour se faire les \textbf{polynômes trigonométriques} à coefficients complexes\footnote[1]{On peut alors les définir algébriquement comme étant \(\C[\cos(x), \sin(x)]\) et montrer que ces polynômes on bien une structure d'anneau (et même d'algèbre) de manière analogue aux polynômes usuels.}, qui sont les fonctions de la forme suivante:
+On définit pour se faire les \textbf{polynômes trigonométriques} à coefficients complexes\footnote[1]{On peut alors les définir algébriquement comme étant \(\C[exp(it)]\) et montrer que ces polynômes on bien une structure d'anneau (et même d'algèbre) de manière analogue aux polynômes usuels.}, qui sont les fonctions de la forme suivante:
 \[
-   f(x) = \sum_{k=0}^{n} a_kcos(k\omega x) + b_ksin(k\omega x)    
+   f(x) = \sum_{k=-n}^{n} e^{ik\omega t} \underset{not.}{=} \sum_{k = 0}^{n} c_k e^{ik\omega t} + c_{-k}e^{-ik\omega t}    
 \]
-On a ici \(a_n, b_n\) deux suites de coefficients complexes et \(\omega\) un réel. Plus généralement, gràce aux formules d'Euler, on peut montrer que tout polynôme trigonométrique peut s'écrire sous forme exponentielle par:
+On a ici \(c_n\) deux suites de coefficients complexes et \(\omega\) un réel. Plus généralement, gràce\footnote[2]{En exprimant \(e^{ik\omega x}\) sous forme trigonométrique, on montre facilement que \(\begin{cases} a_n = c_n + c_{-n} \\ b_n = i(c_n - c_{-n}) \end{cases}\)} aux formules d'Euler, on peut montrer que tout polynôme trigonométrique peut s'écrire graàce aux fonctions trigonométriques classiques par:
 \[
-   S = \sum_{k = 0}^{n} c_k e^{ik\omega x} + c_{-k}e^{-ik\omega x} \underset{not.}{=} \sum_{k=-n}^{n} e^{ik\omega x}   
+   S = \frac{a_0}{2} + \sum_{k=1}^{n} a_kcos(k\omega t) + b_ksin(k\omega t)   
 \]
 On peut alors facilment voir que ces polynômes sont \(\frac{2\pi}{\omega}\)-périodiques. On généralise alors à nouveau ce concept de polynômes trigonométriques au concept de \textbf{séries trigonométriques} qui, sous réserve d'existence, seront de la forme:
 \[
-   S = \sum_{n=0}^{+\infty} a_ncos(n\omega x) + b_nsin(n\omega x)    
-\]
-Ou encore sous forme exponentielle et pour une notation adaptée\footnote[2]{En fait, on a formellement \(S = \sum_{n = 0}^{+\infty} c_n e^{in\omega x} + c_{-n}e^{-in\omega x}\) qu'on simplifie avec la notation qui suit.}:
-\[
-   S = \sum_{n = -\infty}^{+\infty} c_n e^{in\omega x}     
+   S = \sum_{k=-\infty}^{\infty} e^{ik\omega t} = \frac{a_0}{2} + \sum_{k=1}^{\infty} a_kcos(k\omega t) + b_ksin(k\omega t)
 \]
 La grande idée de Fourier est de considérer une fonction périodique \(f\) et d'essayer de décomposer cette fonction en une série trigonométrique, et donc de déterminer les suites de coefficients \(a_n, b_n, c_n\) adaptées à \(f\).
 
@@ -1656,39 +1644,32 @@ On considère maintenant une fonction \(2\pi\)-périodique \(f\) telle qu'elle s
 \]
 Alors on cherche la forme du coefficient \(c_m\) de cette décomposition pour \(m \in \Z\), on transforme alors l'égalité en:
 \[
-   f(x)e^{-imx} = \sum_{-\infty}^{+\infty} c_n e^{ix(n - m)}
+   f(x)e^{-imx} = \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)}
 \]
 L'idée étant alors de remarquer que si on intègre cette relation sur une période, on obtient:
 \begin{align*}
-   \int_{0}^{2\pi} f(x)e^{-imx} \d x &= \int_{0}^{2\pi} \sum_{-\infty}^{+\infty} c_n e^{ix(n - m)} \d x \\
-   & = \sum_{-\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} \d x\\
+   \int_{0}^{2\pi} f(x)e^{-imx} \d x &= \int_{0}^{2\pi} \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)} \d x \\
+   & = \sum_{n = -\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} \d x\\
    & = 2\pi c_m
 \end{align*}
-En effet toutes les intégrales sont nulles pour \(n \neq m\), ce qui nous donne donc l'expression générale des coefficients de Fourier de \(f\):
+En effet toutes les intégrales sont nulles pour \(n \neq m\), ce qui nous donne donc l'expression générale des coefficients \footnote[1]{Avec le premier coefficient donné par \(c_0\), c'est la valeur moyenne de la fonction sur une période.} de Fourier de \(f\):
 \[
    c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)e^{-inx} \d x
 \]
-On note souvent \(c_n(f)\) simplement \(c_n\) quand il n'y a pas de confusions possibles. Alors gràce aux formules d'Euler, on trouve alors les coefficients trigonométriques (plus pratiques à manipuler dans les cas simples) donnés pour tout \(n \neq 0\) par:
-\[
-   \begin{cases}
-      a_n = \frac{1}{\pi} \int_{0}^{2\pi} f(x)\cos(nx) \d x\\
-      b_n = \frac{1}{\pi} \int_{0}^{2\pi} f(x)\sin(nx) \d x\\
-   \end{cases}   
-\]
-Avec le premier coefficient donné par \(c_0\), c'est la valeur moyenne de la fonction sur une période.
+On note souvent \(c_n(f)\) simplement \(c_n\) quand il n'y a pas de confusions possibles. Alors gràce aux relations explicitées dans la note de bas de page ci-dessus, on peut retrouver les coefficients \(a_n, b_n\) si nécéssaires.
 
 \subsection*{\subsecstyle{Propriétés des coefficients{:}}}
 On peut alors montrer plusieurs propriétés trés pratiques des coefficients de Fourier:
 \begin{itemize}
-   \item Si \(f\) est \textbf{paire} alors on a pour tout \(n\) que \(b_n = 0\) ou encore que \(c_n = c_{-n}\)
-   \item Si \(f\) est \textbf{impaire} alors on a pour tout \(n\) que \(a_n = 0\) ou encore que \(c_n = -c_{-n}\).
+   \item Si \(f\) est \textbf{paire} alors on a pour tout \(n\) que \(c_n = c_{-n}\)
+   \item Si \(f\) est \textbf{impaire} alors on a pour tout \(n\) que \(c_n = -c_{-n}\).
 \end{itemize}
 Ces propriétés permettent souvent de calculer plus facilement les coefficients de Fourier.
 
 \subsection*{\subsecstyle{Théorème de Jordan-Dirichlet{:}}}
 Il reste maintenant à comprendre quelles sont les conditions pour qu'une fonction \(2\pi\)-périodique soit développable en série de Fourier on considère donc les coefficients construits plus haut et on s'intéresse à la convergence de la série :
 \[
-   \sum_{n = 0}^{+\infty} a_n\cos(nx) + b_n\sin(nx) = \sum_{n = -\infty}^{+\infty} c_ne^{inx}   
+   \sum_{n = 1}^{+\infty} a_n\cos(nx) + b_n\sin(nx) = \sum_{n = -\infty}^{+\infty} c_ne^{inx}   
 \]
 C'est l'objet du \textbf{théorème de Jordan-Dirichlet} qui affirme que:
 \begin{itemize}
@@ -1700,22 +1681,91 @@ Ceci signifie alors informellement le résultat principal de ce chapitre:
    \textit{Si une fonction périodique est suffisement régulière, elle est décomposable en série de Fourier.}
 \end{center}
 
+\subsection*{\subsecstyle{Harmoniques{:}}}
+Pour une fonction périodique donnée qui serait développable en série de Fourier, on définit sa \textbf{fréquence} par la quantité \(F = \frac{1}{T}\) on remarque alors qu'elle se décompose sous la forme d'une somme de fonctions trigonométriques telles que \textbf{leurs fréquences est multiple de la fréquence de la fonction}, on appelle alors la fréquence de la fonction \textbf{fréquence fondamentale} ou \textbf{première harmonique}, et on définit la \textbf{n-ième harmonique} par:
+\[
+   H_n(f) : x \longmapsto c_n(f)e^{in\omega x} + c_{-n}(f)e^{-in\omega x}  
+\]
+On trouve alors directement une autre expression de la série de Fourier équivalente aux précédentes:
+\[
+   S_n(f) = c_0(f) + \sum_{k=1}^{n} H_k(f)
+\] 
+Cette expression peut être pratique car elle permet de passer rapidement de la série de Fourier complexe à la série de Fourier réelle, en appairant les termes d'indices opposés et en utilisant les formules d'Euler.
+\pagebreak
 \subsection*{\subsecstyle{Formule de Parseval{:}}}
-Enfin, une formule fondamentale de la théorie des séries de Fourier est celle de \textbf{Parseval}, on définit d'abord le produit scalaire suivant sur l'espace des fonctions \(2\pi\)-périodiques:
+Enfin, une formule fondamentale de la théorie des séries de Fourier est celle de \textbf{Parseval}, on définit d'abord le produit scalaire suivant sur l'espace des fonctions \(T\)-périodiques:
 \[
-   \dotproduct{f}{g} := \int_{0}^{2\pi} f(t)\overline{g(t)} \d t   
+   \dotproduct{f}{g} := \frac{1}{T}\int_T f(t)\overline{g(t)} \d t   
 \]
-Alors on a l'égalité suivante:
+On considère alors la famille suivante de vecteurs suivante:
 \[
-   \frac{1}{2\pi} \vectNorm{f}^2 = \frac{1}{2\pi} \int_{0}^{2\pi} |f(t)|^2 \d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = a_0^2 + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
+   \mathscr{B} = (e^{in\omega x})_{n \in \Z}
 \]
+Alors cette famille est \textbf{orthogonale} donc libre, et elle engendre l'espace des polynômes trigonométriques, gràce à cette approche, on a alors que:
+\[
+   c_n(f) = \dotproduct{f}{e_n}
+\]
+On peut alors montrer une généralisation du \textbf{théorème de Pythagore} dans les espaces de dimension infinie dotés d'une base \(\mathscr{B}\) par:
+\[
+   \vectNorm{x}^2 = \sum_{e_i \in \mathscr{B}}\dotproduct{x}{e_i}^2
+\]
+Et donc dans ce cas particulier, on obtient l'égalité suivante:
+\[
+   \frac{1}{T} \vectNorm{f}^2 = \frac{1}{T} \int_{0}^{2\pi} |f(t)|^2 \d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = \frac{a_0^2}{4} + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
+\]
+On peut en donner une interprétation physique assez évocatrice, en effet ce théorème se résume à dire que:
+\begin{center}
+   \textit{L'énergie de la fonction periodique est exactement décrite par la somme des énérgies des différentes harmoniques.}
+\end{center}
 Cette formule permet alors de calculer de nouvelles sommes si l'intégrale est facile à calculer, par exemple on peut facilement\footnote[1]{Il faut considèrer la fonction \(2\pi\) périodique égale à \(x\) sur \(\ico{-\pi}{\pi}\) puis appliquer Parseval} résoudre le problème de Bâle et montrer:
 \[
    \sum_{n=1}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{6}   
 \]
 \pagebreak
 
-\subsection*{\subsecstyle{Exemples d'applications {:}}}
-On considère la 
+\subsection*{\subsecstyle{Exemples d'un développement {:}}}
+On considère la fonction \(2-\pi\) périodique telle que:
+\[
+   f(x) = x^2-\pi^2 \text{ sur } \inticc{-\pi}{\pi}
+\]
+On remarque rapidement qu'elle est périodique et continue, elle est donc décomposable en série de Fourier, calculons ses coefficients:
+\begin{flalign*}
+   c_n(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-int} \d t\\
+   &= \frac{1}{2\pi} \int_{-\pi}^{\pi} (t^2 - \pi^2)e^{-int} \d t\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t - \pi^2\int_{-\pi}^{\pi}e^{-int} \d t\right)\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t\right)\shorteqnote{(Intégrale d'une fonction impaire sur un intervalle symétrique.)} \\ 
+   &= \frac{1}{-2n\pi i} \left(-2\pi^2i\sin(n\pi) - \frac{4\pi}{in}\cos(n\pi) + \frac{4}{in^2}\sin(n\pi)\right) \shorteqnote{(Aprés 2 IPP et utilisation des formules d'Euler.)}\\
+   &= \frac{2\cos{n\pi}}{n^2} \shorteqnote{(Car \(\sin(n\pi)\) est nul)}\\
+   &= \frac{2(-1)^n}{n^2}
+\end{flalign*}
+Aussi le premier coefficient est donné par:
+\begin{flalign*}
+   c_0(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} t^2 - \pi^2 \d t \\
+   &= \frac{-2\pi^2}{3}
+\end{flalign*}
 
-
+Finalement, on calcule les harmoniques:
+\[
+   H_n(f) : x \longmapsto c_n(f)e^{inx} + c_{-n}(f)e^{-inx} = \frac{2(-1)^n}{n^2} (e^{inx} + e^{-inx}) = \frac{4(-1)^n}{n^2}cos(nx)
+\]
+Enfin on a donc le développement en série de Fourier donné par:
+\[
+   S(f) = \frac{-2\pi^2}{3} + \sum_{n=1}^{+\infty} \frac{4(-1)^n}{n^2}cos(nx)
+\]
+\subsection*{\subsecstyle{Application au calcul d'une somme {:}}}
+D'aprés l'égalité de Parseval, on a alors que:
+\[
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \sum_{-\infty}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} \frac{4}{n^4}
+\]
+Aussi on a:
+\[
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \frac{1}{2\pi}\int_{-\pi}^{\pi}(x^2 - \pi^2)^2 \d t = \frac{8\pi^4}{15}
+\]
+Donc finalement on trouve que:
+\[
+   \sum_{n=1}^{+\infty} \frac{8}{n^4} = \frac{8\pi^4}{15} - \frac{8\pi^4}{9} = \frac{4\pi^4}{45}
+\]
+Et donc on a réussi à calculer la somme suivante:
+\[
+   \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90}
+\]
