@@ -1,0 +1,42 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \input{000-Titre.tex}
+
+   \renewcommand{\cftchapfont}{\large \bfseries \scshape}
+   \renewcommand{\cftsecfont}{}
+   \renewcommand{\contentsname}{\hfill
+   \setlength{\fboxsep}{0.3em}\setlength{\fboxrule}{3pt}\vspace{20pt}
+   \color{DarkBlue1}\Huge
+   \fbox{\textbf{\textsc{Table des matières}}}
+   \hfill
+   }
+   
+   \setcounter{tocdepth}{1}
+   \tableofcontents
+
+   \addcontentsline{toc}{chapter}{Analyse Fonctionnelle} % A FAIRE
+   \input{1-AnalyseFonctionnelle}
+   \pagebreak    
+   
+   \addcontentsline{toc}{chapter}{Algèbre} % A FAIRE
+   \input{2-Algebre}
+   \pagebreak    
+   
+   \addcontentsline{toc}{chapter}{Topologie Algébrique} % A FAIRE
+   \input{3-TopologieAlgebrique}
+   \pagebreak     
+   
+   \addcontentsline{toc}{chapter}{Géométrie Différentielle} % A FAIRE
+   \input{4-GeometrieDifferentielle}
+   \pagebreak  
+
+   \addcontentsline{toc}{chapter}{Equations Différentielles Partielles} % A FAIRE
+   \input{5-EquationsDifferentiellesPartielles}
+   \pagebreak   
+
+   \addcontentsline{toc}{chapter}{Probabilités} % A FAIRE
+   \input{6-Probabilites}
+   \pagebreak   
+\end{document}
