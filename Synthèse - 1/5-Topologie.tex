@@ -9,7 +9,40 @@ Soit \(E\) un ensemble \textbf{non-vide} et \(\mathcal{T}\) une ensemble de part
 \end{align*}
 Alors le couple \((E, \mathcal{T})\) est appellé \textbf{espace topologique} et \(\mathcal{T}\) est appellée \textbf{topologie} sur \(E\).\<
 
-On dit alors qu'une partie de \(E\) est \textbf{fermée} si son complémentaire est \textbf{ouvert}.
+On définit alors qu'une partie de \(E\) est \textbf{fermée} si son complémentaire est \textbf{ouvert}.
+\subsection*{\subsecstyle{Topologies usuelles {:}}}
+
+La \textbf{topologie grossière}, alors les ouverts sont seulements \(E\) et \(\emptyset\).\+
+La \textbf{topologie discrète}, alors les ouverts sont toutes les parties de \(E\).\+
+La \textbf{topologie de l'ordre} sur un ensemble ordonné, alors les ouverts sont les intervalles ouverts pour la relation\footnote[1]{C'est la topologie usuelle de \(\R\).}. 
+
+\subsection*{\subsecstyle{Notion de finesse {:}}}
+On définit alors une notion de comparaison entre deux topologie \(\mathcal{T}_1\) et \(\mathcal{T}_2\), et on dira que \(\mathcal{T}_2\) est \textbf{plus fine} que \(\mathcal{T}_1\) si et seulement si on a:
+\[
+   \mathcal{T}_1 \subseteq \mathcal{T}_2
+\]
+Cela signifie moralement que \(\mathcal{T}_2\) à plus d'ouverts, par exemple la topologie discrète est la plus fine de tout les topologies. Cette relation définit alors \textbf{une relation d'ordre} sur l'ensemble des topologies.
+
+\subsection*{\subsecstyle{Topologie engendrée {:}}}
+On se donne \(A \subseteq \mathcal{P}(E)\) un ensemble de parties de \(E\), alors on chercher à savoir si il existe une plus petite topologie (au sens de l'inclusion) telle que les éléments de \(A\) soit des ouverts, ie la topologie la moins fine qui contienne \(A\).\<
+
+On peut alors montrer facilement que l'intersection de deux topologies est une topologie et donc que la plus petite topologie qui contienne \(A\) existe, c'est l'intersection de toutes les topologies qui contiennent \(A\). On l'appelera\footnote[2]{On dira aussi que \(A\) est une \textbf{prébase} de cette topologie.} alors \textbf{topologie engendrée} par \(A\).
+
+\subsection*{\subsecstyle{Topologie induite {:}}}
+Soit \(A \subseteq E\), alors \(E\) induit une topologie naturelle sur \(A\) appellée \textbf{topologie induite} définie par:
+\[
+   \mathcal{T}_A := \Bigl\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \subseteq \mathcal{T}_E \Bigl\}  
+\]
+\begin{center}
+   \textit{Un ouvert de \(A\) pour la topologie induite est simplement la trace sur \(A\) des ouverts de \(E\).}
+\end{center}
+
+\subsection*{\subsecstyle{Voisinages {:}}}
+On appelle \textbf{voisinage} d'un point \(x \in E\) toute partie \(V\) de \(E\) qui contient un ouvert \(\mathcal{O}\) qui contient \(x\)
+On notera \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).\<
+
+\underline{Exemple:} \(\ico{-2}{3}\) est un voisinage de \(3\) et de \(0\) pour la topologie classique de \(\R\), engendrée par les intervalles ouverts.
+
 \subsection*{\subsecstyle{Intérieur {:}}}
 Soit \(A \subseteq E\), alors on dit que \(x \in A\) est un point \textbf{intérieur} à \(A\) si et seulement si:
 \customBox{width=10cm}{
@@ -27,6 +60,7 @@ Enfin, on peut caractériser les ouverts par leur intérieur, en effet \(\mathca
 \customBox{width=3cm}{
    \(\mathcal{O} = \text{int}(\mathcal{O})\)
 }
+
 \subsection*{\subsecstyle{Adhérence {:}}}
 Soit \(A \subseteq E\), alors on dit que \(x \in A\) est un point \textbf{adhérent} à \(A\) si et seulement si:
 \customBox{width=10cm}{
@@ -48,6 +82,8 @@ On appelle \textbf{frontière} d'une partie \(A\) de \(E\) et on note \(\partial
 \customBox{width=5cm}{
    \(\partial A = \text{adh}{A} \backslash \text{int}{A}\)
 }
+\pagebreak
+
 \subsection*{\subsecstyle{Propriétés {:}}}
 Soit \(A \subseteq E\), on peut alors montrer plusieurs propriétés de l'intérieur et de l'adhérence:
 \customBox{width=8cm}{
@@ -63,34 +99,13 @@ On peut aussi montrer les différentes relations suivantes\footnote[1]{Pour comp
       \text{int}(A \cup B) \supseteq \text{int}(A) \cup \text{int}(B) \quad\quad\quad\quad \text{adh}(A \cap B) \subseteq \text{adh}(A) \cap \text{adh}(B)
    \end{align*}
 }  
-\subsection*{\subsecstyle{Topologies usuelles {:}}}
-On peut distinguer plusieurs topologies usuelles:\<
 
-La \textbf{topologie grossière}, alors les ouverts sont seulements \(E\) et \(\emptyset\).\+
-La \textbf{topologie discrète}, alors les ouverts sont toutes les parties de \(E\).\+
-La \textbf{topologie de l'ordre} sur un ensemble ordonné, alors les ouverts sont les intervalles pour la relation\footnote[2]{C'est la topologie usuelle de \(\R\).}. 
-\subsection*{\subsecstyle{Topologie induite {:}}}
-Soit \(A \subseteq E\), alors \(E\) induit une topologie naturelle sur \(A\) appellée \textbf{topologie induite} définie par:
+\subsection*{\subsecstyle{Densité {:}}}
+On peut alors définir la notion \textbf{d'espace dense}, on considère \(A \subseteq E\), alors on dira que \(A\) est \textbf{dense dans \(E\)} si et seulement si:
 \[
-   \mathcal{T}_A := \Bigl\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \subseteq \mathcal{T}_E \Bigl\}  
+   \text{adh}(A) = E
 \]
-\begin{center}
-   \textit{Un ouvert de \(A\) pour la topologie induite est l'intersection d'un ouvert de l'espace total avec \(A\)}
-\end{center}
-En particulier on peut facilement représenter cette topologie dans l'espace métrique \(\R^2\):
-\begin{center}
-   \begin{tikzpicture}[
-      >=stealth,scale=1,line cap=round,
-      bullet/.style={circle,inner sep=0.5pt,fill}
-   ]
-      \filldraw[color=BrightBlue1!60, fill=BrightBlue1!5, dashed] (4.25,2.75) circle (2) node {$\mathcal{O} \in \mathcal{T}_E$};
-      \draw[->] (-1,0) -- (9,0);
-      \draw[->] (0,-1) -- (0, 5.5);
-      \draw node at (8.25,5) {$E$};
-      \draw[color=DarkBlue1, domain=0:8, smooth]   plot (\x,{sin(\x r) + 1.5})   node[right] {$A$}; 
-      \draw[color=BrightRed1, domain=2.35:3.92, smooth, line width=0.5mm]   plot (\x,{sin(\x r) + 1.5})   node[below left] {$\mathcal{O} \in \mathcal{T}_A$}; 
-   \end{tikzpicture}   
-\end{center}
+Et on peut caractériser cette propriété par le fait que tout ouvert de \(E\) coupe \textbf{nécéssairement} \(A\).
 
 \chapter*{\chapterstyle{V --- Espaces Métriques}}
 \addcontentsline{toc}{section}{Espaces Métriques}
@@ -205,48 +220,101 @@ Si on considère maintenant l'ensemble des cases d'un échiquier \(6 \times 6\) 
    \end{tikzpicture}
 \end{center}
 
-\chapter*{\chapterstyle{V --- Continuité}}
-\addcontentsline{toc}{section}{Continuité}
-On rappelle la définition classique de la continuité d'une fonction réelle \(f\) en un point \(a\), qui sera cruciale pour comprendre la suite:
+\chapter*{\chapterstyle{V --- Limite et continuité}}
+\addcontentsline{toc}{section}{Limite et continuité}
+L'intérêt fondamental de la topologie est de pouvoir définir le concept de \textit{proximité} entre points d'un espace topologie, et par la suite de définir le concept fondamental en analyse, celui de \textbf{limite} d'une suite ou d'une fonction, puis par la suite celui de \textbf{continuité} d'une fonction.\<
+
+Une des idées principales à retenir de ce chapitre est que la notion de limite est \textbf{locale} au sens où elle nécessite que des propriétés soient vérifiées au voisinage de certains point. A contrario la notion de \textbf{continuité} est ambivalente, on peut à la fois la définir localement (propriété au voisinage d'un point) ou globalement (propriété sur les topologies des deux espaces).
+
+\subsection*{\subsecstyle{Limite d'une fonction{:}}}
+On se donne une application \(f : (X, \mathcal{T}_X) \longmapsto (Y, \mathcal{T}_Y)\), et on considère deux points \(a\) et \(l\) respectivement dans \(X\) et dans \(Y\). On dira alors que la fonction \(f\) tends vers \(l\) en \(a\) si et seulement si:
 \[
-   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+   \forall \; V_l \in \mathscr{V}_l \; , \; \exists  V_a \in \mathscr{V}_a \; ; \; f(V_a) \subset V_l 
 \]
-\subsection*{\subsecstyle{Cas des espaces métriques{:}}}
-Si on considère la définition classique de la continuité d'une fonction \(f\) en un point \(a \in \R\), alors on trouve une généralisation naturelle aux fonctions d'un espace métrique \((E, d_E)\) dans un autre \((F, d_F)\) par la définition suivante qui nous donne que \(f\) est continue \(a \in E\) si et seulement si:
+On notera alors \(\lim_{x \rightarrow a} f(x) = l\). Il est à noter que l'on a ici pris le parti-pris de définir la notion de limite via les voisinages, on aurait aussi pu la définir directement via les ouverts, il suffit de remplacer "voisinage de \(x\)" par "ouvert qui contient \(x\)".
+\subsection*{\subsecstyle{Limite d'une suite{:}}}
+Le cas d'une suite \(u : \N \longrightarrow X\) est similaire, en effet on veut alors une limite quand l'indice de la suite tends vers l'infini, on définit alors un voisinage de l'infini comme une partie qui continent un intervalle entier ouvert et infini à droite, et on obtient la définition suivante:
 \[
-   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in \R \; ; \; \text{d}_E(x, a) < \delta  \implies  \text{d}_F(f(x), f(a)) < \epsilon
+   \forall \; V_l \in \mathscr{V}_l \; , \; \exists  V_\infty \in \mathscr{V}_\infty \; ; \; u({V_\infty}) \subset V_l 
 \]
-\begin{center}
-   \textit{Si \(x\) est \(\delta\)-proche de \(a\) au sens de la distance de l'espace de départ alors \(f(x)\) est \(\epsilon\)-proche de \(f(a)\) au sens de la distance de l'espace d'arrivée.}
-\end{center}
-Cette définition analogue au cas des fonctions réelles nous permet alors de montrer le critère bien connu appellé \textbf{caractérisation séquentielle} de la continuité, ie si \(f\) est continue en \(a\) alors:
+Néanmoins dans le cas des suites, la notion de limite est souvent trop contraignante et on peut vouloir s'intéresser aux valeurs qui sont prises \textbf{un infinité de fois} par la suite, on les appelera alors \textbf{valeurs d'adhérence} qu'on définit par:
 \[
-   \forall (u_n) \in E^\N \; , \; (u_n) \longrightarrow a \implies f(u_n) \longrightarrow f(a)
+   \text{vadh}(u_n) := \{ x \in X \; ; \; \forall V_x \in \mathcal{V}_x , u_n \subseteq V_x \text{ pour une infinité d'indices} \}
 \]
-\subsection*{\subsecstyle{Cas général{:}}}
-Dans le cadre d'un espace topologique quelconque \((E, \mathcal{T})\), il est nécessaire de trouver une définition de la continuité qui ne dépend pas d'un notion de distance, on définit alors qu'une fonction \(f : E \longrightarrow F\) est continue si et seulement si pour tout ouvert \(\mathcal{O}\) de \(F\), on a:
+\subsection*{\subsecstyle{Continuité locale{:}}}
+On peut définir une notion de continuité \textbf{locale} d'une fonction \(f: X \longrightarrow Y\) en un point \(a \in X\), qui ne nécessite donc que de vérifiées des propriétés au voisinage d'un point, en effet on dira que \(f\) est \textbf{continue} en \(a\) si et seulement si on a:
 \[
-   f^{-1}(\mathcal{O}) \in \mathcal{T}   
+   \lim_{x \rightarrow a} f(x) = f(a)
+\] 
+\subsection*{\subsecstyle{Continuité globale{:}}}
+On peut alors définir une notion de continuité \textbf{globale}, qui ne dépend que des topologies au départ et à l'arrivée, et on dira alors que \(f: X \longrightarrow Y\) est \textbf{continue} si et seulement si pour tout ouvert \(\mathcal{O} \in \mathcal{T}_Y\), on a:
+\[
+   f^{-1}(\mathcal{O}) \in \mathcal{T}_X  
 \]
 \begin{center}
    \textit{Une application est continue si la préimage de tout ouvert de l'arrivée est un ouvert du départ.}
 \end{center}
-On peut alors montrer que dans le cas métrique, les deux définitions ci-dessus sont équivalentes, et que sous des hypothèses raisonnables dans la plupart des espaces topologiques, on a la \textbf{caractérisation séquentielle}.
-\subsection*{\subsecstyle{Applications ouvertes / fermées{:}}}
-Il est important de noter alors que si \(f\) est continue au sens topologique, cela \textbf{ne dit rien} de l'image d'un ouvert ou d'un fermé. Néanmoins, on peut alors définir la notion d'application ouverte et fermée:
+On a peut alors relier les deux notions de continuité par la propriété suivante:
+\begin{center}
+   \textbf{Une application est (globalement) continue ssi elle est (localement) continue en tout ses points.}
+\end{center}
+Il est important de noter alors que si \(f\) est continue, cela \textbf{ne dit rien} de l'image direct d'un ouvert ou d'un fermé. On appelle application ouverte (resp. fermée) une application telle que l'image d'un ouvert (resp. fermé) est ouvert (resp. fermé).
+\subsection*{\subsecstyle{Caractérisations métriques{:}}}
+Dans le cas particulier des espaces métriques, on peut caractériser la définition de la limite de \(f\) en un point \(a\) par la métrique et les boules, et on a alors que \(\lim_{x \rightarrow a} f(x) = l\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in X \; ; \; d(x, a) < \delta \implies d(f(x), l) < \epsilon
+\]
+Moralement on l'interprète par:
+\begin{center}
+   \textit{Il existe un \(\delta\) tel que si \(x\) est \(\delta\)-proche de \(a\) alors \(f(x)\) est arbitrairement proche de la limite.}
+\end{center}
+Dans le cas des suites c'est légérement différent, le voisinage de l'infini devient simplement un entier à partir duquel la propriété est vérifiée et on a que \(u_n \longrightarrow l\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists N \in \N , \forall n \in \N \; ; \; n > N  \implies d(u_n, l) < \epsilon
+\]
+Enfin, on peut grandement simplifier la définition d'un valeur d'adhérence dans le cas métrique, en effet on obtient alors que \(l\) est une valeur d'adhérence si et seulement si:
+\[
+   \forall \epsilon > 0 , \forall N \in \N , \exists n \in \N \; ; \; n > N \implies d(u_n, l) < \epsilon
+\]
+Qui représente bien l'idée que la suite \(u_n\) de rapproche de \(l\) une infinité de fois.
+\subsection*{\subsecstyle{Caractérisations séquentielles{:}}}
+Dans le cas d'un espace topologie relativement raisonnable, c'est à dire dans notre cas \textbf{métrique séparé}, la limite d'une fonction est toujours \textbf{unique}. Et on peut alors caractériser l'adhérence d'une partie par les suites:
+\begin{center}
+   L'adhérence de \(A\) est exactement \textbf{l'ensembles des limites des suites} à valeurs dans \(A\).
+\end{center}
+On a aussi la caractérisation séquentielle de la limite et on dira que \(\lim_{x \rightarrow a} f(x) = l\) si et seulement si pour toute suite\footnote[1]{En particulier si on trouve deux suites \(u_n, v_n\) qui tendent vers \(a\) telles que \(f(u_n), f(v_n)\) ont deux limites différentes, alors la limite de \(f\) en \(a\) ne peut pas exister.} \(u_n\) qui tends vers \(a\) on a:
+\[
+   \lim_{n \rightarrow +\infty} f(u_n) = l
+\]
+Et on peut alors aussi en déduire une caractérisation séquentielle de la continuité qui sous les mêmes hypothèses nous donne que:
+\[
+   \lim_{n \rightarrow +\infty} f(u_n) = f(\lim_{n \rightarrow +\infty}u_n) = f(a)
+\]
+\subsection*{\subsecstyle{Complétude{:}}}
+On se place dans le cadre d'un espace métrique \(E\) et on se donne une suite \(u_n\), on peut alors définir la concept de \textbf{suite de Cauchy} et on dira que \(u_n\) est \textbf{de Cauchy} si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists N \in \N , \forall p, q > N \; ; \; d(u_p - u_q) < \epsilon
+\] 
+\begin{center}
+   \textit{
+       Une suite de Cauchy est donc une suite telle que les termes de la suite sont arbitrairement proches \textbf{les uns des autres} à partir d'un certain rang\footnote[2]{Un corollaire immédiat est que \textbf{toute suite convergente est de Cauchy}.}.
+   }
+\end{center}
+On peut alors montrer que tout suite de Cauchy vérifie les propriétés suivantes:
 \begin{itemize}
-   \item On dit que \(f\) est \textbf{ouverte} si l'image d'un ouvert est ouvert.
-   \item On dit que \(f\) est \textbf{fermée} si l'image d'un fermé est fermé.
+   \item Elle est bornée.
+   \item Si elle admet une valeur d'adhérence, alors elle converge.
 \end{itemize}
+\begin{center}
+   \textbf{On appelle alors espace complet tout espace métrique dans lequel toute suite de Cauchy converge.}
+\end{center}
 \subsection*{\subsecstyle{Homéomorphismes{:}}}
 On considère deux espaces topologiques \(E\) et \(F\), ainsi qu'une fonction \(f : E \longrightarrow F\), alors on dit que \(f\) est \textbf{un homéomorphisme} si et seulement si elle est \textbf{bijective, continue et à réciproque continue}.\<
 
-On dira alors que \(E\) et \(F\) sont \textbf{homéomorphes}, et on pourra alors en déduire qu'ils sont identiques du points de vu topologique, ie que toutes les propriétés intrinséquement topologiques\footnote[1]{Voir la partie "Invariants Topologiques" pour le détail des propriétés conservées.} sont conservées, plus précisément.
+On dira alors que \(E\) et \(F\) sont \textbf{homéomorphes}, et on pourra alors en déduire qu'ils sont identiques du points de vu topologique, ie que toutes les propriétés intrinséquement topologiques sont conservées, plus précisément.
 \begin{center}
    \textbf{Les homéomorphismes sont les isomorphismes pour la structure d'espace topologique.}
 \end{center}
-En particulier on notera alors \(E \cong F\)
-\subsection*{\subsecstyle{Invariants Topologiques{:}}}
 Quelles sont alors les propriétés \textbf{intrinséquement topologiques}, ie les propriétés conservées par homéomorphismes ? On peut alors montrer que les propriétés suivantes sont des propriétés topologiques:
 \begin{itemize}
    \item La connexité.
@@ -254,6 +322,35 @@ Quelles sont alors les propriétés \textbf{intrinséquement topologiques}, ie l
    \item La compacité.
 \end{itemize}
 Ces concepts fondamentaux en topologie sont définis dans les chapitres suivants.
+
+\subsection*{\subsecstyle{Continuité uniforme {:}}}
+\addcontentsline{toc}{subsection}{Continuité uniforme}
+Dans les espaces métriques, il existe une propriété de régularité \textbf{plus forte que la continuité} appelée \textbf{continuité uniforme}\footnote[1]{Il est important de noter que la continuité uniforme n'est plus une propriété locale, mais globale.} définie comme:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall (x_1, x_2) \in E^2 \; ; \; d(x_1 - x_2) < \delta \implies d(f(x_1) - f(x_2)) < \epsilon 
+\]
+
+La différence fondamentale\footnote[2]{Ecrire la proposition "\(f\) est continue en tout point de \(\ioo{a}{b}\)" et "\(f\) est uniformément continue sur \(\ioo{a}{b}\)" pour le voir.} entre ces deux propriétés étant que \(\delta\) \textbf{ne dépend plus que de \(\epsilon\)}. En particulier on peut l'interpréter:
+\begin{center}      
+   \textit{Il existe un \(\delta\) tel que si \(x\) et \(y\) sont \(\delta\)-proches alors \(f(x)\) et \(f(y)\) soient arbitrairement proches.}
+\end{center}
+\subsection*{\subsecstyle{Lipschitzianité{:}}}
+\addcontentsline{toc}{subsection}{Lipschitzianité}
+Dans les espaces métriques, il existe une condition de régularité \textbf{encore plus forte} que la continuité uniforme qui est le caractère \(K\)-lipschitzien. On dit qu'une fonction est \(K\)-lipschitzienne pour \(K \in \R\) si et seulement si pour tout \(x, y\) distincts, on a:
+\customBox{width=5cm}{
+   \(d(f(x) - f(y)) \leq Kd(x - y)\)
+}
+\begin{center}
+   \textit{
+      Une telle fonction a donc la particularité de ne pas pouvoir croitre ou décroitre trop rapidement, c'est une transformation assez rigide.
+   }
+\end{center}
+La \(K\)-lipschitziannité étant une propriété plus forte que la continuité uniforme, plus précisément, on a la suite d'implications:
+\customBox{width=12cm}{
+   \(K\)-lipschitzienne \(\implies\) Uniformément continue\(\implies\) Continue
+}
+
+Par ailleurs si \(K \in \ico{0}{1}\), alors on dit que \(f\) est \textbf{contractante}, ce type de fonctions a souvent un trés bon comportement de convergence quand on le retrouve dans des définitions de suites par récurrence.
 
 \chapter*{\chapterstyle{V --- Connexité}}
 \addcontentsline{toc}{section}{Connexité}
@@ -299,7 +396,6 @@ On peut alors commencer à distinguer l'intéret de la notion de connexité, en 
 \begin{center}
    \textbf{L'image par une fonction continue à valeurs rélles définie sur un connexe est un intervalle.}
 \end{center}
-
 \chapter*{\chapterstyle{V --- Compacité}}
 \addcontentsline{toc}{section}{Compacité}
 On considère un espace topologique \((E, \mathcal{T})\) et un \textbf{recouvrement ouvert} de cet espace, ie une famille quelconque \((A_i)_{i \in I}\) d'ouverts de \(E\) telle que:
@@ -340,10 +436,9 @@ On peut alors commencer à distinguer l'intéret de la notion de compacité, en 
    \textbf{Tout fonction continue à valeurs rélles définie sur un compact de \(\R^n\) est bornée et atteint ses bornes.}
 \end{center}
 \subsection*{\subsecstyle{Théorème de Heine{:}}}
-En outre on a aussi le \textbf{théorème de Heine} qui nous permet d'affirmer que les fonctions continues définies sur des compacts sont beaucoup plus régulières, ie:
+Un résultat trés utile sur la compacité est le \textbf{théorème de Heine} qui nous permet d'affirmer que les fonctions continues définies sur des compacts sont plus régulières encore:
 \begin{center}
    \textbf{Tout fonction continue définie sur un compact y est uniformément continue.}
-
 \end{center}
 
 

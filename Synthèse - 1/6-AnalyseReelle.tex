@@ -1,75 +1,55 @@
 \chapter*{\chapterstyle{VI --- Corps des Réels}} % 95% Fini
 \addcontentsline{toc}{section}{Corps des Réels}
-
-Soit \(A\) une partie de \(\R\) et \(M \in \R\), on dit que \(M\) est un \textbf{majorant} de \(A\) si il est est supérieur à tout élément de \(A\), 
-en outre, si \(M \in A\), on dit que \(M\) est le \textbf{maximum} de \(A\)\footnote[1]{Les propriétés sont analogues pour les \textbf{minorants} de \(\R\)}. 
-
-\subsection*{\subsecstyle{Borne supérieure {:}}}
-Soit \(M^+\) \textbf{l'ensemble des majorants} de la partie \(A\), alors par construction, cet ensemble admet un minimum\footnote[2]{Voir la construction explicite de \(\R\) par les suites de Cauchy, ou par les coupures de Dedekind.}, qu'on appelle \textbf{borne supérieure}, ie on définit:
-\customBox{width=4cm}{
-    \(\sup(A) := \min(M^+)\)
-}
-
-Soit \(A, B\) deux parties bornées de \(\R\), alors l'application qui associe sa borne supérieure à une partie est \textbf{croissante} et celle qui associe sa borne inférieure à une partie est \textbf{décroissante}.
-\subsection*{\subsecstyle{Caractérisations {:}}}
-Soit \(M\) un majorant de \(A\), alors on peut alors montrer \textbf{la caractérisation séquentielle} de la borne supérieure:
-\customBox{width=5cm}{
-    \(\exists (u_n) \in A^\N \; ; \; u_n \longrightarrow M\)
-}
+On peut construire successivement les différents ensembles \(\N, \Z, \Q\) et on souhaite maintenant construire le corps bien connu \(\R\), on peut alors construire les nombres réels comme \textbf{classes d'équivalence de suite de Cauchy de rationnels}, et on peut alors montrer la propriété caractéristique de \(\R\) qui est:
+\begin{center}
+   \textbf{C'est l'unique corps totalement ordonné complet qui vérifie la propriété d'Archimède.}
+\end{center}
+\subsection*{\subsecstyle{Propriété d'Archimède {:}}}
+Un corps totalement ordonné est archimédien si et seulement si:
+\[
+   \forall (a, b) \in \R^*_+ \; , \; \exists n \in \N \; ; \; na > b
+\]
+Moralement,
+\begin{center}
+    \textit{
+        Tout nombre de \(\R\) peut être dépassé par un multiple entier d'un autre nombre de \(\R\).
+    }
+\end{center}
+Une autre interprétation est \textbf{qu'il n'existe pas de nombre infiniment grand ou petit} dans \(\R\), pour le voir il suffit de poser \(a = 1\) ou \(b = 1\).
+\subsection*{\subsecstyle{Propriété de la borne supérieure {:}}}
+On appelle alors majorant (resp. minorant) d'une partie \(A\) un réel qui est plus grand (resp. plus petit) que tout élément de \(A\), on s'intéresse alors à l'existence de \textbf{plus petit majorant} (ou de plus grand minorant), qu'on appelera alors \textbf{borne supérieure} (ou inférieure) de \(A\).
+On peut alors montrer que le corps des réels vérifie \textbf{la propriété de la borne supérieure}, donnée par:
+\begin{center}
+   \textbf{Toute partie non-vide et majorée (resp. minorée) admet une borne supérieure (resp. inférieure)}
+\end{center}
+On les note alors respectivement \(\sup(A)\) et \(\inf(A)\).
+\subsection*{\subsecstyle{Caractérisation séquentielle {:}}}
+On peut montrer que \(M\) est la borne supérieure de \(A \subseteq \R\) si et seulement si:  
+\[
+   \exists (u_n) \in A^\N \; ; \; u_n \longrightarrow M
+\]
 \begin{center}
     \textit{
         Un majorant \(M\) est la borne supérieure de \(A\), si et seulement si il existe une suite à valeurs dans \(A\) qui tends vers \(M\).
     }
 \end{center}
-Soit \(\epsilon > 0\), alors on aussi \textbf{une caractérisation analytique} de la borne supérieure:  
-\customBox{width=5.5cm}{
-    \(\exists a \in A \; ; \; M - \epsilon \leq a \leq M\)
-}
+\subsection*{\subsecstyle{Caractérisation métrique {:}}}
+Soit \(\epsilon > 0\), alors \(M\) est la borne supérieure de \(A \subseteq \R\) si et seulement si:  
+\[
+   \exists a \in A \; ; \; M - \epsilon \leq a \leq M
+\]
 
 \begin{center}
     \textit{
         Un majorant \(M\) est la borne supérieure de \(A\), si tout nombre plus petit n'est plus un majorant.
     }
 \end{center}
-
-\subsection*{\subsecstyle{Propriété d'Archimède}}
-Soit \(K\) un corps totalement ordonné, alors \(K\) est dit \textbf{archimédien}, si et seulement si on a\footnote[3]{Le cas trivial \(x < 0\) est exclu pour plus de lisibilité.}:
-\customBox{width=6.5cm}{
-    \(\forall (a, b) \in K_+^* \; , \; \exists n \in \N \; ; \; na > b\)
-}
-
-\begin{center}
-    \textit{
-        Donc \(K\) est archimédien, si tout nombre de \(K\) peut être dépassé par un multiple entier\+
-        d'un autre nombre de \(K\).
-    }
-\end{center}
-
-Une autre interprétation est \textbf{qu'il n'existe pas de nombre infiniment grand ou petit} dans \(\R\), pour le voir il suffit de poser \(a = 1\) ou \(b = 1\).
-\pagebreak
-
-\subsection*{\subsecstyle{Intervalles {:}}}
-Soit \(a, b \in \R\) tels que \(a < b\), on définit \textbf{l'intervalle fermé} \([a, b]\) l'ensemble:
-\[
-    [a, b] := \Bigl\{ x\in \R \; ; \; a \leq x \leq b \Bigl\}
-\]
-De manière analogue et selon les relations d'ordre strictes ou non, on définit les intervalles \textbf{ouverts et semi-ouverts}.\<
-
-On dit plus généralement que les intervalles sont les parties \textbf{convexes} de \(\R\).
-
-\subsection*{\subsecstyle{Valeur absolue {:}}}
-On introduit l'application \textbf{valeur absolue} qui sera très utile par la suite pour mesurer des écarts, elle est définie comme suit:
+\subsection*{\subsecstyle{Propriétés du corps des réels {:}}}
+On introduit l'application valeur absolue qui sera très utile par la suite pour mesurer des écarts, elle est définie comme suit:
 \[
     |x| := \max(x, -x)
 \]
-Cette application est une \textbf{métrique}, elle est \textbf{multiplicative} et vérifie les \textbf{inégalités triangulaires}:
-\begin{multicols}{2}
-    \begin{itemize}
-        \item \(|x + y| \leq |x| + |y|\)
-        \item \(||x| - |y|| \leq |x - y|\)
-    \end{itemize}
-\end{multicols}
-
+Cette application définit une norme et elle donne alors au corps des réels une structure d'espace vectoriel normé.
 \subsection*{\subsecstyle{Partie entière {:}}}
 Soit \(n \in \N\), on appelle \textbf{partie entière} d'un réel \(x\), et on note \(\lfloor x \rfloor\) \textbf{l'unique} entier relatif tel que:
 \[
@@ -80,7 +60,6 @@ La partie entière vérifie la propriété fondamentale suivante:
     \(\lfloor x + n \rfloor = \lfloor x \rfloor + n\)
 }
 L'existence de la partie entière est garantie par \textbf{la propriété d'Archimède}.
-
 \subsection*{\subsecstyle{Approximation décimale {:}}}
 Soit \(n \in \N\), il peut être utile d'approximer un réel à \(n\) chiffres après la virgule, ie à \(10^{-n}\) près, la partie entière nous permet alors de le faire, et on l'obtient en exécutant l'algorithme suivant:
 \[
@@ -90,335 +69,119 @@ On obtient alors une approximation à \textbf{n chiffre après la virgule} de \(
 \customBox{width=3.5cm}{
     \[d_n(x) = \frac{\lfloor 10^n x \rfloor}{10^n}\]
 }
+\subsection*{\subsecstyle{Compactification {:}}}
+On peut alors se rendre compte qu'une propriété manquante à \(\R\) est que ce n'est pas un espace compact, en effet on peut facilement construire des suites qui tendent vers \(\pm \infty\) et qui n'ont aucune suite extraite convergente dans \(\R\), la solution revient alors à definir la compactification de \(\R\) appellée \textbf{droite réelle achevée} par:
+\[
+   \overline{R} := \R \cup {-\infty, +\infty}
+\]
+Les opérations algébriques ne s'étendent alors pas parfaitement mais les symboles "infinis" ainsi ajoutés facilitent beaucoup l'énoncé de certains théorèmes et en particulier on a alors une meilleure propriété de la borne supérieure car on a que \textbf{toute partie non-vide admet une borne supérieure et inférieure}, éventuellement infinies.
 
-\chapter*{\chapterstyle{VI --- Suites numériques}} % 95% Fini
-\addcontentsline{toc}{section}{Suites numériques}
+\chapter*{\chapterstyle{VI --- Limites réelles}} % 95% Fini
+\addcontentsline{toc}{section}{Limites réelles}
+On sait déja étudier la convergence de fonctions et de suites depuis le chapitre sur la topologie et la définition du concept de limite, ici on étudiera plus précisément les application (et suites) dans \(\R\) ou \(\C\) et les conséquences des propriétés spécifiques de \(\R\) sur la convergence.\<
 
-On appelle \textbf{suite} une \textbf{famille d'éléments} indexée par une partie \(I\) de \(\N\), et on note une telle famille \((u_n)_{n \in I}\), qu'on abrège souvent en \((u_n)\).\<
+En effet la grande spécificité de \(\R\) est de pouvoir parler de fonctions \textbf{monotones} (croissantes ou décroissantes) et de fonctions \textbf{majorées ou minorées}.
 
-Lorsque tout les éléments de la famille appartiennent au \textbf{même ensemble} \(E\), on peut alors assimiler la suite \((u_n)\) à une application de \(\N\) vers \(E\).\<
-
-Soit \((u_n)\), \((v_n)\) et \((w_n)\) trois suites à valeurs dans K.
-
-\subsection*{\subsecstyle{Limite {:}}}
-On dit qu'une suite \((u_n)\) tends vers une limite\footnote[1]{Elle peut aussi tendre vers \(\pm \infty\), ce qui équivaut à montrer que \((u_n)\) n'est pas majorée/minorée.} \(l \in K\) si elle vérifie:
-\customBox{width=9cm}{
-    \(\exists l \in K \; , \; \forall \epsilon \in \R_+ \; , \; \exists N \in \N \; , \; \forall n > N \; ; \; |u_n - l| < \epsilon \)
-}
-
-On dit alors qu'elle converge et sa limite est \textbf{unique}, sinon on dit qu'elle diverge.\+
-On alors les propriétés fondamentales suivantes:
-\begin{align*}
-    &\bullet \text{Si \((u_n)\) converge, alors elle est bornée}\\
-    &\bullet \text{Si \((u_n) \rightarrow l\), alors \((|u_n|) \rightarrow |l|\)}
-\end{align*}
-
-\subsection*{\subsecstyle{Opérations sur les limites {:}}}
-On considère que \((u_n)\) et \((v_n)\) sont convergentes de limites finies \(l, l' \in K^*\).\+
-Alors le passage à la limite est une opération \textbf{linéaire et multiplicative}, ie elle se comporte conformément à l'intuition.\<
+\subsection*{\subsecstyle{Opérations générales sur les limites {:}}}
+On considère que \(f\) et \(g\) deux applications qui admettent des limites \(l, l' \in K^*\) en \(a\).\+
+Alors le passage à la limite est une opération \textbf{linéaire et multiplicative}, ie elle se comporte conformément à l'intuition par rapport aux opérations de \(\R\).\<
 
 Dans le cas où les limites sont infinies ou nulles, des \textbf{formes indéterminées} peuvent apparaître et nécessitent les précautions usuelles pour conclure.
+\subsection*{\subsecstyle{Limites latérales {:}}}
+On peut définir un type spécifique de limite sur \(\R\) appelé \textbf{limites latérales} qui sont simplement des limites de restriction à droite ou a gauche de \(a\).\<
 
-\subsection*{\subsecstyle{Suites réelles {:}}}
-On considère \((u_n)\), \((v_n)\) et \((w_n)\) des suites à valeurs dans \(\R\). La grande spécificité de \(\R\) est de pouvoir parler de suites \textbf{monotones} (croissantes ou décroissantes) et de suites \textbf{majorées ou minorées}.\<
-
-On a alors le \textbf{théorème de la limite monotone}:
-\customBox{width=15cm}{
-   Si la suite \((u_n)\) est \textbf{croissante et majorée} alors elle converge vers \(\sup\{ u_n \; ; \; n \in \N\}\).\\
-   Si la suite \((u_n)\) est \textbf{décroissante et minorée} alors elle converge vers \(\inf\{ u_n \; ; \; n \in \N\}\).\\
-   Si la suite \((u_n)\) est \textbf{croissante} et \textbf{non majorée} alors elle tends vers \(+ \infty\).\\
-   Si la suite \((u_n)\) est \textbf{décroissante} et \textbf{non minorée} alors elle tends vers \(- \infty\).
+\uline{Exemple}: On dit que \(f\) admet une limite \textbf{par valeurs inférieures} et on note \(f(a^-) = \lim_{x \rightarrow a^-} f(x) = l\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in X \; ; \; x - a < \delta \implies |f(x) - l| < \epsilon
+\]
+Et on peut alors caractériser l'existence d'une limite en un point par l'égalité des deux limites latérales en ce point.
+\subsection*{\subsecstyle{Carcatére borné {:}}}
+Une des principales conséquences du caractère métrique de \(\R\) sur les limites de fonctions est la suivante:
+\begin{center}
+   Toute fonction qui admet une limite en un point est \textbf{localement bornée} en ce point\footnote[1]{En particulier, si \(f\) est une suite, elle est \textbf{globalement bornée}.}.
+\end{center}
+\subsection*{\subsecstyle{Théorème de la limite monotone {:}}}
+En utilisant à la fois la propriété de la borne supérieure et l'ordre total sur \(\R\), on peut alors montrer que:
+\begin{itemize}
+   \item  Si la fonction est \textbf{croissante et majorée} alors elle converge par valeurs inférieures vers \(f(x^-)\).
+   \item  Si la fonction est \textbf{décroissante et minorée} alors elle converge par valeurs supérieures vers \(f(x^+)\).
+   \item  Si la fonction est \textbf{croissante} et \textbf{non majorée} alors elle tends vers \(+ \infty\).
+   \item  Si la fonction est \textbf{décroissante} et \textbf{non minorée} alors elle tends vers \(- \infty\).
+\end{itemize}
+En particulier si \(f\) est une \textbf{suite}, alors les deux premiers cas se simplifient en:
+\begin{itemize}
+   \item Si la suite \(u_n\) est \textbf{croissante et majorée} alors elle converge vers \(\sup(\{u_n\})\).
+   \item Si la suite \(u_n\) est \textbf{croissante et majorée} alors elle converge vers \(\inf(\{u_n\})\)
+\end{itemize}
+\pagebreak
+\subsection*{\subsecstyle{Théorème d'encadrement {:}}}
+Aussi soit \(f, g, h\) trois fonction telles que \(f\) et \(g\) tendent vers une limite finie \(l \in \overline{\R}\) en \(a \in \overline{\R}\), alors on a aussi le \textbf{théorème d'encadrement}:
+\customBox{width=10cm}{
+    \(\Bigr[\forall x \in \R \; ; \; f(x) \leq g(x) \leq h(x) \Bigr] \implies g(x) \longrightarrow l\)
 }
-Si \((u_n)\) et \((w_n)\) tendent vers une limite finie \(l \in K\), alors on a aussi le \textbf{théorème d'encadrement}:
-\customBox{width=7cm}{
-    \(\Bigr[\forall n \in \N \; ; \; u_n \leq v_n \leq w_n \Bigr] \implies v_n \rightarrow l\)
-}
-
-On appelle \textbf{suites adjacentes} deux suites \((u_n)\) et \((v_n)\) telles que l'une est \textbf{croissante} et l'autre \textbf{décroissante} et telles que \((u_n - v_n) \rightarrow 0\), alors on peut montrer que les deux suites convergent vers une même limite \(l \in K\) grâce aux théorèmes ci-dessus.
-
-\subsection*{\subsecstyle{Suites complexes {:}}}
-Dans le cas d'une suite à valeurs dans \(\C\), à défaut de pouvoir parler de suites majorées, on peut néanmoins parler de suites \textbf{bornées}.\<
-
-Les suites à valeur dans \(\C\) vérifient la propriété fondamentale:
-\customBox{width=5cm}{
-    \(u_n = \Re(u_n) + i\Im(u_n)\)
-}
-
-Une suite à valeur dans \(\C\) converge si et seulement si \(\Re(u_n)\) et \(\Im(u_n)\) convergent.
-
-\subsection*{\subsecstyle{Limite des bornes {:}}}
-Supposons \((u_n)\) \textbf{bornée}, on construit alors les suites numériques \((a_N)\) et \((b_N)\) suivantes:
+\subsection*{\subsecstyle{Suites adjacentes {:}}}
+On appelle \textbf{suites adjacentes} deux suites \((u_n)\) et \((v_n)\) telles que l'une est \textbf{croissante} et l'autre \textbf{décroissante} et telles que \((u_n - v_n) \rightarrow 0\), alors on peut montrer que les deux suites convergent vers une même limite \(l \in K\) grâce aux théorèmes précédents.
+\subsection*{\subsecstyle{Limite supérieure et inférieure {:}}}
+On se donne une suite \((u_n)\) \textbf{bornée}, on considère les suites numériques suivantes:
 \begin{align*}
-    a_N := &\sup\Bigl\{ u_n \; ; \; n > N \Bigl\} \\
-    b_N := &\inf\Bigl\{ u_n \; ; \; n > N \Bigl\}
+   \sup_{k \geq n}\{ u_k \} = \sup\{ u_k \; ; \; k \geq n\}\\
+   \inf_{k \geq n}\{ u_k \} = \inf\{ u_k \; ; \; k \geq n\}
 \end{align*}
 \begin{center}
     \textit{
-        Ici \((a_N)\) est simplement la borne supérieure de \((u_n)\) \textbf{qui a été privée des \(N\) premiers termes}.
+      Ce sont simplement les bornes supérieures et inférieures des queues de la suite. 
     }
 \end{center}
-On peut alors remarquer que ces suites sont monotones et bornées, donc elles convergent nécessairement\footnote[1]{En effet si on prive \((u_n)\) de termes, sa borne supérieure ne peut que décroître, et \(u_n\) étant bornée, ces suite le sont aussi.} vers des limites qu'on appelle alors les \textbf{limites supérieure et inférieure} de \((u_n)\).
-
-\begin{center}
-    \textit{
-        La limite supérieure d'une suite est \textbf{la plus petite borne supérieure} de cette suite quand on la prive de beaucoup de premiers termes.\+
-        La limite inférieure d'une suite est \textbf{la plus grande borne inférieure} de cette suite quand on la prive de beaucoup de premiers termes.\+
-    }
-\end{center}
+On peut alors remarquer que ces suites sont monotones et bornées, donc elles convergent nécessairement\footnote[1]{En effet si on prive \((u_n)\) de termes, sa borne supérieure ne peut que décroître, et \(u_n\) étant bornée, ces suite le sont aussi.} vers des limites qu'on appelle alors les \textbf{limites supérieure et inférieure} de \((u_n)\) qu'on définit formellement par:
+\[
+   \begin{cases}
+      \lim_{n \rightarrow +\infty}\sup_{k \geq n}\{ u_k \}\\
+      \lim_{n \rightarrow +\infty}\inf_{k \geq n}\{ u_k \}
+   \end{cases}
+\]
+On calcule donc ici la plus petite borne supérieure possible, et la plus grande borne inférieure possible, on peut alors montrer que la suite \(u_n\) converse \textbf{exactement} si ces deux limites sont égales.
 
 \subsection*{\subsecstyle{Comparaison Asymptotique {:}}}
 
-On dit que la suite \((u_n)\) est \textbf{dominée} par la suite \((v_n)\) et on note alors \(u_n = O(v_n)\) si et seulement si il existe une suite \textbf{bornée} \((\theta_n)\) telle qu'à partir d'un certain rang, on ait la propriété ci dessous.\+
-C'est une relation de \textbf{préordre} sur les suites, et elle est aussi \textbf{linéaire et multiplicative}.
+On dit qu'une fonction \(f\) est \textbf{dominée} par la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f = O(g)\) si et seulement si il existe une fonction \textbf{bornée} \(\theta\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
+C'est une relation de \textbf{préordre} sur les fonctions, et elle est aussi \textbf{linéaire et multiplicative}.
 \[
-    u_n = \theta_n v_n
+   f(x) = \theta(x)g(x)
 \]
 
-On dit que la suite \((u_n)\) est \textbf{négligeable} devant la suite \((v_n)\) et on note \(u_n = o(v_n)\) si et seulement si il existe une suite \((\epsilon_n)\) qui tende vers 0, telle qu'à partir d'un certain rang, on ait la propriété ci dessous.\+
+On dit qu'une fonction \(f\) est \textbf{négligeable} devant la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f = o(g)\) si et seulement si il existe une fonction \(\epsilon\) qui tends vers 0 en \(a\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
 C'est une relation \textbf{transitive, linéaire et multiplicative}.
 \[
-    u_n = \epsilon_n v_n
+   f(x) = \epsilon(x)g(x)
 \]
 
-On dit que la suite \((u_n)\) est \textbf{équivalente} à la suite \((v_n)\) et on note \(u_n \sim v_n\) si et seulement si il existe une suite \((\eta_n)\) qui tende vers 1, telle qu'à partir d'un certain rang, on ait la propriété ci-dessous.\+ 
+On dit qu'une fonction \(f\) est \textbf{équivalente} à la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f \sim o(g)\) si et seulement si il existe une fonction \(\eta\) qui tends vers 1 en \(a\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
 C'est une \textbf{relation d'équivalence} sur les suites, et elle est aussi \textbf{multiplicative}. 
 \[
-    u_n = \eta_n v_n
+   f(x) = \eta(x)g(x)
 \]
-De manière générale, on caractérise ces relations par le tableau suivant:
-\begin{center}
-    \renewcommand{\arraystretch}{1.5}%
-    \setlength\arrayrulewidth{0.8pt}
-    \begin{tabular}{| c | c | c |}
-    \hline
-    \(u_n = O(v_n) \Longleftrightarrow \frac{u_n}{v_n} \longrightarrow C\) &    \(u_n = o(v_n) \Longleftrightarrow \frac{u_n}{v_n} \longrightarrow 0\) &    \(u_n \sim v_n \Longleftrightarrow \frac{u_n}{v_n} \longrightarrow 1\)\\ [1.5ex]
-    \hline
-    \end{tabular}
- \end{center}  
-
-\chapter*{\chapterstyle{VI --- Topologie élémentaire de \(\R\)}} % 95% Fini
-\addcontentsline{toc}{section}{Topologie de \(\R\)}
-
-On admettra que \(\R\) est un \textbf{espace topologique}, on appelle \textbf{espace métrique} tout espace topologique muni d'une \textbf{distance}. En particulier, \((\R, |\cdot|)\) est alors un espace métrique.\<
-
-Par ailleurs, on appelera \textbf{ouverts} de \(\R\) les intervalles ouverts et \textbf{fermés} les intervalles fermés.
-
-\subsection*{\subsecstyle{Voisinages {:}}}
-On appelle \textbf{voisinage} d'un point \(a \in \R\) toute partie \(V\) de \(\R\) telle que pour un certain \(\epsilon\) on ait \(\ioo{a - \epsilon}{a + \epsilon} \subset V\).\+
-On appelle \textbf{voisinage} de \(+\infty\) toute partie \(V\) de \(\R\) telle que pour un certain \(A\) on ait \(\ioo{A}{+\infty} \subset V\).\+
-On appelle \textbf{voisinage} de \(-\infty\) toute partie \(V\) de \(\R\) telle que pour un certain \(A\) on ait \(\ioo{-\infty}{A} \subset V\).\+
-\begin{center}
-   \textit{
-      Un voisinage d'un point est donc une partie qui contient un ouvert qui contient ce point. Grossièrement, on peut généralement se réprésenter un voisinage comme un de ces ouverts.
-   }
-\end{center}
-On notera \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).\+
-\underline{Exemple:} \(\ico{-2}{3}\) est un voisinage de \(3\) et de \(0\).
-
-\subsection*{\subsecstyle{Adhérence {:}}}
-On appelle \textbf{adhérence} d'une partie \(A\) de \(\R\) le plus petit fermé contenant \(A\). C'est un \textbf{opérateur de clôture} pour l'inclusion, ie c'est une application \textbf{idempotente, croissante, et extensive}.\<
-
-Formellement, si on pose \((\mathcal{F}_i)_{i \in \N}\) la famille de tout les fermés contenant \(A\), on a:
-\[
-    \overline{A} := \bigcap_{i \in \N} \mathcal{F}_i
-\]
-Dans un \textbf{espace métrique}, on a aussi la caractérisation séquentielle:
-\customBox{width=15cm}{
-   L'adhérence est l'ensemble de toutes les limites finies de suites à valeurs dans \(A\).
-}
-
-\subsection*{\subsecstyle{Intérieur {:}}}
-On appelle \textbf{intérieur} d'une partie \(A\) de \(\R\) le plus grand ouvert contenu dans \(A\). C'est une application \textbf{idempotente et croissante}.\<
-
-Formellement, si on pose \((\mathcal{O}_i)_{i \in \N}\) la famille de tout les ouverts contenus dans \(A\), on a:
-\[
-    \accentset{\circ}{A} := \bigcup_{i \in \N} \mathcal{O}_i
-\]
-
-\subsection*{\subsecstyle{Frontière {:}}}
-On appelle \textbf{frontière} d'une partie \(A\) de \(\R\) et on note \(\partial A\) la partie qui vérifie une des conditions équivalentes ci-dessous:
-\[
-        \partial A = \overline{A} \backslash \accentset{\circ}{A}
-\]
-\begin{center}
-    \textit{
-        La frontière est donc l'ensemble des points situés au ``bord'' de cet ensemble.
-    }
-\end{center}
-
-\subsection*{\subsecstyle{Densité {:}}}
-Soit \(A \subseteq \R\), alors on dit que \(A\) est \textbf{dense dans} \(\R\) si et seulement si elle vérifie une des conditions équivalentes ci-dessous:
-\customBox{width=10cm}{
-   Tout \textbf{ouvert} de \(\R\) contient des éléments de \(A\).\\
-   L'adhérence de \(A\) est égale à \(\R\).
-}
-
-
-En particulier, on a par exemple les exemples canoniques suivants:
-\customBox{width=7cm}{
-   \begin{align*}
-      &\text{\(\Q\) est dense dans \(\R\)}.\\
-      &\text{\(\R \backslash \Q\) est dense dans \(\R\)}.  
-  \end{align*}
-}
-
-\subsection*{\subsecstyle{Extractions {:}}}
-On appelle extraction toute fonction \(\varphi : \N \rightarrow \N\) \textbf{strictement croissante}.\+
-On dit que \(v_n\) est une \textbf{suite extraite} de \(u_n\) si il existe une extraction \(\varphi\) telle que:
-\[
-    v_n = u_{\varphi(n)}
-\]
-On note aussi qu'une composée d'extraction est encore une extraction.
-
-\subsection*{\subsecstyle{Valeurs d'adhérence {:}}}
-On appelle \textbf{valeur d'adhérence} tout limite d'une suite-extraite de \((u_n)\) et on peut caractériser ces valeurs d'adhérence comme suit:
-\[
-    \forall \epsilon \in \R_+ \; , \; \forall N \in \N \; , \; \exists n > N \; ; \; |u_n - l| < \epsilon 
-\]
-On peut alors montrer la propriété fondamentale:
-\[
-    \Bigr[u_n \rightarrow l \in \overline{K} \Bigr] \implies \Bigr[ \forall \varphi \; ; \; u_{\varphi(n)} \rightarrow l \Bigr]
-\]
-On montre aussi le \textbf{théorème de Bolzano-Weirstrass}:
-\customBox{width=11cm}{
-   Tout suite bornée admet au moins une valeur d'adhérence.
-}
-
-\subsection*{\subsecstyle{Complétude {:}}}
-On appelle \textbf{suite de Cauchy} toute suite qui vérifie:
-\customBox{width=9cm}{
-   \(\forall \epsilon \in \R_+^* \; , \; \exists N \in \N \; , \; \forall p, q > N \; ; \; |u_p - u_q| < \epsilon \)
-}
-
-\begin{center}
-    \textit{
-        Une suite de Cauchy est donc une suite telle que les termes de la suite sont très proches \textbf{les uns des autres} à partir d'un certain rang\footnote[1]{Un corollaire immédiat est que \textbf{toute suite convergente est de Cauchy}.}.
-    }
-\end{center}
-
-Si une suite est de Cauchy, alors elle vérifie les propriétés suivantes:
-\begin{align*}
-    &\bullet \text{Elle est bornée.} \\
-    &\bullet \text{Si elle admet une valeur d'adhérence, alors elle converge.}
-\end{align*}
-\customBox{width=10cm}{
-   On appelle \textbf{espace complet} tout espace métrique dans lequel \textbf{toute suite de Cauchy} converge.\<
-    
-   En particulier \(\R\) et \(\C\) sont des espaces complets.
-}
-
-\chapter*{\chapterstyle{VI --- Limites}} % 99% Fini
-\addcontentsline{toc}{section}{Limites}
-On rapelle qu'un \textbf{voisinage} du point \(a\) est une partie qui contient \textbf{un ouvert} qui contient ce point et on note \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).
-
-\subsection*{\subsecstyle{Définition{:}}}
-\addcontentsline{toc}{subsection}{Définition}
-
-Soit \(f : D \mapsto \R\) une fonction, \(a \in \overline{D}\) et \(l \in \overline{\R}\), on dit que \(f\) admet \(l\) pour limite en \(a\) si et seulement si:
-\customBox{width=6cm}{
-   \(\forall \; V_l \in \mathscr{V}_l \; , \; \exists  V_a \in \mathscr{V}_a \; ; \; f(V_a) \subset V_l \)
-}
-
-Graphiquement, cela signifie simplement que peu importe l'ouvert \(O\) qu'on considère qui contient la limite, il sera possible de trouver un ouvert qui contient \(a\) tel que \textbf{tout ses points} soient envoyés dans \(O\).
-
-\begin{center}
-   \begin{tikzpicture}[domain=0:sqrt(5), yscale=0.8, xscale=1.5]
-      \draw[color=DarkBlue1, thick] plot (\x,{\x^2}) node[right] {$f(x) = x^2$};
-      \draw[-latex] (0,0) -- (3,0) node [right] {$x$};
-      \draw[-latex] (0, 0) -- (0,5) node [above] {$y$};
-      \draw[] (1.75, -0.1) -- (1.75,0.1) node[] at (1.75, -0.3) {$a$};
-      \draw[] (-0.1, 1.75*1.75) -- (0.1,1.75*1.75) node[] at (-0.3, 1.75*1.75) {$l$};
-      \draw[dashed] (1.75, 0.2) -- (1.75, 1.75*1.75) -- (0.14, 1.75*1.75);
-   
-      \fill[BrightBlue1!20,nearly transparent] (0,2) -- (3,2) -- (3,4) -- (0,4) -- cycle;
-      \draw[color=BrightBlue1, thick, dashed] (0,2) -- (3,2);
-      \draw[color=BrightBlue1, thick, dashed] (0,4) -- (3,4);
-   
-      \draw[color=BrightBlue1, line width=0.5mm] (0,2) -- (0,4);
-      \draw[color=BrightBlue1, line width=0.5mm] (-0.15,2) -- (0.15,2);
-      \draw[color=BrightBlue1, line width=0.5mm] (-0.15,4) -- (0.15,4);
-      \node[color=BrightBlue1] at (-0.5, 4) {\(\forall V_l\)};
-
-      \draw[color=BrightRed1, thick, dashed] (1.5,0) -- (1.5,1.5*1.5);
-      \draw[color=BrightRed1, thick, dashed] (1.95,0) -- (1.95,1.95*1.95);
-
-      \draw[color=BrightRed1, line width=0.5mm] (1.5, 0) -- (1.95, 0);
-      \draw[color=BrightRed1, line width=0.5mm] (1.5, -0.15) -- (1.5, 0.15);
-      \draw[color=BrightRed1, line width=0.5mm] (1.95, -0.15) -- (1.95, 0.15);
-      \node[color=BrightRed1] at (1.1, -0.3) {\(\exists V_a\)};
-   
-      \draw[color=BrightRed1, domain=1.5:1.95, thick] plot (\x,{\x^2});
-   \end{tikzpicture}
-\end{center}
-La nature de l'ensemble des nombres réels nous permet de caractériser cette définition et d'en déduire que \(f\) tends vers \(l\) en \(a\) si et seulement si:
-\customBox{width=10.2cm}{
-   \(\forall \epsilon \in \R^+ \; , \; \exists \delta \in \R^+ \; , \; \forall x \in D \; ; \; |x - a| < \delta \implies |f(x) - l| < \epsilon\)
-}
-
-Si la limite est en \(+ \infty\) (analogue pour le cas \(-\infty\)) on obtient la caractérisation suivante:
-\customBox{width=10cm}{
-   \(\forall \epsilon \in \R^+ \; , \; \exists M \in \R \; , \; \forall x \in D \; ; \; x > M \implies |f(x) - l| < \epsilon\)
-}
-
-Enfin si la limite est \(+ \infty\) (analogue pour le cas \(-\infty\)) on obtient:
-\customBox{width=10cm}{
-   \(\forall M \in \R \; , \; \exists \delta \in \R^+ \; , \; \forall x \in D \; ; \; |x - a| < \delta \implies f(x) > M\)
-}
-
-\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
-\addcontentsline{toc}{subsection}{Caractérisation séquentielle}
-
-Soit \(f\) une fonction, alors elle tends vers \(l\) en \(a\) si et seulement si pour toute suite \((u_n)_{n \in \N}\) qui tends vers \(a\) on a:
-\customBox{width=3cm}{
-   \(f(u_n) \underset{+\infty}{\longrightarrow} l\)
-}
-\begin{center}
-   \textit{
-      En particulier, si on arrive à trouver deux suites qui tendent vers \(a\) telles que \(f(u_n)\) et \(f(v_n)\) tendent vers deux valeurs différentes, alors la limite de \(f\) ne peut pas exister.
-   }
-\end{center}
+Ces relations sont évidemment aussi valables pour les suites en remplaçant partout le terme "fonction" par le terme "suite".
 \pagebreak
 
-\subsection*{\subsecstyle{Propriétés{:}}}
-\addcontentsline{toc}{subsection}{Propriétés}
-
-Gràce aux définitions ci-dessus, on peut en déduire plusieurs propriétés, par exemple on voit directement que si \(f\) admet une limite \textbf{finie} en \(a\), alors elle est \textbf{bornée au voisinage de \(a\)}\footnote[1]{Il suffit d'utiliser la définition pour un \(\epsilon\) fixé}. \<
-
-Les limites de fonctions héritent des mêmes propriétés opératoires que les limites de suites, en particulier, dans le cas de fonctions à limites finies, le passage à la limite est \textbf{linéaire et multiplicatif}.\+
-Dans le cas des limites inifines et des quotients, des formes indéterminées peuvent apparaître et nécessitent les précautions usuelles pour conclure.\<
-
-Cette définion, aussi appellée \textbf{limite pointée}, nous permet alors d'avoir le \textbf{théorème de composition de limites}.\+
-En effet, pour \(a, b, l \in \overline{\R}\) et deux fonctions telles que \(f \underset{b}{\rightarrow}l\) et \(g \underset{a}{\rightarrow}b \) on a:
-\customBox{width=4cm}{
-   \(\lim_{a} (f \circ g)(x) = l\)
-}
-
-Enfin, tout les théorèmes d'encadrements des suites s'étendent dans le cadre des fonctions.\<
-
-On peut considérer les restrictions de \(f\) à droite ou à gauche de \(a\) et ainsi définir \textbf{les limites latérales} de \(f\) en \(a\) qui sont analogues à la définition principale.
-
-\subsection*{\subsecstyle{Comparaison asymptotique II{:}}}
-\addcontentsline{toc}{subsection}{Comparaison asymptotique II}
-
-Les trois différentes relations de comparaison se comportent de la même manière avec les fonctions qu'avec les suites. En particulier, on a toujours:
+De manière générale, quand les fonctions ne s'annulent pas au voisinage de \(a\), on caractérise ces relations par le tableau suivant:
 \begin{center}
    \renewcommand{\arraystretch}{1.5}%
    \setlength\arrayrulewidth{0.8pt}
-
    \begin{tabular}{| c | c | c |}
    \hline
-   \(f \underset{a}{=} O(g) \Longleftrightarrow \frac{f}{g} \underset{a}{\longrightarrow} C\) &    \(f \underset{a}{=} o(g) \Longleftrightarrow \frac{f}{g} \underset{a}{\longrightarrow} 0\) &    \(f \underset{a}{\sim} g \Longleftrightarrow \frac{f}{g} \underset{a}{\longrightarrow} 1\)\\ [1.5ex]
+   \(f = O(g) \Longleftrightarrow \frac{f}{g}(x) \longrightarrow C\) &    \(f = o(g) \Longleftrightarrow \frac{f}{g}(x) \longrightarrow 0\) &    \(f \sim g \Longleftrightarrow \frac{f}{g}(x) \longrightarrow 1\)\\ [1.5ex]
    \hline
    \end{tabular}
 \end{center}  
+
 On peut notamment caractériser le fait qu'une limite existe par:
-\customBox{width=4.5cm}{
-   \(f \longrightarrow l \Longleftrightarrow f = l + o(1)\)
-}
-Aussi, une caractérisation trés utile des équivalents nous donne\footnote[2]{La démonstration est triviale et utilise simplement la caractérisation en terme de quotient}:
-\customBox{width=5cm}{
-   \(f \sim g \Longleftrightarrow f = g + o(g)\)
-}
+\[
+   f \longrightarrow l \Longleftrightarrow f = l + o(1)
+\]   
+Aussi, une caractérisation trés utile des équivalents nous donne\footnote[1]{La démonstration est triviale et utilise simplement la caractérisation en terme de quotient}:
+\[
+   f \sim g \Longleftrightarrow f = g + o(g)
+\]
 
 Enfin, il est utile de connaître ces équivalents usuels, on considère le cas général d'une fonction \(u\) qui tends vers 0 en \(a\), alors on a les équivalents suivants (en \(a\)):
 
@@ -442,48 +205,16 @@ Enfin, il est utile de connaître ces équivalents usuels, on considère le cas 
 
 \chapter*{\chapterstyle{VI --- Continuité}} % 99% Fini
 \addcontentsline{toc}{section}{Continuité}
+On étudie ici les propriétés des fonctions réelles continues, dont on sait montrer la continuité depuis le chapitre de topologie, ici on s'intéteressera aux spécificités des fonctions continues réelles, notamment leurs comportement vis à vis des opérations et les différents raffinements de la notion de continuité que l'on pourrait développer.
 
-On rapelle qu'une partie de \(\R\) est \textbf{connexe} si elle ne peut pas être écrite comme réunion d'ouverts disjoints, informellement, c'est un ensemble "d'un seul tenant".\+
-On rapelle qu'une partie de \(\R\) est \textbf{compacte} si c'est une partie fermée et bornée, typiquement les segements ou les unions de segments.
-
-\subsection*{\subsecstyle{Définition{:}}}
-\addcontentsline{toc}{subsection}{Définition}
-
-On dit que la fonction \(f\) est \textbf{continue} en \(a\) si et seulement si:
-\customBox{width=3.5cm}{
-   \(f(x) \underset{a}{\longrightarrow} f(a)\)
-}
-\begin{center}
-   \textit{
-      Une fonction est donc continue en un point \(a\) si sa limite en \(a\) est égale à sa valeur évaluée en \(a\).
-   }
-\end{center}
-Le lien clair entre le concept de limite et celui de continuité nous permet de définir \textbf{la continuité latérale} d'une fonction, qui est simplement la continuité à droite ou à gauche qui découle directement de notre définition des limites latérales d'une fonction.\<
-
-On peut étendre cette définition à la continuité sur \textbf{un intervalle} \(I\), en la définissant comme la continuité en \textbf{tout points de \(I\)}.\+
-
-On note \(\mathscr{C}(D, \K)\) l'ensemble des fonctions continues sur \(D\) à valeurs dans \(\K\).
-
-\subsection*{\subsecstyle{Propriétés{:}}}
-\addcontentsline{toc}{subsection}{Propriétés}
-
-Une des propriétés fondamentales des fonctions continues et de l'ensemble \(\mathscr{C}(D, \K)\) est qu'il est stable par somme, multiplication externe et mulplication interne.
+\subsection*{\subsecstyle{Opérations générales sur les fonctions continues {:}}}
+On note \(\mathscr{C}(D, \K)\) l'ensemble des fonctions continues sur \(D\) à valeurs dans \(\K\), alors on peut montrer que cet ensemble est stable par somme, multiplication externe et mulplication interne.
 \begin{center}
    \textit{
       En d'autres termes cet ensemble est non seulement un \textbf{sous-espace vectoriel} de l'espace des fonctions, mais même une \textbf{sous-algèbre} de cet espace.
    }
 \end{center}
-De plus, l'inverse d'une fonction continue qui ne s'annule pas est aussi une fonction continue, et la composition de fonctions continues composables est aussi une fonction continue\footnote[1]{
-   Attention pour la composition il faut bien considèrer les domaines de défintion manipulés.}.
-
-\subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
-\addcontentsline{toc}{subsection}{Caractérisation séquentielle}
-
-Comme dans le cas des limites on peut caractériser la continuité par les suites, en effet \(f\) est continue en \(a\) si et seulement si pour toute suite \((u_n)_{n\in\N}\) qui admet pour limite \(a\) on a:
-\customBox{width=3.5cm}{
-   \(f(u_n) \underset{+\infty}{\longrightarrow} f(a)\)
-}
-
+De plus, l'inverse d'une fonction continue qui ne s'annule pas est aussi une fonction continue, et la composition de fonctions continues composables est aussi une fonction continue\footnote[1]{Attention pour la composition il faut bien considèrer les domaines de défintion manipulés.}.
 \subsection*{\subsecstyle{Prolongement par continuité {:}}}
 \addcontentsline{toc}{subsection}{Prolongement par continuité}
 
@@ -497,117 +228,28 @@ Considérons une fonction \(f\) continue sur un intervalle \(I \backslash \{a\}\
    \end{aligned}
 \]
 Alors par construction \(\widetilde{f}\) est bien continue sur tout \(I\) et on l'appelle \textbf{le prolongement par continuité} de \(f\) en \(a\).
-
-\subsection*{\subsecstyle{Théorèmes généraux{:}}}
-\addcontentsline{toc}{subsection}{Théorèmes généraux}
-
-De la continuité découlent des grands théorèmes généraux dans l'études des fonctions, en premier lieu on déduit le \textbf{théorème des valeurs intérmédiaires} et on peut alors montrer que:
-\customBox{width=12cm}{
-   L'image d'un \textbf{connexe} par une fonction continue est un \textbf{connexe}.
-}
-Ou dans sa forme analytique pour \(f\) une fonction continue sur \(\icc{a}{b}\):
-\customBox{width=12cm}{
-   Pour tout réel entre \(f(a)\) et \(f(b)\), il en existe un antécédent entre \(a\) et \(b\).
-}
-
-Remarquer que l'antécédent en question \textbf{n'est pas nécessairement unique.}. Graphiquement, on a:
+\subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
+\addcontentsline{toc}{subsection}{Théorème des valeurs intermédiaires}
+Le chapitre de topologie nous a permi de montrer que l'image d'un connexe par une application continue est un connexe, or dans les réels, on a que:
 \begin{center}
-   \begin{tikzpicture}[domain=0:sqrt(5), yscale=0.8, xscale=1.5]
-      \draw[color=DarkBlue1, thick] plot (\x,{\x^2}) node[right] {$f(x) = x^2$};
-      \draw[-latex] (0,0) -- (3,0) node [right] {$x$};
-      \draw[-latex] (0, 0) -- (0,5) node [above] {$y$};
-      \draw[color=BrightBlue1] (1.75, -0.1) -- (1.75,0.1) node[] at (1.75, -0.55) {$c$};
-      \draw node[] at (1.414, -0.55) {$a$};
-      \draw node[] at (2, -0.5) {$b$};
-
-      \draw[color=BrightBlue1] (-0.1, 1.75*1.75) -- (0.1,1.75*1.75) node[] at (-0.5, 1.75*1.75) {$f(c)$};
-      \draw[dashed] (1.75, 0.2) -- (1.75, 1.75*1.75) -- (0.14, 1.75*1.75);
-   
-      \fill[BrightBlue1!20,nearly transparent] (0,2) -- (3,2) -- (3,4) -- (0,4) -- cycle;
-      \draw[color=BrightBlue1, thick, dashed] (0,2) -- (3,2);
-      \draw[color=BrightBlue1, thick, dashed] (0,4) -- (3,4);
-   
-      \draw node[] at (-0.5, 4) {$f(b)$};
-      \draw node[] at (-0.5, 2) {$f(b)$};
-
-      \draw[color=BrightBlue1, line width=0.5mm] (0,2) -- (0,4);
-      \draw[color=BrightBlue1, line width=0.5mm] (-0.10,2) -- (0.10,2);
-      \draw[color=BrightBlue1, line width=0.5mm] (-0.10,4) -- (0.10,4);
-
-      \draw[color=BrightBlue1, thick, dashed] (1.414,0) -- (1.414,2);
-      \draw[color=BrightBlue1, thick, dashed] (2,0) -- (2,4);
-
-      \draw[color=BrightBlue1, line width=0.5mm] (1.414, 0) -- (2, 0);
-      \draw[color=BrightBlue1, line width=0.5mm] (1.414, -0.15) -- (1.414, 0.15);
-      \draw[color=BrightBlue1, line width=0.5mm] (2, -0.15) -- (2, 0.15);
-   \end{tikzpicture}
+   \textbf{Les connexes de \(\R\) sont exactements les intervalles.}
 \end{center}
-
-On en déduit \textbf{le théorème de la bijection}\footnote[1]{Voir la partie ci-aprés pour une définition du concept d'homéomorphisme.}, si \(f\) est continue sur \(\ioo{a}{b}\) et \textbf{strictement monotone} alors:
-\customBox{width=10cm}{
-   Elle réalise \textbf{un homéomorphisme sur son image}.
-}
-
-On montre aussi le \textbf{thèorème des bornes atteintes}, si \(f\) est continue, alors on a:
-\customBox{width=12cm}{
-   L'image d'un \textbf{compact} par une fonction continue est un \textbf{compact}.
-}
-
-En particulier l'image d'un segment par une fonction continue est aussi un segment.
-
-\subsection*{\subsecstyle{Continuité uniforme {:}}}
-\addcontentsline{toc}{subsection}{Continuité uniforme}
-
-Il existe une propriété de régularité \textbf{plus forte que la continuité} appelée \textbf{continuité uniforme}\footnote[2]{Il est important de noter que la continuité uniforme n'est plus une propriété locale, mais globale, sur un intervalle.} définie comme:
-\customBox{width=12cm}{
-   \(\forall \epsilon > 0 \; , \; \exists \delta_{\epsilon} > 0  \; , \; \forall (x_1, x_2) \in I^2 \; ; \; |x_1 - x_2| < \delta_{\epsilon} \implies |f(x_1) - f(x_2)| < \epsilon \)
-}
-La différence fondamentale entre ces deux propriétés étant que \(\delta\) \textbf{ne dépend plus que de \(\epsilon\)}. En particulier on peut l'interpréter:
+On en déduit donc le théorème des valeurs intermédiaires:
 \begin{center}
-   \textit{Pour une distance \(\epsilon\) donnée, si deux réels sont assez proches (au sens \(\delta\)-proches), alors leurs images seront assez proches (au sens \(\epsilon\)-proches).}
+   \textbf{L'image continue d'un intervalle est un intervalle.}
 \end{center}
-
-Un des théorèmes principaux en relation avec la continuité uniforme est \textbf{le théorème de Heine} qui montre:
-\customBox{width=13cm}{
-   Tout fonction continue sur un \textbf{compact} y est \textbf{uniformément continue}.
-}
-En particulier, tout fonction continue sur un segment y est uniformément continue.
-\pagebreak
-
-\subsection*{\subsecstyle{Lipschitzianité{:}}}
-\addcontentsline{toc}{subsection}{Lipschitzianité}
-
-Il existe une condition de régularité \textbf{encore plus forte} que la continuité uniforme qui est le caractère \(K\)-lipschitzien. On dit qu'une fonction est \(K\)-lipschitzienne pour \(K \in \R\) si et seulement si pour tout \(x, y\) distincts dans le domaine de définition, on a:
-\customBox{width=5cm}{
-   \(|f(x) - f(y)| \leq K|x - y|\)
-}
+\subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
+Le chapitre de topologie nous a aussi permi de montrer que l'image d'un compact par une application continue est un compact, or dans les réels, on a donc dans ce cas particulier deux conséquences:
+\begin{itemize}
+   \item L'image continue d'un compact est borné.
+   \item Les bornes sont atteintes.
+\end{itemize}
+En particulier, l'image continue d'un segment est un segment.
+\subsection*{\subsecstyle{Théorème de la bijection{:}}}
+On déduis du théorème des valeurs intermédiaires que si \(f\) est continue sur \(\ioo{a}{b}\) et \textbf{strictement monotone} alors:
 \begin{center}
-   \textit{
-      Une telle fonction a donc la particularité d'avoir \textbf{ses pentes bornées} par un réel fixé\footnote[1]{Il suffit de diviser par \(|x - y|\) non nul pour le voir.}.
-   }
+   Elle réalise \textbf{un homéomorphisme} sur son image.
 \end{center}
-La \(K\)-lipschitziannité étant une propriété plus forte que la continuité uniforme, plus précisément, on a la suite d'implications:
-\customBox{width=12cm}{
-   \(K\)-lipschitzienne \(\implies\) Uniformément continue\(\implies\) Continue
-}
-
-Par ailleurs si \(K \in \ico{0}{1}\), alors on dit que \(f\) est \textbf{contractante}, ce type de fonctions a souvent un trés bon comportement de convergence quand on le retrouve dans des définitions de suites par récurrence.
-
-\subsection*{\subsecstyle{Homéomorphismes {:}}}
-\addcontentsline{toc}{subsection}{Homéomorphismes}
-
-On peut généraliser le concept de fonctions continues dans un cadre plus général d'applications entre structures, en particulier entre \textbf{espaces topologiques}. On utilise alors une définition différente de la continuité, une définition \textbf{globale}:
-\begin{center}
-   \textit{L'image réciproque d'un ouvert est un ouvert\footnote[2]{Les ouverts sont les éléments même d'une topologie.}.}
-\end{center}
-
-Soit \(\varphi\) une application entre deux tels espaces telle que \(\varphi\) soit bijective, continue et \textbf{dont la réciproque est continue}, alors \(\varphi\) est un \textbf{homéomorphisme} et on dit que les deux espaces sont \textbf{homéomorphes}.
-\begin{center}
-   \textit{
-      C'est une application fondamentale du concept de continuité car les homémorphismes permettent exactement de caractériser des espaces identiques à déformation continue près\footnote[3]{Formellement, les homéomorphismes sont exactement les isomorphismes d'espaces topologiques.}.
-   }
-\end{center}
-\underline{Exemple:} Du point de vue de la topologie, un donut est une tasse c'est à dire que l'on peut déformer un donut continument pour obtenir une tasse.
 
 \chapter*{\chapterstyle{VI --- Dérivabilité}} % 99% Fini
 \addcontentsline{toc}{section}{Dérivabilité}

@@ -36,8 +36,7 @@ L'ordre de la convergence nous donne alors des indications sur la vitesse de la 
    &\bullet \;\; \text{Si \(\alpha = 2\), on dira que la convergence est \textbf{quadratique}}\\
    &\bullet \;\; \text{\ldots}
 \end{align*}
-
-\chapter*{\chapterstyle{XIV --- Résolution approchée}}
+\chapter*{\chapterstyle{XIV --- Résolution approchée d'équation}}
 \addcontentsline{toc}{section}{Résolution approchée}
 Dans ce chapitre on se donne une fonction \(f : \R \rightarrow \R\) de classe \(\mathcal{C}^1\) sur \(\R\) et on cherche à approximer les solution de l'équation \(f(x) = 0\).\<
 
@@ -109,7 +108,6 @@ On peut alors montrer une majoration de l'erreur d'approximation, qui est donné
 Avec \(M = \underset{x \in I}{\sup} |f''(x)|\) et \(m = \underset{x \in I}{\inf} |f'(x)|\).\<
 
 Cette méthode a donc une convergence en général \textbf{quadratique}, mais est trés dépendante de la condition initiale choisie et des propriétés de la fonction, en effet si la dérivée s'annulle pour un terme de la suite, la tangente n'aura pas d'intersection avec les abcisses et donc la méthode ne convergera pas. Elle peut aussi osciller ou converger vers une autre racine que celle recherchée.
-
 \chapter*{\chapterstyle{XIV --- Interpolation}}
 \addcontentsline{toc}{section}{Interpolation}
 Dans ce chapitre, on cherche à approximer par un polynôme une fonction donnée par un nuage de \(n + 1\) points de la forme \(\{(x_0, f(x_0)), \ldots,(x_n, f(x_n))\}\), on appelera une telle approximation \textbf{interpolation de la fonction} et on appelera un tel polynôme \textbf{polynôme interpolateur}.\<
@@ -240,7 +238,6 @@ Avec \(m_x = \min(x, x_0, \ldots, x_n)\) et \(M_x = \max(x, x_0, \ldots, x_n)\).
 
 \underline{Exemple:} On cherche à interpoler la fonction logarithme avec le nuage de points \(\{(2, \ln(2)), (4, \ln(4)), (5, \ln(5))\}\). 
 On calcule le polynôme d'interpolation et on obtient \(P(x) = \frac{-1}{5}()\)
-
 \chapter*{\chapterstyle{XIV --- Dérivation Numérique}}
 \addcontentsline{toc}{section}{Dérivation Numérique}
 
@@ -327,7 +324,6 @@ Finalement on a majoré notre erreur par:
    \]
 }
 On peut alors établir une formule générale de l'erreur (en considérant alors une famille \((x_i)\) de \(n+1\) abscisses, pour lesquels on determine des \((\alpha_i)\)) et on a l'erreur d'approximation au point \(x\) est donnée par:
-
 \chapter*{\chapterstyle{XIV --- Intégration Numérique}}
 \addcontentsline{toc}{section}{Intégration Numérique}
 

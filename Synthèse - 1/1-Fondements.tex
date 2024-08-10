@@ -331,11 +331,14 @@ On appelle \textbf{fonction} ou \textbf{application} des cas particulier de rela
 
 On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe, alors \(f\) est une \textbf{application} si et seulement si \(E = D_f\) et on note alors \(\mathscr{F}(E, F)\) l'ensemble des \textbf{applications} de E vers F.\<
 
-Si \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\) et on a alors la propriété suivante:
-\customBox{width=15cm, left*=0mm, right*=0mm}{
-    L'ensemble des fonctions muni de la composition est alors muni \textbf{d'une structure d'anneau}.
-}
+Si \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\)
 
+\subsection*{\subsecstyle{Cas des suites {:}}}
+Une suite à valeurs dans \(E\) n'est alors qu'un cas particulier en la forme d'une fonction \(u : \N \longrightarrow E\), ce sont des objets d'étude trés importants en analyse et notamment en topologie. Dans le cas des suites on peut définir la notion de \textbf{suite extraite}, car si \(u_n\) est une suite dans \(E\) et \(k_n\) est \textbf{suite d'entiers croissante}, alors on définit une suite extraite de \(u_n\) par:
+\[
+   u \circ k : \N \longrightarrow E
+\]
+C'est simplement les termes de la suite \(u_n\) dont on ne choisit que les termes d'indices donnés par \(k_n\).
 \subsection*{\subsecstyle{Graphe {:}}}
 On définit \textbf{le graphe} de \(f\) comme suit:
 \[
