@@ -75,7 +75,6 @@ On peut alors se rendre compte qu'une propriété manquante à \(\R\) est que ce
    \overline{R} := \R \cup {-\infty, +\infty}
 \]
 Les opérations algébriques ne s'étendent alors pas parfaitement mais les symboles "infinis" ainsi ajoutés facilitent beaucoup l'énoncé de certains théorèmes et en particulier on a alors une meilleure propriété de la borne supérieure car on a que \textbf{toute partie non-vide admet une borne supérieure et inférieure}, éventuellement infinies.
-
 \chapter*{\chapterstyle{VI --- Limites réelles}} % 95% Fini
 \addcontentsline{toc}{section}{Limites réelles}
 On sait déja étudier la convergence de fonctions et de suites depuis le chapitre sur la topologie et la définition du concept de limite, ici on étudiera plus précisément les application (et suites) dans \(\R\) ou \(\C\) et les conséquences des propriétés spécifiques de \(\R\) sur la convergence.\<
@@ -202,7 +201,6 @@ Enfin, il est utile de connaître ces équivalents usuels, on considère le cas 
       On remarquera dans le chapitre sur les développements limités que la grande majorité de ces équivalents ne sont que le premier terme non-nul du développement limité d'une fonction.
    }
 \end{center}
-
 \chapter*{\chapterstyle{VI --- Continuité}} % 99% Fini
 \addcontentsline{toc}{section}{Continuité}
 On étudie ici les propriétés des fonctions réelles continues, dont on sait montrer la continuité depuis le chapitre de topologie, ici on s'intéteressera aux spécificités des fonctions continues réelles, notamment leurs comportement vis à vis des opérations et les différents raffinements de la notion de continuité que l'on pourrait développer.
@@ -250,7 +248,6 @@ On déduis du théorème des valeurs intermédiaires que si \(f\) est continue s
 \begin{center}
    Elle réalise \textbf{un homéomorphisme} sur son image.
 \end{center}
-
 \chapter*{\chapterstyle{VI --- Dérivabilité}} % 99% Fini
 \addcontentsline{toc}{section}{Dérivabilité}
 
@@ -285,8 +282,8 @@ De plus, l'inverse d'une fonction dérivable qui ne s'annule pas est aussi une f
 \subsection*{\subsecstyle{Etudes des variations {:}}}
 \addcontentsline{toc}{subsection}{Etudes des variations}
 
-Si on considère une fonction dérivable, alors on appelle \textbf{point critique} tout point \(a\) où la fonction est dérivable et où \(f'(a) = 0\). Intuitivement, c'est un point du domaine de définition tel que la fonction ne varie pas en ce point.\+
-En particulier, une fonction est dérivable en un point \textbf{intérieur}\footnote[1]{Si le point n'est pas intérieur et est un extremum, la dérivée n'est pas nécessairement nulle. Par exemple la restriction (à l'arrivée) de ln(x) à \(\R^-\) est dérivable à gauche en 1, y admet un maximum, mais la dérivée n'est pas nulle.} et y admet un \textbf{extremum local}, alors c'est un point critique.\<
+Si on considère une fonction dérivable, alors on appelle \textbf{point critique} tout point \(a\) où \(f'(a) = 0\).\+
+En particulier, si une fonction est dérivable en un point \textbf{intérieur}\footnote[1]{Si le point n'est pas intérieur et est un extremum, la dérivée n'est pas nécessairement nulle. Par exemple la restriction (à l'arrivée) de ln(x) à \(\R^-\) est dérivable à gauche en 1, y admet un maximum, mais la dérivée n'est pas nulle.} et y admet un \textbf{extremum local}, alors c'est un point critique.\<
 
 Enfin le signe de la dérivée nous permet de comprendre les variations de la fonction sur un \textbf{intervalle}, en particulier on a la propriété suivante:
 \begin{center}
@@ -319,11 +316,7 @@ Soit \(f\) une fonction dérivable, alors on peut appliquer à \(f\) l'opérateu
    \hline
    \end{tabular}
 \end{center}  
-Soit \(f\) de classe \(\mathscr{C}^n\), alors dans le cas de dérivées successives, la propriété pour la somme ci dessus se généralise aisément en:
-\[
-   (f + g)^{(n)} = f^{(n)} + g^{(n)}
-\]
-Et la formule du produit, appellée \textbf{formule de Liebniz} se généralise aussi en:
+Soit \(f\) de classe \(\mathscr{C}^n\), alors dans le cas de dérivées successives, la propriété pour la somme ci dessus se généralise aisément et la formule du produit, appellée \textbf{formule de Liebniz} se généralise aussi en:
 \customBox{width=5.5cm}{
    \[(fg)^{(n)} = \sum_{k=0}^{n}\binom{k}{n}f^{(k)}g^{(n - k)}\]
 }
@@ -336,8 +329,8 @@ On peut généraliser ce résultat\footnote[2]{Même début de preuve que ci-des
 Cette propriété permet de prouver la dérivabilité d'une réciproque, ainsi que de trouver sa dérivée.\+
 \underline{Exemple:} \(f: x \mapsto x^2\) est dérivable et sa dérivée ne s'annule pas sur cet \(\icc{1}{2}\), donc elle est bijective sur \(\icc{1}{4}\) et sa réciproque est dérivable de dérivée \(\frac{1}{2\sqrt{x}}\).
 
-\subsection*{\subsecstyle{Accroissements finis {:}}}
-\addcontentsline{toc}{subsection}{Accroissements finis}
+\subsection*{\subsecstyle{Théorème des accroissements finis {:}}}
+\addcontentsline{toc}{subsection}{Théorème des accroissements finis}
 
 Soit \(f\) une fonction continue sur un intervalle \(\icc{a}{b}\) et dérivable sur \(\ioo{a}{b}\), le \textbf{théorème des accroissements finis} assure l'existence d'un \(c \in \ioo{a}{b}\) tel que:
 \customBox{width=4.5cm}{
@@ -368,12 +361,14 @@ Graphiquement, on voit sur le dessin ci-dessous que les deux taux d'accroissemen
 
    \end{tikzpicture}
 \end{center}
-Un cas particulier remarquable de ce théorème est le \textbf{théorème de Rolle} dans le cas où \(f(a) = f(b)\), donc dans le cas où le taux d'acroissement global est nul, alors on a l'existence d'un \(c \in \ioo{a}{b}\) tel que \(f'(c) = 0\).\<
+Un cas particulier\footnote[1]{La preuve nécessite d'ailleurs de s'y ramener, en effet on considère la fonction \(\phi : x \mapsto \frac{f(b) - f(a)}{b-a}(x -a) + f(a)\), alors \(\phi(x) = \phi(y)\) et en sachant que la fonction est bornée et atteint ses bornes, on trouve des points critiques.} remarquable de ce théorème est le \textbf{théorème de Rolle} dans le cas où \(f(a) = f(b)\), donc dans le cas où le taux d'acroissement global est nul, alors on a l'existence d'un \(c \in \ioo{a}{b}\) tel que \(f'(c) = 0\).
+\subsection*{\subsecstyle{Inégalité des accroissements finis {:}}}
+\addcontentsline{toc}{subsection}{Inégalité des accroissements finis}
 
-Si \(f'\) est bornée\footnote[1]{En effet, la lipschitzianité est exactement le concept d'une fonction ayant ses pentes bornées.}, on montre aussi \textbf{l'inégalité des accroissements finis}:
-\customBox{width=8cm}{
-   \(f\) est \(K\)-lipschitzienne avec \(K = \sup|f'|\)
-}
+L'inégalité des accroissements finis donne une condition suffisante de lipschitziannité, en effet si \(f'\) est bornée, alors \(f\) est \(K\)-lipschitzienne avec \(K = \sup|f'|\), ie on a:
+\[
+   |f(b) - f(a)| \leq K|b-a|
+\]
 \underline{Exemple:} \(|\sin(x)'| = |\cos(x)| \leq 1\) donc sinus est une fonction \(1\)-lipschitzienne et donc on montre par exemple que \(|\sin(x) - \sin(0)| \leq |x - 0| \Longleftrightarrow |\sin(x)| \leq |x|\)
 
 \subsection*{\subsecstyle{Théorème de la limite de la dérivée{:}}}
@@ -383,20 +378,6 @@ Soit \(f\) une fonction continue sur \(I\) et dérivable sur \(I \; \backslash \
 
 En particulier pour une fonction \(f \in \mathscr{C}^1(I \; \backslash \; \{a\}, \R)\), si \({\lim}f\) et \({\lim}f'\) existent, alors le prolongement à \(I\) tout entier est de classe \(\mathscr{C}^1\).\+
 En général pour une fonction \(f \in \mathscr{C}^k(I \; \backslash \; \{a\}, \R)\), si les limites de toutes les dérivées intermédiaires existent, alors le prolongement à \(I\) tout entier est de classe \(\mathscr{C}^k\).
-
-\subsection*{\subsecstyle{Difféomorphismes {:}}}
-\addcontentsline{toc}{subsection}{Difféomorphismes}
-
-A l'instar des homéomorphismes le concept de fonctions dérivables se généralise dans un cadre plus général d'applications \textbf{différentiables} entre structures, en particulier entre \textbf{variétés différentielles}. On utilise alors une définition différente de la dérivabilité.\<
-
-Soit \(\varphi\) une application entre deux tels espaces telle que \(\varphi\) soit bijective, différentiable et \textbf{dont la réciproque est différentiable}, alors \(\varphi\) est un \textbf{difféomorphismes} et on dit que les deux espaces sont \textbf{difféomorphes}.
-\begin{center}
-   \textit{
-      C'est une application fondamentale du concept de dérivabilité car les difféomorphismes permettent exactement de caractériser des espaces identiques du point de vue de l'analyse.
-   }
-\end{center}
-Par exemple les difféomorphismes permettent de préserver le caractère \textbf{tangent} entre deux espaces.
-
 \chapter*{\chapterstyle{VI --- Convexité}} % 99% Fini
 \addcontentsline{toc}{section}{Convexité}
 
@@ -451,7 +432,6 @@ Finalement on peut généraliser l'inégalité de la définition par \textbf{l'i
    \[f\biggl(\sum_{i \in \N} \lambda_i x_i\biggl) \leq  \sum_{i \in \N} \lambda_i f(x_i)\]
 }
 Qui généralise l'intuition selon laquelle \textbf{l'image d'un barycentre est en dessous du barycentre des images}.
-
 \chapter*{\chapterstyle{VI --- Développements limités}} % 99% Fini
 \addcontentsline{toc}{section}{Développements limités}
 
@@ -486,7 +466,7 @@ Aussi, les développements limités se comportent de manière intuitive par rapp
 \subsection*{\subsecstyle{Changement de voisinage {:}}}
 \addcontentsline{toc}{subsection}{Changement de voisinage}
 
-On peut ramener la recherche d'un déveoppement limité en un point à un développement limité en \(0\) par une translation.\footnote[1]{En effet, un DL\((a, f(x))\) est un DL\((0, f(x + a))\) à translation près (faire un dessin). Il suffit donc de chercher un DL\((0, f(x + a))\) puis de translater à nouveau sur la fonction originelle.}\<
+On peut ramener la recherche d'un déveoppement limité en un point à un développement limité en \(0\) par une translation.\footnote[2]{En effet, un DL\((a, f(x))\) est un DL\((0, f(x + a))\) à translation près (faire un dessin). Il suffit donc de chercher un DL\((0, f(x + a))\) puis de translater à nouveau sur la fonction originelle.}\<
 
 On peut ramener la recherche d'un déveoppement asymptotique en \(\pm \infty\), à un développement limité en \(0\) par le changement de variable
 \( X = \frac{1}{x}\).\<
@@ -555,7 +535,6 @@ Il est utile de connapitre les développements limités en \(0\) des fonctions u
    \hline
    \end{tabular}
 \end{center} 
-
 \chapter*{\chapterstyle{VI --- Intégration}} % 99% Fini
 \addcontentsline{toc}{section}{Intégration}
 
@@ -812,13 +791,11 @@ Soit \(a \in \R^+\), il est possible d'exploiter la parité de la fonction\footn
 \end{itemize}
 
 
-
-
 \chapter*{\chapterstyle{VI --- Intégrales Généralisées}}
 \addcontentsline{toc}{section}{Intégrales Généralisées}
 Aprés avoir défini précédemment l'intégrale de fonctions intégrables sur \textbf{sur un segment}, nous allons définir l'intégrale de fonction sur des intervalles \textbf{ouvert ou semi-ouvert}, ou encore les integrales de fonctions \textbf{non-bornées}, on les appellera alors \textbf{intégrales généralisées}.
 \subsection*{\subsecstyle{Définition {:}}}
-Soit \(I\) un intervalle \(\ioc{a}{b}\), et \(f\) une fonction intégrable sur \textbf{tout sous-segment} de \(\ioc{a}{b}\), alors on dira que \(f\) est \textbf{localement intégrable} et on définit alors une fonction auxiliaire \(\phi\) telle que :
+Soit \(I\) un intervalle \(\ioc{a}{b}\), et \(f\) une fonction intégrable sur \textbf{tout sous-segment} de \(\icc{a}{b}\), alors on dira que \(f\) est \textbf{localement intégrable} et on définit alors une fonction auxiliaire \(\phi\) telle que :
 \[
    \phi(x) = \int_{x}^{b} f(t) \d t
 \]
@@ -893,7 +870,6 @@ On peut alors définir des nouvelles fonctions par des intégrales, et dont le d
 \[
    \Gamma(x): x \mapsto \int_{0}^{+\infty} e^{-t}t^{x-1} \d t   
 \]
-
 \chapter*{\chapterstyle{VI --- Séries Numériques}}
 \addcontentsline{toc}{section}{Séries Numériques}
 Soit \((u_n)_{n\in\N}\) une suite, on appelle \textbf{série numérique de terme général \(u_n\)} la suite \(S_n\) des \textbf{sommes partielles} des termes de \((u_n)_{n\in\N}\), plus formellement, on a:
@@ -992,7 +968,6 @@ On peut répondre affirmativement à ces question en introduisant le concept de 
    &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme} \\
    &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme}
 \end{align*}
-
 \chapter*{\chapterstyle{VI --- Suites de fonctions}}
 \addcontentsline{toc}{section}{Suites de fonctions}
 Soit \(E \subseteq F\), on appelle \textbf{suite de fonctions} une suite \((f_n)_n\in\N\) dont les éléments sont des fonctions de \(E\) dans \(F\). Dans ce chapitre, on cherchera à définir une notion de convergence de telle suites.
@@ -1134,7 +1109,6 @@ On se demande maintenant quand peut-on dire qu'une fonction continue est limite 
 \begin{center}
    \textbf{Toute fonction continue sur un segment est limite uniforme d'une suite de fonctions polynomiales.}
 \end{center}
-
 \chapter*{\chapterstyle{VI --- Séries de fonctions}}
 \addcontentsline{toc}{section}{Séries de fonctions}
 On appelle série de fonctions de terme général \(f_n\) la suite \(S_n\) des \textbf{sommes partielles} des termes de la suite de fonctions \((f_n)_{n\in\N}\), plus formellement, on a:
@@ -1190,7 +1164,6 @@ On peut alors définir des nouvelles fonctions par la limite de séries de fonct
    \exp: x \mapsto \sum_{n=0}^{+\infty} \frac{x^k}{k!}
 \]
 C'est d'ailleurs même un exemple de \textbf{série entière} qui seront les objets d'étude du chapitre suivant.
-
 \chapter*{\chapterstyle{VI --- Séries Entières}}
 \addcontentsline{toc}{section}{Séries Entières}
 On se propose dans ce chapitre d'étudier des séries de fonctions particulières au comportement particulièrement intéressant, qui s'appeleront \textbf{séries entières} et on appelle série entière de terme général \(a_nz^n\) une série de fonctions \(S_n\) de variable complexe\footnote[1]{On définit ici les séries entières dans la plus grande généralité mais on se restreindra assez vite au cas réel.} \(z\) de la forme:
@@ -1258,8 +1231,11 @@ Cette propriété est plus forte encore que d'être de classe \(\mathcal{C}^\inf
 \subsection*{\subsecstyle{Applications{:}}}
 L'application principale des fonctions analytiques est la résolution des équations fonctionelles, différentielles par exemple. En effet, étant donnée un équation différentielle \(E\), on peut tenter de chercher des solutions sous la forme d'une fonction analytique, ce qui permet souvent de simplifier les calculs par unicité du développement en série entière. En effet, il suffit alors souvent d'identifier les coefficients.\<
 
-\uline{Exemple:}
-
+\uline{Exemple:} On cherche à résoudre l'équation \(f(x) = f'(x)\), en particulier on va chercher ses solutions analytiques, on a donc l'équation:
+\[
+   \sum_{n=0}^{+\infty}a_nx^n = \sum_{n=1}^{+\infty}na_nx^{n-1} = \sum_{n=0}^{+\infty}(n+1)a_{n+1}x^{n}
+\]
+Par identification des coefficients, on trouve donc que \(a_0\) est un réel quelconque et que \(a_n = na_{n-1}\), ie que \(a_n = \frac{a_0}{n!}\), et finalement on peut donc identifier les fonctions de la forme \(f(x) = ce^x\) avec la série entière obtenue.
 \chapter*{\chapterstyle{VI --- Séries de Fourier}}
 \addcontentsline{toc}{section}{Séries de Fourier}
 On se propose dans ce chapitre d'étudier des séries de fonctions particulières, qui sont à la base de \textbf{l'analyse harmonique} qui vise à étudier les signaux périodiques ou non et à le représenter comme \textbf{superpositions de signaux élémentaires}.

@@ -533,7 +533,40 @@ Alors la règle du dédoublement des termes nous donne que la matrice de \(q\) d
 \]
 
 \subsection*{\subsecstyle{Orthogonalité{:}}}
-
+On peut alors définir une notion d'orthogonalité pour la forme bilinéaire \(f\), qu'on appelera \(f\)-orthogonalité, et on dire que deux vecteurs sont \(f\)-orthogonaux si et seulement si \(f(x, y) = 0\). 
+\begin{center}
+   \textit{C'est une généralisation directe de l'orthogonalité "géométrique", en une orthogonalité purement algébrique.}
+\end{center}
+On a alors quelques propriétés conservées:
+\begin{itemize}
+   \item L'orthogonal d'une partie est un sous-espace.
+   \item La décroissance du passage à l'orthogonal.
+   \item L'inclusion de la partie dans son double orthogonal.
+\end{itemize}
+On peut alors définir le concept de \textbf{famille \(f\)-orthogonale} de manière analogue au concept classique, ainsi que le concept de \textbf{base \(f\)-orthogonale}.
+\subsection*{\subsecstyle{Noyau{:}}}
+Pour une forme bilinéaire quelconque, il est possible que l'ensemble \(E^\perp\) soit non-trivial, on appelle alors cet ensemble \textbf{noyau} de la forme bilinéaire, cette dénomination\footnote[1]{\textbf{Attention:} Ici on montre que le noyau de la forme bilinéaire est défini par le noyau de l'application linéaire associée à sa matrice, c'est non-trivial.} venant de la raison ci-dessous, pour \(M\) la matrice de la forme:
+\[
+   E^\perp = \ker(M)
+\]
+Avec ces définition il est alors possible de montrer un analogue à la \textbf{formule du rang}:
+\[
+   \dim(\Ker{q}) + \dim(\Im{q}) = \dim(E)
+\]
+Si ce noyau est trivial, on dira alors que la forme bilinéaire est \textbf{non-dégénérée} et en \textbf{dimension finie} on a alors les égalités suivantes:
+\[
+   \begin{cases}
+      \dim(F^\perp) + \dim(F) = \dim(E)\\
+      F = F^{\perp^\perp}
+   \end{cases}
+\]
+Attention, ici il est important de noter que même pour une forme non-dégénérée, on n'a \textbf{pas la supplémentarité à priori}.
+\subsection*{\subsecstyle{Cône isotrope{:}}}
+Pour une forme bilinéaire quelconque, il est aussi possible que l'ensemble \(\{ x \in E ; f(x, x) = 0\) soit non-trivial, ici il s'agit des vecteurs dont la pseudo-norme induite par \(f\) est nulle, on appelera alors ces vecteurs \textbf{vecteurs isotropes}. On a alors directement l'inclusion suivant:
+\begin{center}
+   \textbf{Le noyau est inclu dans le cône isotrope.}
+\end{center}
+Si le cône isotrope est trivial, alors on dira que la forme est \textbf{définie}.
 \subsection*{\subsecstyle{Réduction{:}}}
 
 \subsection*{\subsecstyle{Formes quadratiques réelles{:}}}
