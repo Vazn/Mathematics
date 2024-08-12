@@ -7,6 +7,8 @@
 ./**.synctex.gz
 
 **.aux
+**.ico
+**.ini
 **.fdb_latexmk
 **.fls
 **.log
