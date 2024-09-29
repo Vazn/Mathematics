@@ -24,7 +24,7 @@ On définit alors une notion de comparaison entre deux topologie \(\mathcal{T}_1
 Cela signifie moralement que \(\mathcal{T}_2\) à plus d'ouverts, par exemple la topologie discrète est la plus fine de tout les topologies. Cette relation définit alors \textbf{une relation d'ordre} sur l'ensemble des topologies.
 
 \subsection*{\subsecstyle{Topologie engendrée {:}}}
-On se donne \(A \subseteq \mathcal{P}(E)\) un ensemble de parties de \(E\), alors on chercher à savoir si il existe une plus petite topologie (au sens de l'inclusion) telle que les éléments de \(A\) soit des ouverts, ie la topologie la moins fine qui contienne \(A\).\<
+On se donne \(A\) un ensemble de parties de \(E\), alors on chercher à savoir si il existe une plus petite topologie (au sens de l'inclusion) telle que les éléments de \(A\) soit des ouverts, ie la topologie la moins fine qui contienne \(A\).\<
 
 On peut alors montrer facilement que l'intersection de deux topologies est une topologie et donc que la plus petite topologie qui contienne \(A\) existe, c'est l'intersection de toutes les topologies qui contiennent \(A\). On l'appelera\footnote[2]{On dira aussi que \(A\) est une \textbf{prébase} de cette topologie.} alors \textbf{topologie engendrée} par \(A\).
 
@@ -106,9 +106,8 @@ On peut alors définir la notion \textbf{d'espace dense}, on considère \(A \sub
    \text{adh}(A) = E
 \]
 Et on peut caractériser cette propriété par le fait que tout ouvert de \(E\) coupe \textbf{nécéssairement} \(A\).
-
-\chapter*{\chapterstyle{V --- Espaces Métriques}}
-\addcontentsline{toc}{section}{Espaces Métriques}
+\chapter*{\chapterstyle{V --- Espaces Métriques \& Normés}}
+\addcontentsline{toc}{section}{Espaces Métriques \& Normés}
 Soit \(E\) un ensemble, le cas le plus courant d'espace topologique est le cas des espaces munis d'une application apellée \textbf{distance} ou aussi métrique, c'est une application de \(E \times E\) dans \(\R^+\) qui vérifie:
 \begin{align*}
    &\bullet \;\; \text{Elle est \textbf{symétrique}.} \\
@@ -128,8 +127,7 @@ On peut par ailleurs définir \textbf{la boule fermée} de centre \(x\) et de ra
 \customBox{width=6cm}{
    \(\mathcal{B}[x, r] := \Bigl\{ y \in E \; ; \; d(x, y) \leq r\Bigl\}\)
 }
-La distance sur \(E\) induit alors naturellement une topologie sur \(E\) dont les ouverts sont \textbf{les boules ouvertes} (et les unions quelconques de boules ouvertes), la notion d'intérieur, d'adhérence, et de frontière s'étends alors aisément à ce cas particulier d'ouvert.
-
+La distance sur \(E\) induit alors naturellement une topologie sur \(E\) dont les ouverts sont \textbf{les boules ouvertes} (et les unions quelconques de boules ouvertes).
 \subsection*{\subsecstyle{Propriétés {:}}}
 On peut alors montrer que dans un espace métrique on a:
 \customBox{width=9cm}{
@@ -138,8 +136,19 @@ On peut alors montrer que dans un espace métrique on a:
    \text{adh}(\mathcal{B}(x, r)) \subseteq \mathcal{B}[x, r]
    \)
 }
-En particulier, dans le cas d'un \textbf{espace vectoriel normé}, l'homogénéité de la norme nous permet d'avoir l'égalité plutot que l'inclusion pour ces deux propriétés.
+En particulier, dans le cas d'un \textbf{espace vectoriel normé}, l'homogénéité de la norme nous permet d'avoir l'égalité plutot que l'inclusion pour ces deux propriétés. 
+\subsection*{\subsecstyle{Equivalences des normes {:}}}
+Dans un espace vectoriel normé, on dira alors que deux normes sont \textbf{équivalentes} si il existe deux réel \(c, C\) tel que:
+\[
+   c\vectNorm{x}_1 \leq \vectNorm{x}_2 \leq C\vectNorm{x}_1
+\]
+Ici "équivalentes" signifique donc que si il existe une boule pour une norme, alors il existe une boule plus petite et plus grande que celle-ci pour une autre, en particulier \textbf{les topologies engendrées par ces normes sont égales}.\+
+La notion de norme équivalente permet de montrer la propriété trés utile suivante:
+\begin{center}
+   Dans un espace vectoriel normé de dimension finie, toutes les normes sont \textbf{équivalentes}.
+\end{center}
 
+\pagebreak
 \subsection*{\subsecstyle{Exemples de boules en dimension finie {:}}}
 On considère ici l'espace vectoriel usuel \(\R^2\), on peut alors définir les \textbf{normes de Hölder} définies comme suit:
 \customBox{width=6cm}{
@@ -149,7 +158,6 @@ En particulier pour \(p=2\), on reconnait \textbf{la norme euclidienne standard}
 \customBox{width=6cm}{
    \({||u||}_\infty = \sup\{|u_1|, |u_2|\}\)
 }
-\pagebreak
 
 On peut représenter les boules pour quelques valeurs de \(p\):
 \begin{center}
@@ -200,26 +208,7 @@ Graphiquement, la boule ouverte de centre la fonction \(\sin\) et de rayon \(1\)
 \end{center}
 
 \subsection*{\subsecstyle{Exemples de boules exotiques {:}}}
-Si on considère maintenant l'ensemble des cases d'un échiquier \(6 \times 6\) et qu'on définit la distance entre deux cases comme étant le nombre de coup qu'un cavalier doit effectuer pour arriver à la seconde en partant de la première, on définit alors un espace métrique et la boule de centre le centre d'un plateau et de rayon 1 est représentée par:
-\begin{center}
-   \begin{tikzpicture}[scale=0.5, every node/.style={minimum size=.5cm-\pgflinewidth, outer sep=0pt}]
-      \node[fill=BrightBlue1] at (0.5,1.5) {};      
-      \node[fill=BrightBlue1] at (1.5,0.5) {};      
-      
-      \node[fill=BrightBlue1] at (0.5,3.5) {};      
-      \node[fill=BrightBlue1] at (1.5,4.5) {};      
-      
-      \node[fill=BrightBlue1] at (4.5,1.5) {};      
-      \node[fill=BrightBlue1] at (3.5,0.5) {};
-
-      \node[fill=BrightBlue1] at (4.5,3.5) {};      
-      \node[fill=BrightBlue1] at (3.5,4.5) {};
-
-      \node[fill=BrightRed1] at (2.5,2.5) {};
-      \draw[step=1cm,color=black, line width = 0.2mm] (0,0) grid (5,5);
-   \end{tikzpicture}
-\end{center}
-
+Si on considère maintenant l'ensemble des cases d'un échiquier \(6 \times 6\) et qu'on définit la distance entre deux cases comme étant le nombre de coup qu'un cavalier doit effectuer pour arriver à la seconde en partant de la première, on définit alors un espace métrique.
 \chapter*{\chapterstyle{V --- Limite et continuité}}
 \addcontentsline{toc}{section}{Limite et continuité}
 L'intérêt fondamental de la topologie est de pouvoir définir le concept de \textit{proximité} entre points d'un espace topologie, et par la suite de définir le concept fondamental en analyse, celui de \textbf{limite} d'une suite ou d'une fonction, puis par la suite celui de \textbf{continuité} d'une fonction.\<
@@ -351,7 +340,6 @@ La \(K\)-lipschitziannité étant une propriété plus forte que la continuité 
 }
 
 Par ailleurs si \(K \in \ico{0}{1}\), alors on dit que \(f\) est \textbf{contractante}, ce type de fonctions a souvent un trés bon comportement de convergence quand on le retrouve dans des définitions de suites par récurrence.
-
 \chapter*{\chapterstyle{V --- Connexité}}
 \addcontentsline{toc}{section}{Connexité}
 On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".

@@ -1,0 +1,90 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Algebre}}
+      \subsection*{\subsecstyle{Sous-groupes engendré:}}
+         On se propose de montrer que le sous-groupe de \(G\) engendré par une partie \(P\) défini ci-dessous est bien \textbf{le plus petit sous-groupe qui contient \(P\)}:
+         \[
+            H = \langle P \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \Z \Bigl\}
+         \]
+         On montre facilement que le plus petit sous-groupe qui contient \(P\) est l'intersection ci-dessous, reste à montrer l'égalité suivant:
+         \[
+            H = \bigcap_{\substack{P \subseteq Q\\Q < G}} Q
+         \]
+         On appelle \(\widetilde{H}\) l'interesection ci-dessus puis on procède par double inclusion:
+         \begin{itemize}
+            \item Le sous-groupe \(H\) est un sous-groupe qui contient \(P\) trivialement, donc en particulier, on a par les propriétés de l'intersection que \(\widetilde{H} \subseteq H\).
+            \item Le sous-groupe \(\widetilde{H}\) contient tout les élément de \(P\), donc par stabilité, il contient nécéssairement toutes les combinaisons trouvées dans \(H\), ie on a bien \(H \subseteq \widetilde{H}\).
+         \end{itemize}
+
+      \subsection*{\subsecstyle{Sous-groupes monogène d'un groupe fini:}}
+      On se donne \(G\) un groupe fini, et \(g \in G\), alors il existe un entier positif tel que:
+      \[
+         g^k = 1
+      \]
+      En effet l'ensemble \(\{g^k, k \in \N\}\) ne prends qu'un nombre fini de valeurs, donc il existe nécessairement deux indices \(
+      n > p\) tel que:
+      \[
+         g^{n} = g^{p}
+      \]
+      Et donc \(g^{n-p} = 1\)
+      
+      \subsection*{\subsecstyle{Image d'une partie génératrice:}}
+      On se donne un groupe \(G = \langle P \rangle \) pour \(P\) une partie de \(G\), ainsi qu'un morphisme \(\phi : G \longrightarrow H\), on veut alors montrer que l'image d'une partie génératrice est génératrice, ie que:
+      \[
+         f(G) = \langle f(P) \rangle
+      \] 
+      On se donne un élément \(f(g) \in  f(G)\), alors on a que \(g\) se décompose en produit \textbf{fini} de puissances d'éléments de \(P\) et donc on a:
+      \[
+         f(g) = f\left(\prod_{p_{i} \in P} p_i^{k_i}\right) = \prod_{p_{i} \in P} f(p_i)^{k_i}
+      \]
+      Fininalement on a bien que \(f(g)\) s'écrit comme produit \textbf{fini} de puissances d'éléments de \(f(P)\) donc on a bien le résultat.
+      \subsection*{\subsecstyle{Théorème de Cayley:}}
+         On se propose de démontrer que tout groupe \(G\) est \textbf{isomorphe à un groupe d'automorphismes}, on définit l'application suivante:
+         \[
+            \begin{aligned}
+               \Phi : G &\longrightarrow \text{Aut}(G, G)\\
+               g &\longmapsto \phi_g
+            \end{aligned}
+         \]
+         Où \(\phi_g(x) = gx\), ie on associe à chaque élément de \(G\) la fonction qui translate tout les éléments de \(G\) par celui-ci, alors:
+         \begin{itemize}
+            \item Cette application est facilement un \textbf{morphisme de groupes}.
+            \item Cette application est facilement \textbf{injective}.
+         \end{itemize}
+         Finalement, on a bien que \(G \cong \text{Im}(\Phi) < \text{Aut}(G, G)\) comme souhaité.
+   
+      \subsection*{\subsecstyle{Sous-groupes de \(\Z\):}}
+         On se propose de montrer la propriété suivante:
+         \[
+            H < \Z \Longleftrightarrow \exists n \in \Z \; ; \; H = n\Z
+         \]
+         On se donne un sous groupe \(H < \Z\) et on distingue deux cas:
+         \begin{itemize}
+            \item Si \(H\) est trivial, alors \(H = 0\Z\) qui convient.
+            \item Sinon \(H\) contient un élément non-nul, donc un élément \textbf{positif} \(h\).
+         \end{itemize}
+         Dans ce cas, la partie \(H \cap \N^*\) est non-vide, et donc elle contient un plus petit élément qu'on notera \(n\). On va alors montrer que tout élement du groupe est un multiple de cet élément.\<
+
+         En effet soit \(h \in H\), alors on effectue la division euclidienne de \(h\) par \(n\) et on obtient:
+         \[
+            h = nq + r \; ; \; r \in \inticc{0}{n-1}
+         \]
+         Mais alors par construction on a \(r < n\) et \(r \in H \cap \N^*\) par opérations, donc nécéssairement \(r = 0\), car sinon, \(n\) ne serait pas le plus petit élément de la partie considérée.
+      
+      \subsection*{\subsecstyle{Classificiation des groupes cycliques:}}
+         On se propose de classifier les groupes cycliques \(G\), engendrés pas un élément \(g \in G\), alors on définit:
+         \[
+            \begin{aligned}
+               \phi : \Z &\longrightarrow G\\
+               n &\longmapsto g^n
+            \end{aligned}
+         \]
+         Alors cette application est \textbf{un morphisme de groupe surjectif}, aussi le noyau de \(\phi\) est un sous-groupe normal, et on sait que les sous-groupes de \(\Z\) sont de la forme \(n\Z\), on distingue alors deux cas:
+         \begin{itemize}
+            \item Soit \(\Ker\phi\) est trivial et alors \(\phi\) est un isomorphisme: \(G \cong \Z\).
+            \item Soit \(\Ker\phi = n\Z\) et alors \(\phi\) induit un isomorphisme par passage au quotient: \(G \cong \Z/n\Z\)
+         \end{itemize} 
+         Finalement on a bien montré qu'il n'y a bien qu'un seul groupe cyclique d'ordre \(n\) qui est \(\Z/n\Z\) et qu'un seul groupe cyclique d'ordre infini qui est \(\Z\).
+\end{document}

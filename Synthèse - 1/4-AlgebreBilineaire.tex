@@ -1,15 +1,195 @@
+\chapter*{\chapterstyle{IV --- Espaces Quadratiques}}
+\addcontentsline{toc}{section}{Espaces Quadratiques}
+On se donne un espace vectoriel \(E\), on dira que c'est un \textbf{espace quadratique} si et seulement si on peut définir une \textbf{forme bilinéaire symétrique} sur cet espace.\<
+
+Alors on pourra alors définir une \textbf{forme quadratique} sur cet espace qui est une application \(q : E \rightarrow \K\) telle que pour une certaine forme bilinéaire symétrique \(f\), on ait:
+\[
+   q(x) = f(x, x)   
+\]
+On appelera alors le membre de droite \textbf{forme polaire} de la forme quadratique \(q\). On remarquera par la suite que moralement ces deux applications s'interpètent de la manière suivante:
+\begin{itemize}
+   \item Une forme bilinéaire symétrique mesure des "angles" dans l'espace.
+   \item Une forme quadratique mesure des "longeurs" dans l'espace.
+\end{itemize}
+Mais dans le cas général d'un espace quadratique et sans plus d'hypothèses, ces "angles" et "longueurs" ne correspondent pas vraiment aux concepts géométriques que l'on connaît. Tout l'algèbre bilinéaire développée dans ce chapitre peut se résumer à étudier des formes primitives qui par la suite permettront d'axiomatiser la notion de \textbf{produit scalaire} qui incarnera les propriétés géométriques recherchées. 
+
+\subsection*{\subsecstyle{Formules de polarisation{:}}}
+On considère une forme quadratique \(q\) quelconque et on souhaiterait reconstituer la forme polaire de \(q\), alors on peut montrer qu'elle vérifie les \textbf{identités de polarisation} ci-dessous:
+\[
+   \begin{cases}
+      f(x, y) = \frac{1}{4}(q(x + y) - q(x - y))\\
+      f(x, y) = \frac{1}{2}(q(x + y) - q(x) - q(y))\\
+   \end{cases}   
+\]
+C'est identités se retrouvent aisément en considérant la forme quadratique triviale sur \(\R\) associée à \(f(x, y) = xy\) qui est donc \(q(x) = x^2\).
+\subsection*{\subsecstyle{Expression matricielle{:}}}
+En dimension finie, on peut représenter les vecteurs \(x, y \in E\) dans une base \(\mathscr{B} = (e_i)\), on peut alors développer par bilinéarité et symétrie pour obtenir:
+\customBox{width=5.5cm}{
+   \[
+      f(x, y) = \sum_{1 \leq i, j \leq n}x_iy_j f(e_i, e_j)   
+   \]
+}
+En particulier on peut alors remarquer que la forme bilinéaire est parfaitement déterminée par la donnée des \(n^2\) images des paires des vecteurs de la base. En particulier, en notant \(X, Y\) les vecteurs colonnes des coordonées de \(x, y\) dans la base, alors on peut montrer qu'il existe une matrice \(A\) telle que:
+\customBox{width = 4cm}{
+   \(
+      [f(x,y)]^\mathscr{B} = X^\top A Y
+   \)
+}
+Et cette matrice est alors de la forme suivante:
+\[
+   (a_{i, j}) = f(e_i, e_j)
+\]
+En particulier cette matrice est symétrique et représente parfaitement la forme bilinéaire symétrique et la forme quadratique\footnote[1]{Il suffit de calculer les coordonées de \(f(x, x)\) pour le voir, on trouve alors qu'elle sont égales à \(X^\top A X\)}.
+\subsection*{\subsecstyle{Règle du dédoublement{:}}}
+Supposont que l'on connaisse une expression analytique de \(q(x)\) dans une base \((e_i, \ldots, e_n)\), on a alors:
+\[
+   q(x) = \sum_{1 \leq i, j \leq n} x_ix_j f(x_i, x_j) = \sum_{1 \leq i, j \leq n} x_ix_j b_{i, j}
+\]
+Et donc par symétrique du produit, on peut alors retrouver la matrice \(A = (a_{i,j})\) de \(q\) par la règle dite du \textbf{dédoublement des termes}, ie:
+\[
+   \begin{cases}
+      a_{i,j} &= b_{i, j} \text{ si } i = j\\
+      a_{i,j} &= \frac{1}{2} b_{i, j} \text{ si } i \neq j\\
+   \end{cases}   
+\]
+\uline{Exemple:} On considère la forme quadratique suivante sur \(\R^2\):
+\[
+   q(x, y) = 3x^2 + 5y^2 + 8xy
+\]
+Alors la règle du dédoublement des termes nous donne que la matrice de \(q\) dans la base canonique est:
+\[
+   M = \begin{pmatrix}
+      3 & 4 \\
+      4 & 5
+   \end{pmatrix}   
+\]
+\subsection*{\subsecstyle{Orthogonalité{:}}}
+On peut alors définir une notion d'orthogonalité\footnote[1]{\textbf{Attention:} Pour l'instant ceci n'est \textbf{pas} une notion géométrique, mais purement algébrique.} pour la forme bilinéaire \(f\), qu'on appelera \(f\)-orthogonalité, et on dira alors: 
+\begin{center}
+   \textbf{Deux vecteurs sont \(f\)-orthogonaux si et seulement si \(f(x, y) = 0\).}
+\end{center}
+On notera alors \(x \perp y\). On peut alors définir le concept de famille \(f\)-orthogonale, ainsi que le concept de base \(f\)-orthogonale, comme une famille telle que tout les vecteurs soient deux à deux orthogonaux.\<
+
+\textbf{Attention:} Dans le cas général, une famille orthogonale n'est pas forcément libre ! Il suffit de considérer \(q(x, y) = x^2\) et la famille \((0, 1), (0, 1)\). C'est une nouvelle conséquence du fait que cette notion d'orthogonalité n'est \textbf{pas géométrique}.
+\subsection*{\subsecstyle{Orthogonal d'une partie{:}}}
+Soit \(A\) une partie de \(E\), alors on peut définir l'orthogonal de \(A\) comme \textbf{le sous-espace vectoriel} défini par:
+\customBox{width=6cm}{
+   \(A^\perp := \bigl\{ u \in E \; ; \; \forall v \in A \, , \, u \perp v  \bigl\}\) 
+}
+En dimension finie, on a alors une base \((e_1, \ldots, e_n)\) de \(F\) et on a la caractérisation suivante:
+\customBox{width=7cm}{
+   \(F^\perp := \bigl\{ u \in E \; ; \; \forall i \in \inticc{1}{n} \, , \, u \perp e_i  \bigl\}\)
+}
+On peut alors montrer les propriétés suivantes pour l'application qui a une partie associe son orthogonal:
+\begin{itemize}
+   \item La décroissance du passage à l'orthogonal.
+   \item L'inclusion de la partie dans son double orthogonal.
+\end{itemize}
+\subsection*{\subsecstyle{Noyau{:}}}
+Pour une forme bilinéaire quelconque, il est possible que l'ensemble \(E^\perp\) soit non-trivial, on appelle alors cet ensemble \textbf{noyau} de la forme bilinéaire, cette dénomination\footnote[2]{\textbf{Attention:} Ici on montre que le noyau de la forme bilinéaire est défini par le noyau de l'application linéaire associée à sa matrice, c'est non-trivial.} venant de la raison ci-dessous, pour \(M\) la matrice de la forme bilinéaire:
+\[
+   E^\perp = \ker(M)
+\]
+\pagebreak
+
+Avec ces définitions il est alors possible de montrer un analogue à la \textbf{formule du rang}:
+\[
+   \dim(\Ker{q}) + \dim(\Im{q}) = \dim(E)
+\]
+Si ce noyau est trivial, on dira alors que la forme bilinéaire est \textbf{non-dégénérée} et en \textbf{dimension finie} on a alors les égalités suivantes:
+\[
+   \begin{cases}
+      \dim(F^\perp) + \dim(F) = \dim(E)\\
+      F = F^{\perp^\perp}
+   \end{cases}
+\]
+Attention, ici il est important de noter que même pour une forme non-dégénérée, on n'a \textbf{pas la supplémentarité à priori}.
+\subsection*{\subsecstyle{Cône isotrope{:}}}
+Pour une forme bilinéaire quelconque, il est aussi possible que l'ensemble \(\{ x \in E ; f(x, x) = q(x) = 0\}\) soit non-trivial, ici il s'agit des vecteurs dont la "longueur" est nulle, on appelera alors ces vecteurs \textbf{vecteurs isotropes}. On a alors directement l'inclusion suivant:
+\begin{center}
+   \textbf{Le noyau est inclu dans le cône isotrope.}
+\end{center}
+Si le cône isotrope est trivial, alors on dira que la forme est \textbf{définie}.
+\subsection*{\subsecstyle{Cas particulier des formes réelles{:}}}
+Soit \(f\) une forme bilinéaire symétrique réelle, alors on classifie ces formes par:
+\begin{itemize}
+   \item Si \(\forall x \in E, f(x, x) \geq 0\), on dira que la forme est \textbf{positive}.
+   \item Si \(\forall x \in E, f(x, x) \leq 0\), on dira que la forme est \textbf{négative}.
+\end{itemize}
+\subsection*{\subsecstyle{Réduction{:}}}
+On cherche maintenant à trouver une base \(\mathscr{B}\) de \(E\) telle que l'expression de \(f(x, y)\) soit plus simple, en particulier on essaye de trouver une base telle que sa matrice soit \textbf{diagonale}, et on peut alors facilement montrer que c'est équivalent à \textbf{chercher une base \(f\)-orthogonale}. On a alors dans une telle base:
+\[
+   q(x) = \sum_{i\in I}q(e_i)x_i^2 = \sum_{i \in I}q(e_i)e_i^*(x)^2
+\]
+On peut montrer le théorème suivant:
+\begin{center}
+   \textbf{Il existe des formes linéaires indépendantes telles que \(q(x) = q(e_1)l_1(x)^2+\ldots+q(e_n)l_n(x)^2\)}
+\end{center}
+En particulier, ce théorème se démontre de manière constructive via un algorithme qui nous permettra de réduire tout forme bilinéaire en somme de carrés de formes linéaires indépendantes, c'est la \textbf{réduction de Gauss}, une fois les formes linéaires explicitées, il faut alors compléter la famille de formes linéaires en une base du dual, et la base orthogonale recherchée sera \textbf{la préduale de cette base}.
+\subsection*{\subsecstyle{Algorithme de Gauss{:}}}
+On se donne une forme quadratique suivante à décomposer:
+\[
+   q(x) = \sum_{i, j}c_{i, j}x_ix_j
+\]
+L'algorithme est récursif et comporte deux cas:
+\begin{itemize}
+   \item La forme quadratique comporte un terme carré de la forme \(c_{i,i}x_i^2\)
+   \item La forme quadratique ne comporte pas de termes carrés de la forme \(c_{i,i}x_i^2\)
+\end{itemize}
+\pagebreak
+
+Traitons ces deux cas séparément:
+\begin{itemize}
+   \item Dans le premier cas, on regroupe tout les termes qui comportent le terme carré et on applique la formule \(A^2 + BA = (A + \frac{B}{2})^2 - \frac{B}{2}^2\) ce qui fait apparaître un carré de forme linéaire.
+   \item Dans le second cas on regroupe tout les termes qui contiennent deux variables choisies et la formule \(AB = \frac{1}{4}((A + B)^2 - (A - B)^2)\) ce qui fait apparaître des carrés de formes linéaires.
+\end{itemize}
+\uline{Exemple:} On pose la forme quadratique suivante:
+\[
+   q(x, y, z, t) = x^2 + 2xy + y^2 - 4yz
+\]
+On commence par isoler les termes en \(x\) et appliquer la formule du premier cas, on a donc notre premier carré de forme linéaire:
+\[
+   q(x, y, z, t) = (x^2 + 2xy) +y^2 - 4yz = (x + y)^2 -y^2 + y^2 - 4yz = l_1(x, y, z, t)^2 - 4yz
+\]
+Maintenant on réapplique l'algorithme à la forme quadratique restante \(\tilde{q(x, y, z)} = -4yz\), on applique la formule du second cas et on a:
+\[
+   \tilde{q(x, y, z, t)} = -4yz = -((y + z)^2 - (y - z)^2) = -l_2(x, y, z, t)^2 + l_3(x, y, z, t)^2
+\]
+Finalement on trouve:
+\[
+   q(x, y, z, t) = l_1(x, y, z, t)^2 - l_2(x, y, z, t)^2 + l_3(x, y, z, t)^2 = (x + y)^2 - (y + z)^2 + (y - z)^2
+\]
+On a alors trouvé les formes linéaires recherchées \(l_1, l_2, l_3\) et pour trouver une base \(f\)-orthogonale de \(\R^4\), il reste encore la dernière étape:
+\begin{center}
+   \textbf{On complète \((l_1, l_2, l_3)\) en une base du dual de \(E\) et la base recherchée est alors la préduale de celle-ci.}
+\end{center}
+\subsection*{\subsecstyle{Signature{:}}}
+On définir alors la \textbf{signature d'une forme bilinéaire} comme étant le couple d'entiers \((p, q)\) avec:
+\begin{itemize}
+   \item L'entier \(p\) est \textbf{le nombre de valeurs propres strictement positives}.
+   \item L'entier \(q\) est \textbf{le nombre de valeurs propres strictement négatives}.
+\end{itemize}
+On peut alors montrer \textbf{la loi d'inertie de Sylvester} et si on a la forme réduite:
+\[
+   q(x) = \alpha_1l_1(x)^2 + \ldots + \alpha_nl_n(x)^2
+\]
+Alors on cette loi nous donne que \(p\) est exactement le nombre de coefficients \(\alpha_i\) strictement positifs, et \(q\) le nombre de coefficients négatifs.
 \chapter*{\chapterstyle{IV --- Espaces Préhilbertiens Réels}}
 \addcontentsline{toc}{section}{Espaces Préhilbertiens Réels}
-On appelle \textbf{espace préhilbertien réel} un \(\R\)-espace vectoriel muni d'une forme \textbf{bilinéaire}\footnote[1]{Une application \(\dotproduct{\cdot}{\cdot} : E^2 \longrightarrow \R\) qui est linéaire en chaque variable} qui vérifie:
+On appelle \textbf{espace préhilbertien réel} un \(\R\)-espace vectoriel muni d'une forme \textbf{bilinéaire symétrique définie et positive}, c'est à dire une forme qui vérifie:
 
 \customBox{width=7cm}{
    \begin{align*}
-      &\textbf{Symétrie} &&\dotproduct{u}{v} = \dotproduct{v}{u} \\
-      &\textbf{Définie} &&\dotproduct{u}{u} = 0 \implies u = 0 \\
-      &\textbf{Positivité} &&\dotproduct{u}{v} \geq 0
+      &\textbf{Symétrie} &&f(u, v) = f(v, u) \\
+      &\textbf{Définie} &&f(u, u) = 0 \implies u = 0 \\
+      &\textbf{Positivité} &&f(u, u) \geq 0
    \end{align*}
 }   
-On dira alors qu'une telle forme est un \textbf{produit scalaire} sur \(E\).
+On dira alors qu'une telle forme est un \textbf{produit scalaire} sur \(E\) et on notera:
+\[
+   f(x, y) = \dotproduct{x}{y}
+\]
+Cet espace, qui est un cas particulier d'espace quadratique, est celui où se réalisera la signification \textbf{géométrique} des formes bilinéaires et quadratiques, gràce aux nouvelles contraintes sur ces formes.
 \subsection*{\subsecstyle{Exemples {:}}}
 \begin{itemize}
    \item On définit sur \(\R^n\) le produit scalaire défini par:
@@ -29,92 +209,59 @@ On dira alors qu'une telle forme est un \textbf{produit scalaire} sur \(E\).
       \dotproduct{A}{B} = \text{tr}(A^\top B)
    \]
 \end{itemize}
-
-\subsection*{\subsecstyle{Norme induite {:}}}
-A partir de la définition d'un tel espace, on alors montrer que \(\dotproduct{\cdot}{\cdot}\) \textbf{induit une norme} sur \(E\) donnée par:
-\customBox{width=4.7cm}{
+\subsection*{\subsecstyle{Norme {:}}}
+A partir de la définition d'un tel espace, on alors montrer que \(\dotproduct{\cdot}{\cdot}\) \textbf{induit une norme} sur \(E\) donnée par la \textbf{forme quadratique associée}:
+\customBox{width=5cm}{
    \(
-      \forall u \in E \; ; \; \vectNorm{u}^2 = \dotproduct{u}{u}  
+      \forall u \in E \; ; \; \vectNorm{u}^2 = \dotproduct{u}{u}
    \)
 }
 Cela fait donc de \(E\) un espace vectoriel normé.
-
-\subsection*{\subsecstyle{Angle et Orthogonalité{:}}}
-A partir d'une telle définition, on peut alors définir \textbf{l'angle non-orienté} \(\theta \in \icc{0}{\pi}\) entre deux vecteurs \(u, v\) par:
+\subsection*{\subsecstyle{Angle{:}}}
+A partir de ces définitions, on peut alors définir \textbf{l'angle non-orienté} \(\theta \in \icc{0}{\pi}\) entre deux vecteurs \(u, v\) par:
 \customBox{width=4.5cm}{
    \[
       \theta := \cos^{-1}{\left(\frac{\dotproduct{u}{v}}{\vectNorm{u}\vectNorm{v}}\right)}   
    \]
 }
-Ce qui nous permet de définir \textbf{l'orthogonalité} de deux vecteurs par la nullité du produit scalaire, en effet \(\theta = \frac{\pi}{2}\) dans cette définition ssi \(\dotproduct{u}{v} = 0\)
+Ce qui nous permet de caractériser \textbf{l'orthogonalité} du produit scalaire comme un orthogonal \textbf{géométrique}, en effet \(\theta \equiv \frac{\pi}{2}\) dans cette définition ssi \(\dotproduct{u}{v} = 0\)
 \begin{center}
    \textit{L'interprétation de cet "angle" ou de "l'orthogonalité" entre deux vecteurs diffère selon le contexte, elle peut alors signifier une corrélation en probabilité, ou un réel angle géométrique dans \(\R^n\) par exemple.}
 \end{center}
-
 \subsection*{\subsecstyle{Inégalité de Cauchy-Schwarz{:}}}
-Dans tout espace préhilbertien réel, pour tout \(u, v \in E\) on a l'inégalité\footnote[1]{Trés puissante et permet d'obtenir des majorations dans des cas trés variés.} suivante:
+Dans tout espace préhilbertien réel, pour tout \(u, v \in E\) on a l'inégalité\footnote[1]{Trés puissante et permet d'obtenir des majorations dans des cas trés variés, la preuve parte de l'étude du polynôme \(P(t) = \vectNorm{x + ty}^2\)} suivante:
 \customBox{width=4cm}{
    \(
       |\dotproduct{u}{v}| \leq \vectNorm{u}\,\vectNorm{v}
    \)
 }
 Avec cas d'égalité quand \(u, v\) sont \textbf{liés}.
-
 \subsection*{\subsecstyle{Formules géométriques{:}}}
 Dans tout espace préhilbertien réel, pour tout \(u, v \in E\) on a les identités suivantes:
 \begin{itemize}
-   \item \textbf{Identité de polarisation :} \(\vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2 + 2 \dotproduct{x}{y}\).
    \item \textbf{Identité du parallélogramme :} \(\vectNorm{x + y}^2 + \vectNorm{x - y}^2 = 2\vectNorm{x}^2 + 2\vectNorm{y}^2\).
-\end{itemize}
-Enfin, on a le \textbf{théorème de Pythagore}:
-\[
-   x \perp y \Longleftrightarrow \vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2
-\]
 
-\subsection*{\subsecstyle{Orthogonal d'une partie{:}}}
-Soit \(F\) une partie de \(E\), alors on peut définir l'orthogonal de \(F\) comme \textbf{le sous-espace vectoriel} défini par:
-\customBox{width=6cm}{
-   \(F^\perp := \bigl\{ u \in E \; ; \; \forall v \in F \, , \, u \perp v  \bigl\}\) 
-}
-\begin{center}
-   \textit{L'orthogonal d'une partie est l'ensemble des vecteurs qui sont orthogonaux à tout élément de cette partie.}
-\end{center}
-Dans le cas courant ou on connait une base \((e_1, \ldots, e_n)\) de \(F\), on a la caractérisation suivante:
-\customBox{width=7cm}{
-   \(F^\perp := \bigl\{ u \in E \; ; \; \forall i \in \inticc{1}{n} \, , \, u \perp e_i  \bigl\}\)
-}
-On peut alors montrer les propiétés suivantes sur l'orthogonal:
+   \item \textbf{Théorème de Pythagore :} \(x \perp y \Longleftrightarrow \vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2\).
+\end{itemize}
+La première caractérise les espaces normés telles que leur norme soit issue d'un produit scalaire.
+\subsection*{\subsecstyle{Orthogonalité{:}}}
+Dans le cadre des espaces préhilbertiens, l'orthogonal obtient alors une partie des propriétés géométriques intuitives qu'on lui connait, en particulier:
 \begin{itemize}
-   \item \(F \subseteq {(F^\perp)}^\perp\)
-   \item \(E^\perp = \{ 0_E \}\)
-   \item \(A \subseteq B \implies B^\perp \subseteq A^\perp\)
-   \item \((A \cup B)^\perp =  A^\perp \cap B^\perp\)
+   \item Une famille orthogonale de vecteurs non-nuls est toujours libre.
+   \item Une partie et son orthogonal sont toujours en somme directe.
 \end{itemize}
-Enfin on peut aussi montrer la propriété fondamentale suivante:
-\begin{center}
-   \textbf{Une partie et son orthogonal sont toujours en somme directe.}
-\end{center}
-Attention dans un espace préhilbertien quelconque, ils ne sont pas toujours supplémentaires !
-
+Attention dans un espace préhilbertien quelconque, ils ne sont pas toujours supplémentaires, on verra que c'est le cas en dimension finie !
 \subsection*{\subsecstyle{Théorème de représentation{:}}}
 On se donne un élément \(\phi\) du dual d'un espace préhilbertien alors, dans ce cadre, et même de manière générale dans celui des espaces de Hilbert, on peut montrer \textbf{le théorème de représentation de Riesz} qui caractérise une forme linéaire \(\phi\) par le produit scalaire:
 \[
    \exists w \in E \; , \; \forall x \in E \; ; \; \phi(x) = \dotproduct{w}{x}   
 \]
-Simplement, cela signifie que toute forme linéaire est \textbf{exactement représentée} par le produit scalaire pour un certain vecteur \(w\).\<
+Simplement, cela signifie que toute forme linéaire est \textbf{exactement représentée} par le produit scalaire pour un certain vecteur \(w\), en particulier, on a donc une bijection entre \(E\) et son dual.\<
 
-\uline{Exemple}: On prends la forme linéaire suivante:
-\[
-   \begin{aligned}
-      \phi : \R^3 &\longrightarrow \R\\
-      (x, y ,z) &\longmapsto 5x+4y+3z 
-   \end{aligned}
-\]
-Et on munit \(\R^3\) de son produit scalaire canonique, alors pour tout \(u\) on a directement que:
+\uline{Exemple}: On prends la forme linéaire \(\phi(x, y ,z) = 5x+4y+3z\) et on munit \(\R^3\) de son produit scalaire canonique, alors pour tout \(u\) on a directement que:
 \[
    \phi(u) = \dotproduct{(5, 4, 3)}{u}
 \]
-
 \subsection*{\subsecstyle{Transposition{:}}}
 On se donne \(f \in \mathcal{L}(E, F)\) représentée par une matrice \(M \in \mathcal{M}_{n, p}(\R)\), alors on définit \textbf{l'application transposée} de \(f\) par:
 \[
@@ -132,43 +279,24 @@ Ce qui donne finalement une interprétation fonctionnelle de la matrice transpos
 \addcontentsline{toc}{section}{Espaces Euclidiens}
 On appelle \textbf{espace euclidien} tout espace préhilbertien réel \textbf{de dimension finie}. Dans toute la suite on prendra \((e_1, \ldots, e_n)\) une base de \(E\).
 
-\subsection*{\subsecstyle{Forme analytique et matricielle du produit scalaire{:}}}
-En représentant les vecteurs \(x, y \in E\) dans la base, on peut alors développer leur produit scalaire par bilinéarité pour obtenir:
-\customBox{width=5.5cm}{
-   \[
-      \dotproduct{x}{y} = \sum_{i = 1}^{n}\sum_{j = 1}^{n}x_iy_j \dotproduct{e_i}{e_j}   
-   \]
-}
-En particulier on peut alors remarquer que le produit scalaire est parfaitement déterminé par la donnée des \(n^2\) produits scalaires des vecteurs de base. Il est donc représenter matriciellement le produit scalaire par la matrice
-\(
-   A = (a_{i,j}) \text{ telle que } a_{i, j} = \dotproduct{e_i}{e_j}   
-\)\<
-
-Et donc on obtient en identifiant \(\R\) à \(\mathcal{M}_{1, 1}(\R)\):
-\customBox{width = 3.7cm}{
-   \(
-      \dotproduct{x}{y} = X^\top A Y
-   \)
-}
 En particulier, dans une base \textbf{orthonormée}, on a \(\dotproduct{x}{e_i} = x_i\) et donc:
 \[
    x = \sum_{k=1}^{n} \dotproduct{x}{e_i}e_i 
 \]
-\subsection*{\subsecstyle{Propriétés en dimension finie{:}}}
-En dimension finie, pour tout sous-espace vectoriel \(F\) de \(E\) on a le théorème fondamental suivant:
-\customBox{width = 5cm}{
+\subsection*{\subsecstyle{Orthogonalité{:}}}
+En dimension finie, on a finalement l'ensemble des propriétés géométriques de l'orthogonalité qui deviennent vraies, en effet on a::
+\customBox{width = 4cm}{
    \(
-      E = F \oplus F^\perp    
+     F \oplus F^\perp = E 
    \)
 }
 \begin{center}
-   \textit{Tout sous-espace admet un unique supplémentaire orthogonal en dimension finie.}
+   \textit{Tout sous-espace admet un unique supplémentaire orthogonal.}
 \end{center}
 On peut alors en déduire qu'en dimension finie on a:
 \[
    (F^\perp)^\perp = F   
 \]
-
 \subsection*{\subsecstyle{Projection orthogonale{:}}}
 L'existence d'une unique décomposition nous permet alors de définir \textbf{la projection} sur \(F\) de direction \(F^\perp\) par:
 \[
@@ -179,14 +307,13 @@ En particulier, on en déduit par l'unicité de la décomposition que \(\text{pr
    \(x - \text{proj}_F(x) \in F^\perp\)
 }
 Le projeté orthogonal a une signification géométrique importante, en effet on a:
-\customBox{width=6cm}{
+\customBox{width=7cm}{
    \(\vectNorm{x - \text{proj}_F(x)} = \min_{y\in F}(\vectNorm{x - y})\)
 }
 \begin{center}
    \textit{C'est le vecteur "le plus proche" de \(F\) au sens du produit scalaire utilisé.}
 \end{center}
 \pagebreak
-
 \subsection*{\subsecstyle{Calcul de projeté orthogonal{:}}}
 On considère un sous-espace \(F\) de bases \((e_1, \ldots, e_p)\) et \(x \in E\), on sait d'aprés les propriétés précédentes que \(\text{proj}_F(x)\) est l'unique vecteur de \(F\) tel que \(x - \text{proj}_F(x) \in F^\perp\), ce qui est équivalent à dire que:
 \begin{align*}
@@ -236,10 +363,76 @@ Soit \((e_1, \ldots, e_n)\) une base de \(E\), on cherche alors à élaborer un 
 \begin{center}
    \textit{Moralement, on "redresse" chaque vecteur de la base initiale en lui retirant son défaut d'orthogonalité représenté par sa projection sur le sous-espace précédent.}
 \end{center}
-\chapter*{\chapterstyle{IV --- Endomorphismes Euclidiens}}
+\chapter*{\chapterstyle{IV --- Espaces Hemitiens}}
+\addcontentsline{toc}{section}{Espaces Hemitiens}
+On peut généraliser la notion de produit scalaire au cas des espaces vectoriels sur \(\C\), en particulier, on dira demandera alors que la forme \(f : H\times H \rightarrow \C\) soit:
+\customBox{width=11cm}{
+   \begin{align*}
+      &\textbf{Linéaire à gauche} &&f(x + \lambda y, z) = f(x, z) + \lambda f(y, z) \\
+      &\textbf{Symétrie Hermitienne} && f(u, v) = \overline{f(v, u)} \\
+      &\textbf{Définie} &&f(u, u) = 0 \implies u = 0 \\
+      &\textbf{Positivité} &&f(u, u) \geq 0
+   \end{align*}
+}   
+On dira alors que \(f\) est un \textbf{produit hermitienne}. Elle est alors dite \textbf{sesquilinéaire} car on a:
+\[
+   f(x, \lambda y) = \overline{\lambda}f(x, y)
+\]
+On définit aussi pour toute matrice dans \(\mathcal{M}_n(\C)\), sa \textbf{matrice ajointe} donnée par:
+\[
+   M^* = {}^t\overline{M}
+\]
+\subsection*{\subsecstyle{Exemples {:}}}
+\begin{itemize}
+   \item On définit sur \(\C^n\) le produit hermitien défini par:
+   \[
+      \dotproduct{u}{v} = \sum_{k=1}^{n} u_k\overline{v_k}   
+   \]
+   \item On définit sur \(\mathcal{C}^1(\icc{0}{1}, \C)\) le produit hermitien défini par:
+   \[
+      \dotproduct{f}{g} = \int_{0}^{1} f(t)\overline{g(t)} \d t    
+   \]
+   \item On définit sur \(\C_n[X]\) le produit hermitien défini pour \((x_n)\) \(n + 1\) points fixés par:
+   \[
+      \dotproduct{P}{Q} = \sum_{k=0}^{n}P(x_k)\overline{Q(x_k)}
+   \]   
+   \item On définit sur \(\mathcal{M}_n(\C)\) le produit hermitien défini par:
+   \[
+      \dotproduct{A}{B} = \text{tr}(AB^*)
+   \]
+\end{itemize}
+\subsection*{\subsecstyle{Expression matricielle{:}}}
+En dimension finie, on peut représenter les vecteurs \(x, y \in H\) dans une base \(\mathscr{B} = (e_i)\), on peut alors développer par sesquilinéarité:
+\customBox{width=5.5cm}{
+   \[
+      f(x, y) = \sum_{1 \leq i, j \leq n}x_i\overline{y_j} f(e_i, e_j)   
+   \]
+}
+En particulier on peut alors remarquer que la forme bilinéaire est parfaitement déterminée par la donnée des \(n^2\) images des paires des vecteurs de la base. En particulier, en notant \(X, Y\) les vecteurs colonnes des coordonées de \(x, y\) dans la base, alors on peut montrer qu'il existe une matrice \(A\) telle que:
+\customBox{width = 4cm}{
+   \(
+      [f(x,y)]^\mathscr{B} = X^*A Y
+   \)
+}
+Et cette matrice est alors de la forme suivante:
+\[
+   (a_{i, j}) = f(e_i, e_j)
+\]
+En particulier cette matrice est égale à son adjointe et représente parfaitement la forme bilinéaire symétrique et la forme quadratique\footnote[1]{Il suffit de calculer les coordonées de \(f(x, x)\) pour le voir, on trouve alors qu'elle sont égales à \(X^* A X\)}.
+\subsection*{\subsecstyle{Orthogonalité{:}}}
+On peut alors définir la même notion d'orthogonalité et montrer que pour un produit hermitien, toute les propriétés de l'orthogonalité sont conservées sauf une, en effet le \textbf{théorème de Pythagore} n'est plus vrai dans un espace hermitien et on a seulement:
+\[
+   x \perp y \implies \vectNorm{x + y}^2 = \vectNorm{x}^2 + \vectNorm{y}^2
+\]
+\subsection*{\subsecstyle{Théorème de représentation{:}}}
+On se donne un élément \(\phi\) du dual d'un espace hermitien alors, dans ce cadre, on peut aussi montrer \textbf{le théorème de représentation de Riesz} qui caractérise une forme linéaire \(\phi\) par le produit scalaire:
+\[
+   \exists w \in H \; , \; \forall x \in H \; ; \; \phi(x) = \dotproduct{x}{w}   
+\]
+A nouveau, cela signifie que toute forme linéaire est \textbf{exactement représentée} par le produit scalaire pour un certain vecteur \(w\), en particulier, on a donc une bijection entre \(H\) et son dual.\<
+\chapter*{\chapterstyle{IV --- Endomorphismes Remarquables}}
 \addcontentsline{toc}{section}{Endomorphismes Euclidiens}
-Aprés avoir défini les espaces euclidiens, on cherche maintenant à s'intéresser aux endomorphismes qui on des propriétés intéressantes en regard du produit scalaire, on sera alors amené à les définir et les étudier.
-
+Aprés avoir défini les espaces euclidiens et hermitiens, on cherche maintenant à s'intéresser aux endomorphismes qui on des propriétés intéressantes en regard du produit scalaire, on sera alors amené à les définir et les étudier. Dans tout la suite, le corps de base peut être \(\K = \R\) ou \(\K = \C\) et l'espace est muni d'un produit scalaire correspondant.
 \subsection*{\subsecstyle{Isométries{:}}}
 Soit \(f \in \mathcal{L}(E)\), on dira que \(f\) est une \textbf{isométrie} et on note \(f \in O(E)\) si elle \textbf{préserve les angles}, ie si:
 \[
@@ -255,19 +448,16 @@ Ainsi que comme corollaire immédiat:
 \[
    \text{det}(f) \in \{-1, 1\}
 \]
-
 \subsection*{\subsecstyle{Matrices orthogonales{:}}}
 On considère la matrice d'une isométrie dans une base orthonormée, on a alors d'aprés l'expression matricielle du produit scalaire:
 \[
-   \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^t(MX)MY = {}^tX{}^tMMY = {}^tXY  
+   \forall X, Y \in \mathcal{M}_{n, 1}(\K) \; ; \; {}^*(MX)MY = {}^*X{}^*MMY = {}^*XY  
 \]
-On remarque \(f\) est une isométrie si et seulement si sa matrice dans une base orthonormée vérifie \({}^tM = M^{-1}\), on appelera de telles matrices \textbf{matrices orthogonales} et on notera ces matrices \(O_n(\R)\).
-On peut alors montrer que:
+On remarque donc \(f\) est une isométrie si et seulement si sa matrice dans une base orthonormée vérifie \({}^*M = M^{-1}\), on appelera de telles matrices \textbf{matrices unitaires} et on notera ces matrices \(\mathbb{U}_n(\K)\). On peut alors montrer que:
 \begin{center}
-   \textbf{Les matrices orthogonales forment un sous-groupe des matrices inversibles qu'on appelle groupe orthogonal.}
+   \textbf{Les matrices unitaires forment un sous-groupe des matrices inversibles qu'on appelle groupe unitaire.}
 \end{center}
-En particulier, la matrice de passage entre deux bases orthonormées est une matrice orthogonale, et les colonnes d'une telle matrice sont unitaires et deux à deux orthogonales.
-
+En particulier, la matrice de passage entre deux bases orthonormées est une matrice unitaire, et les colonnes d'une telle matrice sont de norme \(1\) et deux à deux orthogonales.
 \subsection*{\subsecstyle{Classification des isométries{:}}}
 On peut alors classifier les isométries selon leur action sur l'orientation de l'espace:
 \begin{itemize}
@@ -276,7 +466,6 @@ On peut alors classifier les isométries selon leur action sur l'orientation de 
 \end{itemize}
 Géométriquement, les isométries directes sont donc celles qui préservent l'orientation de l'espace, c'est un sous-groupe du groupe spécial linéaire. Dans le chapitre suivant, on classifie plus précisément les isométries dans le cas d'une petite dimension.
 \pagebreak
-
 \subsection*{\subsecstyle{Adjoint d'un endomoprhisme{:}}}
 On considère un endomorphisme \(f \in \mathcal{L}(E)\), alors le théorème de représentation de Riesz nous permet d'affirmer qu'il existe un unique endomorphisme \(f^*\) qui vérifie:
 \[
@@ -286,9 +475,7 @@ On appelle alors cet endomorphisme \textbf{l'adjoint} de \(f\), en particulier s
 \[
    \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^tXMY = {}^t(M^*X)Y  
 \] 
-On peut alors facilement montrer que dans le cas présent de matrices \textbf{réelles}\footnote[1]{L'adjoint d'un endomorphisme sera défini de manière plus générale dans le chapitre sur les espace Hermitiens, l'adjoint étant alors la matrice transconjuguée, qui explique la simplicité du cas réel.}, l'adjoint d'un endormorphisme est simplement sa \textbf{transposée}. On verra plus tard que la notion de matrice adjointe est une généralisation de la transposition. On peut alors entrevoir le role spécial que vont jouer les matrices symétriques. A FINIR, LA TRANSPOSEE EST EXACTEMENT LADJOINT, LIEN AVEC TOUT LE RESTE A FAIRE, UNIQUE APPLICATION QUI VERFIE <f(x), y> = <x, tf(y)>, VOIR DUALITE.
-
-
+On peut alors facilement montrer que dans le cas présent de matrices, l'adjoint d'un endormorphisme est simplement sa \textbf{transposée}. On verra plus tard que la notion de matrice adjointe est une généralisation de la transposition. On peut alors entrevoir le role spécial que vont jouer les matrices symétriques. A FINIR, LA TRANSPOSEE EST EXACTEMENT LADJOINT, LIEN AVEC TOUT LE RESTE A FAIRE, UNIQUE APPLICATION QUI VERFIE <f(x), y> = <x, tf(y)>, VOIR DUALITE.
 \subsection*{\subsecstyle{Endomorphismes auto-adjoints{:}}}
 On appelle \textbf{endomorphisme auto-adjoint} (ou encore endomorphisme symétrique) tout endomorphisme qui est égal à son adjoint et on a donc les propriétés suivantes, cas particuliers des définitions ci-dessus:
 \[
@@ -296,7 +483,7 @@ On appelle \textbf{endomorphisme auto-adjoint} (ou encore endomorphisme symétri
 \]
 Puis matriciellement dans une base ortonormée:
 \[
-   \forall X, Y \in \mathcal{M}_{n, 1}(\R) \; ; \; {}^tXMY = {}^t(MX)Y  
+   \forall X, Y \in \mathcal{M}_{n, 1}(\K) \; ; \; {}^*XMY = {}^*(MX)Y  
 \]
 En particulier dans le cas réel, le fait d'etre auto-adjoint est caractérisé par la propriété simple suivante sur la matrice de l'endomorphisme dans une base orthonormée:
 \begin{center}
@@ -304,9 +491,7 @@ En particulier dans le cas réel, le fait d'etre auto-adjoint est caractérisé 
 \end{center}
 
 L'ensemble des endomorphismes auto-adjoints, qu'on note \(\mathcal{S}(E)\) forme un \textbf{sous-espace vectoriel} de \(\mathcal{L}(E)\). Dans la suite on va étudier les propriétés de ces endomorphismes.
-
-
-\subsection*{\subsecstyle{Réduction \& Théorème Spectral{:}}}
+\subsection*{\subsecstyle{Théorème Spectral{:}}}
 Une propriété fondamentale de ces endomorphismes est la suivante:
 \begin{center}
    \textbf{Leurs sous-espaces propres sont orthogonaux.}
@@ -315,19 +500,23 @@ On peut alors énoncer un théorème puissant de réduction pour les endomorphis
 \begin{center}
    \textbf{Il existe une base orthonormée formée de vecteurs propres.}
 \end{center}
-On a alors le corollaire matriciel pour la matrice réelle \(M\) de \(f\) dans une base, donné par l'existance d'une matrice de passage \(P \in O_n(\R)\) et d'une matrice diagonale \(D\) telles que:
+On a alors le corollaire matriciel pour la matrice \(M\) de \(f\) dans une base, donné par l'existance d'une matrice de passage \(P\) dans le groupe unitaire et d'une matrice diagonale \(D\) telles que:
 \[
-   M = PD{}^tP
+   M = PDP^*
 \]
-
-\pagebreak
-\subsection*{\subsecstyle{Endomorphismes auto-adjoints positifs{:}}}
-Une interprétation intéressante de ces endomorphismes (et donc des matrices symétriques) est la suivante:
+\subsection*{\subsecstyle{Technique de réduction{:}}}
+En particulier, cela nous donne une nouvelle méthode pour réduire les formes bilinéaires, on peut alors diagonaliser dans une base orthonormée et obtenir une base orthogonale pour la forme, en pratique, on effectue l'algorithme suivant:
+\begin{itemize}
+   \item On trouve une base pour un sous-espace propre.
+   \item On l'orthogonalise par Gram-Schmidt. 
+\end{itemize}
+\subsection*{\subsecstyle{Lien avec les formes bilinéaires{:}}}
+On sait donc que les endomorphismes autoadjoints sont représentés par des matrices symétriques, on a donc la propriété suivante:
 \begin{center}
-   \textbf{Les matrices symetriques définissent des formes bilinéaires symétriques.}
+   On peut associer \textbf{une forme bilinéaire} symétrique à chaque\footnote[1]{En effet soit \(f \in S(E)\), alors \(\phi(x, y) = \dotproduct{x}{f(y)}\) est une telle forme, et réciproquement Riesz nous donne que \(\phi(x, y) = \dotproduct{x}{f(y)}\) pour une certaine fonction \(f\) qui est alors un endormorphisme autoadjoint.} endomorphisme autoadjoint et \textbf{réciproquement}.
 \end{center}
-En particulier on s'intéressera alors à cerner les matrices symétriques qui représentent des formes bilinéaires symétriques définies positives, ie d'autres produits scalaires sur le meme espace.\<
-
+En particulier, les concepts relevant de l'études des formes peuvent alors se transposer dans l'étude des endomorphismes comme les sections suivantes le démontreront.
+\subsection*{\subsecstyle{Endomorphismes auto-adjoints positifs{:}}}
 On définit alors les endomorphismes autoadjoints \textbf{positifs} qu'on note \(\mathcal{S}^+(E)\) définis par:
 \[
    \mathcal{S}^+(E) := \{ f \in \mathcal{S}(E) \; ; \; \text{Sp}(f) \subseteq \R_+ \}  
@@ -337,7 +526,6 @@ Cette définition est alors équivalente à la propriété suivante:
    \forall x \in E \; \dotproduct{x}{f(x)} \geq 0
 \]
 Les matrices symetriques positives définissent alors des formes bilinéaires symétriques positives.
-
 \subsection*{\subsecstyle{Endomorphismes auto-adjoints définis positifs{:}}}
 On définit alors enfin les endomorphismes autoadjoints \textbf{définis positifs} qu'on note \(\mathcal{S}^{++}(E)\) définis par:
 \[
@@ -345,11 +533,9 @@ On définit alors enfin les endomorphismes autoadjoints \textbf{définis positif
 \]
 Cette définition est alors équivalente à la propriété suivante:
 \[
-   \forall x \in E^* \; \dotproduct{x}{f(x)} > 0 
+   \forall x \in E\backslash\{0_E\} \; \dotproduct{x}{f(x)} > 0 
 \]
-\begin{center}
-   \textbf{Les matrices symetriques définies positives définissent alors des nouveaux produits scalaires.}
-\end{center}
+Les matrices symetriques définies positives définissent alors des nouveaux produits scalaires.
 \chapter*{\chapterstyle{IV --- Isométries en petite dimension}}
 \addcontentsline{toc}{section}{Isométries en petite dimension}
 On va maintenant étudier le cas particulier des isométries dans le cas de la petite dimension, c'est à dire dans le cas où \(E\) est de dimension \(2\) ou \(3\), on introduira un outil pratique dans ce contexte qui est le \textbf{produit vectoriel} et on classifiera les isométries dans cet espace.
@@ -470,103 +656,4 @@ Arrive alors l'intérêt du produit mixte, en effet, on peut alors montrer que l
    [x, f(x), u]   
 \]
 Ce qui caractérise alors parfaitement l'isométrie.
-\chapter*{\chapterstyle{IV --- Formes Quadratiques}}
-\addcontentsline{toc}{section}{Formes Quadratiques}
-Dans ce chapitre nous nous définissons le concept de \textbf{forme quadratique} qui est une application \(q : E \rightarrow \K\) telle que pour une certaine forme bilinéaire symétrique \(f\), on ait:
-\[
-   q(x) = f(x, x)   
-\]
-On appelera alors le membre de droite \textbf{forme polaire} de la forme quadratique \(q\).
-Un exemple de forme quadratique simple est alors l'application:
-\[
-   q : x \longmapsto \vectNorm{x}^2   
-\]
-Et sa fome polaire est donc \(\dotproduct{x}{x}\).
 
-\subsection*{\subsecstyle{Formules de polarisation{:}}}
-On considère une forme quadratique \(q\) quelconque et on souhaiterait reconsituter la forme polaire de \(q\), alors on peut montrer qu'elle vérifie les \textbf{identités de polarisation} ci-dessous:
-\[
-   \begin{cases}
-      f(x, y) = \frac{1}{4}(q(x + y) - q(x - y))\\
-      f(x, y) = \frac{1}{2}(q(x + y) - q(x) - q(y))\\
-   \end{cases}   
-\]
-C'est identités se retrouvent aisément en considérant la forme quadratique triviale sur \(\R\) associée à \(f(x, y) = xy\) qui est donc \(q(x) = x^2\).
-
-\subsection*{\subsecstyle{Représentations{:}}}
-On s'intéresse alors à la représentation de la forme quadratique, et de manière analogue au produit scalaire, on considère la matrice de la forme bilinéaire symétrique:
-\[
-   M = (f(e_i, e_j))_{i, j \in \inticc{1}{n}}   
-\]
-On a alors la représentation matricielle de la forme bilinéaire symétrique:
-\[
-   [f(x, y)]_\mathscr{B} = {}^tXMY   
-\]
-Et donc nécéssairement:
-\[
-   [q(x)]_\mathscr{B} = [f(x, x)]_\mathscr{B} = {}^tXMX  
-\]
-Donc fondamentalement, la donnée de la matrice de \(f\) suffit à représenter \(q\) matriciellement. Une propriété évidente de la matrice \(M\), de manière analogue au produit scalaire, est que \(M\) est nécéssairement \textbf{symétrique}.
-
-\subsection*{\subsecstyle{Expression analytique{:}}}
-Analytiquement, si on calcule \(q(x)\) dans une base \((e_i, \ldots, e_n)\), on trouve alors l'expression suivante:
-\[
-   q(x) = \sum_{1 \leq i, j \leq n} x_ix_j f(x_i, x_j) = \sum_{1 \leq i, j \leq n} x_ix_j b_{i, j}
-\]
-Et donc par symétrique du produit, on peut alors retrouver la matrice \(M = (m_{i,j})\) de \(q\) par la règle dite du \textbf{dédoublement des termes}, ie:
-\[
-   \begin{cases}
-      m_{i,j} &= b_{i, j} \text{ si } i = j\\
-      m_{i,j} &= \frac{1}{2} b_{i, j} \text{ si } i \neq j\\
-   \end{cases}   
-\]
-\uline{Exemple:} On considère la forme quadratique suivante sur \(\R^2\):
-\[
-   q(x, y) = 3x^2 + 5y^2 + 8xy
-\]
-Alors la règle du dédoublement des termes nous donne que la matrice de \(q\) dans la base canonique est:
-\[
-   M = \begin{pmatrix}
-      3 & 4 \\
-      4 & 5
-   \end{pmatrix}   
-\]
-
-\subsection*{\subsecstyle{Orthogonalité{:}}}
-On peut alors définir une notion d'orthogonalité pour la forme bilinéaire \(f\), qu'on appelera \(f\)-orthogonalité, et on dire que deux vecteurs sont \(f\)-orthogonaux si et seulement si \(f(x, y) = 0\). 
-\begin{center}
-   \textit{C'est une généralisation directe de l'orthogonalité "géométrique", en une orthogonalité purement algébrique.}
-\end{center}
-On a alors quelques propriétés conservées:
-\begin{itemize}
-   \item L'orthogonal d'une partie est un sous-espace.
-   \item La décroissance du passage à l'orthogonal.
-   \item L'inclusion de la partie dans son double orthogonal.
-\end{itemize}
-On peut alors définir le concept de \textbf{famille \(f\)-orthogonale} de manière analogue au concept classique, ainsi que le concept de \textbf{base \(f\)-orthogonale}.
-\subsection*{\subsecstyle{Noyau{:}}}
-Pour une forme bilinéaire quelconque, il est possible que l'ensemble \(E^\perp\) soit non-trivial, on appelle alors cet ensemble \textbf{noyau} de la forme bilinéaire, cette dénomination\footnote[1]{\textbf{Attention:} Ici on montre que le noyau de la forme bilinéaire est défini par le noyau de l'application linéaire associée à sa matrice, c'est non-trivial.} venant de la raison ci-dessous, pour \(M\) la matrice de la forme:
-\[
-   E^\perp = \ker(M)
-\]
-Avec ces définition il est alors possible de montrer un analogue à la \textbf{formule du rang}:
-\[
-   \dim(\Ker{q}) + \dim(\Im{q}) = \dim(E)
-\]
-Si ce noyau est trivial, on dira alors que la forme bilinéaire est \textbf{non-dégénérée} et en \textbf{dimension finie} on a alors les égalités suivantes:
-\[
-   \begin{cases}
-      \dim(F^\perp) + \dim(F) = \dim(E)\\
-      F = F^{\perp^\perp}
-   \end{cases}
-\]
-Attention, ici il est important de noter que même pour une forme non-dégénérée, on n'a \textbf{pas la supplémentarité à priori}.
-\subsection*{\subsecstyle{Cône isotrope{:}}}
-Pour une forme bilinéaire quelconque, il est aussi possible que l'ensemble \(\{ x \in E ; f(x, x) = 0\) soit non-trivial, ici il s'agit des vecteurs dont la pseudo-norme induite par \(f\) est nulle, on appelera alors ces vecteurs \textbf{vecteurs isotropes}. On a alors directement l'inclusion suivant:
-\begin{center}
-   \textbf{Le noyau est inclu dans le cône isotrope.}
-\end{center}
-Si le cône isotrope est trivial, alors on dira que la forme est \textbf{définie}.
-\subsection*{\subsecstyle{Réduction{:}}}
-
-\subsection*{\subsecstyle{Formes quadratiques réelles{:}}}

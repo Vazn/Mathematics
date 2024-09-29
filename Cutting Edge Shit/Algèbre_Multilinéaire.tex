@@ -1,0 +1,183 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Tenseurs}}
+   Dans ce chapitre, nous allons nous intéresséà l'object d'étude du domaine appelé \textbf{algèbre multilinéaire}, qui sont les \textbf{formes multilinéaires}, en particulier, on se donne un \(\K\)-espace vectoriel \(E\), alors on appele \textbf{tenseur} d'ordre \((p, q)\) l'application:
+   \begin{align*}
+      T : \underbrace{E^* \times \ldots \times E^*}_\text{p} \times \underbrace{E \times \ldots \times E}_\text{q} \longrightarrow \K
+   \end{align*}
+
+   \subsection*{\subsecstyle{Notation d'Einstein{:}}}
+   Dans ce cadre nous définissons une nouvelle notation appelée \textbf{convention de notation d'Einstein} qui permet de s'épargner d'avoir à écrire beaucoup de signes sommes quand on décompose un tenseur dans une base, définissons tout d'abord cette convention sur les vecteurs et le covecteurs :
+   \begin{itemize}
+      \item Si \(x = \sum_{i} x_ie_i\) et \(x\) est un vecteur (donc contravariant), on note \(x = x^ie_i\).
+      \item Si \(x = \sum_{i} x_ie_i\) et \(x\) est un covecteur (donc covariant), on note \(x = x_ie^i\).
+   \end{itemize}
+   C'est en fait un notation qui \textbf{somme implicitement sur les indices répétés}. On peut la généraliser aux tenseurs, par exemple considérons une forme bilinéaire \(f\) sur \(E\), alors on a dans une base:
+   \[
+      f(x, y) = \sum_{i}\sum_{j} x_iy_jf(e_i, e_j) \overset{not.}{=} x^iy^jf(e_i, e_j)
+   \]
+   De manière générale, l'expresion d'un tenseur d'ordre \((p, q)\) dans une base est donnée par:
+   \[
+      T(x_1, \ldots, x_{p}, y_1, \ldots, y_q) = (x_1)_{i_1}  \ldots (x_p)_{i_p} (y_1)^{j_1} \ldots (y_{q})^{j_q} T(e^{i_1}, \ldots, e^{i_p}, e_{j_1} \ldots e_{j_q})
+   \]
+   Où on note l'évaluation du tenseur sur tout les vecteurs de toutes les bases par \(T^{{i_1}, \ldots, {i_p}}_{{j_1}, \ldots, {j_p}}\) ce qui nous donne:
+   \[
+      T(x_1, \ldots, x_{p}, y_1, \ldots, y_q) = (x_1)_{i_1}  \ldots (x_p)_{i_p} (y_1)^{j_1} \ldots (y_{q})^{j_q} T^{{i_1}, \ldots, {i_p}}_{{j_1}, \ldots, {j_p}}
+   \]
+   Par exemple un tenseur d'ordre \((1, 2)\) est donné par:
+   \[
+      T(x, y, z) = x_iy^jz^k T_{j, k}^{i} = x_iy^jz^kT(e^i, e_j, e_k) = \sum_{i,j,k}x_iy_jz_kT(e_i, e_j, e_k)
+   \]
+   \subsection*{\subsecstyle{Produit tensoriel de deux tenseurs covariants{:}}}
+   On note alors \(\mathscr{T}^p(E)\) l'ensemble des tenseurs \(p\)-covariants, alors on peut définir le \textbf{produit tensoriel} de deux tels tenseurs par:
+   \begin{align*}
+      \otimes : \mathscr{T}^p(E) \times \mathscr{T}^q(E) &\longrightarrow \mathscr{T}^{p+q}(E)\\
+      (\alpha, \beta) &\longmapsto \alpha \otimes \beta
+   \end{align*}
+   Avec le tenseur \(\alpha \otimes \beta\) défini par:
+   \[
+      (\alpha \otimes \beta)(x_1, \ldots, x_p, y_1, \ldots, y_q) = \alpha(x_1, \ldots, x_p)\beta(y_1, \ldots, y_q)
+   \]
+   \subsection*{\subsecstyle{Bases et dimension{:}}}
+   On peut alors se demander si on peut trouver une base de l'espace des tenseurs \(p\)-covariants et si on note \((e_i)_{i \leq n}\) une base de \(E^*\), alors on peut montrer que l'on a:
+   \begin{flalign*}
+      T(x_1, \ldots, x_p) = (x_1)_{i_1}\ldots(x_p)_{i_p}T(e_{i_1}, \ldots, e_{i_p}) &= (e_{i_1} \otimes \ldots \otimes e_{i_p})(x_1, \ldots, x_p)T(e_{i_1}, \ldots, e_{i_p})\\
+      &= \alpha_{i_1, \ldots, i_p}(e_{i_1} \otimes \ldots \otimes e_{i_p})(x_1, \ldots, x_p)
+   \end{flalign*}
+      
+   En d'autres termes l'image du tenseur est uniquement déterminée par les \(n^p\) coefficients, dans une base qui est donnée par \((e_{i_1} \otimes \ldots \otimes e_{i_p})\), en effet on choisit \(p\) vecteurs de base dans la famille de \(n\) vecteurs, et les répétitions sont possibles. On peut aussi alors noter de manière fonctionnelle \(T = \alpha_{i_1, \ldots, i_p}e_{i_1} \otimes \ldots \otimes e_{i_p}\)
+  
+   \pagebreak
+   \subsection*{\subsecstyle{Partie symétrique:}}
+   On se donne un tenseur \(T\) qui soit \(p\)-covariant, alors on chercher à construire un tenseur \(p\)-covariant \textbf{symétrique} à partir de \(T\), et on peut alors montrer que le tenseur suivant convient:
+   \[
+      \text{Sym}(T)(x_1, \ldots, x_p) = \frac{1}{k!}\sum_{\sigma \in S_k}T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})
+   \]
+   \subsection*{\subsecstyle{Partie antisymétrique:}}
+   On se donne un tenseur \(T\) qui soit \(p\)-covariant, alors on chercher à construire un tenseur \(p\)-covariant \textbf{antisymétrique} à partir de \(T\), et on peut alors montrer que le tenseur suivant convient:
+   \[
+      \text{Ant}(T)(x_1, \ldots, x_p) = \frac{1}{k!}\sum_{\sigma \in S_k}\epsilon(\sigma)T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})
+   \]
+   \subsection*{\subsecstyle{Produit symétrique:}}
+   On peut alors définir le \textbf{produit symétrique} de deux tenseurs \(p\)-covariants et \(q\)-covariants par:
+   \[
+      (T \odot T') = \text{Sym}(T \otimes T')
+   \]
+   En d'autres termes:
+   \[
+      (T \odot T')(x_1, \ldots, x_p, x_{p+1}, \ldots, x_{p+q}) =  \frac{1}{(p+q)!}\sum_{\sigma \in S_{p+q}} T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})T'(x_{\sigma(p+1)}, \ldots, x_{\sigma(p+q)})
+   \]
+   \subsection*{\subsecstyle{Produit extérieur:}}
+   On peut alors définir le \textbf{produit antisymétrique} appelé surtout \textbf{produit extérieur} de deux tenseurs \(p\)-covariants et \(q\)-covariants par:
+   \[
+      (T \wedge T') = \text{Sym}(T \otimes T')
+   \]
+   En d'autres termes:
+   \[
+      (T \wedge T')(x_1, \ldots, x_p, x_{p+1}, \ldots, x_{p+q}) =  \frac{1}{(p+q)!}\sum_{\sigma \in S_{p+q}}\epsilon(\sigma) T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})T'(x_{\sigma(p+1)}, \ldots, x_{\sigma(p+q)})
+   \]
+   C'est ce produit extérieur qui nous sera surtout utile pour définir les formes différentielles.
+
+   \subsection*{\subsecstyle{Algèbre extérieure:}}
+   On appelle alors \textbf{p-ième puissance extérieure} l'ensemble de toutes les formes \(p\)-linéaires alternées qu'on note \(\Lambda^p E\). Une base est alors donnée par l'ensemble:
+   \[
+      \Bigl\{ e_{i_1} \wedge \ldots \wedge e_{i_p} \; ; \; 1 \leq e_{i_1} \leq \ldots \leq e_{i_p} \leq n  \Bigl\}
+   \]
+   \uline{Exemple:} On considère \(\Lambda^2 \R^3\) dont on note la base duale \((\d x, \d y, \d z)\), alors on a que:
+   \[
+      \Lambda^2 \R^2 = \text{Vect}(\d x \wedge \d y, \d x \wedge \d z, \d y \wedge \d z)
+   \]
+   On appele aussi les éléments de la \(p\)-ième puissance extérieure des \textbf{multivecteurs}.
+   
+   \chapter*{\chapterstyle{Formes différentielles}}
+   Dans ce chapitre on peut maintenant définir un object fondamental de la géométrie différentielle, le concept de \textbf{p-forme différentielle} sur \(\R^n\) qui sera simplement définie par:
+   \begin{center}
+      \textbf{Une p-forme différentielle est un champs de tenseurs covariants antisymétriques.}
+   \end{center}
+   Ceci s'intérprète alors comme la donnée en chaque point \(x\) de \(\R^n\) d'un tenseur covariant antisymétrique, ou encore avec l'interprétation en terme de puissance extérieure, comme un champs de multivecteurs. Formellement, on a:
+   \[
+      \omega_x = \alpha^{{i_1, \ldots, i_p}}(x) dx_{i_1} \wedge \ldots \wedge dx_{i_p}
+   \]
+   On sait alors qu'on peut décomposer chaque \(p\)-forme dans la base des \(dx_{i_1} \wedge \ldots \wedge dx_{i_p}\), donc on se contentera d'étudier les \(p\)-formes élémentaires:
+   \[
+      \omega_x = f(x) dx_{i_1} \wedge \ldots \wedge dx_{i_p}
+   \]
+   Et enfin, on considérera que \(f\) est une fonction aussi lisse que nécessaire.
+
+   \subsection*{\subsecstyle{Dérivée extérieure{:}}}
+   On introduit alors un opérateur sur les \(p\)-formes appelée \textbf{dérivée extérieure} qu'on définit par:
+   \begin{align*}
+      d_k : \Lambda^k E &\longrightarrow \Lambda^{k+1} E\\
+      \omega &\longmapsto d\omega
+   \end{align*}
+   Elle agit alors sur une \(p\)-forme par différentiation de la fonction coefficients, ie on a:
+   \[
+      d\omega_x = df_x \wedge dx^{i_1} \wedge \ldots \wedge dx^{i_p}
+   \]
+   \uline{Exemple 1:} Si on considère la 1 forme de \(\R^3\) suivante:
+   \[
+      \omega = y dx 
+   \]
+   Alors on différentie simplement la fonction coefficient et on obtient:
+   \[
+      d\omega = d(ydx) = \left(\partialD{y}{x}dx + \partialD{y}{y}dy\right) \wedge dx = dy \wedge dx
+   \]
+   \uline{Exemple 2:} On considère la 2-forme de \(\R^3\) suivante:
+   \[
+      \omega = A(x, y, z)dx \wedge dy
+   \]
+   Alors on différentie simplement la fonction coefficient et on obtient:
+   \[
+      d\omega = d(A(x, y, z)dx \wedge dy) = \left(\partialD{A}{x}dx + \partialD{A}{y}dy + \partialD{A}{z}dz\right) \wedge dx \wedge dz
+   \]
+   Par exemple si \(A(x, y, z) = 3xyz\), on trouve en utilisant l'antisymétrie que:
+   \[
+      d\omega = 3xz dy \wedge dx \wedge dz = -3xz dx \wedge dy \wedge dz
+   \]
+
+   \subsection*{\subsecstyle{Propriétés de la dérivée{:}}}
+   On peut alors montrer que la dérivée extérieure possède les propriétés suivantes:
+   \begin{itemize}
+      \item On a que la dérivée est un opérateur linéaire.
+      \item On a que si \(\omega\) est de degré \(k\), alors \(d\omega\) est de degré \(k+1\).
+      \item On a la \textbf{formule de Leibniz généralisée}, pour \(\omega\) une \(k\)-forme et \(\alpha\) une \(l\)-forme : \[d(\omega \wedge \alpha) = d\omega \wedge \alpha + (-1)^k\omega \wedge d\alpha\]
+   \end{itemize}
+   \pagebreak
+
+   Finalement, et ce sera la propriété la plus importante, on peut montrer par les propriétés d'antisymétrie la propriété suivante:
+   \[
+      d_{k+1} \circ d_k = 0
+   \]
+
+   \subsection*{\subsecstyle{Cas de la dimension 3{:}}}
+   Dans le cas de \(\R^3\), on a la chaîne suivante:
+   \[
+      \Lambda^0 \R^3 \overset{d_0}{\longrightarrow} \Lambda^1 \R^3 \overset{d_1}{\longrightarrow} \Lambda^2 \R^3 \overset{d_2}{\longrightarrow} \Lambda^3 \R^3
+   \]
+   On peut alors montrer facilement que les dimensions des différents espaces suivent la suite \((1, 3, 3, 1)\) et les propriétés surprenantes suivantes:
+   \begin{itemize}
+      \item On a \(d_0(f)\) qui nous donne \textbf{le gradient de la fonction}.
+      \item On a \(d_1(F)\) qui nous donne \textbf{le rotationnel du champ de vecteurs}.
+      \item On a \(d_2(F)\) qui nous donne \textbf{la divergence du champ de vecteurs}.
+   \end{itemize}
+   Et par la propriété fondamentale de la dérivée extérieure, on a alors les formules classiques suivantes comme simple conséquence:
+   \[
+      \begin{cases}
+         \text{rot}(\nabla f) = 0\\
+         \text{div}(\text{rot}(F)) = 0\\
+      \end{cases}
+   \]
+   \subsection*{\subsecstyle{Forme volume{:}}}
+   Dans \(\R^n\), on peut définir une unique \(n\)-forme différentielle au signe prés, appelée \textbf{forme volume}  par:
+   \[
+      \text{vol} = dx_1 \wedge \ldots \wedge dx_n
+   \]
+   Par exemple:
+   \begin{itemize}
+      \item Dans \(\R^1\), on a \(\text{vol} = dx\)
+      \item Dans \(\R^3\) on a \(\text{vol} = dx \wedge dy \wedge dz\)
+   \end{itemize}
+   En particulier, on a par exemple dans \(\R^2\), que \(\text{vol}(u, v) = (dx \wedge dy)(u, v) = u_1v_2 - u_2v_1 = \det(u, v)\) comme on l'attendrais intuitivement.
+\end{document}

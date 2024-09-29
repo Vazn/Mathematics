@@ -1283,17 +1283,13 @@ On introduit de nouvelles notations pratique, tout d'abord on utilisera souvent 
       \delta_{n}^m = 0 \text{ sinon }
    \end{cases}
 \]
-Ainsi que la convention de sommation d'Einstein qui simplifie les notations sommatoires, ie on somme sur les indices répétés par exemple:
-\[
-   \sum_{k=1}^{n} x_ie_i \underset{not.}{=} x^ie_i   
-\]
 
 \subsection*{\subsecstyle{Propriétés{:}}}
-On souhaite caractériser la forme d'une forme linéaire \(\phi\) de l'espace dual. On a directement que:
+On souhaite caractériser la forme d'une forme linéaire \(\phi\) de l'espace dual. On a directement par linéarité que:
 \[
-   \forall x \in E \; ; \; \phi(x) = \phi(x^ie_i) = x^i\phi(e_i)  
+   \forall x \in E \; ; \; \phi(x) = \phi\left(\sum_{i}x^ie_i\right) = \sum_{i}x^i\phi(e_i)  
 \]
-Donc en particulier, on a que évidemment que \(\phi\) est caractérisée par ses images des vecteurs de base, et réciproquement si une application \(\phi'\) est telle que \(\phi'(x) = x^ia_i\), alors \(\phi'\) est une forme linéaire sur \(E\).
+Donc en particulier, on a que évidemment que \(\phi\) est caractérisée par ses images des vecteurs de base, et réciproquement si une application \(\phi'\) est telle que \(\phi = \sum_{i}x_ia_i\), alors \(\phi'\) est une forme linéaire sur \(E\).
 
 \subsection*{\subsecstyle{Base duale{:}}}
 En dimension finie, on a alors le théorème fondamental suivant:
@@ -1304,7 +1300,7 @@ En effet, on a tout d'abord égalité des dimensions\footnote[2]{Car \(\dim\math
 \[
    \begin{aligned}
       e_i^* : E &\longrightarrow \R \\
-      x^ie_i &\longmapsto x^i
+      \sum_{i}x^ie_i &\longmapsto x_i
    \end{aligned}
 \]
 Alors elle forme alors une base de \(E^*\) qu'on appelera \textbf{base duale} de \(\mathscr{B}\) et qu'on notera \(\mathscr{B}^*\).
@@ -1329,7 +1325,34 @@ On rapelle alors que d'aprés le cours de première année, on appelle hyperplan
    \textbf{Les hyperplans sont exactements les noyaux de formes linéaires.}
 \end{center}
 
+\subsection*{\subsecstyle{Vecteurs covariants et contravariants{:}}}
+On deux bases \( \mathscr{C}, \mathscr{B}\) de \(E\) et un vecteur \(u\) de coordonées respectives \(U, U'\), on a la propriété de changement de base suivante pour des notations évidentes:
+\[
+   U' = P^{-1}U
+\]
+On voit alors ici que les coordonées aprés le changement de base dépendent de \textbf{l'inverse de la matrice de passage}. On dira dans ce cas qu'un vecteur est \textbf{contravariant par rapport aux bases de \(E\)}.\<
 
+Maintenant on considère un vecteur \(u \in E^*\), alors on peut calculer les bases duales \(\mathscr{C}^*, \mathscr{B}^*\) et utiliser la même formule pour montrer que pour des notations évidentes on a:
+\[
+   U' = \text{Pass}(\mathscr{B}^*, \mathscr{C}^*)U
+\]
+Or, on peut alors montrer la propriété suivante fondamentale suivante:
+\[
+   \text{Pass}(\mathscr{B}^*, \mathscr{C}^*) = {}^tP
+\]
+En particulier on se ramène alors à une matrice de passage entre les bases de \(E\) et on a alors la formule de changement de base suivantes (pour les coordonées placées en ligne):
+\[
+   {}^tU' = {}^tUP
+\]
+On voit alors ici que les coordonées aprés le changement de base (en ligne) dépendent de \textbf{la matrice de passage}. On dira dans ce cas qu'un vecteur est \textbf{covariant par rapport aux bases de \(E\)}. Finalement moralement on a les formules de changement de bases suivantes:
+
+\begin{itemize}
+   \item Si \(X, Y\) sont des vecteurs : \(Y = P^{-1}X\)
+   \item Si \(X, Y\) sont des covecteurs : \({}^tY = {}^tXP\)
+\end{itemize}
+\begin{center}
+   \textbf{La notion de vecteurs contravariants et covariants est centrale en algèbre multilinéaire, elle permet la définition d'objets généraux appelés tenseurs qui généralisent ce concept.}
+\end{center}
 
 \chapter*{\chapterstyle{III --- Introduction à la réduction}}
 \addcontentsline{toc}{section}{Introduction à la réduction}
