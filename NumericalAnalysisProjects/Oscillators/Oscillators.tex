@@ -102,8 +102,13 @@
       \begin{itemize}
          \item La masse de l'objet.
          \item La longeur du ressort.
+         \item La force de gravité.
       \end{itemize}
-      On note alors \(y\) la fonction qui donne la position au temps \(t\) du centre de la masse. Pour modéliser le mouvement de la masse si on la sort de la position d'équilibre, on doit modéliser les forces en action.  D'aprés la 3em loi de Newton, on a la situation suivante:
+      Aussi, on peut remarque que si quand la masse est à l'équilibre et si on note \(l_0\) la longueur du ressort à vide, alors la force de gravité est proportionelle à l'élongation du ressort, ie on a:
+      \[
+         mg = k(l - l_0)
+      \]
+      On appelle alors \(k\) la \textbf{constante de raideur} du ressort. Notons \(y\) la fonction qui donne la position au temps \(t\) du centre de la masse. Pour modéliser le mouvement de la masse si on la sort de la position d'équilibre, on doit modéliser les forces en action.  D'aprés la 3em loi de Newton, on a la situation suivante:
       \begin{center}
          \begin{tikzpicture}[>=stealth]
             \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
@@ -118,16 +123,11 @@
          \end{tikzpicture}
       \end{center}
       \pagebreak
-
-      On utilise alors un fait physique suivant appelée \textbf{loi des ressorts}:
-      \begin{center}
-         Pour allonger un ressort d'une longueur \(y_0\), la force nécessaire est \textbf{proportionelle} à \(y_0\), et la proportion est appelée \textbf{constante de raideur} du ressort.
-      \end{center}
-      On a donc un nouveau paramètre réel \(k\) qui caractérise la raideur du ressort, et l'accéleration que subit le ressort si on le lache aprés l'avoir allongé d'une longueur \(y_0\) est donnée par le \textbf{principe fondamental de la dynamique}, ie on a:
+      En effet gràce à la relation de proportionnalité ci-dessus, la gravité n'a pas d'impact sur le mouvement du ressort, elle ne fait que déplacer le point d'équilibre vers le bas. En outre, la        force qu'exercerce le ressort dans la direction de l'équilibre est donc linéairement proportionelle à la distance avec l'équilibre, et donc d'aprés le \textbf{principe fondamental de la dynamique}, ie on a:
       \[
          \vv{a}(t) = \frac{1}{m}\sum \vv{F}(t)
       \]
-      Et donc on obtient:
+      Et donc on obtient en faisant le bilan des forces, dont il ne resulte qu'une force proportionnelle à l'élongation:
       \[
          \boxed{y''(t) = -\frac{k}{m}y(t)}
       \]
@@ -147,11 +147,7 @@
             \boxed{y(t) = y_0\cos(\omega t) + \frac{v_0}{\omega}\sin(\omega t) \; ; \; \omega = \sqrt{\frac{k}{m}}}
          \]
       \subsection{Champ de vecteur associé et portrait de phase}
-         Si on considère l'équation différentielle initiale et une courbe \(\gamma(t) = (x(t), y(t))\) solution de cette équation, alors elle vérifie:
-         \begin{center}
-            blablabla
-         \end{center}
-         On peut alors représenter l'état de la masse à un instant \(t\) par sa position et sa vitesse, ie l'espace des phases est le plan repéré par \((y, y')\), et la dynamique est caractérisée par le champ de vecteur trouvé ci-dessus. Par exemple pour \(k = 1\), on a le champ de vecteur suivant:
+         Si on ramène l'équation différentielle d'ordre 2 à une équation différentielle vectorielle d'ordre 1, on obtient que la position de la masse est exactement caractérisée par sa position et sa vitesse, ie l'espace des phases est le plan repéré par \((y, y')\), et la dynamique est caractérisée par le champ de vecteur associé trouvé ci-dessus. Par exemple pour \(k = 1\), on a le champ de vecteur suivant:
          \begin{center}
             \begin{tikzpicture}
                \begin{axis}[
@@ -299,7 +295,7 @@ On remarque donc la propriété suivante:
          \boxed{\theta''(t) = - \frac{g}{l}\sin(\theta)}
       \]
       \subsection{Résolution}
-      Malheureusement cette équation différentielle est trés difficile à résoudre analytiquement, le seul cas où la résolution est possible est pour \(\theta_0\) petit, alors on a:
+      Malheureusement cette équation différentielle est \textbf{trés difficile} à résoudre analytiquement, le seul cas où la résolution est possible est pour \(\theta_0\) petit, alors on a:
       \[
          \sin(\theta) \sim \theta
       \]
@@ -309,11 +305,7 @@ On remarque donc la propriété suivante:
       \]
       Néanmoins, on peut explorer le problème non-linéaire via les méthodes numériques, ce qu'on verra dans la section suivante.
       \subsection{Champ de vecteur associé et portrait de phase}
-      Si on considère l'équation différentielle initiale et une courbe \(\gamma(t) = (x(t), y(t))\) solution de cette équation, alors elle vérifie:
-      \begin{center}
-         blablabla
-      \end{center}
-      On peut alors représenter l'état de la masse à un instant \(t\) par sa position et sa vitesse, ie l'espace des phases est le plan repéré par \((\theta, \theta')\), et la dynamique est caractérisée par le champ de vecteur trouvé ci-dessus. Par exemple\footnote[1]{Ici on utilise \(g=1\) pour faciliter la lisibilité du champ de vecteur.} pour \(g = 1\) et \(l = 1\), on a le champ de vecteur suivant:
+     Si on ramène l'équation différentielle d'ordre 2 à une équation différentielle vectorielle d'ordre 1, on obtient que la position de la masse est exactement caractérisée par sa position angulaire et sa vitesse angulaire, ie l'espace des phases est le plan repéré par \((\theta, \theta')\), et la dynamique est caractérisée par le champ de vecteur associé trouvé ci-dessus. Par exemple\footnote[1]{Ici on utilise \(g=1\) pour faciliter la lisibilité du champ de vecteur.} pour \(g = 1\) et \(l = 1\), on a le champ de vecteur suivant:
       \begin{center}
          \begin{tikzpicture}
             \def\g{1}
