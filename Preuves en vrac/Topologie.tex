@@ -2,6 +2,95 @@
 \input{../Header.tex}
 
 \begin{document}
+   	\subsection*{\subsecstyle{La topologie métrique standard est une topologie}}
+      On considère un espace métrique $(E, d)$ et on définit l'ensemble de parties suivant:
+         $$
+            \mathcal{T}_d := \left\{ \bigcup_I \mathcal{B}_i \; ; \; (\mathcal{B}_i) \text{ famille quelconque de boules ouvertes}\right\}
+         $$
+         Montrons que cet ensemble définit bien une topologie sur $E$, on a:
+         \begin{itemize}
+            \item On a trivialement $\emptyset, E \in \mathcal{T}_d$
+            \item On a tout aussi trivialement que cet ensemble est stable par union quelconque
+         \end{itemize}
+         Pour l'intersection, montrons le lemme suivant:
+         $$
+            \mathcal{O} \in \mathcal{T}_d \Longleftrightarrow \forall x \in \mathcal{O} \; ; \; \exists \mathcal{B}(x, r) \subseteq \mathcal{O}
+         $$
+         Par double implication:
+         \begin{itemize}
+            \item Si $\mathcal{O} \in \mathcal{T}_d$ et $x \in \mathcal{O}$, alors par définition de l'union on a $x \in \mathcal{B}(a_{i_0}, r_{i_0})$ pour un certain $i_0 \in I$, mais alors il existe une boule ouverte de centre $x$ et de rayon $R := r - d(x, a_{i_0})$ telle que:
+            $$
+              \mathcal{B}(x, R) \subseteq \mathcal{B}(a_{i_0}, r_{i_0}) \subseteq \mathcal{O}
+            $$
+            \item Soit $\mathcal{O}$ une partie de $E$ telle que chacun de ses élements $x$, il existe une boule ouverte de centre cet élément et de rayon $r_x$ qui soit inclue dans $\mathcal{O}$, alors trivialement:
+            $$
+              \mathcal{O} = \bigcup_{x \in \mathcal{O}} \mathcal{B}(x, r_x)
+            $$
+            Et donc $O$ est bien dans $\mathcal{T}_d$
+         \end{itemize}
+         On peut maintenant montrer que $\mathcal{T}_d$ est bien stable par intersection finie, on prends deux éléments $\mathcal{U}, \mathcal{V}$, alors on a:
+         $$
+              \mathcal{U} \cap \mathcal{V} = \bigcup_{i, j} \mathcal{B}^\mathcal{U}_i \cap \mathcal{B}^\mathcal{V}_j
+         $$
+         Soit $x$ dans cette intersection, alors $x \in \mathcal{B}^\mathcal{U}_{i_0}\cap \mathcal{B}^\mathcal{V}_{j_0}$, alors ces deux parties sont ouvertes donc on a d'après le lemme que:
+         $$
+              \begin{cases}
+                  \exists r > 0 \; ; \; \mathcal{B}(x, r) \subseteq \mathcal{B}^\mathcal{U}_{i_0}\\
+                  \exists r' > 0 \; ; \; \mathcal{B}(x, r') \subseteq \mathcal{B}^\mathcal{V}_{j_0}
+              \end{cases}
+         $$
+         Alors la boule de centre $x$ et de rayon $\min\{r, r'\}$ est inclue dans l'intersection et par le lemme, on conclut donc que $\mathcal{T}_d$ est bien une topologie.
+
+   \subsection*{\subsecstyle{La topologie induite est une topologie}}
+      On considère une partie $A$ des espace topologique $(E, \mathcal{T})$, et on définit l'ensemble de parties suivant:
+      $$
+           \mathcal{T}_A := \left\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \in \mathcal{T}\right\}
+      $$
+      Alors on a facilement que:
+      \begin{itemize}
+           \item Le vide est égal à $A \cap \emptyset \in \mathcal{T}_A$
+           \item L'espace $A$ est égal à $A \cap E \in \mathcal{T}_A$
+           \item L'union d'éléments est égale à $A \cap \bigcup_I \mathcal{O}_i \in \mathcal{T}_A$
+           \item L'intersection d'éléments est égale à $A \cap \mathcal{O}_1 \cap \mathcal{O}_2 \in \mathcal{T}_A$
+      \end{itemize}
+      C'est donc une topologie, en outre c'est la plus petite topologie sur $A$ telle que l'inclusion canonique soit continue, avec l'inclusion canonique donnée par:
+      $$
+           i : x \in A \rightarrow x \in E
+      $$
+      En effet soit $\mathcal{T}'$ une topologie sur $A$ telle que $i$ soit continue, alors on a:
+      $$
+           \forall \mathcal{O} \in \mathcal{T} \; ; \; i^{-1}(\mathcal{O}) = A \cap \mathcal{O} \in \mathcal{T}'
+      $$
+      Donc les parties de la forme $A \cap \mathcal{O}$ sont dans bien dans cette topologie.
+   
+   \subsection*{\subsecstyle{La topologie produit est une topologie}}
+      On considère le produit cartésien de la famille d'espaces topologiques $(E_n, \mathcal{T}_n)$, on veut munir ce produit cartésien d'une topologie, on définit alors:
+      $$
+           \mathcal{T}_{prod} := \left\{\bigcup_{I} \mathcal{O}^1_{i} \times \ldots \times \mathcal{O}^n_{i} \; ; \; (O^j_{i})_{i \in I} \text{ famille d'ouverts de } \mathcal{T}_j \right\}
+      $$
+      Montrons que celle famille de parties forme bien une topologie sur $E^n$, on a:
+      \begin{itemize}
+          \item Le vide est donné par $\emptyset \times \ldots \times \emptyset$
+          \item L'espace est donné par $E_1 \times \ldots \times E_n$
+          \item L'union quelconque d'union de produits est évidemment une union de produits.
+      \end{itemize}
+      Finalement pour l'intersection on prends deux éléments:
+      $$
+          \begin{cases}
+               U = \bigcup_{I}\mathcal{U}^1_{i} \times \ldots \times \mathcal{U}^n_{i}\\
+               V = \bigcup_{J} \mathcal{V}^1_{j} \times \ldots \times \mathcal{V}^n_{j}
+          \end{cases}
+      $$
+      Alors $U \cap V$ est donné par distributivité:
+      $$
+           U \cap V = \bigcup_{I, J} (\mathcal{U}^1_{i} \times \ldots \times \mathcal{U}^n_{i}) \cap (\mathcal{V}^1_{j} \times \ldots \times \mathcal{V}^n_{j})
+      $$
+      On par les propriétés ensemblistes, on trouve qu'alors:
+      $$
+           U \cap V = \bigcup_{I, J} (\mathcal{U}^1_{i} \cap \mathcal{V}^1_{j}) \times \ldots \times (\mathcal{U}^n_{i} \cap \mathcal{V}^n_{j})
+      $$
+      C'est bien une unions de produits d'ouvert de chaque espace respectif, on a donc bien montré que $\mathcal{T}_{prod}$ est une topologie sur $\prod E_i$
+
    \subsection*{\subsecstyle{La boule ouverte \& l'intérieur de la boule fermée}}
    \begin{proof}[\unskip\nopunct]
       Soit \((E, d)\) un espace métrique, \(a\) un point de \(E\) et \(r > 0\), on veut montrer que:
