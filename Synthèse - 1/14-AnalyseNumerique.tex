@@ -388,3 +388,78 @@ Ces majorations nous permettent alors de:
    \item Montrer que les deux premières méthodes sont exactes sur \(\R_1[X]\) et que la deuxième l'est sur \(\R_3[X]\).
    \item Définir le nombre de subdivisions nécessaires pour obtenir une précision donnée.
 \end{itemize}
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle I}}
+\addcontentsline{toc}{section}{Analyse Matricielle I}
+
+Dans ce chapitre, on étudie la résolution numérique de \textbf{systèmes linéaires}, en d'autres termes pour \(A \in \text{GL}_n(\R)\), et \(Y \in \mathcal{M}_{n, 1}(\R)\), on cherche à résoudre l'équation suivante:
+\[
+   AX = Y
+\]
+Dans tout la suite on utilisera régulièrement les concepts de \textbf{norme d'opérateur linéaire} définie en analyse vectorielle, dont on rapelle la définition:
+\[
+   \opNorm{M}_{p, q} = \sup_{\vectNorm{V}_p = 1} \vectNorm{MV}_q
+\]
+\subsection*{\subsecstyle{Conditionnement d'une matrice {:}}}
+Le calcul numérique introduit la nécéssité de savoir si une \textbf{pertubation des données du problème} impactera la précision de la solution trouvé, ie si on note \(B + \delta B\) le vecteur solution perturbé et \(X + \delta X\) la solution du système pertubé:
+\[
+   A(X + \delta X) = B + \delta B
+\]
+Alors on aimerais connaître l'erreur relative par rapport à la solution exacte du problème ie la quantité:
+\[
+   \Delta := \frac{\vectNorm{\delta X}}{\vectNorm{X}} \bigg/ \frac{\vectNorm{\delta B}}{\vectNorm{B}}
+\]
+On définit alors \textbf{le conditionnement} d'une matrice inversible \(A\) pour la norme \(\opNorm{\cdot}\) par la quantité:
+\[
+   \text{cond}(A) = \opNorm{A}\opNorm{A^{-1}}
+\]
+On a alors les propriétés suivantes pour deux matrices \(A, B\) inversibles:
+\begin{itemize}
+   \item On montre que le conditionnement de \(A\) est supérieur à 1.
+   \item On montre que \(\text{cond}(\alpha A) = \text{cond}(A)\) si \(\alpha\) est non-nul.
+   \item On montre que \(\text{cond}(AB) \leq \text{cond}(A)\text{cond}(B)\).
+\end{itemize}
+On notera en outre \(\text{cond}_p\) le conditionnement associé à la norme \(p\). On peut alors caractériser le conditionnement associé à la norme euclidienne, en effet on a:
+\[
+   \text{cond}_2(A) = \sqrt{\frac{\sigma_{max}}{\sigma_{min}}}
+\]
+Où ici on a définit:
+\[
+   \begin{cases}
+      \sigma_{max} \text{ est \textbf{la plus grande valeur propre} de } {}^tAA.\\
+      \sigma_{min} \text{ est \textbf{la plus petite valeur propre} de } {}^tAA.
+   \end{cases}
+\]
+\subsection*{\subsecstyle{Propriété fondamentale {:}}}
+On peut alors montrer la propriété suivante pour le système avec solution perturbée:
+\[
+   \frac{\vectNorm{\delta X}}{\vectNorm{X}} \leq  \text{cond}(A)\frac{\vectNorm{\delta B}}{\vectNorm{B}}
+\]
+En effet en utilisant le fait que \(AX = B\) et en additionnant le système réel et perturbé, on retrouve rapidement le conditionnement.\<
+
+On peut aussi perturber la matrice en \(A + \delta A\), alors on peut montrer de manière analogue que:
+\[
+   \frac{\vectNorm{\delta X}}{\vectNorm{X +\delta X}} \leq  \text{cond}(A)\frac{\vectNorm{\delta A}}{\opNorm{A}}
+\]
+En outre ces majorations \textbf{ne dépendent pas du conditionnement choisi}.
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle II}}
+\addcontentsline{toc}{section}{Analyse Matricielle II}
+On a défini dans le chapitre précédent les outils principaux qui vont nous permettre d'élaborer des méthodes efficaces de résolution de système linéaire. En particulier on trouve deux grands types de techniques de résolution:
+\begin{itemize}
+   \item Les \textbf{méthodes directes} qui s'emploient à résoudre le système de manière exacte par calcul.
+   \item Les \textbf{méthodes itératives} qui s'emploient à résoudre le système de manière approchées.
+\end{itemize}
+Dans ce chapitre nous traiterons des méthodes directes principales.
+\subsection*{\subsecstyle{Méthode de Gauss {:}}}
+
+\subsection*{\subsecstyle{Factorisation LU {:}}}
+\subsection*{\subsecstyle{Factorisation de Cholesky {:}}}
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle III}}
+\addcontentsline{toc}{section}{Analyse Matricielle III}
+Dans ce chapitre nous traiterons des méthodes itératives principales pour résoudre des systèmes linéaires.visent à construire une suite \((X_k)\) de vecteurs tels que \((X_k) \rightarrow X\). Pour ce faire 
+
+\subsection*{\subsecstyle{Méthode de Jacobi {:}}}
+\subsection*{\subsecstyle{Méthode de Gauss-Seidel {:}}}
+\subsection*{\subsecstyle{Méthode de surrelaxation successive {:}}}

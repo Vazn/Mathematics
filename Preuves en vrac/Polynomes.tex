@@ -80,14 +80,17 @@
       \[
          \text{mult}(\alpha) \geq m \Longleftrightarrow (X-\alpha)^m \mid P
       \]
-   
       Supposons que \(\text{mult}(\alpha) = n \geq m\), alors on a:
+      \[
+         (X - \alpha)^{m} \mid  (X - \alpha)^{n}
+      \]
+      Or par définition de la multiplicité on a aussi:
       \[
          (X - \alpha)^n \mid  P \quad\quad \text{ ET } \quad\quad (X - \alpha)^{n+1} \nmid P   
       \]
-      Alors par récurrence évidente, on a:
+      Finalement en combinant ces informations on a:
       \[
-         (X - \alpha)^{m} \ldots \; (X - \alpha)^{n-2} \mid  (X - \alpha)^{n-1} \mid (X - \alpha)^{n}
+         (X - \alpha)^{m} \mid  (X - \alpha)^{n} \mid P
       \]
       Et on conclut par transitivé de la relation de divisibilité.\<
    

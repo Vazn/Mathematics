@@ -235,21 +235,56 @@ En tant que conséquence directe de la définition topologique, on dira alors qu
    \lim_{(x, y) \rightarrow A} f(x, y) = f(A)   
 \]
 Et toute les propriétés opératoires usuelles sont alors aisément démontrées. En particulier, on peut montrer que toutes les fractions rationnelles sont continues sur leur ensemble de définition, et donc tout les polynomes.
+
+\chapter*{\chapterstyle{VII --- Cas des applications linéaires}}
+\addcontentsline{toc}{section}{Cas des applications linéaires}
+On s'intéresse dans ce chapitre à l'espace des applications linéaires \(\mathcal{L}(E, F)\) sur des espaces de dimensions finies. \<
+
+C'est un exemple fondamental en analyse numérique et en mathématiques en général car les problèmes non-linéaires étant complexes, on se ramène souvent à la linéarisation d'un problème pour sa résolution. On cherche donc à affiner notre compréhension de la continuité de ces applications et poser quelques bases de topologie sur cet espace.
 \subsection*{\subsecstyle{Continuité des applications linéaires {:}}}
 Soit \(f : E \rightarrow F\) une application linéaire, alors on a le théorème fondamental suivant qui énonce que \(f\) est continue sur son domaine de définition si et seulement si elle vérifie une des conditions équivalentes suivantes:
 \begin{itemize}
    \item Elle est continue en 0.
    \item Elle est bornée sur la boule unité.
-   \item Sa \textbf{norme d'opérateur} est bornée.
+   \item Elle est uniformément continue.
+   \item Elle est lipschitzienne.
 \end{itemize}
-Et on définit la norme d'opérateur d'une application linéaire par:
-\[
-   |||f||| = \underset{x \in E \backslash \{0_E\}}{\sup}{\frac{||u(x)||}{||x||}}   
-\]
 En particulier, muni des ces équivalences, on peut démontrer la propriétés fondamentale suivante:
 \begin{center}
    \textbf{En dimension finie, toutes les applications linéaires sont continues.}
 \end{center}
+
+\subsection*{\subsecstyle{Normes d'opérateur {:}}}
+On se donne une application linéaire et on munit \(E, F\) de deux normes \(\vectNorm{\cdot}_p, \vectNorm{\cdot}_q\), alors on apelle \textbf{norme d'opérateur} de \(f\) la quantité suivante:
+\[
+   \opNorm{f}_{p, q} = \sup_{\vectNorm{v}_p = 1} \vectNorm{f(v)}_q
+\]
+En outre par l'isomorphisme usuel entre l'espace des application linéaires et celui des matrices, on définit de même la \textbf{norme d'opérateur d'une matrice} par:
+\[
+   \opNorm{M}_{p, q} = \sup_{\vectNorm{V}_p = 1} \vectNorm{MV}_q
+\]
+On notera alors \(\opNorm{f}_{p}\) si la norme est la même au départ et à l'arrivée. On peut alors caractériser la continuité d'un opérateur par le fait que sa norme d'opérateur soit \textbf{finie}.
+
+
+\subsection*{\subsecstyle{Normes matricielles {:}}}
+On appelle \textbf{norme matricielle} toute norme sur un espace de matrice qui est aussi une \textbf{norme d'algèbre}, ie telle que:
+\[
+   \vectNorm{AB} \leq \vectNorm{A}\vectNorm{B}
+\]
+Par exemple, la norme de Frobenius est une norme matricielle. On a alors la propriété\footnote[1]{Pour montrer ceci il faut remarquer que pour tout \(x \in E\), on a \(\vectNorm{f(x)} = \opNorm{f}\vectNorm{x}\).} suivante:
+\begin{center}
+   \textbf{Toute norme d'opérateur est une norme matricielle.}
+\end{center}
+
+\subsection*{\subsecstyle{Normes usuelles {:}}}
+On peut alors chercher à savoir à quoi correspondent les normes d'opérateurs induites par les normes usuelles, on peut montrer qu'elles vérifient:
+\begin{itemize}
+   \item La norme 1: \(\opNorm{A}_{1} = \max_{1 \leq j \leq n} \sum_{1 \leq i \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des colonnes.}
+   \item La norme infinie: \(\opNorm{A}_{\infty} = \max_{1 \leq i \leq n} \sum_{1 \leq j \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des lignes.}
+   \item La norme 2: \(\opNorm{A}_{2} = \sqrt{\rho({}^tAA)}\) où \(\rho(M)\) est le \textbf{rayon spectral} de \(M\).
+\end{itemize}
+
+
 
 \chapter*{\chapterstyle{VII --- Dérivées Directionnelles}}
 \addcontentsline{toc}{section}{Dérivées Directionnelles} 

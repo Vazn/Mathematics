@@ -8,18 +8,20 @@ On appelera alors ces fonctions des fonctions \textbf{mesurables} et les espaces
 La notion de continuité présente plusieurs problèmes analytiques profonds:
 \begin{itemize}
    \item La limite d'une suite de fonctions continues ne l'est pas forcément.
+   \item La limite d'une suite de fonctions Riemann-intégrables ne l'est pas forcément.
    \item La limite d'une suite d'intégrales n'est pas nécessairement l'intégrale de la limite.
    \item L'intégrale sur une partie non-compacte est péniblement gérée par les intégrales généralisées dans les cas simples.
    \item L'intégrale sur un segment d'une fonction trés irrégulière n'est souvent pas définie.
+   \item L'espace des fonctions Riemann-intégrables n'a pas de structure forte.
 \end{itemize}
 De manière générale, quand on considère des objets trés réguliers (fonctions définies sur des compacts, limites uniformes de suites de fonctions, intégrale sur des domaines compacts), la continuité permet d'obtenir les résultats souhaités mais dans des cas plus exotiques, elle n'est plus suffisante. Considérons par exemple:
 \[
    \begin{aligned}
       f : I = \icc{a}{b} &\longrightarrow \R \\
-      x &\longmapsto \mathbb{I}_\Q(x)
+      x &\longmapsto \1_\Q(x)
    \end{aligned}
 \]
-Où \(\mathbb{I}_\Q\) désigne la fonction indicatrice des rationnels, alors on montre facilement que cette fonction n'est pas intégrable au sens de Riemann, en effet on a \(\displaystyle\int_I^-{f} = 0 \neq 1 = \displaystyle\int_I^+{f}\), mais on pourra définit cette intégrale gràce à la théorie de Lebesgue.
+Où \(\1_\Q\) désigne la fonction indicatrice des rationnels, alors on montre facilement que cette fonction n'est pas intégrable au sens de Riemann, en effet on a \(\displaystyle\int_I^-{f} = 0 \neq 1 = \displaystyle\int_I^+{f}\), mais on pourra définit cette intégrale gràce à la théorie de Lebesgue.
 
 \chapter*{\chapterstyle{XI --- Espaces Mesurables}} % A REFAIRE
 \addcontentsline{toc}{section}{Espaces Mesurables} 
@@ -128,7 +130,7 @@ On définit maintenant le concept fondamental de \textbf{propriété mesurable},
    \item On dira qu'une propriété est mesurable si \(\{x \in X \; ; \; P(x)\}\) est mesurable.
    \item On dira qu'une propriété est vraie \textbf{presque partout} (qu'on abrégera souvent en p.p.) si cette partie est pleine.
 \end{itemize}
-\uline{Exemple:} La fonction \(f : x \in \R - \Q \mapsto x\) est définie p.p. car son ensemble de définition est plein.
+\uline{Exemple:} La fonction \(f : x \in \R \backslash \Q \mapsto x\) est définie p.p. car son ensemble de définition est plein.
 
 
 \chapter*{\chapterstyle{XI --- Fonctions mesurables}} % A REFAIRE
@@ -147,7 +149,7 @@ Alors on dira que \(f\) est \textbf{mesurable} si et seulement si:
 Une fonction mesurable pour des tribus boréliennes est appelée \textbf{fonction borélienne}, en particulier \textbf{toute fonction continue est borélienne}. Par ailleurs, on peut facilement montrer que \textbf{la composée de fonction mesurables est mesurable}.\<
 
 On note alors \(\mathscr{M}(X_{\mathscr{A}}, Y_{\mathscr{B}})\) l'ensemble des fonctions mesurables de \(X\) dans \(Y\) pour leurs tribus respectives et quand le contexte rends évidentes les tribus considérées on note alors cet ensemble \(\mathscr{M}(X, Y)\).
-\subsection*{\subsecstyle{Décomposabilité {:}}}
+\subsection*{\subsecstyle{Compatibilité avec le recollement {:}}}
 Contrairement à la continuité, on a la propriété suivante, on se donne une \textbf{famille dénombrable} \((A_n)_{n \in I}\) de parties mesurables de \(E\) qui partitionnent \(E\), alors:
 \[
    \forall n \in I \; ; \; f \big|_{A_n} \text{ est mesurable } \implies f \text{ est mesurable.}
@@ -157,7 +159,7 @@ En particulier, il n'y a pas de \textit{problème de recollement}. Plus généra
 \subsection*{\subsecstyle{Lien avec les indicatrices {:}}}
 On peut alors caractériser la mesurabilité d'une partie \(A\) par la mesurabilité de son indicatrice (pour la tribu borélienne de \(\R\)), en effet on a la propriété suivante:
 \[
-   A \in \mathscr{A} \Longleftrightarrow \mathbb{I}_A \in \mathscr{M}(X, \R)
+   A \in \mathscr{A} \Longleftrightarrow \1_A \in \mathscr{M}(X, \R)
 \]
 
 \chapter*{\chapterstyle{XI --- Fonctions boréliennes}} % A REFAIRE
@@ -217,11 +219,11 @@ Donc par exemple:
 \subsection*{\subsecstyle{Fonctions étagées {:}}}
 On peut maintenant définir l'objet principal qui va nous permettre de définir notre nouvelle notion d'intégrale, on rapelle tout d'abord qu'une \textbf{fonction en escalier} est, pour une famille de \(n\) \textbf{intervalles} \((A_i)\) de \(X\) et de scalaires \((\lambda_i)\) est une fonction de la forme suivante:
 \[
-   e = \sum_{i \leq n} \lambda_i\mathbb{I}_{A_i}
+   e = \sum_{i \leq n} \lambda_i\1_{A_i}
 \]
 C'est cette forme que l'on veut généraliser en considérant non plus des intervalles mais des parties \textbf{mesurables} de \(X\), en particulier on définit alors une \textbf{fonction étagée}, pour une famille de \(n\) \textbf{parties mesurables} \((A_i)\) de \(X\) et de scalaires \((\lambda_i)\) les fonctions de la forme suivante:
 \[
-   e = \sum_{i \leq n} \lambda_i\mathbb{I}_{A_i}
+   e = \sum_{i \leq n} \lambda_i\1_{A_i}
 \]
 
 \subsection*{\subsecstyle{Théorème d'approximation {:}}}
@@ -232,6 +234,197 @@ On peut alors montrer le résultat fondamental suivant, l'analogue du théorème
 
 \chapter*{\chapterstyle{XI --- Intégrale de Lebesgue}} % A REFAIRE
 \addcontentsline{toc}{section}{Intégrale de Lebesgue} 
+Dans ce section nous définissons l'objet fondamental de ce chapitre à savoir \textbf{l'intégrale associée à une mesure} sur un espace mesure \((X, \mathscr{A}, \mu)\), en partant de l'intégrale de fonctions élémentaires, les fonctions étagées jusqu'à l'intégrale d'une fonction mesurable quelconque. En particulier on définira l'intégrale des fonctions selon la progression suivante:
+\begin{center}
+   Fonctions étagées $\rightarrow$ Fonctions mesurables positives étendues $\rightarrow$ Fonctions mesurables
+\end{center}
+\subsection*{\subsecstyle{Intégrale d'une fonction étagée{:}}}
+On se donne une fonction étagée \(e\), alors on sait qu'il existe une famille dénombrable de parties mesurables \((A_i)\) et de scalaires \((\lambda_i)\) telles que:
+\[
+   e = \sum \lambda_i \1_{A_i}
+\]
+Alors on définit l'intégrale de cette fonction pour la mesure \(\mu\) par:
+\[
+   \int_X ed\mu = \sum \lambda_i \mu(\1_{A_i})
+\]
+C'est l'intégrale de ces fonctions élémentaires qui nous permettront de construire l'intégrale générale.
+\subsection*{\subsecstyle{Intégrale d'une fonction positive{:}}}
+On considère alors une fonction \(f \in \mathscr{M}(X, \overline{\R}_+)\), alors on définit:
+\[
+   \int_X fd\mu = \sup \left\{\int_X ed\mu \; ; \; e \text{ positive et étagée}, e \leq f\right\}
+\]
+On note alors que cette borne supérieure est bien une réel \textbf{étendu}, ie elle peut être infinie. En outre, on a d'aprés le théorème d'approximation l'existence d'une suite qui converge vers cette borne et donc vers l'intégrale.
+On peut donc définir la fonction suivante:
+\[
+   \begin{aligned}
+      \int : \mathscr{M}(X, \overline{\R}_+) &\longrightarrow \overline{\R}_+\\
+      f &\longmapsto \int_X fd\mu
+   \end{aligned}
+\]
+On a alors les deux propriétés élementaires suivantes:
+\begin{itemize}
+   \item \textbf{Extension de la mesure:} Pour tout mesurable \(A\), on a \(\int_X \1_A d\mu = \mu(A)\)
+   \item \textbf{Croissance:} Pour toutes fonctions positives mesurables \(f \leq g\), on a \(\int_X f d\mu \leq \int_X g d\mu\)
+   \item \textbf{Linéaire positive:} Pour toutes fonctions positives mesurables \(f, g\) et réel \textbf{positif} \(\alpha\), on a:
+   \[
+      \int_X (f + \alpha g) d\mu = \int_X fd\mu + \alpha \int_{X}gd\mu
+   \]
+   \item \textbf{Convergence:} Si \((f_n)\) est une suite \textbf{croissante} de fonctions mesurables, alors:
+   \[
+      \lim_{n} \int_X f_nd\mu = \int_X \lim_{n} f_nd\mu
+   \]
+   C'est alors un des résultat principaux de la théorie de la mesure, en effet on a alors qu'une suite de fonctions intégrables au sens de la mesure converge bien vers une fonction intégrable. En outre il est important de noter au préalable que la fonction intégrée est bien définie sur \(\overline{\R}_+\) et mesurable:
+   \[
+      \begin{aligned}
+         \lim_nf_n: x &\longmapsto \lim_nf_n(x)
+      \end{aligned}
+   \]
+   
+\end{itemize}
+
+\subsection*{\subsecstyle{Intégrabilité{:}}}
+On dira alors qu'une fonction mesurable sur \(X\) à valeur dans \(\overline{\R}\) ou \(\C\) est \textbf{intégrable} si et seulement si on a:
+\[
+   \int_{X} |f|d\mu < \infty
+\]
+Dans ce cas, l'intégrale existe et on la définit\footnote[1]{\textbf{Attention:} C'est une définition et pas un potentiel usage de la linéarité (qui n'est que positive) sur l'égalité \(f = f^+ - f^-\)} par:
+\[
+   \int_{X} f d\mu = \int_{X} f^+ d\mu - \int_{X} f^- d\mu
+\]
+Où on rapelle que la définition des fonctions partie positive/négative et qu'elles sont toutes deux positives:
+\[
+   \begin{cases}
+      f^+ := \sup(0, f)\\
+      f^- := -\inf(0, f)
+   \end{cases}
+\]
+On note alors \(\mathscr{L}^1(X, \C)\) l'ensemble des fonctions intégrables sur \(X\), alors on peut définir la fonction suivante:
+\[
+   \begin{aligned}
+      \int : \mathscr{L}^1(X) &\longrightarrow \C\\
+      f &\longmapsto \int_{X} fd\mu
+   \end{aligned}
+\]
+Alors l'espace \(\mathscr{L}^1(X)\) est un \textbf{espace vectoriel} et l'intégrale est une \textbf{forme linéaire croissante}\footnote[2]{En particulier, on a l'inégalité triangulaire \(\left|\int_{X} fd\mu \right| \leq \int_{X} |f|d\mu\).} sur celui ci.
+\subsection*{\subsecstyle{Intégrale sur une partie{:}}}
+On peut alors remarquer qu'on a définit l'intégrale d'une fonction \(f \in \mathscr{M}(X)\) sur \(X\) tout entier uniquement, on aimerait pouvoir calculer l'intégrale de \(f\) sur \(A \subseteq X\), on définit alors:
+\[
+   \int_A f d\mu = \int_X \1_Afd\mu
+\]
+Où encore pour le problème inverse si \(f \in \mathscr{M}(A)\), alors on définit simplement l'intégrale de \(f\) par extension par zéro sur \(X\) via:
+\[
+   \int_A f d\mu = \int_X e_X(f)d\mu
+\]
+Alors on a plusieurs propriétés fondamentales:
+\begin{itemize}
+
+   \item L'intégrale \textbf{ignore les parties négligeables} ie on a pour une partie négligeable \(N\) que:
+   \[
+      \int_{N} fd\mu =0
+   \]
+   \item L'intégrale vérifie \textbf{la relation de Chasles généralisée}, ie pour toute famille disjointe de parties mesurables \((A_n)\), alors \(f\) est intégrable sur cette union si l'objet de droite dans l'égalité ci-dessous est bien défini\footnote[3]{En d'autrs termes si \(f\) est intégrable sur toutes les \(A_n\) et si la série des intégrales converge. En particulier, si \(f\) est positive, alors l'égalité est toujours vraie mais peut être infinie.}:
+   \[
+      \int_{\cup_n A_n} fd\mu = \sum_n \int_{A_n} fd\mu 
+   \]
+\end{itemize}
+
+\pagebreak
+\subsection*{\subsecstyle{Intégrale sur un intervalle non compact{:}}}
+On peut facilement montrer que sur un segment, l'intégrale de Riemann et de Lebesgue coincident, on considère maintenant le problème de l'intégrale généralisée de Riemann sur intervalle \(\ico{a}{c}\), alors l'intégrale sur ce domaine est définie par:
+\[
+   \int_{\ico{a}{c}} f(x)dx = \lim_{b \rightarrow c} \int_{\icc{a}{b}} f(x)dx
+\]
+On se ramène donc de la même manière que pour Riemann à une limite d'intégrales. 
+\subsection*{\subsecstyle{Intégrabilité locale{:}}}
+On cherche maintenant à déterminer des méthodes pour montrer qu'une fonction est intégrable sur un domaine quelconque \(X\), on définit alors les deux concepts suivants:
+\begin{itemize}
+   \item Une fonction est \textbf{localement intégrable} si elle est intégrable sur tout compact de \(X\).
+   \item Une fonction est \textbf{intégrable au voisinage} de \(a \in \text{adh}(X)\) si elle est intégrable sur un voisinage de \(a\).
+\end{itemize}
+En outre on a alors par exemple pour les fonctions réelles qu'une fonction sera intégrable sur \(\R\) si elle est localement intégrable et intégrable au voisinage des infinis. Cela nous donne donc une méthode pour montrer l'intégrabilité d'une fonction, mais on a une condition suffisante encore plus simple, en effet si il existe une fonction intégrable \(g\) telle que:
+\[
+   \forall x \in X \; ; \; |f(x)| \leq g(x)
+\]
+Alors évidemment, \(f\) est intégrable.
+
+\subsection*{\subsecstyle{Théorèmes de changement de variable{:}}}
+Comme pour le cas de l'intégrale de Riemann, on a que pour \(f\) une fonction intégrable sur \(X\), alors pour toute bijection \(\phi : X \rightarrow X'\), alors:
+\[
+   \int_{X} f(x) dx = \int_{X'} f \circ \phi |\phi'|dx   
+\]
+Plus précisément, alors la fonction de droite est intégrable et leurs intégrales sont égales. En outre on peut retrouver l'expression usuelle du chagement de variable en considérant l'intégrale signée sur un segment.
 
 \chapter*{\chapterstyle{XI --- Grands Théorèmes}} % A REFAIRE
 \addcontentsline{toc}{section}{Grands Théorèmes} 
+
+Dans ce chapitre, on aborde les théorèmes principaux relatifs à l'intégrale de Lebesgue et qui font toute sa force, en effet les propriétés précédentes et notamment le \textbf{théorème de convergence monotone} ont le problème suivant:
+\begin{center}
+   \textbf{L'interversion limite-intégrale n'est possible que sous les hypothèses que la suite de fonction est croissante et positive.}
+\end{center}
+On aimerait trouver un condition suffisante plus générale pour pouvoir intervetir ces deux opérateurs, c'est l'objet du théorème suivant.
+
+\subsection*{\subsecstyle{Théorème de convergence dominée{:}}}
+On se donne une suite de fonctions mesurables \((f_n)\) qui admet une limite simple \((f)\), alors on peut montrer qui si \((f_n)\) satisfait la \textbf{condition de domination} suivante:
+\[
+   \exists g \in \mathcal{L}(X) \; , \; \forall n \in \N \; ; \; |f_n| \leq g
+\]
+Alors on a que tout les \(f\) sont intégrables et:
+\[
+   \lim_{n \rightarrow +\infty} \int_X f_n(x) dx = \int_X \lim_{n \rightarrow +\infty} f_n(x) dx
+\]
+Ce théorème appellé \textbf{théorème de convergence dominée} est le théorème principal qui nous permettra d'effectuer une intervesion limite-intégrale. En outre, sachant que l'intégrale ignore les parties négligeables, on peut même généraliser le théorème et demande que la suite de fonctions converge simplement presque partout et que la majoration soit vraie presque partout.
+
+\subsection*{\subsecstyle{Théorème de convergence dominée pour les séries{:}}}
+On peut appliquer ce théorème à la suite des sommes parties d'une série de fonctions et on obtient alors comme condition suffisante d'intervesion qu'il existe une fonction intégrable \(g\) telle que:
+\[
+   \forall n \in \N \; ; \; \left|\sum_{k=0}^{n} f_k(x)\right| \leq g
+\]
+Mais on peut affaiblir légérement le théorème en rajoutant les hypothèses 
+
+\chapter*{\chapterstyle{XI --- Intégrales à paramètres}} % A REFAIRE
+\addcontentsline{toc}{section}{Intégrales à paramètres} 
+Dans ce chapitre on considère des fonctions de la forme suivante:
+\[
+   \begin{aligned}
+      F : I \subseteq \R &\longrightarrow \R\\
+      t &\longmapsto \int_X f(x, t) dx
+   \end{aligned}
+\]
+Pour que cette fonction soit bien définie, il faut alors que pour tout \(t \in I\), les fonctions \(f(\cdot, t)\) soient bien intégrables sur \(X\). On appelle alors \(F\) une \textbf{intégrale à paramètre}. On cherche alors à savoir si les propriétés de régularité de \(f\) vont se transmettre à \(F\), en d'autres termes:
+\begin{itemize}
+   \item Si pour tout \(x \in X\) on a \(t \mapsto f(x, t)\) continue, est-ce que \(F\) est continue ?
+   \item Si pour tout \(x \in X\) on a \(t \mapsto f(x, t)\) de classe \(\mathcal{C}^1\), est-ce que \(F\) est de classe \(\mathcal{C}^1\)?
+\end{itemize}
+Dans toute la suite on considère une famille de fonctions \((x, t) \mapsto f(x, t)\) telle que \(f(\cdot, t)\) est intégrable pour tout \(t \in I\).
+
+\subsection*{\subsecstyle{Théorème d'interversion 1{:}}}
+Soit \(x \in X\), alors si la fonction \(f(x, \cdot)\) admet une limite en un point \(a \in \text{adh}(I)\) et qu'elle vérifie l'hypothèse de domination suivante:
+\[
+   \exists g \in \mathcal{L}(X) \; ; \; \forall t \in I \; ; \; |f(\cdot, t)| \leq g
+\]
+Alors on a l'interversion et on a:
+\[
+   \lim_{t \rightarrow a} \int_X f(x, t) dx = \int_X \lim_{t \rightarrow a} f(x, t) dx
+\]
+En particulier, si \(f\) est continue en un point ou sur une partie, le résultat reste vrai.
+
+\subsection*{\subsecstyle{Théorème d'interversion 2{:}}}
+Soit \(x \in X\), alors si la fonction \(f(x, \cdot)\) est de classe \(\mathcal{C}^1\) en un point \(a \in I\) et qu'elle vérifie l'hypothèse de domination suivante:
+\[
+   \exists g \in \mathcal{L}(X) \; ; \; \forall t \in I \; ; \; |\partial_tf(\cdot, t)| \leq g
+\]
+Alors on a l'interversion et on a:
+\[
+   \frac{d}{dt}\int_X f(x, t) dx = \int_X \frac{\partial}{\partial t} f(x, t) dx
+\]
+Ces deux théorèmes sont en fait simplement une application directe du théorème de convergence dominée. Et le second se déduis du premier aprés utilisation de l'inégalité des accroissements finis.
+
+\subsection*{\subsecstyle{Remarque{:}}}
+La notion de continuité et de dérivabilité étant locale, pour montrer qu'une intégrale à paramètres est continue ou dérivable il est souvent utile de restreindre le domaine de définition \textbf{du paramètre} pour se ramener à des intervalles plus petits, souvent compacts, pour trouver la majoration et conclure.\<
+
+\uline{Exemple} On considère \(F : t \in \R_+ \mapsto \int_{\R_+} f(x, t)dx\) avec \(f(x, t) = e^{-tx}\), alors \(f(x, \cdot)\) est clairement continue sur tout \(\R_+\), on doit trouver une fonction intégrable \(g\) telle que:
+\[
+   \forall t \in \R_+ \; ; \; |f(\cdot, t)| = e^{-tx} \leq g
+\]
+On considère alors que \(\R_+ = \bigcup_{b > 0} \ico{b}{+\infty}\) et que sur chaque intervalle, \(e^{-tx} \leq e^{-bx}\) qui ne dépends pas de \(t\) et donc sur chacun de ses intervalles \(F\) est continue, et ceci étant vrai pour tout \(b\), c'est donc vrai sur \(\R_+\) tout entier.
+
