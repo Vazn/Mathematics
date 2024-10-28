@@ -1,0 +1,447 @@
+\documentclass{report}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{esvect}
+\usepackage{tcolorbox}
+\usepackage{listings, lstautogobble}
+\usetikzlibrary{calc,patterns,angles,quotes}
+
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes,arrows,arrows.meta,angles,quotes,patterns,patterns.meta}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing}
+
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz, tkz-fct, tkz-euclide}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/] % activate
+
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
+
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+\definecolor{BrightRed2}{RGB}{210, 115, 115}
+
+\definecolor{DarkBlueX}{RGB}{43, 68, 92}
+\definecolor{DarkBlue0}{RGB}{53, 78, 102}
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
+\definecolor{DarkGreen3}{RGB}{83, 132, 108}
+\definecolor{DarkGreen2}{RGB}{58, 132, 94}
+\definecolor{DarkGreen1}{RGB}{90, 162, 126}
+
+\usetikzlibrary{patterns.meta,decorations.pathmorphing}
+
+\geometry{
+   left=25mm, right=25mm, top= 15mm, bottom= 15mm,
+   footskip=30pt
+   }
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0cm}
+
+\lstset{
+    keywordstyle=\color{red}\bfseries,
+    commentstyle=\color{black!50}\it,
+    linewidth=30,
+    autogobble=true,
+    basicstyle=\small,
+}
+
+\title{Modelisation des systèmes périodiques}
+\author{Cavazzoni Christophe}
+\date{2024-2025 - Institut Champollion}
+
+\begin{document}
+   \maketitle
+   \tableofcontents
+
+   \chapter{Introduction}
+      \subsection{Definitions}
+         Dans ce rapport, nous allons nous pencher sur l'étude et la modélisation de \textbf{systèmes dynamiques} particuliers appelés \textbf{systèmes périodiques}. Tout d'abord nous définissons les concepts en jeu.
+
+         \begin{itemize}
+            \item On appelle \textbf{système dynamique} un ensemble d'éléments qui intéragissent entre eux et dont l'évolution dans le temps est décrite par une loi, qui pourra être soit physique, soit chimique, etc... Nous nous intéresseront au cas particulier des systèmes périodiques qui sont des sytèmes dynamiques régis par les lois physiques élémentaires, et dont les interactions varient \textbf{continument}, ie ce sont des \textbf{systèmes dynamiques à temps continu.}
+            \item On appelle \textbf{systèmes périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné.
+         \end{itemize}
+
+      \subsection{Cas étudiés}
+         Nous étudiront principalement 2 cas de sytèmes périodiques:
+         \begin{itemize}
+            \item Le cas du \textbf{système masse-ressort}.
+            \item Le cas du \textbf{pendule simple non-linéaire}.
+         \end{itemize}
+         L'objectif étant d'identifier les paramêtres du système, modéliser leur mouvement via des équations différentielles, et étudier ces équations et les propriétés de leurs solutions (portrait de phase, points d'équilibre, solutions périodiques et si le temps le permet, stabilité.).
+
+      \subsection{Techniques de modélisation utilisées}
+      Les systèmes que l'on veut modéliser sont des systèmes basées sur les lois de la physique, on utilisera donc principalement les concepts suivants pour modéliser les phénomènes:
+      \begin{itemize}
+         \item Le \textbf{principe fondamental de la dynamique} qui nous permettra d'établir que \(a = \frac{1}{m} \sum\vv{F}\).
+         \item On devra donc souvent effectuer le \textbf{bilan des forces} qui s'appliquent à notre objet.
+         \item Certains objets on des propriétés particulières qui demanderont d'autres concepts physiques (ressorts notamment).
+      \end{itemize}
+      Ces techniques nous permettront alors de nous ramener à l'étude d'une équation différentielle de la forme:
+      \[
+         y''(t) = F(t, y(t), y'(t))
+      \]
+      Et on pourra alors utiliser l'arsenal mathématique à notre disposition pour l'étudier.
+
+   \chapter{Systême masse-ressort}
+      \subsection{Modélisation}
+         On considère un objet de masse \(m\) relié à un mur par un ressort de longueur \(l\), tous deux des réels positifs. On considère aussi que la masse est à l'équilibre, voici un schéma qui illustre la situation:
+         \begin{center}
+            \begin{tikzpicture}[>=stealth]
+               \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
+                rectangle ++ (4,0.5);
+               \draw[decorate,decoration={coil,segment length=5pt,aspect=0.7,amplitude=4pt,
+                  pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.5)
+                  node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
+
+               \draw[<->, DarkGreen3] (-0.5,4.96) -- node[left=1mm] {$l$} (-0.5, 2.54);
+
+               \draw[DarkGreen3] (m.east) edge[dashed] (m.east-|2,0) (m.east-|2,0) node[right] {Equilibre};
+            \end{tikzpicture}
+         \end{center}
+      Le système qu'on cherche à modéliser est le mouvement de la masse si on déplace la masse en dehors du point d'équilibre. On peut tout d'abord identifier les \textbf{paramétres du modèle}:
+      \begin{itemize}
+         \item La masse de l'objet.
+         \item La longeur du ressort.
+         \item La force de gravité.
+      \end{itemize}
+      Aussi, on peut remarque que si quand la masse est à l'équilibre et si on note \(l_0\) la longueur du ressort à vide, alors la force de gravité est proportionelle à l'élongation du ressort, ie on a:
+      \[
+         mg = k(l - l_0)
+      \]
+      On appelle alors \(k\) la \textbf{constante de raideur} du ressort. Notons \(y\) la fonction qui donne la position au temps \(t\) du centre de la masse. Pour modéliser le mouvement de la masse si on la sort de la position d'équilibre, on doit modéliser les forces en action.  D'aprés la 3em loi de Newton, on a la situation suivante:
+      \begin{center}
+         \begin{tikzpicture}[>=stealth]
+            \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
+             rectangle ++ (4,1);
+            \draw[decorate,decoration={coil,segment length=7pt,aspect=0.7,amplitude=4pt,
+               pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.02)
+               node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
+
+            \draw[dashed, DarkGreen3] (0.5,2) -- node[right=5mm]{Equilibre} (1.5, 2);
+            \draw[->, thick, DarkGreen3] (0,1) -- node[right]{$\vv{F}$} (0, 0.30);
+            \draw[->, thick, BrightRed2] (0,5.0) -- node[right]{$\vv{F}$} (0, 5.70);
+         \end{tikzpicture}
+      \end{center}
+      \pagebreak
+      En effet gràce à la relation de proportionnalité ci-dessus, la gravité n'a pas d'impact sur le mouvement du ressort, elle ne fait que déplacer le point d'équilibre vers le bas. En outre, la        force qu'exercerce le ressort dans la direction de l'équilibre est donc linéairement proportionelle à la distance avec l'équilibre, et donc d'aprés le \textbf{principe fondamental de la dynamique}, ie on a:
+      \[
+         \vv{a}(t) = \frac{1}{m}\sum \vv{F}(t)
+      \]
+      Et donc on obtient en faisant le bilan des forces, dont il ne resulte qu'une force proportionnelle à l'élongation:
+      \[
+         \boxed{y''(t) = -\frac{k}{m}y(t)}
+      \]
+      Cette équation modélise donc bien le mouvement de la masse sur le ressort.
+      \subsection{Résolution}
+         L'équation précédente et facilement résoluble, en effet c'est une equation linéaire et on peut remarquer facilement que les fonctions solutions sont de la forme:
+         \[
+            y(t) = c_1\cos(\omega t) + c_2\sin(\omega t) \; ; \; \omega = \sqrt{\frac{k}{m}}
+         \]
+         Où \(c_1, c_2\) sont les constantes d'intégration à déterminer, on a:
+         \begin{itemize}
+            \item On a directement \(y(0) = c_1\) donc \(c_1\) est la position initale de la masse.
+            \item On a en dérivant que \(y'(0) = \omega c_2\), donc \(c_2 = \frac{v_0}{\omega}\), c'est une constante proportionelle à la vitesse initiale.
+         \end{itemize}
+         Finalement on a la solution donnée par:
+         \[
+            \boxed{y(t) = y_0\cos(\omega t) + \frac{v_0}{\omega}\sin(\omega t) \; ; \; \omega = \sqrt{\frac{k}{m}}}
+         \]
+      \subsection{Champ de vecteur associé et portrait de phase}
+         Si on ramène l'équation différentielle d'ordre 2 à une équation différentielle vectorielle d'ordre 1, on obtient que la position de la masse est exactement caractérisée par sa position et sa vitesse, ie l'espace des phases est le plan repéré par \((y, y')\), et la dynamique est caractérisée par le champ de vecteur associé trouvé ci-dessus. Par exemple pour \(k = 1\), on a le champ de vecteur suivant:
+         \begin{center}
+            \begin{tikzpicture}
+               \begin{axis}[
+                  xmin = -2, xmax = 2,
+                  ymin = -2, ymax = 2,
+                  zmin = 0, zmax = 1,
+                  axis equal image,
+                  xtick distance = 1,
+                  ytick distance = 1,
+                  view = {0}{90},
+                  scale = 1.25,
+                  title = {\bf Champ de vecteurs: $F = [-y,x]$},
+                  height=7cm,
+                  xlabel = {$y$},
+                  ylabel = {$y'$},
+                  colormap/viridis,
+                  colorbar,
+                  colorbar style = {
+                     ylabel = {Norme}
+                  }
+               ]
+                  \addplot3[
+                     point meta = {sqrt(x^2+y^2)},
+                     quiver = {
+                        u = {-y/sqrt(x^2+y^2)},
+                        v = {x/sqrt(x^2+y^2)},
+                        scale arrows = 0.15,
+                     },
+                     quiver/colored = {mapped color},
+                     -stealth,
+                     domain = -2:2,
+                     domain y = -2:2,
+                  ] {0};   
+               \end{axis}
+            \end{tikzpicture}
+         \end{center}
+      
+   \pagebreak
+   
+   Traçons quelques trajectoires possibles du système, pour les conditions initiales \((y_0, v_0) = (\frac{i}{2}, 0)\) pour \(i \in \{1, 2, 3\}\), on trouve les trajectoires suivantes:
+   \begin{center}
+      \begin{tikzpicture}
+         \tikzset{%
+            my arrow/.style={
+            postaction={decorate,decoration={
+            markings,
+            mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
+            }
+         }
+         \begin{axis}[
+            xmin = -2, xmax = 2,
+            ymin = -2, ymax = 2,
+            zmin = 0, zmax = 1,
+            axis equal image,
+            xtick distance = 1,
+            ytick distance = 1,
+            view = {0}{90},
+            scale = 1.25,
+            title = {\bf Portrait de phase: $F = [-y,x]$},
+            height=7cm,
+            xlabel = {$y$},
+            ylabel = {$y'$},
+            colormap/viridis,
+            colorbar,
+            colorbar style = {
+               ylabel = {Norme}
+            }
+         ]
+            \addplot3[
+               point meta = {sqrt(x^2+y^2)},
+               quiver = {
+                  u = {-y/sqrt(x^2+y^2)},
+                  v = {x/sqrt(x^2+y^2)},
+                  scale arrows = 0.15,
+               },
+               quiver/colored = {mapped color!25},
+               -stealth,
+               domain = -2:2,
+               domain y = -2:2,
+            ] {0};
+            \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1.1, postaction={decorate}] ( {0.5*cos(deg(x))}, {0.5*sin(deg(x))});      
+            \node[thick] at (axis cs:0.70, 0) {\Large $\gamma_1$};   
+            \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1.1, postaction={decorate}] ( {cos(deg(x))}, {sin(deg(x))} );   
+            \node[thick] at (axis cs:1.20, 0) {\Large $\gamma_2$};   
+            \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1.1, postaction={decorate}] ( {1.5*cos(deg(x))}, {1.5*sin(deg(x))} );      
+            \node[thick] at (axis cs:1.70, 0) {\Large $\gamma_3$};      
+         \end{axis}
+      \end{tikzpicture}
+   \end{center}
+On remarque donc la propriété suivante:
+\begin{center}
+   \textbf{Toutes les trajectoires sont périodiques et le seul point d'équilibre correspond à la masse au repos.}
+\end{center}
+      \subsection{Ajout d'un terme d'amortissement}
+         On essaie maintenant de rendre le modèle plus réaliste en ajoutant la contribution des frottements de l'air. Alors, en première approximation, on peut imaginer rajouter un terme proportionnel à la vitesse qui ralentit la masse, ie on considère la nouvelle équation suivant, pour \(\lambda > 0\) un coefficient de frottements:
+         \[
+            y''(t) = -\frac{k}{m}y(t) - \lambda y'(t)
+         \]
+         Et la c'est la merde, 3 cas, régime apériodique, critique, et pseudo-périodique ... dépendant du \(\Delta\) de l'équation caractéristique de l'équation (C LE POLYNOME CARACTERISTIQUE DE LA MATRICE), le dernier ok, les autres sont relou + technique de resolution d'eqdiff relou aussi ... 
+
+   \chapter{Pendule simple}
+      \subsection{Modélisation}
+      On considère un objet de masse \(m\) relié à un point par une corde rigide de longueur \(l\), tous deux des réels positifs. On considère aussi que la masse est à l'équilibre, voici un schéma qui illustre la situation:
+      \begin{center}
+         \begin{tikzpicture}[>=stealth, scale=1.2]
+            \draw[thick] (0,5) -- (0,2.5) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
+            \draw[DarkGreen3] (0, 1.5) edge[dashed] (0, 2.1) node[below] {Equilibre};
+            \draw[<->, DarkGreen3] (-0.3,4.96) -- node[left=1mm] {$l$} (-0.3, 2.84);
+
+            \filldraw (0, 5) circle (2.5pt);
+         \end{tikzpicture}
+      \end{center}
+      Le système qu'on cherche à modéliser est le mouvement de la masse si on déplace la masse en dehors du point d'équilibre. On peut tout d'abord identifier les \textbf{paramétres du modèle}:
+      \begin{itemize}
+         \item La masse de l'objet.
+         \item La longeur du ressort.
+         \item La constante de gravité.
+      \end{itemize}
+      On note alors \(\theta\) la fonction qui donne la position angulaire en radians au temps \(t\) du centre de la masse. Pour modéliser le mouvement de la masse si on la sort de la position d'équilibre, on doit modéliser les forces en action.  D'aprés la 3em loi de Newton, on a la situation suivante:
+      \begin{center}
+         \begin{tikzpicture}[>=stealth, scale=1.2]
+            \coordinate (pivot) at (0, 5);
+            \coordinate (equilibrium) at (0, 1.5);
+            \coordinate (pendulum) at (1.76, 3.23);
+            \pic[<-, draw, angle eccentricity=1.6, angle radius = 0.7cm, thick] {angle = equilibrium--pivot--pendulum};
+            \pic[<-, draw, angle eccentricity=0.85, angle radius = 2.9cm, color = DarkGreen1, thick] {angle = equilibrium--pivot--pendulum};
+            \node at (-0.35, 4.4) {$\theta(t)$};
+            \node[color = DarkGreen1] at (-0.35, 2.6) {$l\theta(t)$};
+
+            \filldraw (pivot) circle (2.5pt);
+            \draw[thick] (pivot) -- (pendulum) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
+            \draw[DarkGreen3] (equilibrium) edge[dashed] (pivot) node[below] {Equilibre};
+
+            \draw[->, thick, DarkGreen3] (1.76, 2.95) -- node[right]{$\vv{F}_G$} (1.76, 2);
+            \draw[->, thick, DarkGreen3] (1.76, 3.23) -- node[right]{$\vv{F}_T$} (0, 5);
+         \end{tikzpicture}
+      \end{center}
+      \pagebreak
+      En utilisant les faits géométriques que je n'ai pas encore écrit et le \textbf{principe fondamental de la dynamique}, on a:
+      \[
+         \vv{a}(t) = \frac{1}{t}\sum\vv{F}(t)
+      \]
+      Et donc finalement la composante d'acceleration dans le sens de la course du pendule est donnée par:
+      \[
+         \boxed{\theta''(t) = - \frac{g}{l}\sin(\theta)}
+      \]
+      \subsection{Résolution}
+      Malheureusement cette équation différentielle est \textbf{trés difficile} à résoudre analytiquement, le seul cas où la résolution est possible est pour \(\theta_0\) petit, alors on a:
+      \[
+         \sin(\theta) \sim \theta
+      \]
+      Et donc on se ramène au cas simple d'oscillateur harmonique:
+      \[
+         \theta''(t) = -\frac{g}{l}\theta
+      \]
+      Néanmoins, on peut explorer le problème non-linéaire via les méthodes numériques, ce qu'on verra dans la section suivante.
+      \subsection{Champ de vecteur associé et portrait de phase}
+      Si on ramène l'équation différentielle d'ordre 2 à une équation différentielle vectorielle d'ordre 1, on obtient que la position de la masse est exactement caractérisée par sa position angulaire et sa vitesse angulaire, ie l'espace des phases est le plan repéré par \((\theta, \theta')\), et la dynamique est caractérisée par le champ de vecteur associé trouvé ci-dessus. Par exemple\footnote[1]{Ici on utilise \(g=1\) pour faciliter la lisibilité du champ de vecteur.} pour \(g = 1\) et \(l = 1\), on a le champ de vecteur suivant:
+      \begin{center}
+         \begin{tikzpicture}
+            \def\g{1}
+            \def\ydom{3.5}
+
+            \tikzset{%
+               my arrow/.style={
+               postaction={decorate,decoration={
+               markings,
+               mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
+               }
+            }
+            \begin{axis}[
+               xmin = -3, xmax = 9,
+               ymin = -\ydom, ymax = \ydom,
+               zmin = 0, zmax = 1,
+               axis equal image,
+               xtick distance = 1,
+               ytick distance = 1,
+               view = {0}{90},
+               scale = 1.75,
+               title = {\bf Champ de vecteurs: $F = [y, -\sin(x)]$},
+               height=7cm,
+               xlabel = {$\theta$},
+               ylabel = {$\theta'$},
+            ]
+               \addplot3[
+                  samples=24,
+                  skip coords between index={0}{2},
+                  quiver = {
+                     u = {y/(sqrt(y^2+\g^2*sin(deg(x))^2))},
+                     v = {-\g*sin(deg(x))/(sqrt(y^2+\g^2*sin(deg(x))^2))},
+                     scale arrows = 0.35,
+                  },
+                  quiver/colored = {black!20},
+                  -stealth,
+                  domain = -3:9,
+                  domain y = -1*\ydom:\ydom,
+               ] {0};   
+               \addplot[mark = *, color = black!50] table {data/pendulumEq1.dat};
+               \addplot[mark = *, color = white, line width=5] table {data/pendulumEq2.dat}; % Hide discrepancies
+               \addplot[mark = *, color = black!50] table {data/pendulumEq2.dat};
+               \addplot[mark = *, color = black!50] table {data/pendulumEq3.dat};
+
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = DarkGreen1] table {data/periodic1.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = DarkGreen1] table {data/periodic2.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = DarkGreen1] table {data/periodic3.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = DarkGreen1] table {data/periodic4.dat};
+
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = BrightRed1] table {data/aperiodic1.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = BrightRed1] table {data/aperiodic2.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = BrightRed1] table {data/aperiodic3.dat};
+               %\addplot[line width = 1, my arrow, postaction={decorate}, color = BrightRed1] table {data/aperiodic4.dat};
+            \end{axis}
+         \end{tikzpicture}
+      \end{center}
+   \pagebreak
+   \subsection{Points remarquables}
+   On remarque graphiquement des types de points d'équilibres:
+   \begin{itemize}
+      \item Les points où l'angle et la vitesse sont nuls, c'est point sont évidemment stables. Ils correspondent à la situation où le pendule est à l'arrêt.
+      \item Les points "exotiques" où l'angle est exactement égal à \(\pi\) et où la vitesse est nulle. Ils correspondent à la situation où le pendule en en équilibre à l'envers. Ces points sont instables.
+   \end{itemize} 
+   \chapter{Implémentations \& traitement des données}
+   Dans cette partie, je partage les différent moyens informatiques utilisés pour réaliser ce projet.
+      \subsection{Méthode d'Euler}
+         Pour calculer les différents portraits de phase, il a fallu être capable de générer les points des courbes solutions d'équations, différentielles, pour cela, on utilise la méthode bien connue d'Euler, qu'on généralise en une fonction qui à tout \textbf{champ de vecteur} et \textbf{conditions initiales} retourne une courbe intégrale sur un intervalle de temps donné, voici le code en question implémenté en Sagemaths:
+         \begin{center}
+            \begin{lstlisting}[language=Python, caption=Méthode d'Euler générale]
+                  def eulerMethod(vField, time, stepSize, *initialConditions): 
+                  # Prends un champ de vecteur et approxime une ligne de flot pour des
+                  # conditions initiales donnees et une duree t
+                  
+                     n = floor(time / stepSize)     
+                     # Nombre d'iterations necessaire pour completer l'intervalle de temps
+                  
+                     L = []
+                     P0 = vector(initialConditions)
+                     for i in range(n):
+                        L.append(P0)
+                        P0 = vector(tuple(approx(P0[i]) for i in range(len(initialConditions))))  
+                        P0 = P0 + stepSize*vField(*P0) 
+                        # gamma(t0 + h) ~ gamma(t0) + hgamma'(t0) = gamma(t0) + hF(gamma(t0))
+                     
+                     return L # Retourne une liste de points
+               \end{lstlisting}
+         \end{center}
+      \pagebreak
+      \subsection{Traitement et affichage des données}
+         Par la suite, on va utiliser cet algorithme pour générer les 8 courbes intégrales du pendule (seul exemple non trivial), les formater et les envoyer sous forme de fichier data dans le dossier LaTeX qui s'occupera alors de l'affichage:
+         \begin{center}
+            \begin{lstlisting}[language=Python, caption=Méthode d'Euler générale]
+                  # 2D Pendulum
+                  def computePendulumData():
+                     # Precision presque ideale: 0.0025
+                     acc = 0.0025
+                     # Trajectoires aperiodiques
+                     aperiodicFlowPoints1 = eulerMethod(H, 12.5, acc, -3, 2) # Longueur d'arc 12.5
+                     aperiodicFlowPoints2 = eulerMethod(H, 13, acc, -3, 1) # Longueur d'arc 13
+                     aperiodicFlowPoints3 = eulerMethod(H, 13, acc, 9, -1) # Longueur d'arc 13
+                     aperiodicFlowPoints4 = eulerMethod(H, 12.5, acc, 9, -2) # Longueur d'arc 12.5
+                  
+                     # Trajectoires periodiques
+                     periodicFlowPoints1 = eulerMethod(H, 12, acc, 2.14, 0) # Longueur d'arc 12
+                     periodicFlowPoints2 = eulerMethod(H, 7, acc, 1.14, 0) # Longueur d'arc 7
+                     periodicFlowPoints3 = eulerMethod(H, 12, acc, 4.14, 0) # Longueur d'arc 12
+                     periodicFlowPoints4 = eulerMethod(H, 7, acc, 5.14, 0) # Longueur d'arc 7
+                     return [
+                        aperiodicFlowPoints1, aperiodicFlowPoints2, 
+                        aperiodicFlowPoints3, aperiodicFlowPoints4, 
+                        periodicFlowPoints1, periodicFlowPoints2, 
+                        periodicFlowPoints3, periodicFlowPoints4
+                     ]
+                  
+                  def sendFormattedPendulumData(L):
+                     pointListToPgfPlot(L[0], 'C:\\.....\\data\\aperiodic1.dat')
+                     pointListToPgfPlot(L[1], 'C:\\.....\\data\\aperiodic2.dat')
+                     pointListToPgfPlot(L[2], 'C:\\.....\\data\\aperiodic3.dat')
+                     pointListToPgfPlot(L[3], 'C:\\.....\\data\\aperiodic4.dat')
+                  
+                     pointListToPgfPlot(L[4], 'C:\\.....\\data\\periodic1.dat')
+                     pointListToPgfPlot(L[5], 'C:\\.....\\data\\periodic2.dat')
+                     pointListToPgfPlot(L[6], 'C:\\.....\\data\\periodic3.dat')
+                     pointListToPgfPlot(L[7], 'C:\\.....\\data\\periodic4.dat')
+                  
+                  sendFormattedPendulumData(computePendulumData()) # Envoie les donnees
+            \end{lstlisting}
+         \end{center}
+         Finalement, une fois ceci fait, la package TikZ récupère directement les données dans le dossier "data" et trace la courbe sur le graphique du champ de vecteur. Cette démarche de fournir à LaTeX des données précalculées à l'avance était nécessaire car LaTeX étant un langage de typographie, il ne sait pas calculer (ou alors que des calculs trés simple) et il ne sait bien sûr pas résoudre ou tracer les solutions des équations différentielles considérées.
+\end{document}

@@ -1,0 +1,293 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Théorie des groupes}}
+      \subsection*{\subsecstyle{Sous-groupes engendré:}}
+         On se propose de montrer que le sous-groupe de \(G\) engendré par une partie \(P\) défini ci-dessous est bien \textbf{le plus petit sous-groupe qui contient \(P\)}:
+         \[
+            H = \langle P \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \Z \Bigl\}
+         \]
+         On montre facilement que le plus petit sous-groupe qui contient \(P\) est l'intersection ci-dessous, reste à montrer l'égalité suivant:
+         \[
+            H = \bigcap_{\substack{P \subseteq Q\\Q < G}} Q
+         \]
+         On appelle \(\widetilde{H}\) l'interesection ci-dessus puis on procède par double inclusion:
+         \begin{itemize}
+            \item Le sous-groupe \(H\) est un sous-groupe qui contient \(P\) trivialement, donc en particulier, on a par les propriétés de l'intersection que \(\widetilde{H} \subseteq H\).
+            \item Le sous-groupe \(\widetilde{H}\) contient tout les élément de \(P\), donc par stabilité, il contient nécéssairement toutes les combinaisons trouvées dans \(H\), ie on a bien \(H \subseteq \widetilde{H}\).
+         \end{itemize}
+      \subsection*{\subsecstyle{Sous-groupes monogène d'un groupe fini:}}
+      On se donne \(G\) un groupe fini, et \(g \in G\), alors il existe un entier positif tel que:
+      \[
+         g^k = 1
+      \]
+      En effet l'ensemble \(\{g^k, k \in \N\}\) ne prends qu'un nombre fini de valeurs, donc il existe nécessairement deux indices \(
+      n > p\) tel que:
+      \[
+         g^{n} = g^{p}
+      \]
+      Et donc \(g^{n-p} = 1\)
+      \subsection*{\subsecstyle{Image d'une partie génératrice:}}
+      On se donne un groupe \(G = \langle P \rangle \) pour \(P\) une partie de \(G\), ainsi qu'un morphisme \(\phi : G \longrightarrow H\), on veut alors montrer que l'image d'une partie génératrice est génératrice, ie que:
+      \[
+         f(G) = \langle f(P) \rangle
+      \] 
+      On se donne un élément \(f(g) \in  f(G)\), alors on a que \(g\) se décompose en produit \textbf{fini} de puissances d'éléments de \(P\) et donc on a:
+      \[
+         f(g) = f\left(\prod_{p_{i} \in P} p_i^{k_i}\right) = \prod_{p_{i} \in P} f(p_i)^{k_i}
+      \]
+      Fininalement on a bien que \(f(g)\) s'écrit comme produit \textbf{fini} de puissances d'éléments de \(f(P)\) donc on a bien le résultat.
+      \subsection*{\subsecstyle{Théorème de Cayley:}}
+         On se propose de démontrer que tout groupe \(G\) est \textbf{isomorphe à un groupe d'automorphismes}, on définit l'application suivante:
+         \[
+            \begin{aligned}
+               \Phi : G &\longrightarrow \text{Aut}(G, G)\\
+               g &\longmapsto \phi_g
+            \end{aligned}
+         \]
+         Où \(\phi_g(x) = gx\), ie on associe à chaque élément de \(G\) la fonction qui translate tout les éléments de \(G\) par celui-ci, alors:
+         \begin{itemize}
+            \item Cette application est facilement un \textbf{morphisme de groupes}.
+            \item Cette application est facilement \textbf{injective}.
+         \end{itemize}
+         Finalement, on a bien que \(G \cong \text{Im}(\Phi) < \text{Aut}(G, G)\) comme souhaité.
+      \subsection*{\subsecstyle{Sous-groupes de \(\Z\):}}
+         On se propose de montrer la propriété suivante:
+         \[
+            H < \Z \Longleftrightarrow \exists n \in \Z \; ; \; H = n\Z
+         \]
+         On se donne un sous groupe \(H < \Z\) et on distingue deux cas:
+         \begin{itemize}
+            \item Si \(H\) est trivial, alors \(H = 0\Z\) qui convient.
+            \item Sinon \(H\) contient un élément non-nul, donc un élément \textbf{positif} \(h\).
+         \end{itemize}
+         Dans ce cas, la partie \(H \cap \N^*\) est non-vide, et donc elle contient un plus petit élément qu'on notera \(n\). On va alors montrer que tout élement du groupe est un multiple de cet élément.\<
+
+         En effet soit \(h \in H\), alors on effectue la division euclidienne de \(h\) par \(n\) et on obtient:
+         \[
+            h = nq + r \; ; \; r \in \inticc{0}{n-1}
+         \]
+         Mais alors par construction on a \(r < n\) et \(r \in H \cap \N^*\) par opérations, donc nécéssairement \(r = 0\), car sinon, \(n\) ne serait pas le plus petit élément de la partie considérée.
+      \subsection*{\subsecstyle{Classificiation des groupes cycliques:}}
+         On se propose de classifier les groupes cycliques \(G\), engendrés pas un élément \(g \in G\), alors on définit:
+         \[
+            \begin{aligned}
+               \phi : \Z &\longrightarrow G\\
+               n &\longmapsto g^n
+            \end{aligned}
+         \]
+         Alors cette application est \textbf{un morphisme de groupe surjectif}, aussi le noyau de \(\phi\) est un sous-groupe normal, et on sait que les sous-groupes de \(\Z\) sont de la forme \(n\Z\), on distingue alors deux cas:
+         \begin{itemize}
+            \item Soit \(\Ker\phi\) est trivial et alors \(\phi\) est un isomorphisme: \(G \cong \Z\).
+            \item Soit \(\Ker\phi = n\Z\) et alors \(\phi\) induit un isomorphisme par passage au quotient: \(G \cong \Z/n\Z\)
+         \end{itemize} 
+         Finalement on a bien montré qu'il n'y a bien qu'un seul groupe cyclique d'ordre \(n\) qui est \(\Z/n\Z\) et qu'un seul groupe cyclique d'ordre infini qui est \(\Z\).
+
+   \chapter*{\chapterstyle{Groupe Symétrique}}
+      On note $S_n$ l'ensemble des bijections sur $\{1, \ldots, n\}$ et on montre facilement que c'est un groupe pour la composition.
+      \subsection*{\subsecstyle{Cardinal de $S_n$}}
+         Montrons par récurrence sur $n$ la propriété suivante:
+         $$
+            |A| = |B| = n \implies \left|\text{Bij}(A, B)\right| = n!
+         $$
+         L'initialisation est triviale, en effet si les deux ensembles sont vides, il n'existe qu'une seule application bijective du vide dans lui-même.\\
+      
+         Soit $\phi$ une bijection de $A'$ dans $B'$ ensembles de cardinal \(n+1\), alors il existe $n + 1$ choix possibles pour l'image de l'élément $a_1$, on considère alors la restriction:
+         \[
+            \begin{aligned}
+               \widetilde{\phi}: A' \backslash \{a_1\} &\longrightarrow B'\\
+               x &\longmapsto \phi(x) 
+            \end{aligned}
+         \]
+         Alors $\phi(a_1)$ n'est pas dans l'image de cette fonction car sinon cela contredirait l'injectivité de $\phi$, on peut donc restreindre à l'arrivée en une fonction bijective:
+         \[
+            \begin{aligned}
+               \widetilde{\phi}: A' \backslash \{a_1\} &\longrightarrow B'\backslash \{\phi(a_1)\}\\
+               x &\longmapsto \phi(x) 
+            \end{aligned}
+         \]
+         C'est une fonction bijective entre deux ensembles de cardinal $n$, il ya donc par hypothèse de récurrence $n!$ choix possibles pour une telle fonction. Finalement par dénombrement, on a bien qu'il y a $(n +1)n! = (n+1)!$ choix possibles de fonctions bijectives entre ensembles de taille $n+1$.\\
+      
+         On conclut sur le groupe symétrique en prenant $A = B = \{1, \ldots, n\}$
+      \subsection*{\subsecstyle{Isomorphisme sur les ensembles de même cardinal}}
+         On se donne $X$ un ensemble de cardinal $n$, montrons que $S(X) \cong S_n$.
+         On sait qu'il y a une bijection $i$ entre $X$ et $\{1, \ldots, n\}$ donnée par:
+         $$
+            i : k \in \{1, \ldots, n\} \mapsto x_k \in X
+         $$
+         On pose $\sigma \in S_n$ et $\tau \in S(X)$ et on considère le diagramme commutatif suivant:
+         $$
+            \begin{tikzcd}
+               \{1, \ldots, n\} \arrow[r, "\sigma"] \arrow[d, "i"]
+               & \{1, \ldots, n\}\\
+               X \arrow[r, "\tau"]
+               & X \arrow[u, "i^{-1}"]
+            \end{tikzcd}
+         $$
+         Ceci nous donne directement l'isomorphisme, en effet on pose:
+         $$
+            \phi : \tau \in S(X) \mapsto i^{-1} \circ \tau \circ i \in S_n
+         $$
+         Alors $\phi$ est bien une bijection de $S(X)$ sur $S_n$, et on montre facilement que c'est un morphisme car:
+         $$
+            \phi(\tau_1\tau_2) = i^{-1}(\tau_1\tau_2)i = i^{-1}\tau_1 ii^{-1}\tau_2i = \phi(\tau_1)\phi(\tau_2)
+         $$
+         \pagebreak 
+      \subsection*{\subsecstyle{Non-commutativité}}
+         On se propose de montrer que $S_n$ n'est pas commutatif pour $n \geq 3$, on montre pour cela que son centre est trivial ie:
+         $$
+            Z(S_n) = \{Id\}
+         $$
+         Supposons par l'absurde qu'il soit non-trivial, alors il existe une permutation $\sigma \neq Id$ qui commute avec toutes les autres. Elle admet au moins un point $x$ tel que $\sigma(x) \neq x$, mais alors il y a 3 éléments distincts dans $S_n$ donc il existe $y \in \{1, \ldots, n\}$ tel que:
+         \begin{align*}
+            \begin{cases}
+               y \neq x\\
+               y \neq \sigma(x)
+            \end{cases}
+         \end{align*}
+         On définit alors $\sigma'$ comme une permutation telle que:
+         $$
+            \begin{cases}
+               \sigma'(x) = x\\
+               \sigma'(\phi(x)) = y
+            \end{cases}
+         $$
+         Alors on a que nécessairement:
+         $$
+            \begin{cases}
+               \sigma\sigma'(x) = \sigma(x)\\
+               \sigma'\sigma(x) = y\\
+            \end{cases}
+         $$
+         Ce qui est absurde car $\sigma$ devrai commuter, donc le centre est bien trivial.    
+      \subsection*{\subsecstyle{Propriétés du support}}
+         \begin{enumerate}
+            \item On considère $\sigma, \tau$ deux permutations de $S_n$, montrons que:
+            $$
+               \text{Supp}(\sigma\tau) \subseteq \text{Supp}(\sigma) \cup \text{Supp}(\tau)
+            $$
+            Passons au complémentaire, on obtient que la propriété est équivalente à:
+            $$
+               \text{Fix}(\sigma) \cap \text{Fix}(\tau) \subseteq \text{Fix}(\sigma\tau)
+            $$
+            Qui est trivialement vérifiée.
+            \item Un lemme utile pour la suite:
+            $$
+               x \in \text{Supp}(\sigma) \implies \sigma(x) \in \text{Supp}(\sigma)
+            $$
+            C'est évident car sinon \(\sigma\) ne serait pas injective.
+            \item Supposons maintenant que:
+            $$
+               \text{Supp}(\sigma) \cap \text{Supp}(\tau) = \emptyset
+            $$
+            Alors on a égalité, en effet si $x$ est fixé par $\tau$ mais pas par $\sigma$, alors on a:
+            $$
+               \sigma\tau(x) = \sigma(x) \neq x
+            $$
+            Donc il est bien dans le support du produit, et si $x$ est fixé par $\sigma$ mais pas par $\tau$, alors on a:
+            $$
+               \sigma\tau(x) = \tau(x) \neq x
+            $$
+            Car $\tau(x)$ est dans le support de $\tau$ par le lemme, et donc est fixé par $\sigma$.
+         \end{enumerate}
+          
+         \pagebreak        
+      \subsection*{\subsecstyle{Les permutations à supports disjoints commutent}}
+         Soit deux permutations $\sigma, \tau$ à supports disjoints et $x \in \{1, \ldots, n\}$, alors on distingue deux cas:
+         \begin{itemize}
+            \item Si $x$ est dans le support de $\tau$, alors il est fixé par $\sigma$ par hypothèse et \(\tau(x)\) est fixé par \(\sigma\) par le lemme précédent donc on a:
+            $$
+               \tau(\sigma(x)) = \tau(x) \; \text{ et } \; \sigma(\tau(x)) = \tau(x)
+            $$
+            \item Si $x$ n'est pas dans le support de $\tau$, alors par symétrie, il est dans le support de $\sigma$ et on conclut par le même calcul.
+         \end{itemize}
+         En particulier si on a:
+         $$
+            \sigma\tau = \text{Id}
+         $$
+         Alors les deux permutations sont l'identité car:
+         \begin{itemize}
+            \item Si $x$ est dans le support de $\tau$, alors il est fixé par $\sigma$ mais alors on a une absurdité, donc le support est vide.
+            \item Si $x$ n'est pas dans le support de $\tau$, alors par symétrie, il est dans le support de $\sigma$ mais alors on a aussi une absurdité, donc le support est vide.
+         \end{itemize}     
+      \subsection*{\subsecstyle{Décomposition en cycles à supports disjoints}}
+         Soit \(\sigma \in S_n\), alors on définit l'ensemble suivant appelé $\sigma$-orbite de \(x \in \inticc{1}{n}\) par:
+         \[
+            \mathcal{O}_x := \{\sigma^k(x)\; ; \; k \in \N\}
+         \]
+         Alors par un simple raisonnement sur l'ordre et les propriétés de cet ensemble on montre facilement que:
+         \[
+            \forall x, y \in \inticc{1}{n} \; ; \; \mathcal{O}_x \cap \mathcal{O}_y = \emptyset \text{ ou } \mathcal{O}_x = \mathcal{O}_y
+         \]
+         En outre si on définit la relation d'équivalence sur \(\inticc{1}{n}\) par:
+         \[
+            x \sim y \Longleftrightarrow \mathcal{O}_x = \mathcal{O}_y
+         \]
+         On peut alors \textbf{partitionner} \(\inticc{1}{n}\) en \(k \leq n\) orbites, et donc il existe une famille de représentants \((x_1, \ldots x_k) \in \inticc{1}{n}\) tels que:
+         \[
+            \inticc{1}{n} = \bigcup_{i \leq k} \mathcal{O}_{x_k}
+         \]
+         On pose alors:
+         \[
+            \tau = (x_1 \dots \sigma^{l_1}(x_1))\ldots(x_k \dots \sigma^{l_k}(x_k)) = c_1\ldots c_k
+         \]
+         Alors les supports de ces cycles sont exactement les orbites prédéfinies et il suffit de montrer que \(\sigma = \tau\):
+         \begin{itemize}
+            \item Si \(x \notin \text{Supp}(\sigma)\) alors son orbite est un singleton et \(\sigma(x) = \tau(x) = x\)
+            \item Si \(x \in \text{Supp}(\sigma)\) alors il appartient à un unique cycle \(c_i\) et on a \(\tau(x) = \sigma(x)\) par définition de ces cyles.
+         \end{itemize}
+         \pagebreak     
+      \subsection*{\subsecstyle{Ordre d'une permutation}}
+         Sois $\sigma$ une permutation sur $\{1, \ldots, n\}$, alors on a d'aprés la propriété précédente que pour \(k \leq n\) il existe une famille \((c_j)_{j \leq k}\) de cycles à supports disjoints tels que:
+         $$
+            \sigma = c_1 \ldots c_k
+         $$
+         Soit $i\in \mathbb{N}$, alors on sait que les supports sont disjoints donc on a:
+         \begin{align}
+            \sigma^i = \text{Id} \implies c_1^i \ldots c_k^i = \text{Id} \implies \forall c \in (c_j) \; ; \; i \in \text{ord}(c)\N
+         \end{align}
+         En d'autres termes \(i\) doit être un multiple de l'ordre de chaque cycle, en effet supposons l'inverse ie qu'il existe un cycle \(c \in (c_j)\) tel que \(\text{ord}(c) \nmid k\), alors pour \(x\) dans le support de ce cycle, on aurait:
+         \[
+            \sigma^i(x) = c^i(x) \neq x \implies \sigma^i \neq \text{Id}
+         \]
+         En reformulant la dernière partie de \((1)\), on trouve donc que:
+         \[
+            \sigma^i = \text{Id} \implies i \in \bigcap_{c \in (c_j)} \text{ord}(c)\N
+         \]
+         Or le plus petit \(i\) qui vérifie \(\sigma^i = \text{Id}\) est donc le plus petit élément de l'ensemble ci-dessus des multiples communs des ordres, qui est par définition le plus petit commun multiple des ordres des \((c_j)\).    
+      \subsection*{\subsecstyle{Conjugaison d'un cycle}}
+         On considère un cycle $c = (a_1 \ldots a_k)$ de $S_n$, ainsi qu'une permutation quelconque $\sigma$. Cherchons à caractériser la permutation $\tau$ suivante:
+         $$
+            \tau = \sigma (a_1 \ldots a_k) \sigma^{-1}
+         $$
+         Soit $x \in \{1, \ldots, n\}$, alors on considère deux cas:
+         \begin{itemize}
+            \item Si $\sigma^{-1}(x)$ n'est pas dans le support de $c$.
+            \item Si $\sigma^{-1}(x)$ est dans le support de $c$.
+         \end{itemize}
+         Le premier cas est trivial\footnote{En effet si $c \sigma^{-1}(x) = \sigma^{-1}(x)$, alors on a directement que $\tau(x) = x$}, examinons donc le second, on a tout d'abord que:
+         \begin{align}
+               \exists i \in \{1, \ldots, k\} \; ; \; \sigma^{-1}(x) = a_i
+         \end{align}
+         Or par définition d'un cycle on a que:
+         $$
+            c\sigma^{-1}(x) = a_{i+1}
+         $$
+         Et donc finalement:
+         $$
+            \tau(x) = \sigma(a_{i+1})
+         $$
+         Mais en reprenant l'équation obtenue en (2), on obtient aussi que:
+         $$
+            x = \sigma(a_i)
+         $$
+         Donc finalement on trouve que sur le support de $\tau$ est exactement l'image des $(a_i)$ par $\sigma$ et que la permutation effectuée correspond au cycle:
+         $$
+            \tau = (\sigma(a_1) \ldots \sigma(a_k))
+         $$
+         Le conjugué d'un cycle est donc un cycle de même longueur. En outre si deux permutations sont conjuguées, alors elle sont de même type, en effet si:
+         \[
+            \sigma' = \tau\sigma\tau^{-1}
+         \]       
+\end{document}

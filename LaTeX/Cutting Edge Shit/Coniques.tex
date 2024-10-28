@@ -1,0 +1,97 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Coniques}}
+Dans la suite, on note \(E = \R^2\), alors on appelle \textbf{conique} tout ensemble de points \((x, y) \in E\) vérifiant une égalité de la forme:
+\[
+   Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0  
+\]
+Avec \(A, B, C\) non tous nuls. Cette ensemble représente alors une courbe de niveau d'une fonction à plusieurs variables, mais aussi \textbf{l'intersection} obtenue en coupant un cone par un plan. On obtient alors trois types de coniques non-dégénérées\footnote[1]{Les formes dégénérées sont aisément reconnues aprés le premier changement de repère ci-dessous, on s'intéresse donc uniquement aux formes non-dégénérées.}:
+\begin{itemize}
+   \item Les ellipses
+   \item Les paraboles
+   \item Les hyperboles
+\end{itemize}
+On cherche alors à caractériser ces courbes algébriquement ou géométriquement. En première approche, on pourra déja reconnaitre que ces coniques admettent au moins un axe de symétrie, et un centre de symétrie pour les ellipses et les hyperboles.
+
+\subsection*{\subsecstyle{Réduction}}
+L'ensembe des coniques est stable par changement de repère. Aussi, on peut exprimer matriciellement ces équations par:
+\[
+   \begin{pmatrix}x & y\end{pmatrix}\begin{pmatrix}
+      A & \frac{B}{2} \\
+      \frac{B}{2} & C
+   \end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix} + \begin{pmatrix}D & E\end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix} + F = 0
+\]
+La raison principale étant alors qu'on peut alors classifier de telles coniques en étudiant la \textbf{positivité} de la matrice symétrique associée \(Q\), en effet:
+\begin{itemize}
+   \item Si \(\det({Q}) > 0\) et que \(F\) est négatif, alors on obtient une \textbf{ellipse}.
+   \item Si \(\det({Q}) = 0\) alors on obtient une \textbf{parabole}.
+   \item Si \(\det({Q}) < 0\), alors on obtient une \textbf{hyperbole}.
+\end{itemize}
+
+En effet, le signe du déterminant d'un matrice de cette taille caractérise exactement le signe des valeurs propres et donc la forme de l'équation finale car si on pose alors \(\lambda, \mu\) les valeurs propres de cette matrice\footnote[2]{Si \(\mu\) est nulle est qu'on a une parabole, alors la forme est évidente.}, et qu'on pose le changement de variable:
+\[
+   \begin{pmatrix}X \\ Y\end{pmatrix} = P^{-1} \begin{pmatrix}x \\ y\end{pmatrix}
+\]
+\begin{center}
+   \textit{Ce changement de variable revient à effectuer une rotation du repère pour aligner les axes avec les axes de symétrie de la conique (qui sont alors les vecteurs propres).}
+\end{center}
+On obtient alors directement l'équation plus simple avec \(\alpha, \beta\) les nouveaux coefficients des termes en \(X, Y\):
+\[
+   \lambda X^2 + \mu Y^2 + \alpha X + \beta Y + F = 0 
+\]
+
+Si on met alors sous forme canonique les deux parties de l'équation, on obtient:
+\[
+   \lambda(X + t_1)^2 + \mu (Y + t_2)^2 + F = 0 
+\]
+Finalement aprés un nouveau changement de repère obtenu par translation de \((t_1, t_2)\), on obtient alors l'équation:
+\[
+   \lambda\tilde{X}^2 + \mu\tilde{Y}^2 = -F
+\]
+\pagebreak
+
+Finalement, on peut toujours se ramener à une \textbf{équation réduite} de la forme:
+\[
+   \left(\frac{\tilde{X}}{a}\right)^2 + \left(\frac{\tilde{Y}}{b}\right)^2 = 1
+\]
+Et on trouve alors facilement les éléments caractéristiques la conique:
+\begin{itemize}
+   \item Son centre (s'il existe), situé en \((0, 0)\) en coordonées \((\tilde{X}, \tilde{Y})\)
+   \item Ses sommets (s'ils existent), situés en \((\pm a, 0), (0, \pm b)\) en coordonées \((\tilde{X}, \tilde{Y})\)
+\end{itemize}
+On peut aussi étudier les asymptotes dans le cas de l'hyperbole, en effet on considère alors:
+\begin{flalign*}
+   \left(\frac{\tilde{X}}{a}\right)^2 - \left(\frac{\tilde{Y}}{b}\right)^2 = 1 &\Longleftrightarrow
+   \left(\frac{\tilde{Y}}{b}\right)^2 = \left(\frac{\tilde{X}}{a}\right)^2 - 1 \\
+   &\Longleftrightarrow \tilde{Y}^2 = \frac{b^2}{a^2}\tilde{X}^2 - b^2\\
+   &\Longleftrightarrow \tilde{Y} = \pm \frac{b}{a} \sqrt{\tilde{X}^2 - b^2}
+\end{flalign*}
+Alors aymptotiquement, quand \(x\) est trés grand, \(b^2\) est négligeable et l'hyperbole se rapproche alors des deux droites:
+\[
+   \tilde{Y} = \pm \frac{b}{a}\tilde{X}
+\]
+Reste alors à utiliser les relations entre les repères pour obtenir les asymptotes dans le repère canonique.
+
+\subsection*{\subsecstyle{Caractérisations géométriques}}
+Tout d'abord pour les coniques non-paraboliques, on a la caractérisation \textbf{bifocale} suivante, on considère deux points \(F_1, F_2\) du plan, un point \(X\) et un réel strictement positif \(d\), alors on a:
+\begin{itemize}
+   \item Si \(d > d(A, B)\), alors l'ensemble des points \(X\) qui vérifient \(d(F_1, X) + d(F_2, X) = d\) est une \textbf{ellipse}.
+   \item Si \(d < d(A, B)\), alors l'ensemble des points \(X\) qui vérifient \(|d(F_1, X) - d(F_2, X)| = d\) est une \textbf{hyperbole}.
+\end{itemize}
+
+Dans le cas parabolique, on a la caractérisation \textbf{monofocale} suivante, on considére une droite \(\mathcal{D}\) et un point \(F\) et on a:
+\begin{center}
+   L'ensemble des points \(X\) qui vérifient \(d(F, X) = d(\mathcal{D}, X)\) est une \textbf{parabole}.
+\end{center}
+On retrouve facilement ces caractérisations en explicitant les distances considérées et en simplifiant l'équation obtenue. On peut alors prouver diverses propriétés géométriques des coniques, par exemple et de manière non exhaustive:
+\begin{itemize}
+   \item Si des rayons lumineux tombent de l'infini et rebondissent sur une parabole, ils se rencontrent tous en le foyer.
+   \item Deux paraboles de meme foyer et de meme axe se coupent à angle droit.
+   \item Si un rayon lumineux part d'un foyer d'une ellipse et rebondit sur celle-ci, il passera par l'autre foyer.
+\end{itemize}
+
+\subsection*{\subsecstyle{Coniques projectives}}
+
+\end{document}

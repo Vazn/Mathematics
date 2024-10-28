@@ -1,0 +1,60 @@
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
+
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+\definecolor{BrightRed2}{RGB}{210, 115, 115}
+
+\definecolor{DarkBlueX}{RGB}{43, 68, 92}
+\definecolor{DarkBlue0}{RGB}{53, 78, 102}
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+
+\definecolor{DarkGreen3}{RGB}{83, 132, 108}
+\definecolor{DarkGreen2}{RGB}{58, 132, 94}
+\definecolor{DarkGreen1}{RGB}{90, 162, 126}
+\tcbset{shield externalize, enhanced, sharp corners, halign=center, center}
+
+\definecolor{dblackcolor}{rgb}{0.0,0.0,0.0}
+\definecolor{dbluecolor}{rgb}{0.01,0.02,0.7}
+\definecolor{dgreencolor}{rgb}{0.2,0.4,0.0}
+\definecolor{dgraycolor}{rgb}{0.30,0.3,0.30}
+\newcommand{\dblue}{\color{dbluecolor}\bf}
+\newcommand{\dred}{\color{dredcolor}\bf}
+\newcommand{\dblack}{\color{dblackcolor}\bf}
+
+%Underline settings
+\setlength{\ULdepth}{2pt}
+\contourlength{0.8pt}
+\renewcommand{\underline}[1]{
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+%drop shadow southwest=black!100!black
+\newcommand{\secstyle}[1]{\color{DarkBlue1}\fbox{#1}}
+\newcommand{\subsecstyle}[1]{\color{DarkBlue2}\underline{#1}}
+\newcommand{\subsubsecstyle}[2]{\color{DarkBlue3}\underline{#1}}
+
+\newcommand{\chapterstyle}[1]{
+    \setlength{\fboxsep}{0.3em}
+    \setlength{\fboxrule}{3pt}
+    \centering\vspace{-70pt}
+    
+    \color{DarkBlue1}\huge\fbox{\textbf{\textsc{#1}}}
+}
+
+\newcommand{\customBox}[2]{
+    \tcbset{boxrule=1.5pt, boxsep=-0.2mm, colframe=DarkBlue1, colback=BrightBlue1!05}
+    \begin{tcolorbox}[#1]
+        \abovedisplayskip=0pt % remove vertical space above align
+        #2
+    \end{tcolorbox}
+}
+
+\makeatletter % Crée une trés grosse taille de police pour la page de garde
+\newcommand\HUGE{\@setfontsize\Huge{40}{60}}
+\makeatother   
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother

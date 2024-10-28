@@ -1,0 +1,87 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Espaces Projectifs}}
+   Dans ce chapitre, on cherche à comprendre le concept \textbf{d'espace projectif}, ces espaces que nous définirons ci-dessous sont des espaces géométriques (analogues aux espaces affines ou euclidiens), auquels on a rajouté des points appelées \textbf{points à l'infini} qui enrichissent alors la structure de l'espace, notamment en permettant de beaucoup simplifier les théorèmes géométriques, par exemple on peut montrer que:
+   \begin{center}
+      \textbf{Deux droites projectives se coupents en un unique point.}
+   \end{center}
+   On remarque alors qu'ici, pas besoin de traiter séparément le cas des droites paralléles, on dira alors que ces droites la se coupent en un des \textbf{points à l'infini.}\<
+
+   On verra que ces espaces tirent leur nom de leur lien avec le concept de \textbf{projection centrale}, en effet, un espace projectif de dimension \(n\) peut s'interpréter comme la projection centrale sur un hyperplan d'un espace de dimension \(n+1\) auquel on a rajouté toutes les directions possibles sur cet hyperplan. Une autre interprétation est que l'espace projectif associé à \(E\) est exactement \textbf{l'ensemble des directions possibles} de \(E\). C'est cette approche que nous prendrons comme définition.
+
+   \subsection*{\subsecstyle{Définition{:}}}
+   On considère un espace vectoriel \(E\) sur un corps commutatif \(\K\) alors on appelle \textbf{espace projectif}\footnote[1]{\textbf{Attention:} Ce n'est pas un espace vectoriel, et à priori, il ne possède aucun structure supplémentaire.} associé à \(E\) l'ensemble des \textbf{droites vectorielles}\footnote[2]{C'est un cas particulier de \textbf{Grassmannien}, en effet le grassmannien \(\text{Gr}_k(E)\) est l'ensemble des sous-espaces vectoriels de dimension \(k\) de \(E\).} de \(E\), ie on a:
+   \[
+      \mathbb{P}(E) = (E - \{0\})/_\sim
+   \]
+   Pour la relation d'équivalence \(x \sim y \Longleftrightarrow x = \lambda y\) pour un certain \(\lambda \in \K\). On peut alors montrer que la dimension (topologique) de \(\mathbb{P}(E)\) est \(\dim{E} - 1\).\<
+   
+   Aussi dans le cas trés courant où \(E = \K^n\), on note \(\mathbb{P}(\K^n) = \K \mathbb{P}^n\), voici quelques exemples:
+   \begin{itemize}
+      \item On apelle \textbf{droite projective réelle}, l'espace projectif \(\R\mathbb{P}^1\).
+      \item On apelle \textbf{plan projectif réel}, l'espace projectif \(\R\mathbb{P}^2\).
+      \item On apelle \textbf{plan projectif complexe}, l'espace projectif \(\C\mathbb{P}^2\).
+   \end{itemize}
+   
+   \subsection*{\subsecstyle{Lien avec les projections centrales{:}}}
+   On veut caractériser ces nouveaux espaces géométriquement, en effet, la motivation géométrique de la création de tels espaces et celle d'enrichir un espace \(E\) par des points à l'infinis dans toutes les directions de \(E\).\<
+   
+   En effet la définition donnée correspond à ce concept, en effet prenons l'exemple de la droite projective, alors on peut la construire en considèrant une droite (affine) dans \(\R^2\), par exemple la droite \(y = 1\), et l'ensemble des directions possibles de \(\R^2\), on a alors deux cas:
+   \begin{itemize}
+      \item Soit la direction est paralléle à la droite.
+      \item Soit la direction n'est pas paralléle à la droite.
+   \end{itemize}
+   Dans le cas où elle n'est \textbf{pas parallèle à la droite}, on voit que chaque direction de cette forme peut se projeter sur un unique point de la droite en question\footnote[3]{En particulier, à tout point de \(\R\), on peut associer une telle direction.}.\+
+   Dans le cas où elle est \textbf{parallèle à la droite}, alors on définit un \textbf{point à l'infini associé à cette direction}.\<
+
+   Finalement on a donc une bijection entre l'ensemble des directions du plan et la droite réelle \(\R\) à laquelle on adjoint un point à l'infini, ie on a bien \(\R\mathbb{P} = \R \, \cup \, \infty\).
+   \pagebreak
+   
+   
+   Une exemple plus riche et complexe est celui du \textbf{plan projectif réel}, alors on peut aussi le construire en considèrant un plan (affine) dans \(\R^3\), par exemple le plan \(z = 1\), et l'ensemble des directions possibles de \(\R^3\), on a alors deux cas:
+   \begin{itemize}
+      \item Soit la direction est paralléle au plan.
+      \item Soit la direction n'est pas paralléle au plan.
+   \end{itemize}
+   Dans le cas où elle n'est \textbf{pas parallèle au plan}, on voit que chaque direction de cette forme peut se projeter sur un unique point du plan en question\footnote[1]{En particulier, à tout point de \(\R^2\), on peut associer une telle direction.}.\+
+   Dans le cas où elle est \textbf{parallèle au plan}, alors on définit un \textbf{point à l'infini associé à cette direction}, mais ici on a une infinité de telles directions différentes, en fait l'ensemble de ces directions est exactement \textbf{la droite projective} donc on a ici une droite (projective) à l'infini.\<
+
+   Finalement on a donc une bijection entre l'ensemble des directions de l'espace et le plan réel \(\R^2\) auquel on adjoint une droite projective à l'infini, ie on a bien \(\R\mathbb{P} = \R^2 \, \cup \, \infty\).
+
+   \subsection*{\subsecstyle{Coordonées homogènes{:}}}
+   De la section précédente, on peut en déduire une manière de repérer les points d'un espace projectif, en effet supposons que l'on ait un espace projectif de dimension \(n\), alors on peut considérer assigner à chaque point ses coordonées dans la base de l'espace vectoriel sous-jacent, on a donc que:
+   \begin{center}
+      \textbf{Dans un espace projectif de dimension \(n\), on repère les points par \(n+1\) coordonées}.
+   \end{center}
+   Aussi on en déduis directement que ces coordonées ne sont pas uniques, par exemple si un point à pour coordonnées \((x, y, z)\), alors \((\lambda x, \lambda y, \lambda z)\) correspond au même point, on appelle ces coordonées \textbf{coordonées homogènes} et on les note \((x_1 : \ldots : x_n)\).\<
+
+   En particulier, on remarque que si nécessaire, on peut facilement distinguer les points à l'infini par la construction de la section précédente et par exemple dans le plan projectif, en posant que:
+   \begin{itemize}
+      \item Les points à l'infinis sont repérés par \((x : y : 0)\).
+      \item Les points classiques sont repérés par \((x : y : 1)\).
+   \end{itemize}
+   En effet vu que les coordonées sont homogènes, on peut fixer la dernière composante des points classiques à 1 et les définir comme étant le représentant standard du triplet de coordonées. On remarque alors le fait suivant:
+   \begin{center}
+      \textbf{Dans un espace projectif, les points à l'infini ne jouent as de rôle particuleir et ne sont pas distincts des autres, mais en fixant un hyperplan de référence, on peut les identifier si nécéssaire.}
+   \end{center}
+
+   \subsection*{\subsecstyle{Compléments sur la droite projective{:}}}
+   On a construit la droite projective réelle, mais on aimerait aussi savoir si on peut étendre les opérations usuelles de \(\R\) sur ce nouvel ensemble, et en effet, on peut étendre toutes les opérations classiques en rajoutant les règles de calcul à l'infini avec pour tout réel \(a\) non-nul:
+   \[
+      \begin{cases}
+         a \pm \infty = \infty\\
+         a \cdot \infty = a/0 = \infty\\
+         a/\infty = a \cdot 0 = 0
+      \end{cases}
+   \]
+   Malheureusement, beaucoup d'opérations restent indéfinies, notamment:
+   \[
+      \infty \pm \infty, \infty \cdot 0, \infty/\infty, 0/0
+   \]
+   On ne peut donc pas munir cet ensemble d'une structure algébrique usuelle.
+
+   \chapter*{\chapterstyle{Courbes algébriques}}
+
+\end{document}

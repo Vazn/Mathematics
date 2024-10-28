@@ -1,0 +1,1389 @@
+\chapter*{\chapterstyle{VI --- Corps des Réels}} % 95% Fini
+\addcontentsline{toc}{section}{Corps des Réels}
+On peut construire successivement les différents ensembles \(\N, \Z, \Q\) et on souhaite maintenant construire le corps bien connu \(\R\), on peut alors construire les nombres réels comme \textbf{classes d'équivalence de suite de Cauchy de rationnels}, et on peut alors montrer la propriété caractéristique de \(\R\) qui est:
+\begin{center}
+   \textbf{C'est l'unique corps totalement ordonné complet qui vérifie la propriété d'Archimède.}
+\end{center}
+\subsection*{\subsecstyle{Propriété d'Archimède {:}}}
+Un corps totalement ordonné est archimédien si et seulement si:
+\[
+   \forall (a, b) \in \R^*_+ \; , \; \exists n \in \N \; ; \; na > b
+\]
+Moralement,
+\begin{center}
+    \textit{
+        Tout nombre de \(\R\) peut être dépassé par un multiple entier d'un autre nombre de \(\R\).
+    }
+\end{center}
+Une autre interprétation est \textbf{qu'il n'existe pas de nombre infiniment grand ou petit} dans \(\R\), pour le voir il suffit de poser \(a = 1\) ou \(b = 1\).
+\subsection*{\subsecstyle{Propriété de la borne supérieure {:}}}
+On appelle alors majorant (resp. minorant) d'une partie \(A\) un réel qui est plus grand (resp. plus petit) que tout élément de \(A\), on s'intéresse alors à l'existence de \textbf{plus petit majorant} (ou de plus grand minorant), qu'on appelera alors \textbf{borne supérieure} (ou inférieure) de \(A\).
+On peut alors montrer que le corps des réels vérifie \textbf{la propriété de la borne supérieure}, donnée par:
+\begin{center}
+   \textbf{Toute partie non-vide et majorée (resp. minorée) admet une borne supérieure (resp. inférieure)}
+\end{center}
+On les note alors respectivement \(\sup(A)\) et \(\inf(A)\).
+\subsection*{\subsecstyle{Caractérisation séquentielle {:}}}
+On peut montrer que \(M\) est la borne supérieure de \(A \subseteq \R\) si et seulement si:  
+\[
+   \exists (u_n) \in A^\N \; ; \; u_n \longrightarrow M
+\]
+\begin{center}
+    \textit{
+        Un majorant \(M\) est la borne supérieure de \(A\), si et seulement si il existe une suite à valeurs dans \(A\) qui tends vers \(M\).
+    }
+\end{center}
+\subsection*{\subsecstyle{Caractérisation métrique {:}}}
+Soit \(\epsilon > 0\), alors \(M\) est la borne supérieure de \(A \subseteq \R\) si et seulement si:  
+\[
+   \exists a \in A \; ; \; M - \epsilon \leq a \leq M
+\]
+
+\begin{center}
+    \textit{
+        Un majorant \(M\) est la borne supérieure de \(A\), si tout nombre plus petit n'est plus un majorant.
+    }
+\end{center}
+\subsection*{\subsecstyle{Propriétés du corps des réels {:}}}
+On introduit l'application valeur absolue qui sera très utile par la suite pour mesurer des écarts, elle est définie comme suit:
+\[
+    |x| := \max(x, -x)
+\]
+Cette application définit une norme et elle donne alors au corps des réels une structure d'espace vectoriel normé.
+\subsection*{\subsecstyle{Partie entière {:}}}
+Soit \(n \in \N\), on appelle \textbf{partie entière} d'un réel \(x\), et on note \(\lfloor x \rfloor\) \textbf{l'unique} entier relatif tel que:
+\[
+    \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1
+\]
+La partie entière vérifie la propriété fondamentale suivante:
+\customBox{width=3.5cm}{
+    \(\lfloor x + n \rfloor = \lfloor x \rfloor + n\)
+}
+L'existence de la partie entière est garantie par \textbf{la propriété d'Archimède}.
+\subsection*{\subsecstyle{Approximation décimale {:}}}
+Soit \(n \in \N\), il peut être utile d'approximer un réel à \(n\) chiffres après la virgule, ie à \(10^{-n}\) près, la partie entière nous permet alors de le faire, et on l'obtient en exécutant l'algorithme suivant:
+\[
+    x \longrightarrow 10^n x \longrightarrow \lfloor 10^n x \rfloor \longrightarrow \frac{\lfloor 10^n x \rfloor}{10^n}
+\]
+On obtient alors une approximation à \textbf{n chiffre après la virgule} de \(x\) qu'on note \(d_n(x)\) et on a:
+\customBox{width=3.5cm}{
+    \[d_n(x) = \frac{\lfloor 10^n x \rfloor}{10^n}\]
+}
+\subsection*{\subsecstyle{Compactification {:}}}
+On peut alors se rendre compte qu'une propriété manquante à \(\R\) est que ce n'est pas un espace compact, en effet on peut facilement construire des suites qui tendent vers \(\pm \infty\) et qui n'ont aucune suite extraite convergente dans \(\R\), la solution revient alors à definir la compactification de \(\R\) appellée \textbf{droite réelle achevée} par:
+\[
+   \overline{R} := \R \cup {-\infty, +\infty}
+\]
+Les opérations algébriques ne s'étendent alors pas parfaitement mais les symboles "infinis" ainsi ajoutés facilitent beaucoup l'énoncé de certains théorèmes et en particulier on a alors une meilleure propriété de la borne supérieure car on a que \textbf{toute partie non-vide admet une borne supérieure et inférieure}, éventuellement infinies.
+\chapter*{\chapterstyle{VI --- Limites réelles}} % 95% Fini
+\addcontentsline{toc}{section}{Limites réelles}
+On sait déja étudier la convergence de fonctions et de suites depuis le chapitre sur la topologie et la définition du concept de limite, ici on étudiera plus précisément les application (et suites) dans \(\R\) ou \(\C\) et les conséquences des propriétés spécifiques de \(\R\) sur la convergence.\<
+
+En effet la grande spécificité de \(\R\) est de pouvoir parler de fonctions \textbf{monotones} (croissantes ou décroissantes) et de fonctions \textbf{majorées ou minorées}.
+
+\subsection*{\subsecstyle{Opérations générales sur les limites {:}}}
+On considère que \(f\) et \(g\) deux applications qui admettent des limites \(l, l' \in K^*\) en \(a\).\+
+Alors le passage à la limite est une opération \textbf{linéaire et multiplicative}, ie elle se comporte conformément à l'intuition par rapport aux opérations de \(\R\).\<
+
+Dans le cas où les limites sont infinies ou nulles, des \textbf{formes indéterminées} peuvent apparaître et nécessitent les précautions usuelles pour conclure.
+\subsection*{\subsecstyle{Limites latérales {:}}}
+On peut définir un type spécifique de limite sur \(\R\) appelé \textbf{limites latérales} qui sont simplement des limites de restriction à droite ou a gauche de \(a\).\<
+
+\uline{Exemple}: On dit que \(f\) admet une limite \textbf{par valeurs inférieures} et on note \(f(a^-) = \lim_{x \rightarrow a^-} f(x) = l\) si et seulement si:
+\[
+   \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in X \; ; \; x - a < \delta \implies |f(x) - l| < \epsilon
+\]
+Et on peut alors caractériser l'existence d'une limite en un point par l'égalité des deux limites latérales en ce point.
+\subsection*{\subsecstyle{Carcatére borné {:}}}
+Une des principales conséquences du caractère métrique de \(\R\) sur les limites de fonctions est la suivante:
+\begin{center}
+   Toute fonction qui admet une limite en un point est \textbf{localement bornée} en ce point\footnote[1]{En particulier, si \(f\) est une suite, elle est \textbf{globalement bornée}.}.
+\end{center}
+\subsection*{\subsecstyle{Théorème de la limite monotone {:}}}
+En utilisant à la fois la propriété de la borne supérieure et l'ordre total sur \(\R\), on peut alors montrer que:
+\begin{itemize}
+   \item  Si la fonction est \textbf{croissante et majorée} alors elle converge par valeurs inférieures vers \(f(x^-)\).
+   \item  Si la fonction est \textbf{décroissante et minorée} alors elle converge par valeurs supérieures vers \(f(x^+)\).
+   \item  Si la fonction est \textbf{croissante} et \textbf{non majorée} alors elle tends vers \(+ \infty\).
+   \item  Si la fonction est \textbf{décroissante} et \textbf{non minorée} alors elle tends vers \(- \infty\).
+\end{itemize}
+En particulier si \(f\) est une \textbf{suite}, alors les deux premiers cas se simplifient en:
+\begin{itemize}
+   \item Si la suite \(u_n\) est \textbf{croissante et majorée} alors elle converge vers \(\sup(\{u_n\})\).
+   \item Si la suite \(u_n\) est \textbf{croissante et majorée} alors elle converge vers \(\inf(\{u_n\})\)
+\end{itemize}
+\pagebreak
+\subsection*{\subsecstyle{Théorème d'encadrement {:}}}
+Aussi soit \(f, g, h\) trois fonction telles que \(f\) et \(g\) tendent vers une limite finie \(l \in \overline{\R}\) en \(a \in \overline{\R}\), alors on a aussi le \textbf{théorème d'encadrement}:
+\customBox{width=10cm}{
+    \(\Bigr[\forall x \in \R \; ; \; f(x) \leq g(x) \leq h(x) \Bigr] \implies g(x) \longrightarrow l\)
+}
+\subsection*{\subsecstyle{Suites adjacentes {:}}}
+On appelle \textbf{suites adjacentes} deux suites \((u_n)\) et \((v_n)\) telles que l'une est \textbf{croissante} et l'autre \textbf{décroissante} et telles que \((u_n - v_n) \rightarrow 0\), alors on peut montrer que les deux suites convergent vers une même limite \(l \in K\) grâce aux théorèmes précédents.
+\subsection*{\subsecstyle{Limite supérieure et inférieure {:}}}
+On se donne une suite \((u_n)\) \textbf{bornée}, on considère les suites numériques suivantes:
+\begin{align*}
+   \sup_{k \geq n}\{ u_k \} = \sup\{ u_k \; ; \; k \geq n\}\\
+   \inf_{k \geq n}\{ u_k \} = \inf\{ u_k \; ; \; k \geq n\}
+\end{align*}
+\begin{center}
+    \textit{
+      Ce sont simplement les bornes supérieures et inférieures des queues de la suite. 
+    }
+\end{center}
+On peut alors remarquer que ces suites sont monotones et bornées, donc elles convergent nécessairement\footnote[1]{En effet si on prive \((u_n)\) de termes, sa borne supérieure ne peut que décroître, et \(u_n\) étant bornée, ces suite le sont aussi.} vers des limites qu'on appelle alors les \textbf{limites supérieure et inférieure} de \((u_n)\) qu'on définit formellement par:
+\[
+   \begin{cases}
+      \lim_{n \rightarrow +\infty}\sup_{k \geq n}\{ u_k \}\\
+      \lim_{n \rightarrow +\infty}\inf_{k \geq n}\{ u_k \}
+   \end{cases}
+\]
+On calcule donc ici la plus petite borne supérieure possible, et la plus grande borne inférieure possible, on peut alors montrer que la suite \(u_n\) converse \textbf{exactement} si ces deux limites sont égales.
+
+\subsection*{\subsecstyle{Comparaison Asymptotique {:}}}
+
+On dit qu'une fonction \(f\) est \textbf{dominée} par la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f = O(g)\) si et seulement si il existe une fonction \textbf{bornée} \(\theta\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
+C'est une relation de \textbf{préordre} sur les fonctions, et elle est aussi \textbf{linéaire et multiplicative}.
+\[
+   f(x) = \theta(x)g(x)
+\]
+
+On dit qu'une fonction \(f\) est \textbf{négligeable} devant la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f = o(g)\) si et seulement si il existe une fonction \(\epsilon\) qui tends vers 0 en \(a\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
+C'est une relation \textbf{transitive, linéaire et multiplicative}.
+\[
+   f(x) = \epsilon(x)g(x)
+\]
+
+On dit qu'une fonction \(f\) est \textbf{équivalente} à la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f \sim o(g)\) si et seulement si il existe une fonction \(\eta\) qui tends vers 1 en \(a\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
+C'est une \textbf{relation d'équivalence} sur les suites, et elle est aussi \textbf{multiplicative}. 
+\[
+   f(x) = \eta(x)g(x)
+\]
+Ces relations sont évidemment aussi valables pour les suites en remplaçant partout le terme "fonction" par le terme "suite".
+\pagebreak
+
+De manière générale, quand les fonctions ne s'annulent pas au voisinage de \(a\), on caractérise ces relations par le tableau suivant:
+\begin{center}
+   \renewcommand{\arraystretch}{1.5}%
+   \setlength\arrayrulewidth{0.8pt}
+   \begin{tabular}{| c | c | c |}
+   \hline
+   \(f = O(g) \Longleftrightarrow \frac{f}{g}(x) \longrightarrow C\) &    \(f = o(g) \Longleftrightarrow \frac{f}{g}(x) \longrightarrow 0\) &    \(f \sim g \Longleftrightarrow \frac{f}{g}(x) \longrightarrow 1\)\\ [1.5ex]
+   \hline
+   \end{tabular}
+\end{center}  
+
+On peut notamment caractériser le fait qu'une limite existe par:
+\[
+   f \longrightarrow l \Longleftrightarrow f = l + o(1)
+\]   
+Aussi, une caractérisation trés utile des équivalents nous donne\footnote[1]{La démonstration est triviale et utilise simplement la caractérisation en terme de quotient}:
+\[
+   f \sim g \Longleftrightarrow f = g + o(g)
+\]
+
+Enfin, il est utile de connaître ces équivalents usuels, on considère le cas général d'une fonction \(u\) qui tends vers 0 en \(a\), alors on a les équivalents suivants (en \(a\)):
+
+\begin{center}
+   \renewcommand{\arraystretch}{1.5}%
+   \setlength\arrayrulewidth{0.8pt}
+
+   \begin{tabular}{| c | c | c |}
+   \hline
+   \(ln(1 + u) \sim u\) & \(e^u - 1 \sim u\) & \((1 + u)^\alpha - 1 \sim \alpha u\)\\ [0.5ex]
+   \hline
+   \(\sin(u) \sim u\) & \(\cos(u) \sim 1\) & \(\tan(u) \sim u\)\\ [0.5ex]
+   \hline
+   \end{tabular}
+\end{center} 
+\begin{center}
+   \textit{
+      On remarquera dans le chapitre sur les développements limités que la grande majorité de ces équivalents ne sont que le premier terme non-nul du développement limité d'une fonction.
+   }
+\end{center}
+\chapter*{\chapterstyle{VI --- Continuité}} % 99% Fini
+\addcontentsline{toc}{section}{Continuité}
+On étudie ici les propriétés des fonctions réelles continues, dont on sait montrer la continuité depuis le chapitre de topologie, ici on s'intéteressera aux spécificités des fonctions continues réelles, notamment leurs comportement vis à vis des opérations et les différents raffinements de la notion de continuité que l'on pourrait développer.
+
+\subsection*{\subsecstyle{Opérations générales sur les fonctions continues {:}}}
+On note \(\mathscr{C}(D, \K)\) l'ensemble des fonctions continues sur \(D\) à valeurs dans \(\K\), alors on peut montrer que cet ensemble est stable par somme, multiplication externe et mulplication interne.
+\begin{center}
+   \textit{
+      En d'autres termes cet ensemble est non seulement un \textbf{sous-espace vectoriel} de l'espace des fonctions, mais même une \textbf{sous-algèbre} de cet espace.
+   }
+\end{center}
+De plus, l'inverse d'une fonction continue qui ne s'annule pas est aussi une fonction continue, et la composition de fonctions continues composables est aussi une fonction continue\footnote[1]{Attention pour la composition il faut bien considèrer les domaines de défintion manipulés.}.
+\subsection*{\subsecstyle{Prolongement par continuité {:}}}
+\addcontentsline{toc}{subsection}{Prolongement par continuité}
+
+Considérons une fonction \(f\) continue sur un intervalle \(I \backslash \{a\}\), telle que sa limite en \(a\) existe, alors on peut considèrer la fonction \(\widetilde{f}\) définie par:
+\[
+   \begin{aligned}
+      \widetilde{f}: I &\longrightarrow \R \; ; \; x &\longmapsto \begin{cases}
+         \widetilde{f}(a) = \lim_{a} f(x) \text{ si } x = a\\
+         \widetilde{f}(x) = f(x) \text{ sinon}
+      \end{cases}
+   \end{aligned}
+\]
+Alors par construction \(\widetilde{f}\) est bien continue sur tout \(I\) et on l'appelle \textbf{le prolongement par continuité} de \(f\) en \(a\).
+\subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
+\addcontentsline{toc}{subsection}{Théorème des valeurs intermédiaires}
+Le chapitre de topologie nous a permi de montrer que l'image d'un connexe par une application continue est un connexe, or dans les réels, on a que:
+\begin{center}
+   \textbf{Les connexes de \(\R\) sont exactements les intervalles.}
+\end{center}
+On en déduit donc le théorème des valeurs intermédiaires:
+\begin{center}
+   \textbf{L'image continue d'un intervalle est un intervalle.}
+\end{center}
+\subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
+Le chapitre de topologie nous a aussi permi de montrer que l'image d'un compact par une application continue est un compact, or dans les réels, on a donc dans ce cas particulier deux conséquences:
+\begin{itemize}
+   \item L'image continue d'un compact est borné.
+   \item Les bornes sont atteintes.
+\end{itemize}
+En particulier, l'image continue d'un segment est un segment.
+\subsection*{\subsecstyle{Théorème de la bijection{:}}}
+On déduis du théorème des valeurs intermédiaires que si \(f\) est continue sur \(\ioo{a}{b}\) et \textbf{strictement monotone} alors:
+\begin{center}
+   Elle réalise \textbf{un homéomorphisme} sur son image.
+\end{center}
+\chapter*{\chapterstyle{VI --- Dérivabilité}} % 99% Fini
+\addcontentsline{toc}{section}{Dérivabilité}
+
+\subsection*{\subsecstyle{Définition {:}}}
+\addcontentsline{toc}{subsection}{Définition}
+
+On dit qu'une fonction \(f\) est dérivable en un point \(a\) si et seulement si la limite ci-dessous existe et est \textbf{finie} et on définit alors le nombre dérivé \(f'(a)\):
+\customBox{width=4.5cm}{
+   \[f'(a) := \underset{x \rightarrow a}{\lim} \frac{f(x) - f(a)}{x - a}\]
+}
+On peut alors définir la dérivée de la fonction \(f\) qu'on note \(f'\)  qui est la fonction qui à chaque point où \(f\) est dérivable lui associe son nombre dérivé, ainsi que \textbf{la tangente à la courbe} de \(f\) en \(a\) comme étant la droite:
+\customBox{width=5cm}{
+   \(y := f(a) + f'(a)(x - a)\)
+}
+
+A nouveau, le lien clair entre le concept de limite et celui de dérivabilité nous permet de définir \textbf{la dérivabilité latérale} d'une fonction, qui est simplement la dérivabilité à droite ou à gauche qui découle directement de notre définition des limites latérales d'une fonction.\<
+
+On peut étendre cette définition à la dérivabilité sur \textbf{un intervalle} \(I\), en la définissant comme la dérivabilité en \textbf{tout points de \(I\)}.\+
+On note \(\mathscr{D}(D, \K)\) l'ensemble des fonctions dérivables sur \(D\) à valeurs dans \(\K\), par ailleurs il est important de noter que \textbf{la dérivabilité implique la continuité}, ie formellement on a \(\mathscr{D}(D, \K) \subset \mathscr{C}(D, \K)\).
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+\addcontentsline{toc}{subsection}{Propriétés}
+
+Une des propriétés fondamentales des fonctions dérivables et de l'ensemble \(\mathscr{D}(D, \K)\) est qu'il est stable par somme, multiplication externe et mulplication interne.
+\begin{center}
+   \textit{
+      En d'autres termes cet ensemble est non seulement un \textbf{sous-espace vectoriel} de l'espace des fonctions (continues), mais même une \textbf{sous-algèbre} de cet espace.
+   }
+\end{center}
+De plus, l'inverse d'une fonction dérivable qui ne s'annule pas est aussi une fonction dérivable, et la composition de fonctions dérivables composables est aussi une fonction dérivable.
+
+\subsection*{\subsecstyle{Etudes des variations {:}}}
+\addcontentsline{toc}{subsection}{Etudes des variations}
+
+Si on considère une fonction dérivable, alors on appelle \textbf{point critique} tout point \(a\) où \(f'(a) = 0\).\+
+En particulier, si une fonction est dérivable en un point \textbf{intérieur}\footnote[1]{Si le point n'est pas intérieur et est un extremum, la dérivée n'est pas nécessairement nulle. Par exemple la restriction (à l'arrivée) de ln(x) à \(\R^-\) est dérivable à gauche en 1, y admet un maximum, mais la dérivée n'est pas nulle.} et y admet un \textbf{extremum local}, alors c'est un point critique.\<
+
+Enfin le signe de la dérivée nous permet de comprendre les variations de la fonction sur un \textbf{intervalle}, en particulier on a la propriété suivante:
+\begin{center}
+   \textit{Si \(f'\) conserve le même signe sur un intervalle, alors \(f\) est monotone sur cet intervalle\footnote[2]{En particulier elle est croissante dans le cas positif et décroissante sinon}.}
+\end{center}
+En particulier, si \(f'\) est nulle sur un intervalle, alors \(f\) est constante sur cet intervalle.
+\pagebreak 
+
+\subsection*{\subsecstyle{Classes de régularité {:}}}
+\addcontentsline{toc}{subsection}{Classes de régularité}
+
+Les classes de régularité des fonctions numériques constituent une classification des fonctions basées sur l'existence et la continuité des dérivées itérées.
+Par exemple on note \(\mathscr{C}^0(D, \K)\) l'ensemble des fonctions continues, \(\mathscr{C}^1(D, \K)\) l'ensemble des fonctions dérivables à dérivée continue.\<
+
+En généralisant ces notations, on note \(\mathscr{C}^k(D, \K)\) l'ensemble des fonctions \(k\) fois dérivables \textbf{et à dérivée continue}.\<
+
+Ces ensembles \textbf{héritent des propriétés de stabilité} (par somme, produit interne et externe, composition et inverses) des ensembles de base définis précédemment. En particulier ce sont tous des sous-algèbres de l'espace des fonctions.
+
+\subsection*{\subsecstyle{Dérivation {:}}}
+\addcontentsline{toc}{subsection}{Dérivation}
+
+Soit \(f\) une fonction dérivable, alors on peut appliquer à \(f\) l'opérateur de dérivation, en d'autres termes calculer sa dérivée \(f'\). Dans cette partie nous allons détailler les propriétés élémentaires de cet opérateur:
+\begin{center}
+   \renewcommand{\arraystretch}{1.5}%
+   \setlength\arrayrulewidth{0.8pt}
+
+   \begin{tabular}{| c | c | c |}
+   \hline
+   \((f + g)' = f' + g'\) & \((fg)' = f'g + fg'\)  & \((f \circ g)' = (f' \circ g) \cdot g'\) \\ [1ex]
+   \hline
+   \end{tabular}
+\end{center}  
+Soit \(f\) de classe \(\mathscr{C}^n\), alors dans le cas de dérivées successives, la propriété pour la somme ci dessus se généralise aisément et la formule du produit, appellée \textbf{formule de Liebniz} se généralise aussi en:
+\customBox{width=5.5cm}{
+   \[(fg)^{(n)} = \sum_{k=0}^{n}\binom{k}{n}f^{(k)}g^{(n - k)}\]
+}
+Par ailleurs, si on pose \(f\) une fonction dérivable sur \(I\) et que \(f'\) ne s'annule pas sur \(I\), alors la réciproque de \(f\) est dérivable\footnote[1]{Les deux hypothèses impliquent que \(f\) est bijective sur son image, puis on revient à la définition pour montrer que \(f^{-1}\) est dérivable en \(f(a)\), on peut effectuer un changement de variable dans le calcul de limite pour trouver la première identité. La seconde nécessite un second changement de variable évident.} pour tout \(y := f(a)\) sur cet intervalle et on a:
+\customBox{width=6cm}{
+   \[(f^{-1})'(y) = \frac{1}{f'(a)} = \frac{1}{f'(f^{-1}(y))}\]
+}
+On peut généraliser ce résultat\footnote[2]{Même début de preuve que ci-dessus, avec une récurrence pour conclure.} en montrant que si \(f\) est une fonction de classe \(\mathscr{C}^k\) et si \(f'\) \textbf{ne s'annule pas}, alors \(f^{-1}\) est aussi de classe \(\mathscr{C}^k\).\<
+
+Cette propriété permet de prouver la dérivabilité d'une réciproque, ainsi que de trouver sa dérivée.\+
+\underline{Exemple:} \(f: x \mapsto x^2\) est dérivable et sa dérivée ne s'annule pas sur cet \(\icc{1}{2}\), donc elle est bijective sur \(\icc{1}{4}\) et sa réciproque est dérivable de dérivée \(\frac{1}{2\sqrt{x}}\).
+
+\subsection*{\subsecstyle{Théorème des accroissements finis {:}}}
+\addcontentsline{toc}{subsection}{Théorème des accroissements finis}
+
+Soit \(f\) une fonction continue sur un intervalle \(\icc{a}{b}\) et dérivable sur \(\ioo{a}{b}\), le \textbf{théorème des accroissements finis} assure l'existence d'un \(c \in \ioo{a}{b}\) tel que:
+\customBox{width=4.5cm}{
+   \[\frac{f(b) - f(a)}{b - a} = f'(c)\]
+}
+Intuitivement, on comprends alors que la quantité à droite est le taux d'acroissement global entre \(a\) et \(b\), et donc le théorème nous assure l'existence d'un point tel que \textbf{le taux d'acroissement en ce point soit égal au taux d'acroissement global}.
+\pagebreak
+
+Graphiquement, on voit sur le dessin ci-dessous que les deux taux d'accroissement sont égaux:
+\begin{center}
+   \begin{tikzpicture}[domain=0:4]
+      \draw[color=DarkBlue1, thick] plot (\x,{3*\x - 0.75*\x^2});
+
+      \draw[-latex] (0,0) -- (5,0) node [right] {$x$};
+      \draw[-latex] (0, 0) -- (0,4) node [above] {$y$};
+
+
+      \draw[] (0.5, -0.1) -- (0.5,0.1) node[] at (0.5, -0.3) {$a$};
+      \draw[color=BrightRed1, thick, dashed] (0.5,0) -- (0.5, 1.3125);
+      \draw[] (2.5, -0.1) -- (2.5,0.1) node[] at (2.5, -0.3) {$b$};
+      \draw[color=BrightRed1, thick, dashed] (2.5,0) -- (2.5, 2.8125);
+
+      \draw[color=BrightRed1, thick] (0.5, 1.3125) -- (2.5, 2.8125) node at (3.8, 2.9) {$\tau_1 = \frac{f(b) - f(a)}{b - a}$};
+
+      \draw[color=BrightBlue1] (1.5, -0.1) -- (1.5,0.1) node[] at (1.5, -0.3) {$\exists c$};
+      \draw[color=BrightBlue1, thick, dashed] (1.5, 0) -- (1.5, 2.8125);
+      \draw[color=BrightBlue1, thick, domain=0.5:2.5] plot (\x,{1.6875 + 0.75*\x}) node[] at (1, 3.3) {$\tau_2 = f'(c)$};
+
+   \end{tikzpicture}
+\end{center}
+Un cas particulier\footnote[1]{La preuve nécessite d'ailleurs de s'y ramener, en effet on considère la fonction \(\phi : x \mapsto \frac{f(b) - f(a)}{b-a}(x -a) + f(a)\), alors \(\phi(x) = \phi(y)\) et en sachant que la fonction est bornée et atteint ses bornes, on trouve des points critiques.} remarquable de ce théorème est le \textbf{théorème de Rolle} dans le cas où \(f(a) = f(b)\), donc dans le cas où le taux d'acroissement global est nul, alors on a l'existence d'un \(c \in \ioo{a}{b}\) tel que \(f'(c) = 0\).
+\subsection*{\subsecstyle{Inégalité des accroissements finis {:}}}
+\addcontentsline{toc}{subsection}{Inégalité des accroissements finis}
+
+L'inégalité des accroissements finis donne une condition suffisante de lipschitziannité, en effet si \(f'\) est bornée, alors \(f\) est \(K\)-lipschitzienne avec \(K = \sup|f'|\), ie on a:
+\[
+   |f(b) - f(a)| \leq K|b-a|
+\]
+\underline{Exemple:} \(|\sin(x)'| = |\cos(x)| \leq 1\) donc sinus est une fonction \(1\)-lipschitzienne et donc on montre par exemple que \(|\sin(x) - \sin(0)| \leq |x - 0| \Longleftrightarrow |\sin(x)| \leq |x|\)
+
+\subsection*{\subsecstyle{Théorème de la limite de la dérivée{:}}}
+\addcontentsline{toc}{subsection}{Théorème de la limite de la dérivée}
+
+Soit \(f\) une fonction continue sur \(I\) et dérivable sur \(I \; \backslash \; \{a\}\), alors on peut montrer que si \(\underset{x \rightarrow a}{\lim} f'(x) =  l\), alors \(f\) \textbf{est dérivable} en \(a\) de dérivée \(l\).\<
+
+En particulier pour une fonction \(f \in \mathscr{C}^1(I \; \backslash \; \{a\}, \R)\), si \({\lim}f\) et \({\lim}f'\) existent, alors le prolongement à \(I\) tout entier est de classe \(\mathscr{C}^1\).\+
+En général pour une fonction \(f \in \mathscr{C}^k(I \; \backslash \; \{a\}, \R)\), si les limites de toutes les dérivées intermédiaires existent, alors le prolongement à \(I\) tout entier est de classe \(\mathscr{C}^k\).
+\chapter*{\chapterstyle{VI --- Convexité}} % 99% Fini
+\addcontentsline{toc}{section}{Convexité}
+
+\subsection*{\subsecstyle{Définition {:}}}
+\addcontentsline{toc}{subsection}{Définition}
+
+On dit que \(f\) est \textbf{convexe} sur \(I\) si et seulement si \textbf{son graphe est en dessous de toutes ses cordes}, ie elle vérifie la propriété:
+\customBox{width=10cm}{
+   \(\forall a, b \in I \; , \; \forall \lambda \in \icc{0}{1}\; ; \; f((1-\lambda)a + \lambda b) \leq (1-\lambda)f(a) + \lambda f(b)\)
+}
+Une fonction qui vérifie l'inégalité inverse est dite \textbf{concave} et son graphe est situé \textbf{au dessus de toutes ses cordes}.
+Graphiquement, voici un exemple de fonction convexe:
+\begin{center}
+   \begin{tikzpicture}[domain=0:4, yscale=0.8]
+      \draw[color=DarkBlue1, thick, dashed] plot (\x,{-3*\x + 0.75*\x^2+3.5}) node [right] {$f(x)$};
+
+      \draw[-latex] (0,0) -- (5,0) node [right] {$x$};
+      \draw[-latex] (0, 0) -- (0,4) node [above] {$y$};
+
+      \draw[|-|, thick, color=BrightRed1] (1, 0) -- (3.5,0);
+      \draw node at (1, -0.4) {$a$};
+      \draw node at (3.5, -0.4) {$b$};
+      \draw[dashed, color=BrightRed1, thick] (1, 0) -- (1, 1.25);      
+      \draw[dashed, color=BrightRed1, thick] (3.5, 0) -- (3.5, 2.1875);
+
+      \draw[color=BrightRed1, thick, domain=1:3.5] plot (\x,{-3*\x + 0.75*\x^2+3.5}) node [below right] {$f((1-\lambda)a + \lambda b)$};
+
+      \draw[color=DarkBlue1, thick] (1, 1.25) -- (3.5, 2.1875) node[] at (5.35, 2.5) {$(1-\lambda)f(a) + \lambda f(b)$};
+
+   \end{tikzpicture}
+\end{center}
+\begin{center}
+   \textit{
+      En d'autres termes l'image d'un barycentre (à coefficient positif) est en dessous du barycentre des images.
+   }
+\end{center}
+Par ailleurs il existe une caractérisation trés utile de la convexité, pour montrer qu'une fonction \textbf{dérivable} est convexe, il suffit de montrer que sa \textbf{dérivée est croissante}, ou alors, si elle est deux fois dérivable, que sa \textbf{dérivée seconde est positive}.\<
+
+\underline{Exemple:}  La fonction logarithme est concave sur \(\R\) car sa dérivée seconde est négative, donc pour tous \(a, b > 0\), on a \(\ln(\frac{a + b}{2}) \leq \frac{1}{2}\ln(a) + \frac{1}{2}\ln(b)\).
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+\addcontentsline{toc}{subsection}{Propriétés}
+
+On peut noter deux grandes propriétés des fonctions convexes, tout d'abord pour tout \(a, b, c\) dans \(I\) tels que \(a < b < c\), on a \textbf{l'inégalité des pentes} qui nous donne:
+\customBox{width=7.5cm}{
+   \[\frac{f(b)-f(a)}{b-a} \leq \frac{f(c)-f(a)}{c-a} \leq \frac{f(c)-f(b)}{c-b}\]
+}
+Intuitivement, cela signifie que \textbf{les pentes des cordes sont croissantes}.\<
+
+Finalement on peut généraliser l'inégalité de la définition par \textbf{l'inégalité de Jensen}, qui pour toute famille \((x_i)_{i \in \N}\) de points et famille \((\lambda_i)_{i \in \N}\) de coefficients positifs de somme 1, nous donne:
+\customBox{width=5cm}{
+   \[f\biggl(\sum_{i \in \N} \lambda_i x_i\biggl) \leq  \sum_{i \in \N} \lambda_i f(x_i)\]
+}
+Qui généralise l'intuition selon laquelle \textbf{l'image d'un barycentre est en dessous du barycentre des images}.
+\chapter*{\chapterstyle{VI --- Développements limités}} % 99% Fini
+\addcontentsline{toc}{section}{Développements limités}
+
+Dans ce chapitre nous cherchons à approximer \textbf{localement} des fonctions par des polynômes au voisinage d'un point ou de l'infini.\<
+
+Il est important de noter que la majorité des égalités de ce chapitre sont des égalités \textbf{au voisinage d'un point}, et non des égalités globales.
+\subsection*{\subsecstyle{Définition {:}}}
+\addcontentsline{toc}{subsection}{Définition}
+
+Soit \(f\) une fonction de \(D\) dans \(\R\), et \(a\) un point adhérent à \(D\). On dit que \(f\) admet un \textbf{développement limité} d'ordre \(n\) \textbf{au voisinage de } \(a\) et on note \(DL_n(a)\) si il existe une famille de réels \((a_i)\) tels que:
+\customBox{width=10cm}{
+   \(f(x) = a_0 + a_1(x-a) + \ldots + a_n(x-a)^n + o((x-a)^n)\)
+}
+Si elle existe, alors cette famille est \textbf{unique}, par ailleurs plus l'ordre est grand, plus la précision est grande.\+
+
+La partie polynomiale d'une développement limité est appellée \textbf{partie principale}.
+
+\subsection*{\subsecstyle{Propriétés{:}}}
+\addcontentsline{toc}{subsection}{Propriétés}
+
+Soit \(f\) et \(g\) deux fonctions qui admettent un développement limité à l'ordre \(n\).\+
+On appelle \textbf{troncature} à l'ordre \(k\) de \(f\), la partie principale de \(f\) privée de tout les coefficients de degré supérieurs à \(k\), et suivi d'un \(o(x^k)\). Il s'agit simplement ici de réduire la précision de notre approximation, en particulier, si on a un développement limité à l'ordre \(n\) alors on a un développement limité à tout ordre inférieur à \(n\) par troncature.\<
+
+Aussi, les développements limités se comportent de manière intuitive par rapports aux opérations algébriques:
+\begin{center}
+   \textit{Pour calculer un développement limité d'une somme, il suffit de faire la somme des parties principales. \+
+   Pour la multiplication (la composition), il suffit de faire le produit (la composée) des parties principales.\footnote[1]{\textbf{Attention:} Cette méthode produira dans la plupart des cas des termes inutiles, il faut donc tronquer et/ou anticiper le degré du produit final, pour faciliter les calculs, voir l'exemple.} }
+\end{center}
+
+\underline{Exemple:} Cherchons un \(DL_2(e^x\cos(x))\), on a \(e^x\cos(x) = [1 + x + \frac{x^2}{2}+o(x^2)] [1 - \frac{x^2}{2} + o(x^2)]  \) = \(1 + x + o(x^2)\)
+
+\subsection*{\subsecstyle{Changement de voisinage {:}}}
+\addcontentsline{toc}{subsection}{Changement de voisinage}
+
+On peut ramener la recherche d'un déveoppement limité en un point à un développement limité en \(0\) par une translation.\footnote[2]{En effet, un DL\((a, f(x))\) est un DL\((0, f(x + a))\) à translation près (faire un dessin). Il suffit donc de chercher un DL\((0, f(x + a))\) puis de translater à nouveau sur la fonction originelle.}\<
+
+On peut ramener la recherche d'un déveoppement asymptotique en \(\pm \infty\), à un développement limité en \(0\) par le changement de variable
+\( X = \frac{1}{x}\).\<
+
+\underline{Exemple:} La fonction \(e^\frac{1}{x}\) est définie au voisinage de \(+ \infty\), on pose \(X = \frac{1}{x}\), alors un \(DL_2(0)\) de \(f(X)\) est \(1 + X + \frac{X^2}{2}+o(X^2) = 1 + \frac{1}{x} + \frac{1}{2x^2} + o(\frac{1}{x^2})\) aprés substitution.
+\pagebreak
+
+\subsection*{\subsecstyle{Formules de Taylor {:}}}
+\addcontentsline{toc}{subsection}{Formule de Taylor-Young}
+Soit \(f\) une fonction de classe \(\mathscr{C}^n\) sur un intervalle \(I\), alors on peut montrer \textbf{l'existence} d'un développement limité à l'ordre \(n\) au voisinage d'un point \(a\) de \(I\) qui est donné par:
+\customBox{width=7cm}{
+   \[f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x - a)^k + o((x - a)^n)\]
+}
+La quantité négligeable appellée \textbf{reste}, qu'on note généralement \(R_n\), peut s'expliciter dans le cas où la fonction est de classe \(\mathscr{C}^{n+1}\) et pour un certain \(c \in \icc{a}{x}\), on a:
+\customBox{width=11cm}{
+   \[ R_n = \frac{f^{(k+1)}(c)}{k!}(x - a)^{k+1} 
+   \quad\quad\quad\quad
+   R_n = \int_{a}^{x} \frac{f^{(k+1)}(t)}{k!}(x - t)^{k} \d t\]
+}  
+Ce sont respectivement les formules de \textbf{Taylor-Lagrange}\footnote[1]{Celle ci peut se comprendre comme une généralisation du théorème des accroissements finis qui en est un cas particulier (à l'ordre 1).} et de \textbf{Taylor avec reste intégral}.\+
+Expliciter le reste permet alors d'obtenir des informations sur tout l'intervalle \(\icc{a}{x}\), en effet, ce ne sont alors plus des développements asymptotiques mais bien des formules \textbf{exactes}.\<
+
+\underline{Exemple:} Pour un certain \(c\) sur l'intervale \(\icc{0}{x}\) , on a \(\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \frac{x^5}{5!}\sin(c)\), cela nous permet alors d'avoir, par exemple, la majoration \(\cos(x) \leq 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \frac{x^5}{5!}\).
+\<
+
+
+Aussi, \(f\) est continue en \(a\) si et seulement si elle admet un \textbf{développement limité à l'ordre 0}.\+
+De même, elle est dérivable en \(a\) si et seulement si elle admet un \textbf{développement limité à l'ordre 1}.\+
+Néanmoins, au dela de l'ordre \(k = 1\), admettre un développement limité à l'ordre \(k\) n'implique \textbf{pas} d'être de classe \(\mathscr{C}^k\).
+
+\subsection*{\subsecstyle{Intégration d'un développement limité{:}}}
+\addcontentsline{toc}{subsection}{Intégration d'un développement limité}
+
+Une propriété trés particulière nous permet de trouver le développement limité d'une fonction si l'on connaît le développement limité de sa dérivée.\+ 
+Soit \(f\) une fonction dérivable tel que \(f'\) admet un développement limité à l'ordre \(n\), ie:
+\[
+   f'(x) \underset{0}{=} \sum_{k=0}^{n} a_kx^k + o(x^k)   
+\]
+Alors \(f\) admet un développement limité à l'ordre \(n + 1\) obtenu \textbf{en intégrant termes à termes}, ie on a:
+\[
+   f(x) \underset{0}{=} f(a) + \sum_{k=0}^{n} \frac{a_k x^{k+1}}{k+1} + o(x^{k+1})   
+\]
+Ici la constante d'intégration est le terme d'ordre 0 du développement limité, ie \(f(a)\).
+\begin{center}
+   \textit{
+      Un développement limité de la dérivée nous donne donc \textbf{toujours}\+
+      un développement limité de la fonction.
+   }
+\end{center}
+
+\subsection*{\subsecstyle{Développements limités usuels {:}}}
+\addcontentsline{toc}{subsection}{Développements limmités usuels}
+
+Il est utile de connapitre les développements limités en \(0\) des fonctions usuelles:
+\begin{center}
+   \renewcommand{\arraystretch}{1.5}%
+   \setlength\arrayrulewidth{0.8pt}
+
+   \begin{tabular}{| c | c |}
+   \hline
+   \(e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \ldots + o(x^n)\) & \(\ln(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots + o(x^n) \)\\[1.5ex]
+   \hline
+   \((1+x)^\alpha = 1 + \binom{\alpha}{1} x + \binom{\alpha}{2}\frac{x^2}{2} + \binom{\alpha}{3}\frac{x^3}{6} + \ldots + o(x^n)\) & \(\frac{1}{1-x} = 1 + x + x^2 + x^3 + \ldots + o(x^n)\) \\[1.5ex]
+   \hline
+   \(\cos(x) = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \ldots + o(x^n)\) & \(\sin(x) = x - \frac{x^3}{6} + \frac{x^5}{120} - \ldots + o(x^n)\) \\[1.5ex]   
+   \hline
+   \end{tabular}
+\end{center} 
+\chapter*{\chapterstyle{VI --- Intégration}} % 99% Fini
+\addcontentsline{toc}{section}{Intégration}
+
+On définira dans ce chapitre l'intégration d'une fonction \textbf{bornée définie sur un segment}.\<
+
+On appelle \textbf{subdivision} du segment \(\icc{a}{b}\) qu'on note généralement \(\sigma\) toute suite finie \((x_i)_{i \in \N}\) strictement croissante de premier terme \(x_0 = a\) et de dernier terme \(x_n = b\), on appelle \textbf{pas de la subdivision} la distance maximale entre deux éléments consécutifs de la subdivision, qu'on note généralement \(|\sigma|\).
+
+\subsection*{\subsecstyle{Définition {:}}}
+\addcontentsline{toc}{subsection}{Définition}
+
+Soit \(f\) une fonction définie sur un segment \(\icc{a}{b}\), et \(\sigma = (x_i)_{i \in \N}\) une subdivision de ce segment, on note \(M_i := \sup\{f(x) \; ; \; x \in \icc{x_i}{x_{i+1}}\}\) le supremum de la fonction sur chaque intervalle (qui existe car on ne considère bien que les fonctions \textbf{bornées}).\<
+
+Alors on appelle \textbf{somme de Darboux supérieure\footnote[1]{On définit de même \textbf{la somme de Darboux inférieure} associée à la subdivision qui est analogue à la différence que la hauteur des rectangle est donnée par l'infimum de la fonction sur la subdivision.} associée à la subdivision} la somme:
+\[
+   ^+S(f, \sigma) = \sum_{k=0}^{n} (x_{k+1} - x_k) \cdot M_k 
+\] 
+Cette somme correspond à \textbf{la somme de rectangles} chacun de base \(x_{k+1} - x_k\) et de hauteur le supremum de la fonction sur cette intervalle. Graphiquement, on a:
+\begin{center}
+   \begin{tikzpicture}[domain=0:2.55, xscale=1.9, yscale=0.6]
+      \draw[color=DarkBlue1, thick] plot (\x,{((\x-1)^3 + 2)/1.5+1});
+      \draw[-latex] (0,0) -- (3,0) node [right] {$x$};
+      \draw[-latex] (0, 0) -- (0,5) node [above] {$y$};
+      
+      \draw[color = black] (0.35, 0.1) -- (0.35, -0.1) node[] at (0.35, -0.5) {$x_0$};
+      \draw[dashed, color = black] (0.35, 0) -- (0.35, 2.3333) -- (1, 2.3333);
+      \fill[black!30,nearly transparent] (0.35, 0) -- (0.35, 2.3333) -- (1, 2.3333) -- (1, 0) -- cycle;
+
+      \draw[color = black] (1, 0.1) -- (1, -0.1) node[] at (1, -0.5) {$x_1$};
+      \draw[dashed, color = black] (1, 0) -- (1, 2.417) -- (1.5, 2.417);
+      \fill[black!30,nearly transparent] (1, 0) -- (1, 2.4166) -- (1.5, 2.4166) -- (1.5, 0) -- cycle;
+
+      \draw[color = black] (1.5, 0.1) -- (1.5, -0.1) node[] at (1.5, -0.5) {$x_2$};
+      \draw[dashed, color = black] (1.5, 0) -- (1.5, 3) -- (2, 3);
+
+      \draw[dashed, color = black] (1.5, 3) -- (0, 3) node[color=black, left] {$\underset{\icc{x_2}{x_{3}}}{\sup}f$};
+      \draw[color = black] (-0.05, 3) -- (0.05, 3);
+
+      \fill[black!30,nearly transparent] (1.5, 0) -- (1.5, 3) -- (2, 3) -- (2, 0) -- cycle;
+
+      \draw[color = black] (2, 0.1) -- (2, -0.1) node[] at (2, -0.5) {$x_3$};
+      \draw[dashed, color = black] (2, 0) -- (2, 3.63) -- (2.25, 3.63) -- (2.25, 0);
+      \fill[black!30,nearly transparent] (2, 0) -- (2,3.63) -- (2.25, 3.63) -- (2.25, 0) -- cycle;
+
+      \draw[color = black] (2.25, 0.1) -- (2.25, -0.1) node[] at (2.25, -0.5) {$x_4$};
+
+   \end{tikzpicture}
+\end{center}
+On appelle \textbf{l'intégrale supérieure}\footnote[2]{On définit de même \textbf{l'intégrale inférieure} qui est analogue à la différence que l'on considère l'aire \textbf{maximale} sur toutes les subdivisions possibles, ie on change l'infimum pour un supremum dans la définition.} de \(f\) la quantité:
+\customBox{width=10cm}{
+   \[^+S(f) = \inf\Bigl\{\,^+S(f, \sigma)\; ; \; \sigma \text{ est une subdivision de } \icc{a}{b}\Bigl\}\]
+}
+\begin{center}
+   \textit{
+      L'intégrale supérieure est la somme \textbf{minimale} obtenue en considérant \textbf{toutes les subdivisions possibles} du segment.
+   }
+\end{center}
+
+Enfin on dit que \(f\) est \textbf{intégrable} si et seulement si \textbf{l'intégrale supérieure et inférieure} sont égales, et on la note:
+\[
+   \int_{a}^{b} f(t) \d t  
+\]
+L'ensemble des fonctions intégrables sur \(\icc{a}{b}\) est noté \(\mathscr{I}(\icc{a}{b})\).
+\pagebreak
+
+\subsection*{\subsecstyle{Caractérisation {:}}}
+\addcontentsline{toc}{subsection}{Caractérisation}
+
+Pour la suite, nous aurons besoin d'une propriété des intégrales supérieures et inférieures qui découle de leur nature de borne inférieure et supérieure\footnote[1]{Une somme supérieure pour une subdivision fixée est toujours plus grande que la borne inférieure de ces sommes pour \textbf{toutes} les subdivisions.}, en effet on a:
+\customBox{width=7cm}{
+   \({}^{-}S(f, \sigma) \leq {}^{-}S(f) \leq {}^{+}S(f) \leq {}^{+}S(f, \sigma)\)
+}   
+De cette propriété on peut déduire une caractérisation trés utile de l'intégrabilité\footnote[2]{En pratique, c'est celle ci qui permet de prouver qu'une classe de fonction est intégrable ou non.}, en effet une fonction \(f\) est intégrable si et seulement si pour tout \(\epsilon\) positif, \textbf{il existe une subdivision} \(\sigma\) telle que:
+\customBox{width=5cm}{
+   \({}^{+}S(f, \sigma) - {}^{-}S(f, \sigma) < \epsilon\)
+} 
+De cette proposition, nous pouvons alors montrer que plusieurs classes de fonctions sont intégrables, en particulier:
+\begin{center}
+   \textit{Toute fonction continue est intégrable.}\+
+   \textit{Toute fonction monotone est intégrable. }
+\end{center}
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+\addcontentsline{toc}{subsection}{Propriétés}
+
+Aprés avoir défini l'espace \(\mathscr{I}(\icc{a}{b})\) des fonctions intégrables, on peut considérer ses propriétés, en particulier on peut remarquer que cet espace est stable par somme et multiplication externe, en particulier:
+\begin{center}
+   \textit{L'espace des fonctions intégrables est un \textbf{sous-espace vectoriel} de l'espace des fonctions}
+\end{center}
+L'application d'intégration sur les fonctions intégrables est donc \textbf{une forme linéaire} sur cet espace, elle est \textbf{croissante} et vérifie \textbf{relation de Chasles}\footnote[3]{Pour \(c \in \icc{a}{b}\)} :
+\[
+   \int_{a}^{b} f(t) \d t = \int_{a}^{c} f(t) \d t + \int_{c}^{b} f(t) \d t
+\]
+  
+
+L'intégrale vérifie aussi \textbf{l'inégalité triangulaire}, en effet on a:
+\[ 
+   \Bigl| \int_{a}^{b} f(t) \d t \Bigl| \leq \int_{a}^{b} |f(t)| \d t 
+\]
+  
+
+\subsection*{\subsecstyle{Théorème fondamental du calcul intégral {:}}}
+\addcontentsline{toc}{subsection}{Théorème fondamental du calcul intégral}
+
+On peut maintenant énoncer le \textbf{théorème fondamental du calcul intégral}, on considère \(f\) une fonction continue sur un segment \(\icc{a}{b}\), et on définit la fonction \(F\) définie sur ce segment par:
+\customBox{width=4cm}{
+   \[F(x) = \int_{a}^{x} f(t) \d t\]
+}   
+Alors \(F\) est de classe\footnote[4]{Si \(f\) est seulement intégrable, alors \(F\) est seulement continue, c'est une version plus faible de ce théorème.} \(\mathscr{C}^1\) et est une \textbf{primitive} de \(f\), en particulier, c'est la seule qui s'annule en \(a\).\+
+Par ailleurs, si \(f\) est intégrable et que l'on en connaît une primitive \(F\), alors on a:
+\customBox{width=5cm}{
+   \[\int_{a}^{b} f(t) \d t = F(b) - F(a)\]
+}   
+
+\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(2x) - F(x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
+
+\subsection*{\subsecstyle{{Formule de la moyenne:}}}
+\addcontentsline{toc}{subsection}{Formule de la moyenne}
+Si \(f\) est continue sur le segment \(\icc{a}{b}\), alors il existe un \(c\) dans cet intervalle\footnote[1]{La preuve est immédiate, \(f\) est continue donc \(\int_{a}^{b} f(t) \d t = F(a) - F(b)\) et on conclut directement par le théorème des accroissements finis.} tel que:
+\customBox{width=4.5cm}{
+   \[f(c) = \frac{1}{b-a}\int_{a}^{b} f(t) \d t\]
+}   
+La quantité \(f(c)\) est appellée \textbf{valeur moyenne de la fonction sur le segment.}
+Dans un cas plus général\footnote[2]{Même idée de démonstration, en utilisant la croissance de l'intégrale}, on peut même montrer que pour \(g\) continue et positive, alors on a l'existence d'un \(c\) tel que:
+\[
+   f(c)\int_{a}^{b} g(t) \d t = \int_{a}^{b} f(t)g(t) \d t
+\]
+
+\subsection*{\subsecstyle{Sommes de Riemann {:}}}
+\addcontentsline{toc}{subsection}{Sommes de Riemann}
+
+Soit \(f\) une fonction intégrable sur \(\icc{a}{b}\), \(\sigma_n = (x_k)_{k \leq n}\) une subdivision \textbf{régulière} et \(h = \frac{b - a}{n}\) \textbf{le pas de la subdivision}, alors on définit la \textbf{somme de Riemann} comme suit:
+\customBox{width=7.5cm}{
+   \[S_n = \frac{b - a}{n} \sum_{k=1}^{n}f\Bigl(a + k\frac{b - a}{n}\Bigl) = h \sum_{k=1}^{n}f(x_k)\]
+}   
+
+Alors la suite \((S_n)\) \textbf{converge} vers \(\int_{a}^{b} f(t) \d t\).\<
+
+Une somme de Riemann représente la somme d'aires de rectangles dans le cas particulier d'une subdivision régulière et dans le cas où la hauteur des rectangle est simplement \(f(x_k)\). Cette propriété de convergence nous permet d'évaluer des séries gràce à des intégrales.\<
+
+\underline{Exemple:} Dans le cas le plus courant où on est dans l'intervalle \(\icc{0}{1}\). Calculons la somme \(S := \sum_{k=0}^{+\infty} \frac{1}{n + k}\). On a:
+\[
+   S =  \frac{1}{n}\sum_{k=0}^{+\infty} \frac{1}{1 + \frac{k}{n}} = \frac{1}{n}\sum_{k=0}^{+\infty} f\Bigl(\frac{k}{n}\Bigl) = \int_{0}^{1} f(t) \d t = \ln(1 + x) \Bigl|_{0}^{1} = \ln(2)
+\]
+
+\subsection*{\subsecstyle{Techniques de calcul générales{:}}}
+\addcontentsline{toc}{subsection}{Techniques de calcul générales}
+
+Du théorème fondamental on peut déduire plusieurs formules utiles pour calculer des intégrales, dans toute cette section, \(f, g\) sont \textbf{continues} et \(\phi\) est \textbf{continue, dérivable à dérivée continue}\footnote[3]{De telle sorte que toutes les intégrales soient bien définies.}.\< 
+
+En premier lieu on montre facilement la formule \textbf{d'intégration par parties} qui nous permet de caculer \textbf{l'intégrale d'un produit}\footnote[4]{On peut souvent trouver une relation de récurrence par IPP successives, ou alors annuler un facteur polynomial par les dérivations successives que permettent les IPP.} dans certains cas:
+\customBox{width=8cm}{
+   \[\int_{a}^{b} f(t)g'(t) \d y = f(t)g(t) \Bigl|_{a}^{b} \; - \int_{a}^{b} f'(t)g(t) \d t\]
+}  
+
+On montre par ailleurs la formule du \textbf{changement de variable}, elle nous permet de calculer \textbf{l'intégrale d'une composée}\footnote[5]{De gauche à droite, elle nous permet de poser \textbf{une nouvelle variable} comme fonction de la variable d'intégration, de droite à gauche on pose alors notre variable d'intégration comme \textbf{l'image d'une nouvelle variable par une fonction} (nécéssite alors la surjectivé sur le segment).} dans certains cas:
+\customBox{width=6.5cm}{
+   \[\int_{a}^{b} f(\varphi(t))\varphi'(t) \d t = \int_{\varphi(a)}^{\varphi(b)} f(x) \d x\]
+}  
+
+
+\subsection*{\subsecstyle{Intégration de fonctions complexes{:}}}
+\addcontentsline{toc}{subsection}{Intégration de fonctions complexes}
+
+Si on considère les fonctions trigonométriques et exponentielles, il est clair que l'on peut les voir comme la partie réelle ou imaginaire d'une fonction à valeur complexe.\+
+Alors on peut utiliser les propriétés suivantes et profiter des propriétés de l'exponentielle:
+\customBox{width=12.5cm}{
+   \[   \int_{a}^{b} \mathscr{R}(f(t)) \d t = \mathscr{R}\Bigl(\int_{a}^{b} f(t) \d t\Bigl) 
+   \quad\quad\quad\quad
+   \int_{a}^{b} \mathscr{I}(f(t)) \d t = \mathscr{I}\Bigl(\int_{a}^{b} f(t) \d t\Bigl) \]
+}  
+
+\underline{Exemple:} Calculons \(I := \int e^{-x}\cos(x) \d x\)
+\[
+   I = \int e^{-x}\mathscr{R}(e^{ix}) \d x = \int \mathscr{R}(e^{x(i- 1)}) \d x = \mathscr{R}(\int e^{x(i - 1)} \d x) = \mathscr{R}(\frac{1}{i - 1}e^{x(i - 1)}) = \frac{e^{-x}}{2}(\sin(x) - \cos(x))
+\]
+On remarque ici que l'intégrale \(\int e^{\alpha x} \d x\) se comporte de manière identique si \(\alpha\) est réel ou complexe.
+
+\subsection*{\subsecstyle{Décomposition en éléments simples{:}}}
+\addcontentsline{toc}{subsection}{Décomposition en éléments simples}
+
+Si on considère les primitives de fractions rationnelles de la forme \(\frac{P}{Q}\), on peut montrer qu'elles peuvent se décomposer en une somme \textbf{d'éléments simples} particulièrement faciles à intégrer. Cette partie se consacre à la décomposition d'une fraction \(\frac{P}{Q}\) en éléments simples\footnote[1]{On considère \(d^{\circ}(P) < d^{\circ}(Q)\), dans le cas opposé, on peut s'y ramener par division euclidienne.}.
+\begin{center}
+   \begin{itemize}
+      \item La première étape de la décomposition consiste à \textbf{factoriser} \(Q\) en polynômes irréductibles.
+      \item Tout facteur \((aX + b)^n\) produira alors une somme de \(n\) éléments simples de première espèce:
+      \[
+         \frac{\lambda_1}{aX+b} + \frac{\lambda_2}{(aX+b)^2} + \ldots + \frac{\lambda_n}{(aX+b)^n}
+      \] 
+      \item Tout facteur \((aX^2 + bX + c)^n\) produira alors une somme de \(n\) éléments simples de seconde espèce:
+      \[
+         \frac{\lambda_1X+\beta_1}{aX^2+bX+c} + \frac{\lambda_2X+\beta_2}{(aX^2+bX+c)^2} + \ldots + \frac{\lambda_nX+\beta_n}{(aX^2+bX+c)^n}
+      \]
+   \end{itemize}
+\end{center}
+
+Finalement, on obtient une somme d'éléments simples avec des coefficients indéterminés aux numérateurs. Pour déterminer ces coefficients, plusieurs méthodes sont possibles, réduire au même dénominateur et identifier, évaluer en des valeurs annulatrices ou encore utiliser \textbf{la méthode du cache}\footnote[2]{Cette méthode permet de calculer les coefficients d'un élément dont le dénominateur est de plus haut degré de son groupe, elle consiste à multiplier l'égalité obtenue par le dénominateur en question, puis à évaluer en une de ces racines, annulant ainsi \textbf{tout les éléments simples} sauf celui dont on a choisi le dénominateur, cette procédure permet alors de trouver les coefficients de cet élémént.}.\< 
+
+\underline{Exemple:} Décomposons \(\frac{2X+1}{(X-1)(X+1)^2(X^2+1)}\)\+
+On a:
+   \begin{align*}
+      \frac{2X+1}{(X-1)(X+1)^2(X^2+1)} &= \frac{\lambda_1}{X-1} + \frac{\lambda_2}{X+1}+ \frac{\lambda_3}{(X+1)^2} + \frac{\lambda_4X+ \lambda_5}{X^2+1}
+   \end{align*}
+Utilisons la méthode du cache sur l'élement en \(X-1\), on multiplie par \(X-1\) de chaque coté et on évalue en la racine \(1\) ce qui nous donne \(\lambda_1 = \frac{3}{8}\).\+
+Utilisons la méthode du cache sur l'élement en \((X+1)^2\), on multiplie par \((X+1)^2\) de chaque coté et on évalue en la racine \(-1\) ce qui nous donne \(\lambda_3 = \frac{1}{4}\).\+
+Utilisons la méthode du cache sur l'élement en \(X^2+1\), on multiplie par \(X^2+1\) de chaque coté et on évalue en la racine \(i\) ce qui nous donne \(\lambda_4i+\lambda_5 = \frac{-1}{4}i - \frac{3}{4}\) donc \(\lambda_4=\frac{-1}{4}\) et \(\lambda_5=\frac{-3}{4}\).\<
+
+Pour finir pour trouver le dernier coefficient, on peut par exemple réduire au même dénominateur et identifier, pour conclure on a:
+\begin{align*}
+   \frac{2X+1}{(X-1)(X+1)^2(X^2+1)} &= \color{BrightRed1}\underbrace{\color{black}\frac{3}{8(X-1)} + \frac{-1}{8(X+1)}+ \frac{1}{4(X+1)^2}}_\text{Première espèce} \color{black}+\color{BrightRed1}\underbrace{\color{black} \frac{-X - 3}{4(X^2+1)}}_\text{Seconde espèce} 
+\end{align*}
+
+\subsection*{\subsecstyle{Intégration des éléments simples{:}}}
+\addcontentsline{toc}{subsection}{Intégration des éléments simples}
+
+Les éléments simples \textbf{de première espèce} sont ceux de la forme ci-dessous, ie dont le dénominateur est \textbf{une puissance de polynôme irreductible de premier degré}, pour les intégrer, un changement de variable affine conclut:
+\customBox{width=3.5cm}{
+   \[\int_{a}^{b} \frac{1}{(at+b)^n}  \d t \]
+}  
+
+Les éléments simples \textbf{de seconde espèce}, sont ceux dont le dénominateur est \textbf{une puissance de polynôme irreductible de second degré}, pour les intégrer, on se ramène à la forme ci-dessous, et un calcul par récurrence ou un changement de variable trigonométrique conclut\footnote[1]{On peut faire le changement de variable \(u = \tan(x)\) ou alors trouver une relation de récurrence en faisant une IPP à partir de \(I_{n+1}\).}:
+\customBox{width=3.5cm}{
+   \[\int_{a}^{b} \frac{1}{(1+t^2)^n}  \d t \]
+}  
+
+Pour se ramener à la forme ci-dessus, pour \(E = \frac{P}{Q^n}\) un élément de seconde espèce, on suit la méthode suivante:\+
+\begin{description}
+   \item[$\bullet$] On fait \textbf{la division euclidienne de \(P\) par \(Q'\)\footnote[2]{\(Q'\) sera nécessairement de degré 1.}}.
+   \item[$\bullet$] On obtient alors une intégrale simple et un reste de la forme \(\frac{1}{Q^n}\).
+   \item[$\bullet$] On ramene le reste à la forme souhaitée en mettant \(Q\) sous \textbf{forme canonique}.
+\end{description}
+\underline{Exemple:} L'élément de seconde espèce de l'exemple précédent est \(E = \frac{-X - 3}{4(X^2+1)}\), on fait la division euclidienne du numérateur par la dérivée du dénominateur \(8X + 4\) et on a:
+\[
+   E = \frac{\frac{-1}{8}(8X - 4) + \frac{-5}{2}}{4(X^2+1)} =  \frac{-1}{8} \cdot \frac{2X - 1}{X^2+1} - \frac{-5}{8(X^2 +1)}
+\]
+Puis on peut intégrer:
+\[
+   \int E(x) \d x = \frac{-1}{8}  \color{DarkBlue1}\underbrace{\color{black} \int \frac{2x - 1}{x^2+1} \d x}_\text{Facile}\color{black}  - \frac{-5}{8} \color{DarkBlue1}\underbrace{\color{black}\int \frac{1}{(x^2 +1)} \d x}_\text{Forme souhaitée}
+\]
+
+\subsection*{\subsecstyle{Parité{:}}}
+\addcontentsline{toc}{subsection}{Parité}
+
+Soit \(a \in \R^+\), il est possible d'exploiter la parité de la fonction\footnote[3]{Par ailleurs, on remarque qu'il est possible de décomposer une fonction en somme d'une fonction paire et d'une fonction impaire, en effet on a:
+\(f(x) = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2}\)} à intégrer pour faciliter les calculs, en effet on a:
+\begin{itemize}
+   \item Si la fonction est \textbf{paire}, on a:
+   \customBox{width=5cm}{
+      \[\int_{-a}^{a} f(t) \d t = 2\int_{0}^{a} f(t) \d t\]
+   }  
+   \item Si la fonction est \textbf{impaire}, on a:
+   \customBox{width=3.5cm}{
+      \[\int_{-a}^{a} f(t) \d t = 0\]
+   }  
+\end{itemize}
+
+
+\chapter*{\chapterstyle{VI --- Intégrales Généralisées}}
+\addcontentsline{toc}{section}{Intégrales Généralisées}
+Aprés avoir défini précédemment l'intégrale de fonctions intégrables sur \textbf{sur un segment}, nous allons définir l'intégrale de fonction sur des intervalles \textbf{ouvert ou semi-ouvert}, ou encore les integrales de fonctions \textbf{non-bornées}, on les appellera alors \textbf{intégrales généralisées}.
+\subsection*{\subsecstyle{Définition {:}}}
+Soit \(I\) un intervalle \(\ioc{a}{b}\), et \(f\) une fonction intégrable sur \textbf{tout sous-segment} de \(\icc{a}{b}\), alors on dira que \(f\) est \textbf{localement intégrable} et on définit alors une fonction auxiliaire \(\phi\) telle que :
+\[
+   \phi(x) = \int_{x}^{b} f(t) \d t
+\]
+Alors on peut définir l'intégrale généralisée, si elle existe, de \(f\) par:
+\customBox{width=3cm}{
+   \(\underset{x \rightarrow 0}{\lim} \; \phi(x)\)
+}
+Si cette limite existe, on dira alors que l'intégrale généralisée existe.\+ 
+Dans le cas où \(f\) est \textbf{non-bornée} sur un intervalle \(I\), on peut alors séparer l'intégrale en deux sous-intégrales (ou plusieurs si les discontinuités sont multiples), qui pourront être étudiées de cette manière.\<
+
+\underline{Exemple :} Etudions l'intégrale sur \(\ioc{0}{1}\) du logarithme. Cette fonction est bien localement intégrale sur l'intervalle, posons:
+\[
+   \phi(x) = \int_{x}^{1} \ln(t) \d t = - 1 - x\ln(x) + x 
+\]
+Or la limite quand \(x\) tends vers \(0\) existe et vaut \(-1\), et donc le logarithme est intégrable sur \(\ioc{0}{1}\) et on a \(\int_{x}^{1} \ln(t) \d t = -1\).
+\subsection*{\subsecstyle{Intégrales de référence{:}}}
+Dans cette section, on considère des intégrales sur un intervalle de \(\R_+\) ayant soit une borne supérieure infinie, soit un borne inférieure en 0.\+
+Il existe alors plusieurs intégrales généralisées de référence, une des plus importante étant \textbf{l'intégrale de Riemann}:
+\[
+   \int \frac{1}{t^\alpha} \d t   
+\]
+Par une simple intégration directe suivie d'une disjonction de cas sur la limite de la primitive, on en déduit des propriétés importantes pour la suite:
+\begin{align*}
+   &\bullet \;\; \text{Elle \textbf{converge} en \(+\infty\) si et seulement si \(\alpha > 1\).} \\
+   &\bullet \;\; \text{Elle \textbf{converge} en \(0\) si et seulement si \(\alpha < 1\).} \\
+   &\bullet \;\; \text{Si \(\alpha = 1\), elle \textbf{diverge toujours}}
+\end{align*}
+
+Une autre intégrale de référence est \textbf{l'intégrale de Bertrand}:
+\[
+   \int \frac{1}{t^\alpha \ln(t)^\beta} \d t   
+\]
+Par comparaison avec l'intégrale de Riemann ci-dessus, on peut alors en déduire les propriétés suivantes:
+\begin{align*}
+   &\bullet \;\; \text{Elle \textbf{converge} en \(+\infty\) si et seulement si \(\alpha > 1\).} \\
+   &\bullet \;\; \text{Elle \textbf{converge} en \(0\) si et seulement si \(\alpha < 1\).} \\
+   &\bullet \;\; \text{Si \(\alpha = 1\), elle \textbf{converge} si et seulement si \(\beta > 1\).}
+\end{align*}
+\subsection*{\subsecstyle{Théorèmes de comparaison {:}}}
+Soit \(f, g\) des fonctions \textbf{positives} sur l'intervalle considéré telles que \(f \leq g\), alors on a la propriété\footnote[1]{Ce cas découle directement de la positivité des fonctions considérées, en effet si \(f\) est positive, l'intégrale de \(f\) est \textbf{croissante}.} suivante:
+\begin{align*}
+   &\bullet \;\; \text{Si l'intégrale de \(g\) converge, alors l'integrale de \(f\) converge.} \\
+   &\bullet \;\; \text{Si l'intégrale de \(f\) diverge, alors l'integrale de \(g\) diverge.}
+\end{align*}
+En particulier, cette propriété s'étend aux relations de négligeabilité\footnote[2]{Découle du fait que ce sont des majorations à partir d'un certain rang.}, en effet si \(f = o(g)\), alors:
+\begin{align*}
+   &\bullet \;\; \text{Si l'intégrale de \(g\) converge, alors l'integrale de \(f\) converge.} \\
+   &\bullet \;\; \text{Si l'intégrale de \(f\) diverge, alors l'integrale de \(g\) diverge.}
+\end{align*}
+Enfin, on peut aussi considérer le cas de deux fonction \(f, g\) \textbf{équivalentes}\footnote[3]{En particulier, ce théorème nous permet d'utiliser tout l'arsenal des développements limités.} au point de discontinuité, et alors on a le théorème fondamental suivant:
+\customBox{width=9cm}{
+   Les intégrales de \(f\) et \(g\) sont \textbf{de même nature}.
+}
+\begin{center}
+   \textit{Munis de ces théorèmes de comparaison et des intégrales de référence, on peut alors étudier efficacement la convergence des intégrales de fonctions de signe constant.}
+\end{center}
+\subsection*{\subsecstyle{Absolue convergence {:}}}
+Dans le cas de fonction qui ne sont pas à signe constant sur l'intervalle étudié, on peut alors montrer le théorème suivant:
+\customBox{width=9cm}{
+   \(\text{Si } \int |f(t)| \d t \text{ converge, alors }  \int f(t) \d t \text{ converge}\)
+}
+On dira alors que \(f\) est \textbf{absolument convergente}\footnote[4]{La preuve utilise le fait que \(|f(t)| = f^+ + f^-\) avec \(f^+(t) = \max(f(t), 0)\) et \(f^+(t) = \max(-f(t), 0)\)}.
+\begin{center}
+   \textit{Cette propriété nous permet donc d'étendre nos théorèmes de comparaison aux fonctions qui changent de signe sur l'intervalle.}
+\end{center}
+\subsection*{\subsecstyle{Fonctions définies par une intégrale {:}}}
+On peut alors définir des nouvelles fonctions par des intégrales, et dont le domaine de définition sera donc le domaine de convergence de l'intégrale. Une telle fonction sera de la forme:
+\customBox{width=6cm}{
+   \(f(x): x \mapsto \int_{a}^{b} g_x(t) \d t\)
+}
+\underline{Exemple:} On peut définir la \textbf{fonction gamma}, définie sur \(\R \backslash \Z_-\) telle que:
+\[
+   \Gamma(x): x \mapsto \int_{0}^{+\infty} e^{-t}t^{x-1} \d t   
+\]
+\chapter*{\chapterstyle{VI --- Séries Numériques}}
+\addcontentsline{toc}{section}{Séries Numériques}
+Soit \((u_n)_{n\in\N}\) une suite, on appelle \textbf{série numérique de terme général \(u_n\)} la suite \(S_n\) des \textbf{sommes partielles} des termes de \((u_n)_{n\in\N}\), plus formellement, on a:
+\[
+   S_n = \sum_{k=0}^{n} u_k   
+\]
+Ce chapitre consistera en l'étude de la convergence ou de la divergence de telles séries. 
+\subsection*{\subsecstyle{Propriétés{:}}}
+Il est tout d'abord important de remarquer que la fonction qui à une suite associe sa série est \textbf{linéaire}, aussi on peut remarquer une propriété élémentaire:
+\[
+   u_n = S_{n} - S_{n-1}   
+\]
+Cette propriété nous permet alors de montrer la propriété fondamentale suivante:
+\customBox{width=10cm}{
+   Si la série \textbf{converge} alors son terme général tends vers \(0\).
+}
+Enfin dans certains cas, on peut exprimer le terme général \(u_n\) sous la forme \(a_{n+1} - a_n\) pour \((a_n)\) une autre suite. On appelera une telle série \textbf{série téléscopique} et on a la simplification suivante par linéarité:
+\[
+   \sum_{k=0}^{n} u_k = \sum_{k=0}^{n} (a_{k+1} - a_k) = a_{n+1} - a_0   
+\]
+On peut aussi remarquer que les fonctions exponentielle et logarithme étant continues, on peut définir de manière analogue la \textbf{suite des produits partiels} d'une suite, qui se ramène alors par passage au logarithme à l'étude d'une série.
+\subsection*{\subsecstyle{Séries de référence{:}}}
+Le cas le plus élémentaire de série est le cas des \textbf{séries géométriques}:
+\[
+   S_n = \sum_{k=0}^{n} q^k
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si sa raison est inférieure à 1 en valeur absolue.}
+\end{center}
+
+Un second exemple remarquable est celui des \textbf{séries de Riemann} qui est analogue aux intégrales du même nom:
+\[
+   S_n = \sum_{k=0}^{n} \frac{1}{k^\alpha}
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si \(\alpha\) est strictement supérieur à \(1\).}
+\end{center}
+
+Enfin un dernier exemple remarquable est celui des \textbf{séries de Bertrand} qui est aussi analogue aux intégrales du même nom:
+\[
+   S_n = \sum_{k=0}^{n} \frac{1}{k^\alpha \ln(k)^\beta}
+\]
+\begin{center}
+   \textit{Cette série converge si et seulement si \(\alpha > 1\) ou si \(\alpha = 1\) et \(\beta > 1\).}
+\end{center}
+\subsection*{\subsecstyle{Théorèmes de comparaison {:}}}
+Soit \((u_n),(v_n)\) des suites \textbf{positives}, telles que \((u_n) \leq (v_n)\) alors de manière analogue aux intégrales généralisées, alors on a la propriété\footnote[1]{Ce cas découle directement de la positivité des suites considérées, en effet si \((u_n)\) est positive, sa série associée est \textbf{croissante}.} suivante:
+\begin{align*}
+   &\bullet \;\; \text{Si la série associée à \(v_n\) converge, alors la série associée à \(u_n\) converge.} \\
+   &\bullet \;\; \text{Si la série associée à \(u_n\) diverge, alors la série associée à \(v_n\) diverge.}
+\end{align*}
+En particulier, cette propriété s'étend aux relations de négligeabilité\footnote[2]{Découle du fait que ce sont des majorations à partir d'un certain rang.}, en effet si \(u_n = o(v_n)\), alors:
+\begin{align*}
+   &\bullet \;\; \text{Si la série associée à \(v_n\) converge, alors la série associée à \(u_n\) converge.} \\
+   &\bullet \;\; \text{Si la série associée à \(u_n\) diverge, alors la série associée à \(v_n\) diverge.}
+\end{align*}
+Enfin, on peut aussi considérer le cas de deux suites \((u_n), (v_n)\) \textbf{équivalentes}\footnote[3]{En particulier, ce théorème nous permet d'utiliser tout l'arsenal des développements limités.}, et alors on a le théorème fondamental suivant:
+\customBox{width=10cm}{
+   Les séries associées à \(u_n\) et \(v_n\) sont \textbf{de même nature}.
+}
+\begin{center}
+   \textit{Munis de ces théorèmes de comparaison et des séries de référence, on peut alors étudier efficacement la convergence des séries dont le terme général est de signe constant.}
+\end{center}
+\subsection*{\subsecstyle{Absolue convergence {:}}}
+Dans le cas de séries dont le terme général n'est pas à signe constant, on peut alors montrer le théorème suivant:
+\customBox{width=9cm}{
+   \(\text{Si } \sum_{k=0}^{n} |u_k| \text{ converge, alors }  \sum_{k=0}^{n} u_k \text{ converge}\)
+}
+On dira alors que \(S_n\) est \textbf{absolument convergente}\footnote[4]{La preuve utilise le fait que \(|(u_k)| = (u_k)^+ + (u_k)^-\) avec \((u_k)^+ = \max(u_k, 0)\) et \((u_k)^+ = \max(-u_k, 0)\)}.
+\begin{center}
+   \textit{Cette propriété nous permet donc d'étendre nos théorèmes de comparaison aux séries dont le terme général change de signe.}
+\end{center}
+\subsection*{\subsecstyle{Critères spécifiques {:}}}
+Soit \((u_n)\) une suite à termes \textbf{non-nuls}, alors si \(|\frac{u_{n+1}}{u_n}|\) admet une limite \(l\), alors\footnote[5]{\label{1}La preuve s'obtient en comparant \(u_n\) à une série géométrique} on a la \textbf{règle de d'Alembert}:
+\begin{align*}
+   &\bullet \;\; \text{Si \(l < 1\), la série associée converge.} \\
+   &\bullet \;\; \text{Si \(l > 1\), la série associée diverge.} \\
+   &\bullet \;\; \text{Sinon on ne peut pas conclure.}
+\end{align*}
+Soit \((u_n)\) une suite quelconque, alors si \(\sqrt[n]{|u_{n}|}\) admet une limite \(l\), alors\footref{1} on a la \textbf{règle de Cauchy}:
+\begin{align*}
+   &\bullet \;\; \text{Si \(l < 1\), la série associée converge.} \\
+   &\bullet \;\; \text{Si \(l > 1\), la série associée diverge.} \\
+   &\bullet \;\; \text{Sinon on ne peut pas conclure.}
+\end{align*}
+\begin{center}
+   \textit{Ces règles spécifiques permettent d'obtenir la nature d'une série en étudiant simplement le terme général.}
+\end{center}
+
+\pagebreak
+\subsection*{\subsecstyle{Familles sommables {:}}}
+On s'intéresse maintenant à la possiblité d'étendre les propriétés de l'addition et de la multiplication aux sommes infinies. En particulier, est-il possible de donner une condition pour que la somme d'une série soit \textbf{invariante par permutation des termes}, \textbf{associative}, ou encore que le \textbf{produit de Cauchy} de deux séries convergentes soit convergente ?\<
+
+On peut répondre affirmativement à ces question en introduisant le concept de \textbf{famille sommable}, et on peut alors montrer\footnote[6]{Hautement non trivial ...} que si la série associée à \(u_n\) est \textbf{absolument convergente}, alors:
+\begin{align*}
+   &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme} \\
+   &\bullet \;\; \text{L'ordre des termes dans la somme ne change pas la somme}
+\end{align*}
+\chapter*{\chapterstyle{VI --- Suites de fonctions}}
+\addcontentsline{toc}{section}{Suites de fonctions}
+Soit \(E \subseteq F\), on appelle \textbf{suite de fonctions} une suite \((f_n)_n\in\N\) dont les éléments sont des fonctions de \(E\) dans \(F\). Dans ce chapitre, on cherchera à définir une notion de convergence de telle suites.
+
+\subsection*{\subsecstyle{Convergence simple{:}}}
+Une première approche serait de définir la convergence de la suite \((f_n)\) vers une fonction limite \(f\) comme:
+\[
+   \forall x \in \R \; , \; \forall \epsilon > 0 \; , \; \exists N \in \N \; , \; \forall n > N \; ; \; |f_n(x) - f(x)| < \epsilon
+\]
+Cela signifirait que pour un \(x_0\) fixé, la suite de \textbf{réels} \((f_n(x_0))\) converge vers \(f(x)\).\<
+
+Par exemple si on considère la suite de fonctions définie par \(f_n(x) = x^n\) sur \(\icc{0}{1}\) et qu'on fixe \(x_0 \in \icc{0}{1}\) on a:
+
+\begin{center}
+   \begin{tikzpicture}[domain=0:1, scale=3.25, xscale=2.5]
+      \draw[-latex] (0,0) -- (1,0) node [right] {$x$};
+      \draw[-latex] (0, 0) -- (0,1) node [above] {$y$};
+      \foreach \n in {1,...,15}
+      {
+         \draw[color=DarkBlue1] plot[smooth] (\x, {\x^\n});
+         \fill[color=BrightRed1] (0.75, 0.75^\n) circle[radius=0.35pt, xscale=0.5];  
+      }
+      \draw[dashed, color = BrightRed1] (0.75, 0) -- (0.75,1);
+      \draw[color=BrightRed1] node at (0.75, -0.1) {$x_0$}; 
+   \end{tikzpicture}
+\end{center}
+
+Alors cette suite converge vers la fonction:
+\[
+   \begin{aligned}
+      f : \icc{0}{1} &\longrightarrow \R\\
+      x &\longmapsto \begin{cases}
+         0 \text{ si } x < 1 \\
+         1 \text{ sinon}
+      \end{cases} 
+   \end{aligned}
+\]
+On remarque un premier problème venant de cette définition, en effet les fonctions \(f_n\) sont toutes continues mais la limite n'est plus continue. Cela motive une notion de convergence plus \textbf{forte}.
+\subsection*{\subsecstyle{Convergence uniforme{:}}}
+On dit que \((f_n)\) \textbf{converge uniformément} vers \(f\) sur \(\R\) et on note \((f_n) \rightrightarrows f\) si et seulement si:
+\[
+   \forall \epsilon > 0 \; , \; \exists N \in \N \; , \; \forall n > N \; , \; \forall x \in \R \; ; \; |f_n(x) - f(x)| < \epsilon
+\]
+L'inversion des quantificateurs nous donne alors un unique seuil à partir duquel \(|f_n(x) - f(x)| < \epsilon\), en particulier, on peut alors montrer que cette notion de convergence équivaut à un criète plus pratique. En effet \((f_n)\) converge uniformément vers \(f\) si et seulement si:
+\customBox{width = 4cm}{
+   \(
+      \vectNorm{f_n - f}_\infty^\R \rightarrow 0
+   \)
+}
+On rapelle que la norme infini est définie par:
+\[
+   \vectNorm{f_n - f}_\infty^\R = \underset{x \in \R}{\sup}\left\{\left|f_n(x) - f(x)\right|\right\}
+\]
+Géométriquement, les boules pour cette norme consistent en des "tunnels" autour de la fonction centrale, et la convergence pour cette norme implique donc qu'à partir d'un certain rang, la suite de fonction se trouve toujours dans un tunnel arbitrairement petit.
+\pagebreak
+
+Par exemple la suite de fonctions \(f_n(x) = \frac{n + 2}{n}\sin(x)\) converge uniformément vers \(f: x \mapsto \sin(x)\) et graphiquement on a:
+
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,scale=0.75,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (0,-3) -- (0, 3);
+      \draw[] (-0.1,-3) -- (0.1, -3) node at (-0.45, -3) {$-3$};
+      \draw[] (-0.1,0) -- (0.1, 0) node at (-0.3, 0) {$0$};
+      \draw[] (-0.1,1) -- (0.1, 1) node at (-0.3, 1) {$1$};
+      \draw[] (-0.1,2) -- (0.1, 2) node at (-0.3, 2) {$2$};
+      \draw[] (-0.1,-2) -- (0.1, -2) node at (-0.45, -2) {$-2$};
+      \draw[] (-0.1,-1) -- (0.1, -1) node at (-0.45, -1) {$-1$};
+
+      \draw[color=black, domain=0:12, smooth, line width=0.45mm]   plot (\x,{sin(\x r)}) node[right] {$\sin(t)$}; 
+      \draw[color=black!70,name path=A, domain=0:12, smooth, dashed, line width=0.3mm]   plot (\x,{sin(\x r) + 1}); 
+      \draw[color=black!70,name path=B, domain=0:12, smooth, dashed, line width=0.3mm]   plot (\x,{sin(\x r) - 1}); 
+      \foreach \n in {1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24}
+      {
+         \draw[color=BrightRed1!95, domain=0:12] plot[smooth, tension=0.70] (\x, {(\n+2)/\n*sin(\x r)});
+      }
+   \end{tikzpicture}   
+\end{center}
+\subsection*{\subsecstyle{Propriétés de régularité conservées{:}}}
+Soit \((f_n)\) une suite de fonction qui converge uniformément vers \(f\), la valeur de notre définition est mise en lumière par les propriétés suivantes:
+\begin{itemize}
+   \item Si chaque \(f_n\) est \textbf{bornée}, alors \(f\) est \textbf{bornée}.
+   \item Si chaque \(f_n\) est \textbf{continue}, alors \(f\) est \textbf{continue}.   
+   \item Si chaque \(f_n\) est \textbf{uniformément continue}, alors \(f\) est \textbf{uniformément continue}.
+\end{itemize}
+\begin{center}
+   \textit{Beaucoup de propriétés de régularité passent à la limite uniforme.}
+\end{center}
+Néanmoins le cas de la dérivabilité est plus subtil, en effet considéront la suite \((f_n)\) définie par \(f_n(x) = x^{1+\frac{1}{2n+1}}\), alors elle est bien définie et dérivable\footnote[1]{Remarquer que \(2n+1\) est toujours impair, donc on prends des racines n-ièmes impaires.} sur \(\R\), mais on a:
+\begin{center}
+   \begin{tikzpicture}[
+      >=stealth,xscale=1.75, yscale=1,line cap=round,
+      bullet/.style={circle,inner sep=0.5pt,fill}
+   ]
+      \draw[->] (0,0) -- (0, 5);
+      \draw[->] (-4,0) -- (4,0);
+      \draw[] (-0.1,1) -- (0.1, 1) node at (-0.3, 1) {$1$};
+      \draw[] (-0.1,2) -- (0.1, 2) node at (-0.3, 2) {$2$};      
+      \draw[] (-0.1,3) -- (0.1, 3) node at (-0.3, 3) {$3$};
+      \draw[] (-0.1,4) -- (0.1, 4) node at (-0.3, 4) {$4$};
+
+      \draw[color=black, domain=-3:3, smooth, line width=0.5mm]   plot (\x,{abs(\x)}) node[right] {$|t|$}; 
+      \foreach \n in {1,..., 10}
+      {
+         \draw[color=BrightRed1!95, domain=-3:3] plot[smooth, tension=0.70] (\x, {\x*\x^(1/(2*\n+1))});
+      }
+   \end{tikzpicture}   
+\end{center}
+\[
+   (f_n) \rightrightarrows f \text{ pour } f : x \mapsto |x|
+\]
+Et donc en particulier on a exhibé une suite de fonctions dérivables donc la limite uniforme \textbf{n'est pas dérivable} en un point.
+\subsection*{\subsecstyle{Limites en un point{:}}}
+On peut généraliser le résultat sur la continuité à un résultat sur les limites, en effet si \((f_n)\) est une suite de fonctions qui converge uniformément vers \(f\) et telles que \(f_n(x)\) admette une limite un un point \(a\), alors on a \textbf{le théorème d'interversion} suivant:
+\customBox{width=7.5cm}{
+   \[
+      \lim_{n \rightarrow +\infty}\left(\lim_{x \rightarrow a} f_n(x)\right) = \lim_{x \rightarrow a}\left(\lim_{n \rightarrow +\infty} f_n(x) \right)
+   \]
+}
+\subsection*{\subsecstyle{Intégrabilité{:}}}
+On peut alors aussi montrer que si \((f_n)\) est une suite de fonction intégrables qui convergent uniformément vers \(f\), alors \(f\) est intégrable et on a \textbf{le théorème d'interversion} suivant:
+\customBox{width=7cm}{
+   \[
+      \lim_{n \rightarrow +\infty}\int_{a}^{b} f_n(t) \d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} f_n(t) \d t
+   \]
+}
+\subsection*{\subsecstyle{Retour sur la dérivabilité{:}}}
+Aprés avoir montré que la dérivabilité ne passe pas à la limite uniforme, on veut néanmoins trouver des critères permettant de trouver la dérivée d'une limite d'une suite de fonctions, on considère alors une suite de fonctions \((f_n)\) toutes dérivables qui converge simplement vers une fonction \(f\), et on suppose en outre que \textbf{la suite des dérivées \((f_n')\) converge uniformément}.\<
+
+Alors \((f_n)\) converge uniformément vers \(f\) et cette dernière est dérivable de dérivée:
+\[
+   f'(x) = \lim_{n \rightarrow +\infty} f_n'(x)
+\] 
+On note alors que pour que la dérivabilité passe à la limite, il nous faut la convergence uniforme de la suite des dérivées \footnote[1]{Les conditions présentées sont suffisantes mais pas nécessaires pour permettre de gagner en clarté d'exposition. Pour être plus précis, il suffit que la suite converge simplement en un seul point}.
+\subsection*{\subsecstyle{Approximations uniformes{:}}}
+On se demande maintenant quand peut-on dire qu'une fonction continue est limite uniforme d'une suite de fonctions. Le \textbf{théorème de Weierstrass} nous donne alors une réponse forte:
+\begin{center}
+   \textbf{Toute fonction continue sur un segment est limite uniforme d'une suite de fonctions polynomiales.}
+\end{center}
+\chapter*{\chapterstyle{VI --- Séries de fonctions}}
+\addcontentsline{toc}{section}{Séries de fonctions}
+On appelle série de fonctions de terme général \(f_n\) la suite \(S_n\) des \textbf{sommes partielles} des termes de la suite de fonctions \((f_n)_{n\in\N}\), plus formellement, on a:
+\[
+   S_n = \sum_{k=0}^{n} f_k   
+\]
+Ce chapitre consistera en l'étude de la convergence de ces cas particuliers de suite de fonctions, ansi que de la qualité de cette convergence, comme dans le cas des suites de fonctions usuelles. 
+\subsection*{\subsecstyle{Convergence simple{:}}}
+On définit de la même manière que pour une suite de fonctions classiques la \textbf{convergence simple} d'une série de fonctions, il suffit alors, comme dans le cas d'une suite de fonction classique, d'effectuer la même étude en \textbf{fixant} \(x_0 \in \R\) et en étudiant la limite de la série \textbf{numérique}:
+\[
+   S_n(x_0) = \sum_{k=0}^{n} f_k(x_0)   
+\]
+On remarquera alors le même défaut de perte de régularité à la limite que dans le cas des suites de fonctions, cela était prévisible, les séries ne sont en effet qu'un cas particulier des suites. Cela motive à nouveau la notion de convergence uniforme.
+
+\subsection*{\subsecstyle{Convergence uniforme{:}}}
+On définit de la même manière que pour une suite de fonctions classiques la \textbf{convergence uniforme} d'une série de fonctions, il suffit alors, comme dans le cas d'une suite de fonction classique, ie il suffit de montrer que:
+\[
+   \vectNorm{S_n - S}_\infty^\R \longrightarrow 0
+\]
+Alors pour les mêmes interprétations que dans le cas des suites de fonctions, on aura une notion de convergence plus forte.
+
+\subsection*{\subsecstyle{Propriétés de régularité conservées{:}}}
+Soit \((S_n)\) une série de fonction qui converge uniformément vers \(S\), alors comme cas particulier de suite de fonction, on a évidemment à nouveau:
+\begin{itemize}
+   \item Si chaque \(S_n\) est \textbf{bornée}, alors \(S\) est \textbf{bornée}.
+   \item Si chaque \(S_n\) est \textbf{continue}, alors \(S\) est \textbf{continue}.   
+   \item Si chaque \(S_n\) est \textbf{uniformément continue}, alors \(S\) est \textbf{uniformément continue}.
+\end{itemize}
+\begin{center}
+   \textit{Beaucoup de propriétés de régularité passent à la limite uniforme.}
+\end{center}
+Néanmoins comme précédemment, on montre facilement que la dérivabilité ne passe pas si simplement à la limite uniforme, et on a alors la même condition de dérivabilité de la limite que pour les suites donnée au chapitre précédent.\<
+
+On peut aussi à nouveau généraliser la conservation de la continuité par la conservation de la limite, comme dans le chapitre précédent ainsi que la conservation de l'intégrabilité et on a donc:
+\[
+   \lim_{n \rightarrow +\infty}\int_{a}^{b} S_n(t) \d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} S_n(t) \d t
+\]
+\pagebreak
+\subsection*{\subsecstyle{Convergence normale{:}}}
+Finalement, dans le cas des séries de fonctions, on définit un dernier mode de convergence plus fort appelé \textbf{convergence normale} et on dira qu'une série de fonction converge normalement si et seulement si la série numérique suivante converge:
+\[
+   \sum_{k=0}^{n} \vectNorm{f_k}_\infty^\R   
+\]
+L'intérèt de cette nouvelle définition et que la convergence normale implique la convergence uniforme, ce qui nous donne donc une condition suffisante trés pratique pour montrer la convergence uniforme d'une série de fonctions.
+
+\subsection*{\subsecstyle{Fonctions définies par une série{:}}}
+On peut alors définir des nouvelles fonctions par la limite de séries de fonctions, et dont le domaine de définition sera donc le domaine de convergence de la série. Une telle fonction sera de la forme:
+\customBox{width=6cm}{
+   \(f(z): z \mapsto \sum_{n=0}^{+\infty} f_n(z)\)
+}
+\underline{Exemple:} On peut définir la \textbf{fonction exponentielle}, définie sur \(\R\) par:
+\[
+   \exp: x \mapsto \sum_{n=0}^{+\infty} \frac{x^k}{k!}
+\]
+C'est d'ailleurs même un exemple de \textbf{série entière} qui seront les objets d'étude du chapitre suivant.
+\chapter*{\chapterstyle{VI --- Séries Entières}}
+\addcontentsline{toc}{section}{Séries Entières}
+On se propose dans ce chapitre d'étudier des séries de fonctions particulières au comportement particulièrement intéressant, qui s'appeleront \textbf{séries entières} et on appelle série entière de terme général \(a_nz^n\) une série de fonctions \(S_n\) de variable complexe\footnote[1]{On définit ici les séries entières dans la plus grande généralité mais on se restreindra assez vite au cas réel.} \(z\) de la forme:
+\[
+   S_n(z) = \sum_{k=0}^{n} a_nz^n 
+\]
+L'étude de ce type de série permet alors de généraliser le concept de \textbf{polynôme} (définis comme sa suite (finie) de coefficients), en une notion de polynôme dont la suite de coefficients est infinie. Il faut alors déterminer dans quels cas ces séries convergent (si elle convergent) et étudier la qualité de cette convergence.
+
+\subsection*{\subsecstyle{Convergence{:}}}
+On s'intéresse tout d'abord à la convergence simple de ces séries, et le premier résultat particulièrement intéressant est le suivant, si on suppose que la série converge pour un certain \(z_0\), alors on peut montrer que:
+\[
+   \forall z \in \mathcal{D}(0, z_0) \; ; \; S_n(z) \textbf{ converge aussi }.
+\]
+Géométriquement, cela signifie que les domaines de convergence de ces séries ont des propriétés de symétries trés intéressantes, elle convergent sur ce qu'on appelera \textbf{un disque de convergence} centré en \(0\) et dans le cas réel qui nous intéressera, sur un intervalle de la forme \(\ioo{-R}{R}\) pour un certain réel \(R\) qu'on appelera alors \textbf{rayon de convergence de la série}.
+
+\subsection*{\subsecstyle{Rayon de convergence{:}}}
+Il reste alors à caractériser ce rayon de convergence pour savoir exactement sur quel domaine une série entière donnée converge, on précise tout d'abord la forme du rayon de convergence, c'est le réel donné par:
+\[
+   R := \sup \Bigl\{ |z| \; ; \; \sum_{k=0}^{n} a_nz^n \text{ converge } \Bigl\}   
+\]
+On simplifie ici l'étude en considérant le cas commun de séries telles que la limite de d'Alembert ou de Cauchy existe ou est infinie\footnote[2]{Dans le cas contraire (par exemple penser à \(a_n = sin(n)\)), on doit utiliser le "vrai" critère de Cauchy donné par:\[R:= \frac{1}{\limsup{\sqrt[n]{|a_n|}}}\]}, alors on applique le critère de Cauchy à la série et on obtient alors des informations sur le rayon de convergence:
+\[
+   |x| < \lim_{n \rightarrow +\infty}\sqrt[n]{|a_n|}^{-1} = \lim_{n \rightarrow +\infty} \frac{|a_n|}{|a_{n+1}|} = l
+\]
+Alors dans ce cas on a \(R := l\) et on a aussi la propriété de régularité trés forte suivante:
+\begin{center}
+   \textbf{Une série entière converge normalement sur tout compact strictement inclu dans le disque de convergence.}
+\end{center}
+\subsection*{\subsecstyle{Propriétés algébriques{:}}}
+On se donne deux séries entières \(\sum a_nz_n, \sum b_nz_n\) de rayons de convergences respectifs \(R_a, R_b\), alors pour tout \(|z| < \min\{R_a, R_b\}\), on a:
+\[
+   \begin{cases}
+      \left(\sum a_nz_n\right) + \left(\sum a_nz_n\right) \textbf{ converge }\\
+      \left(\sum a_nz_n\right)\left(\sum b_nz_n\right) \textbf{ converge }
+   \end{cases}
+\]
+Ce qui signifie simplement que le rayon de convergence de la somme ou du produit est \textbf{au moins supérieur} au minimum des rayons de convergence.
+
+\subsection*{\subsecstyle{Régularité{:}}}
+On s'intéresse maintenant à la régularité d'une fonction \(f\) définie par une série entière sur son disque de convergence, alors on peut montrer par les propriétés sur la convergence uniforme qu'elle est de classe \(\mathcal{C}^\infty\) sur son disque de convergence et on a donc:
+\[
+   f'(x) = \sum_{n=1}^{+\infty} na_nx^{n-1}  
+\]
+Et plus généralement, on peut \textbf{dériver termes à termes} une série entière et on a:
+\[
+   f^{(k)}(x) = \sum_{n=k}^{+\infty} n(n-1)\ldots(n-(k-1))a_nx^{n-k}  
+\]
+Par ailleurs, on peut alors montrer une condition nécéssaire sur les coefficients de la série, en effet on a:
+\[
+   a_n = \frac{f^n(0)}{n!}   
+\]
+Ce qui permet alors de démontrer que si une fonction donnée peut s'écrire comme une série entière alors, cette écriture est bien \textbf{unique}. 
+\subsection*{\subsecstyle{Fonctions analytiques{:}}}
+On considère maintenant le problème inverse, on se donne une fonction \(f\) et on se demande si elle peut s'écrire comme une série entière centrée en un point \(a \in \C\), ie si il existe une série entière \(\sum_{n=0}^{+\infty} a_nz^n\) et un rayon de convergence \(R\) tels\footnote[1]{Cela revient par translation à trouver une série entière au sens défini plus haut telle que:
+\[
+   g(z) = f(z + a) = \sum_{n=0}^{+\infty} a_nz^n
+\]} que:
+\[
+   \forall z \in \mathcal{D}(a, R) \; ; \; f(z) = \sum_{n=0}^{+\infty} a_n(z - a)^{n}  
+\]
+Si c'est le cas, on dira alors que la fonction est \textbf{analytique} en \(a\), et on dira simplement qu'elle est analytique si elle est analytique en tout points de son domaine de définition. Par exemple la fonction exponentielle est analytique.\<
+
+Cette propriété est plus forte encore que d'être de classe \(\mathcal{C}^\infty\), en effet il existe des fonctions de cette classe qui ne sont pas analytiques, l'exemple canonique étant \(x \mapsto \exp(-\frac{1}{x^2})\)
+
+\subsection*{\subsecstyle{Applications{:}}}
+L'application principale des fonctions analytiques est la résolution des équations fonctionelles, différentielles par exemple. En effet, étant donnée un équation différentielle \(E\), on peut tenter de chercher des solutions sous la forme d'une fonction analytique, ce qui permet souvent de simplifier les calculs par unicité du développement en série entière. En effet, il suffit alors souvent d'identifier les coefficients.\<
+
+\uline{Exemple:} On cherche à résoudre l'équation \(f(x) = f'(x)\), en particulier on va chercher ses solutions analytiques, on a donc l'équation:
+\[
+   \sum_{n=0}^{+\infty}a_nx^n = \sum_{n=1}^{+\infty}na_nx^{n-1} = \sum_{n=0}^{+\infty}(n+1)a_{n+1}x^{n}
+\]
+Par identification des coefficients, on trouve donc que \(a_0\) est un réel quelconque et que \(a_n = na_{n-1}\), ie que \(a_n = \frac{a_0}{n!}\), et finalement on peut donc identifier les fonctions de la forme \(f(x) = ce^x\) avec la série entière obtenue.
+\chapter*{\chapterstyle{VI --- Séries de Fourier}}
+\addcontentsline{toc}{section}{Séries de Fourier}
+On se propose dans ce chapitre d'étudier des séries de fonctions particulières, qui sont à la base de \textbf{l'analyse harmonique} qui vise à étudier les signaux périodiques ou non et à le représenter comme \textbf{superpositions de signaux élémentaires}.
+
+\subsection*{\subsecstyle{Polynômes trigonométriques{:}}}
+On définit pour se faire les \textbf{polynômes trigonométriques} à coefficients complexes\footnote[1]{On peut alors les définir algébriquement comme étant \(\C[exp(it)]\) et montrer que ces polynômes on bien une structure d'anneau (et même d'algèbre) de manière analogue aux polynômes usuels.}, qui sont les fonctions de la forme suivante:
+\[
+   f(x) = \sum_{k=-n}^{n} e^{ik\omega t} \underset{not.}{=} \sum_{k = 0}^{n} c_k e^{ik\omega t} + c_{-k}e^{-ik\omega t}    
+\]
+On a ici \(c_n\) deux suites de coefficients complexes et \(\omega\) un réel. Plus généralement, gràce\footnote[2]{En exprimant \(e^{ik\omega x}\) sous forme trigonométrique, on montre facilement que \(\begin{cases} a_n = c_n + c_{-n} \\ b_n = i(c_n - c_{-n}) \end{cases}\)} aux formules d'Euler, on peut montrer que tout polynôme trigonométrique peut s'écrire graàce aux fonctions trigonométriques classiques par:
+\[
+   S = \frac{a_0}{2} + \sum_{k=1}^{n} a_kcos(k\omega t) + b_ksin(k\omega t)   
+\]
+On peut alors facilment voir que ces polynômes sont \(\frac{2\pi}{\omega}\)-périodiques. On généralise alors à nouveau ce concept de polynômes trigonométriques au concept de \textbf{séries trigonométriques} qui, sous réserve d'existence, seront de la forme:
+\[
+   S = \sum_{k=-\infty}^{\infty} e^{ik\omega t} = \frac{a_0}{2} + \sum_{k=1}^{\infty} a_kcos(k\omega t) + b_ksin(k\omega t)
+\]
+La grande idée de Fourier est de considérer une fonction périodique \(f\) et d'essayer de décomposer cette fonction en une série trigonométrique, et donc de déterminer les suites de coefficients \(a_n, b_n, c_n\) adaptées à \(f\).
+
+\subsection*{\subsecstyle{Coefficients de Fourier{:}}}
+On considère maintenant une fonction \(2\pi\)-périodique \(f\) telle qu'elle soit développable en série de Fourier, ie que la série trigonométrique suivante converge uniformément:
+\[
+   f(x) = \sum_{n = -\infty}^{+\infty} c_n e^{inx}   
+\]
+Alors on cherche la forme du coefficient \(c_m\) de cette décomposition pour \(m \in \Z\), on transforme alors l'égalité en:
+\[
+   f(x)e^{-imx} = \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)}
+\]
+L'idée étant alors de remarquer que si on intègre cette relation sur une période, on obtient:
+\begin{align*}
+   \int_{0}^{2\pi} f(x)e^{-imx} \d x &= \int_{0}^{2\pi} \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)} \d x \\
+   & = \sum_{n = -\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} \d x\\
+   & = 2\pi c_m
+\end{align*}
+En effet toutes les intégrales sont nulles pour \(n \neq m\), ce qui nous donne donc l'expression générale des coefficients \footnote[1]{Avec le premier coefficient donné par \(c_0\), c'est la valeur moyenne de la fonction sur une période.} de Fourier de \(f\):
+\[
+   c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)e^{-inx} \d x
+\]
+On note souvent \(c_n(f)\) simplement \(c_n\) quand il n'y a pas de confusions possibles. Alors gràce aux relations explicitées dans la note de bas de page ci-dessus, on peut retrouver les coefficients \(a_n, b_n\) si nécéssaires.
+
+\subsection*{\subsecstyle{Propriétés des coefficients{:}}}
+On peut alors montrer plusieurs propriétés trés pratiques des coefficients de Fourier:
+\begin{itemize}
+   \item Si \(f\) est \textbf{paire} alors on a pour tout \(n\) que \(c_n = c_{-n}\)
+   \item Si \(f\) est \textbf{impaire} alors on a pour tout \(n\) que \(c_n = -c_{-n}\).
+\end{itemize}
+Ces propriétés permettent souvent de calculer plus facilement les coefficients de Fourier.
+
+\subsection*{\subsecstyle{Théorème de Jordan-Dirichlet{:}}}
+Il reste maintenant à comprendre quelles sont les conditions pour qu'une fonction \(2\pi\)-périodique soit développable en série de Fourier on considère donc les coefficients construits plus haut et on s'intéresse à la convergence de la série :
+\[
+   \sum_{n = 1}^{+\infty} a_n\cos(nx) + b_n\sin(nx) = \sum_{n = -\infty}^{+\infty} c_ne^{inx}   
+\]
+C'est l'objet du \textbf{théorème de Jordan-Dirichlet} qui affirme que:
+\begin{itemize}
+   \item Si \(f\) est \(C^1\) par morceaux, alors sa série de Fourier converge vers \(\frac{f(x^+) + f(x^-)}{2}\).
+   \item Si \(f\) est de plus \textbf{continue} alors sa série de Fourier converge \textbf{normalement} vers \(f\).
+\end{itemize}
+Ceci signifie alors informellement le résultat principal de ce chapitre:
+\begin{center}
+   \textit{Si une fonction périodique est suffisement régulière, elle est décomposable en série de Fourier.}
+\end{center}
+
+\subsection*{\subsecstyle{Harmoniques{:}}}
+Pour une fonction périodique donnée qui serait développable en série de Fourier, on définit sa \textbf{fréquence} par la quantité \(F = \frac{1}{T}\) on remarque alors qu'elle se décompose sous la forme d'une somme de fonctions trigonométriques telles que \textbf{leurs fréquences est multiple de la fréquence de la fonction}, on appelle alors la fréquence de la fonction \textbf{fréquence fondamentale} ou \textbf{première harmonique}, et on définit la \textbf{n-ième harmonique} par:
+\[
+   H_n(f) : x \longmapsto c_n(f)e^{in\omega x} + c_{-n}(f)e^{-in\omega x}  
+\]
+On trouve alors directement une autre expression de la série de Fourier équivalente aux précédentes:
+\[
+   S_n(f) = c_0(f) + \sum_{k=1}^{n} H_k(f)
+\] 
+Cette expression peut être pratique car elle permet de passer rapidement de la série de Fourier complexe à la série de Fourier réelle, en appairant les termes d'indices opposés et en utilisant les formules d'Euler.
+\pagebreak
+\subsection*{\subsecstyle{Formule de Parseval{:}}}
+Enfin, une formule fondamentale de la théorie des séries de Fourier est celle de \textbf{Parseval}, on définit d'abord le produit scalaire suivant sur l'espace des fonctions \(T\)-périodiques:
+\[
+   \dotproduct{f}{g} := \frac{1}{T}\int_T f(t)\overline{g(t)} \d t   
+\]
+On considère alors la famille suivante de vecteurs suivante:
+\[
+   \mathscr{B} = (e^{in\omega x})_{n \in \Z}
+\]
+Alors cette famille est \textbf{orthogonale} donc libre, et elle engendre l'espace des polynômes trigonométriques, gràce à cette approche, on a alors que:
+\[
+   c_n(f) = \dotproduct{f}{e_n}
+\]
+On peut alors montrer une généralisation du \textbf{théorème de Pythagore} dans les espaces de dimension infinie dotés d'une base \(\mathscr{B}\) par:
+\[
+   \vectNorm{x}^2 = \sum_{e_i \in \mathscr{B}}\dotproduct{x}{e_i}^2
+\]
+Et donc dans ce cas particulier, on obtient l'égalité suivante:
+\[
+   \frac{1}{T} \vectNorm{f}^2 = \frac{1}{T} \int_{0}^{2\pi} |f(t)|^2 \d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = \frac{a_0^2}{4} + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
+\]
+On peut en donner une interprétation physique assez évocatrice, en effet ce théorème se résume à dire que:
+\begin{center}
+   \textit{L'énergie de la fonction periodique est exactement décrite par la somme des énérgies des différentes harmoniques.}
+\end{center}
+Cette formule permet alors de calculer de nouvelles sommes si l'intégrale est facile à calculer, par exemple on peut facilement\footnote[1]{Il faut considèrer la fonction \(2\pi\) périodique égale à \(x\) sur \(\ico{-\pi}{\pi}\) puis appliquer Parseval} résoudre le problème de Bâle et montrer:
+\[
+   \sum_{n=1}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{6}   
+\]
+\pagebreak
+
+\subsection*{\subsecstyle{Exemples d'un développement {:}}}
+On considère la fonction \(2-\pi\) périodique telle que:
+\[
+   f(x) = x^2-\pi^2 \text{ sur } \inticc{-\pi}{\pi}
+\]
+On remarque rapidement qu'elle est périodique et continue, elle est donc décomposable en série de Fourier, calculons ses coefficients:
+\begin{flalign*}
+   c_n(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-int} \d t\\
+   &= \frac{1}{2\pi} \int_{-\pi}^{\pi} (t^2 - \pi^2)e^{-int} \d t\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t - \pi^2\int_{-\pi}^{\pi}e^{-int} \d t\right)\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t\right)\shorteqnote{(Intégrale d'une fonction impaire sur un intervalle symétrique.)} \\ 
+   &= \frac{1}{-2n\pi i} \left(-2\pi^2i\sin(n\pi) - \frac{4\pi}{in}\cos(n\pi) + \frac{4}{in^2}\sin(n\pi)\right) \shorteqnote{(Aprés 2 IPP et utilisation des formules d'Euler.)}\\
+   &= \frac{2\cos{n\pi}}{n^2} \shorteqnote{(Car \(\sin(n\pi)\) est nul)}\\
+   &= \frac{2(-1)^n}{n^2}
+\end{flalign*}
+Aussi le premier coefficient est donné par:
+\begin{flalign*}
+   c_0(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} t^2 - \pi^2 \d t \\
+   &= \frac{-2\pi^2}{3}
+\end{flalign*}
+
+Finalement, on calcule les harmoniques:
+\[
+   H_n(f) : x \longmapsto c_n(f)e^{inx} + c_{-n}(f)e^{-inx} = \frac{2(-1)^n}{n^2} (e^{inx} + e^{-inx}) = \frac{4(-1)^n}{n^2}cos(nx)
+\]
+Enfin on a donc le développement en série de Fourier donné par:
+\[
+   S(f) = \frac{-2\pi^2}{3} + \sum_{n=1}^{+\infty} \frac{4(-1)^n}{n^2}cos(nx)
+\]
+\subsection*{\subsecstyle{Application au calcul d'une somme {:}}}
+D'aprés l'égalité de Parseval, on a alors que:
+\[
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \sum_{-\infty}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} \frac{4}{n^4}
+\]
+Aussi on a:
+\[
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \frac{1}{2\pi}\int_{-\pi}^{\pi}(x^2 - \pi^2)^2 \d t = \frac{8\pi^4}{15}
+\]
+Donc finalement on trouve que:
+\[
+   \sum_{n=1}^{+\infty} \frac{8}{n^4} = \frac{8\pi^4}{15} - \frac{8\pi^4}{9} = \frac{4\pi^4}{45}
+\]
+Et donc on a réussi à calculer la somme suivante:
+\[
+   \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90}
+\]

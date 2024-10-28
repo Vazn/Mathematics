@@ -1,0 +1,465 @@
+\chapter*{\chapterstyle{XIV --- Introduction}}
+\addcontentsline{toc}{section}{Introduction}
+
+L'analyse numérique est la branche des mathématiques qui cherche à résoudre des problèmes \textbf{continus} par des approximations numériques et qui étudie et établit des algorithmes dans ce but.\<
+
+C'est une branche fondamentale pour résoudre certains problèmes qui n'ont pas de solutions formelle exacte, par exemple pour trouver les solutions d'une équation non-linéaire, pour approximer une intégrale, ou approcher une fonction dont on ne connait que quelques valeurs.\<
+
+Dans cette partie nous définiront les concepts principaux de ce domaine qui seront utilisés dans la suite. On considèrera un problème mathématique \(P\) qui admet une solution numérique formelle unique \(\overline{x}\).
+
+\subsection*{\subsecstyle{Méthodes {:}}}
+On appelera \textbf{méthode numérique} un algorithme qui permettra d'approximer la solution à notre problème par une quantité \(\widetilde{x}\), on peut alors définir plusieurs types de méthodes numériques:
+\begin{align*}
+   &\bullet \;\; \text{Les méthodes directes qui permettent de trouver une solution théoriquement exacte en temps fini.}\\
+   &\bullet \;\; \text{Les méthodes itératives qui ne font que converger vers une solution exacte.}
+\end{align*}
+On appelera alors \textbf{erreur absolue} la quantité:
+\customBox{width=5cm}{
+   \(\Delta(x) = \left|\widetilde{x} - x \right|\)
+}
+Dans le cas de méthodes itératives, \(\widetilde{x}\) sera généralement le \(n\)-ième terme d'une suite numérique, et donc l'erreur absolue dépendara du nombre d'itérations \(n\) de la méthode.\<
+
+Des méthodes numérique directes sont par exemple l'algorithme de Gauss-Jordan pour le calcul de l'inverse d'une matrice. Dans le prochain chapitre nous présenteront plusieurs exemples de méthodes itératives.\
+
+\subsection*{\subsecstyle{Orde d'un méthode itérative{:}}}
+On considère ici une suite \((x_n)\) qui converge vers la solution \(x\) de notre problème, on cherche alors à estimer \textbf{la vitesse de convergence} de la suite.\<
+
+On dira alors que \((x_n)\) est convergente d'ordre \(\alpha\) si il existe \(C \in \R_+^*\) tel que:
+\customBox{width=5cm}{
+   \[
+      \lim_{n \rightarrow +\infty}\frac{\left|x_{n+1} - x\right|}{\left|x_{n} - x\right|^\alpha} = C
+   \]
+}
+L'ordre de la convergence nous donne alors des indications sur la vitesse de la convergence de la suite et on dira alors:
+\begin{align*}
+   &\bullet \;\; \text{Si \(\alpha = 1\), on dira que la convergence est \textbf{linéaire}}\\
+   &\bullet \;\; \text{Si \(\alpha = 2\), on dira que la convergence est \textbf{quadratique}}\\
+   &\bullet \;\; \text{\ldots}
+\end{align*}
+\chapter*{\chapterstyle{XIV --- Résolution approchée d'équation}}
+\addcontentsline{toc}{section}{Résolution approchée}
+Dans ce chapitre on se donne une fonction \(f : \R \rightarrow \R\) de classe \(\mathcal{C}^1\) sur \(\R\) et on cherche à approximer les solution de l'équation \(f(x) = 0\).\<
+
+Un première étape nécessaire est de localiser grossièrement les racines, en effet gràce à une étude rudimentaire de la fonction et de sa dérivée, on peut aisèment se restreindre à un intervalle \(\icc{a}{b}\) tel que \(f(a)f(b) < 0\) et que la fonction n'ait qu'une seule racine \(x\) sur cet intervalle.\+
+
+Dans tout la suite on supposera que la racine recherchée est grossièrement localisée dans un intervalle \(I = \icc{a}{b}\).
+
+\subsection*{\subsecstyle{Méthode de dichotomie{:}}}
+La méthode historique la plus ancienne est celle dite de \textbf{dichotomie}, c'est une méthode \textbf{itérative} qui consiste à construire une \textbf{suite d'intervalles strictement décroissante} (pour l'inclusion) qui contient à chaque étape la racine recherchée, on construit alors les intervalles par récurrence par \(a_0 = a\), \(b_0 = b\) et les conditions suivantes:
+\customBox{width=7cm}{
+   \begin{flalign*}
+      & \text{Si } f\left(\frac{a_n + b_n}{2}\right)a_n \leq 0 \; ; \; \begin{cases} a_{n+1} = a_n  \\ b_{n+1} = \frac{a_n + b_n}{2} \end{cases} \\
+      & \text{Si } f\left(\frac{a_n + b_n}{2}\right)b_n \leq 0 \; ; \; \begin{cases} a_{n+1} = \frac{a_n + b_n}{2} \\ b_{n+1} = b_n \end{cases}
+   \end{flalign*}
+}
+\begin{center}
+   \textit{Moralement, cela revient à découper à chaque étape l'intervalle en deux et à considèrer celui des deux morceaux qui contient la racine (donc tel que la fonction change de signe) et à recommencer récursivement.}
+\end{center}
+\begin{center}
+   **** Dessin de la dichotomie ****
+\end{center}
+
+On en déduit alors rapidement la longeur d'un intervalle aprés \(n\) itérations. Et on peut aussi en déduire une majoration de l'erreur d'approximation, qui est donnée par:
+\customBox{width=6cm}{
+   \[
+      \Delta(x) = |x_n - x| \leq \frac{b-a}{2^{n+1}}
+   \]
+}
+Cette première formule d'erreur nous permet alors de savoir combien d'itérations sont nécessaires pour obtenir une certaine précision.\<
+
+Enfin, on peut montrer que cette méthode itérative est \textbf{convergente d'ordre 1}, ie sa vitesse de convergence est linéaire donc assez lente.
+
+\subsection*{\subsecstyle{Méthode du point fixe{:}}}
+Cette méthode vise à ramener l'étude des racines de \(f\) à l'étude des points fixes d'une fonction auxiliaire \(g\) sous des conditions de régularité permettant d'utiliser des théorèmes d'analyse.\<
+
+En effet si \(g\) est k-\textbf{contractante}, le \textbf{théorème du point fixe de Banach} nous permet d'affirmer que \(g\) converge vers son unique point fixe, donc on construit une suite de permier terme \(x_0 \in I\) et par récurrence:
+\customBox{width=3.5cm}{
+   \(
+      x_{n+1} = g(x_n) 
+   \)
+}
+Alors cette suite converge vers la racine de \(f\) et on a par récurrence une majoration de l'erreur en fonction de la constante de contraction \(k\) par:
+\customBox{width=6cm}{
+   \[
+      \Delta(x) = |x_n - x| \leq \frac{k^n}{1 - k} |x_1 - x_0| 
+   \]
+}
+Cette méthode a l'inconvenient d'un fréquente instabilité numérique pour certaines racines et possède, en général, un convergence \textbf{linéaire}.
+
+\subsection*{\subsecstyle{Méthode de Newton-Raphson{:}}}
+Sous des conditions de régularité plus strictes (dérivabilité de \(f\)) la méthode de Newton-Raphson permet une convergence plus rapide, on construit une suite\footnote[1]{Elle peut alors s'interpréter comme une application de la méthode du point fixe à une fonction particulière.} de permier terme \(x_0 \in I\) et par récurrence:
+\customBox{width=4cm}{
+   \[
+      x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_n)}   
+   \]
+}
+\begin{center}
+   \textit{Moralement, cela revient à considèrer la tangente en un point de \(f\) et un point sera alors son intersection avec l'axes des abcisses, et le point suivant sera l'intersection de la tangente suivante avec l'axe des abcisses.}
+\end{center}
+\begin{center}
+   **** Dessin de Newton ****
+\end{center}
+On peut alors montrer une majoration de l'erreur d'approximation, qui est donnée par:
+\customBox{width=6cm}{
+   \[
+      \Delta(x) = |x_n - x| \leq \frac{M}{2m}(x_{n - 1} -  x)^2
+   \]
+}
+Avec \(M = \underset{x \in I}{\sup} |f''(x)|\) et \(m = \underset{x \in I}{\inf} |f'(x)|\).\<
+
+Cette méthode a donc une convergence en général \textbf{quadratique}, mais est trés dépendante de la condition initiale choisie et des propriétés de la fonction, en effet si la dérivée s'annulle pour un terme de la suite, la tangente n'aura pas d'intersection avec les abcisses et donc la méthode ne convergera pas. Elle peut aussi osciller ou converger vers une autre racine que celle recherchée.
+\chapter*{\chapterstyle{XIV --- Interpolation}}
+\addcontentsline{toc}{section}{Interpolation}
+Dans ce chapitre, on cherche à approximer par un polynôme une fonction donnée par un nuage de \(n + 1\) points de la forme \(\{(x_0, f(x_0)), \ldots,(x_n, f(x_n))\}\), on appelera une telle approximation \textbf{interpolation de la fonction} et on appelera un tel polynôme \textbf{polynôme interpolateur}.\<
+
+On peut alors montrer qu'il existe \textbf{un unique tel polynôme} de degré \textbf{inférieur ou égal à \(n\)}, en effet, par 2 points passe une unique droite, par 3 points une unique parabole (potentiellement une droite si les points sont alignés) etc ...\<
+
+L'objectif de ce chapitre sera donc de comprendre les différentes méthodes de construction d'un tel polynôme.
+
+\subsection*{\subsecstyle{Système de Vandermonde {:}}}
+On cherche donc un polynôme \(P\) de degré au plus \(n\) qui vérifie un système de \(n\) contraintes, en particulier pour \(P = \sum_{k=0}^{n} a_kX^k\), on a:
+\[
+   \begin{cases}
+      a_0 + a_1x_0 + \ldots + a_nx_0^n = f(x_0)\\
+      a_0 + a_1x_1 + \ldots + a_nx_1^n = f(x_1)\\
+      \vdots\\
+      a_0 + a_1x_{n-1} + \ldots + a_nx_{n-1}^n = f(x_{n-1})\\
+      a_0 + a_1x_{n} + \ldots + a_nx_{n}^n = f(x_{n})
+   \end{cases}
+\]
+Qui se ramène à l'équation matricielle:
+\[
+   \left(\begin{array}{cccc}
+      1 & x_0 & \ldots & x_0^n\\ 
+      1 & x_1 & \ldots & x_1^n\\
+      \vdots & \vdots & \ddots & \vdots\\
+      1 & x_{n-1} & \ldots & x_{n-1}^{n}\\ 
+      1 & x_{n} & \ldots & x_{n}^n
+   \end{array}\right) 
+   \left(\begin{array}{c}
+      a_0\\ 
+      a_1\\
+      \vdots\\
+      a_{n-1}\\ 
+      a_{n-1}
+   \end{array}\right) =
+   \left(\begin{array}{c}
+      f(x_0)\\ 
+      f(x_1)\\
+      \vdots\\
+      f(x_{n-1})\\ 
+      f(x_{n})
+   \end{array}\right)
+\]
+Qui se ramène donc à inverser une \textbf{matrice de Vandermonde} qu'on sait inversible, donc ceci permet de prouver l'existence et l'unicité d'un tel polynôme d'interpolation.
+
+\begin{center}
+   \textbf{Attention: Cette méthode est trés inefficace et trés couteuse en calculs !}
+\end{center}
+\subsection*{\subsecstyle{Interpolation de Lagrange {:}}}
+Etant donné un nuage de \(n + 1\) abscisses \((x_0, \ldots, x_n)\), on définit alors le \(k\)-ième polynôme de la base de Lagrange (associé à l'abscisse \(x_k\)) par:
+\customBox{width=5cm}{
+   \[ L_{x_k} = \prod_{i \neq k} \frac{(X - x_i)}{x_k - x_i} \]
+}
+\begin{center}
+   \textit{C'est un polynôme construit pour s'annuler en tout les points sauf en \(x_k\) et pour valoir \(1\) en \(x_k\).}
+\end{center}
+La construction d'un tel polynôme fait sens car alors, si on considère le polynôme:
+\[
+   P = \sum_{k=0}^{n}f(x_k)L_{x_k}
+\]
+On remarque que c'est bien un polynôme de degré au plus \(n\), et qu'on a bien par construction: 
+\[
+   \forall k \in \inticc{0}{n} , P(x_k) = f(x_k)
+\] 
+Donc \(P\) est bien le polynôme interpolateur de notre nuage de points.
+\subsection*{\subsecstyle{Interpolation de Newton {:}}}
+La dernière méthode d'interpolation est une méthode trés intéressante pour son affinité avec la programmation, en effet c'est une méthode \textbf{incrémentale}, c'est à dire que si on a un polynôme d'interpolation sur \(3\) points, c'est trés simple et peu couteux d'interpoler avec un nouveau point et d'obtenir donc un polynôme de degré supérieur.\<
+
+Etant donné un nuage de \(n + 1\) abscisses \((x_0, \ldots, x_n)\), on définit alors le \(k\)-ième polynôme de la base de Newton par:
+\customBox{width=5cm}{
+   \[ N_k = \prod_{i=0}^{k - 1} (X - x_i) \]
+}
+
+Si on considère un nuage de points composé d'un seul point \((x_0, f(x_0))\), alors le polynôme d'interpolation est trivialement:
+\[
+   P_0 = f(x_0)
+\]
+Alors pour \textbf{pour rajouter un point} sans changer les valeurs précédentes\footnote[1]{En effet, la valeur en \(x_0\) ne change pas du fait du facteur \((x-x_0)\) et il suffit alors de résoudre pour \(\alpha_1\).
+}, il suffit de poser:
+\[
+   P_1 = f(x_0) + \alpha_1(x - x_0)
+\]
+Alors pour \textbf{pour rajouter encore un point} sans changer les valeurs précédentes\footnote[2]{En effet, la valeur en \(x_0\) et en \(x_1\) ne change pas du fait du facteur \((x-x_0)(x-x_1)\) et il suffit alors de résoudre pour \(\alpha_2\).}, il suffit de poser:
+\[
+   P_2 = f(x_0) + \alpha_1(x - x_0) + \alpha_2(x-x_0)(x-x_1)
+\]
+On définit alors par récurrence le \textbf{polynôme d'interpolation} de degré \(n\) par:
+\[
+   P_n = P_{n-1} + \alpha_{n}N_n
+\]
+
+On appelle les coefficients \(\alpha_i\) les \textbf{différences divisées} d'ordre \(i\) de \(f\) et on les note:
+\customBox{width=4cm}{
+   \(\alpha_i = f[x_0, \ldots, x_i]\)
+}
+On peut alors montrer la \textbf{relation de récurrence} vérifiée par les différences divisées:
+\[
+   f[x_0] = f(x_0) \text{ et } f[x_0, \ldots, x_n] = \frac{f[x_1, \ldots, x_n] - f[x_0, \ldots, x_{n-1}]}{x_n-x_0}   
+\]
+Cette relation nous donne alors une nouvelle manière de construire le polynôme d'interpolation, en effet on a d'aprés l'expression par récurrence:
+\[
+   P_n = \sum_{k=0}^{n} f[x_0, \ldots, x_k] N_k   
+\]
+Il suffit donc de calculer les \(n\) différences divisées via la relation de récurrence et ainsi directement écrire la combinaison linéaire.\<
+
+\underline{Exemple:} Si on considère le nuage de points \(\{(0, 2), (3, 7), (5, 1)\}\), alors on calculer les différences divisées dans un tableau:
+\[
+   \left(\begin{array}{cccc}
+      x_0 & f[x_0] &  & \\ 
+      x_1 & f[x_1] & f[x_0, x_1] &\\
+      x_2 & f[x_2] & f[x_1, x_2] & f[x_0, x_1, x_2]\\ 
+   \end{array}\right)  ; 
+   \left(\begin{array}{cccc}
+      0 & 2 &  & \\ 
+      3 & 7 & \frac{5}{3} &\\
+      5 & 1 & -3 & -\frac{14}{15}\\ 
+   \end{array}\right)
+\] 
+Et donc \(P = 2 + \frac{5}{3}(X - x_0) -  \frac{7}{3}(X - x_0)(X - x_1) = 2 + \frac{5}{3}(X) -  \frac{14}{15}(X - 3)(X - 5)\)
+\subsection*{\subsecstyle{Calculs de l'erreur {:}}}
+On a la formule de majoration suivante pour l'erreur d'interpolation:
+\customBox{width=12.5cm}{
+   \[   
+      \Delta(f) = |f(x) - P(x)| \leq \underset{m_x < \xi < M_x}{\sup}\Biggl\{\frac{f^{(n+1)}(t)}{(n+1)!}\Biggl\} |(x-x_0)(x-x_1)\ldots(x-x_n)|
+   \]
+}
+Avec \(m_x = \min(x, x_0, \ldots, x_n)\) et \(M_x = \max(x, x_0, \ldots, x_n)\).\<
+
+\underline{Exemple:} On cherche à interpoler la fonction logarithme avec le nuage de points \(\{(2, \ln(2)), (4, \ln(4)), (5, \ln(5))\}\). 
+On calcule le polynôme d'interpolation et on obtient \(P(x) = \frac{-1}{5}()\)
+\chapter*{\chapterstyle{XIV --- Dérivation Numérique}}
+\addcontentsline{toc}{section}{Dérivation Numérique}
+
+Dans ce chapitre, on cherche à approcher \textbf{les dérivées} d'une fonction \(f\) en un point \(x\) étant donné les images de la fonction en \(n + 1\) points \((x_0, \ldots, x_n)\).
+
+\subsection*{\subsecstyle{Première approche {:}}}
+Une première approche serait d'utiliser le \textbf{le polynôme interpolateur de Lagrange}, en effet, étant donnée un polynôme interpolateur \(P\), on peut montrer que:
+\customBox{width=4cm}{
+   \(f^{(k)}(x) \approx P^{(k)}(x)\)
+}
+\begin{center}
+   \textit{Cette approche est conceptuellement trés simple mais couteuse en calculs et spécifique à la fonction étudiée.}
+\end{center}
+
+\subsection*{\subsecstyle{Seconde approche {:}}}
+Le point clé de ce chapitre étant qu'une dérivée est liée \textbf{linéairement} aux valeurs de la fonction, et donc on cherche une expression telle que:
+\customBox{width=16.6cm}{
+   \begin{flalign*}
+      f'(x) = \alpha_0f(x_0) + \alpha_1f(x_1) + \ldots + \alpha_nf(x_n)  \shorteqnote{(Pour certains coefficients \(\alpha_0, \ldots, \alpha_n\))}
+   \end{flalign*}
+   \vspace{-14pt}
+}
+Dans la suite par souci de concision, on travaillera sur un exemple précis, qui se généralisera facilement, on considère trois abcisses \(0, h, 2h\) et on cherche à approximer la dérivée de \(f\) en \(0\).\<
+
+On peut alors calculer ces coefficients en utilisant \textbf{les formules de Taylor}, en effet on a:
+\[
+   \begin{cases}
+      f(0) &= f(0) \\
+      \color{BrightBlue1}f(h) &\color{BrightBlue1}= f(0) + hf'(0) + \frac{h^2}{2}f''(0) + o(h^2) \\
+      \color{BrightRed1}f(2h) &\color{BrightRed1}= f(0) + 2hf'(0) + \frac{4h^2}{2}f''(0) + o(h^2)
+   \end{cases}
+\]
+On remplace alors ces expressions dans la formule recherchée ce qui nous donne:
+\begin{flalign*}
+   f'(0) &= \alpha_0f(0) + \alpha_1{\color{BrightBlue1}f(h)} + \alpha_2{\color{BrightRed1}f(2h)}\\
+         &= \alpha_0(f(0)) + \alpha_1{\color{BrightBlue1}(f(0) + hf'(0) + \frac{h^2}{2}f''(0))} + \alpha_2{\color{BrightRed1}(f(0) + 2hf'(0) + \frac{4h^2}{2}f''(0))} + o(h^2) \\
+         &= f(0)(\alpha_0 + \alpha_1 + \alpha_2) + f'(0)(h\alpha_1 + 2h\alpha_2 ) + f''(0)\left(\frac{h^2}{2}\alpha_1  + 2h^2\alpha_2\right) + o(h^2)
+\end{flalign*}
+La dernière ligne nous donne alors un système à résoudre pour \(\alpha_0, \alpha_1, \alpha_2\) en fonction de \(h\), ie on veut:
+\[
+   \left(\begin{array}{ccc}
+      \alpha_0 & \alpha_1 & \alpha_2\\ 
+      0 & h\alpha_1 & 2h\alpha_2\\
+      0 & \frac{h^2}{2}\alpha_1 & 2h^2\alpha_2
+   \end{array}\right) 
+   \left(\begin{array}{c}
+      f(0)\\ 
+      f'(0)\\
+      f''(0)
+   \end{array}\right) =
+   \left(\begin{array}{c}
+      0\\ 
+      1\\
+      0
+   \end{array}\right)   
+\]
+Tout calculs faits, on obtient que \(f'(0) = -\frac{3}{2h}f(0) + \frac{2}{h}f(h) -\frac{1}{2h}f(2h) + o(h^2)\) qui est bien une approximaxion de la dérivée de \(f\) en \(0\).
+\begin{center}
+   \textit{Cette approche est conceptuellement assez complexe mais permet d'avoir une approximation générale d'une fonction quelconque.}
+\end{center}
+\pagebreak
+\subsection*{\subsecstyle{Calculs d'erreur {:}}}
+On reprends l'exemple ci-dessus et on exprime le reste d'ordre \(2\) sous sa forme de Taylor-Lagrange, on a:
+\[
+   \begin{cases}
+      f(0) &= f(0) \\
+      f(h) &= f(0) + hf'(0) + \frac{h^2}{2}f''(0) + \frac{h^3}{6}f'''(\xi_1) \\
+      f(2h) &= f(0) + 2hf'(0) + \frac{4h^2}{2}f''(0) + \frac{4h^3}{3}f'''(\xi_2)
+   \end{cases} \quad\quad\quad \text{(Pour certains \(\xi_1, \xi_2\) dans \(\icc{0}{h}, \icc{0}{2h}\))}
+\]
+Donc si on reprends la formule utilisée en notant \(\widetilde{f'}(0)\) l'approximation obtenue, puis en substituant les \((\alpha_i)\) obtenus, on obtient:
+\begin{flalign*}
+   f'(0) &= \alpha_0f(0) + \alpha_1f(h) + \alpha_2f(2h)\\
+         &= \widetilde{f'}(0) + \alpha_1\frac{h^3}{6}f'''(\xi_1) + \alpha_2\frac{4h^3}{3}f'''(\xi_2)\\
+         &= \widetilde{f'}(0) + \frac{h^2}{3}f'''(\xi_1) - \frac{2h^2}{3}f'''(\xi_2)
+\end{flalign*}
+Donc pour \(I\) un intervalle qui contient tout les points \(0, h, 2h\) on obtient que:
+\[
+   \left|f'(0) - \widetilde{f'}(0)\right| = \left|\frac{h^2}{3}f'''(\xi_1) - \frac{2h^2}{3}f'''(\xi_2)\right| \leq \underset{t \in I}{\sup} \; \left|f'''(t)\right| \left|\frac{h^2}{3} - \frac{2h^2}{3}\right| = \underset{t \in I}{\sup} \; \left|f'''(t)\right| \left|\frac{-h^2}{3}\right|
+\]
+Finalement on a majoré notre erreur par:
+\customBox{width=6cm}{
+   \[   \left| f'(0) - \widetilde{f'}(0) \right|  \leq \underset{t \in I}{\sup} \; \left|f'''(t)\right| \left(\frac{h^2}{3}\right)
+   \]
+}
+On peut alors établir une formule générale de l'erreur (en considérant alors une famille \((x_i)\) de \(n+1\) abscisses, pour lesquels on determine des \((\alpha_i)\)) et on a l'erreur d'approximation au point \(x\) est donnée par:
+\chapter*{\chapterstyle{XIV --- Intégration Numérique}}
+\addcontentsline{toc}{section}{Intégration Numérique}
+
+Dans ce chapitre, on cherche à approcher \textbf{l'intégrale} d'une fonction \(f\) sur un segment \(I = \icc{a}{b}\), la méthode générale pour ce faire est d'essayer d'établir une \textbf{formule de quadrature}, ie on approxime l'intégrale par:
+\[
+   \widetilde{I} = \sum_{k=0}^{n} f(x_k)w_k  
+\]
+Avec les \(x_k\) des points de \(\icc{a}{b}\) et \(\omega_k\) des réels donnés appelés \textbf{poids de quadrature}. Dans ce chapitre on caculera ces poids (et donc les formules de quadrature) via \textbf{l'interpolation}.
+
+\subsection*{\subsecstyle{Formules de Newton-Cotes {:}}}
+On considère une subdivision régulière de \(\icc{a}{b}\) en \(n\) sous intervalles et \(P\) le polynome d'interpolation de \(f\) sur les \(n + 1\) points \((x_i)\) associés, alors on approche l'intégrale de \(f\) par l'intégrale de \(P\) ce qui nous donne directement\footnote[1]{On intégre simplement \(P\) et on utilise la linéarité de l'intégrale.} les poids de quadrature suivants:
+\[
+   w_i = \int_{a}^{b} L_{x_i} \d x
+\]
+Les cas particuliers de cette méthode nous donnes alors les forumes classiques suivantes:
+\begin{itemize}
+   \item \textbf{Méthode des rectangles:} Pour \(n = 0\), on interpole par une fonction constante donc on approxime l'aire par celle d'un rectangle.
+   \item \textbf{Méthode des trapezes:} Pour \(n = 1\), on interpole par une fonction affine donc on approxime l'aire par celle d'un trapeze.   
+   \item \textbf{Méthode de Simpson:} Pour \(n = 2\), on interpole par une fonction quadratique donc on approxime l'aire par celle d'une parabole.
+\end{itemize}
+Dans chaque cas, on peut en déduire simplement une la formule de quadrature sur l'intervalle \(\icc{a}{b}\):
+\begin{itemize}
+   \item \textbf{Méthode des rectangles\footnote[2]{Cette méthode étant le cas limite d'un "subdivision régulière", on peut choisir n'importe quelle point \(\xi\) dans l'intervalle, qui nous donne trois méthodes connues, celles des rectangles à gauche, à droite, ou la méthode du point milieu}:} \(\widetilde{I} = (b - a)f(\xi)\) 
+   \item \textbf{Méthode des trapezes:} \(\widetilde{I} = \frac{b - a}{2}(f(a) + f(b))\) 
+   \item \textbf{Méthode de Simpson:}  \(\widetilde{I} = \frac{b - a}{6}(f(a) + 4f(\frac{a + b}{2}) f(b))\) 
+\end{itemize}
+On pourrait alors etre tenté d'appromimer l'intégrale par la formule de quadrature donnée pour un polynome interpolateur de plus haut degré possible mais:
+\begin{center}
+   \textbf{Augmenter le degré du polynome interpolateur est inefficace et couteux en calculs }
+\end{center}
+Ce problème nous amenera donc à développer les méthodes composites ci-dessous.
+
+\subsection*{\subsecstyle{Méthodes composites {:}}}
+A partir de ces formules on peut développer une méthode itérative permettant d'approximer notre intégrale précisément, l'approche relativement intuitive consitera à:
+\begin{align*}
+   &\bullet \;\; \text{Effecturer une subdivision régulière de notre intervalle en \(n\) subdivisions.}\\
+   &\bullet \;\; \text{Approximer l'intégrale de la fonction sur chaque subdivision par une des formules de quadrature.}\\
+   &\bullet \;\; \text{Sommer ces approximations.}
+\end{align*}
+Par exemple si on effectue une méthode des rectangles composites, on se ramène directement à une \textbf{somme de Riemmann}, (à gauche ou a droite selon les points choisis dans les subdivisions).\<
+
+De manière générale, cette méthode nous évite d'avoir à interpoler la fonction par un polynome de haut degré, et donc pour augmenter la précision, il nous suffira de subdiviser plus finement l'intervalle inital.
+
+\subsection*{\subsecstyle{Calculs d'erreurs {:}}}
+On considère donc une subdivision régulière de notre intervalle \(\icc{a}{b}\) en \(n\) sous-intervalles. On notera par la suite \(M_i = \underset{t \in \icc{a}{b}}{\sup} |f^{(i)}(t) |\).\<
+
+On a alors les majorations d'erreur suivantes pour les méthodes classiques:
+\[
+   \arraycolsep=12pt
+   \begin{array}{*3{>{\displaystyle}c}}
+      \textbf{Méthode du point milieu}: &
+      \textbf{Méthode des trapèzes} : &
+      \textbf{Méthode de Simpson} : \\
+      \Delta(I) = |\widetilde{I}_n - I| \leq  \frac{(b-a)^3}{24n^2}M_2&
+      \Delta(I) = |\widetilde{I}_n - I| \leq  \frac{(b-a)^3}{12n^2}M_2&
+      \Delta(I) = |\widetilde{I}_n - I| \leq \frac{(b-a)^5}{180n^4}M_4
+   \end{array}
+\]
+
+Ces majorations nous permettent alors de:
+\begin{itemize}
+   \item Montrer que les deux premières méthodes sont exactes sur \(\R_1[X]\) et que la deuxième l'est sur \(\R_3[X]\).
+   \item Définir le nombre de subdivisions nécessaires pour obtenir une précision donnée.
+\end{itemize}
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle I}}
+\addcontentsline{toc}{section}{Analyse Matricielle I}
+
+Dans ce chapitre, on étudie la résolution numérique de \textbf{systèmes linéaires}, en d'autres termes pour \(A \in \text{GL}_n(\R)\), et \(Y \in \mathcal{M}_{n, 1}(\R)\), on cherche à résoudre l'équation suivante:
+\[
+   AX = Y
+\]
+Dans tout la suite on utilisera régulièrement les concepts de \textbf{norme d'opérateur linéaire} définie en analyse vectorielle, dont on rapelle la définition:
+\[
+   \opNorm{M}_{p, q} = \sup_{\vectNorm{V}_p = 1} \vectNorm{MV}_q
+\]
+\subsection*{\subsecstyle{Conditionnement d'une matrice {:}}}
+Le calcul numérique introduit la nécéssité de savoir si une \textbf{pertubation des données du problème} impactera la précision de la solution trouvé, ie si on note \(B + \delta B\) le vecteur solution perturbé et \(X + \delta X\) la solution du système pertubé:
+\[
+   A(X + \delta X) = B + \delta B
+\]
+Alors on aimerais connaître l'erreur relative par rapport à la solution exacte du problème ie la quantité:
+\[
+   \Delta := \frac{\vectNorm{\delta X}}{\vectNorm{X}} \bigg/ \frac{\vectNorm{\delta B}}{\vectNorm{B}}
+\]
+On définit alors \textbf{le conditionnement} d'une matrice inversible \(A\) pour la norme \(\opNorm{\cdot}\) par la quantité:
+\[
+   \text{cond}(A) = \opNorm{A}\opNorm{A^{-1}}
+\]
+On a alors les propriétés suivantes pour deux matrices \(A, B\) inversibles:
+\begin{itemize}
+   \item On montre que le conditionnement de \(A\) est supérieur à 1.
+   \item On montre que \(\text{cond}(\alpha A) = \text{cond}(A)\) si \(\alpha\) est non-nul.
+   \item On montre que \(\text{cond}(AB) \leq \text{cond}(A)\text{cond}(B)\).
+\end{itemize}
+On notera en outre \(\text{cond}_p\) le conditionnement associé à la norme \(p\). On peut alors caractériser le conditionnement associé à la norme euclidienne, en effet on a:
+\[
+   \text{cond}_2(A) = \sqrt{\frac{\sigma_{max}}{\sigma_{min}}}
+\]
+Où ici on a définit:
+\[
+   \begin{cases}
+      \sigma_{max} \text{ est \textbf{la plus grande valeur propre} de } {}^tAA.\\
+      \sigma_{min} \text{ est \textbf{la plus petite valeur propre} de } {}^tAA.
+   \end{cases}
+\]
+\subsection*{\subsecstyle{Propriété fondamentale {:}}}
+On peut alors montrer la propriété suivante pour le système avec solution perturbée:
+\[
+   \frac{\vectNorm{\delta X}}{\vectNorm{X}} \leq  \text{cond}(A)\frac{\vectNorm{\delta B}}{\vectNorm{B}}
+\]
+En effet en utilisant le fait que \(AX = B\) et en additionnant le système réel et perturbé, on retrouve rapidement le conditionnement.\<
+
+On peut aussi perturber la matrice en \(A + \delta A\), alors on peut montrer de manière analogue que:
+\[
+   \frac{\vectNorm{\delta X}}{\vectNorm{X +\delta X}} \leq  \text{cond}(A)\frac{\vectNorm{\delta A}}{\opNorm{A}}
+\]
+En outre ces majorations \textbf{ne dépendent pas du conditionnement choisi}.
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle II}}
+\addcontentsline{toc}{section}{Analyse Matricielle II}
+On a défini dans le chapitre précédent les outils principaux qui vont nous permettre d'élaborer des méthodes efficaces de résolution de système linéaire. En particulier on trouve deux grands types de techniques de résolution:
+\begin{itemize}
+   \item Les \textbf{méthodes directes} qui s'emploient à résoudre le système de manière exacte par calcul.
+   \item Les \textbf{méthodes itératives} qui s'emploient à résoudre le système de manière approchées.
+\end{itemize}
+Dans ce chapitre nous traiterons des méthodes directes principales.
+\subsection*{\subsecstyle{Méthode de Gauss {:}}}
+
+\subsection*{\subsecstyle{Factorisation LU {:}}}
+\subsection*{\subsecstyle{Factorisation de Cholesky {:}}}
+
+\chapter*{\chapterstyle{XIV --- Analyse Matricielle III}}
+\addcontentsline{toc}{section}{Analyse Matricielle III}
+Dans ce chapitre nous traiterons des méthodes itératives principales pour résoudre des systèmes linéaires.visent à construire une suite \((X_k)\) de vecteurs tels que \((X_k) \rightarrow X\). Pour ce faire 
+
+\subsection*{\subsecstyle{Méthode de Jacobi {:}}}
+\subsection*{\subsecstyle{Méthode de Gauss-Seidel {:}}}
+\subsection*{\subsecstyle{Méthode de surrelaxation successive {:}}}

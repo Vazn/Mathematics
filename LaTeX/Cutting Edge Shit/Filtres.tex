@@ -1,0 +1,32 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Ordre}}
+\subsection*{\subsecstyle{Filtres \& Ultrafiltres{:}}}
+Soit \(E\) un ensemble on appelle \textbf{filtre} sur \(E\) tout ensemble de parties \(\mathscr{F}\) tel que:
+\begin{itemize}
+   \item \textbf{Non-trivialité :} Il ne contient pas l'ensemble vide.
+   \item \textbf{Hérédité :} Si \(A \in \mathscr{F}\), alors toute partie qui contient \(A\) est dans \(\mathscr{F}\).
+   \item \textbf{Stabilité par intersection finie}
+\end{itemize}
+Par exemple considérons l'ensemble \(E = \{ 1, 2, 3, 4\}\), alors on pose \(\mathscr{F} = \{\{1, 2\}, \{1, 2, 3\}, \{1, 2, 4\}, \{1, 2, 3, 4\}\}\) et on vérifie facilement que c'est un \textbf{filtre} sur \(E\), et on appelle alors \(E\) espace filtré.\<
+
+On peut définir alors le concept de \textbf{filtre engendré} par des parties, c'est le plus petit filtre qui contient ces parties, par exemple le filtre précédent est le filtre engendré par \(\{1, 2\}\).\<
+
+On définit alors aussi le concept \textbf{d'ultrafiltre}, un ultrafiltre étant un filtre maximal pour l'inclusion, ie un filtre qui n'est pas contenu dans un filtre plus grand.
+
+\subsection*{\subsecstyle{Limite d'un filtre{:}}}
+Soit \(x\) un élément d'un espace filtré \((X, \mathscr{F})\) alors on dira que \(x\) est (une) \textbf{limite du filtre} et on dira que le filtre \textbf{converge vers} \(x\) si et seulement si \(\mathscr{F}\) contient le filtre engendré par les voisinages de \(x\).
+
+\subsection*{\subsecstyle{Equivalence des limites{:}}}
+On peut alors montrer que le concept de filtre généralise le concept de limite d'une suite ou d'une fonction. Soit \((u_n)\) une suite à valeur dans un espace topologique \(X\), on définit alors le \textbf{filtre de Fréchet} par:
+\[
+   \mathscr{F}_{Frechet} := \{ A \subseteq \N \; ; \; A^c \text{ est fini }\}
+\]
+\begin{center}
+   \textbf{Alors la limite du filtre de Frechet est exactement la limite classique de cette suite.}
+\end{center}
+En particulier se donner un filtre sur un ensemble est moralement équivalent à se donner une "définition de limite" sur cet ensemble.
+
+\end{document}

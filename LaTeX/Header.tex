@@ -1,0 +1,82 @@
+% Maths Packages
+\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval,stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{cellspace}
+\setlength{\cellspacetoplimit}{5pt}
+\setlength{\cellspacebottomlimit}{5pt}
+
+
+% Sagemaths Formating Packages
+\usepackage{listings}
+\lstdefinelanguage{Sage}[]{Python}
+{morekeywords={False,sage,True},sensitive=true}
+\lstset{
+  frame=none,
+  showtabs=False,
+  showspaces=False,
+  showstringspaces=False,
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+  language=Sage,
+  basicstyle={\fontsize{10pt}{10pt}\ttfamily},
+  aboveskip=0.4em,
+  belowskip=0.4em,
+}
+
+% TOC Packages
+\usepackage{tocloft, titletoc, hyperref}
+\usepackage{bookmark}
+% Formatting / Style Packages
+\usepackage{geometry, multicol, subcaption, graphicx, fix-cm, accents, float, varwidth, soul, ulem, contour}    
+\usepackage[T1]{fontenc}
+\usepackage[bottom]{footmisc}
+\usepackage[x11names, table]{xcolor}
+\usepackage[most, skins]{tcolorbox}
+\usepackage{adjustbox}
+\DeclareMathAlphabet{\mathmybb}{U}{bbold}{m}{n} % Indicatrices
+\newcommand{\1}{\mathmybb{1}}
+
+% Tikz
+\usepackage{tikz, tkz-fct, tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{tikz-cd}
+\usepackage{tkz-fct}  
+\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy}
+
+\tikzset{
+  withparens/.style = {draw, outer sep=0pt,
+    left delimiter= (, right delimiter=),
+    above delimiter= (, below delimiter=),
+    align=center},
+  withbraces/.style = {draw, outer sep=0pt,
+    left delimiter=\{, right delimiter=\},
+    above delimiter=\{, below delimiter=\},
+    align=center}
+}
+\tikzcdset{
+  arrow style=tikz,
+  diagrams={>={Straight Barb[scale=0.8]}}
+}
+
+% PAGE SETTINGS
+
+\geometry{
+  left=25mm, right=25mm, top= 15mm, bottom= 15mm,
+  footskip=30pt
+  }
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0cm}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+
+\setcounter{secnumdepth}{-1}
+
+% STYLE
+\input{C:/Users/Archimedean/Desktop/Maths/Style.tex}
+
+% COMMANDS
+\input{C:/Users/Archimedean/Desktop/Maths/Commands.tex}

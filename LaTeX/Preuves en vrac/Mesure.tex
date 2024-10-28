@@ -1,0 +1,62 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   Dans la suite \((X, \mathscr{B}, \mu)\) est un espace mesuré.
+   
+   \subsection*{\subsecstyle{Théorême de convergence dominée}}
+   On se donne une suite \(f_n \in \mathscr{M}(X)\) qui converge simplement vers \(f\). On suppose qu'il existe \(g\) intégrable telle que \(\forall n \in \N \; ; \; |f_n| \leq g\). Alors on a:
+   \begin{itemize}
+      \item Pour tout \(n\in \N\), \(f_n\) est intégrable car par croissance de l'intégrale \(\int |f_n| \d\mu \leq \int g \d\mu < \infty\)
+      \item Par passage à la limite, \(|f| \leq g\) et donc \(f\) est intégrable par le même raisonnement.
+   \end{itemize}
+   Montrons maintenant qu'on peut faire l'interversion limite/intégrale, on définit les suites (de fonctions) suivantes:
+   \[
+      \begin{cases}
+         u_n := |f_n - f|\\
+         v_n := \sup\{u_k \; ; \; k > n\}\\
+         w_n := 2g - v_n
+      \end{cases}
+   \]
+   Soit \(x \in X\), étudions tout d'abord la suite \((v_n)\), on peut montrer les deux propriétés suivantes:
+   \begin{itemize}
+   \item Elle est décroissante:
+   En effet si \(n < m\), on a \(\{u_k(x) \; ; \; k > m\} \subseteq \{u_k(x) \; ; \; k > n\}\) en passant à la borne supérieure on a \(v_m(x) > v_n(x)\)
+   \item Elle tends vers 0, en effet \((u_n)\) converge simplement vers 0 et on a:
+   \[
+      \lim_{n \rightarrow +\infty} v_n(x) =  \lim_{n \rightarrow +\infty} \sup\{u_k(x) \; ; \; k > n\} = \limsup u_n(x) = \lim_{n \rightarrow +\infty} u_n(x) = 0
+   \]
+   \end{itemize}
+   On déduis donc de ces résultats que la suite \(w_n\) est une suite \textbf{croissante de fonctions mesurables}, en effet si \(n > n'\), on a:
+   \[
+      -v_n(x) > -v_n'(x) 
+   \]
+   Et donc:
+   \[
+      2g(x) - v_n(x) > 2g(x) -v_n'(x) 
+   \]
+   En outre cette suite est positive à partir d'un certain rang car \(v_n\) tends vers 0 et \(g\) est positive (donc \(|v_n| < 2g\) à partir d'un certain rang). On peut donc appliquer \textbf{le théorème de convergence monotone} et on obtient que:
+   \[
+      \lim_{n \rightarrow +\infty} \int 2g - v_n \d\mu = \int 2g \d\mu
+   \]
+   En appliquant la linéarité dans l'intégrale de gauche et en calculant la limite de cette manière on obtient alors que:
+   \[
+      \lim_{n \rightarrow +\infty} \int v_n \d\mu = 0
+   \]
+   Finalement, pour tout \(n \in \N\) on a que:
+   \[
+      |f_n - f| \leq \sup\{|f_n - f| \; ; \; k > n\} = v_n
+   \]
+   Donc en intégrant ces fonctions et en passant à la limite, on trouve:
+   \[
+      \int |f_n - f| \d\mu \leq \int v_n \d\mu \underset{n \rightarrow \infty}{\longrightarrow} 0
+   \]
+   Et par inégalité triangulaire, on a: 
+   \[
+      \left|\int f_n \d\mu - \int f \d\mu  \right| \underset{n \rightarrow \infty}{\longrightarrow} 0
+   \]
+   Donc:
+   \[
+      \int f_n \d\mu \underset{n \rightarrow \infty}{\longrightarrow} \int f \d\mu
+   \]
+\end{document}

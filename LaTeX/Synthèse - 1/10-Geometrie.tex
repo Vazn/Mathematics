@@ -1,0 +1,475 @@
+\chapter*{\chapterstyle{X --- Généralités}} % 
+\addcontentsline{toc}{section}{Généralités}
+Dans cette partie, nous appliquons les notions vues dans les chapitres d'algèbre linéaire et d'analyse vectorielle pour étudier les propriétés géométriques des ensembles géométriques de \(\R^n\). Ce partie introductive vise surtout à définir des concepts généraux récurrents pour la suite.
+
+\subsection*{\subsecstyle{Système de coordonées{:}}}
+On considère un point quelconque \(P\) de \(\R^n\), alors on sait depuis longtemps que cet espace est muni d'un système de coordonées canonique appellé "coordonées cartésiennes", cela signifie le concept suivant:
+\begin{center}
+   Un point \(P\) peut être caractérisé par ses coordonées cartésiennes.
+\end{center}
+Mais il existe d'autres systèmes de coordonées:
+\begin{itemize}
+   \item Dans le cas de \(\R^2\), on peut identifier un point \(P\) à sa distance à l'origine et son angle avec la demi-droite \(Ox\), ce sont les \textbf{coordonées polaires}.
+   \item Dans le cas de \(\R^3\), on peut identifier un point \(P\) à ses cordonées polaires \((r, \theta)\) dans le plan \(xy\) et à sa hauteur \(z\) par rapport à ce plan, ce sont les \textbf{coordonées cylindriques}.  
+   \item Dans le cas de \(\R^3\), on peut identifier un point \(P\) à sa distance à l'origine et sa latitude \(\theta\) et sa longitude \(\phi\), ce sont les \textbf{coordonées sphériques}.  
+\end{itemize}
+En particulier pour les considérations \textbf{géométriques}, étant donnée une fonction, équation, ou un point donnée d'un espace, il faut fixer implicitement ou explictement dans quel système de coordonées sont censés être représentés les objets car alors les propriétés sont changées. Considérons par exemple la fonction réelle suivante dont la variable est volontairement privée de toute interpretation par la notation:
+\[
+   f(\psi) = \psi
+\]
+On considère souvent implicitement que sa représentation est l'ensembles des points \((x, x)\) en cordonées cartésiennes et on obtient la première bissectrice du plan. Mais on peut tout à fait considèrer que sa représentation est l'ensemble des points \((\theta, \theta)\) en coordonées polaires et on obtient alors une spirale ! En effet la fonction elle-même ne transporte pas d'informations géométriques à priori.\<
+
+Pour un exemple de propriété différentielle qui dépends du système de coordonées considéré, on considère le gradient de \(f\) en coordonées cartésiennes:
+\[
+   \nabla f = \left(\partialD{f}{x}, \partialD{f}{y}\right) 
+\]
+
+\subsection*{\subsecstyle{Représentations d'une courbe{:}}}
+Une courbe \(\Gamma\) peut être représentée de différentes manières selon le contexte et les objectifs détudes:
+\begin{itemize}
+   \item Comme la courbe associé à un arc paramétré lorsque c'est possible.
+   \item Comme une courbe de niveau d'une fonction\footnote[1]{En particulier si la fonction est polynômiale, on parlera alors de \textbf{courbe algébrique}, qui est le domaine d'étude reliant l'algèbre commutative et la géométrie.} \(f : \R^2 \rightarrow \R\) lorsque c'est possible.
+   \item Comme le graphe d'une fonction \(f : \R \rightarrow \R\) lorsque c'est possible.
+\end{itemize}
+Les différentes représentations ont chacun leur intérêts propres, étant soit dans les propriétés géométriques ou algébriques soit dans la simplicité d'écriture, il sera utile d'être capable de jongler entre les différentes représentations d'une même courbe. De manière générale, la dernière représentation est souvent abstraite en la première par la paramétrisation évidente:
+\[
+   \Gamma(t) = (t, f(t))
+\]
+
+\subsection*{\subsecstyle{Représentations d'une surface{:}}}
+Une surface \(\Sigma\) peut être représentée de différentes manières selon le contexte et les objectifs détudes:
+\begin{itemize}
+   \item Comme la surface associé à une surface paramétrée lorsque c'est possible.
+   \item Comme une surface de niveau d'une fonction \(f : \R^3 \rightarrow \R\) lorsque c'est possible.
+   \item Comme le graphe d'une fonction \(f : \R^2 \rightarrow \R\) lorsque c'est possible.
+\end{itemize}
+A nouveau, les différentes représentations ont chacun leur intérêts propres, étant soit dans les propriétés géométriques ou algébriques soit dans la simplicité d'écriture, il sera utile d'être capable de jongler entre les différentes représentations d'une même courbe. De manière générale, la dernière représentation est souvent abstraite en la première par la paramétrisation évidente:
+\[
+   \Sigma(u, v) = (u, v, f(u, v))
+\]
+
+\subsection*{\subsecstyle{Représentation paramétrique d'un ensemble{:}}}
+Soit \(A \subseteq \R^n\) et \(x_i \in \mathcal{C}^1(\mathcal{U}, \R^p)\) avec \(n \leq p\), alors on définit la fonction vectorielle suivante:
+\[
+   \begin{aligned}
+      f: \mathcal{U} &\longrightarrow \R^p\\
+      (t_1, \ldots, t_n) &\longmapsto (x_1(t_1, \ldots, t_n), \ldots, x_p(t_1, \ldots, t_n))
+   \end{aligned}
+\]
+On apelle alors \textbf{ensemble paramétré} le couple \((U, f)\) et \textbf{ensemble gémétrique} l'ensemble des points \(f(\mathcal{U})\).\<
+
+Réciproquement, si on a un ensemble géométrique \(E \subset \R^p\) et qu'il existe une fonction \(f\) telle que \(f(\mathcal{U}) = E\), alors \((\mathcal{U}, f)\) est apellé \textbf{paramétrage de l'ensemble géométrique}. On définit de même les ensemble paramétrés de classe \(\mathcal{C}^k\) par le fait que \(f\) soit de classe \(\mathcal{C}^k\). \<
+
+Les cas particuliers suivant seront les plus étudiés:
+\begin{itemize}
+   \item Si \(n = 1\) et \(p = 3\) on appelle l'ensemble géométrique \textbf{courbe plane}.
+   \item Si \(n = 1\) et \(p = 3\) on appelle l'ensemble géométrique \textbf{courbe gauche}.
+   \item Si \(n = 2\) et \(p = 3\) on appelle l'ensemble géométrique \textbf{surface paramétrée}.
+\end{itemize}
+Par exemple on a:
+\begin{itemize}
+   \item Une paramétrisation du cercle unité: \(\phi: t \in [0, 2\pi] \longmapsto (\cos(t), \sin(t))\)
+   \item Une paramétrisation d'une hélice: \(\phi: t \in [0, 2\pi] \longmapsto (\cos(t), \sin(t), t)\)
+   \item Une paramétrisation du cylindre: \(\phi: (u, v) \in [0, 5] \longmapsto (\cos(u), \sin(u), v)\)
+\end{itemize}
+
+\subsection*{\subsecstyle{Changements de paramétrage{:}}}
+Soit \(\gamma = (A, f)\) un ensemble paramétré de classe \(\mathcal{C}^k\). Soit \(\phi\) un \(\mathcal{C}^k\)-diféomorphisme d'un certain intervalle \(B\) dans \(A\), alors on appelle la fonction \(f \circ \phi\) un \textbf{paramétrage admissible} de l'ensemble et on dit alors que les ensembles géométriques sont \(\mathcal{C}^k\)\textbf{-équivalents}.\<
+
+Deux ensembles paramétrés \(\mathcal{C}^k\)\textbf{-équivalents} ont même ensembles géométriques, en particulier, on remarque alors qu'il existe une infinité de paramétrages d'un ensemble géométrique donné.
+
+\subsection*{\subsecstyle{Notion de points multiples{:}}}
+Si on considère un ensemble paramétré \((A, f)\), alors il est possible que l'ensemble géométrique ait des \textbf{points multiples}, ie qu'un point donné ait plusieurs antécédents. On appelera alors \textbf{multiplicité} du point le nombre de ces antécédents, et ont remarquera directement que si \(f\) est injective alors nécéssairement, elle n'a pas de points multiples.\<
+
+On dira alors qu'un tel ensemble géométrique est \textbf{simple}.
+
+\subsection*{\subsecstyle{Notion de points réguliers{:}}}
+On considère un ensemble paramétré \((\mathcal{U}, f)\), alors:
+\begin{center}
+   Un point de \(\mathcal{U}\) est dit \textbf{régulier} si et seulement si \(d\Sigma_a\) est de \textbf{rang maximal}, sinon 
+   
+   on dira qu'il est \textbf{singulier}\footnote[1]{Attention cette notion est différente de celle de \textbf{point critique}, en effet un point peut être singulier, par exemple la différentielle d'une fonction \(f : \R^2 \rightarrow \R\) qui serait de rang \(1\), sans qu'elle soit nulle.}.
+\end{center}
+On dira alors que l'ensemble géométrique est \textbf{régulier} si tout ses points sont réguliers.
+
+\subsection*{\subsecstyle{Notion de contact{:}}}
+On considère deux courbes \(\Gamma, \Gamma'\) qui s'intersectent en un point \(a\), alors on dira qu'elles ont un contact d'ordre 0, et on définit alors un raffinement de la notion de contact entre deux courbes en définissant le notion de contact d'ordre \(p\).\<
+
+On dira que deux courbes ont un contact d'ordre \(p\) si leurs développements limités à l'ordre \(p\) au point considéré coincident. Cela signifie intuitivement que la qualité du contact est meilleure, en effet deux courbes ayant un contact d'ordre \(1\) sont tangentes, et partagent donc même développement limité à l'ordre \(1\).\<
+
+Dans le cas des surfaces, il faut alors considérer les développements de Taylor des fonctions à plusieurs variables (ou paramétrisations) considérés et la définition précédente se généralise.
+\chapter*{\chapterstyle{X --- Courbes planes I}} % 
+\addcontentsline{toc}{section}{Courbes planes I}
+
+Dans ce chapitre, on s'intéresse au cas particuliers des \textbf{courbes planes} et à leur propriétés métriques et différentielles élémentaires. Dans tout la suite, les arcs paramétrés seront supposés de classe \(\mathcal{C}^1\) et \textbf{réguliers}.
+
+\subsection*{\subsecstyle{Courbes planes remarquables{:}}}
+On peut considèrer alors quelques courbes remarquables:
+\begin{figure}[h]
+   \centering
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (0,0) -- (3.5,0) node [right] {$x$};
+         \draw[-latex] (0, 0)     -- (0,1) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:4*pi,smooth,thick] ({(\t - sin(\t r))/4},{(1 - cos(\t r))/4});
+      \end{tikzpicture}
+      \caption*{La cycloïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-1)     -- (0,1) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(cos(\t r)+1)*(cos(\t r)/2},{(cos(\t r)+1)*(sin(\t r)/2});
+      \end{tikzpicture}
+      \caption*{Une cardioïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-1.2)     -- (0,1.2) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(cos(\t r)^3)},{(sin(\t r)^3)});
+      \end{tikzpicture}
+      \caption*{Une hypocycloïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-0.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(1/1.8+cos(\t r))/2*cos(\t r)},{(1/2+cos(\t r))/1.8*sin(\t r)});
+      \end{tikzpicture}
+      \caption*{Un limaçon}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(sqrt(2)/1.5*sin(\t r))/(1+cos(\t r)^2)},{(sqrt(2)/1.5*sin(\t r)*cos(\t r))/(1+cos(\t r)^2)});
+      \end{tikzpicture}
+      \caption*{Le lemniscate de Bernoulli}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({\t/7*cos(\t r)},{\t/7*sin(\t r)});
+      \end{tikzpicture}
+      \caption*{La spirale d'Archimède}
+   \end{subfigure}\quad
+\end{figure}
+
+Ces courbes ont des propriétés trés intéressantes et se retrouvent, par exemple, en physique. En effet, la cycloïde (inversée) représente la pente qui minimise le temps de trajet d'une bille lancée en haut de celle ci. On dit que c'est une courbe \textbf{brachistochrone}.
+
+\subsection*{\subsecstyle{Longueur de courbes paramétrées{:}}}
+On s'intéresse à la \textbf{longueur de l'arc paramétré} \((I, \gamma)\) qu'on notera \(L\).\<
+
+On peut alors subdiviser \(I\) en différents intervalles et approximer la longueur de l'arc par la somme des cordes d'extérmités les différentes subdivisions. En faisant alors tendre la longueur des subdivisions vers 0, on obtient, à la limite, une intégrale de Riemann\footnote[1]{L'intégrande est bien intégrable (et même continue) en tant que somme produit et composées de fonctions intégrables (continues)}, et la définition suivante:
+\customBox{width=3.5cm}{
+   \[
+      L := \int_I \vectNorm{\gamma'(t)}\, dt  
+   \]
+}
+On appelle alors \textbf{abcisse curviligne} d'origine \(t_0\), ou encore fonction longeur d'arc, la primitive:
+\[
+   s(t) = \int_{t_0}^{t} \vectNorm{\gamma'(x)} \d x
+\]
+Par exemple dans \(\R^2\) pour l'arc paramétré \((I, \gamma)\) avec \(I = \icc{0}{1}\) et \(\gamma(t) = (t, t^2)\), on obtient:
+\[
+   L := \int_{I} \vectNorm{\gamma'(t)}\,dt = \int_{\icc{0}{1}} \vectNorm{(1, 2t)}\,dt = \int_{\icc{0}{1}}\sqrt{1 + 4t^2}\,dt \approx 1.47
+\]
+\pagebreak
+
+On peut aussi préfèrer exprimer la longeur d'arc en coordonées polaires, alors on peut déduire\footnote[1]{A partir de \((x(t), y(t)) = (r(t)\cos(t), r(t)\sin(t))\), il suffit de calculer la norme du vecteur dérivée en fonction de \(r(t)\).} de la définition ci-dessus la caractérisation suivante:
+\customBox{width=5cm}{
+   \[
+      L := \int_I \sqrt{r'(\theta)^2 + r(\theta)^2}\, d\theta 
+   \]
+}
+
+\subsection*{\subsecstyle{Aires de courbes paramétrées{:}}}
+On s'intéresse à \textbf{l'aire entre l'arc paramétré} \((I, \gamma)\) et l'axe des abcisses qu'on notera \(A\).
+
+On peut alors subdiviser \(I\) et approximer l'aire sous la courbe par la somme d'aires de rectangles. En faisant alors tendre la longueur des subdivisions vers 0, on obtient une intégrale de Riemann\footnote[2]{L'intégrande est bien intégrable en tant que somme produit et composées de fonctions intégrables.}, et la définition suivante:
+\customBox{width=3.8cm}{
+   \[
+      A := \int_I y(t)x'(t)\, dt
+   \]
+}
+Par exemple pour l'arc paramétré \((I, \gamma)\) avec \(I = \icc{0}{1}\) et \(\gamma(t) = (t, t^2)\), on obtient:
+\[
+   A := \int_I y(t)x'(t)\, dt = \int_{\icc{0}{1}} t^2\, dt = \frac{1}{3}
+\]
+
+Dans le cas des courbes en coordonées polaires, on peut calculer l'aire bornée par la courbe, on subdivise alors \(I\) en \((\theta_i)_{i \in \N}\), et on calcule la somme de \textbf{secteurs circulaires} de rayon \(r(\theta_k)\). Or on sait que l'aire d'une cercle de rayon \(r\) est donnée par \(\pi r^2\) donc l'aire d'un secteur circulaire d'angle \(\theta\) est donné par \(A = \frac{1}{2}\theta r^2\).\<
+
+Pour obtenir l'aire délimitée par la courbe polaire on peut alors sommer les aires des secteurs circulaires, on obtient alors, à la limite, une intégrale de Riemann et la définition suivante:
+\customBox{width=4cm}{
+   \[
+      A := \frac{1}{2} \int_I r(\theta)^2\, d\theta
+   \]
+}
+\begin{center}
+   \textit{
+      On a alors deux types de calculs d'aires, l'aire des rectangles entre une courbe et l'axe des abcisses et l'aire des secteurs circulaires entre une courbe et l'origne, qui ne sont \textbf{pas du tout équivalentes}.
+   }
+\end{center}
+
+\subsection*{\subsecstyle{Paramétrage normal{:}}}
+Si \(s\) est l'abcisse curviligne d'un arc \((I, \gamma)\) de classe \(\mathcal{C}^1\), alors on peut montrer\footnote[3]{Elle est continue et strictement croissante et sa dérivée ne s'annule pas, donc bijective à réciproque dérivable. Voir le chapitre sur la dérivation, partie ``Dérivée d'une réciproque''.} que \(s\) est un \(\mathcal{C}^1\)-difféomorphisme de \(I\) sur \(J = \gamma(I)\), et en particulier, on peut alors reparamétrer par l'abcisse curviligne et obtenir:
+\customBox{width=5cm}{
+   \(
+      (I, \gamma) \sim (J, \gamma \circ s^{-1})
+   \)
+}
+On peut alors remarquer alors que ce nouvel arc paramétré s'affranchit de la vitesse de parcours, et parcours la courbe \textbf{à vitesse constante}. Ce reparamétrage appelée \textbf{paramétrage normal} est généralement bien plus naturel quand on s'intéresse à des questions géométriques intrinsèques à la courbe.
+\chapter*{\chapterstyle{X --- Courbes planes II}} % 
+\addcontentsline{toc}{section}{Courbes planes II}
+Dans ce chapitre, on s'intéresse à l'étude de propriétés métriques des \textbf{courbes planes} plus subtiles. Nous avons déja défini la notion de longueur d'arc précédemment, dans ce chapitre, nous défiront le \textbf{repère de Frenet} et nous développeront le concept de \textbf{courbure algébrique}, de \textbf{cercle osculateur}, et de \textbf{développée} d'une courbe plane.
+
+\subsection*{\subsecstyle{Repère de Frenet{:}}}
+Dans tout la suite, on se donne un arc paramétré \((\gamma, I)\) de classe \(\mathcal{C}^2(I)\) de courbe \(\Gamma\). On définit tout d'abord un vecteur tangent unitaire:
+\[
+   T(t) = \frac{\gamma'(t)}{\vectNorm{\gamma'(t)}}
+\]
+L'idée du repère de Frenet est alors de définir un \textbf{repère mobile d'orientation directe}, donc on définit un vecteur \(N(t)\) normal à \(T(t)\) tel que le repère \(T(t), N(t)\) soit un repère orthonormé direct, ie on a:
+\[
+   N(t) := R_\frac{\pi}{2}T(t) = \begin{pmatrix} 0 & -1\\ 1 & 0\end{pmatrix} T(t) 
+\]
+Le couple \((T(t), N(t))\) est alors appelé \textbf{repère (mobile) de Frenet}, on abrège souvent les notations de dépendance en \(t\) et on note alors ce repère \((T, N)\).
+
+\subsection*{\subsecstyle{Courbure{:}}}
+On paramétre à présent l'arc par son abcisse curviligne \(s\), on peut alors montrer par calcul direct que \(T'(s) \perp T(s) \) et en particulier, on a donc que le vecteur accélération \(T'(s)\) est colinéaire à \(N(s)\), et il existe donc un scalaire \(\kappa(s)\) tel que:
+\[
+   dT(s) = \kappa(s)N(s)ds
+\]
+On peut aussi montrer par calcul direct que \(N'(s) \perp N(s) \) et en particulier, on a donc que le vecteur \(N'(s)\) est colinéaire à \(T(s)\), et pour le même scalaire \(\kappa(s)\) on a:
+\[
+   dN(s) = -\kappa(s)T(s)ds
+\]
+On donne alors à \(\kappa(s)\) le nom de \textbf{courbure algébrique} au point \(\gamma(s)\). Sa valeur absolue mesure à quel point la courbe est courbée, et son signe donne la direction du virage par rapport au sens de parcours:
+\begin{itemize}
+   \item Si elle est positive, la courbe tourne à gauche.
+   \item Si elle est négative, la courbe tourne à droite.
+\end{itemize}
+En particulier les formules ci-dessus sont appellées \textbf{formules de Frenet}, et par manipulation des différentielles et en notant \(v(t)\) la vitesse scalaire, on obtient un équivalent pour un paramétrage quelconque donné par:
+\[
+   \begin{cases}
+      dT(t) = v(t)\kappa(t)N(t)dt\\
+      dN(t) = -v(t)\kappa(t)N(t)dt\\
+   \end{cases}   
+\]
+\subsection*{\subsecstyle{Courbure totale{:}}}
+On considère une courbe \textbf{fermée} paramétrée par \((I, \gamma)\), alors on peut définir la \textbf{courbure totale} de la courbe par:
+\[
+   \int_I\kappa(t)v(t)dt   
+\]
+Dans le cas d'une courbe fermée, c'est un multiple de \(2\pi\) qui donne le nombre de tours effectués.
+\pagebreak
+
+\subsection*{\subsecstyle{Cercle osculateur{:}}}
+On définit le concept de \textbf{cerlce osculateur} en un point \(\gamma(t)\) par la propriété suivante:
+\begin{center}
+   \textbf{Le cercle osculateur est l'unique cercle ayant un contact d'ordre au moins 2 en ce point.}
+\end{center}
+On définit alors le \textbf{rayon de courbure algébrique} comme étant l'inverse de la courbure et on montre que la position du centre du cercle osculateur est paramétré par:
+\[
+   C(t) = \gamma(t) + \frac{1}{\kappa(t)}N(t) 
+\] 
+Géométriquement, c'est le point à distance le rayon de courbure dans la direction de \(N(t)\), on peut alors vérifier que si on paramétre le cercle osculateur de la sorte, le contact est bien d'ordre au moins 2.\< 
+
+L'ensemble des tels centres de courbures, c'est à dire la courbe \(\Gamma'\) de l'arc paramétré \((I, C)\) est appelé \textbf{développée} de la courbe \(\Gamma\) et \(\Gamma\) est appelé \textbf{développante} de la courbe \(\Gamma'\).
+
+\subsection*{\subsecstyle{Théorème de l'accélération normale{:}}}
+On cherche maintenant une expression du vecteur accélération \(A(t)\) dans la base \((T, N)\), on a tout d'abord la formule suivante:
+\[
+   \gamma'(t) = v(t)T(t) 
+\]
+Où on note à nouveau \(v(t)\) la vitesse scalaire. On cherche donc une expression du vecteur accélération, donc on dérive cette expression et on obtient:
+\begin{flalign*}
+   \gamma''(t) &= (v(t)T(t))' \Longleftrightarrow \\
+   &= v'(t)T(t) + v(t)T'(t) \Longleftrightarrow \\
+   &= v'(t)T(s(t)) + v^2(t)\kappa(t)N(t) \Longleftrightarrow \shorteqnote{(D'aprés les formules de Frenet dans un paramétrage quelconque.)} \\
+   &= a_T(t)T(s(t)) + a_N(t)N(t)
+\end{flalign*}
+Alors on peut en déduire une interprétation cinématique puissante, on décompose en effet ici l'accélaration en ses \textbf{composantes tangentielles et normales}. 
+\begin{center}
+   \textit{
+      Cela démontre en particulier que l'accélaration normale est proportionnelle au carré de la vitesse, ie que si on va deux fois plus vite dans un virage, l'accélération subie dans la direction du centre de rotation est quatre fois plus intense.
+   }
+\end{center}
+De manière plus pragmatique, cela donne par ailleurs un moyen simple de calculer la courbure, en effet on en déduit l'expression suivante:
+\[
+   \kappa(t) = a_N(t)\frac{1}{v^2(t)} = \dotproduct{\gamma''(t)}{N(t)}\frac{1}{v^2(t)}   
+\]
+Où toutes les quantités sont aisément calculables.
+\chapter*{\chapterstyle{X --- Courbes gauches}} % 
+\addcontentsline{toc}{section}{Etude métriques des courbes gauches}
+Dans ce chapitre, on s'intéresse à l'étude des propriétés métriques des \textbf{courbes gauches}, c'est à dire des courbes se situant dans \(\R^3\).
+
+Il est tout d'abord important de noter que la notion de longueur d'arc et d'abcisse curviligne d'une courbe plane se généralise directement dans le cas des courbes gauches. Dans ce chapitre, nous défiront le \textbf{trièdre de Frenet} et nous développeront le concept de \textbf{courbure}, de \textbf{torsion} et de \textbf{plan osculateur} d'une courbe gauche.
+\chapter*{\chapterstyle{X --- Surfaces Paramétrés}} % 
+\addcontentsline{toc}{section}{Surfaces Paramétrés}
+
+Dans ce chapitre, on s'intéresse au cas particulier des \textbf{surfaces} de \(\R^3\). Dans tout la suite, on considérera les surfaces considérés de classe \(\mathcal{C}^1\) et \textbf{régulières}.
+
+\subsection*{\subsecstyle{Surface planes remarquables A FAIRE{:}}}
+On peut considèrer alors quelques courbes remarquables:
+\begin{figure}[h]
+   \centering
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (0,0) -- (3.5,0) node [right] {$x$};
+         \draw[-latex] (0, 0)     -- (0,1) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:4*pi,smooth,thick] ({(\t - sin(\t r))/4},{(1 - cos(\t r))/4});
+      \end{tikzpicture}
+      \caption*{La cycloïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-1)     -- (0,1) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(cos(\t r)+1)*(cos(\t r)/2},{(cos(\t r)+1)*(sin(\t r)/2});
+      \end{tikzpicture}
+      \caption*{Une cardioïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-1.2)     -- (0,1.2) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(cos(\t r)^3)},{(sin(\t r)^3)});
+      \end{tikzpicture}
+      \caption*{Une hypocycloïde}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-0.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(1/1.8+cos(\t r))/2*cos(\t r)},{(1/2+cos(\t r))/1.8*sin(\t r)});
+      \end{tikzpicture}
+      \caption*{Un limaçon}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({(sqrt(2)/1.5*sin(\t r))/(1+cos(\t r)^2)},{(sqrt(2)/1.5*sin(\t r)*cos(\t r))/(1+cos(\t r)^2)});
+      \end{tikzpicture}
+      \caption*{Le lemniscate de Bernoulli}
+   \end{subfigure}\quad
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[line cap=round]
+         \draw[-latex] (-1.2,0) -- (1.2,0) node [right] {$x$};
+         \draw[-latex] (0,-0.75)     -- (0,0.75) node [above] {$y$};
+         \draw[BrightBlue1, thick] plot[variable=\t,domain=0:2*pi,smooth,thick] ({\t/7*cos(\t r)},{\t/7*sin(\t r)});
+      \end{tikzpicture}
+      \caption*{La spirale d'Archimède}
+   \end{subfigure}\quad
+\end{figure}
+
+Ces courbes ont des propriétés trés intéressantes et se retrouvent, par exemple, en physique. En effet, la cycloïde (inversée) représente la pente qui minimise le temps de trajet d'une bille lancée en haut de celle ci. On dit que c'est une courbe \textbf{brachistochrone}.
+
+\subsection*{\subsecstyle{Aire d'une surface paramétrée A FAIRE{:}}}
+\chapter*{\chapterstyle{X --- Etude des équations coniques}} % 
+On appelle \textbf{conique} tout courbe algébrique dont les points \((x, y) \in E\) vérifiant une égalité de la forme:
+\[
+   Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0  
+\]
+Avec \(A, B, C\) non tous nuls. Cette ensemble représente alors \textbf{l'intersection} obtenue en coupant un cone par un plan. On obtient alors trois types de coniques non-dégénérées\footnote[1]{Les formes dégénérées sont aisément reconnues aprés le premier changement de repère ci-dessous, on s'intéresse donc uniquement aux formes non-dégénérées.}:
+\begin{itemize}
+   \item Les ellipses
+   \item Les paraboles
+   \item Les hyperboles
+\end{itemize}
+On cherche alors à caractériser ces courbes algébriquement ou géométriquement. En première approche, on pourra déja reconnaitre que ces coniques admettent au moins un axe de symétrie, et un centre de symétrie pour les ellipses et les hyperboles.
+
+\subsection*{\subsecstyle{Réduction}}
+L'ensembe des coniques est stable par changement de repère. Aussi, on peut exprimer matriciellement ces équations par:
+\[
+   \begin{pmatrix}x & y\end{pmatrix}\begin{pmatrix}
+      A & \frac{B}{2} \\
+      \frac{B}{2} & C
+   \end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix} + \begin{pmatrix}D & E\end{pmatrix} \begin{pmatrix}x \\ y\end{pmatrix} + F = 0
+\]
+La raison principale étant alors qu'on peut alors classifier de telles coniques en étudiant la \textbf{positivité} de la matrice symétrique associée \(Q\), en effet:
+\begin{itemize}
+   \item Si \(\det({Q}) > 0\) et que \(F\) est négatif, alors on obtient une \textbf{ellipse}.
+   \item Si \(\det({Q}) = 0\) alors on obtient une \textbf{parabole}.
+   \item Si \(\det({Q}) < 0\), alors on obtient une \textbf{hyperbole}.
+\end{itemize}
+
+En effet, le signe du déterminant d'un matrice de cette taille caractérise exactement le signe des valeurs propres et donc la forme de l'équation finale car si on pose alors \(\lambda, \mu\) les valeurs propres de cette matrice\footnote[2]{Si \(\mu\) est nulle est qu'on a une parabole, alors la forme est évidente.}, et qu'on pose le changement de variable:
+\[
+   \begin{pmatrix}X \\ Y\end{pmatrix} = P^{-1} \begin{pmatrix}x \\ y\end{pmatrix}
+\]
+\begin{center}
+   \textit{Ce changement de variable revient à effectuer une rotation du repère pour aligner les axes avec les axes de symétrie de la conique (qui sont alors les vecteurs propres).}
+\end{center}
+On obtient alors directement l'équation plus simple avec \(\alpha, \beta\) les nouveaux coefficients des termes en \(X, Y\):
+\[
+   \lambda X^2 + \mu Y^2 + \alpha X + \beta Y + F = 0 
+\]
+
+Si on met alors sous forme canonique les deux parties de l'équation, on obtient:
+\[
+   \lambda(X + t_1)^2 + \mu (Y + t_2)^2 + F = 0 
+\]
+Finalement aprés un nouveau changement de repère obtenu par translation de \((t_1, t_2)\), on obtient alors l'équation:
+\[
+   \lambda\tilde{X}^2 + \mu\tilde{Y}^2 = -F
+\]
+\pagebreak
+
+Finalement, on peut toujours se ramener à une \textbf{équation réduite} de la forme:
+\[
+   \left(\frac{\tilde{X}}{a}\right)^2 + \left(\frac{\tilde{Y}}{b}\right)^2 = 1
+\]
+Et on trouve alors facilement les éléments caractéristiques la conique:
+\begin{itemize}
+   \item Son centre (s'il existe), situé en \((0, 0)\) en coordonées \((\tilde{X}, \tilde{Y})\)
+   \item Ses sommets (s'ils existent), situés en \((\pm a, 0), (0, \pm b)\) en coordonées \((\tilde{X}, \tilde{Y})\)
+\end{itemize}
+On peut aussi étudier les asymptotes dans le cas de l'hyperbole, en effet on considère alors:
+\begin{flalign*}
+   \left(\frac{\tilde{X}}{a}\right)^2 - \left(\frac{\tilde{Y}}{b}\right)^2 = 1 &\Longleftrightarrow
+   \left(\frac{\tilde{Y}}{b}\right)^2 = \left(\frac{\tilde{X}}{a}\right)^2 - 1 \\
+   &\Longleftrightarrow \tilde{Y}^2 = \frac{b^2}{a^2}\tilde{X}^2 - b^2\\
+   &\Longleftrightarrow \tilde{Y} = \pm \frac{b}{a} \sqrt{\tilde{X}^2 - b^2}
+\end{flalign*}
+Alors aymptotiquement, quand \(x\) est trés grand, \(b^2\) est négligeable et l'hyperbole se rapproche alors des deux droites:
+\[
+   \tilde{Y} = \pm \frac{b}{a}\tilde{X}
+\]
+Reste alors à utiliser les relations entre les repères pour obtenir les asymptotes dans le repère canonique.
+
+\subsection*{\subsecstyle{Caractérisations géométriques}}
+Tout d'abord pour les coniques non-paraboliques, on a la caractérisation \textbf{bifocale} suivante, on considère deux points \(F_1, F_2\) du plan, un point \(X\) et un réel strictement positif \(d\), alors on a:
+\begin{itemize}
+   \item Si \(d > d(A, B)\), alors l'ensemble des points \(X\) qui vérifient \(d(F_1, X) + d(F_2, X) = d\) est une \textbf{ellipse}.
+   \item Si \(d < d(A, B)\), alors l'ensemble des points \(X\) qui vérifient \(|d(F_1, X) - d(F_2, X)| = d\) est une \textbf{hyperbole}.
+\end{itemize}
+
+Dans le cas parabolique, on a la caractérisation \textbf{monofocale} suivante, on considére une droite \(\mathcal{D}\) et un point \(F\) et on a:
+\begin{center}
+   L'ensemble des points \(X\) qui vérifient \(d(F, X) = d(\mathcal{D}, X)\) est une \textbf{parabole}.
+\end{center}
+On retrouve facilement ces caractérisations en explicitant les distances considérées et en simplifiant l'équation obtenue. On peut alors prouver diverses propriétés géométriques des coniques, par exemple et de manière non exhaustive:
+\begin{itemize}
+   \item Si des rayons lumineux tombent de l'infini et rebondissent sur une parabole, ils se rencontrent tous en le foyer.
+   \item Deux paraboles de meme foyer et de meme axe se coupent à angle droit.
+   \item Si un rayon lumineux part d'un foyer d'une ellipse et rebondit sur celle-ci, il passera par l'autre foyer.
+\end{itemize}
+
+\subsection*{\subsecstyle{Coniques projectives}}
+
+\chapter*{\chapterstyle{X --- Etude des équations quadriques}} % 

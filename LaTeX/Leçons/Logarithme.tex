@@ -1,0 +1,66 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Le logarithme}}
+
+   On considère la fonction \(x \in \R_+^* \mapsto \frac{1}{x}\), alors on sait que cette fonction est continue, et meme de classe \(\mathcal{C}^\infty\) sur son domaine de définition, en particulier elle est donc \textbf{Riemann-intégrable} sur un segment de celui-ci.\<
+
+   On définit alors une nouvelle fonction appellée \textbf{logarithme népérien} définie sur \(\R_+^*\) par:
+   \customBox{width=4cm}{
+      \[
+         \ln: x \longmapsto \int_1^x \frac{1}{t} \d t
+      \]
+   }
+   Cette fonction est bien définie comme intégrale d'une fonction continue sur tout segment de \(\ioo{0}{+\infty}\), et en particulier, elle est bien unique en tant \textbf{qu'unique primitive de \(f\) qui s'annule en 1}.
+
+   \subsection*{\subsecstyle{Lien avec l'exponentielle {:}}}
+   Une propriété fondamentale, qu'on démontrera par la suite, est la suivante:
+   \begin{center}
+      \textit{Le logarithme est la bijection réciproque de l'exponentielle.}
+   \end{center}
+   Formellement, on a:
+   \begin{align*}
+      &\bullet \;\; \forall x \in \R ; \ln(e^x) = x   \\
+      &\bullet \;\; \forall x \in \R_+^* ; e^{\ln(x)} = x
+   \end{align*}
+   Cette propriété sera démontrée en fin de chapitre gràce au \textbf{théorème d'inversion}, vu en cours d'analyse.
+
+   \subsection*{\subsecstyle{Propriétés algébriques {:}}}
+   Soit \(x, y \in \R_+^*\) et \(\alpha \in \R\) cette définition et des propriétés de l'intégrale et de la fonction \(x \mapsto \frac{1}{x}\), on peut alors déduire les propriétés algébriques suivantes:
+   \begin{align*}
+      &1) \;\; \ln(xy) = \ln(x) + \ln(y)\\
+      &2) \;\; \ln\left(\frac{1}{x}\right) = -\ln(x)\\
+      &3) \;\; \ln(x^\alpha) = \alpha\ln(x)\\
+      &4) \;\; \ln\left(\frac{x+y}{2}\right) \geq \frac{\ln(x)}{2} + \frac{\ln(y)}{2}
+   \end{align*}
+   La propriété 1) est la propriété \textbf{fondamentale} du logarithme, en effet, sa caractéristique principale est la suivante:
+   \begin{center}
+      \textit{Le logarithme transforme les produits en somme.}
+   \end{center}
+   Plus tard on pourra interpréter ceci par l'idée que cette fonction est (l'unique) morphisme du groupe \((\R_+^*, \times)\) vers le groupe \((\R, +)\). Cette propriété se généralise aisément par récurrence évidente pour tout produit d'un nombre fini de termes. Cette propriété sera démontrée en fin de chapitre gràce directement à partir de la définition.\<
+
+   La propriété 4) est une propriété plus particulière, géométrique, qui caractérise la \textbf{convexité} de la courbe représentative du logarithme, en effet, l'image d'un barycentre de deux points est supérieure au barycentre des images.
+   \pagebreak
+
+   \subsection*{\subsecstyle{Propriétés analytiques {:}}}
+   Le théorème fondamental du calcul intégral nous permet alors d'affirmer que la fonction \(\ln\) est dérivable, et meme de classe \(\mathcal{C}^1\) sur \(\R_+^*\), et en particulier, on a évidemment:
+   \[
+      \forall x \in \R_+^* \; ; \; \left(\ln(x)\right)' = \frac{1}{x}
+   \]
+   Plus précisément, on sait que la fonction \(x \mapsto \frac{1}{x}\) est de classe \(\mathcal{C}^{\infty}\) sur \(\R_+^*\), donc on en déduit que \(\ln(x)\) est aussi de classe \(\mathcal{C}^{\infty}\) sur \(\R_+^*\).\<
+
+   Si \(x > 1\), on a l'intégrale d'une fonction strictement positive sur un segment \(\icc{1}{x}\), donc le logarithme est positif.\+
+   Si \(x < 1\), on a l'intégrale d'une fonction strictement positive sur un segment \(\icc{x}{1}\), donc le logarithme est négatif.\<
+
+   Enfin on peut aussi montrer que la fonction \(x \mapsto \ln(1 + x)\) admet \textbf{dévloppement limité} en \(0\) de la forme:
+   \[
+      \ln(1 + x) \underset{0}{=} x - \frac{x^2}{2} + \frac{x^3}{3} + \ldots +(-1)^{n+1} \frac{x^n}{n} = \sum_{k=1}^n (-1)^{k+1} \frac{x^k}{k}
+   \] 
+
+   \subsection*{\subsecstyle{Intérprétation géométrique {:}}}
+   On peut aussi déduire une interprétation géométrique de cette définition intégrale, en particulier, on sait que l'intégrale d'un fonction sur un segment est \textbf{l'aire algébrique} entre la courbe représentative de la fonction et l'axe des abscisses.\<
+
+   Donc en particulier, on peut comprendre le logarithme comme l'aire sous la courbe de la fonction inverse, \textbf{comptée négativement} si \(x < 1\), en particulier, on comprends alors que le logarithme est positif sur \(\ico{0}{+\infty}\) et négatif sur \(\ioo{0}{1}\) (ce qui a été algébriquement vérifié au-dessus).
+
+\end{document}

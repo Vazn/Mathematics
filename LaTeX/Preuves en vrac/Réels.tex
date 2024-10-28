@@ -1,0 +1,64 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \subsection*{\subsecstyle{Caractérisation de la borne supérieure}}
+   Soit \(m\) un majorant d'une partie \(A \subseteq \R\), montrons que:
+   \[
+      m = \sup(A) \Longleftrightarrow \forall \epsilon > 0 \; \exists a \in A \; ; \; m - \epsilon < a  
+   \]
+   Soit \(\epsilon > 0\), supposons que \(m\) soit la borne supérieure de \(A\) et montrons qu'il existe bien un élément de \(A\) tel que \(m - \epsilon\) ne soit pas un majorant.
+   On sait que \(m\) est le plus petit majorant, donc en particulier \(m - \epsilon\) est plus petit que \(m\) et n'est donc pas un majorant, ce qui signifie par définition qu'il existe \(a \in A\) tel que \(m - \epsilon < a\).\<
+
+   Réciproquement supposons qu'il existe \(a \in A\) tel que \(m - \epsilon < a\), montrons alors par l'absurde que \(m\) est le plus petit des majorants. Supposons qu'il ne soit pas le plus petit, alors il existerait un \(m' < m\) tel que \(m'\) soit le plus petit des majorants\footnote{\label{Pourquoi1} Pourquoi ?}.\+
+   Mais alors \(m' = m - (m - m')\), ie \(m' = m - \epsilon_0\) ce qui est absurde car notre hypothèse nous assure de l'existence d'un \(a \in A\) tel que \(m' = m - \epsilon_0 < a\) ce qui contredit le fait que \(m'\) soit un majorant.
+
+   \subsection*{\subsecstyle{Le corps des réels est Archimédien}}
+   Soit \(x, y \in \R^{+*}\), montrons par l'absurde que :
+   \[
+      \exists n \in \N  \; ; \; nx > y  
+   \]
+   \begin{proof}[\unskip\nopunct]
+   On a donc \(\forall n \in \N \; ; \; nx \leq y\), en particulier la partie \(E := \bigl\{ nx \; ; \; n \in \N \bigl\}\) est majorée par \(y\) et elle admet donc une borne supérieure \(\sup(E)\).\<
+
+   On sait que \(x > 0\) donc on sait que \(\sup(E) - x\) n'est pas un majorant\footnoteref{Pourquoi1}, ce qui par définition signifie que qu'il existe \(m \in \N\) tel que:
+   \[
+      \sup(E) - x < mx \Longleftrightarrow \sup(E) < (m + 1)x  
+   \] 
+   Or \((m+1)x \in E\) et donc \(\sup(E)\) ne serait pas un majorant, ce qui est absurde.
+   \end{proof}
+   \subsection*{\subsecstyle{Existence de la partie entière}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \(y \in \R\), on veut montrer qu'il existe un entier relatif noté \(\lfloor y \rfloor\) tel que:
+      \[
+         \lfloor y \rfloor \leq y < \lfloor y \rfloor + 1
+      \]
+      Considérons l'ensemble \(E := \bigl\{ n \in \Z \; ; \; n \leq y\bigl\}\), on va montrer que la partie entière est le maximum de cet ensemble.\<
+      
+      Supposons que cette ensemble soit vide, alors pour tout entier relatif \(n \in \Z\), on aurait \(y < n\) et donc \(\Z\) serait minoré, ce qui est absurde. Donc \(E\) est non-vide.\<
+
+      Aussi, la propriété d'Archimède nous donne l'existence\footnoteref{Pourquoi1} d'un \(m \in \N\) tel que \(m > y\). Donc \(E\) est majoré par \(m\). \<
+
+      On définit alors \(\lfloor y \rfloor = \max(E)\).
+   \end{proof}
+   \pagebreak
+   \subsection*{\subsecstyle{Densité de \(\Q\) dans \(\R\)}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \(x, y \in \R\), supposons sans perte de généralité que \(y > x\). Alors la propriété d'Archimède nous donne l'existence d'un \(n \in \N\) tel que:
+      \[
+         n(y - x) > 1
+      \]
+      Alors en partant de cette inégalité\footnote[1]{Pourquoi choisit-on \(1\) en particulier ? Interprétation géométrique ?} et de cet entier \(n\) , on obtient:
+      \begin{flalign*}
+         ny & > nx + 1\\
+            & \geq \lfloor nx + 1 \rfloor \shorteqnote{(Par définition de la partie entière)} \\
+            & = \lfloor nx \rfloor + 1 \shorteqnote{(Propriété élémentaire de la partie entière)} \\
+            & > nx \shorteqnote{(Par définition de la partie entière)}
+      \end{flalign*}
+      En conclusion on a:
+      \[
+         ny > \lfloor nx \rfloor + 1 > nx
+      \]
+      La division par \(n\) conclut et exhibe un rationnel qui convient\footnote[2]{Pourquoi la densité de \(\Q\) dans \(\R\) rend-elle la démonstration de la densité de \(\R \backslash \Q\) dans \(\R\) "évidente" ?}.
+   \end{proof}  
+\end{document}

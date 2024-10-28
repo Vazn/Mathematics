@@ -1,0 +1,388 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Topologie générale}}
+      \subsection*{\subsecstyle{L'intérieur du complémentaire est le complémentaire de l'adhérence}}
+   Montrons la propriété suivante:
+   \[
+      \text{int}(A)^c = \text{adh}(A^c)
+   \]
+   On a:
+   \begin{flalign*}
+      \text{int}(A)^c &= \left(\bigcup \{\mathcal{O} \text{ ouvert} \; ; \; \mathcal{O} \subseteq A\}\right)^c\\
+      &= \left(\bigcap \{\mathcal{O} \text{ ouvert} \; ; \; \mathcal{O} \subseteq A\}^c\right)\\
+      &= \left(\bigcap \{\mathcal{F} \text{ fermé} \; ; \; A^c \subseteq \mathcal{F}\}\right)\\
+      &= \text{adh}(A^c)
+   \end{flalign*}
+      \subsection*{\subsecstyle{Caractérisation de l'intérieur}}
+   Montrons la caractérisation suivante:
+   \[
+      x \in \text{int}(A) \Longleftrightarrow \exists \mathcal{O}_x \; ; \; \mathcal{O}_x \subseteq A
+   \]   
+   \uline{Sens direct:} Si \(x \in \bigcup \{\mathcal{O} \text{ ouvert} \; ; \; \mathcal{O} \subseteq A\}\), par définition de l'union, il existe un ouvert inclus dans \(A\) qui contient \(x\).\+
+
+   \uline{Sens réciproque:} Supposons que pour tout \(x\), un tel ouvert \(\mathcal{O}_x\) existe, alors cet ouvert est inclus dans \(A\) et donc:
+   \[
+      \mathcal{O}_x \in \{\mathcal{O} \text{ ouvert} \; ; \; \mathcal{O} \subseteq A\}
+   \]
+   Donc il appartient bien à l'union de tout ces ouverts.
+      \subsection*{\subsecstyle{Caractérisation de l'adhérence}}
+   Montrons la caractérisation suivante:
+   \[
+      x \in \text{adh}(A) \Longleftrightarrow \forall \mathcal{O}_x \; ; \; \mathcal{O}_x \cap A \neq \emptyset
+   \]   
+   On montre ceci en prenant la négation de cette équivalence:
+   \[
+      x \in \text{adh}(A)^c \Longleftrightarrow \exists \mathcal{O}_x \; ; \; \mathcal{O}_x \cap A = \emptyset
+   \]
+   Puis en utilisant le fait que:
+   \[
+      \text{adh}(A)^c = \text{int}(A^c)
+   \]
+   On obtient alors que:
+   \[
+      x \in \text{int}(A^c) \Longleftrightarrow \exists \mathcal{O}_x \; ; \; \mathcal{O}_x \subseteq A^c
+   \]
+   Qui est bien vraie par la proposition précédente.
+      \subsection*{\subsecstyle{Caractérisation des ouverts}}
+         On considère un espace topologique \((E, \mathcal{T})\) et \(O \subseteq E\) alors montrons la proposition suivante:
+         \[
+            O \in \mathcal{T} \Longleftrightarrow O = \text{int}(O)
+         \]
+         \uline{Sens direct:} Supposons que \(O\) soit un ouvert, et soit \(x\) un point de celui-ci, alors il existe un ouvert inclus dans \(O\) qui contient \(x\) (lui-même). Et donc \(O = \text{int}(O)\)
+
+         \uline{Sens réciproque:} Supposons que \(O = \text{int}(O)\), alors pour tout point \(x \in O\), il existe un ouvert \(\mathcal{O}_x \subseteq O\), on a alors:
+         \[
+            O = \bigcup_{x \in O } O_x
+         \]
+         Qui est une réunion d'ouverts, donc \(O\) est ouvert par stabilité.
+      \subsection*{\subsecstyle{Caractérisation des fermés}}
+         On considère un espace topologique \((E, \mathcal{T})\) et \(F \subseteq E\) alors montrons la proposition suivante:
+         \[
+            F \text{ fermé} \Longleftrightarrow F = \text{adh}(F)
+         \]
+         Alors on conclut directement en utilisant que:
+         \[
+            F \text{ fermé} \Longleftrightarrow F^c \text{ ouvert}
+         \]
+         Ainsi que la proposition précédente.
+      \subsection*{\subsecstyle{La topologie induite est une topologie}}
+         On considère une partie $A$ des espace topologique $(E, \mathcal{T})$, et on définit l'ensemble de parties suivant:
+         $$
+            \mathcal{T}_A := \left\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \in \mathcal{T}\right\}
+         $$
+         Alors on a facilement que:
+         \begin{itemize}
+            \item Le vide est égal à $A \cap \emptyset \in \mathcal{T}_A$
+            \item L'espace $A$ est égal à $A \cap E \in \mathcal{T}_A$
+            \item L'union d'éléments est égale à $A \cap \bigcup_I \mathcal{O}_i \in \mathcal{T}_A$
+            \item L'intersection d'éléments est égale à $A \cap \mathcal{O}_1 \cap \mathcal{O}_2 \in \mathcal{T}_A$
+         \end{itemize}
+         C'est donc une topologie, en outre c'est la plus petite topologie sur $A$ telle que l'inclusion canonique soit continue, avec l'inclusion canonique donnée par:
+         $$
+            i : x \in A \rightarrow x \in E
+         $$
+         En effet soit $\mathcal{T}'$ une topologie sur $A$ telle que $i$ soit continue, alors on a:
+         $$
+            \forall \mathcal{O} \in \mathcal{T} \; ; \; i^{-1}(\mathcal{O}) = A \cap \mathcal{O} \in \mathcal{T}'
+         $$
+         Donc les parties de la forme $A \cap \mathcal{O}$ sont dans bien dans cette topologie.
+      \subsection*{\subsecstyle{La topologie produit est une topologie}}
+         On considère le produit cartésien de la famille d'espaces topologiques $(E_n, \mathcal{T}_n)$, on veut munir ce produit cartésien d'une topologie, on définit alors:
+         $$
+            \mathcal{T}_{prod} := \left\{\bigcup_{I} \mathcal{O}^1_{i} \times \ldots \times \mathcal{O}^n_{i} \; ; \; (O^j_{i})_{i \in I} \text{ famille d'ouverts de } \mathcal{T}_j \right\}
+         $$
+         Montrons que celle famille de parties forme bien une topologie sur $E^n$, on a:
+         \begin{itemize}
+            \item Le vide est donné par $\emptyset \times \ldots \times \emptyset$
+            \item L'espace est donné par $E_1 \times \ldots \times E_n$
+            \item L'union quelconque d'union de produits est évidemment une union de produits.
+         \end{itemize}
+         Finalement pour l'intersection on prends deux éléments:
+         $$
+            \begin{cases}
+                  U = \bigcup_{I}\mathcal{U}^1_{i} \times \ldots \times \mathcal{U}^n_{i}\\
+                  V = \bigcup_{J} \mathcal{V}^1_{j} \times \ldots \times \mathcal{V}^n_{j}
+            \end{cases}
+         $$
+         Alors $U \cap V$ est donné par distributivité:
+         $$
+            U \cap V = \bigcup_{I, J} (\mathcal{U}^1_{i} \times \ldots \times \mathcal{U}^n_{i}) \cap (\mathcal{V}^1_{j} \times \ldots \times \mathcal{V}^n_{j})
+         $$
+         On par les propriétés ensemblistes, on trouve qu'alors:
+         $$
+            U \cap V = \bigcup_{I, J} (\mathcal{U}^1_{i} \cap \mathcal{V}^1_{j}) \times \ldots \times (\mathcal{U}^n_{i} \cap \mathcal{V}^n_{j})
+         $$
+         C'est bien une unions de produits d'ouvert de chaque espace respectif, on a donc bien montré que $\mathcal{T}_{prod}$ est une topologie sur $\prod E_i$
+   
+   \chapter*{\chapterstyle{Topologie métrique}}
+      \subsection*{\subsecstyle{La topologie métrique standard est une topologie}}
+         On considère un espace métrique $(E, d)$ et on définit l'ensemble de parties suivant:
+            $$
+               \mathcal{T}_d := \left\{ \bigcup_I \mathcal{B}_i \; ; \; (\mathcal{B}_i) \text{ famille quelconque de boules ouvertes}\right\}
+            $$
+            Montrons que cet ensemble définit bien une topologie sur $E$, on a:
+            \begin{itemize}
+               \item On a trivialement $\emptyset, E \in \mathcal{T}_d$
+               \item On a tout aussi trivialement que cet ensemble est stable par union quelconque
+            \end{itemize}
+            On montre tout d'abord d'une manière analogue à la demonstration de la caractérisation des ouverts que:
+            \[
+               O \in \mathcal{T}_d \Longleftrightarrow \forall x \in O \; ; \; \exists \mathcal{B}(x, r > 0) \subseteq O
+            \]
+            Soit deux éléments $\mathcal{U}, \mathcal{V}$, alors on a:
+            $$
+               \mathcal{U} \cap \mathcal{V} = \bigcup_{i, j} \mathcal{B}^\mathcal{U}_i \cap \mathcal{B}^\mathcal{V}_j
+            $$
+            Soit $x$ dans cette intersection, alors $x \in \mathcal{B}^\mathcal{U}_{i_0}\cap \mathcal{B}^\mathcal{V}_{j_0}$, alors ces deux parties sont des éléments de \(\mathcal{T}\) donc on a d'après la caractérisation que:
+            $$
+               \begin{cases}
+                     \exists r > 0 \; ; \; \mathcal{B}(x, r) \subseteq \mathcal{B}^\mathcal{U}(x_{i_0}, r_{i_0})\\
+                     \exists r' > 0 \; ; \; \mathcal{B}(x, r')\subseteq \mathcal{B}^\mathcal{V}(y_{i_0}, r'_{i_0})
+               \end{cases}
+            $$
+            Alors la boule de centre \(x\) et de rayon \(\min\{r_{i_0} - d(x_{i_0}, x), r'_{i_0} - d(y_{i_0}, x)\}\) est inclue dans \(\mathcal{B}^\mathcal{U}_{i_0}\cap \mathcal{B}^\mathcal{V}_{j_0}\) et donc l'intersection reste bien dans \(\mathcal{T}\).
+      \subsection*{\subsecstyle{La topologie induite correspond à la restriction de la distance}}
+         Soit \(A \subseteq E\) une partie d'un espace métrique \((E, d)\), montrons la proposition suivante:
+         \[
+               \mathcal{T}\vert_A = \mathcal{T}_d
+         \]
+         Soit \(\mathcal{O} \in \mathcal{T}\vert_A\), alors il existe \((x_i, r_i) \in E \times \R_+^*\) tels que:
+         \begin{flalign*}
+            \mathcal{O} &= A \cap \bigcup_I \mathcal{B}(x_i, r_i)\\
+            &= \bigcup_I  A \cap \mathcal{B}(x_i, r_i)\\
+            &= \bigcup_I  \{ x \in A \; ; \; d(x_i, x) < r_i \}\\
+            &= \bigcup_I B_i
+         \end{flalign*}
+         Or, on sait que les \(B_i\) sont ouverts dans \(A\), donc on a pour une certaine famille \((a_i, r'_i) \in E \times \R^*_+\) que:
+         \[
+            B_i = \bigcup_{B \subseteq B_i} B
+         \]
+         Et finalement on a par substitution que:
+         \[
+            \mathcal{O} = \bigcup_I B_i = \bigcup_I \bigcup_{B \subseteq B_i} B
+         \]
+         Les boules \(B\) étant des boules incluses dans \(A\), elle sont bien des ouverts pour \(d\vert_{A \times A}\).
+      \subsection*{\subsecstyle{La topologie produit correspond à la distance infini}}
+      On considère l'espace \(\R^n\) et on veut montrer l'égalité des topologies suivantes:
+      \[
+         \mathcal{T}_\times = \mathcal{T}_{d_\infty}
+      \]
+      \uline{Sens direct:} On considère un ouvert \(\mathcal{O}\) de \(\mathcal{T}_\times\), alors on a :
+      \begin{flalign*}
+         \mathcal{O} :&= \bigcup_I R_{i, 1} \times \ldots \times R_{i, n}\\
+         &= \bigcup_I  \ioo{a_{i, 1}}{b_{i, 1}} \times \ldots \times \ioo{a_{i, n}}{b_{i, n}}
+      \end{flalign*}
+      Soit \((x_1, \ldots, x_n) \in \mathcal{O}\), alors on a pour un certain \(i\) fixé que:
+      \[
+         (x_1, \ldots, x_n) \in R_{i, 1} \times \ldots \times R_{i, n}
+      \]
+      Or chacun de ces intervalles est un ouvert de \(\R\) donc on pour tout \(j \in \inticc{1}{n}\) l'existence d'un \(r_j\) tel que:
+      \[
+         \ioo{x_j - r_j}{x_j + r_j} \subseteq R_{i, j}
+      \]
+      Mais en posant \(r := \min_j\{r_j\}\) le minimum de tout ces rayons, on trouve que:
+      \[
+         \mathcal{B}_\infty(x, r) \subseteq \ioo{x_1 - r_1}{x_1 + r_1} \times \ldots \times \ioo{x_n - r_n}{x_n + r_n} \subseteq R_{i, 1} \times \ldots \times R_{i, n}
+      \]
+      \uline{Réciproquement:} Si \(\mathcal{O}\) est un ouvert pour la distance infini, il s'écrit comme union quelconque de boules de la forme:
+      \[
+         \mathcal{B}(x, r) =\ioo{x_1 - r}{x_1 + r} \times \ldots \times \ioo{x_n - r}{x_n + r}
+      \]
+      Ces boules sont bien des produits cartésiens d'ouverts de \(\R\) donc leur union est bien dans \(\mathcal{T}_\times\)
+      
+      \subsection*{\subsecstyle{La boule ouverte \& l'intérieur de la boule fermée}}
+      \begin{proof}[\unskip\nopunct]
+         Soit \((E, d)\) un espace métrique, \(a\) un point de \(E\) et \(r > 0\), on veut montrer que:
+         \[
+            \ball(a, r) \subseteq \text{int}(\ball[a, r])   
+         \]
+         Soit \(x \in \ball(a, r)\) alors il existe \(\epsilon > 0\) tel que:
+         \[
+            \ball(x, \epsilon) \subseteq \ball(a, r)   
+         \]
+         Or, on a \(\ball(a, r) \subseteq \ball[a, r]\) donc ce \(\epsilon\) convient pour montrer que \(x\) est bien à l'intérieur de la boule fermée.\<
+
+         Supposons maintenant que \(E\) est normé, et montrons que l'inclusion réciproque est valide, soit \(x \in \text{int}(\ball[a, r])\), on veut montrer que \(x \in \ball(a, r)\). 
+         
+         Pour commencer on sait par hypothèse qu'il existe \(\epsilon > 0\) tel que \(\ball(x, \epsilon) \subseteq \ball[a, r]\)\<
+
+         Une approche heuristique et géométrique\footnote[1]{Faire un dessin !} nous suggère alors qu'il suffit de choisir un \(\lambda\) assez petit, (ie tel que \(\lambda \vectNorm{x - a} < \epsilon\)) pour réussir à construire un point qui est dans la boule fermée tel que \(x\) soit plus proche de \(a\) que ce point, ie le point:
+         \[
+            y := x + \lambda(x - a) 
+         \]
+         \begin{center}
+            \textit{C'est le point qui part de \(x\), aligné avec \(a\) qui reste dans la boule fermée tout en s'éloignant d'une petite distance de \(x\).}
+         \end{center}
+         Alors on a bien que \(y\) est dans la boule ouverte car:
+         \[
+            \vectNorm{y - x} =  \lambda \vectNorm{x - a} < \epsilon  
+         \]
+         Alors \(y\) appartient à la boule fermée par hypothèse et on a:
+         \[
+            \vectNorm{y - a} =  \vectNorm{(x - a)(1 + \lambda)} = \left| 1 + \lambda\right|\vectNorm{x - a} \leq r
+         \]
+         Enfin on en conclut donc que:
+         \[
+            \vectNorm{x - a} \leq \frac{r}{\left| 1 + \lambda\right|} < r
+         \]
+         Qui signifie que \(x \in \ball(a, r)\).\<
+
+         Finalement, on a bien montré que dans le cas d'un espace normé, on a égalité, en particulier on a utilisé ici l'homégénéité de la norme pour conclure.
+      \end{proof}
+      \subsection*{\subsecstyle{La boule fermée \& l'adhérence de la boule ouverte}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \((E, d)\) un espace métrique, \(a\) un point de \(E\) et \(r > 0\), on veut montrer que:
+      \[
+         \text{adh}(\ball(a, r)) \subseteq \ball[a, r]   
+      \]
+      Soit \(x \in \text{adh}(\ball(a, r))\) alors pour tout \(\epsilon > 0\) on a:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \neq \emptyset 
+      \]
+      Or, on a \(\ball(a, r) \subseteq \ball[a, r]\) donc par intersection on trouve que:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \subseteq  \ball(x, \epsilon) \cap \ball[a, r]
+      \]
+      Et donc le membre de droite est non vide ce qui signifie que \(x \in \text{adh}(\ball[a, r])\), on conclut alors par le fait que \(\ball[a, r]\) est fermé donc égal à son adhérence.\pagebreak
+
+      Supposons maintenat que \(E\) est normé, et montrons que l'inclusion réciproque est valide, soit \(x \in \ball[a, r]\), on veut montrer que pour tout \(\epsilon > 0\) on a:
+      \[
+         \ball(x, \epsilon) \cap \ball(a, r) \neq \emptyset
+      \]
+      Une approche heuristique et géométrique\footnote[1]{Faire un dessin !} nous suggère alors qu'il suffit de choisir un \(\lambda\) assez petit, (ie tel que \(\lambda \vectNorm{a - x} < \epsilon\)) pour réussir à construire un point qui est dans les deux boules, en particulier le point suivant convient:
+      \[
+         y := x + \lambda(a - x) 
+      \]
+      \begin{center}
+         \textit{C'est le point qui part de \(x\) et qui va dans la direction de \(a\) en parcourant une petite distance par rapport à \(\epsilon\)}
+      \end{center}
+      i) Vérifions qu'il appartient bien à la première boule:
+      \[
+         \vectNorm{y - x} = \vectNorm{\lambda(a - x)} < \epsilon 
+      \]
+      ii) Vérifions qu'il appartient bien à la deuxième boule:
+      \[
+         \vectNorm{y - a} = \vectNorm{x + \lambda(a - x) - a} = \vectNorm{x(1 - \lambda) - a(1 - \lambda)} = \left|1-\lambda\right|\vectNorm{a - x} < \vectNorm{a - x} \leq r
+      \]
+      La dernière inégalité s'obtient car on considère \(\lambda\) assez petit, et donc on obtient un nombre en valeur absolue plus petit que \(1\). Dans le cas où \(\epsilon\) est relativement grand, \(\lambda < 1\) convient.\<
+      
+      Finalement, on a bien montré que dans le cas d'un espace normé, on a égalité, en particulier on a utilisé ici l'homégénéité de la norme pour conclure.
+   \end{proof}     
+   
+   \chapter*{\chapterstyle{Continuité}}
+      \subsection*{\subsecstyle{Equivalence des notions de continuité}}
+      On considère une fonction \(f : (E, d_E) \longrightarrow (F, d_F)\) une fonction d'un espace métrique dans un autre. On veut montrer que \(f\) est continue si et seulement si pour tout ouvert \(\mathcal{O}\) de \(F\), \(f^{-1}(\mathcal{O})\) est ouvert.\<
+
+      \underline{Sens direct:} Supposons tout d'abord que \(f\) soit continue et fixons \(\mathcal{O}\) un ouvert quelconque de \(\R^p\), alors si \(x \in f^{-1}(\mathcal{O})\), on veut montrer qu'il existe un \(\delta > 0\) tel que:
+      \[
+         \ball(x, \delta) \subseteq f^{-1}(\mathcal{O})   
+      \]
+      On sait que \(x \in f^{-1}(\mathcal{O})\) donc \(f(x) \in \mathcal{O}\) qui est ouvert, donc il existe \(\epsilon > 0\) tel que:
+      \[
+         \ball(f(x), \epsilon) \subseteq \mathcal{O}        
+      \]
+      Mais alors \(f\) est continue, donc en utilisant la définition de la continuité appliquée à cet epsilon, il existe \(\delta > 0\) tel que:
+      \[
+         f\left(\ball(x, \delta)\right) \subseteq \ball(f(x), \epsilon) \subseteq \mathcal{O} 
+      \]
+      On en déduit que \(f\left(\ball(x, \delta)\right) \subseteq \mathcal{O}\) donc que \(\ball(x, \delta) \subseteq f^{-1}(\mathcal{O})\) et donc un tel \(\delta\) convient.\<
+
+      \underline{Réciproque:} Supposons que la préimage de tout ouvert est un ouvert montrons que \(f\) est continue. Soit \(\epsilon > 0\), on considère l'image \(f(x) \in F\) d'un point \(x\), alors \(\ball(f(x), \epsilon)\) est un ouvert, donc \(f^{-1}(\ball(f(x), \epsilon))\) est aussi un ouvert et il contient \(x\), alors il existe un \(\delta > 0\) tel que:
+      \[
+         \ball(x, \delta) \subseteq f^{-1}(\ball(f(x), \epsilon))
+      \] 
+      Et donc on en conclut que:
+      \[
+         f\left(\ball(x, \delta)\right) \subseteq \ball(f(x), \epsilon)
+      \]
+      C'est à dire que \(f\) est continue.
+      \subsection*{\subsecstyle{L'image d'un compact est compact}}
+      \begin{proof}[\unskip\nopunct]
+         Soit \(E, F\) deux espaces métriques et \(f : E \rightarrow F\) une application continue, on veut montrer que si \(E\) est compact, \(f(E)\) est compact.\<
+
+         On considère \((A_i)_{i \in I}\) un recouvrement ouvert quelconque de \(f(E)\), alors tout élément de \(f(E)\) est l'image d'un élément de \(E\) et tout les éléments de \(E\) ont une image donc on a:
+         \[
+            \forall x \in E \; ; \; x \in f^{-1}(A_k) 
+         \] 
+         C'est à dire que \((f^{-1}(A_i))_{i \in I}\) est un recouvrement (ouvert car \(f\) est continue) de \(E\).
+         \<
+
+         Or, si  \((f^{-1}(A_i))_{i \in \N}\) est un recouvrement de \(E\), on peut en extraire un recouvrement fini \((B_i)_{i \in \N}\) car \(E\) est compact, et alors chaque élément de \(f(E)\) étant bien l'image d'un élément d'un des \(B_k\), on a bien que \((f(B_i))_{i \in \N}\) est un recouvrement fini de \(f(E)\).\<
+
+         On en conclut que \(f(E)\) est bien compact.
+      \end{proof}
+      \subsection*{\subsecstyle{L'image d'un connexe est connexe}}
+      \begin{proof}[\unskip\nopunct]
+         Soit \(E, F\) deux espaces métriques et \(f : E \rightarrow F\) une application continue, on veut montrer que si \(E\) est connexe, \(f(E)\) est connexe.\<
+
+         Procédons par l'absurde et supposons que \(f(E)\) ne soit pas connexe, ie qu'il existe \(A, B\) deux ouverts disjoints de \(F\) tels\footnote[1]{On veut alors montrer que \(E\) n'est pas connexe, ce qui serait une contradiction.} que:
+         \[
+            \begin{cases}
+               f(E) \subseteq A \cup B\\
+               f(E) \cap A \neq \emptyset\\
+               f(E) \cap B \neq \emptyset
+            \end{cases}   
+         \]
+         \begin{itemize}
+            \item On sait par hypothèse que pour \(x \in E\), on a \(f(x) \in A \cup B\) donc \(x \in f^{-1}(A \cup B)\) ce qui nous donne par les propriétés de l'image réciproque que \(E \subseteq f^{-1}(A) \cup f^{-1}(B)\)
+            \item On a aussi que si \(A, B\) sont disjoints, alors \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B) = \emptyset\).
+            \item On a enfin que \(f^{-1}(A), f^{-1}(B)\) sont non-vides et inclus dans \(E\) donc leurs intersections avec \(E\) sont non-vides.
+            \item \(C = f^{-1}(A)\) et  \(D = f^{-1}(B)\) sont bien ouverts comme images réciproque d'ouvert par une application continue
+         \end{itemize}
+         On a bien trouvé deux ouverts disjoints \(C, D\) tels que:
+         \[
+            \begin{cases}
+               E \subseteq C \cup D\\
+               E \cap C \neq \emptyset\\
+               E \cap D \neq \emptyset
+            \end{cases}   
+         \]
+         Donc \(E\) n'est pas connexe, ce qui est absurde.
+      \end{proof}     
+      \subsection*{\subsecstyle{L'image d'un connexe par arcs est connexe par arcs}}
+      \begin{proof}[\unskip\nopunct]
+         Soit \(E, F\) deux espaces métriques et \(f : E \rightarrow F\) une application continue, on veut montrer que si \(E\) est connexe par arcs, \(f(E)\) est connexe par arcs.\<
+
+         On veut montrer que \(f(E)\) est connexe par arcs, soit \(f(x), f(y) \in f(E)\), alors \(E\) étant connexe par arcs, on a l'existence d'un chemin \(\gamma\) tel que:
+         \[
+            \begin{cases}
+               \gamma(0) = x \\
+               \gamma(1) = y \\
+               \gamma(\icc{0}{1}) \subseteq E
+            \end{cases}   
+         \]
+         On considère alors le chemin \(\gamma' = f \circ \gamma\), c'est bien un chemin continu car \(f\) et \(\gamma\) sont continus, et on a bien:
+         \[
+            \begin{cases}
+               \gamma'(0) = f(\gamma(0)) = f(x) \\
+               \gamma'(1) = f(\gamma(1)) = f(y) \\
+               \gamma'(\icc{0}{1}) \subseteq f(E)
+            \end{cases}   
+         \]
+         Alors on a bien exhibé un chemin qui convient et \(f(E)\) est connexe par arcs.
+      \end{proof}
+
+      \subsection*{\subsecstyle{L'image continue de l'adhérence est adhérente à l'image}}
+      On se donne \(f : E \rightarrow F\), et \(A \subseteq E\), montrons la propriété suivante:
+      \[
+         f(\text{adh}(A)) \subseteq \text{adh}(f(A))
+      \]
+      Soit \(a \in \text{adh}(A)\), montrons que \(f(a) \in \text{adh}(f(A))\), ie que:
+      \[
+         \forall \mathcal{O}_{f(a)} \; ; \; \mathcal{O}_{f(a)} \cap f(A) \neq \emptyset
+      \]
+      Soit \(\mathcal{O}_{f(a)}\) un tel ouvert, alors par continuité de \(f\), on sait qu'il existe \(\mathcal{O}_{a}\) tel que:
+      \[
+         f(\mathcal{O}_{a}) \subseteq \mathcal{O}_{f(a)}
+      \]
+      Et donc par intersection:
+      \[
+         f(\mathcal{O}_{a}) \cap f(A) \subseteq \mathcal{O}_{f(a)} \cap f(A)
+      \]
+      Or \(f(\mathcal{O}_{a} \cap A) \subseteq f(\mathcal{O}_{a}) \cap f(A)\) et le premier ensemble est non-vide comme image direct d'un ensemble non-vide, donc:
+      \[
+         \mathcal{O}_{f(a)} \cap f(A) \neq \emptyset
+      \]
+\end{document}

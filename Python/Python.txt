@@ -1,0 +1,225 @@
+# # # PYTHON FUNCTIONS  # # # # # # # # 		
+# # # # # # # # # # # # #
+# # # # # # # # # #
+# # # # # # #
+# # # #
+# #
+#
+
+
+abs(x)   	    	=> Returns the absolute value of a number x
+bin(x)   	    	=> Returns Binary of a number x
+hex(x)   	    	=> Returns Hex of a number x
+
+pow(x, y)   	    => Returns x to the power y
+round(x, y)         => Round number x to y decimals
+
+range(x, y, z)      => Returns a sequence of number starting by x to y, incremented by z
+
+
+len()   	    	=> Returns the length of an iterable x
+max()
+min()
+next()  	    	=> Returns elements of an iterable x (list, array ...)
+
+sum(x)		   		=> Sum all elements of an iterable x
+filter(x, y) 	    => Filter elements of an iterable y with a function x	        Ex: myFunc retun true when age > 18
+															            				filter(myFunc, agelist) will
+															            				return a filtered > 18 list
+
+sorted(x, y, z)     => Sort elements of an iterable, x is the iterable, y			Ex: myList = ('a', 'c', 'b')
+		       		   is a function to decide the sort type (default is    	sorted(myList) = ('a', 'b', 'c')
+		      		   string = alphabetic, numbers = numerically)				sorted(myList, reverse=True)
+		       		   z is boolean => False => Ascending				   	 				   = ('c', 'b', 'a')
+					   				   True  => Descending
+
+.isinstance(x)		=>	 Check if a variable is an instance of class x
+
+
+
+# # # ITERABLES # # # # # # # #
+# # # # # # # # # # # # #
+# # # # # # # # # #
+# # # # # # #
+# # # #
+# #
+#		
+
+liste = []
+liste = [0]                     => [0]
+liste = [0] * 5                 => [0, 0, 0, 0, 0]
+liste = range(5)                => [0, 1, 2, 3
+liste[:]                        => Return all elements of a list
+liste[:x]                       => Return all elements of a list except the last x ones
+liste[x:]                       => Return all elements of a list except the first x ones
+liste[x:y]                      => Return all elements of a list in the interval [x:y[
+
+.index(x, y, z)     			=>  Returns the index of the first element with the specified value x from y position Lists / Strings to z position
+.copy(x)       	     			=>  Returns a copy of the string x
+.insert(x, y)  	     			=>  Adds an element y at the specified position x
+.replace(x, y)       			=>  Returns an iterable where a specified value x is replaced with a specified value y
+.extend(x)           			=>  Add the elements of a string x, to the end of the current string
+
+
+.reverse()   	                => Reverse elements order in an iterable x
+.split(x, y)         			=>  x = my_string.split(separator, limit)	                  Ex : x = "Je mange des pommes".split(" ")											
+										Returns an list with sub-elements found			  retourne x[0] = Je
+						                separated by the separator     				   	    	   x[1] = mange
+						                W/o separator, return an string with one item,			   x[2] = des
+						   	        	the whole string in the input						       ..........
+
+.upper(x)			
+.lower(x)            			=>  Convert string x to Uppercase, Lowercase
+.append(x)           			=>  Add the element x at the end of the string
+.clear(x)            			=>  Returns an empty string
+.count(x)            			=>  Returns the number of elements with value x
+.translate(x)		 			=>  The translate() method returns a string where some specified characters are replaced with the 
+									character described in a dictionary, or in a mapping table
+
+liste[:] = [1] * len(liste)     => Replace all element of the list by 1
+                     
+.remove(x)			 			=>  Delete variable x from list
+del liste[x]		 			=>  Delete variable at index x from list
+
+"x".join(liste)		 			=>  Merge several elements of type <str> (separated by a separator x) in an element of type <str>
+
+liste1 + liste2					=> 	Concatenate two listes
+
+
+
+# # # TIME METHODS  # # # # # # # #
+# # # # # # # # # # # # #
+# # # # # # # # # #
+# # # # # # #
+# # # #
+# #
+#	
+
+import time 
+
+time.time()						=> Return time since Epoch
+time.localtime()				=> Return a structure ocntaining local date and time
+time.sleep(x)					=> Wait x seconds befor resuming the program
+
+
+
+# # # THREAD METHODS  # # # # # # # #
+# # # # # # # # # # # # #
+# # # # # # # # # #
+# # # # # # #
+# # # #
+# #
+#		
+
+import threading
+from threading import *
+
+threading.current_thread		=> Return the order index of the current thread
+threading.RLock					=> Create a lock
+								   Lock allow threads in a given block of code to execute in an ordered manner, without interrupting each others
+
+my_thread = Thread(target=x)    => Make the function x asynchronous
+my_thread.start()				=> Start the thread
+my_thread.join()				=> Wait for the thread my_thread to finish before resuming main thread
+
+
+
+# # # PYGAME  # # # # # # # #
+# # # # # # # # # # # # #
+# # # # # # # # # #
+# # # # # # #
+# # # #
+# #
+#		
+
+import pygame 
+from pygame import *
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Rect(x, y, a, b)				=> Create a Rect object, starting on point (x / y) with a length and b height
+
+rect.copy						=> Return a copy of rect
+rect.move / moveip				=> Change coordinate of rect
+rect.inflate					=> Change size of rect
+rect.colliderect(rect2)			=> return true if rect collide with rect2
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+init()							=> Initialize pygame
+
+display.set_caption(x)			=> Set title of the window with <str> x
+display.set_mode(x, others)		=> Return an object of type surface with size x (720, 480) => 780 * 480 window and can take others arguments
+								   Others = FULLSCREEN, RESIZABLE, NOFRAME, OPENGL, HWSURFACE (hard acceleration), DOUBLEBUF
+display.flip()					=> Refresh the display
+display.Info()					=> Show display info in terminal
+image.load("x")					=> Return a surface with image with name x on it (or path)
+
+surface.fill(x)					=> Fill the surface with an x rgb tuple color
+surface.blit(x, y)				=> On the surface, put the surface object x onto it, at coordinates y
+
+event.get() 					=> Event listener
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+draw.line(x, y, a, b, c)		=> Draw a line on surface x with color y starting form coordinates a to coordinates b (take lists or tuples) 
+								   with a width c
+draw.rect(x, y, a, b)			=> Draw a rect object a on surface x with color y and width b
+draw.circle(x, y, a, b, c)		=> Draw a circle on surface x with color y, center coordinates a, radius b and width c
+draw.polygon(x, y, a, b)		=> Draw a poligon on surface x with color y with width c, given a list/tuple of point a 
+
+
+# ###########################################################################################################   
+
+
+class Humain:
+
+    lieu_habitation = "Terre"                               # Attribut de classe
+
+    def __init__(self, nom, age):                           # Constructeur d'objet
+        print("Creation d'un humain")   
+        self.nom = nom
+        self._age = age             
+    
+    def parler(self, message):                              # Méthode d'instance (self)
+        print("{} a dit : {}".format(self.nom, message))
+
+    def changer_planete(cls, nouvelle_planete):             # Méthode de classe (cls)
+        Humain.lieu_habitation = nouvelle_planete
+    changer_planete = classmethod(changer_planete)
+
+    def definition():                                       # Méthode statique
+        print("L'humain est le plus fort.")
+    definition = staticmethod(definition)
+
+    def _getage(self):                                      # Définitions de propriété <getter>
+        return self._age
+
+    def _setage(self, nouvel_age):                          # Définitions de propriété <setter>                  
+        if nouvel_age < 0:
+            self._age = 0
+        else:
+            self._age = nouvel_age
+    
+    def _delage(self):                                      # Définitions de propriété <deleter>
+        del self._age
+
+    age  = property(_getage, _setage, _delage, "Help")      # Création de propriété => property(<getter>, <setter>, <deleter>, <helper>)
+
+    def __add__						                        # Création méthode magique
+
+
+class Enfant(Humain):                                       # Création d'une classe fille
+
+    def __init__(self, nom_enfant, age_enfant, jouet):
+        Humain.__init__(self, nom_enfant, age_enfant)
+        self.jouet = jouet
+
+
+                      
+
+
+
+
+
+
+

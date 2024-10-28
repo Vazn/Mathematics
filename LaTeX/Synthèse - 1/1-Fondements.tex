@@ -1,0 +1,556 @@
+\chapter*{\chapterstyle{I --- Raisonnements}}
+\addcontentsline{toc}{section}{Raisonnements}
+
+Soit \(\P\) une proposition et \(n\) un entier naturel.
+
+\subsection*{\subsecstyle{Disjonctions \& Conjonctions {:}}}
+\addcontentsline{toc}{subsection}{Disjonctions \& Conjonctions}
+
+Si \(\P\) est une disjonction de la forme \(\A \lor \B\), il suffit alors de supposer \textbf{l'une des deux propriétés fausse} et de montrer que l'autre est vraie.\<
+
+Si \(\P\) est une conjonction de la forme \(\A \land \B\), il faut simplement prouver \(\A\) et \(\B\).
+
+\subsection*{\subsecstyle{Raisonnements par l'absurde {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par l'absurde}
+
+Raisonner par l'absurde revient à utiliser le principe du \textbf{tiers exclu}, ie l'axiome qui affirme que la proposition ci-dessous est toujours vraie:
+\[
+   \P \, \lor \, \lnot \P
+\]
+Donc si on veut prouver \(\P\), on peut alors simplement montrer que \(\lnot\P \implies \bot\) avec ''\(\bot\)'' comme notation d'une contradiction logique. Alors on peut conclure d'après l'axiome du tiers exclu que \(\P\) est vraie. 
+
+\subsection*{\subsecstyle{Raisonnement par Analyse / Synthèse {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par Analyse / Synthèse}
+
+Le raisonnement par Analyse / Synthèse permet de déterminer \textbf{l'ensemble des solutions d'un problème}, il s'effectue en deux étapes, tout d'abord l'étape d'analyse suppose qu'une telle solution existe, alors on circonscrit son existence à des propriétés connues qu'elle vérifie nécessairement. Cette étape permet de ''cerner'' les solutions en question. Si les propriétés sont assez contraignantes, alors on peut même prouver \textbf{l'unicité}, ie l'ensemble des solutions se réduit à un singleton.\<
+
+Puis lors de l'étape de synthèse, on considère un objet vérifiant les propriétés qu'on a utilisé lors de l'étape d'analyse, et on \textbf{vérifie} que cet objet est bien une solution au problème initial. C'est lors de cette étape qu'on prouve bien \textbf{l'existence} de solutions. Si aucun des objets circonscrits par l'analyse ne conviennent, le problème n'a alors pas de solutions.
+
+\subsection*{\subsecstyle{Implications \& Équivalences {:}}}
+\addcontentsline{toc}{subsection}{Implications \& Équivalences}
+
+Si \(\P\) est une implication de la forme \(\A \implies \B\), on a les équivalences suivantes:
+\[
+   \P \Longleftrightarrow \lnot \A \lor \B \Longleftrightarrow \lnot \B \implies \lnot \A
+\]
+Aussi en raisonnant \textbf{par l'absurde}, il suffit alors de prouver:
+\[
+   \A \land \lnot \B \implies \bot 
+\]
+Il est important de noter que l'implication \textbf{n'est pas une opération associative}, en effet, soit une propriété de la forme:
+\[
+   \A_1 \implies \A_2 \implies \A_3
+\]
+Alors de manière générale, on a:
+\[
+   \A_1 \implies (\A_2 \implies \A_3) \centernot\Longleftrightarrow (\A_1 \implies \A_2) \implies \A_3
+\]
+Prouver une équivalence revient à prouver une \textbf{double implication} dans la majorité des cas.\<
+
+\underline{Cas particulier {:}}
+Si \(\P\) est de la forme \( A_1 \Longleftrightarrow A_2 \Longleftrightarrow \cdots \Longleftrightarrow \A_{n-1} \Longleftrightarrow \A_n \), il suffit alors de montrer:
+\[
+   \A_1 \implies \A_2 \implies \cdots \implies \A_{n-1} \implies \A_n \implies \A_1
+\]
+Ainsi pour toute paire de \(\A_i\), on a bien double implication entre les deux membres et donc la chaîne d'équivalence est démontrée.
+
+\subsection*{\subsecstyle{Raisonnements par récurrence {:}}}
+\addcontentsline{toc}{subsection}{Raisonnements par récurrence}
+
+Soit \(\P\) une propriété dépendante de \(n\) qu'on veut démontrer sur \(\inticc{\alpha}{+\infty}\), soit \(k\) en entier fixé supérieur à \(\alpha\), démontrer \(\P\) par récurrence simple revient à utiliser \textbf{l'axiome de récurrence} (issu de la construction de \(\N\)) ci-dessous:
+\[
+   \Bigr[ \P_{\alpha} \; \land \; \bigr[ \P_{k} \implies \P_{k+1} \bigr] \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+
+Si la propriété à prouver est plus complexe, on peut avoir besoin de récurrences d'une autre type, en effet si \(\P\) dépend \textbf{des deux rangs précédents}, et on utilise alors une récurrence à deux pas qui s'exprime:
+\[
+   \Bigr[ \P_{\alpha} \; \land \; \P_{\alpha + 1} \; \land \; \bigr[ \P_{k-1}  \land \P_{k}\implies \P_{k+1} \bigr] \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+
+Enfin pour le cas limite, si \(\P\) dépends \textbf{d'exactement tout les rangs précédents}, alors on peut utiliser une récurrence forte qui s'exprime:
+\[
+   \Bigr[ \P_{\alpha} \; \land \bigr[ \P_{\alpha + 1} \; \land \; \ldots \; \P_{k-1} \; \land \; \P_{k} \implies \P_{k+1}  \bigr] \Bigr] \implies \forall n \in \N \; ; \; \P_n   
+\]
+Un dernier type de récurrence appelé \textbf{récurrence limitée} permet simplement d'utiliser la récurrence sur un intervalle entier fini, et donc on initialise et on prouve l'hérédité avec la contrainte de cette intervalle.\<
+
+
+\underline{Remarque sur la récurrence forte {:}}\<
+
+Une telle récurrence forte ne nécessitera qu'une \textbf{unique} initialisation pour compléter l'hérédité.\<
+
+D'un point de vue heuristique, il peut arriver d'engager une récurrence forte sur un problème qui n'aurait nécessité qu'une récurrence à \(p\) pas.\+
+Ce cas précis reviendra alors, lors de l'étape d'hérédité, à \textbf{ne pas utiliser l'ensemble de l'hypothèse de récurrence}, et alors il faudra modifier le nombre d'initialisation à réaliser et l'intervalle de notre hypothèse de récurrence.\<
+
+Admettons que \(\P_\alpha\) soit vraie, supposons qu'elle soit vraie sur \(\inticc{\alpha}{k}\). Alors, on doit montrer que la propriété est vraie au rang \(k + 1\).\<
+
+Alors, selon \textbf{le plus petit rang} nécessaire à compléter l'hérédité, on a:
+\begin{align*}
+    & \text{Si on a besoin de } \P_k \text{ alors \textbf{on se ramène à une récurrence simple.}}\\
+    & \text{Si on a besoin de } \P_{k-1} \text{ alors \textbf{on se ramène à une récurrence double.}}\\
+    & \text{Si on a besoin de } \P_{k-2} \text{ alors \textbf{on se ramène à une récurrence triple.}}\\
+    & \ldots\ldots\ldots
+\end{align*}
+Et donc, les initialisations et l'intervalle de notre hypothèse de récurrence changeront en conséquence et on remarque alors que si le plus petit rang nécessaire est \(\P_{k-p}\), alors on se ramène nécessairement à une \textbf{récurrence à \(p\) pas}, avec \(p\) initialisations et l'hypothèse de récurrence qui commence à \(\alpha + p\).\<
+
+Une récurrence forte n'est alors qu'une récurrence qui nécessite des hypothèses sur \textbf{tout les rangs précédents.}
+   
+\subsection*{\subsecstyle{Récurrences imbriquées {:}}}
+\addcontentsline{toc}{subsection}{Récurrences imbriquées}
+
+Soit \(\P_{n,m}\) une propriété qui dépend \textbf{de deux variables entières}, alors on pourrait prouver \(\P_{n, 0}\) par récurrence et alors cela constituerait l'initialisation d'une récurrence imbriquée qui supposerait par exemple \(\P_{n, k}\) vraie pour prouver \(\P_{n, k+1}\).
+
+\chapter*{\chapterstyle{I --- Ensembles}}
+\addcontentsline{toc}{section}{Ensembles}
+
+Soit \(E\), \(F\) et \(X\) trois ensembles quelconques.
+On note tout d'abord que l'intersection est prioritaire sur la réunion lors d'opérations sur les ensembles et que les deux opérations sont \textbf{distributives} l'une par rapport à l'autre.
+
+\subsection*{\subsecstyle{Inclusion {:}}}
+\addcontentsline{toc}{subsection}{Inclusion}
+
+L'inclusion est une \textbf{relation d'ordre} sur l'ensemble des parties de \(E\), et donc on en déduit qu'elle est \textbf{réflexive, transitive et antisymétrique}. Si l'inclusion est stricte, on parle de \textbf{sous-ensemble propre}.\<
+
+Si \(E \subseteq F\), on a:
+\begin{flalign*}
+    E \cap F = E\\
+    E \cup F = F
+\end{flalign*}
+Aussi, les opérations élémentaires préservent l'inclusion:
+
+\customBox{width=4cm}{
+    \begin{align*}
+        E \cap X \subseteq F \cap X \\
+        E \cup X \subseteq F \cup X
+    \end{align*}
+}
+
+
+\subsection*{\subsecstyle{Complémentaire et de la différence {:}}}
+\addcontentsline{toc}{subsection}{Complémentaire et différence}
+
+
+Si \(F \subseteq E\), alors \(F^c\) est l'ensemble qui contient tout les éléments de \(E\) qui \textbf{ne sont pas} dans \(F\) et on a définit alors \textbf{la différence ensembliste}:
+\[
+   E \;\backslash\; F = E \cap F^c  
+\]
+Par ailleurs, \textbf{les lois de De Morgan} nous donnent:
+\customBox{width=4cm}{
+    \begin{align*}
+        (E \cap F)^c = E^c \cup F^c \\
+        (E \cup F)^c = E^c \cap F^c
+    \end{align*}
+}
+\underline{Cas particulier {:}}
+On peut aussi définir l'opération de \textbf{différence symétrique} notée \(\Delta\) qui permet d'obtenir tout les éléments qui appartiennent exactement à un seul des deux ensembles:
+\[
+   E \Delta F = (E \cup F) \;\backslash\; (E \cap F)   
+\]
+
+\subsection*{\subsecstyle{Produit cartésien {:}}}
+\addcontentsline{toc}{subsection}{Produit cartésien}
+
+Soit \(n\) une entier naturel, le produit cartésien des ensembles \(E_1,\, E_2,\, \ldots\,,\, E_{n-1},\, E_n\) est l'ensemble des n-uplets de la forme (\(e_1, e_2, \ldots, e_{n-1}, e_n\)) avec \(e_i \in E_i\) pour \(i \in \inticc{1}{n}\).
+Il y a \textbf{unicité} de ces n-uplets.
+
+Plus formellement, on note:
+\[
+     \prod_{i=1}^{n} E_i = \Bigl\{ (e_1, e_2, \ldots, e_{n-1}, e_n) \; ; \; e_1 \in E_1, e_2 \in E_2, \ldots,  e_n \in E_n \Bigl\}
+\]
+\pagebreak
+
+\subsection*{\subsecstyle{Cardinalité {:}}}
+\addcontentsline{toc}{subsection}{Cardinalité}
+
+Supposons que \(E\) et \(F\) tout deux inclus dans \(X\) et ayant \textbf{un nombre fini d'éléments}. On a alors différentes propriétés:
+\customBox{width=6cm}{
+    \begin{align*}
+        |E \cup F| &= |E| + |F| - |E \cap F| \\
+        |E \times F| &= |E| \times |F| \\
+        |E^c| &= |X| - |E| \\
+        |\Pow_E| &= 2^{|E|}
+    \end{align*}
+}
+\subsection*{\subsecstyle{Partitions et recouvrements{:}}}
+\addcontentsline{toc}{subsection}{Partitions et recouvrements}
+
+Soit \((P_i)_{i \in \N}\) une famille de parties \textbf{non vides et deux à deux disjointes} de \(E\).\+
+On dit que \((P_i)\) est une \textbf{partition} de E si et seulement si:
+\[
+    \bigcup_{i \in \N} P_i = E
+\]
+On remarque immédiatement deux partitions singulières:
+\begin{align*}
+    &\bullet \text{ La famille contenant uniquement } E \text{ qu'on appelle \textbf{partition grossière}.} \\
+    &\bullet \text{ La famille contenant tout les singletons de } E \text{ qui est la partition \textbf{la plus fine}.}
+\end{align*}
+On peut donc intuitivement parler de \textbf{finesse} d'une partition, en regard de la taille des parties de la famille.\<
+
+On peut généraliser le concept de partitition à celui de \textbf{recouvrement}, alors \(E\) ne nécessite que d'être contenu par l'union des \((P_i)\).
+
+\subsection*{\subsecstyle{Algèbre de Boole {:}}}
+\addcontentsline{toc}{subsection}{Algèbre de Boole}
+
+On peut montrer que l'ensemble \textbf{ordonné} des parties de \(E\) muni de l'union, l'intersection, le complémentaires forment une \textbf{Algèbre de Boole}.\<
+
+Cela signifie que la structure \((\Pow(E), \cup, \cap, X^c)\) vérifie les axiomes suivants:
+\begin{align*}
+    &\bullet \text{ Les deux opérations binaires sont \textbf{associatives, commutatives et distributives l'une sur l'autre.}}\\
+    &\bullet \text{ Les deux opérations binaires sont \textbf{idempotentes.}}\\
+    &\bullet \text{ \textbf{L'élément neutre} pour l'union est l'ensemble vide, et pour l'intersection l'ensemble \(E\).}\\
+    &\bullet \text{ \textbf{L'élément absorbant} pour l'union est l'ensemble \(E\), et pour l'intersection l'ensemble vide.}\\
+    &\\
+    &\bullet \text{ Le complémentaire est \textbf{involutif}.}\\
+    &\bullet \text{ L'intersection d'un élément et de son complémentaire est \textbf{vide}.}\\
+    &\bullet \text{ L'union d'un élément et de son complémentaire est \textbf{l'ensemble tout entier}.}\\
+    &\bullet \text{ Les \textbf{lois de De Morgan} sont vérifiées.}\\
+\end{align*}
+De manière analogue, en considérant \(\{0, 1\}\) comme les valeurs de vérité d'une proposition, on a:
+
+\customBox{width=11cm}{
+    \begin{align*}
+        \textbf{La structure } (\{0, 1\}, \lor, \land, \lnot) \textbf{ est aussi une algèbre de Boole.}
+    \end{align*}
+}
+
+Cette structure est à la base de la logique formelle et vérifie les même axiomes que l'algèbre de l'ensemble des parties d'un ensemble.
+
+\chapter*{\chapterstyle{I --- Relations}}
+\addcontentsline{toc}{section}{Relations}
+
+Une \textbf{relation} entre des objets d'un ensemble est une propriété que vérifient ces objets \textbf{entre eux}.\+
+Les relations sont des objets \textbf{fondamentaux} en mathématiques, elles sont entre autres des objets primitifs de la théorie des ensembles.\<
+
+On appelle \textbf{arité} le nombre d'éléments mis en jeu par la relation.\+ Par exemple une relation d'arité 2 est appelée \textbf{relation binaire} et met en jeu deux éléments. On définit ainsi le cas général de relation \textbf{n-aire} qui met en jeu \(n\) éléments \(x_1, x_2, \ldots, x_{n-1}, x_n\) et on note:
+\[
+    \mathscr{R}(x_1, x_2, \ldots, x_{n-1}, x_n)
+\]
+\textbf{Par abus de langage}, on appelle \textbf{classe} un ensemble d'ensembles.\+
+Formellement une classe n'est pas un ensemble mais un élément primitif de la théorie ZFC, mais ici on verra qu'on appelle classe des objets qui \textbf{sont} des ensembles.
+
+\subsection*{\subsecstyle{Zoologie {:}}}
+\addcontentsline{toc}{subsection}{Zoologie}
+
+Il existe un grand nombre de relations très connues et élémentaires, par exemple:
+\begin{align*}
+    &\bullet \text{ La relation d'appartenance à un ensemble} \\
+    &\bullet \text{ La relation d'égalité} \\
+    &\bullet \text{ La relation d'ordre} \\
+    &\bullet \text{ La relation d'inclusion} \\
+    &\bullet \text{ La relation de congruence} \\
+    &\bullet \text{ La relation de parallélisme de deux droites du plan}
+\end{align*}
+On peut remarque que la relation d'appartenance à un ensemble est une relation binaire fondamentale, à la base de la théorie des ensembles.
+
+\subsection*{\subsecstyle{Relations binaires {:}}}
+\addcontentsline{toc}{subsection}{Relations binaires}
+
+Soit \(x, y, z \in E\), une relation entre deux éléments peut vérifier plusieurs propriétés remarquables:
+\[
+    \begin{aligned}
+        &\bullet \textbf{ Réflexivité : } \mathscr{R}(x, x)\\
+        &\bullet \textbf{ Symétrie : } \mathscr{R}(x, y) \implies \mathscr{R}(y, x)\\
+    \end{aligned}
+    \hspace{60pt}
+    \begin{aligned}
+        &\bullet \textbf{ Irréflexivité : } \cancel{\mathscr{R}}(x, x)\\
+        &\bullet \textbf{ Antisymétrie : } \mathscr{R}(x, y) \land \mathscr{R}(y, x) \implies x = y \\
+    \end{aligned}
+\]
+Elle peut aussi être \textbf{transitive}:
+\[
+    \mathscr{R}(x, y) \land \mathscr{R}(y, z) \implies \mathscr{R}(x, z)\\
+\]
+On appelle aussi relation \textbf{totale} une relation telles si pour toute paire d'éléments, on a \(\mathscr{R}(x, y) \lor \mathscr{R}(y, x)\).
+\pagebreak
+
+\subsection*{\subsecstyle{Relations d'ordre {:}}}
+\addcontentsline{toc}{subsection}{Relations d'ordre}
+
+Une \textbf{relation d'ordre} est une relation \textbf{réflexive, antisymétrique et transitive}. Elle induit un ordre sur l'ensemble \(E\), qui peut potentiellement être \textbf{total}.\<
+
+Des relations d'ordre très connues sont la relation \(\leq\) sur les ensembles de nombres ou la relation \(\subseteq\) sur l'ensemble des parties de \(E\).\<
+
+On appelle relation de \textbf{préordre} toute relation relation d'ordre qui n'est pas antisymétrique. Intuitivement, une relation de préordre est une relation d'ordre à ``équivalence près`` des éléments.
+
+\subsection*{\subsecstyle{Relations d'équivalence {:}}}
+\addcontentsline{toc}{subsection}{Relations d'équivalence}
+
+Une \textbf{relation d'équivalence} est une relation \textbf{réflexive, symétrique et transitive}. Intuitivement, elle met en relation les éléments des ensembles qui sont ``similaires``.\<
+
+Des relations d'équivalence très connues sont la relation \(=\) et \(\equiv\) sur les ensembles de nombres, ou encore la relation \(\sim\) sur l'ensemble des fonctions.
+
+\subsection*{\subsecstyle{Classes d'équivalence {:}}}
+\addcontentsline{toc}{subsection}{Classes d'équivalence}
+
+Soit \((E, \sim)\) un ensemble muni d'une relation d'équivalence.\+
+Les \textbf{classes d'équivalence} de \(E\) par rapport à la relation \(\sim\) sont alors les parties de \(E\) contenant des éléments en relation.\<
+
+Soit \(x \in E\), on définit alors la \textbf{classe d'équivalence} de \(x\) et on note \([x]\) l'ensemble:
+\[
+    [x] := \Bigr\{ \alpha \in E \; ; \; \alpha \sim x \Bigr\}
+\]
+D'après les propriété de la relation, on a alors:
+\customBox{width=4cm}{
+    \(x \sim y \Longleftrightarrow [x] = [y]\)
+}
+Et on appelle \textbf{représentant} de \([x]\) tout élément qui appartient à \([x]\).
+
+\subsection*{\subsecstyle{Ensembles quotient {:}}}
+\addcontentsline{toc}{subsection}{Ensembles quotient}
+
+L'ensemble des classes d'équivalence de \(E\) forme alors une \textbf{partition} de \(E\), et on appelle \textbf{ensemble quotient}, ou encore \textbf{ensemble quotienté par la relation d'équivalence} l'ensemble:
+\[
+    E / \sim \; := \Bigr\{ [x] \in \Pow(E) \; ; \; x \in E \Bigr\}
+\]
+C'est alors un ensemble de classes d'équivalences par rapport à la relation \(\sim\).\<
+
+Travailler avec l'ensemble quotient revient alors à ne pas distinguer les éléments équivalents entre eux.\+
+On peut aussi créer des \textbf{structures} quotient, il suffit alors de quotienter une structure algébrique de telle sorte que les propriétés de structure soient conservées.\<
+
+Quelques exemples connus de structures quotient:
+\begin{align*}
+    &\bullet \textbf{ L'anneau } \Z \,/\, n\Z := (\Z \,/\, \sim, +, \times) \textbf{ pour la relation } a \sim b \Longleftrightarrow a \equiv b [n] \\
+    &\bullet \textbf{ Le corps } \Q := ((\Z \, ; \, \Z \, \backslash \, \{0\}) \, / \, \sim, +, \times) \textbf{ pour la relation } (a, b) \sim (c, d) \Longleftrightarrow ad = bc
+\end{align*}
+
+\chapter*{\chapterstyle{I --- Fonctions \& Applications}}
+\addcontentsline{toc}{section}{Fonctions \& Applications}
+
+On appelle \textbf{fonction} ou \textbf{application} des cas particulier de relation entre deux ensembles, soit \(f, g\) deux fonctions telles que:
+\[
+   \begin{aligned}
+      f: E &\longrightarrow F\\
+      x &\longmapsto f(x)
+   \end{aligned}
+      \hspace{50pt}
+   \begin{aligned}
+      g: G&\longrightarrow H\\
+      x&\longmapsto g(x)
+   \end{aligned}
+\]
+
+On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe, alors \(f\) est une \textbf{application} si et seulement si \(E = D_f\) et on note alors \(\mathscr{F}(E, F)\) l'ensemble des \textbf{applications} de E vers F.\<
+
+Si \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\)
+
+\subsection*{\subsecstyle{Cas des suites {:}}}
+Une suite à valeurs dans \(E\) n'est alors qu'un cas particulier en la forme d'une fonction \(u : \N \longrightarrow E\), ce sont des objets d'étude trés importants en analyse et notamment en topologie. Dans le cas des suites on peut définir la notion de \textbf{suite extraite}, car si \(u_n\) est une suite dans \(E\) et \(k_n\) est \textbf{suite d'entiers croissante}, alors on définit une suite extraite de \(u_n\) par:
+\[
+   u \circ k : \N \longrightarrow E
+\]
+C'est simplement les termes de la suite \(u_n\) dont on ne choisit que les termes d'indices donnés par \(k_n\).
+\subsection*{\subsecstyle{Graphe {:}}}
+On définit \textbf{le graphe} de \(f\) comme suit:
+\[
+   G_f:= \Bigl\{ (x, f(x)) \in E \times F \; ; \; x \in E\Bigl\}   
+\]
+Intuitivement, c'est l'ensemble des points de l'espace d'arrivée qui sont sur la courbe de la fonction.
+
+\subsection*{\subsecstyle{Restrictions \& Prolongements {:}}}
+\addcontentsline{toc}{subsection}{Restrictions \& Prolongements}
+
+On note \(f|_A\) la restriction de \textbf{l'ensemble de départ} de \(f\) à une partie \(A\) de \(E\).\+
+On note \(f|^B\) la restriction de \textbf{l'ensemble d'arrivée} de \(f\) à une partie \(B\) de \(F\).\<
+
+Soit \(x \in D_f\), on appelle \textbf{prolongement} de \(f\), l'application \(g\) telle que \(D_f \subset D_g\) et \(g(x) = f(x)\)
+
+\subsection*{\subsecstyle{Image directe {:}}}
+\addcontentsline{toc}{subsection}{Image directe}
+
+On appelle \textbf{image directe} d'une partie \(A\) de \(E\) l'ensemble des images par \(f\) des éléments de \(A\), ie:
+\customBox{width=5cm}{
+    \(f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\}\)
+}
+
+L'image directe est compatible avec \textbf{certaines opérations ensemblistes}, plus précisément:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \(f(A \cap B) = f(A) \cap f(B)\)
+        \item \(f(A \cup B) \subset f(A) \cup f(B)\)
+    \end{itemize}
+\end{multicols}
+
+\subsection*{\subsecstyle{Image Réciproque {:}}}
+\addcontentsline{toc}{subsection}{Image Réciproque}
+On appelle \textbf{image réciproque} d'une partie \(B\) de \(F\) l'ensemble des antécédents par \(f\) des éléments de \(B\), ie:
+\customBox{width=6cm}{
+    \(f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\} \)
+}
+
+L'image réciproque est compatible avec \textbf{toutes les opérations ensemblistes}, plus précisément:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\)
+        \item \(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\)
+    \end{itemize}
+\end{multicols}
+
+\subsection*{\subsecstyle{Injections {:}}}
+\addcontentsline{toc}{subsection}{Injections}
+
+L'application \(f\) est injective si et seulement si:
+\customBox{width=8cm}{
+    \(\forall x_1, x_2 \in E^2 \; ; \; f(x_1) = f(x_2) \implies x_1 = x_2 \)
+}
+En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au maximum une solution dans E} pour montrer que \(f\) est injective.\+
+Si \(g \circ f\) est injective alors \(f\) est nécessairement injective.\<
+
+Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une injection, alors on a nécessairement \(|E| \leq |F|\)
+
+\subsection*{\subsecstyle{Surjections {:}}}
+\addcontentsline{toc}{subsection}{Surjections}
+
+L'application \(f\) est surjective si et seulement si:
+\customBox{width=6cm}{
+    \(\forall y \in F \; , \; \exists x \in E \; ; \; f(x) = y\)
+}
+
+En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au moins une solution dans E} pour montrer que \(f\) est surjective.\+
+Si \(g \circ f\) est surjective alors \(g\) est nécessairement surjective.\<
+
+Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une surjection, alors on a nécessairement \(|F| \leq |E|\)
+
+\subsection*{\subsecstyle{Bijections {:}}}
+\addcontentsline{toc}{subsection}{Bijections}
+
+L'application \(f\) est bijective si et seulement si elle est surjective et injective.\+  
+Dans ce cas, \textbf{une application réciproque} \(g\) existe et elle vérifie:
+\[
+    \begin{cases}
+        f \circ g &= Id_F \\
+        g \circ f &= Id_E
+    \end{cases}
+\]
+
+
+Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective.
+\begin{center}
+    \textit{
+        Intuitivement, les bijections sont exactement \textbf{les applications inversibles à gauche et à droite} par une même application.
+    }
+\end{center}
+Si \(f\) et \(g\) sont bijectives, alors \(f \circ g\) est bijective et \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\)
+
+\subsection*{\subsecstyle{Equipotence {:}}}
+\addcontentsline{toc}{subsection}{Equipotence}
+
+Soit \(E\) et \(F\) deux ensembles quelconques.\+
+Si il existe une bijection de \(E\) vers \(F\), alors on dit que ces ensembles sont \textbf{équipotents}, et on a:
+\[
+    |E| = |F|
+\]
+Cette définition du cardinal par les bijections permet de parler de cardinal d'un ensemble dans le cas \textbf{infini}.\+
+Si il existe une bijection entre \(\N\) et \(E\), on dit que \(E\) est un ensemble \textbf{dénombrable} et on note:
+\[
+    |E| = \aleph_0
+\]
+Si il existe une bijection de \(\R\) dans \(E\), alors on dit que \(E\) est un ensemble \textbf{indénombrable} et on note:
+\[
+    |E| = \aleph_1
+\]
+
+Il n'existerait aucun ensemble dont le cardinal se situerait entre \(\aleph_0\) et \(\aleph_1\), c'est \textbf{l'hypothèse du continu}.
+
+\chapter*{\chapterstyle{I --- Dénombrement}} % 75% Fini
+\addcontentsline{toc}{section}{Dénombrement}
+
+Soit \(E\) un ensemble, on dit que \(E\) est \textbf{fini} si il existe une bijection de \(\inticc{1}{n}\) sur \(E\).\<
+
+On considère maintenant que \(E\) est fini, dénombrer \(E\) consiste à déterminer sa cardinalité. Informellement il s'agit souvent de compter le nombres \textbf{d'issues possibles} d'une situation donnée, on dispose alors de trois grands modèles, les \textbf{listes}, les \textbf{arrangements} et les \textbf{combinaisons}.
+
+\subsection*{\subsecstyle{Listes}}
+On appelle \textbf{liste} à \(p\) éléments de \(E\) un p-uplet constitué d'éléments de \(E\), c'est à dire \textbf{un élément du produit cartésien} \(E^p\) on remarque alors la propriété:
+\begin{center}
+   \textit{
+      Dans une liste, l'ordre compte et les répétitions sont possibles
+   }
+\end{center}
+En effet, dans \(\N^2\) par exemple, on sait que \((1, 2) \neq (2, 1)\) et que \((1, 1)\) est un 2-uplet valide.\<
+
+On peut alors montrer que le nombre d'applications d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(p^n\)
+
+\subsection*{\subsecstyle{Arrangements}}
+On appelle \textbf{arrangement} tout liste à \(p\) éléments \textbf{distincts} de \(E\), on remarque alors:
+\begin{center}
+   \textit{
+      Dans un arrangement, l'ordre compte mais les répétitions sont impossibles
+   }
+\end{center}
+On note alors \(A_n^p\) le nombre d'arrangements de \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
+\customBox{width=3.5cm}{
+  \[
+      A_n^p = \frac{n!}{(n - p)!}
+  \]
+}   
+
+Et on peut alors montrer que le nombre d'applications \textbf{injectives} d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(A_n^p\).\<
+
+Un arrangement de la forme \(A_n^n\) est apellée une \textbf{permutation} de \(E\) qui est simplement donnée par \(n!\), c'est aussi le nombre de \textbf{bijections} de \(E\) dans \(E\).
+
+\subsection*{\subsecstyle{Combinaisons}}
+On appelle \textbf{combinaison} de \(p\) éléments tout \textbf{partie} de \(E\) à \(p\) éléments, on remarque alors:
+\begin{center}
+   \textit{
+      Dans une combinaison, l'ordre ne compte pas et les répétitions sont impossibles
+   }
+\end{center}
+On apelle alors \textbf{coefficient binomial} et on note \(\binom{n}{p}\) le nombre de parties à \(p\) éléménts d'un ensemble à \(n\) éléments et on a:
+\customBox{width=4cm}{
+  \[
+      \binom{n}{p} = \frac{n!}{p!(n - p)!}
+  \]
+}   
+
+On peut remarquer que le nombre de parties à \(p\) éléménts de \(E\) est exactement le nombre d'arrangements à \(p\) éléménts de \(E\) auquel on retire toutes les permutations des \(p\) éléments choisis, ce qui revient exactement à \textbf{retirer la contrainte d'ordre}.
+
+\subsection*{\subsecstyle{Propriétés du coefficient binomial}}
+Le coefficient binomial possède plusieurs propriétés intéréssantes, on peut tout d'abord remarquer une \textbf{symétrie} évidente mais aussi:
+\[
+   \textbf{Formule de Pascal:} \;\; \binom{n}{p} = \binom{n - 1}{p} + \binom{n - 1}{p - 1}\quad      
+   \textbf{Formule du capitaine:} \;\; p\binom{n}{p} = n\binom{n - 1}{p - 1} \;\;
+\]
+
+La \textbf{formule de Pascal} se comprends si on considère un élément fixé de l'ensemble et qu'on dénombreux tout ceux qui le contiennent, et les autres, ie: 
+\begin{center}
+   \textit{Le nombre de parties à \(p\) éléments est exactement la somme du nombre de parties qui ne contiennent pas un certain \(x\) et du nombre de partie qui contiennent ce \(x\).}
+\end{center} 
+
+La \textbf{formule du capitaine} se comprends si on considère le choix d'une équipe sportive de \(p\) joueurs (dont un capitaine) parmi un groupe de \(n\) candidats:
+\begin{center}
+   \textit{Choisir une équipe de \(p\) joueurs puis un capitaine parmi les \(p\) joueurs\+ revient à choisir un capitaine parmi les \(n\) candidats, puis les \(p - 1\) joueurs restants.}
+\end{center} 
+Enfin on a aussi:
+\[
+   \sum_{p=0}^n \binom{n}{p} = 2^n       
+\]
+\begin{center}
+   \textit{Le cardinal de l'ensemble des parties d'un ensemble à \(n\) éléments est donc exactement la somme des parties qui ont respectivement \(1, 2, \ldots, n\) éléments.}
+\end{center} 
+
+\subsection*{\subsecstyle{Généralisation}}
+On peut remarquer que le coefficient binomial est le nombre de partitions en deux parties de \(E\) telles que le cardinal de la première soit \(p\). Par exemple si on considère les partitions de \(E := \bigl\{1, 2, 3\bigl\}\) en deux parties dont la première ait \(1\) élément, on remarque qu'il y a 3 telles partitions:
+\[
+   P = \bigl(\{1\}, \{2, 3\}\bigl) \text{ ou } \bigl(\{2\}, \{1, 2\}\bigl) \text{ ou } \bigl(\{3\}, \{1, 2\}\bigl)
+\]
+
+On peut alors généraliser cette idée et définir le \textbf{coefficient multinomial} \(\binom{n}{k_1, \ldots, k_p}\) qui sera le nombre de partitions en \(p\) parties telles que la p-ième partie soit de cardinal \(k_p\) avec la somme des \(k_p\) \textbf{qui soit égale au cardinal total}:
+\customBox{width=5.5cm}{
+  \[
+   \binom{n}{k_1, \ldots, k_p} = \frac{n!}{k_1! k_2!\ldots k_p!}
+  \]
+}   
+
+
+Pour fixer les idées on remarque que si \(p = 2\) on a bien notre coefficient binomial usuel\footnote{
+   La première égalité vient de la contrainte sur la somme des \(k_p\).
+}\footnote{La seconde égalité se comprends par symétrie, compter le nombre de partitions en deux parties dont la première contient \(k_1\) éléments revient à compter le nombre de parties à \(k_1\) éléments et le reste sera nécessairement dans la seconde partie.}:
+\[
+   \binom{n}{k_1, k_2} =  \binom{n}{k_1, n - k_1} = \binom{n}{k_1} = \frac{n!}{k_1!(n-k_1)} = \frac{n!}{k_1!k_2!}
+\]
+On peut alors utiliser ce coefficient multinomial, pour compter le nombre d'anagramme d'un mot de \(n\) lettres avec \(m\) lettres distinctes répétées \(k_m\) fois, ou encore le nombre de façon de mettre \(n\) objets dans \(m\) boites qui peuvent en contenir \(k_m\).\+
+Par exemple, le nombre d'anagrammes de MISSISSIPI est donné par \(\binom{11}{1 , 4, 4, 1}  = \frac{11!}{4!4!} = 34650\)\<
+
+On peut même pour définir la \textbf{formule du multinôme de Newton} qui généralise celle du binôme:
+\[
+   (x_1 + x_2 + \ldots + x_p)^n = \sum_{k_1+k_2+\ldots+k_p = n} \binom{n}{k_1, k_2 \ldots, k_n} x_1^{k_1} x_2^{k_2} \ldots x_p^{k_p}
+\]

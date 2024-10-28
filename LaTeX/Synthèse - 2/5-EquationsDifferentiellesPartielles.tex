@@ -1,0 +1,77 @@
+\chapter*{\chapterstyle{V --- Introduction}} % A REFAIRE
+\addcontentsline{toc}{section}{Introduction} 
+Muni des corollaires du théorème des accroissements finis, on peut alors développer des méthodes pour résoudre des équations aux dérivées partielles simples, tout d'abord on appelle équations aux dérivées partielles une équation différentielle dont les solutions sont des fonctions inconnues dépendant de plusieurs variables vérifiant certaines conditions concernant leurs dérivées partielles. Par exemple l'équation suivante est une équation aux dérivées partielles:
+\[
+   \partialD{f}{x}(x, y) + \partialD{f}{y}(x, y) = 0   
+\]
+Ce chapitre à vocation à introduction et ne développera pas de théorie générale, simplement des méthodes élémentaires de resolution, souvent guidées. 
+\subsection*{\subsecstyle{Cas simples à l'ordre 1{:}}}
+On se donne \(f\) une fonction de classe \(\mathcal{C}^1(\R^2)\) et \(a \in \R\) et on considère tout d'abord les équations simples de la forme:
+\[
+   \partialD{}{x}(f) = a 
+\]
+Alors nécessairement, on a:
+\[
+   \partialD{}{x}(f - ax) = 0 
+\]
+Donc d'après le corollaire du théorème des accroissements finis, \(f - ax\) ne dépends pas de \(x\), pour une certaine fonction \(C \in \mathcal{C}^1(\R)\) on a donc:
+\[
+   f(x, y) = ax + C(y)
+\]
+On peut vérifier que réciproquement, cette fonction convient. Considérons un autre exemple moins trivial:
+\[
+   \partialD{}{x}(f) = h(x)   
+\]
+Alors on considère \(H\) une primitive de \(h\) et on peut alors écrire:
+\[
+   \partialD{}{x}(f - H(x)) = 0
+\]
+Et donc finalement d'aprés le corollaire du théorème:
+\[
+   f(x, y) = H(x) + C(y) 
+\]
+On vérifie à nouveau que réciproquement, cette fonction convient. On a ici illustré notre première méthode de résolution des cas simples d'équations aux dérivées partielles qui consiste à se ramener au corollaire du théorème
+\subsection*{\subsecstyle{Cas simples à l'ordre 2{:}}}
+On se donne \(f\) une fonction de classe \(\mathcal{C}^2(\R^2)\), on peut alors généraliser cette approche aux cas simples à l'ordre 2, par exemple:
+\[
+   \partialD{{}^2}{x^2}(f) = h(x)   
+\]
+Alors pour \(H\) une primitive de \(h\) on a nécessairement:
+\[
+   \partialD{}{x}(\partialD{}{x}(f) - H(x)) = 0 
+\]
+Donc d'aprés le corollaire du théorème:
+\[
+   \partialD{}{x}(f) = H(x) + C(y)
+\]
+Et on peut alors appliquer les méthodes de l'ordre 1 simplement pour conclure.
+
+\subsection*{\subsecstyle{Changement de variable{:}}}
+On considère \(f\) une fonction de classe \(\mathcal{C}^1(\R^2)\) qui vérifie une certaine équations aux dérivées partielles, ainsi qu'un \textbf{changement de variable} \(p : \R^2 \rightarrow \R^2\), ie un \(\mathcal{C}^1\)-difféomorphisme de \(\R^2\), alors on peut trovuer des solutions de l'équation sous l'une ou l'autre formes suivantes:
+\[
+   \begin{cases}
+      f(x, y) = g(u, v) = (g \circ p)(x, y) \\
+      f(u, v) = (f \circ p)(x, y) = g(x, y)\\
+   \end{cases}
+\]
+On pourra alors facilement retrouver des solutions dans le systèmes de coordonées \((x, y)\) par composition.\<
+
+\uline{Exemple 1:} On considère l'EDP:
+\[
+   \partialD{f}{x} - \partialD{f}{y} = 0   
+\]
+On pose alors \(p: (x, y) \mapsto (x + y, x - y)\) et on pose \(f(x, y) = (g \circ p)(x, y)\), alors d'aprés la règle de la chaîne, si \(f\) vérifie l'équation, on a nécessairement:
+\[
+   \partialD{g}{u} + \partialD{g}{v} - \partialD{g}{u} + \partialD{g}{v} = 2\partialD{g}{v} = 0
+\]
+On se ramène au corollaire du théorème, \(g\) ne dépend pas de sa variable \(v\) et donc:
+\[
+   g(u, v) = C(u)   
+\]
+Mais \(g(u, v) = f(x, y)\) et \(u = x + y\) donc finalement, on trouve:
+\[
+   f(x, y) = C(x + y)    
+\]
+Réciproquement, on montre facilement que cette fonction convient.
+
+\chapter*{\chapterstyle{V --- Classification}} % A REFAIRE

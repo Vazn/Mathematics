@@ -1,0 +1,27 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Calcul variationnel}}
+Le calcul variationnel est en analyse fonctionnelle, un ensemble de méthodes permettant de minimiser une fonctionnelle. Celle-ci, qui est à valeurs réelles, dépend d'une fonction qui est l'inconnue du problème. Il s'agit donc d'un problème de minimisation dans un espace fonctionnel de dimension infinie. Par exemple:
+\begin{itemize}
+   \item \textbf{Problème géodésique :}Rechercher le \textbf{chemin} tel qu'une distance soit minimisée.
+   \item \textbf{Problème isopérimétrique :} Rechercher la \textbf{surface} telle que pour un périmètre donné, une aire soit maximisée.
+   \item \textbf{Principe de moindre action :} Rechercher un chemin qui minimise une fonctionelle qui représente l'énergie du système en physique.
+\end{itemize}
+
+Dans la majorité des situations, la fonctionnelle à minimiser sera de la forme:
+\[
+   S(\gamma) = \int_a^b \mathcal{L}(x, \gamma(x), \gamma'(x)) dx 
+\]
+On appelle alors une telle fonctionelle \textbf{action} et l'intégrande est apellée \textbf{Lagrangien} du système. Par exemple, le lagrangien du problème géodésique dans \(R^n\) est simplement:
+\[
+   \mathcal{L}(x, \gamma(x), \gamma'(x)) = ||\gamma'(x)||
+\]
+Minimiser l'action correspondante correspond alors à trouver le plus court chemin entre \(a\) et \(b\).
+
+ 
+
+\subsection*{\subsecstyle{Filtres \& Ultrafiltres{:}}}
+
+\end{document}

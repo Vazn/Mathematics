@@ -1,0 +1,531 @@
+\chapter*{\chapterstyle{XII --- Espaces probabilisés}} % 75% Fini
+\addcontentsline{toc}{section}{Espaces probabilisés}
+
+On appelle \textbf{expérience aléatoire} une expérience dont toutes les \textbf{issues} possibles sont connues à priori mais
+dont le résultat peut varier lorsqu'on la répète (lancer de dés, tirage dans une urne\ldots).
+
+\subsection*{\subsecstyle{Univers et Tribus}}
+On appelle \textbf{univers} et on note \(\Omega\) l'ensemble de toutes les issues de l'expérience.\+
+
+On appelle \textbf{tribu} sur \(\Omega\) ou encore \(\sigma\)-algèbre tout partie \textbf{non vide} \(\mathscr{A}\) de \(\Pow(\Omega)\) telle que:
+\begin{itemize}
+   \item \textbf{Stable par complémentaire}
+   \item \textbf{Stable par union dénombrable}
+\end{itemize}
+
+Dans le cas fini on choisira la tribu \(\Pow(\Omega)\) et la notion de tribu n'est pas pertinente à priori (l'utilité des axiomes ci-dessus apparaît lorsque l'univers est indénombrable).\+
+Les éléments d'une tribu sont alors appelés de manière générale \textbf{ensemble mesurables} et dans le cas des probabilités, \textbf{évenements}.\<
+
+Le couple \((\Omega, \Pow(\Omega))\) est alors appelé de manière générale \textbf{espace mesurable} et dans le cas des probabilités, \textbf{espace probabilisable}. 
+
+\subsection*{\subsecstyle{Système complet d'évenements}}
+Soit \((A_n)_{n \in \N}\) une famille d'évenements et \(k, p\) deux entiers distincts, on dit que \(A_k\) et \(A_p\) sont \textbf{incompatibles} si ils sont \textbf{disjoints}.
+\customBox{width=12cm}{
+   On appelle \textbf{système complet d'évenements} une \textbf{partition} de \(\Omega\) par \+ 
+   des évenements deux à deux incompatibles.
+}
+
+\subsection*{\subsecstyle{Mesure de probabilité}}
+Soit \((A_n)_{n \in \N}\) une famille dénombrable d'évenements \textbf{deux à deux incompatibles}.\<
+
+On appelle \textbf{mesure de probabilité} sur \((\Omega, \Pow(\Omega))\) toute application \(\mathbb{P} : \Pow(\Omega)\longrightarrow \icc{0}{1}\) qui vérifie \(\mathbb{P}(\Omega) = 1\).\+
+Elle doit aussi être \textbf{\(\sigma\)-additive}, ie elle doit vérifier:
+\[
+   \mathbb{P}\Biggl(\,\bigcup_{i \in \N} A_k\Biggl) = \sum_{i \in \N}\mathbb{P}(A_k)
+\]
+De ces axiomes on peut déduire plusieurs propriétés:
+
+\customBox{width=13cm}{
+   \begin{align*}
+      &\textbf{Probabiblité de l'ensemble vide} \;\; &&\mathbb{P}(\varnothing) = 0\\
+      &\textbf{Probabiblité du complémentaire}  \;\; &&\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)\\
+      &\textbf{Probabiblité de l'union}  \;\; &&\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) \\
+      &\textbf{Croissance pour l'inclusion}  \;\; &&A \subseteq B \implies \mathbb{P}(A) \leq \mathbb{P}(B)
+   \end{align*}
+}
+
+Muni de cette mesure de probabilité, le triplet \((\Omega, \Pow(\Omega), \mathbb{P})\) est appelé \textbf{espace probabilisé}.
+
+\subsection*{\subsecstyle{Distribution de probabilité}}
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé, on appelle \textbf{distribution de probabilités discrète} sur \(\Omega\) toute famille de réels positifs
+indexée par \(\Omega\) et de somme égale à 1. En particulier si on pose:
+\[
+   \forall \omega \in \Omega \; ; \; p_\omega = \mathbb{P}(\{\omega\})   
+\]
+Alors \((p_\omega)_{\omega \in \Omega}\) est une \textbf{distribution de probabilités} sur \(\Omega\), cela signifie que la mesure de probabilité des évenements élémentaires définit une distribution de probabilité (dans le cas discret).
+\begin{center}
+   \textit{On connaît donc tout d'une probabilité discrète quand on connaît\+ la distribution de probabilités des événements élémentaires qui lui est associée. }
+\end{center}
+
+\subsection*{\subsecstyle{Probabilités conditionnelles}}
+Lorsque l'on dispose d'informations sur le résultat d'une expérience donnée, il est possible d'affiner nos
+prédictions. \+
+Soit \(X\) un évenement qui n'est pas négligeable, alors on définit l'application:
+\[
+   \begin{aligned}
+      \mathbb{P}_X: \Pow(\Omega) &\longrightarrow \icc{0}{1}\\
+      A &\longmapsto \frac{\mathbb{P}(A \cap X)}{\mathbb{P}(X)}
+   \end{aligned}
+\]
+On peut montrer que c'est une mesure de probabilité sur \(\Omega\) et on l'appelle \textbf{probabilité de A sachant X}.\+
+
+De la symétrie de l'intersection on peut alors en déduire la \textbf{formule de Bayes}:
+\customBox{width=4.5cm}{
+   \[
+      \mathbb{P}_B(A) = \frac{\mathbb{P}(A) \mathbb{P}_A(B)}{\mathbb{P}(B)}
+   \]
+}
+
+Cette formule permet alors \textbf{d'inverser le conditionnement} et de déterminer les \textbf{probabilités des causes sachant les conséquences}.
+
+\subsection*{\subsecstyle{Formule des probabilités composées}}
+On en déduit directement la \textbf{formule des probabilités composées}:
+\customBox{width=7cm}{
+   \(
+      \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}_A(B) = \mathbb{P}(B)\mathbb{P}_B(A)
+   \)
+}
+
+Qui se généralise pour une famille finie d'évenements \((A_n)_{n \in I}\) d'intersection non nulle:
+\[
+   \mathbb{P}(A_1 \cap \ldots \cap A_n) = \mathbb{P}(A_1)\mathbb{P}_{A_1}(A_2)\mathbb{P}_{A_1\cap A_2}(A_3)\ldots\mathbb{P}_{A_1\cap \ldots \cap A_{n-1}}(A_n)
+\]
+
+\subsection*{\subsecstyle{Formule des probabilités totales}}
+Soit \((A_n)_n \in I\) un système complet d'évenements de \(\Omega\), alors on montre la \textbf{formule des probabilités totales}:
+\customBox{width=5cm}{
+   \[
+      \mathbb{P}(B) = \sum_{k=1}^{n} \mathbb{P}(A_k) \mathbb{P}_{A_k}(B)
+   \]
+}
+
+
+\subsection*{\subsecstyle{Indépendance}}
+On dit que deux évenements \(A, B\) sont \textbf{indépendants} si et seulement si:
+\customBox{width=4.5cm}{
+   \(
+      \mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
+   \)
+}
+
+Si deux évenements sont indépendants, alors n'importe quelle paire de \(A, B, \overline{A}, \overline{B}\) est indépendante.
+\chapter*{\chapterstyle{XII --- Variables aléatoires réelles}} % 95% Fini
+\addcontentsline{toc}{section}{Variables aléatoires}
+
+Soit \((\Omega, \mathscr{A}, \mathbb{P})\) un espace probabilisé. On considèrera ici des variables aléatoires réelles et on munira \(\R\) de sa tribu borélienne naturelle \(\mathscr{B}\), engendrée par les intervalles.\<
+
+Les jeux de hasard qui amenèrent à concevoir les variables aléatoires, en associant à une issue (résultat du lancer d'un ou plusieurs dés, d'un tirage à pile ou face, d'une roulette, etc.) un gain.
+
+\subsection*{\subsecstyle{Définition}}
+On appelle \textbf{variable aléatoire réelle} toute application \(X: \Omega \longrightarrow \R\) qui soit \textbf{mesurable}, ie que pour toute partie \(B \in \mathscr{B}\), on ait:
+\customBox{width=3.5cm}{
+   \(
+      X^{-1}(B) \in \mathscr{A}
+   \)
+}
+\begin{center}
+   \textit{En d'autres termes, l'image réciproque par \(X\) est un évenement.}
+\end{center}
+Cette contrainte s'explique par le fait qu'on veut pouvoir calculer la probabilité que \(X\) prenne ses valeurs dans \(B\), or si \(X^{-1}(\{B\})\) est bien un évenement \footnote[1]{Cette évenement, meme si \(B\) est un singleton, n'est en général \textbf{pas} un évenement élémentaire, mais bien une \textbf{partie} de \(\Omega\).}, alors sa probabilité est bien définie, on utilise alors usuellement la \textbf{notation} suivante:
+\[
+   X^{-1}(B) = \Bigl\{ \omega \in \Omega \; ; \;  X(\omega) \in B \Bigl\} \notationEq (X \in B)  
+\]
+
+En particulier, l'image réciproque des singletons est un événement et dans le cas de variables aléatoires \textbf{réelles}, on notera alors:
+\[
+   X^{-1}(a) = \Bigl\{ \omega \in \Omega \; ; \;  X(\omega) = a\Bigl\} \notationEq (X = a) \\
+\] 
+On peut aussi créer une notation qui s'applique si \(B\) est un intervalle\footnote[2]{La deuxième notation se décline évidemment dans tout les cas d'intervalles connus (ouverts, fermés, semi-ouverts...) et sur les encadrements.}, et on a:
+\[
+   X^{-1}\bigl(\ioo{a}{b}\bigl) = \Bigl\{ \omega \in \Omega \; ; \;  a < X(\omega) < b\Bigl\} \notationEq (a < X < b)
+\]
+
+\subsection*{\subsecstyle{Propriétés}}
+La famille \(((X = a))_{a \in X(\Omega)}\) est un \textbf{système complet d'évenements}, en effet car si on considère une issue \(\omega \in \Omega\), on a:
+\[
+   \begin{cases}
+      X(\omega) = x \implies \omega \in (X = x)\\  
+      X(\omega) \neq x \implies \omega \notin (X = x)   
+   \end{cases} 
+\]
+\begin{center}
+   \textit{On peut donc partitionner les éléments de \(\Omega\) selon leur image par \(X\)}
+\end{center}
+On peut aussi noter que si \(f\) est une application quelconque de \(E\) vers \(F\), alors \(f \circ X\) \textbf{est une variable aléatoire}.
+\pagebreak
+
+\subsection*{\subsecstyle{Loi d'une variable aléatoire réelle}}
+On a vu que \(\mathbb{P}\) mesure la vraisemblance de tous les événements, donc en particulier de tous les événements qu'on peut construire à partir d'une variable aléatoire \(X\) sur \(\Omega\).\<
+
+On appelle alors la \textbf{loi} de \(X\) pour la probabilité \(\mathbb{P}\) l'application:
+\[
+   \begin{aligned}
+      \mathbb{P}_X: B \in \mathscr{B} &\longrightarrow \icc{0}{1}\\
+      B &\longmapsto \mathbb{P}(X \in B)
+   \end{aligned}
+\]
+C'est une mesure de probabilité sur \(\R\), le triplet \((\R, \mathscr{B}, \mathbb{P}_X)\) est alors un espace probabilisé à part entière et les parties de \(\R\) sont alors des \textbf{évenements}.\<
+
+On appelle \textbf{support} de la loi l'ensemble des évenements \(B\) de \(\R\) tels que  \(\mathbb{P}_X(B) \neq 0\).\+
+
+\subsection*{\subsecstyle{Fonction de répartition}}
+On appelle \textbf{fonction de répartition} associée à une variable aléatoire la fonction telle que:
+\[
+   F_X(x) = \mathbb{P}(X \in \ioo{-\infty}{x})   
+\]
+On peut alors montrer qu'elle est caractérisée par les propriétés suivantes:
+\begin{itemize}
+   \item Elle est strictement croissante.
+   \item Elle tends vers \(0\) en \(-\infty\).
+   \item Elle tends vers \(1\) en \(+\infty\).
+   \item Elle est continue à droite.
+\end{itemize}
+\begin{center}
+   \textit{La fonction de répartition donne la probabilité d'avoir une valeur inférieure à une certaine autre.}
+\end{center}
+
+\subsection*{\subsecstyle{Indépendance}}
+On dira alors que deux variables aléatoires \(X, Y\) sont indépendantes si et seulement si pour tout couple \(x, y\), les évenements correspondants sont indépendants:
+\[
+   \mathbb{P}(X = x \cap Y = y) = \mathbb{P}(X = x)\mathbb{P}(Y = y)  
+\]
+Par ailleurs, si \(X, Y\) sont deux variables aléatoires, il existe une mesure de la dépendance (corrélation) de deux variables aléatoires appellée \textbf{covariance} définie dans la dernière partie.
+\chapter*{\chapterstyle{XII --- Variables discrètes}} % 95% Fini
+\addcontentsline{toc}{section}{Variables discrètes}
+On appelle \textbf{variable aléatoire discrète} toute variable aléatoire \(X\) telle que \(X(\Omega)\) soit fini ou dénombrable.
+
+\subsection*{\subsecstyle{Propriétés}}
+Dans ce cas particulier de variable aléatoire, on a alors la caractérisation suivante qui découle simplement du fait que les parties de l'image sont dénombrables, et donc on peut se ramener aux évenements élémentaires:
+\[
+   \mathbb{P}(X \in A) = \sum_{\omega \in A} \mathbb{P}(X = \omega) 
+\]
+
+\subsection*{\subsecstyle{Lois discretes usuelles}}
+On appelle \textbf{épreuve de Bernoulli} est une expérience aléatoire qui n'a que deux issues, usuellement nommées \textbf{succés et échec}.\<
+
+On note \(X \sim \mathcal{U}(E)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi uniforme} si la loi \(\mathbb{P}_X\) est la probabilité uniforme sur \(E\), ie si pour tout évenement \(A\), on ait:
+\[
+   \mathbb{P}_X(A) = \frac{|A|}{|E|}  
+\]
+On note \(X \sim \mathcal{B}(n, p)\)\footnote[1]{On peut remarquer ici que la loi de Bernoulli est un cas particulier de la loi binomiale pour \(n = 1\) et alors on a \(\mathbb{P}_X(\{k\}) = p\)} et on dit que la variable aléatoire \(X\) suit une \textbf{loi binomiale} de paramètre \((n, p)\) et  si \(X\) a ses images dans \(\{0, 1\}\) et si pour tout entier naturel \(k \leq n\) on a:
+\[
+   \mathbb{P}_X(\{k\}) = \binom{n}{k} \; p^k(1-p)^{n-k}
+\]
+
+On note \(X \sim \mathcal{G}(p)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi géométrique} sur \(\N^*\) de paramètre \(p\) si pour tout entier naturel \(k \geq 1\) on a:
+\[
+   \mathbb{P}_X(\{k\}) = p(1 - p)^{k - 1}
+\]
+On note \(X \sim \mathcal{H}(p, n, N)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi hypergéométrique} sur \(\N^*\) de paramètre \((p, n, N)\) si pour tout entier naturel \(k \geq 1\) on a:
+\[
+   \mathbb{P}_X(\{k\}) = \frac{\binom{pN}{k}\binom{(1-p)N}{n - k}}{\binom{N}{n}}
+\]
+On note \(X \sim \mathcal{P}(\lambda)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi de Poisson} sur \(\N^*\) de paramètre \((\lambda)\) si pour tout entier naturel \(k \geq 1\) on a:
+\[
+   \mathbb{P}_X(\{k\}) = \frac{\lambda^k}{k!}e^{-\lambda}
+\]\<
+
+La \textbf{loi binomiale} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de Bernoulli. \+
+La \textbf{loi géométrique} est utilisée pour déterminer la probabilité d'obtenir le premier succés à la \(k\)-ième itérations d'une épreuve de Bernoulli.\+
+La \textbf{loi hypergéométrique} est utilisée pour déterminer la probabilité d'obtenir \(k\) succés aprés \(n\) itérations d'une épreuve de tirage sans remise dans une urne contenant \(N\) boules, dont \(pN\) boules gagantes, et \((1-p)N\) boules perdantes, avec la contrainte que \(pN\) soit un entier.\+
+La \textbf{loi de Poisson} est utilisée pour déterminer le nombre d'événements se produisant dans un intervalle de temps fixé, si ces événements se produisent avec une fréquence moyenne connue, et indépendamment du temps écoulé depuis l'événement précédent\footnote[2]{C'est une loi qui s'obtient asymptotiquement à partir d'une variable aléatoire \(X \sim \mathcal{B}(T, \frac{\lambda}{T})\) en faisant tendre \(T\) vers l'infini.}.\+
+\chapter*{\chapterstyle{XII --- Variables continues}} % 75% Fini MAUVAISE FORMULATION
+\addcontentsline{toc}{section}{Variables continues}
+On considère maintenant un espace probabilisé \((\Omega, \mathcal{B}(\R), \mathbb{P})\) où l'ensemble des évènements \(\mathcal{B}(\R)\) est la \textbf{tribu borélienne} de \(\Omega\).\+
+On appelle alors \textbf{variable aléatoire continue} toute variable aléatoire \(X\) telle qu'il existe une fonction \(f_X\), positive, intégrable, continue par morceaux telle que:
+\[
+   \mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(t) \d t   
+\]
+On appellera alors \(f_X\) la \textbf{densité} de \(X\) et elle vérifie donc:
+\[
+   \int_{-\infty}^{+\infty} f(t) \d t = 1
+\]
+La densité définit alors exactement la  loi de la variable aléatoire et donc la probabilité d'un évemenent\footnote[1]{En particulier, on remarquera que la probabilité d'un intervalle réduit à un singleton est nulle, ie \(\mathbb{P}(X = x) = 0\).} donné \(A \in \mathscr{B}\) par:
+\customBox{width=5.5cm}{
+   \[
+      \mathbb{P}(X \in \icc{a}{b}) = \int_{a}^{b} f_X(t) \d t
+   \]
+}
+
+\underline{Exemple:} La variable aléatoire continue dont la densité est constante sur
+un intervalle \(I\)  est appellée loi continue uniforme sur \(I = \icc{a}{b}\) est définie\footnote[2]{La densité est contrainte par le fait de devoir être égale à 1, en particulier il suffit d'intégrer l'idéntité au dessus pour \(f(t)\) constante.} par la densité suivante:
+\[
+   \begin{aligned}
+      f: x &\longmapsto \begin{cases}
+         0 \text{ si } x  \notin I\\
+         \frac{1}{b - a} \text{ si } x \in I
+      \end{cases}
+   \end{aligned}
+\]
+
+\subsection*{\subsecstyle{Lois continues usuelles}}
+
+On note \(X \sim \mathcal{U}(\icc{a}{b})\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi uniforme} si la densité \(f_X\) est constante sur \(\icc{a}{b}\) et nulle en dehors.\+
+On note \(X \sim \mathcal{E}(\lambda)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi exponentielle} de paramètre \(\lambda\) ssi:
+\[
+   f_X(x) = \lambda\exp{(-\lambda x)} \; ; \; x \geq 0  
+\]
+On note \(X \sim \mathcal{N}(\mu, \sigma)\) et on dit que la variable aléatoire \(X\) suit une \textbf{loi normale} d'espérance \(\mu\) et d'écart-type \(\sigma\) ssi on a:
+\[
+   f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp{\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)}
+\]
+
+
+La \textbf{loi exponentielle} est utilisée pour modéliser le temps d'attente d'un phénomène sans mémoire, en particulier, c'est l'analogue continue de la loi géométrique\footnote[1]{Elle s'obtient asymptotiquement à partir d'une variable aléatoire \(X \sim \mathcal{G}(\lambda T)\) en faisant tendre \(T\) vers 0.}. \+
+La \textbf{loi normale} est fondamentale en probabilités du fait de son omniprésence dans les sciences expérimentales, en effet, un théorème fondamental montrera que la somme d'une suite de variables aléatoires (comprendre expériences) convergera vers une certaine loi normale. Elle est donc d'importance capitale en statistiques.\+
+\chapter*{\chapterstyle{XII --- Vecteurs aléatoires}} % 80% Fini
+\addcontentsline{toc}{section}{Couples aléatoires}
+
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et une variable aléatoire \(X : \Omega \longrightarrow \R^n\), on appelle alors \textbf{vecteur aléatoire} une telle variable et ses composantes \(X_1, \ldots, X_n\) sont alors des variables aléatoires réelles.\< 
+
+Dans ce chapitre nous considérerons seulement les vecteurs aléatoires de \(\R^2\), la plupart des propriétés se généralisant relativement aisément au cas général, et on notera alors \((X, Y)\) les variables aléatoires composantes.\<
+
+On appele alors \textbf{loi} de \(V\) la loi de la variable et \textbf{lois marginales} de \(V\) les lois de probabilités de ses composantes \(X\) et \(Y\).
+
+\subsection*{\subsecstyle{Cas discret}}
+Dans le cas ou le vecteurs \(V\) est un vecteur aléatoire \textbf{discret}, alors on a la loi de \(V\) donnée directement par la probabilité des évenements élémentaires, ie:
+\[
+   \mathbb{P}(V \in A) = \sum_{\omega \in A} \mathbb{P}(V = \omega)
+\]
+Les lois marginales sont obtenues aisément en \textbf{fixant} la variable considérée et en sommant sur les autres. Par exemple, la loi marginale de \(X\) est donnée par:
+\[
+   \mathbb{P}(X = x) = \sum_{y \in Y(\Omega)} \mathbb{P}(X = x, Y = y)
+\]
+Informellement, dans les cas discrets et simples (finis), on construit souvent un tableau en \((X, Y)\) donnant les différentes probabilités, et alors les lois marginales correspondraientt à la somme d'une colonne du tableau évoqué (par exemple).
+
+\subsection*{\subsecstyle{Cas continu}}
+On généralise la construction d'une variable aléatoire à densité, et on dira alors qu'un vecteur aléatoire est \textbf{continu} si et seulement si il existe une fonction, positive, intégrable \(f_V(x, y)\) et qui intègre à 1 telle que pour tout borélien \(B\), on ait:
+\[
+   \mathbb{P}(V \in B) = \iint_{\R^2} f(x,y)  \d x \d y
+\]
+De manière analogue au cas discret, les lois marginales sont obtenues en \textbf{fixant} la variable considèrée et en sommant (intégrant) sur l'autre, par exemple, la loi marginale de \(X\) est donnée par:
+\[
+   f_X(x) = \int_{\R} f(x,y) \d y
+\]
+
+\subsection*{\subsecstyle{Propriétés conservées}}
+On peut alors montrer que beaucoup de propriétés sont conservées lors de la généralisation à des vecteurs aléatoires:
+\begin{itemize}
+   \item La \textbf{formule de transfert} reste vraie en toutes dimensions.
+   \item Deux vecteurs sont \textbf{indépendants} si la probabilité de la concomitance est le produit de probabilités.
+\end{itemize}
+\chapter*{\chapterstyle{XII --- Indicateurs}} % 80% Fini
+\addcontentsline{toc}{section}{Indicateurs}
+
+Soit \((\Omega, \Pow(\Omega), \mathbb{P})\) un espace probabilisé fini et \(X, Y\) deux variables aléatoires réelles finies, on note \(\mathbb{P}_X\) et \(\mathbb{P}_Y\) leurs lois respectives. \+
+Soit \((\Omega, \mathcal{B}(\R), \mathbb{P})\) un espace probabilisé et \(W\) une variable aléatoires à densité dont on note la densité \(f\). \<
+
+On appelle \textbf{indicateur de position} un nombre réel permettant de situer les valeurs d'une série statistique, par exemple \textbf{la moyenne et la médiane} sont des indicateurs de position.\<
+
+On appelle \textbf{indicateur de dispersion} un nombre réel permettant de mesurer \textbf{la variabilité} des valeurs d'une série statistique autour d'une valeur (généralement autour de la moyenne), par exemple \textbf{la variance, l'écart-type ou l'écart interquartile} sont des indicateurs de dispersion.
+
+\subsection*{\subsecstyle{Esperance}}
+Dans cette partie, on peut remplacer \(X\) (variable simple) par \(Z = (X, Y)\) vecteur aléatoire, et calculer alors l'espérance de ce vecteur connaissant sa loi.\<
+
+L'espérance mathématique correspond à la moyenne théorique du résultat qu'on peut espérer avoir en répétant une expérience aléatoire un grand nombre de fois, c'est \textbf{la moyenne des valeurs de la variable aléatoire, pondérées par leur probabilités respectives}, ie on définit:
+\customBox{width=5.5cm}{
+   \[
+      \expectancy{X} := \sum_{x \in X(\Omega)} x\cdot\mathbb{P}_X(\{x\})
+   \]
+}
+
+L'esperance existe toujours dans le cas d'une variable aléatoire \textbf{finie} mais ce n'est pas le cas en général, et il faut alors étudier la convergence de la série. \<
+
+L'espérance possède plusieurs propriétés remarquables, elle est \textbf{linéaire et croissante}\footnote[1]{Croissante pour l'ordre des variables aléatoires, ie \(X \leq Y \Longleftrightarrow \forall \omega \in \Omega \; ; \; X(\omega) \leq Y(\omega)\)} et l'espérance d'une constante est cette constante,.\+
+Mais en général, l'espérance \textbf{n'est pas multiplicative}, c'est néanmoins le cas quand les deux variables aléatoires sont \textbf{indépendantes}.\<
+
+Par ailleurs, on a le \textbf{théorème de transfert}:
+\customBox{width=6.5cm}{
+   \[
+      \expectancy{\varphi(X)} = \sum_{x \in X(\Omega)} \varphi(x)\cdot\mathbb{P}_X(\{x\})
+   \]
+}
+
+Enfin, on appelle \textbf{variable centrée} une variable aléatoire d'espérance nulle\footnote[2]{On peut alors centrer une variable aléatoire par la translation \(X' = X - \expectancy{X}\).}.
+
+\subsection*{\subsecstyle{Variance}}
+On manque alors d'informations sur les valeurs de \(X\), elles peuvent tout aussi bien rester toujours très
+proches de \(\expectancy{X}\), ou s'en éloigner beaucoup, on a donc besoin de mesurer la distance moyenne entre \(X\) et \(\expectancy{X}\), qui serait alors \(\expectancy{| X - \expectancy{X} |}\).\+
+Cette formule est techniquement impraticable du fait de la valeur absolue, on utile donc \textbf{la moyenne des carrés des distances} entre \(X\) et \(\expectancy{X}\), et on définit alors la variance:
+\customBox{width=8cm}{
+   \(
+      \variance{X} := \expectancy{(X - \expectancy{X})^2} = \expectancy{X^2} - \expectancy{X}^2
+   \)
+}
+
+La deuxième expression apellée \textbf{formule de Koenig-Huygens} se déduit facilement de la première.
+\pagebreak
+
+On voit directement que la variance est \textbf{positive} (ou nulle si \(X\) est constante presque partout). \+
+La variance vérifie aussi les propriétés suivantes:
+\customBox{width=9cm}{
+   \begin{align*}
+      &\textbf{Invariante par translation} \;\; &&\variance{X + a} = \variance{X}\\
+      &\textbf{Quadratique}  \;\; &&\variance{\lambda X} = \lambda^2\variance{X}
+   \end{align*}
+}   
+
+On peut alors définir \textbf{l'écart-type} de la variable \(X\) qui est défini par \(\sigma(X) = \sqrt{\variance{X}}\)\<
+
+Enfin, on appelle \textbf{variable réduite} une variable aléatoire d'écart type \(1\) et on peut alors définir la \textbf{variable centrée réduite} associée à \(X\):
+\customBox{width=3.5cm}{
+   \[
+      X^*= \frac{X - \expectancy{X}}{\sigma(X)}  
+   \]
+}   
+
+
+\subsection*{\subsecstyle{Covariance}}
+Dans le cas d'un couple aléatoire et contrairement à l'espérance, le concept de variance perds son sens. Plutôt que de chercher un écart par rapport à la moyenne, on va préférer chercher \textbf{un écart moyen entre les deux variables}\footnote[1]{On remarque que la variance n'est alors que la covariance de \(X\) avec elle-même.} qui se définit par:
+\customBox{width=11cm}{
+   \(
+      \text{Cov}(X, Y) = \mathbb{E}\bigl[(X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\bigl] = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) 
+   \)
+}
+
+On remarque alors que si les deux variables aléatoires sont \textbf{indépendantes}\footnote[2]{Dans ce cas l'espérance est multiplicative.}, alors on a:
+\customBox{width=3.5cm}{
+   \(
+      \text{Cov}(X, Y) = 0
+   \)
+}
+Gràce à la covariance on peut aussi définir la variance d'une somme:
+\customBox{width=7.5cm}{
+   \(
+      \variance{X + Y} =   \variance{X} + \variance{Y} +  2\text{Cov}(X, Y)
+   \)
+}
+En particulier, la variance est alors \textbf{additive} quand les variables sont indépendantes.\<
+
+On peut montrer que la covariance est \textbf{bilinéaire, symétrique et positive}. Informellement c'est un \textit{``pseudo produit scalaire''} sur les variables aléatoires, néanmoins suffisament proche du produit scalaire pour avoir \textbf{l'inégalité de Cauchy-Schwartz}:
+\begin{align*}
+   |\text{Cov}(X, Y)| \leq \sigma(X)\sigma(Y)
+\end{align*}
+Plus précisément, considérons l'espace des variables aléatoires centrées réduites, alors c'est \textbf{un espace euclien}, et la covariance définit \textbf{produit scalaire} sur cet espace, l'écart type définit alors une \textbf{norme} et on peut définir le coefficient de corrélaition linéaire par:
+\[
+   \rho_{X, Y} = \frac{\text{Cov}(X, Y)}{\sigma(X)\sigma(Y)}
+\]
+Qui s'intérpréterait alors comme \textit{l'angle} entre les variable aléatoires.
+\pagebreak
+
+\subsection*{\subsecstyle{Espérance \& variances usuelles}}
+Il est intéressant de considérer les différents indicateurs de position et de dispersion des lois usuelles\footnote[1]{Pour la loi uniforme on considère \(X\) à valeurs dans \(\inticc{1}{n}\)}
+
+\begin{center}
+   \renewcommand{\arraystretch}{2}
+   \setlength{\tabcolsep}{18pt}
+   
+   \begin{tabular}{|c||c|c|}
+      \hline
+      Lois & \cellcolor{BrightBlue1!40} Espérance & \cellcolor{BrightBlue1!40} Variance \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{U}(E)\) & \(\frac{n+1}{2}\) & \(\frac{n^2 - 1}{12}\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{B}(n, p)\) & \(n\cdot p\) &  \(n\cdot p(1-p)\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{G}(p)\) & \(\frac{1}{p}\) & \(\frac{1-p}{p^2}\) \\ 
+      \hline
+      \cellcolor{BrightBlue1!40} \(X \sim \mathcal{H}(p, n, N)\) & \(n\cdot p\) & \(n\cdot p(1-p)\frac{N - n}{N - 1}\) \\ 
+      \hline
+   \end{tabular}
+\end{center}
+
+\subsection*{\subsecstyle{Inégalités}}
+On souhaite majorer la probabilité d'avoir des valeurs "extrèmes", ie éloignées de l'espérance, alors si \(X\) est une variable aléatoire à valeurs dans \(\R^+\) et \(\alpha \in \R^{+*}\) on peut montrer \textbf{l'inégalité de Markov}:
+\customBox{width=4.2cm}{
+   \[
+      \mathbb{P}(X \geq \alpha) \leq \frac{\expectancy{X}}{\alpha}
+   \]
+}
+Si la variable aléatoire admet une variance, on a alors \textbf{l'inégalité de Bienaymé-Tchebychev}:
+\customBox{width=5.5cm}{
+   \[
+      \mathbb{P}(|X - \expectancy{X}| \geq \alpha) \leq \frac{\variance{X}}{\alpha^2}
+   \]
+}
+Cette dernière est un cas particulier de la première mais est en général \textit{plus fine} que la majoration donnée par l'inégalité de Markov.
+
+
+\subsection*{\subsecstyle{Cas des variables à densité}}
+On étudie ici la variable à densité \(W\) dont la densité est notée \(f\), on considère \(W\) bornée à valeurs dans un intervalle \(I\).\+
+De manière analogue au cas discret\footnote[2]{Informellement, on somme ``continument'' les produits des valeurs prises par la variable pondérées par leurs probabilités (données par la densité).}, l'espérance de \(W\) est donnée par:
+\customBox{width=4.5cm}{
+   \[
+      \expectancy{W} := \int_{I} t \cdot f(t) \d t
+   \]
+}
+L'existence même de cette intégrale n'est pas acquise à priori, ie il est possible que \(f\) n'admette pas d'éspérance.
+Dans le cas où elle existe, les propriétés de l'espérance (linéarité, croissance) sont conservées, en particulier, le \textbf{théorème de transfet} est aussi conservé.\<
+
+Pour définir la variance d'une telle variable aléatoire, il faut alors que l'intégrale \(\expectancy{W^2}\) existe, et d'aprés le théorème de Koenig-Huyghens, on a alors: 
+\customBox{width=10cm}{
+   \[
+      \variance{W} := \expectancy{W^2} - \expectancy{W}^2 = \int_{I} t^2 \cdot f(t) \d t - \Bigl(\int_{I} t\cdot f(t) \d t\Bigl)^2
+   \]
+}
+Alors les propriétés de la variance sont elles aussi conservées.
+\chapter*{\chapterstyle{XII --- Convergences Stochastiques}} % 25% Fini
+\addcontentsline{toc}{section}{Convergences Stochastiques}
+On peut alors tenter de généraliser ce point de vue et considèrer des \textbf{suites} de variables aléatoires réelles, qu'on notera par la suite \((X_n)\), qui sont des \textbf{suites de fonctions} de \(\Omega\) dans \(\R\).\<
+
+Cette généralisation sera alors trés fructueuse, en effet par l'étude et la définition de différent \textit{modes de convergences} bien choisis de telles suites, on pourra alors démontrer les grands théorèmes probabilistes.
+
+\subsection*{\subsecstyle{Convergence en loi}}
+On dira que \(X_n\) \textbf{converge en loi} vers \(X\) si et seulement si pour tout \(x \in \R\), on a:
+\[
+   \mathbb{P}(X_n \leq x) \longrightarrow \mathbb{P}(X \leq x)
+\]
+On notera alors:
+\[
+   (X_n) \overset{\mathcal{L}}{\longrightarrow} X
+\]
+
+\subsection*{\subsecstyle{Convergence en probabilité}}
+On dira que \(X_n\) \textbf{converge en probabilité} vers \(X\) si et seulement si pour tout \(\epsilon > 0\), on a:
+\[
+   \mathbb{P}(|X_n - X| \leq \epsilon) \longrightarrow 1
+\]
+On notera alors:
+\[
+   (X_n) \overset{\mathcal{P}}{\longrightarrow} X
+\]
+
+\subsection*{\subsecstyle{Convergence presque sure}}
+On dira que \(X_n\) \textbf{converge presque surement} vers \(X\) si et seulement si on a:
+\[
+   \mathbb{P}\left(\lim_{n \rightarrow +\infty} X_n = X \right) = 1
+\]
+On notera alors:
+\[
+   (X_n) \overset{p.s.}{\longrightarrow} X
+\]
+
+\subsection*{\subsecstyle{Convergence $L^p$}}
+\chapter*{\chapterstyle{XII --- Théorèmes limites}} % 25% Fini
+\addcontentsline{toc}{section}{Théorèmes limites}
+
+Munis de nos nouveaux outils et modes de convergences des suites de variables aléatoires, on peut alors énoncer et démontrer les grands théorèmes probabilistes.
+
+\subsection*{\subsecstyle{Lois des grands nombres}}
+On se donne une suite de variables aléatoires indépendantes et identiquement distribuées (communément noté iid) \((X_n)\) admettant une espérance \(\mu\), et on pose une variable aléatoire appellée \textbf{moyenne\footnote[1]{Elle correspond à la moyenne faite sur les réalisations d'une expérience par exemple.} empirique}:
+\[
+   \overline{X}_n = \frac{1}{n}\sum_{k=1}^{n}X_k   
+\]
+Alors on peut montrer la loi \textbf{faible} des grands nombre, ie:
+\[
+   \overline{X}_n \overset{\mathcal{P}}{\longrightarrow} \mu
+\]
+Pour les memes hypothèses que précédemment la loi \textbf{forte} des grands nombres nous assure une convergence plus forte, ie on a:
+\[
+   \overline{X}_n \overset{p.s.}{\longrightarrow} \mu
+\]
+
+\subsection*{\subsecstyle{Théorème central limite}}
+On se donne une suite de variables aléatoires iid \((X_n)\) admettant une espérance \(\mu\) et un écart-type \(\sigma\) finis, alors on considère à nouveau la moyenne empirique:
+\[
+   \overline{X}_n = \frac{1}{n}\sum_{k=1}^{n}X_k   
+\]
+Mais cette fois on considère cette variable sous sa forme \textbf{centrée réduite}, qu'on notera \(\overline{X}_n^*\), alors le théorème central limite nous donne que:
+\[
+   \overline{X}_n^* \overset{\mathcal{L}}{\longrightarrow} \mathcal{N}(0, 1)
+\]

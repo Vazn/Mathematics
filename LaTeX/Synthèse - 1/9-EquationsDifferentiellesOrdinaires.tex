@@ -1,0 +1,77 @@
+\chapter*{\chapterstyle{IX --- Introduction}}
+\addcontentsline{toc}{section}{Introduction} 
+Soit \(E\) un espace vectoriel normé, \(U\) un \textbf{ouvert} de \(R\) et \(F\) une fonction \textbf{continue} sur \(U \times E^{n+1}\), alors on appelle \textbf{équation différentielle ordinaire} d'ordre \(n\) tout équation de la forme:
+\[
+   \forall x \in U \; ; \; F(x, y(x), \ldots, y^{(n)}(x)) = 0
+\]
+Où \(y\) est une fonction de \(\R\) dans \(E\) à déterminer. Par exemple, on pose:
+\[
+   \begin{cases}
+      F_1(x, y, y') = y'(x) - y(x)\\
+      F_2(x, y, y') = cos(x)y'(x) - y^2(x)\\
+      F_3(x, y, y') = 3 + arctan(x) + y'(x) - e^xy(x)\\ 
+      F_4(x, y, y', y'') = x^2 + 3y(x)y'(x) + cos(y''(x))
+   \end{cases} \implies
+   \begin{cases}
+      E_1 : y'(x) - y(x) = 0 \\
+      E_2 : cos(x)y'(x) - y^2(x) = 0 \\
+      E_3 : 3 + arctan(x) + y'(x) - e^xy(x) = 0 \\
+      E_4 : x^2 + 3y(x)y'(x) + cos(y''(x)) = 0
+   \end{cases}
+\]
+On peut aussi remarque que cette définition permet à \(y\) d'être à valeurs vectorielles et dans ce cas on obtient alors un \textbf{système différentiel}, par exemple pour \(E = \R^2\) et \(F_1\), on obtient:
+\[
+   E : \begin{cases}
+      y'_1(x) = y_1(x)\\
+      y'_2(x) = y_2(x)
+   \end{cases}
+\]
+\subsection*{\subsecstyle{Forme résolue{:}}}
+Dans des cas trés précieux, on peut isoler la plus grand dérivée, et on dira alors que l'équation différentielle est \textbf{sous forme résolue} si et seulement si il existe une fonction \(F\) continue sur \(U \times E^{n+1}\) telle que:
+\[
+   y^{(n)}(x) = F(x, y(x), \ldots, y^{(n-1)}(x))
+\]
+On ne s'intéressera souvent qu'à ce cas particulier pour simplifier la compréhension.
+\subsection*{\subsecstyle{Réduction de l'ordre{:}}}
+On se donne une équations différentielle résolue d'ordre \(n\), alors on pose:
+\[
+   Y(x) := \begin{pmatrix}
+      y(x)\\
+      y'(x)\\
+      \vdots\\
+      y^{(n-1)}(x)
+   \end{pmatrix} \quad \quad \quad \quad\quad
+   \mathbb{F}(x, Y(x)) := \begin{pmatrix}
+      y'(x)\\
+      y''(x)\\
+      \vdots\\
+      F(x, U)
+   \end{pmatrix}
+\]
+Alors on a directement que:
+\[
+   y^{(n)}(x) = F(x, y(x), \ldots, y^{(n-1)}(x)) \Longleftrightarrow Y'(x) = \mathbb{F}(x, Y(x))
+\]
+\begin{center}
+   \textit{Fondamentalement, comprendre les EDO à l'ordre 1 c'est comprendre toutes les EDO.}
+\end{center}
+
+\subsection*{\subsecstyle{Cas particuliers{:}}}
+On peut alors classifier 2 cas particuliers intéressants:
+\begin{itemize}
+   \item Les équations différentielles \textbf{linéaires}, ce qui signifie simplement que \(F\) est linéaire.
+   \item Les équations différentielles \textbf{autonomes}, ce qui signifie simplement que \(F\) ne dépends pas de \(x\).
+   \item Les équations différentielles \textbf{à paramètres}, ce qui signifie simplement que \(F\) dépends pas d'un paramètre \(\lambda\), on étudie alors une famille d'équations.
+\end{itemize}
+
+\chapter*{\chapterstyle{IX --- Résolution}}
+\addcontentsline{toc}{section}{Résolution} 
+
+\chapter*{\chapterstyle{IX --- Equations linéaires}}
+\addcontentsline{toc}{section}{Equations linéaires} 
+
+\chapter*{\chapterstyle{IX --- Equations non-linéaires}}
+\addcontentsline{toc}{section}{Equations non-linéaires} 
+
+\chapter*{\chapterstyle{IX --- Introduction à l'étude qualitative}}
+\addcontentsline{toc}{section}{Introduction à l'étude qualitative} 

@@ -1,0 +1,95 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   \subsection*{\subsecstyle{Expression matricielle d'une symétrie}}
+   \begin{proof}[\unskip\nopunct]
+      On veut montrer que \(s\) est une symétrie si et seulement si il existe une base \(\mathscr{B}\) de \(E\) dans laquelle elle est représenté par une matrice diagonale à coefficients dans \(\{-1, 1\}\), le cas est analogue pour les projections. On procède par double implication:\<
+
+      \uline{Sens Direct:} Supposons que \(s\) soit une symétrie par rapport à \(F\) et de direction \(G\), alors on considère une base \(\mathscr{B}_F = (e_1, \ldots, e_p)\) de \(F\) et une base \(\mathscr{B}_G = (e'_1, \ldots, e'_q)\) de \(G\), alors en sachant que \(F\) et \(G\) sont supplémentaires, on a que:
+      \[
+         \begin{cases}
+            p + q = \text{dim}(E)\\
+            \mathscr{B}_F \cup \mathscr{B}_G \text{ engendre } E
+         \end{cases}   
+      \]
+      En d'autres termes la famille suivante est une base de \(E\):
+      \[
+         \mathscr{B} = (e_1, \ldots, e_p, e'_1, \ldots, e'_q)
+      \]
+      Calculons la matrice de \(s\) dans cette base, on a directement que:
+      \[
+         \begin{cases}
+            \forall k \in \inticc{1}{p} ; s(e_k) = e_k - 0_G = e_k \quad \text{(Car ces \(e_k\) sont dans \(F\))}\\
+            \forall k \in \inticc{1}{q} ; s(e'_k) = 0_F - e'_k = -e'_k \quad \text{(Car ces \(e_k\) sont dans \(G\))}\\
+         \end{cases}   
+      \]
+      Donc en passant aux coordonées on a bien que la matrice de \(s\) dans cette base bien choisie est:
+      \[
+         \begin{pmatrix}
+            1 & 0 & \ldots & 0 & 0\\
+            0 & 1 & \ldots & 0 & 0\\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            0 & 0 & \ldots & -1 & 0\\
+            0 & 0 & \ldots & 0 & -1\\
+         \end{pmatrix}   
+      \]
+      Ici on montre à la fois qu'une telle base existe et que si elle est adaptée la matrice est sous forme par blocs:
+      \[
+         \left(\begin{array}{c|c}
+            1 & 0\\
+            \hline\\[-1.7\medskipamount]
+            0 & -1
+         \end{array}\right)
+      \]
+      \uline{Sens Réciproque:} Supposons qu'une application linéaire \(f\) ait pour représentation matricielle dans une base \(\mathscr{B} = (e_1, \ldots, e_n)\) une matrice de la forme:
+      \[
+         \begin{pmatrix}
+            \pm 1 & 0 & \ldots & 0 & 0\\
+            0 & \pm 1 & \ldots & 0 & 0\\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            0 & 0 & \ldots & \pm 1 & 0\\
+            0 & 0 & \ldots & 0 & \pm 1\\
+         \end{pmatrix}   
+      \]
+      On remarque tout d'abord que si tout les coefficients sont de meme signe, la symétrie est triviale, donc on suppose par la suite qu'ils ne sont pas tous de meme signe et donc il existe donc un entier \(p\) tel qu'il y ait \(p\) fois le coefficient \(1\) et \(n-p\) fois le coefficient \(-1\) dans cette matrice.\<
+
+      On considère alors la famille \((e'_1, \ldots e'_n)\) constituée par permutation des vecteurs de la base initiale de telle sorte que les \(p\) premiers aient pour image \(1\) et les \(n-p\) derniers aient pour image \(-1\).\<
+
+      Soit \(u \in E\), on calcule alors l'image de ce vecteur dans cette nouvelle famille et on a directement:
+      \[
+         f(u) = u_1e'_1 + u_2e'_2 + \ldots u_{p}e'_{p} - u_{p+1}e'_{p+1} - \ldots - u_ne'_n
+      \]
+      Si on pose \(F = \text{Vect}(e'_1, \ldots, e'_{p})\) et \(G = \text{Vect}(e'_{p+1}, \ldots, e'_n)\), alors on a bien que \(E = F \oplus G\) car la famille \((e'_1, \ldots, e'_n)\) n'est qu'une permutation des vecteurs de la base initiale et on a:
+      \[
+         f(u) = u_1e'_1 + u_2e'_2 + \ldots u_{p}e'_{p} - u_{p+1}e'_{p+1} - \ldots - u_ne'_n = u_F - u_G
+      \]
+      La fonction \(f\) est donc bien une symétrie par rapport à \(F\) de direction \(G\).
+   \end{proof}
+
+   \subsection*{\subsecstyle{Caractérisation des projecteurs}}
+      Soit \(f \in \mathcal{L}(E)\), on veut montrer que si \(f \circ f = f\), alors \(f\) est un projecteur, le cas est analogue pour les symétries.\<
+      
+      i) On sait que \(f \circ f = f\), ie que \(f \circ f - f = 0_{\mathcal{L}(E)}\), donc en particulier le polynome \(X^2 - X = X(X - 1)\) est annulateur et il est scindé à racines simples, donc \(f\) est diagonalisable.\<
+
+      ii) \(X, X-1\) sont premier entre eux et \(X(X-1)\) annule \(f\), donc d'aprés le lemme des noyaux, on a:
+      \[
+         E = \Ker{f} \oplus \Ker{f - 1}
+      \]
+      Ou simplement par caractérisation de la diagonalisabilité, on peut décomposer \(E\) en somme directe de sous-espaces propres. (L'égalité est vraie sans nécessiter la diagonalisabilité, mais alors les noyaux peuvent etre triviaux dans la somme directe.)\<
+
+      iii) Soit \(u \in E\), alors d'aprés la question précédente, \(u = u_{E_0} + u_{E_1}\) avec \(E_0, E_1\) les noyaux ci-dessus. il reste à montrer que \(f(u)\) est bien un projecteur sur \(E_1\) de direction \(E_0\).\<
+
+      Calculons \(f(u)\), on a \(f(u) = f(u_{E_0} + u_{E_1}) = f(u_{E_0}) + f(u_{E_1})\) par linéarité, puis on sait que:
+      \[
+         \begin{cases}
+            f(u_{E_0}) = 0_E\\
+            (f - \text{Id})(u_{E_1}) = 0_E
+         \end{cases}  
+      \]
+      Finalement en utilisant ces identités, on obtient bien que:
+      \[
+         f(u) = 0_E + u_{E_1} = u_{E_1}
+      \]
+      Et donc \(f\) est bien le projecteur sur \(E_1\) de direction \(E_0\).
+\end{document}

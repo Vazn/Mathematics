@@ -1,0 +1,116 @@
+\chapter*{\chapterstyle{VIII --- Introduction}} % A REFAIRE
+\addcontentsline{toc}{section}{Introduction} 
+Dans ce chapitre nous étudirons les propriétés des fonctions définies sur l'ensemble des complexes. En particulier nous chercherons à définir une notion de \textbf{différentielle} puis une notion \textbf{d'intégrale} pour ces fonctions et enfin étudier les propriétés des ces deux constructions.\+
+
+On rapelle à tout fins utiles \(\C\) est défini par la structure \((\R^2, +, \times)\) avec une multiplication définie par:
+\[
+   (a, b)(c, d) = (ac - bd, ad + bc)
+\]
+On rapelle aussi que l'on a \(\C \cong \R^2\) et en particulier la représentation des nombres complexes en tant que couple nous donne une représentation de la multiplication complexe par le produit matriciel suivant:
+\[
+   (a + bi)(c + di) = ac - bd + i(ad + bc) \sim (ac - bd, ad + bc) =  \begin{pmatrix}
+      a & -b \\
+      b & a
+   \end{pmatrix} \begin{pmatrix}  c \\ d \end{pmatrix}
+\]
+\subsection*{\subsecstyle{Applications conformes {:}}}
+On appelle \textbf{application conforme} toute application qui préservent les angles. En particulier, si on se donne \(\Gamma\) une courbe paramétrée par \(\gamma\) sur \(I\), et \(f\) un application, alors on dira:
+
+est conforme si et seulement si
+
+
+\chapter*{\chapterstyle{VIII --- Fonctions Holomorphes}} % A REFAIRE
+\addcontentsline{toc}{section}{Fonctions Holomorphes} 
+On définit ici la notion de \textbf{différentielle complexe}, qui sera une généralisation directe de la différentielle dans le cas réel, en effet on dira que \(f\) est \textbf{différentiable} en \(a\) si et seulement si le taux d'accroissement suivant, appelée dérivée de \(f\) en \(a\) existe:
+\[
+   \lim_{z \rightarrow a} \frac{f(z) - f(a)}{z - a} = f'(a)
+\]
+Où de manière équivalente si il existe une application \(\C\)-linéaire \(A\) telle que dans un voisinage de \(a\) on ait:
+\[
+   f(z) - f(a) - A(z - a) = o(z - a)
+\]
+On peut alors définir la différentielle de \(f\) en chaque point où elle existe par:
+\[
+   df : a \in \C \mapsto f'(a)dz
+\]
+On dira alors que \(f\) est holomorphe sur un ouvert si elle y est holomorphe en tout point, et qu'elle est \textbf{entière} si elle est holomorphe sur \(\C\).
+\subsection*{\subsecstyle{Propriétés opératoires{:}}}
+En particulier, vu que la définition de la différentielle est analogue à la différentielle réelle, on a alors (par les mêmes démonstrations) toutes les propriétés opératoires de l'opérateur de différentiation, en particulier:
+\begin{itemize}
+   \item La différentiation est un opérateur linéaire.
+   \item La différentiation d'un produit suit la règle de Leibniz.
+   \item La différentiation d'une composée suit la règle réelle de différentiation d'une composée.
+   \item Le théorème d'inversion local nous donne la différentielle d'une réciproque.
+\end{itemize}
+
+\subsection*{\subsecstyle{Différences avec la différentiation réelle {:}}}
+Ici on remarque tout de suite la différence notable qui est que la différentielle, qu'on sait être un champ de formes linéaires, est en fait un champ de forme \(\K\)-linéaires selon le corps dans lequel on différentie, ici on nécéssite que la forme soit \(\C\)-linéaire, ce qui va changer ses propriétés.\<
+
+En particulier, on considère une fonction holomorphe \(f\) et on va calculer sa différentielle en \(z\) selon deux restrictions, une par valeurs \textbf{réelles uniquement}, l'autre par valeurs \textbf{imaginaires uniquement}, on obtient alors les deux taux d'accroissements suivants:
+\[
+   \lim_{h \underset{\R}{\rightarrow} 0} \frac{f(z + h) - f(z)}{h} \quad \quad \quad \lim_{h \underset{i\R}{\rightarrow} 0} \frac{f(z + h) - f(z)}{h}
+\]
+On sait qu'à tout fonction complexe, on peut associer une fonction sur \(\R^2\), et on va alors étudier les propriétés de ces taux d'accroissements en identifiant \(f(z) \sim f(x, y) = u(x, y) + iv(x, y)\), qui est bien différentiable au sens réel. En développant les taux d'accroissements ci-dessus en \((u, v)\), on obtient alors les deux égalités suivantes:
+\[
+   \begin{cases}
+      f'(x, y) = \partialD{u}{x}(x, y) + i\partialD{v}{x}(x, y)\\
+      f'(x, y) = \partialD{v}{y}(x, y) - i\partialD{u}{y}(x, y)
+   \end{cases}
+\]
+Et enfin en regroupant ces égalités et en identifiant les parties réelles et imaginaires, on obtient alors que tout fonction holomorphe vérifie les \textbf{équations de Cauchy-Riemann}:
+\[
+   \begin{cases}
+      \partialD{u}{x}(x, y) = \partialD{v}{y}(x, y)\\
+      \partialD{v}{x}(x, y) = \partialD{u}{y}(x, y)
+   \end{cases}
+\]
+\pagebreak 
+\subsection*{\subsecstyle{Equations de Cauchy-Riemann{:}}}
+En fait, on peut même montrer que ces équations caractérisent l'holomorphie, en effet pour \(f : \C \rightarrow \C\), on a:
+\begin{center}
+   \textbf{Si est différentiable \textbf{au sens réel} et vérifie les équations de Cauchy-Riemann, alors elle est holomorphe et réciproquement.}
+\end{center}
+\uline{Exemple:} Considérons la fonction \(f(z) = \overline{z}\), alors on a \(f(z) \sim f(x, y) = x - iy\) différentiable sur tout son domaine de définition mais on a:
+\[
+   \partialD{u}{x} = 1 \neq -1 = \partialD{v}{y} 
+\]
+Donc nécéssairement, la fonction conjugué n'est donc \textbf{pas holomorphe}.
+\subsection*{\subsecstyle{Equations de Laplace{:}}}
+On appelle \textbf{équations de Laplace} une équation aux dérivées partielles de la forme:
+\[
+   \partialD{{}^2f}{x_1^2} + \ldots + \partialD{{}^2f}{x_n^2} = 0
+\]
+Et on appelle alors \textbf{Laplacien} l'opérateur suivant:
+\[
+   \Delta = \partialD{{}^2}{x_1^2} + \ldots + \partialD{{}^2}{x_n^2}
+\]
+On appellera alors toute fonction solution des équations de Laplace \textbf{fonction harmonique}, et un des résultats intéressants de l'analyse complexe permet de montrer le résultat suivant:
+\begin{center}
+   \textbf{Toute fonction analytique telle que ses dérivées partielles secondes soient continues est harmonique.}
+\end{center}
+\chapter*{\chapterstyle{VIII --- Intégration Complexe}} % A REFAIRE
+\addcontentsline{toc}{section}{Intégration Complexe} 
+On cherche maintenant à définir une notion \textbf{d'intégrale} pour les fonctions complexe, plus précisément nous allons définir l'intégrale d'une fonction continue \(f\) le long d'une courbe paramétrée par \(\gamma\) sur \(\icc{a}{b}\), qui sera défini par l'intégrale suivante:
+\[
+   \int_{\gamma} f d\gamma = \int_{a}^{b} f(\gamma(t))\gamma'(t) \d t
+\]
+L'intérprétation géométrique n'est pas évidente, mais peut s'éclaircir si on considère \(f(z) \sim f(x, y)\) et \(\overline{f}(z) = f(x, -y)\) le (champ vectoriel) conjugué de \(f\) apellé \textbf{champ de Pòlya}, alors on a pour des notations usuelles:
+\[
+   \int_{\gamma} f d\gamma = \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{T(t)} \d t + i \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{N(t)}  \d t
+\]
+En d'autres termes, cette intégrale encapsule \textbf{le travail et le flux du champ de Pòlya}.
+
+\subsection*{\subsecstyle{Théorème fondamental de l'analyse complexe{:}}}
+On se donne une fonction continue \(f\) tel que \(f =  F'\) pour une certaine fonction holomorphe \(F\) et on se donne un chemin paramétré par \(\gamma\) sur \(\icc{a}{b}\) et on cherche à calculer l'intégrale le long de ce chemin, alors on trouve:
+\begin{align*}
+   \int_{\gamma} f \d \gamma &:= \int_{a}^{b} F'(\gamma(t))\gamma'(t)\d t = \int_{a}^{b} (F \circ \gamma)'(t) \d t = F(\gamma(b)) - F(\gamma(a))
+\end{align*}
+Ce n'est pas surprenant quand on comprends la dualité qui existe entre fonction complexe et champ vectoriel, ce n'est alors qu'un cas particulier du \textbf{théorème du gradient} vu en analyse vectorielle. Et aussi, comme énoncé dans le chapitre en question, c'est aussi un cas particulier du \textbf{théorème de Stokes} pour la forme différentielle exacte \(f(z)dz\).
+
+
+\chapter*{\chapterstyle{VIII --- Quelques extensions}} % A REFAIRE
+\addcontentsline{toc}{section}{Quelques extensions} 
+
+
+\chapter*{\chapterstyle{VIII --- Grands Théorèmes}} % A REFAIRE
+\addcontentsline{toc}{section}{Grands Théorèmes} 

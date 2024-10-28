@@ -1,0 +1,57 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Catégories}}
+\subsection*{\subsecstyle{Produit{:}}}
+On considère une catégorie \(\mathcal{C}\) (penser \textbf{Set}) et une famille d'objets \((X_i)\) de celle-ci, alors on appelle \textbf{produit} des \(X_i\), si il existe, un objet \(X\) de \(\mathcal{C}\) ainsi que \(\pi_i : X \longrightarrow X_i\) des morphismes qu'on appelera à bon escient \textbf{projections} tels que:
+\begin{center}
+   \textbf{Pour tout autre objet \(Y\) de \(\mathcal{C}\) et \(f_i : Y \longrightarrow X_i\), il existe un unique morphisme \(f\) tel que \(\pi_i \circ f = f_i\)}
+\end{center}
+En particulier, cela équivaut à la commutation du diagramme suivant:
+\begin{center}
+   \adjustbox{scale=1.5,center}{
+      \begin{tikzcd}[column sep=large, row sep=large]
+         & X \arrow[d, "\pi_i"]\\
+         Y \arrow[ru, "f", dashed] \arrow[r, "f_i"] & X_i
+      \end{tikzcd}
+   }
+\end{center}
+Maintenant qu'elle est \textbf{l'idée} derrière cette horreur ? Et finalement:
+\begin{center}
+   \textit{Qu'est qu'un produit (cartésien) ?}
+\end{center}
+Fondamentalement un produit de \textbf{deux} ensembles \(A, B\) c'est un autre ensemble \(A \times B\) qu'on peut munir de projections canoniques trivialement et tels que si on prends une fonction d'un ensemble \(Y\) dans \(A\) (ou \(B\)), alors on peut \textbf{la faire passer} par \(A \times B\).\<
+
+En d'autres termes, n'importe quelle fonction de \(Y \longrightarrow A\) est égale à une (unique) fonction \(Y \longrightarrow A \times B\) suivie de la projection canonique, avec la suite de transformations:
+\[
+   Y \dashrightarrow A \times B \hookrightarrow A
+\]
+
+\subsection*{\subsecstyle{Coproduit{:}}}
+On considère une catégorie \(\mathcal{C}\) (penser \textbf{Set}) et une famille d'objets \((X_i)\) de celle-ci, alors on appelle \textbf{coproduit} des \(X_i\), si il existe, un objet \(X\) de \(\mathcal{C}\) ainsi que \(\phi_i : X_i \longrightarrow X_i\) des morphismes qu'on pour appeler à bon escient \textbf{injections} tels que:
+\begin{center}
+   \textbf{Pour tout autre objet \(Y\) de \(\mathcal{C}\) et \(f_i : X_i \longrightarrow Y\), il existe un unique morphisme \(f\) tel que \(f \circ \phi_i = f_i\)}
+\end{center}
+En particulier, cela équivaut à la commutation du diagramme suivant:
+\begin{center}
+   \adjustbox{scale=1.5,center}{
+      \begin{tikzcd}[column sep=large, row sep=large]
+         & X \arrow[dl, "f", dashed, swap]\\
+         Y & X_i \arrow[u, "\phi_i", swap] \arrow[l, "f_i", swap] 
+      \end{tikzcd}
+   }
+\end{center}
+Maintenant qu'elle est \textbf{l'idée} derrière cette (deuxième) horreur ? Et finalement:
+\begin{center}
+   \textit{Qu'est qu'un union disjointe ?}
+\end{center}
+Fondamentalement une union disjointe de \textbf{deux} ensembles \(A, B\) c'est un autre ensemble \(A \bigsqcup B\) qu'on peut munir d'injections canoniques trivialement et tels que si on prends une fonction de \(A\) (ou \(B\)) dans un ensemble \(Y\) , alors on peut \textbf{la faire passer} par \(A \bigsqcup B\).\<
+
+En d'autres termes, n'importe quelle fonction de \(A \longrightarrow Y\) est égale à une (unique) fonction \(A \bigsqcup B \longrightarrow Y\) précédée de l'injection canonique avec la suite de transformations:
+\[
+   A \hookrightarrow A \bigsqcup B \dashrightarrow Y
+\]
+On remarque bien l'intéressante dualité produit/coproduit, on a d'une certaine manière assez peu claire conceptuellement \textit{"seulement changé le sens des fleches"}, il y a une symétrie évidente.
+
+\end{document}

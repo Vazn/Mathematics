@@ -1,0 +1,164 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+   Soit \(P \in K[X]\), \(\alpha \in \K^*\) et \(m \in \N\), on notera \(\tilde{P}\) la fonction polynomiale associée à \(P\).
+   \subsection*{\subsecstyle{15 - Degré de la somme}}
+   Soit \(P, Q\) des polynomes de degrés respectifs \(p, q\) et qu'on note respectivement \((a_n), (b_n)\), alors:
+   \[
+      P+Q = (c_n) \text{ telle que } c_n = \sum_{k=0}^n a_k + b_{k}
+   \]
+   Si \(p = q\), on a \(c_n = 0\) a partir du rang \(p + 1\) par définition du degré et donc les indices des termes non nuls sont tous inférieurs à \(p\) (et donc à \(q\)) et on a \(\deg(P+Q) \leq \max\{\deg(P), \deg(Q)\}\).\<
+
+   Si \(p \neq q\), alors on peut considèrer sans perte de généralité que \(p < q\).\+
+   Tout d'abord, on a \(c_n = 0\) a partir du rang \(q + 1\), et on a \(c_q = b_q \neq 0 \) donc \(\deg(P+Q) = \max\{\deg(P), \deg(Q)\}\)
+
+   \subsection*{\subsecstyle{16 - Degré du produit}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \(P, Q\) des polynomes de degrés respectifs \(p, q\) et qu'on note respectivement \((a_n), (b_n)\), alors:
+      \[
+         PQ = (c_n) \text{ telle que } c_n = \sum_{k=0}^n a_kb_{n-k}
+      \]
+      On a alors:
+      \begin{flalign*}
+         c_{p+q} &= \sum_{k=0}^{p+q}a_kb_{p+q-k} \\
+         &= \sum_{k=0}^{p-1}a_kb_{p+q-k} + a_pb_q + \sum_{k=p+1}^{q}a_kb_{p+q-k} \shorteqnote{(On sépare la somme en trois.)}\\
+         &= 0 + a_pb_q + 0 \shorteqnote{(Dans la première somme \(p+q-k > q\) et dans la seconde \(k > p\))}\\
+         &= 1 \shorteqnote{(Car par définition du degré \(a_n, b_n \neq 0)\)}
+      \end{flalign*}
+      On a donc montré que \(\deg(PQ) \geq p+q\).
+      Réciproquement, si \(k > p+q\):
+      \begin{flalign*}
+         c_{k} &= \sum_{i=0}^{k}a_ib_{k-i} \\
+         &= \sum_{i=0}^{p}a_ib_{k-i} + \sum_{i=p+1}^{k}a_ib_{k-i}\\
+         &= 0 \shorteqnote{(Car le second terme de la première somme est toujours nul et inversement.)}
+      \end{flalign*}
+      En effet, pour la première somme \(k - i > q\) et pour la seconde \(i > p\).
+
+      Donc \(\deg(PQ) \leq p+q\) et donc on a bien montré l'égalité.
+   \end{proof}
+   
+   \subsection*{\subsecstyle{17 - Caractérisation d'une racine}}
+   \begin{proof}[\unskip\nopunct]
+      Montrons la propriété suivante par double implication: 
+      \[
+         \tilde{P}(\alpha) = 0 \Longleftrightarrow (X - \alpha) \mid P
+      \]
+
+      Supposons que \(\tilde{P}(\alpha) = 0\), on sait par le théorème de la division euclidienne qu'il existe des uniques \(Q, R \in K[X]\) tels que: 
+      \[
+         P = (X - \alpha)Q + R \text{ avec } \deg(R) < \deg(X- \alpha) = 1
+      \]
+      Donc \(R\) est un polynome constant, or si on évalue le polynome en \(\alpha\), on obtient:
+      \begin{flalign*}
+         \tilde{P}(\alpha) 
+         &= (\alpha - \alpha)\tilde{Q}(\alpha) + \tilde{R}(\alpha)\\ 
+         &= \tilde{R}(\alpha)\\
+         &= 0 \shorteqnote{(Par hypothèse car \(\tilde{P}(\alpha) = 0\))}
+      \end{flalign*}
+      Donc le reste est bien le polynome nul et on a la première implication. \<
+
+      Réciproquement si \((X - \alpha) \mid P\), par définition, on a \(P = (X - \alpha)Q\) dont la fonction polynomiale associée s'annulera bien en \(\alpha\).
+   \end{proof}
+   
+   \subsection*{\subsecstyle{18 - Nombre maximal de racines}}
+   \begin{proof}[\unskip\nopunct]
+      On considère ici que \(\deg(P) = n \geq 1\), et on veut montrer que \(P\) admet au plus \(n\) racines distinctes.\<
+
+      Supposons par l'absurde qu'il admette \(p > n\) racines distinctes, qu'on note \(\alpha_1, \ldots, \alpha_p\). D'aprés le théorème fondamental, on sait donc que: 
+      \[
+         \prod_{k=1}^{p}(X - \alpha_k) \mid P
+      \]
+      On a donc \(P = \prod_{k=1}^{p}(X - \alpha_k)Q\) pour un certain \(Q \in \K[X] \, \backslash \, \{0\}\) (non-nul car \(P\) non-nul) qui est absurde.\<
+      
+      En effet le degré du membre de gauche est par hypothèse \(n\) et celui du membre de droite est d'au moins \(p\) (on a un produit de \(p\) monomes de degré 1, donc on applique la formule du degré d'un produit).
+   \end{proof}
+   
+   \subsection*{\subsecstyle{19 - Multiplicité au moins \(m\)}}
+   \begin{proof}[\unskip\nopunct]
+      Montrons la propriété suivante par double implication:
+      \[
+         \text{mult}(\alpha) \geq m \Longleftrightarrow (X-\alpha)^m \mid P
+      \]
+      Supposons que \(\text{mult}(\alpha) = n \geq m\), alors on a:
+      \[
+         (X - \alpha)^{m} \mid  (X - \alpha)^{n}
+      \]
+      Or par définition de la multiplicité on a aussi:
+      \[
+         (X - \alpha)^n \mid  P \quad\quad \text{ ET } \quad\quad (X - \alpha)^{n+1} \nmid P   
+      \]
+      Finalement en combinant ces informations on a:
+      \[
+         (X - \alpha)^{m} \mid  (X - \alpha)^{n} \mid P
+      \]
+      Et on conclut par transitivé de la relation de divisibilité.\<
+   
+      Réciproquement par l'absurde, si on a \((X - \alpha)^m \mid P\) et \(n < m\), alors \(n + 1 \leq m\), alors on a:
+      \[
+         (X - \alpha)^{n+1} \mid (X - \alpha)^{m} \mid P
+      \]
+      Et donc par transitivité:
+      \[
+         (X - \alpha)^{n+1} \mid P
+      \]
+      Ce qui est absurde par définition de la multiplicité.
+   \end{proof}
+   \pagebreak
+
+   \subsection*{\subsecstyle{20 - Caractérisation de la multiplicité I}}
+   \begin{proof}[\unskip\nopunct]
+      Montrons la propriété suivante pas double implication:
+      \begin{align*}
+         \text{mult}(\alpha) = m &\Longleftrightarrow P = (X - \alpha)^mQ \quad \text{ ET } \quad Q(\alpha) \neq 0\\
+         &\Longleftrightarrow (X - \alpha)^m \mid P \quad \text{ ET } \quad Q(\alpha) \neq 0
+      \end{align*}
+
+      Si mult(\(\alpha\)) = m, alors par définition cela signifie que: 
+      \[
+         (X - \alpha)^m \mid P \quad \quad \text{ ET } \quad\quad (X - \alpha)^{m+1} \centernot \mid P
+      \]
+      Supposons par l'absurde que \(Q(\alpha) = 0\), on a alors:
+      \[
+         P = (X - \alpha)^mQ \text{ avec } Q = (X-\alpha)Q'
+      \]
+      Et donc \((X-\alpha)^{m+1} \mid P\) ce qui est absurde, donc \(Q(\alpha \neq 0)\)\<
+
+      Réciproquement si il existe \(Q \in \K[X] \backslash \, \{0\}\) tel que \(P = (X-\alpha)^mQ\), alors on voit directement que \((X-\alpha)^m\) divise \(P\) et si \((X-\alpha)^{m+1}\) divisait \(P\), on aurait pour un certain \(Q' \in \K[X]\):
+      \[
+         P = (X - \alpha)^m (X-\alpha)Q'   
+      \]
+      Et donc \(Q = (X-\alpha)Q' \) et en particulier \(\alpha\) serait une racine de \(Q\) ce qui est absurde.
+   \end{proof}
+   
+   \subsection*{\subsecstyle{21 - Caractérisation de la multiplicité II}}   
+
+   \subsection*{\subsecstyle{22 - Les polynomes complexes sont scindés}}
+   \begin{proof}[\unskip\nopunct]
+      Soit \(P \in \C[X]\) un polynome complexe, montrons par réccurence sur le degré de \(P\) qu'il est scindé, ie montrons que:
+      \[
+         \forall n \in \N ; \exists a  \in \C ; \exists z_1, \ldots z_n \in \C^n; P_n = a(X-z_1)\ldots (X-z_n)
+      \]
+      \underline{Initialisation:} 
+      
+      On considère que \(P\) est de degré 1, alors d'aprés le théorème de d'Alemenbert-Gauss, il admet une racine \(z_1\) et donc \(P = a(X-z_1)\) pour un certain \(a\) non-nul.\<
+
+      \underline{Hérédité:} 
+      
+      Supposons \(P_k\) vraie pour \(k \geq 0\), ie on suppose que tout polynome de degré \(k\) s'écrit sous la forme \(a(X-z_1)\ldots(X-z_k)\).\<
+
+      Soit \(P_{k+1}\) un polynome de degré \(k+1\), d'aprés le théorème de d'Alembert-Gauss, il admet une racine qu'on notera \(z_{k+1}\), et on a alors:
+      \[
+         P_{k+1} = (X - z_{k+1})Q
+      \]
+      Avec \(Q\) un polynome de degré \(k\), alors d'aprés l'hypothèse de récurrence, on a:
+      \[
+         Q = a(X-z_1)\ldots(X-z_k) 
+      \]
+      Et donc par suite:
+      \[
+         P_{k+1} = a(X-z_1)\ldots(X-z_{k+1}) 
+      \]
+   \end{proof}
+
+\end{document}

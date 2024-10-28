@@ -1,0 +1,119 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+\chapter*{\chapterstyle{Homotopie}}
+Dans toute la suite, on considèrera \(X, Y\) trois espaces topologiques quelconques, on cherche alors classifier les invariants algébriques des espaces topologiques. Mais aussi on cherchera à comprendre le comportement topologique des applications continues entre ces espaces, c'est ceci que nous appelerons \textbf{homotopie} et qui sera la pierre de voute de la topologie algébrique élémentaire car elle permettra de définir des \textbf{groupes} "classifiants" sur les espaces topologiques.\<
+
+\subsection*{\subsecstyle{Homotopie{:}}}
+On considère deux applications continues \(f, g : X \longrightarrow Y\), on considère alors les applications de la forme:
+\[
+   \begin{aligned}
+      H : \icc{0}{1} &\longrightarrow \mathscr{F}(X, Y)\\
+      t &\longmapsto H(t)
+   \end{aligned}
+\]
+Ces applications sont clairement des chemins dans l'espace fonctionnel \(\mathscr{F}(X, Y)\), on veut alors que la contrainte suivante soit vérifiée:
+\[
+   \begin{cases}
+      H(0) &= f\\
+      H(1) &= g
+   \end{cases}
+\]
+En d'autres termes, ce chemin \textbf{relie} \(f\) et \(g\). Mais on veut aussi que cette application soit \textbf{continue en ses deux variables}, ie que l'application \textbf{décurryfiée} suivant soit continue:
+\[
+   \begin{aligned}
+      H : \icc{0}{1} \times X &\longrightarrow Y\\
+      (t, x) &\longmapsto H(t)(x) = H(t, x)
+   \end{aligned}
+\]
+On dira alors que \(H\) est une \textbf{homotopie} entre \(f, g\) et que ces deux fonctions sont homotopes. Cela signifera alors moralement qu'on peut passer d'une de ses fonctions à l'autre continument par un chemin fonctionnel. On verra par la suite des exemples d'applications homotopes facilement illustrables.
+
+\subsection*{\subsecstyle{Homotopie des lacets{:}}}
+On définit alors un cas particulier d'homotopie trés important, il s'agit de l'homotopie des lacets de \(X\) de point base \(x_0 \in X\).
+
+\chapter*{\chapterstyle{Homologie Simpliciale}}
+Dans ce chapitre nous cherchons à nouveau à trouver des invariants algébriques sur les espaces topologiques, mais on se propose de construire une théorie plus simple que celle de l'homotopie, en particulier, on sait que le \(n\)-ième groupe d'homotopie encapsule le nombre de "trous" de dimensions \(n\) dans un espace topologique, et on va définir un nouveau groupe appelé \textbf{groupe d'homologie} (simpliciale), la présentation devra définit beaucoup de nouveaux concepts, pour donner un aperçu:
+\begin{itemize}
+   \item Nous devrons définir le concept de \textbf{simplexe standard} qui sera l'objet géométrique de base, une enveloppe convexe primitive.
+   \item Nous définirons ensuite le concept de \textbf{face} d'un simplexe qui sera utile pour la suite.
+   \item Nous définirons ensuite le premier concept fondamental, celui de \textbf{complexe simplicial} qui est une structure que l'on donnera à notre espace topologique, d'une certaine manière on le "triangule".
+   \item Nous définirons enfin le deuxième concept fondamental, celui de \textbf{chaine} qui nous permet d'effectuer des opérations sur le complexe simplicial.
+   \item Nous définirons finalement le concept final qui menera au groupe d'homologie, l'opérateur de \textbf{bord} qui à une chaîne de dimension \(n\) nous donner une chaîne de dimension \(n-1\), son bord.
+\end{itemize}
+LET'S GO MTHERFUCKER
+\subsection*{\subsecstyle{Simplexes{:}}}
+On appelle \textbf{n-simplexe}, l'ensemble de \(\R^n\) suivant défini par:
+\[
+   \Bigl\{ \sum\alpha_iv_i\; ; \; (v_i) \in \R^n, \sum\alpha_i = 1 \Bigl\}
+\]
+En fait, ce qu'on considère ici, c'est l'enveloppe convexe de \(n\) points qu'on notera \(\), c'est en fait une généralisation de l'idée de triangle à toutes dimensions, la surface convexe la plus simple, en particulier on a:
+\begin{itemize}
+   \item Un \(0\)-simplexe est un point.
+   \item Un \(1\)-simplexe est une droite.
+   \item Un \(2\)-simplexe est un triangle.
+   \item Un \(3\)-simplexe est une pyramide.
+\end{itemize}ont 
+On peut maintenant définir le concept de \textbf{simplexe standard} qui est simplement un simplexe générique défini par:
+\[
+   \Delta^n := \Bigl\{(v_0, \ldots, v_n) \in \R^{n+1} \; ; \; \sum t_i = 1, t_i \geq 0\Bigl\}
+\]
+Cela correspond à placer tout les simplexes dans le quadrant positif, à l'origine. Il sont universels et donc par la suite quand on parlera de simplexe, on considérera implicitement un simplexe standard.
+\subsection*{\subsecstyle{Faces d'un simplexe{:}}}
+On se donne un \(n\)-simplexe \(\Delta^n\) et on cherche à définir le concept d'une \textbf{face} du simplexe, et en fait ce sont eux aussi des simplexes de dimension inférieure, on se donne un nombre \(m \leq n\), alors une \(m\)-face du simplexe \(\Delta^n\) est n'importe quel simplexe obtenu en "retirant" \(n - m\) points, ie on a A PRECISER:
+\[
+   F_i = \langle v_1, \ldots v_{i_1}, \ldots, v{i_{n-m}} \ldots, v_n \rangle 
+\]
+C'est l'enveloppe convexe de l'ensemble des points initiaux privés de \(n - m\) points, c'est bien un simplexe de dimension \(m\) par construction. Par exemple si on considère \(\Delta^2 = \langle v_1, v_2, v_3 \rangle\), alors on a troise \(1\)-faces:
+\[
+   \begin{cases}
+      F_1 = \langle v_2, v_3 \rangle\\
+      F_2 = \langle v_1, v_3 \rangle\\
+      F_3 = \langle v_1, v_2 \rangle
+   \end{cases}
+\]
+
+\subsection*{\subsecstyle{Complexe simplicial{:}}}
+Soit \(X\) un espace topologique, une \textbf{structure de complexe simplicial} sur \(X\) est une collection d'application continues de la forme:
+\[
+   \sigma_\alpha : \Delta^n \longrightarrow X
+\]
+Ces applications doivent vérifier trois propriétés:
+\begin{itemize}
+   \item \(\sigma_\alpha\vert_{\text{int}({\Delta^n})}\) est \textbf{injective} et tout point \(x \in X\) appartient à un unique \(\Im({\sigma_\alpha\vert_{\text{int}({\Delta^n})}})\)
+   \item Toute restriction de \(\sigma_\alpha\) sur une \textbf{face} de \(\Delta^n\) est une autre \(\sigma_\beta\)
+   \item Pour toute partie \(A \subseteq X\), \(A\) est ouvert ssi toutes \(\sigma_\alpha^{-1}(A)\) est ouvert.
+\end{itemize}
+Interprétation ....
+
+\subsection*{\subsecstyle{Chaînes{:}}}
+On se donne maintenant \((X, (\sigma_\alpha)\) un espace topologique muni d'une structure de complexe simplicial, alors on définit le groupe des \textbf{k-chaînes} comme l'ensemble des sommes formelles de \textbf{k-simplexes},ie on a:
+\[
+   C_k(X) := \Bigl\{ \sum_{i} m_i\sigma_i\; ; \; m_i \in \Z\Bigl\}
+\]
+En fait, on peut montrer facilement que ce sont des \textbf{groupes abéliens}, c'est sur ces groupes que l'on définira \textbf{l'opérateur de bord} dans la section suivante.
+
+\subsection*{\subsecstyle{Opérateur de bord{:}}}
+On note un n-simplexe \(\sigma\) de \(X\) par \((\sigma[0], \ldots, \sigma[n])\), on peut alors définir enfin l'opérateur suivant sur une k-chaîne:
+\[
+   \begin{aligned}
+      \partial_n : \Delta_n &\longrightarrow \Delta_{n-1} \\
+      \partial_n(\sigma) &\longmapsto \sum_{i = 0}^{n} (-1)^i(\sigma[0], \ldots, \sigma[i-1], \sigma[i+1], \ldots, \sigma[n])
+   \end{aligned}
+\]
+Moralement, c'est \textbf{une somme alternée de tout les bords du simplexe initial}. En particulier l'alternance nous donne une propriété algébrique profonde et fondamentale pour définir l'homologie:
+\[
+   \partial_{n-1} \circ \partial_{n} = 0
+\]
+\subsection*{\subsecstyle{Groupes d'homologies{:}}}
+Finalement, on a d'aprés les propriétés de l'opérateur de bord que:
+\[
+   \Im{\partial_{n+1}} \subseteq \Ker{\partial_{n}}
+\]
+On définit alors le \textbf{i-ème groupe d'homologie de X} par:
+\[
+   H^\Delta_i = \Ker{\partial_{n}} / \Im{\partial_{n+1}}
+\]
+Ce sont moralement les simplexes qui n'ont pas de bords et qui ne sont pas le bord d'un simplexe plus grand.
+
+\end{document}

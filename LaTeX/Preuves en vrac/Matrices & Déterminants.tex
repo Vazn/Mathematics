@@ -1,0 +1,261 @@
+\documentclass{report}
+\input{../Header.tex}
+
+\begin{document}
+Soit \(E\) un \(\K\) espace vectoriel de dimension \(n\) et \(\mathscr{B}= (e_1, \ldots, e_n)\) une base de \(E\).
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{La représentation matricielle est un isomorphisme}}
+      Montrons que l'application suivante est un isomorphisme:
+      \[
+         \begin{aligned}
+            \phi_\mathscr{B}: \mathcal{L}(E) &\longrightarrow \mathcal{M}_n(K)\\
+            f &\longmapsto [f]_\mathscr{B}
+         \end{aligned}
+      \]
+      Soit \(f, g \in \mathcal{L}(E)\) et \(\lambda \in \K\), on note \([f]_\mathscr{B} = (a_{i, j})\) et \([g]_\mathscr{B} = (b_{i, j})\).\<
+
+      Soit \(p \in \inticc{1}{n}\), alors \((f + \lambda g)(e_p) = f(e_p) + \lambda g(e_p) = \sum_{k=1}^n a_{k, p}e_k + \lambda \sum_{k=1}^n b_{k, p}e_k\) par opérations entre applications et par définition d'une matrice d'un endomorphisme. Or alors:
+      \[
+         \sum_{k=1}^n a_{k, p}e_k + \lambda \sum_{k=1}^n b_{k, p}e_k = \sum_{k=1}^n (a_{k, p} + \lambda b_{k, p}) e_k
+      \]
+      Finalement, les coordonnées de \((f + \lambda g)(e_p)\) dans la base sont bien \([f(e_p)]_\mathscr{B} + \lambda [g(e_p)]_\mathscr{B}\) et donc \(\phi\) est bien linéaire.\<
+
+      En outre \(\phi\) est bien injective car si \([f]_\mathscr{B} = 0\), alors tout les \(f(e_p)\) sont nuls et donc \(f\) est bien l'application nulle. \<
+
+      Enfin \(\phi\) est bien surjective car on sait qu'une application linéaire est entièrement determinée par l'image d'une base, donc toute matrice définit bien une application linéaire, en extrayant des colonnes les images de la base.
+   \end{proof}
+
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{L'image d'un vecteur est le produit matrice-vecteur}}
+      On considère \(f \in \mathcal{L}(E)\) de matrice \(M = (m_{i, j})\) dans la base sus-nomée et  \(u = a_1e_1 + a_2e_2 + \ldots + a_ne_n \in E\) alors\footnote[1]{On a (2) par définition de la matrice d'un endormorphisme, et (1) par linéarité.}:
+      \begin{flalign}
+         f(u) &= a_1f(e_1) + a_2f(e_2) + \ldots + a_nf(e_n)\\
+         &= a_1(m_{1, 1}e_1 + \ldots + m_{n, 1}e_n) + a_2(m_{1, 2}e_1 + \ldots + m_{n, 2}e_n) + \ldots + a_n(m_{1, n}e_1 + \ldots + m_{n, n}e_n)
+      \end{flalign}
+      On cherche à extraire uniquement la \(i\)-ème coordonée, donc on explicite les termes en \(e_i\) de la somme ci-dessus:
+      \begin{flalign*}
+         f(u) = \; &a_1(m_{1, 1}e_1 + \ldots + {\color{BrightRed1}m_{i, 1}e_i} + \ldots + m_{n, 1}e_n) + \\ 
+         &a_2(m_{1, 2}e_1 + \ldots + {\color{BrightRed1}m_{i, 2}e_i} + \ldots + m_{n, 2}e_n) + \\ 
+         &\ldots + \\
+         &a_n(m_{1, n}e_1 + \ldots + {\color{BrightRed1}m_{i, n}e_i} + \ldots + m_{n, n}e_n)
+      \end{flalign*}
+      On en conclut donc que la \(i\)-ème coordonée du vecteur image est donnée par:
+      \[
+         a_1m_{i, 1} + a_2m_{i, 2} + \ldots + a_nm_{i, n} = \sum_{k=1}^{n}a_km_{i, k} = M[u]_i
+      \]
+      On a bien montré que la \(i\)-ème coordonée de l'image du vecteur correspond à la \(i\)-ème coordonée du produit matrice-vecteur, on a donc bien \([f(u)]_{\mathscr{B}} = M[u]_{\mathscr{B}}\)
+
+
+      
+   \end{proof}
+   \pagebreak
+
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{La matrice d'une composée est le produit des matrices}}
+      On considère \(f \in \mathcal{L}(E)\) de matrice \(A = (a_{i, j})\) et \(g \in \mathcal{L}(E)\) de matrice \(B = (b_{i, j})\) et on notera \(AB = (c_{i,j})\).\<
+      
+      Soit \(e_j\) le \(j\)-ème vecteur de la base, calculons la \(i\)-ème coordonée de \((f \circ g)(e_j)\), on a\footnote[1]{On a (1) et (3) par définition de la matrice d'un endormorphisme, et (2) par linéarité.}:
+      \begin{flalign}
+         (f \circ g)(e_j) &= f(b_{1, j}e_1 + b_{2, j}e_2 + \ldots + b_{n, j}e_n) \tag{1}\\
+         &= b_{1, j}f(e_1) + \ldots + b_{n, j}f(e_n)\tag{2}\\
+         &= b_{1, j}(a_{1, 1}e_1 + \ldots + a_{n, 1}e_n) + b_{2, j}(a_{1, 2} e_1 + \ldots a_{n, 2}e_n) + \ldots + b_{n, j}(a_{1, n} e_1 + \ldots a_{n, n}e_n)\tag{3}
+      \end{flalign}
+      On cherche à extraire uniquement la \(i\)-ème coordonée, donc on explicite les termes en \(e_i\) de la somme ci-dessus:
+      \begin{flalign*}
+         (f \circ g)(e_j) = \; &b_{1, j}(a_{1, 1}e_1 + \ldots + {\color{BrightRed1}a_{i, 1}e_i} + \ldots + a_{n, 1}e_n) \;\;\, + \\ 
+         &b_{2, j}(a_{1, 2} e_1 + \ldots + {\color{BrightRed1}a_{i, 2}e_i} + \ldots a_{n, 2}e_n) \quad\;\;\: + \\ 
+         &\ldots \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\: + \\
+         &b_{n, j}(a_{1, n} e_1 + \ldots + {\color{BrightRed1}a_{i, n}e_i} + \ldots + a_{n, n}e_n)
+      \end{flalign*}
+      On regroupe ces coefficients pour obtenir la \(i\)-ème coordonée de \((f \circ g)(e_j)\), donnée par:
+      \[
+         a_{i,1}b_{1, j} + a_{i,2}b_{2, j} + \ldots + a_{i, n}b_{n, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j} = c_{i, j}
+      \]
+      Donc la \(i\)-ème coordonée du \(j\)-ème vecteur est bien le coefficient en position \(i, j\) de \(AB\), par suite \(f \circ g\) est bien représentée dans la base donnée par la matrice \(AB\) ie on a:
+      \[
+         [f \circ g]_{\mathscr{B}} = AB   
+      \]
+   \end{proof}
+   
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{La matrice de l'inverse est l'inverse de la matrice}}
+      On considère \(f \in \mathcal{L}(E)\) de matrice \(A\) et \(f^{-1} \in \mathcal{L}(E)\) de matrice \(B\), alors d'aprés la propriété précédente, on a:
+      \[
+         [f \circ f^{-1}]_\mathscr{B} = AB = [\text{Id}]_\mathscr{B} = I_n   
+      \]
+      Et donc on a bien par définition de l'inverse d'une matrice:
+      \[
+         A^{-1} = B = [f^{-1}]_\mathscr{B}
+      \]
+   \end{proof}
+   \pagebreak
+   
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Changement de base d'un vecteur}}
+      Soit \(\mathscr{B}_1 = (e_1, \ldots, e_n), \mathscr{B}_2 = (e'_1, \ldots, e'_n)\) deux bases et \(P = Pass(\mathscr{B}_1, \mathscr{B}_2) = (p_{i,j})\), et soit \(u \in E\) tel que:
+      \[
+         u = u'_1e'_1 + u'_2e'_2 + \ldots + u'_ne'_n
+      \]
+      Alors par construction de \(P\), on sait que:
+      \[
+         e'_i = \sum_{k=1}^n p_{k, i} e_k
+      \]
+      En replaçant dans l'expression de \(u\), on obtient:
+      \begin{flalign*}
+         u &= u'_1 \left( \sum_{k=1}^n p_{k, 1} e_k \right) + u'_2 \left( \sum_{k=1}^n p_{k, 2} e_k \right) + \ldots + u'_n \left( \sum_{k=1}^n p_{k, n} e_k \right)\\
+         &= e_1 \left(\sum_{k=1}^n u'_k p_{1, k}\right) + e_2\left(\sum_{k=1}^n u'_k p_{2, k}\right) + \ldots + e_n \left(\sum_{k=1}^n u'_k p_{n, k}\right) \shorteqnote{(On regroupe les \(e_i\))}
+      \end{flalign*}
+      Or la décomposition dans \(\mathscr{B}\) étant unique, on a bien les nouvelles coordonées \(u_1, \ldots, u_n\) données par:
+      \[
+         \begin{cases}
+            u_1 &= \sum_{k=1}^n u'_k p_{1, k} = u'_1p_{1, 1} + u'_2p_{1, 2} + \ldots + u'_np_{1, n}\\
+            \vdots \\
+            u_n &= \sum_{k=1}^n u'_k p_{n, k} = u'_1p_{n, 1} + u'_2p_{n, 2} + \ldots + u'_np_{n, n}
+         \end{cases}
+      \]
+      On reconnait alors un produit matrice-vecteur, et si on pose \(X = \begin{bmatrix}
+         u_1 \\
+         \vdots \\
+         u_n
+      \end{bmatrix}\) et \(X' = \begin{bmatrix}
+         u'_1 \\
+         \vdots \\
+         u'_n
+      \end{bmatrix}\)
+      Alors on a bien:
+      \[
+         X = PX'  
+      \]
+   \end{proof}
+
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Changement de base d'une matrice}}
+      On montre cette propriété dans le cas des endomorphismes, mais elle est généralement vraie entre deux espaces différents.\<
+
+      Soit \(u \in E\) tel que \([u]_{\mathscr{B}_1} = X\) et \([u]_{\mathscr{B}_2} = X'\) et alors on note \([f(u)]_{\mathscr{B}_1} = Y\) et \([f(u)]_{\mathscr{B}_2} = Y'\).\<
+
+      Alors par définition on a \(Y = AX\) et \(Y' = A'X'\), pour \(A\) la matrice de \(f\) dans \(\mathscr{B}_1\) et \(A'\) la matrice de \(f\) dans \(\mathscr{B}_2\). On pose aussi \(P = \text{Pass}(\mathscr{B}_1, \mathscr{B}_2)\), alors on a par la propriété précédente que:
+      \[
+         X' = P^{-1}X \text{ et } Y' = P^{-1}Y
+      \]
+      Donc on en conclut par substitution que \(P^{-1}Y = A'P^{-1}X\) et donc que \(Y = PA'P^{-1}X\), ceci étant vrai pour un vecteur quelconque de \(E\), on a donc montré que \(A = PA'P^{-1}\).
+   \end{proof}
+
+   \pagebreak
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Multilinéarité du déterminant}}
+      Soit \(A = (a_{i, j})\) une matrice de taille \(n\), \(V = (v_i)\) un vecteur de taille \(n\) et \(\lambda \in \R\), dans la suite on notera \(C_1, C_2, \ldots, C_n\) les colonnes de \(M\), montrons par récurrence sur la taille de la matrice la propriété suivante:
+      \[
+         \forall i \in \inticc{1}{n} \; ; \; \det(C_1, \ldots, C_i + \lambda V, \ldots, C_n) = \det(C_1, \ldots, C_n) + \lambda\det(C_1, \ldots, V, \ldots, C_n)
+      \]
+      \underline{Initialisation:}
+      On considère le cas \(n = 2\), soit \(i \in \inticc{1}{n}\), alors dans les deux cas on vérifie par calcul direct que \(\det(C_1 + \lambda V, C_2) = \det(C_1, C_2) + \lambda\det(V, C_2)\) si \(i = 1\), et idem\footnote[1]{On vérifie ici que \(\det\) est linéaire en chaque colonne donc il faut vérifier tout les cas possibles pour l'indice de colonne qui serait une combinaison linéaire.} si \(i = 2\).\<
+
+      \underline{Hérédité:}
+      Supposons que la propriété soit vérifiée pour les matrices de taille \(n - 1\), on considère le déterminant de la matrice \(M\) formée par les colonnes \((C_1, \ldots, C_i + \lambda V, \ldots, C_n)\), on veut montrer:
+      \[
+         \det(M) = \det(C_1, \ldots , C_n) + \lambda \det(C_1, \ldots, V, \ldots, C_n)
+      \]
+      On notera \(A = (a_{i, j})\) la matrice formée par \((C_1, \ldots , C_n)\) et \(B\) celle formée par \((C_1, \ldots, V, \ldots, C_n)\) avec \(V\) qui remplace la colonne d'indice \(i\) de \(A\).\<
+
+      Alors on développe le déterminant de \(M\) par rapport à la première ligne pour obtenir \footnote[2]{Expliciter la matrice pour le voir.}:
+      \[
+         D = a_{1, 1}\left|M_{1, 1}\right| - a_{1, 2}\left|M_{1, 2}\right| + \ldots + (-1)^{1 + i} (a_{1, i} + \lambda v_1) \left|{A}_{1, 2}\right| + \ldots (-1)^{1 + n} a_{1, n}\left|M_{1, n}\right|
+      \]
+      On applique alors l'hypothèse de récurrence\footnote[3]{Ce sont bien des déterminants de taille \(n - 1\) donc une des colonnes est de la forme \(\lambda V'\).} aux mineurs de la forme \(\left|M_{1, k}\right|\) (pour \(k\) différent de \(i\)) et on trouve que:
+      \[
+         \left|M_{1, k}\right| = \left|A_{1, k}\right| + \lambda\left|B_{1, k}\right|
+      \]
+      On substitue ce résultat dans l'égalité ci-dessus pour obtenir:
+      \begin{flalign*}
+         \det(M) = \; &a_{1, 1} \left|A_{1, 1}\right| - a_{1, 2}\left|A_{1, 2}\right| + \ldots + (-1)^{1 + i} a_{1, i} \left|{A}_{1, i}\right| + \ldots (-1)^{1 + n} a_{1, n} \left|A_{1, n}\right| + \\
+         \; & \lambda(a_{1, 1}\left|B_{1, 1}\right| - a_{1, 1}\left|B_{1, 2}\right| + \ldots + (-1)^{1 + i} v_i \left|{B}_{1, i}\right| + \ldots (-1)^{1 + n} a_{1, n} \left|B_{1, n}\right|)
+      \end{flalign*}
+      On reconnait\footnote[4]{A nouveau, expliciter les matrices pour voir que cela correspond bien à des développements ... } alors sur la première ligne le développement de \(\det(A)\) et sur la seconde le développement de \(\det(B)\), donc on a bien:
+      \[
+         \det(M) = \det(A) + \lambda \det(B) = \det(C_1, \ldots, C_n) + \lambda \det(C_1, \ldots, V, \ldots, C_n)
+      \]
+
+   \end{proof}
+
+   \pagebreak
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Développement par rapport à une ligne quelconque}}
+      Considérons une matrice \(A\), soit \(i \in \inticc{1}{n}\), montrons que le développement selon la \(i\)-ième ligne est égal au développement selon la première.\+
+
+      En effet, ramenons nous à un développement selon la première ligne, on note le déterminant de \(A\) par ligne en:
+      \[
+         \begin{vmatrix}
+            L_1\\
+            \vdots\\
+            L_i\\
+            \vdots\\
+            L_n\\
+         \end{vmatrix}
+      \]
+      Or cette expression est égale par les propriétés des opérations élémentaires à:
+      \[
+         - \begin{vmatrix}
+            L_i\\
+            \vdots\\
+            L_1\\
+            \vdots\\
+            L_n\\
+         \end{vmatrix} \underset{DL_1}{=} - \sum_{j=1}^{n} a_{i, j} (-1)^{1 + j} \left|A_{1, j}\right|   
+      \]
+      Avec les mineurs \(\left|A_{1, j}\right|\) qui sont de la forme:
+      \[
+         \begin{vmatrix}
+            L'_2\\
+            \vdots\\
+            L'_{i-1}\\
+            L'_{1}\\
+            L'_{i+1}\\
+            \vdots\\
+            L_n\\
+         \end{vmatrix}
+      \]
+      Avec \(L'_k\) la \(k\)-ème ligne de la matrice initiale privée de la \(j\)-ème colonnne.
+      On va effectuer les permutations\footnote[1]{Ici on réordonne les lignes du déterminant mineur pour se ramener à l'ordre dans la matrice initial.} élémentaires \(L_2 \leftrightarrow L_1, L_3 \leftrightarrow L_2, \ldots, L_{i-1} \leftrightarrow L_{i-2}\), on a alors:
+      \[
+         - \sum_{j=1}^{n} a_{i, j} (-1)^{1 + j} (-1)^{i - 2} \begin{vmatrix}
+            L'_1\\
+            L'_2\\
+            \vdots\\
+            L_n\\
+         \end{vmatrix} = \sum_{j=1}^{n} a_{i, j} (-1)^{i + j} \left|A_{1, j}\right|
+      \]
+      En effet on a bien effectué \(i - 2\) permutations, et par suite, on reconnait finalement le dévelopement de \(\det(A)\) selon la 1ère ligne, donc les développement selons des lignes quelconques sont bien égaux, et par transposition, les développements selon les colonnes quelconques.
+   \end{proof}
+
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Formule de la comatrice}}
+      Soit \(A = (a_{i, j})\) un matrice inversible et \(\text{com}(A) = b_{i, j}\) la matrice des cofacteurs, montrons que:
+      \[
+         A\,\text{com}(A)^{\top} = \det(A)I_n   
+      \]
+      Calculons le produit \(A\,\text{com}(A)^{\top} = (c_{i, j})\), on a bien:
+      \[
+         c_{i, j} = \sum_{k=1}^{n} a_{i, k}b_{j, k} = \sum_{k=1}^{n} a_{i, k}(-1)^{j+k} \left| A_{j, k} \right|  
+      \]
+      Examinons plusieurs cas, si \(i = j\), on a:
+      \[
+         c_{i, i} = \sum_{k=1}^{n} a_{i, k}b_{i, k} = \sum_{k=1}^{n} a_{i, k}(-1)^{i+k} \left| A_{i, k} \right|  
+      \]
+      Or, on reconnait en cette dernière expression le développement selon la première ligne de \(\text{det}(A)\), donc a bien les coefficients diagonaux de \(A\,\text{com}(A)^{\top}\) qui sont égaux à \(\det(A)\).\<
+
+      Si \(i \neq j\) on remarque que:
+      \[
+         \sum_{k=1}^{n} a_{i, k}(-1)^{j+k} \left| A_{j, k} \right|     
+      \]
+      Est le développement selon la \(j\)-ème ligne du déterminant d'une matrice telle que \(a_{i, k} = a_{j, k}\) (ie une matrice telle que la i-ème et la j-ième ligne sont égales), donc un tel déterminant est nul et on a bien:
+      \[
+         A\,\text{com}(A)^{\top} = \det(A)I_n  
+      \]
+   \end{proof}
+
+   \begin{proof}[\unskip\nopunct]
+      \subsection*{\subsecstyle{Déterminant de Vandermonde}}
+      A faire
+   \end{proof}
+\end{document}
