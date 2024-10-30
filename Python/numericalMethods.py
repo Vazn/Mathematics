@@ -1,7 +1,17 @@
 from typing import *
 import sage.all as sagemath
+import numpy as num
 
 x = sagemath.var("x")
+y = sagemath.var("y")
+
+## <<==============================>> Utility <<================================ ##
+def approx(x):
+    return sagemath.numerical_approx(x, digits=4)
+def diff(f, x):
+    return sagemath.diff(f(x), x)
+def vector(L):
+    return sagemath.vector(L)
 
 ## <<==============================>> Functions Methods <<================================ ##
 
@@ -26,7 +36,7 @@ def numericalRootFinder(interval : tuple[int, int], f : Callable[[float], float]
                 a = middlePoint
         
         # L'intervalle final (a, b) contient la racine et on choisit (a+b)/2 comme approximation
-        return numerical_approx((a + b) / 2)
+        return approx((a + b) / 2)
     def fixedPointMethod(a, b, f, n):
         # On reformule la recherche des racines de f en terme de recherche de points fixe de g
         def g(x):
@@ -47,7 +57,7 @@ def numericalRootFinder(interval : tuple[int, int], f : Callable[[float], float]
             i += 1
             x0 = g(x0)
         
-        return numerical_approx(x0)
+        return approx(x0)
     def newtonRaphsonMethod(a, b, f, n):
         # Point initial
         x0 = (b + a) / 2
@@ -60,7 +70,7 @@ def numericalRootFinder(interval : tuple[int, int], f : Callable[[float], float]
             x0 -= f(x0) / derivative(x=x0)
             if n > 100:
                 raise Exception("Method did not converge after the maximum number of iterations allowed (100).")
-        return numerical_approx(x0)
+        return approx(x0)
     
     methods = {"Dichotomy": dichotomyMethod, "FixedPoint": fixedPointMethod, "NewtonRaphson": newtonRaphsonMethod, }
     
@@ -119,7 +129,6 @@ def interpolation(f : Callable[[float], float], points : Tuple[int, ...], method
             L2 = liste[0:n - 1]
         return (dividedDiff(L1, f) - dividedDiff(L2, f)) / (liste[n - 1] - liste[0])
     def newtonPolynomial(liste):     # On calcule le n-ième polynome de la base de Newton associée aux points
-        x = var("x")
         polynomial = 1
         
         if len(liste) == 0: return 1
@@ -181,20 +190,24 @@ def pivotGauss(A):
    
 # Take a vector field, and approximate a flow line given initial conditions, and over time t
 def eulerMethod(F, time, stepSize, *initialConditions): 
-   n = floor(time / stepSize)     # Number of iterations necessary for achieving time t
+   n = num.floor(time / stepSize)     # Number of iterations necessary for achieving time t
 
    L = []
    P0 = vector(initialConditions)
    for i in range(n):
       L.append(P0)
-      P0 = vector(tuple(numerical_approx(P0[i], digits=4) for i in range(len(initialConditions))))  
+      P0 = vector(tuple(approx(P0[i], digits=4) for i in range(len(initialConditions))))  
       P0 = P0 + stepSize*F(*P0) # gamma(t0 + h) ~ gamma(t0) + hgamma'(t0) = gamma(t0) + hF(gamma(t0))
    return L
 
 def lotkaVolterra(a, b, c, d): return (x*(a-b*y), y*(-c + d*x))
-def pendulum(): return (y/(sqrt(y^2+sin(x)^2)), -sin(x)/(sqrt(y^2+sin(x)^2)))
   
 # 2D Pendulum data for modeling project
+H = function('H')(x, y)
+norm = function('norm')(x, y)
+norm(x, y) = sagemath.sqrt(x**2+y**2)
+H(x, y) = (y/norm(H(x, y)), -sagemath.sin(x)/norm(H(x, y)))
+
 def pointListToPgfPlot(L, outputPath): # Procedure converting a list of points to a pgfplot readable data file
    with open(outputPath, 'w') as f:
       f.write('x y')
