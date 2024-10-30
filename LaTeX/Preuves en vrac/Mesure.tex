@@ -3,11 +3,54 @@
 
 \begin{document}
    Dans la suite \((X, \mathscr{B}, \mu)\) est un espace mesuré.
+   \subsection*{\subsecstyle{Propriétés de la mesure}}
+   On rapelle qu'une mesure est nulle sur la partie vide et \textbf{sigma additive}, montrons les propriétés suivantes pour \( A, B \) des parties mesurables quelconques et \( (A_n), (B_n) \) deux suites de parties mesurables respectivement croissante et décroissante:
+   \[ 
+      \begin{cases}
+         \mu(A \backslash B) = \mu(A) - \mu(B \cap A)\\
+         \mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)\\
+         \mu(\bigcup A_n) = \lim_{n \rightarrow +\infty} \mu(A_n)\\
+         \mu(\bigcap B_n) = \lim_{n \rightarrow + \infty} \mu(B_n)
+      \end{cases} 
+   \]
+   1) On a directement que:
+   \[ 
+      A = A \backslash B \cup A \cap B 
+   \]
+   Donc:
+   \[ 
+      \mu(A) = \mu(A \backslash B) + \mu(A \cap B) 
+   \]
+   Si \( B \subseteq A \), on a donc le cas particulier usuel.\<
+
+   2) On a directement l'union disjointe:
+   \[ 
+      A  \cup B = (A \backslash A \cap B) \cup (B \backslash A \cap B) \cup (A \cap B)  
+   \]
+   Et donc:
+   \[ 
+      \mu(A \cup B) = \mu(A) - \mu(A \cap B) + \mu(B) - \mu(A \cap B) + \mu(A \cap B) = \mu(A) + \mu(B) - \mu(A \cap B)
+   \]\<
+
+   3) Si \( (A_n) \) est une suite croissante, on peut écrire son union sous la forme de l'union disjointe suivante:
+   \[ 
+      \bigcup_{n \in \N} A_n = A_0 \cup \bigcup_{n \leq 1} A_n \backslash A_{n-1}
+   \]
+   Et donc on en déduis que:
+   \[ 
+      \mu\left(\bigcup_{n \in \N} A_n\right) = \mu(A_0) + \lim_{n \rightarrow \infty} \sum_{k=1}^n \mu(A_n) - \mu(A_{n-1}) 
+   \]
+   La somme se téléscope et on obtient:
+   \[ 
+      \mu\left(\bigcup_{n \in \N} A_n\right) = \mu(A_0) + \lim_{n \rightarrow \infty} \mu(A_n) - \mu(A_0) = \lim_{n \rightarrow \infty} \mu(A_n) 
+   \]
+
+   4) 
    
    \subsection*{\subsecstyle{Théorême de convergence dominée}}
    On se donne une suite \(f_n \in \mathscr{M}(X)\) qui converge simplement vers \(f\). On suppose qu'il existe \(g\) intégrable telle que \(\forall n \in \N \; ; \; |f_n| \leq g\). Alors on a:
    \begin{itemize}
-      \item Pour tout \(n\in \N\), \(f_n\) est intégrable car par croissance de l'intégrale \(\int |f_n| \d\mu \leq \int g \d\mu < \infty\)
+      \item Pour tout \(n\in \N\), \(f_n\) est intégrable car par croissance de l'intégrale \(\int |f_n| d\mu \leq \int g d\mu < \infty\)
       \item Par passage à la limite, \(|f| \leq g\) et donc \(f\) est intégrable par le même raisonnement.
    \end{itemize}
    Montrons maintenant qu'on peut faire l'interversion limite/intégrale, on définit les suites (de fonctions) suivantes:
@@ -37,11 +80,11 @@
    \]
    En outre cette suite est positive à partir d'un certain rang car \(v_n\) tends vers 0 et \(g\) est positive (donc \(|v_n| < 2g\) à partir d'un certain rang). On peut donc appliquer \textbf{le théorème de convergence monotone} et on obtient que:
    \[
-      \lim_{n \rightarrow +\infty} \int 2g - v_n \d\mu = \int 2g \d\mu
+      \lim_{n \rightarrow +\infty} \int 2g - v_n d\mu = \int 2g d\mu
    \]
    En appliquant la linéarité dans l'intégrale de gauche et en calculant la limite de cette manière on obtient alors que:
    \[
-      \lim_{n \rightarrow +\infty} \int v_n \d\mu = 0
+      \lim_{n \rightarrow +\infty} \int v_n d\mu = 0
    \]
    Finalement, pour tout \(n \in \N\) on a que:
    \[
@@ -49,14 +92,14 @@
    \]
    Donc en intégrant ces fonctions et en passant à la limite, on trouve:
    \[
-      \int |f_n - f| \d\mu \leq \int v_n \d\mu \underset{n \rightarrow \infty}{\longrightarrow} 0
+      \int |f_n - f| d\mu \leq \int v_n d\mu \underset{n \rightarrow \infty}{\longrightarrow} 0
    \]
    Et par inégalité triangulaire, on a: 
    \[
-      \left|\int f_n \d\mu - \int f \d\mu  \right| \underset{n \rightarrow \infty}{\longrightarrow} 0
+      \left|\int f_n d\mu - \int f d\mu  \right| \underset{n \rightarrow \infty}{\longrightarrow} 0
    \]
    Donc:
    \[
-      \int f_n \d\mu \underset{n \rightarrow \infty}{\longrightarrow} \int f \d\mu
+      \int f_n d\mu \underset{n \rightarrow \infty}{\longrightarrow} \int f d\mu
    \]
 \end{document}

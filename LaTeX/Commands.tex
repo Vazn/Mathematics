@@ -33,8 +33,7 @@
 \newcommand{\<}{\bigskip}
 \newcommand{\+}{\par}
 
-% Differential formating
-\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+% Notation equality
 
 \newcommand\notationEq{\stackrel{\mbox{
     \begin{tiny}  
@@ -44,7 +43,6 @@
 
 % INTERVALS
 
-%\intervalconfig{soft open fences}
 \intervalconfig{separator symbol =  \,; \,}
 
 \newcommand{\ioo}[2]{\interval[open]{#1}{#2}}
@@ -52,10 +50,10 @@
 \newcommand{\ico}[2]{\interval[open right]{#1}{#2}}
 \newcommand{\icc}[2]{\interval{#1}{#2}}
 
-\newcommand{\intioo}[2]{\big\rrbracket{#1}\;;\;{#2}\big\llbracket}
-\newcommand{\intioc}[2]{\big\rrbracket{#1}\;;\;{#2}\big\rrbracket}
-\newcommand{\intico}[2]{\big\llbracket{#1}\;;\;{#2}\big\llbracket}
-\newcommand{\inticc}[2]{\big\llbracket{#1}\;;\;{#2}\big\rrbracket}
+\newcommand{\intioo}[2]{\left\rrbracket{#1}\;;\;{#2}\right\llbracket}
+\newcommand{\intioc}[2]{\left\rrbracket{#1}\;;\;{#2}\right\rrbracket}
+\newcommand{\intico}[2]{\left\llbracket{#1}\;;\;{#2}\right\llbracket}
+\newcommand{\inticc}[2]{\left\llbracket{#1}\;;\;{#2}\right\rrbracket}
 
 % EQUATIONS NOTES
 
@@ -100,7 +98,7 @@
 \newcommand{\partialD}[2]{\frac{\partial #1}{\partial #2}}
 
 % GEOMETRY
-\newcommand{\RightAngle}[4][5pt]
+\newcommand{\RightAgnle}[4][5pt]
 {%
     \draw($#3!#1!#2$)-- ($#3!2! ($ ($#3!#1!#2$)!.5! ($#3!#1!#4$)$)$)-- ($#3!#1!#4$);
 }

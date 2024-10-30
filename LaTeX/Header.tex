@@ -1,7 +1,6 @@
 % Maths Packages
-\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval,stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
+\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval, stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
 \usepackage{tabularx}
-\usepackage{multicol}
 \usepackage{booktabs}
 \usepackage{cellspace}
 \setlength{\cellspacetoplimit}{5pt}
@@ -27,11 +26,10 @@
 }
 
 % TOC Packages
-\usepackage{tocloft, titletoc, hyperref}
-\usepackage{bookmark}
+\usepackage{tocloft, titletoc, hyperref, bookmark}
 % Formatting / Style Packages
-\usepackage{geometry, multicol, subcaption, graphicx, fix-cm, accents, float, varwidth, soul, ulem, contour}    
 \usepackage[T1]{fontenc}
+\usepackage{geometry, subcaption, graphicx, fix-cm, accents, float, varwidth, soul, ulem, contour}    
 \usepackage[bottom]{footmisc}
 \usepackage[x11names, table]{xcolor}
 \usepackage[most, skins]{tcolorbox}
@@ -40,11 +38,17 @@
 \newcommand{\1}{\mathmybb{1}}
 
 % Tikz
-\usepackage{tikz, tkz-fct, tkz-euclide}
-\usepackage{pgfplots}
-\usepackage{tikz-cd}
-\usepackage{tkz-fct}  
-\usetikzlibrary{angles, quotes, 3d, positioning,shapes,fit, arrows, calc, matrix,decorations.pathreplacing, calligraphy}
+\usepackage{tikz, tkz-fct, tkz-euclide, tikz-cd, tkz-fct, pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{
+  angles, quotes, 3d, positioning,
+  shapes,fit, arrows, arrows.meta, calc, 
+  matrix, calligraphy, intersections, 
+  quotes, patterns, patterns.meta, 
+  decorations.pathreplacing, decorations.markings,decorations.pathmorphing,
+  external
+}
+\tikzexternalize[prefix=figures/] % activate
 
 \tikzset{
   withparens/.style = {draw, outer sep=0pt,
@@ -76,7 +80,7 @@
 \setcounter{secnumdepth}{-1}
 
 % STYLE
-\input{C:/Users/Archimedean/Desktop/Maths/Style.tex}
+\input{../Style.tex}
 
 % COMMANDS
-\input{C:/Users/Archimedean/Desktop/Maths/Commands.tex}
+\input{../Commands.tex}

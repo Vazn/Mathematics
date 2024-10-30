@@ -57,7 +57,7 @@ On peut alors montrer facilement que l'intersection de deux tribus est une tribu
 
 \subsection*{\subsecstyle{Tribu induite {:}}}
 Soit \(P \subseteq E\), alors \(E\) induit une tribu naturelle sur \(P\) appellée \textbf{tribu induite} définie par:
-\[
+\[ 
    \mathcal{A}_P := \Bigl\{ A \cap \mathcal{M} \; ; \; \mathcal{M} \subseteq \mathcal{A} \Bigl\}  
 \]
 \begin{center}
@@ -364,7 +364,7 @@ Dans ce chapitre, on aborde les théorèmes principaux relatifs à l'intégrale 
 On aimerait trouver un condition suffisante plus générale pour pouvoir intervetir ces deux opérateurs, c'est l'objet du théorème suivant.
 
 \subsection*{\subsecstyle{Théorème de convergence dominée{:}}}
-On se donne une suite de fonctions mesurables \((f_n)\) qui admet une limite simple \((f)\), alors on peut montrer qui si \((f_n)\) satisfait la \textbf{condition de domination} suivante:
+On se donne une suite de fonctions mesurables \((f_n)\) qui admet une limite simple \(f\), alors on peut montrer qui si \((f_n)\) satisfait la \textbf{condition de domination} suivante:
 \[
    \exists g \in \mathcal{L}(X) \; , \; \forall n \in \N \; ; \; |f_n| \leq g
 \]
@@ -421,7 +421,6 @@ Ces deux théorèmes sont en fait simplement une application directe du théorè
 
 \subsection*{\subsecstyle{Remarque{:}}}
 La notion de continuité et de dérivabilité étant locale, pour montrer qu'une intégrale à paramètres est continue ou dérivable il est souvent utile de restreindre le domaine de définition \textbf{du paramètre} pour se ramener à des intervalles plus petits, souvent compacts, pour trouver la majoration et conclure.\<
-
 \uline{Exemple} On considère \(F : t \in \R_+ \mapsto \int_{\R_+} f(x, t)dx\) avec \(f(x, t) = e^{-tx}\), alors \(f(x, \cdot)\) est clairement continue sur tout \(\R_+\), on doit trouver une fonction intégrable \(g\) telle que:
 \[
    \forall t \in \R_+ \; ; \; |f(\cdot, t)| = e^{-tx} \leq g
