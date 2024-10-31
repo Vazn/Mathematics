@@ -1,4 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/home/vazn/Code/Manim/media/videos/VectorFlow/480p15/partial_movie_files/VectorFlow/1185818338_2268332985_4025012743.mp4'
-file 'file:/home/vazn/Code/Manim/media/videos/VectorFlow/480p15/partial_movie_files/VectorFlow/624642324_2919340033_1224816023.mp4'
-file 'file:/home/vazn/Code/Manim/media/videos/VectorFlow/480p15/partial_movie_files/VectorFlow/624642324_3935501277_31879562.mp4'
