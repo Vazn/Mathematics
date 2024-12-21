@@ -25,7 +25,7 @@ On peut alors montrer facilement que l'intersection de deux topologies est une t
 \subsection*{\subsecstyle{Topologie induite {:}}}
 Soit \(A \subseteq E\), alors \(E\) induit une topologie naturelle sur \(A\) appellée \textbf{topologie induite} définie par:
 \[
-   \mathcal{T}\vert_A := \Bigl\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \subseteq \mathcal{T}_E \Bigl\}  
+   \mathcal{T}\vert_A := \Bigl\{ A \cap \mathcal{O} \; ; \; \mathcal{O} \in \mathcal{T}_E \Bigl\}  
 \]
 \begin{center}
    \textit{Un ouvert de \(A\) pour la topologie induite est simplement la trace sur \(A\) des ouverts de \(E\).}
@@ -55,33 +55,32 @@ On notera \(\mathscr{V}_a\) l'ensemble des voisinages du point \(a\).\<
 \subsection*{\subsecstyle{Intérieur {:}}}
 On définit l'intérieur d'une partie \(A \subseteq E\) comme étant \textbf{le plus grand ouvert contenu dans \(A\)}. En particulier, c'est l'union de tout les ouverts contenus dans \(A\) et on a:
 \[
-    \text{int}(A) := \bigcup_{\mathcal{O} \subseteq{A}}\mathcal{O}
+   \text{int}(A) := \bigcup_{\mathcal{O} \subseteq{A}}\mathcal{O}
 \]
 
-On peut alors caractériser les points de cet ensemble (appelés \textbf{points intérieurs}) par la propriété suivante:
-\customBox{width=10cm}{
-   Il existe un ouvert \(\mathcal{O}\) qui contient \(x\) tel que \(\mathcal{O} \subseteq A\).
-}
+On peut alors caractériser cet ensemble par une propriété de ses points (appelés points intérieurs):
+\[ 
+   \text{int}(A) := \left\{ x \in A \; ; \; \exists \mathcal{O}_x \in \mathcal{T}_E \, , \, \mathcal{O}_x \subseteq A \right\}  
+\]
 
-L'application qui à toute partie associe son intérieur est \textbf{idempotente, croissante et anti-extensive}\footnote[2]{On appelle anti-extensive une application telle que \(\phi(S) \subseteq S\) (non-standard)} et elle caractérise les ouverts, en effet \(\mathcal{O}\) est un ouvert si et seulement si:
-\customBox{width=3cm}{
-   \(\mathcal{O} = \text{int}(\mathcal{O})\)
-}
+L'application qui à toute partie associe son intérieur est idempotente, croissante et anti-extensive\footnote[2]{On appelle anti-extensive une application telle que \(\phi(S) \subseteq S\) (non-standard)} et elle caractérise les ouverts, en effet:
+\begin{center}
+   Une partie \(A\) est un ouvert si et seulement si \textbf{elle est égale à son intérieur}.
+\end{center}
 \subsection*{\subsecstyle{Adhérence {:}}}
 On définit l'adhérence d'une partie \(A \subseteq E\) comme étant \textbf{le plus petit fermé qui contient \(A\)}. En particulier, c'est l'intersection de tout les fermé qui contiennent \(A\) et on a:
 \[
     \text{adh}(A) := \bigcap_{A \subseteq \mathcal{F}}\mathcal{F}
 \]
+On peut alors caractériser cet ensemble par une propriété de ses points (appelés points adhérents):
+\[ 
+   \text{adh}(A) := \left\{ x \in A \; ; \; \forall \mathcal{O}_x \in \mathcal{T}_E \, , \, \mathcal{O}_x \cap A \neq \emptyset \right\}  
+\]
 
-On peut alors caractériser les points de cet ensemble (appelés \textbf{points adhérents}) par la propriété suivante:
-\customBox{width=10cm}{
-   Pour tout ouvert \(\mathcal{O}\) qui contient \(x\), on a \(\mathcal{O} \cap A \neq \emptyset\).
-}
-
-L'application qui à toute partie associe son adhérence est \textbf{idempotente, croissante et extensive} et elle caractérise les fermés, en effet \(\mathcal{F}\) est un fermé si et seulement si:
-\customBox{width=3cm}{
-   \(\mathcal{F} = \text{adh}(\mathcal{F})\)
-}
+L'application qui à toute partie associe son adhérence est idempotente, croissante et extensive et elle caractérise les fermés, en effet:
+\begin{center}
+   Une partie \(A\) est un fermé si et seulement si \textbf{elle est égale à son adhérence}.
+\end{center}
 \subsection*{\subsecstyle{Frontière {:}}}
 On appelle \textbf{frontière} d'une partie \(A\) de \(E\) et on note \(\partial A\) la partie qui vérifie:
 \[
@@ -140,7 +139,6 @@ La distance sur \(E\) induit alors naturellement une topologie sur \(E\) qu'on a
    \mathcal{T}_{d} := \left\{ \bigcup_I \mathcal{B}(x_i, r_i) \; ; \; (x_i, r_i) \in E \times \R_+^* \right\} 
 \]
 On peut alors facilement montrer que cette ensemble est bien une topologie sur \(E\) et que la topologie induite sur une partie correspond bien à la topologie métrique pour la restriction de la distance.
-
 \subsection*{\subsecstyle{Topologie métrisable {:}}}
 On considère un espace topologique \((E, \mathcal{T})\), alors on dira que cet espace est \textbf{métrisable} si et seulement si il existe une distance \(d\) telle que:
 \[
@@ -156,21 +154,18 @@ Alors on montre que la topologie produit coincide avec la topologie métrique po
 \[
    d_\infty(x, y) = \vectNorm{x - y}_\infty = \max\{|x_1 - y_1|, \ldots, |x_n - y_n|\}
 \]
-\subsection*{\subsecstyle{Propriétés {:}}}
-On peut alors montrer que dans un espace métrique on a:
-\customBox{width=9cm}{
-   \( \text{int}(\mathcal{B}[x, r]) \supseteq \mathcal{B}(x, r)
-   \quad\quad\quad\quad
-   \text{adh}(\mathcal{B}(x, r)) \subseteq \mathcal{B}[x, r]
-   \)
-}
-En particulier, dans le cas d'un \textbf{espace vectoriel normé}, l'homogénéité de la norme nous permet d'avoir l'égalité plutot que l'inclusion pour ces deux propriétés. 
+\subsection*{\subsecstyle{Parties bornées et diamètre {:}}}
+Soit \( A \subseteq E\), alors on dira que \( A \) est \textbf{bornée} si et seulement si il existe une boule qui contient \( A \), en outre on peut définir le \textbf{diamètre} de la partie \( A \) par:
+\[ 
+   \delta(A) := \sup \left\{ d(x, y) \; ; \; x, y \in A \right\}  
+\]
+Et on montre alors qu'une partie est bornée si son diamètre est \textbf{fini}.
 \subsection*{\subsecstyle{Equivalences des normes {:}}}
 Dans un espace vectoriel normé, on dira alors que deux normes sont \textbf{équivalentes} si il existe deux réel \(c, C\) tel que:
 \[
    c\vectNorm{x}_1 \leq \vectNorm{x}_2 \leq C\vectNorm{x}_1
 \]
-Ici "équivalentes" signifique donc que si il existe une boule pour une norme, alors il existe une boule plus petite et plus grande que celle-ci pour une autre, en particulier \textbf{les topologies engendrées par ces normes sont égales}.\+
+Ici "équivalentes" signifique donc que si il existe une boule pour une norme, alors il existe une boule plus petite et plus grande que celle-ci pour l'autre, en particulier \textbf{les topologies engendrées par ces normes sont égales}\footnote[1]{Néanmoins la réciproque est fausse, si deux topologies métriques sont égales, alors les métriques induisant ces topologies ne sont pas nécessairement équivalentes ! La notion de distances équivalentes est plus forte que celle de topologies équivalentes (égales)}.\+
 La notion de norme équivalente permet de montrer la propriété trés utile suivante:
 \begin{center}
    Dans un espace vectoriel normé de dimension finie, toutes les normes sont \textbf{équivalentes}.
@@ -207,13 +202,15 @@ On peut représenter les boules pour quelques valeurs de \(p\):
 \pagebreak
 \subsection*{\subsecstyle{Exemples de boules en dimension infinie {:}}}
 On considère ici l'espace vectoriel des \textbf{fonction continues} sur l'intervalle \(\icc{a}{b}\), on peut alors étendre les \textbf{normes de Hölder} définies comme suit:
-\customBox{width=6cm}{
-   \({||f||}_p = (\int_{a}^{b} |f(t)|^p \d t)^{\frac{1}{p}}\)
-}
+\[ 
+   {||f||}_p = \left (\int_{a}^{b} |f(t)|^p dt \right)^{\frac{1}{p}}
+\]
+
 En particulier pour \(p=2\), c'est \textbf{la norme euclidienne standard}. On peut aussi définir \textbf{la norme infini} (aussi appelée \textbf{norme de la convergence uniforme}) par:
-\customBox{width=6cm}{
-   \({||f||}_\infty = \underset{t\in \icc{a}{b}}{\sup}\{|f(t)|\}\)
-}
+\[ 
+   {||f||}_\infty = \underset{t\in \icc{a}{b}}{\sup}\{|f(t)|\}
+\]
+
 Graphiquement, la boule ouverte de centre la fonction \(\sin\) et de rayon \(1\) pour la norme infini est alors:\<
 
 \begin{center}
@@ -233,7 +230,6 @@ Graphiquement, la boule ouverte de centre la fonction \(\sin\) et de rayon \(1\)
       \draw[color=BrightRed1!60,name path=B, domain=0:12, smooth, dashed]   plot (\x,{sin(\x r) - 1}); 
    \end{tikzpicture}   
 \end{center}
-
 \subsection*{\subsecstyle{Exemples de boules exotiques {:}}}
 Si on considère maintenant l'ensemble des cases d'un échiquier et qu'on définit la distance entre deux cases comme étant le nombre de coup qu'un cavalier doit effectuer pour arriver à la seconde en partant de la première, on définit alors un espace métrique.
 
@@ -368,21 +364,16 @@ Par ailleurs si \(K \in \ico{0}{1}\), alors on dit que \(f\) est \textbf{contrac
 
 \chapter*{\chapterstyle{V --- Connexité}}
 \addcontentsline{toc}{section}{Connexité}
-On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".
-\subsection*{\subsecstyle{Partie connexe{:}}}
-On peut alors définir le fait qu'une partie \(F \subseteq E\) soit connexe par le fait qu'il n'existe \textbf{pas} d'ouverts disjoints \(A, B \subseteq E\) tels que:
+On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".\<
+
+On peut alors définir la connexité d'une partie \( A \subseteq E \) par sa connexité en tant qu'espace muni de la topologie induite.
+\subsection*{\subsecstyle{Caractérisations{:}}}
+On peut alors montrer plusieurs caractérisations de la notion de connexité et on dira qu'un espace \( E \) est connexe ssi il vérifie une des conditions équivalentes suivantes:
 \begin{itemize}
-   \item \(F \subseteq A \cup B\)
-   \item \(F \cap A \neq \emptyset\)
-   \item \(F \cap B \neq \emptyset\)
+   \item Le seul \textbf{ouvert-fermé} non-vide de \( E \) est lui-même.
+   \item Toute fonction continue \( f : E \longmapsto \left\{ 0, 1 \right\}  \) est \textbf{constante}.
 \end{itemize}
-Ici on considère donc \(F\) comme une partie de \(E\) et les conditions portent donc sur des ouverts de \(E\), mais on peut aussi définir la connexité de la partie \(F\) comme étant la connexité de \textbf{l'espace} \(F\) pour la topologie induite par \(E\), et on considèrera alors des ouverts de \(F\), et on aura une définition équivalente à la définition d'espace connexe\footnote[1]{Les conditions \(2\) et \(3\) contraingnent alors \(A, B\) à etre des ouverts non vides de \(F\) et l'inclusion se transforme en égalité car \(A, B\) sont alors des parties de \(F\).}.
-
-\subsection*{\subsecstyle{Composantes connexes{:}}}
-Si on considère un espace topologique \(E\) et un point \(x \in E\), alors toutes l'union des parties connexes qui contiennent \(x\) est connexe et c'est la plus grande partie connexe qui contient \(x\) pour l'ordre de l'inclusion, on l'appelle alors \textbf{composante connexe} de \(x\) dans \(E\) et on la note \(C_x\).\<
-
-On peut alors partitionner l'espace en les composantes connexes de ses points, en particulier si l'espace est lui-meme connexe, il n'y a qu'une seule composante connexe.
-
+La première caractérisation s'obtient directement par équivalences avec la définition, et la seconde démontre le fait qu'une fonction continue dans un espace discret est moralement une indicatrice des composantes connexes.
 \subsection*{\subsecstyle{Connexité par arcs{:}}}
 On peut alors définir une notion de connexité plus forte, qui utilise la notion de \textbf{chemin} que nous allons définir. On fixe deux points \(x, y \in E\), alors un chemin reliant \(x\) et \(y\) est une application \(\gamma: \icc{0}{1} \longrightarrow E\) qui est \textbf{continue} et qui vérifie:
 \[
@@ -391,15 +382,28 @@ On peut alors définir une notion de connexité plus forte, qui utilise la notio
       \gamma(1) = y
    \end{cases}
 \]
-On peut alors définir la notion de connexité par arcs, en effet on dira qu'un espace est \textbf{connexe par arcs} si et seulement si:
-\begin{center}
-   \textbf{Toute paire de points de \(E\) peut être réliée par un chemin.}
-\end{center}
-C'est une notion plus forte que la connexité, en effet on peut montrer l'implication suivante:
+On peut alors définir la notion de connexité par arcs, en effet on dira qu'un espace est \textbf{connexe par arcs} si et seulement si \textbf{toute paire de points de \(E\) peut être réliée par un chemin.}\<
+
+C'est une notion strictement plus forte que la connexité, en effet on peut montrer l'implication suivante:
 \begin{center}
    \(E\) connexe par arcs \(\implies\) \(E\) connexe
 \end{center}
-Mais la réciproque est fausse.
+
+\subsection*{\subsecstyle{Propriétés{:}}}
+On peut alors montrer les propriétés suivantes:
+\begin{itemize}
+   \item L'union de parties connexes (resp. connexes par arcs) qui ont un point commun est connexe (resp. connexes par arcs).
+   \item Le produit d'espaces connexes (resp. connexes par arcs) est connexe (resp. connexes par arcs).
+   \item Tout partie \( B \) encadrée par un connexe \( A \) et son adhérence est connexe, ie si \( B \) est telle que:
+   \[ 
+      A \subseteq B \subseteq \text{adh}(A) 
+   \]
+   Alors \( B \) est connexe, en particulier l'adhérence d'un connexe est connexe.
+\end{itemize}
+\subsection*{\subsecstyle{Composantes connexes{:}}}
+Si on considère un espace topologique \(E\) et un point \(x \in E\), alors toutes l'union des parties connexes qui contiennent \(x\) est connexe et c'est la plus grande partie connexe qui contient \(x\) pour l'ordre de l'inclusion, on l'appelle alors \textbf{composante connexe} de \(x\) dans \(E\) et on la note \(C_x\).\<
+
+On peut alors partitionner l'espace en les composantes connexes de ses points, en particulier si l'espace est lui-meme connexe, il n'y a qu'une seule composante connexe. On peut de manière équivalente définir les \textbf{composantes connexes par arcs}.
 
 \subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
 Les espaces connexes ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
@@ -410,6 +414,27 @@ On peut alors commencer à distinguer l'intéret de la notion de connexité, en 
 \begin{center}
    \textbf{L'image par une fonction continue à valeurs rélles définie sur un connexe est un intervalle.}
 \end{center}
+
+\subsection*{\subsecstyle{Passage du local au global{:}}}
+Une des forces de la notion de connexité est qu'elle permet de \textbf{passer du local au global}, ie de considèrer une propriété vraie localement et de l'étendre à une propriété globale, par exemple on peut montrer la propriété suivante:
+\begin{center}
+   Si \( E \) est connexe et que la fonction \( f : E \longmapsto \R^n \) est \textbf{localement constante}, alors elle est \textbf{constante}.
+\end{center}
+\subsection*{\subsecstyle{Inversion des quantificateurs{:}}}
+Une autre interprétation de la notion de connexité est qu'elle permet \textbf{d'inverser les quantificateurs d'une propriété}, par exemple supposons qu'une fonction \( f : E \longmapsto D \) soit continue et que \( D \) soit un espace discret, alors:
+\[ 
+   \forall t \in E \; ; \; \exists n \in D \; ; \; f(t) = n 
+\]
+Equivaut à:
+\[ 
+   \forall t \in E \; ; \; f(t) \in D
+\]
+Mais \( D \) est discret donc ses connexes sont les singletons et on a que \( f(E) \) est connexe donc elle est constante, ie:
+\[ 
+   \exists n \in D \; ; \; \forall t \in E \; ; \; f(t) = n
+\]
+Ce qui nous a bien permi d'inverser les quantificateurs.
+
 \chapter*{\chapterstyle{V --- Compacité}}
 \addcontentsline{toc}{section}{Compacité}
 On considère un espace topologique \((E, \mathcal{T})\) et un \textbf{recouvrement ouvert} de cet espace, ie une famille quelconque \((A_i)_{i \in I}\) d'ouverts de \(E\) telle que:
@@ -422,24 +447,39 @@ On dira alors que l'espace est \textbf{compact} si il vérifie \textbf{la propri
       \textbf{De tout recouvrement, on peut extraire un recouvrement fini.}
    \end{center}
 }
+\subsection*{\subsecstyle{Séparation et fermeture{:}}}
+Dans le cas où l'espace ambiant est séparé, on a une propriété trés forte sur les compacts, en effet on peut montrer que la topologie de \( E \) sépare les compacts et les points qui n'en font pas partie et par suite que \textbf{tout compact est fermé}.\<
+
+Par la suite on s'intéressera surtout aux espaces séparés, donc on considérera que l'espace ambiant l'est toujours.
+
+\subsection*{\subsecstyle{Propriétés{:}}}
+On peut alors montrer les propriétés suivantes:
+\begin{itemize}
+   \item \textbf{Union:} Toute union \textbf{finie} de compacts est compacte.
+   \item \textbf{Intersection:} Toute intersection de compacts est compacte.
+   \item \textbf{Produit Cartésien:} Tout produit de compacts est compact.
+   \item Tout fermé inclu dans un compact est compact.
+\end{itemize}
+\subsection*{\subsecstyle{Théorème de Bolzano-Weierstrass{:}}}
+En considérant une suite d'un espace compact \( E \), on peut alors montrer (via le théorème des compact emboités) le théorème de Bolzano-Weierstrass:
+\begin{center}
+   Tout suite d'une espace compact admet \textbf{une valeur d'adhérence}.
+\end{center}
+En particulier dans un espace métrique, les valeurs d'adhérence sont exactement les limites de sous-suites, donc tout suite dans un compact admet une \textbf{sous-suite convergente}.
 
 \subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
-Dans les espaces métriques, on peut caractériser les parties compactes par les suites, en effet on dira que \(K \subseteq E\) est compact si et seulement si:
-\customBox{width=13cm}{
-   \begin{center}
-      \textbf{Toute suite à valeurs dans \(K\) admet une suite extraite convergente.}
-   \end{center}
-}
+Dans un espace métrique, on a même la réciproque et on peut donc caractériser les parties compactes par les suites, en effet on dira que \(K \subseteq E\) est compact si et seulement si:
+\begin{center}
+   \textbf{Toute suite à valeurs dans \(K\) admet une suite extraite convergente.}
+\end{center}
 Cette caractérisation permet alors parfois de démontrer plus facilement la compacité.
+
 \subsection*{\subsecstyle{Théorème de Borel-Lebesgue {:}}}
-On peut facilement montrer que tout compact est \textbf{borné et fermé}, mais la réciproque est fausse dans un espace topologique quelconque, néanmoins, dans \(\R^n\) on a l'équivalence, appelé théorème de Borel-Lebesgue:
+Dans les espaces métriques, on peut alors obtenir d'autres propriétés des parties compactes, en effet on peut montrer qu'elles sont \textbf{bornées}, notamment en montrant que leur diamètre est fini. Dans \(\R^n\) et donc dans tout espace vectoriel normé, on a même l'équivalence entre fermé-borné et compact, appelé théorème de Borel-Lebesgue:
 \begin{center}
    \textbf{Une partie de \(\R^n\) est compacte si et seulement si elle est fermée est bornée.}
 \end{center}
-Cette caractérisation puissante admet alors comme corollaire le \textbf{théorème de Bolzano-Weierstrass}:
-\begin{center}
-   \textbf{Tout suite bornée de \(\R^n\) admet une suite extraite convergente.}
-\end{center}
+
 \subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
 Les espaces compacts ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
 \begin{center}
@@ -447,7 +487,7 @@ Les espaces compacts ont beaucoup de bonnes propriétés analytiques, tout d'abo
 \end{center}
 On peut alors commencer à distinguer l'intéret de la notion de compacité, en effet l'image de compacts par des applications continues est alors toujours bornée et fermée ce qui rends l'étude d'extrema trés simple, en particulier on peut montrer la généralisation du théorème des bornes atteintes:
 \begin{center}
-   \textbf{Tout fonction continue à valeurs rélles définie sur un compact de \(\R^n\) est bornée et atteint ses bornes.}
+   \textbf{Tout fonction continue à valeurs rélles définie sur un compact est bornée et atteint ses bornes.}
 \end{center}
 \subsection*{\subsecstyle{Théorème de Heine{:}}}
 Un résultat trés utile sur la compacité est le \textbf{théorème de Heine} qui nous permet d'affirmer que les fonctions continues définies sur des compacts sont plus régulières encore:
@@ -457,8 +497,12 @@ Un résultat trés utile sur la compacité est le \textbf{théorème de Heine} q
 
 \chapter*{\chapterstyle{V --- Complétude}}
 \addcontentsline{toc}{section}{Complétude}
+On s'intéresse dans ce chapitre à une structure plus riche que celle d'espace topologique, en effet on peut remarque que la notion d'homéomorphisme ne preserve certaines notions analytiques, comme l'équivalence entre distances, ou encore le concept que l'on définira plus loin apellé \textbf{suites de Cauchy}. On considère donc une version plus restricive d'homéomorphisme, appelée \textbf{homéomorphisme uniforme}, où l'on requiert que l'homéomorphisme soit uniformément continu.\<
 
-On se place dans le cadre d'un espace métrique \(E\) et on se donne une suite \(u_n\), on peut alors définir la concept de \textbf{suite de Cauchy} et on dira que \(u_n\) est \textbf{de Cauchy} si et seulement si:
+C'est donc bien une notion purement métrique, et elle définit les transformation qui préservent les \textbf{invariants uniformes}, comme la complétude, le caractére de Cauchy d'une suite, qui ne sont donc pas des invariants topologiques.
+
+\subsection*{\subsecstyle{Suites de Cauchy{:}}}
+On se donne une suite \(u_n\), on dira que \(u_n\) est \textbf{de Cauchy} si et seulement si:
 \[
    \forall \epsilon > 0 , \exists N \in \N , \forall p, q > N \; ; \; d(u_p - u_q) < \epsilon
 \] 
@@ -467,11 +511,41 @@ On se place dans le cadre d'un espace métrique \(E\) et on se donne une suite \
        Une suite de Cauchy est donc une suite telle que les termes de la suite sont arbitrairement proches \textbf{les uns des autres} à partir d'un certain rang\footnote[1]{Un corollaire immédiat est que \textbf{toute suite convergente est de Cauchy}.}.
    }
 \end{center}
-On peut alors montrer que tout suite de Cauchy vérifie les propriétés suivantes:
-\begin{itemize}
-   \item Elle est bornée.
-   \item Si elle admet une valeur d'adhérence, alors elle converge.
-\end{itemize}
+On peut alors trés facilement montrer que tout suite de Cauchy est bornée, et surtout une condition suffisante trés forte de convergence, en effet:
+\begin{center}
+   \textbf{Toute suite de Cauchy admettant une valeur d'adhérence converge.}
+\end{center}
+C'est le premier exemple d'invariant uniforme, en effet si on considère \( f : E \longmapsto F \) un homéomorphisme uniforme et \( (x_n) \) une suite de Cauchy de \( E \), alors \( (f(x_n)) \) est une suite de Cauchy.
+
+\subsection*{\subsecstyle{Complétude{:}}}
+On définit alors la structure principale de ce chapitre:
 \begin{center}
    \textbf{On appelle alors espace complet tout espace métrique dans lequel toute suite de Cauchy converge.}
 \end{center}
+En particulier, si \( E \) est un espace vectoriel normé, on dira que c'est un \textbf{espace de Banach}. On peut alors montrer que \( \R \) est complet, en effet si on considère une suite de Cauchy de \( \R \), elle est bornée et donc incluse dans un compact, et d'aprés Bolzano-Weierstrass, elle admet une valeur d'adhérence donc elle converge.\<
+
+On peut alors en déduire un lien entre compacité et complétude, gràce à Bolzano-Weierstrass, on montre directement que \textbf{tout espace compact est complet.}
+
+\subsection*{\subsecstyle{Complétude et fermeture {:}}}
+On peut alors montrer un lien fort entre la complétude et la fermeture, en effet gràce à la caractérisation séquentielle, on peut montrer qu'une partie complète est nécessairement \textbf{fermée}. La réciproque est partiellement vraie, en effet on a:
+\begin{center}
+   Une partie fermée \textbf{d'un espace complet} est complète.
+\end{center}
+\subsection*{\subsecstyle{Produit d'espaces complets {:}}}
+On peut alors montrer que pour tout famille (finie) d'espaces métriques, alors le produit cartésien est \textbf{complet} (pour la distance produit). En particulier, \( \R^n \) et \( \C^n \) sont complets, et tout espace vectoriel de dimension finie est complet.
+\subsection*{\subsecstyle{Caractérisation par les séries{:}}}
+On peut alors montrer une caractérisation puissante de espaces de Banach, en effet:
+\begin{center}
+   \textbf{Un espace vectoriel normé est complet si et seulement si toute série absolument convergente est convergente.}
+\end{center}
+
+\subsection*{\subsecstyle{Théorème du point fixe de Banach-Picard{:}}}
+Une application puissante de la complétude qui est utilisée dans beaucoup d'applications numériques est le théorème du point fixe de Banach-Picard, on considère une fonction \( f : E \longmapsto E \) où \( E \) est \textbf{complet} et telle que \( f \) soit \textbf{contractante}, ie:
+\[ 
+   \exists K \in \ioo{0}{1} \; , \; \forall x, y \in E \; ; \; d(f(x), f(y)) \leq K d(x, y) 
+\]
+Alors \( f \) admet \textbf{un unique point fixe} \( x^* \). Pour \( x_0 \in E \), on peut l'obtenir comme limite de la suite récurrente suivante:
+\[ 
+   x_{n+1} = f(x_n)
+\]
+En effet, on montre que cette suite est bien de Cauchy donc converge vers un point fixe. L'unicité est obtenue aisément par l'absurde.

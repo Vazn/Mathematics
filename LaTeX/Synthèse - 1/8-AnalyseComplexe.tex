@@ -92,18 +92,18 @@ On appellera alors toute fonction solution des équations de Laplace \textbf{fon
 \addcontentsline{toc}{section}{Intégration Complexe} 
 On cherche maintenant à définir une notion \textbf{d'intégrale} pour les fonctions complexe, plus précisément nous allons définir l'intégrale d'une fonction continue \(f\) le long d'une courbe paramétrée par \(\gamma\) sur \(\icc{a}{b}\), qui sera défini par l'intégrale suivante:
 \[
-   \int_{\gamma} f d\gamma = \int_{a}^{b} f(\gamma(t))\gamma'(t) \d t
+   \int_{\gamma} f d\gamma = \int_{a}^{b} f(\gamma(t))\gamma'(t) d t
 \]
 L'intérprétation géométrique n'est pas évidente, mais peut s'éclaircir si on considère \(f(z) \sim f(x, y)\) et \(\overline{f}(z) = f(x, -y)\) le (champ vectoriel) conjugué de \(f\) apellé \textbf{champ de Pòlya}, alors on a pour des notations usuelles:
 \[
-   \int_{\gamma} f d\gamma = \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{T(t)} \d t + i \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{N(t)}  \d t
+   \int_{\gamma} f d\gamma = \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{T(t)} d t + i \int_{\gamma} \dotproduct{\overline{f}(\gamma(t))}{N(t)}  d t
 \]
 En d'autres termes, cette intégrale encapsule \textbf{le travail et le flux du champ de Pòlya}.
 
 \subsection*{\subsecstyle{Théorème fondamental de l'analyse complexe{:}}}
 On se donne une fonction continue \(f\) tel que \(f =  F'\) pour une certaine fonction holomorphe \(F\) et on se donne un chemin paramétré par \(\gamma\) sur \(\icc{a}{b}\) et on cherche à calculer l'intégrale le long de ce chemin, alors on trouve:
 \begin{align*}
-   \int_{\gamma} f \d \gamma &:= \int_{a}^{b} F'(\gamma(t))\gamma'(t)\d t = \int_{a}^{b} (F \circ \gamma)'(t) \d t = F(\gamma(b)) - F(\gamma(a))
+   \int_{\gamma} f d \gamma &:= \int_{a}^{b} F'(\gamma(t))\gamma'(t)d t = \int_{a}^{b} (F \circ \gamma)'(t) d t = F(\gamma(b)) - F(\gamma(a))
 \end{align*}
 Ce n'est pas surprenant quand on comprends la dualité qui existe entre fonction complexe et champ vectoriel, ce n'est alors qu'un cas particulier du \textbf{théorème du gradient} vu en analyse vectorielle. Et aussi, comme énoncé dans le chapitre en question, c'est aussi un cas particulier du \textbf{théorème de Stokes} pour la forme différentielle exacte \(f(z)dz\).
 

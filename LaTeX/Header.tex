@@ -29,7 +29,7 @@
 \usepackage{tocloft, titletoc, hyperref, bookmark}
 % Formatting / Style Packages
 \usepackage[T1]{fontenc}
-\usepackage{geometry, subcaption, graphicx, fix-cm, accents, float, varwidth, soul, ulem, contour}    
+\usepackage{geometry, subcaption, graphicx, fix-cm, accents, float, varwidth, soul, ulem, contour, multicol}    
 \usepackage[bottom]{footmisc}
 \usepackage[x11names, table]{xcolor}
 \usepackage[most, skins]{tcolorbox}
@@ -46,10 +46,8 @@
   matrix, calligraphy, intersections, 
   quotes, patterns, patterns.meta, 
   decorations.pathreplacing, decorations.markings,decorations.pathmorphing,
-  external
 }
-\tikzexternalize[prefix=figures/] % activate
-
+\usepgfplotslibrary{fillbetween}
 \tikzset{
   withparens/.style = {draw, outer sep=0pt,
     left delimiter= (, right delimiter=),

@@ -484,7 +484,7 @@ La quantité négligeable appellée \textbf{reste}, qu'on note généralement \(
 \customBox{width=11cm}{
    \[ R_n = \frac{f^{(k+1)}(c)}{k!}(x - a)^{k+1} 
    \quad\quad\quad\quad
-   R_n = \int_{a}^{x} \frac{f^{(k+1)}(t)}{k!}(x - t)^{k} \d t\]
+   R_n = \int_{a}^{x} \frac{f^{(k+1)}(t)}{k!}(x - t)^{k} d t\]
 }  
 Ce sont respectivement les formules de \textbf{Taylor-Lagrange}\footnote[1]{Celle ci peut se comprendre comme une généralisation du théorème des accroissements finis qui en est un cas particulier (à l'ordre 1).} et de \textbf{Taylor avec reste intégral}.\+
 Expliciter le reste permet alors d'obtenir des informations sur tout l'intervalle \(\icc{a}{x}\), en effet, ce ne sont alors plus des développements asymptotiques mais bien des formules \textbf{exactes}.\<
@@ -594,7 +594,7 @@ On appelle \textbf{l'intégrale supérieure}\footnote[2]{On définit de même \t
 
 Enfin on dit que \(f\) est \textbf{intégrable} si et seulement si \textbf{l'intégrale supérieure et inférieure} sont égales, et on la note:
 \[
-   \int_{a}^{b} f(t) \d t  
+   \int_{a}^{b} f(t) d t  
 \]
 L'ensemble des fonctions intégrables sur \(\icc{a}{b}\) est noté \(\mathscr{I}(\icc{a}{b})\).
 \pagebreak
@@ -625,13 +625,13 @@ Aprés avoir défini l'espace \(\mathscr{I}(\icc{a}{b})\) des fonctions intégra
 \end{center}
 L'application d'intégration sur les fonctions intégrables est donc \textbf{une forme linéaire} sur cet espace, elle est \textbf{croissante} et vérifie \textbf{relation de Chasles}\footnote[3]{Pour \(c \in \icc{a}{b}\)} :
 \[
-   \int_{a}^{b} f(t) \d t = \int_{a}^{c} f(t) \d t + \int_{c}^{b} f(t) \d t
+   \int_{a}^{b} f(t) d t = \int_{a}^{c} f(t) d t + \int_{c}^{b} f(t) d t
 \]
   
 
 L'intégrale vérifie aussi \textbf{l'inégalité triangulaire}, en effet on a:
 \[ 
-   \Bigl| \int_{a}^{b} f(t) \d t \Bigl| \leq \int_{a}^{b} |f(t)| \d t 
+   \Bigl| \int_{a}^{b} f(t) d t \Bigl| \leq \int_{a}^{b} |f(t)| d t 
 \]
   
 
@@ -640,26 +640,26 @@ L'intégrale vérifie aussi \textbf{l'inégalité triangulaire}, en effet on a:
 
 On peut maintenant énoncer le \textbf{théorème fondamental du calcul intégral}, on considère \(f\) une fonction continue sur un segment \(\icc{a}{b}\), et on définit la fonction \(F\) définie sur ce segment par:
 \customBox{width=4cm}{
-   \[F(x) = \int_{a}^{x} f(t) \d t\]
+   \[F(x) = \int_{a}^{x} f(t) d t\]
 }   
 Alors \(F\) est de classe\footnote[4]{Si \(f\) est seulement intégrable, alors \(F\) est seulement continue, c'est une version plus faible de ce théorème.} \(\mathscr{C}^1\) et est une \textbf{primitive} de \(f\), en particulier, c'est la seule qui s'annule en \(a\).\+
 Par ailleurs, si \(f\) est intégrable et que l'on en connaît une primitive \(F\), alors on a:
 \customBox{width=5cm}{
-   \[\int_{a}^{b} f(t) \d t = F(b) - F(a)\]
+   \[\int_{a}^{b} f(t) d t = F(b) - F(a)\]
 }   
 
-\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) \d t\) pour \(f = \cos(3t)\). On a \(I = F(2x) - F(x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
+\underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) d t\) pour \(f = \cos(3t)\). On a \(I = F(2x) - F(x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
 
 \subsection*{\subsecstyle{{Formule de la moyenne:}}}
 \addcontentsline{toc}{subsection}{Formule de la moyenne}
-Si \(f\) est continue sur le segment \(\icc{a}{b}\), alors il existe un \(c\) dans cet intervalle\footnote[1]{La preuve est immédiate, \(f\) est continue donc \(\int_{a}^{b} f(t) \d t = F(a) - F(b)\) et on conclut directement par le théorème des accroissements finis.} tel que:
+Si \(f\) est continue sur le segment \(\icc{a}{b}\), alors il existe un \(c\) dans cet intervalle\footnote[1]{La preuve est immédiate, \(f\) est continue donc \(\int_{a}^{b} f(t) d t = F(a) - F(b)\) et on conclut directement par le théorème des accroissements finis.} tel que:
 \customBox{width=4.5cm}{
-   \[f(c) = \frac{1}{b-a}\int_{a}^{b} f(t) \d t\]
+   \[f(c) = \frac{1}{b-a}\int_{a}^{b} f(t) d t\]
 }   
 La quantité \(f(c)\) est appellée \textbf{valeur moyenne de la fonction sur le segment.}
 Dans un cas plus général\footnote[2]{Même idée de démonstration, en utilisant la croissance de l'intégrale}, on peut même montrer que pour \(g\) continue et positive, alors on a l'existence d'un \(c\) tel que:
 \[
-   f(c)\int_{a}^{b} g(t) \d t = \int_{a}^{b} f(t)g(t) \d t
+   f(c)\int_{a}^{b} g(t) d t = \int_{a}^{b} f(t)g(t) d t
 \]
 
 \subsection*{\subsecstyle{Sommes de Riemann {:}}}
@@ -670,13 +670,13 @@ Soit \(f\) une fonction intégrable sur \(\icc{a}{b}\), \(\sigma_n = (x_k)_{k \l
    \[S_n = \frac{b - a}{n} \sum_{k=1}^{n}f\Bigl(a + k\frac{b - a}{n}\Bigl) = h \sum_{k=1}^{n}f(x_k)\]
 }   
 
-Alors la suite \((S_n)\) \textbf{converge} vers \(\int_{a}^{b} f(t) \d t\).\<
+Alors la suite \((S_n)\) \textbf{converge} vers \(\int_{a}^{b} f(t) d t\).\<
 
 Une somme de Riemann représente la somme d'aires de rectangles dans le cas particulier d'une subdivision régulière et dans le cas où la hauteur des rectangle est simplement \(f(x_k)\). Cette propriété de convergence nous permet d'évaluer des séries gràce à des intégrales.\<
 
 \underline{Exemple:} Dans le cas le plus courant où on est dans l'intervalle \(\icc{0}{1}\). Calculons la somme \(S := \sum_{k=0}^{+\infty} \frac{1}{n + k}\). On a:
 \[
-   S =  \frac{1}{n}\sum_{k=0}^{+\infty} \frac{1}{1 + \frac{k}{n}} = \frac{1}{n}\sum_{k=0}^{+\infty} f\Bigl(\frac{k}{n}\Bigl) = \int_{0}^{1} f(t) \d t = \ln(1 + x) \Bigl|_{0}^{1} = \ln(2)
+   S =  \frac{1}{n}\sum_{k=0}^{+\infty} \frac{1}{1 + \frac{k}{n}} = \frac{1}{n}\sum_{k=0}^{+\infty} f\Bigl(\frac{k}{n}\Bigl) = \int_{0}^{1} f(t) d t = \ln(1 + x) \Bigl|_{0}^{1} = \ln(2)
 \]
 
 \subsection*{\subsecstyle{Techniques de calcul générales{:}}}
@@ -686,12 +686,12 @@ Du théorème fondamental on peut déduire plusieurs formules utiles pour calcul
 
 En premier lieu on montre facilement la formule \textbf{d'intégration par parties} qui nous permet de caculer \textbf{l'intégrale d'un produit}\footnote[4]{On peut souvent trouver une relation de récurrence par IPP successives, ou alors annuler un facteur polynomial par les dérivations successives que permettent les IPP.} dans certains cas:
 \customBox{width=8cm}{
-   \[\int_{a}^{b} f(t)g'(t) \d y = f(t)g(t) \Bigl|_{a}^{b} \; - \int_{a}^{b} f'(t)g(t) \d t\]
+   \[\int_{a}^{b} f(t)g'(t) d y = f(t)g(t) \Bigl|_{a}^{b} \; - \int_{a}^{b} f'(t)g(t) d t\]
 }  
 
 On montre par ailleurs la formule du \textbf{changement de variable}, elle nous permet de calculer \textbf{l'intégrale d'une composée}\footnote[5]{De gauche à droite, elle nous permet de poser \textbf{une nouvelle variable} comme fonction de la variable d'intégration, de droite à gauche on pose alors notre variable d'intégration comme \textbf{l'image d'une nouvelle variable par une fonction} (nécéssite alors la surjectivé sur le segment).} dans certains cas:
 \customBox{width=6.5cm}{
-   \[\int_{a}^{b} f(\varphi(t))\varphi'(t) \d t = \int_{\varphi(a)}^{\varphi(b)} f(x) \d x\]
+   \[\int_{a}^{b} f(\varphi(t))\varphi'(t) d t = \int_{\varphi(a)}^{\varphi(b)} f(x) d x\]
 }  
 
 
@@ -701,16 +701,16 @@ On montre par ailleurs la formule du \textbf{changement de variable}, elle nous 
 Si on considère les fonctions trigonométriques et exponentielles, il est clair que l'on peut les voir comme la partie réelle ou imaginaire d'une fonction à valeur complexe.\+
 Alors on peut utiliser les propriétés suivantes et profiter des propriétés de l'exponentielle:
 \customBox{width=12.5cm}{
-   \[   \int_{a}^{b} \mathscr{R}(f(t)) \d t = \mathscr{R}\Bigl(\int_{a}^{b} f(t) \d t\Bigl) 
+   \[   \int_{a}^{b} \mathscr{R}(f(t)) d t = \mathscr{R}\Bigl(\int_{a}^{b} f(t) d t\Bigl) 
    \quad\quad\quad\quad
-   \int_{a}^{b} \mathscr{I}(f(t)) \d t = \mathscr{I}\Bigl(\int_{a}^{b} f(t) \d t\Bigl) \]
+   \int_{a}^{b} \mathscr{I}(f(t)) d t = \mathscr{I}\Bigl(\int_{a}^{b} f(t) d t\Bigl) \]
 }  
 
-\underline{Exemple:} Calculons \(I := \int e^{-x}\cos(x) \d x\)
+\underline{Exemple:} Calculons \(I := \int e^{-x}\cos(x) d x\)
 \[
-   I = \int e^{-x}\mathscr{R}(e^{ix}) \d x = \int \mathscr{R}(e^{x(i- 1)}) \d x = \mathscr{R}(\int e^{x(i - 1)} \d x) = \mathscr{R}(\frac{1}{i - 1}e^{x(i - 1)}) = \frac{e^{-x}}{2}(\sin(x) - \cos(x))
+   I = \int e^{-x}\mathscr{R}(e^{ix}) d x = \int \mathscr{R}(e^{x(i- 1)}) d x = \mathscr{R}(\int e^{x(i - 1)} d x) = \mathscr{R}(\frac{1}{i - 1}e^{x(i - 1)}) = \frac{e^{-x}}{2}(\sin(x) - \cos(x))
 \]
-On remarque ici que l'intégrale \(\int e^{\alpha x} \d x\) se comporte de manière identique si \(\alpha\) est réel ou complexe.
+On remarque ici que l'intégrale \(\int e^{\alpha x} d x\) se comporte de manière identique si \(\alpha\) est réel ou complexe.
 
 \subsection*{\subsecstyle{Décomposition en éléments simples{:}}}
 \addcontentsline{toc}{subsection}{Décomposition en éléments simples}
@@ -751,12 +751,12 @@ Pour finir pour trouver le dernier coefficient, on peut par exemple réduire au 
 
 Les éléments simples \textbf{de première espèce} sont ceux de la forme ci-dessous, ie dont le dénominateur est \textbf{une puissance de polynôme irreductible de premier degré}, pour les intégrer, un changement de variable affine conclut:
 \customBox{width=3.5cm}{
-   \[\int_{a}^{b} \frac{1}{(at+b)^n}  \d t \]
+   \[\int_{a}^{b} \frac{1}{(at+b)^n}  d t \]
 }  
 
 Les éléments simples \textbf{de seconde espèce}, sont ceux dont le dénominateur est \textbf{une puissance de polynôme irreductible de second degré}, pour les intégrer, on se ramène à la forme ci-dessous, et un calcul par récurrence ou un changement de variable trigonométrique conclut\footnote[1]{On peut faire le changement de variable \(u = \tan(x)\) ou alors trouver une relation de récurrence en faisant une IPP à partir de \(I_{n+1}\).}:
 \customBox{width=3.5cm}{
-   \[\int_{a}^{b} \frac{1}{(1+t^2)^n}  \d t \]
+   \[\int_{a}^{b} \frac{1}{(1+t^2)^n}  d t \]
 }  
 
 Pour se ramener à la forme ci-dessus, pour \(E = \frac{P}{Q^n}\) un élément de seconde espèce, on suit la méthode suivante:\+
@@ -771,7 +771,7 @@ Pour se ramener à la forme ci-dessus, pour \(E = \frac{P}{Q^n}\) un élément d
 \]
 Puis on peut intégrer:
 \[
-   \int E(x) \d x = \frac{-1}{8}  \color{DarkBlue1}\underbrace{\color{black} \int \frac{2x - 1}{x^2+1} \d x}_\text{Facile}\color{black}  - \frac{-5}{8} \color{DarkBlue1}\underbrace{\color{black}\int \frac{1}{(x^2 +1)} \d x}_\text{Forme souhaitée}
+   \int E(x) d x = \frac{-1}{8}  \color{DarkBlue1}\underbrace{\color{black} \int \frac{2x - 1}{x^2+1} d x}_\text{Facile}\color{black}  - \frac{-5}{8} \color{DarkBlue1}\underbrace{\color{black}\int \frac{1}{(x^2 +1)} d x}_\text{Forme souhaitée}
 \]
 
 \subsection*{\subsecstyle{Parité{:}}}
@@ -782,11 +782,11 @@ Soit \(a \in \R^+\), il est possible d'exploiter la parité de la fonction\footn
 \begin{itemize}
    \item Si la fonction est \textbf{paire}, on a:
    \customBox{width=5cm}{
-      \[\int_{-a}^{a} f(t) \d t = 2\int_{0}^{a} f(t) \d t\]
+      \[\int_{-a}^{a} f(t) d t = 2\int_{0}^{a} f(t) d t\]
    }  
    \item Si la fonction est \textbf{impaire}, on a:
    \customBox{width=3.5cm}{
-      \[\int_{-a}^{a} f(t) \d t = 0\]
+      \[\int_{-a}^{a} f(t) d t = 0\]
    }  
 \end{itemize}
 
@@ -797,7 +797,7 @@ Aprés avoir défini précédemment l'intégrale de fonctions intégrables sur \
 \subsection*{\subsecstyle{Définition {:}}}
 Soit \(I\) un intervalle \(\ioc{a}{b}\), et \(f\) une fonction intégrable sur \textbf{tout sous-segment} de \(\icc{a}{b}\), alors on dira que \(f\) est \textbf{localement intégrable} et on définit alors une fonction auxiliaire \(\phi\) telle que :
 \[
-   \phi(x) = \int_{x}^{b} f(t) \d t
+   \phi(x) = \int_{x}^{b} f(t) d t
 \]
 Alors on peut définir l'intégrale généralisée, si elle existe, de \(f\) par:
 \customBox{width=3cm}{
@@ -808,14 +808,14 @@ Dans le cas où \(f\) est \textbf{non-bornée} sur un intervalle \(I\), on peut 
 
 \underline{Exemple :} Etudions l'intégrale sur \(\ioc{0}{1}\) du logarithme. Cette fonction est bien localement intégrale sur l'intervalle, posons:
 \[
-   \phi(x) = \int_{x}^{1} \ln(t) \d t = - 1 - x\ln(x) + x 
+   \phi(x) = \int_{x}^{1} \ln(t) d t = - 1 - x\ln(x) + x 
 \]
-Or la limite quand \(x\) tends vers \(0\) existe et vaut \(-1\), et donc le logarithme est intégrable sur \(\ioc{0}{1}\) et on a \(\int_{x}^{1} \ln(t) \d t = -1\).
+Or la limite quand \(x\) tends vers \(0\) existe et vaut \(-1\), et donc le logarithme est intégrable sur \(\ioc{0}{1}\) et on a \(\int_{x}^{1} \ln(t) d t = -1\).
 \subsection*{\subsecstyle{Intégrales de référence{:}}}
 Dans cette section, on considère des intégrales sur un intervalle de \(\R_+\) ayant soit une borne supérieure infinie, soit un borne inférieure en 0.\+
 Il existe alors plusieurs intégrales généralisées de référence, une des plus importante étant \textbf{l'intégrale de Riemann}:
 \[
-   \int \frac{1}{t^\alpha} \d t   
+   \int \frac{1}{t^\alpha} d t   
 \]
 Par une simple intégration directe suivie d'une disjonction de cas sur la limite de la primitive, on en déduit des propriétés importantes pour la suite:
 \begin{align*}
@@ -826,7 +826,7 @@ Par une simple intégration directe suivie d'une disjonction de cas sur la limit
 
 Une autre intégrale de référence est \textbf{l'intégrale de Bertrand}:
 \[
-   \int \frac{1}{t^\alpha \ln(t)^\beta} \d t   
+   \int \frac{1}{t^\alpha \ln(t)^\beta} d t   
 \]
 Par comparaison avec l'intégrale de Riemann ci-dessus, on peut alors en déduire les propriétés suivantes:
 \begin{align*}
@@ -855,7 +855,7 @@ Enfin, on peut aussi considérer le cas de deux fonction \(f, g\) \textbf{équiv
 \subsection*{\subsecstyle{Absolue convergence {:}}}
 Dans le cas de fonction qui ne sont pas à signe constant sur l'intervalle étudié, on peut alors montrer le théorème suivant:
 \customBox{width=9cm}{
-   \(\text{Si } \int |f(t)| \d t \text{ converge, alors }  \int f(t) \d t \text{ converge}\)
+   \(\text{Si } \int |f(t)| d t \text{ converge, alors }  \int f(t) d t \text{ converge}\)
 }
 On dira alors que \(f\) est \textbf{absolument convergente}\footnote[4]{La preuve utilise le fait que \(|f(t)| = f^+ + f^-\) avec \(f^+(t) = \max(f(t), 0)\) et \(f^+(t) = \max(-f(t), 0)\)}.
 \begin{center}
@@ -864,11 +864,11 @@ On dira alors que \(f\) est \textbf{absolument convergente}\footnote[4]{La preuv
 \subsection*{\subsecstyle{Fonctions définies par une intégrale {:}}}
 On peut alors définir des nouvelles fonctions par des intégrales, et dont le domaine de définition sera donc le domaine de convergence de l'intégrale. Une telle fonction sera de la forme:
 \customBox{width=6cm}{
-   \(f(x): x \mapsto \int_{a}^{b} g_x(t) \d t\)
+   \(f(x): x \mapsto \int_{a}^{b} g_x(t) d t\)
 }
 \underline{Exemple:} On peut définir la \textbf{fonction gamma}, définie sur \(\R \backslash \Z_-\) telle que:
 \[
-   \Gamma(x): x \mapsto \int_{0}^{+\infty} e^{-t}t^{x-1} \d t   
+   \Gamma(x): x \mapsto \int_{0}^{+\infty} e^{-t}t^{x-1} d t   
 \]
 \chapter*{\chapterstyle{VI --- Séries Numériques}}
 \addcontentsline{toc}{section}{Séries Numériques}
@@ -1093,7 +1093,7 @@ On peut généraliser le résultat sur la continuité à un résultat sur les li
 On peut alors aussi montrer que si \((f_n)\) est une suite de fonction intégrables qui convergent uniformément vers \(f\), alors \(f\) est intégrable et on a \textbf{le théorème d'interversion} suivant:
 \customBox{width=7cm}{
    \[
-      \lim_{n \rightarrow +\infty}\int_{a}^{b} f_n(t) \d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} f_n(t) \d t
+      \lim_{n \rightarrow +\infty}\int_{a}^{b} f_n(t) d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} f_n(t) d t
    \]
 }
 \subsection*{\subsecstyle{Retour sur la dérivabilité{:}}}
@@ -1144,7 +1144,7 @@ Néanmoins comme précédemment, on montre facilement que la dérivabilité ne p
 
 On peut aussi à nouveau généraliser la conservation de la continuité par la conservation de la limite, comme dans le chapitre précédent ainsi que la conservation de l'intégrabilité et on a donc:
 \[
-   \lim_{n \rightarrow +\infty}\int_{a}^{b} S_n(t) \d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} S_n(t) \d t
+   \lim_{n \rightarrow +\infty}\int_{a}^{b} S_n(t) d t = \int_{a}^{b} \lim_{n \rightarrow +\infty} S_n(t) d t
 \]
 \pagebreak
 \subsection*{\subsecstyle{Convergence normale{:}}}
@@ -1266,13 +1266,13 @@ Alors on cherche la forme du coefficient \(c_m\) de cette décomposition pour \(
 \]
 L'idée étant alors de remarquer que si on intègre cette relation sur une période, on obtient:
 \begin{align*}
-   \int_{0}^{2\pi} f(x)e^{-imx} \d x &= \int_{0}^{2\pi} \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)} \d x \\
-   & = \sum_{n = -\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} \d x\\
+   \int_{0}^{2\pi} f(x)e^{-imx} d x &= \int_{0}^{2\pi} \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)} d x \\
+   & = \sum_{n = -\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} d x\\
    & = 2\pi c_m
 \end{align*}
 En effet toutes les intégrales sont nulles pour \(n \neq m\), ce qui nous donne donc l'expression générale des coefficients \footnote[1]{Avec le premier coefficient donné par \(c_0\), c'est la valeur moyenne de la fonction sur une période.} de Fourier de \(f\):
 \[
-   c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)e^{-inx} \d x
+   c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)e^{-inx} d x
 \]
 On note souvent \(c_n(f)\) simplement \(c_n\) quand il n'y a pas de confusions possibles. Alors gràce aux relations explicitées dans la note de bas de page ci-dessus, on peut retrouver les coefficients \(a_n, b_n\) si nécéssaires.
 
@@ -1313,7 +1313,7 @@ Cette expression peut être pratique car elle permet de passer rapidement de la 
 \subsection*{\subsecstyle{Formule de Parseval{:}}}
 Enfin, une formule fondamentale de la théorie des séries de Fourier est celle de \textbf{Parseval}, on définit d'abord le produit scalaire suivant sur l'espace des fonctions \(T\)-périodiques:
 \[
-   \dotproduct{f}{g} := \frac{1}{T}\int_T f(t)\overline{g(t)} \d t   
+   \dotproduct{f}{g} := \frac{1}{T}\int_T f(t)\overline{g(t)} d t   
 \]
 On considère alors la famille suivante de vecteurs suivante:
 \[
@@ -1329,7 +1329,7 @@ On peut alors montrer une généralisation du \textbf{théorème de Pythagore} d
 \]
 Et donc dans ce cas particulier, on obtient l'égalité suivante:
 \[
-   \frac{1}{T} \vectNorm{f}^2 = \frac{1}{T} \int_{0}^{2\pi} |f(t)|^2 \d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = \frac{a_0^2}{4} + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
+   \frac{1}{T} \vectNorm{f}^2 = \frac{1}{T} \int_{0}^{2\pi} |f(t)|^2 d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = \frac{a_0^2}{4} + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
 \]
 On peut en donner une interprétation physique assez évocatrice, en effet ce théorème se résume à dire que:
 \begin{center}
@@ -1348,17 +1348,17 @@ On considère la fonction \(2-\pi\) périodique telle que:
 \]
 On remarque rapidement qu'elle est périodique et continue, elle est donc décomposable en série de Fourier, calculons ses coefficients:
 \begin{flalign*}
-   c_n(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-int} \d t\\
-   &= \frac{1}{2\pi} \int_{-\pi}^{\pi} (t^2 - \pi^2)e^{-int} \d t\\
-   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t - \pi^2\int_{-\pi}^{\pi}e^{-int} \d t\right)\\
-   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} \d t\right)\shorteqnote{(Intégrale d'une fonction impaire sur un intervalle symétrique.)} \\ 
+   c_n(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-int} d t\\
+   &= \frac{1}{2\pi} \int_{-\pi}^{\pi} (t^2 - \pi^2)e^{-int} d t\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} d t - \pi^2\int_{-\pi}^{\pi}e^{-int} d t\right)\\
+   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} d t\right)\shorteqnote{(Intégrale d'une fonction impaire sur un intervalle symétrique.)} \\ 
    &= \frac{1}{-2n\pi i} \left(-2\pi^2i\sin(n\pi) - \frac{4\pi}{in}\cos(n\pi) + \frac{4}{in^2}\sin(n\pi)\right) \shorteqnote{(Aprés 2 IPP et utilisation des formules d'Euler.)}\\
    &= \frac{2\cos{n\pi}}{n^2} \shorteqnote{(Car \(\sin(n\pi)\) est nul)}\\
    &= \frac{2(-1)^n}{n^2}
 \end{flalign*}
 Aussi le premier coefficient est donné par:
 \begin{flalign*}
-   c_0(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} t^2 - \pi^2 \d t \\
+   c_0(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} t^2 - \pi^2 d t \\
    &= \frac{-2\pi^2}{3}
 \end{flalign*}
 
@@ -1373,11 +1373,11 @@ Enfin on a donc le développement en série de Fourier donné par:
 \subsection*{\subsecstyle{Application au calcul d'une somme {:}}}
 D'aprés l'égalité de Parseval, on a alors que:
 \[
-   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \sum_{-\infty}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} \frac{4}{n^4}
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 d t = \sum_{-\infty}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} \frac{4}{n^4}
 \]
 Aussi on a:
 \[
-   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 \d t = \frac{1}{2\pi}\int_{-\pi}^{\pi}(x^2 - \pi^2)^2 \d t = \frac{8\pi^4}{15}
+   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 d t = \frac{1}{2\pi}\int_{-\pi}^{\pi}(x^2 - \pi^2)^2 d t = \frac{8\pi^4}{15}
 \]
 Donc finalement on trouve que:
 \[

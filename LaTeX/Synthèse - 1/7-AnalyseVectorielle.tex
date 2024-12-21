@@ -66,7 +66,7 @@ En particulier si \(M = \det\), et pour les fonctions \(f, g, h\) on a:
 \subsection*{\subsecstyle{Intégration{:}}}
 On peut alors raisonnablement penser que l'intégration sur un segment \(\icc{a}{b}\) se généralisera de la meme manière, et c'est le cas ! Si toutes les fonctions \((f_i)\) sont Riemann-intégrables sur le segment, alors on dira que la fonction \(f\) est Riemann-intégrable et on définit:
 \[
-   \int_{a}^{b} f(t) \d t = \left(\int_{a}^{b} f_1(t) \d t, \ldots, \int_{a}^{b} f_n(t) \d t\right)   
+   \int_{a}^{b} f(t) d t = \left(\int_{a}^{b} f_1(t) d t, \ldots, \int_{a}^{b} f_n(t) d t\right)   
 \]
 En particulier cela donne lieu à une interprétation cinématique :
 \begin{center}
@@ -834,23 +834,23 @@ Nous verrons alors qu'il existe en fait trois constructions différentes qui mes
 \end{itemize}
 Dans toute la suite, on considèrera un \textbf{arc orienté} \(\Gamma\) paramétré par une fonction \(\gamma : t \mapsto \gamma(t)\) définie sur \(\icc{a}{b}\) et de classe \(\mathcal{C}^1\). On rapelle à toutes fins utiles:
 \begin{itemize}
-   \item L'abcisse curviligne de \(\gamma\) est donnée par: \(ds = \vectNorm{\gamma'(t)} \d t  \)
-   \item Le vecteur normal à \(\gamma'\) est donnée par: \(dn = (\gamma_2'(t), -\gamma_1'(t))\d t  \)
+   \item L'abcisse curviligne de \(\gamma\) est donnée par: \(ds = \vectNorm{\gamma'(t)} d t  \)
+   \item Le vecteur normal à \(\gamma'\) est donnée par: \(dn = (\gamma_2'(t), -\gamma_1'(t))d t  \)
 \end{itemize}
 \subsection*{\subsecstyle{Intégrale d'un champ scalaire{:}}}
 On se donne un champ scalaire lisse \(f : \Gamma \rightarrow \R\) et on cherche à quantifier l'aire située entre la courbe et le graphe \(\mathscr{G}_f\), on peut alors écrire cette aire comme une somme de Riemann, qui tends alors vers une intégrale et on définit:
 \[
-   \int_{\gamma} f \d s = \int_{a}^{b}f(\gamma(t))\vectNorm{\gamma'(t)}\d t
+   \int_{\gamma} f d s = \int_{a}^{b}f(\gamma(t))\vectNorm{\gamma'(t)}d t
 \]
 \subsection*{\subsecstyle{Intégrale de travail d'un champ vectoriel{:}}}
 On se donne un champ vectoriel lisse \(f : \Gamma \rightarrow \R^n\) et on cherche à quantifier la \textbf{contribution du champ vectoriel au trajet de la courbe}, ie au travail que le champ effectuerais sur une particule qui se déplacerait le long de la courbe, à nouveau gràce aux sommes de Riemann, on peut définir:
 \[
-   \int_{\gamma} F \d \gamma = \int_{a}^{b} \dotproduct{F(\gamma(t))}{\gamma'(t)}\d t
+   \int_{\gamma} F d \gamma = \int_{a}^{b} \dotproduct{F(\gamma(t))}{\gamma'(t)}dt
 \]
 \subsection*{\subsecstyle{Intégrale de flux d'un champ vectoriel{:}}}
 On se donne un champ vectoriel lisse \(f : \Gamma \rightarrow \R^n\) et on cherche à quantifier la \textbf{tendance au champ de vecteurs à traverser la courbe}, ie si le champ de vecteurs représenterais un fluide, à la quantité d'eau qui traverse la courbe en un instant donné. A nouveau gràce aux sommes de Riemann, on peut définir:
 \[
-   \int_{\gamma} F \d n = \int_{a}^{b} \dotproduct{F(\gamma(t))}{n'(t)}\d t
+   \int_{\gamma} F d n = \int_{a}^{b} \dotproduct{F(\gamma(t))}{n'(t)}d t
 \]
 \subsection*{\subsecstyle{Intprétation du produit scalaire{:}}}
 On remarque que les intégrales curviligne d'un champ de vecteur font apparaître un produit scalaire, en effet cela déocule directement des quantités géométriques que l'on cherche à calculer:
@@ -861,19 +861,19 @@ On remarque que les intégrales curviligne d'un champ de vecteur font apparaîtr
 \subsection*{\subsecstyle{Théorème du gradient{:}}}
 On s'attarde un peu sur le cas vectoriel, et on se donne un champ vectoriel \(X\) tel que \(X = \nabla F\) pour un certain champ scalaire \(F\), on dira alors que \(X\) \textbf{dérive du potentiel} \(F\), on se donne un chemin paramétré par \(\gamma\) sur \(\icc{a}{b}\) et on cherche à calculer le travail de \(X\) sur ce chemin, on trouve alors que:
 \begin{flalign*}
-   \int_{\gamma} X \d \gamma &:= \int_{a}^{b} \dotproduct{\nabla F(\gamma(t))}{\gamma'(t)}\d t \\
-   &= \int_{a}^{b} dF_{\gamma(t)}(\gamma'(t)) \d t \shorteqnote{(On utilise le lien gradient / différentielle.)} \\ 
+   \int_{\gamma} X d \gamma &:= \int_{a}^{b} \dotproduct{\nabla F(\gamma(t))}{\gamma'(t)}d t \\
+   &= \int_{a}^{b} dF_{\gamma(t)}(\gamma'(t)) d t \shorteqnote{(On utilise le lien gradient / différentielle.)} \\ 
    &= \int_{a}^{b} d(F \circ \gamma)_t \shorteqnote{(Par la règle de la chaîne, ou en passant en composantes.)}  \\ 
-   &= \int_{a}^{b} (F \circ \gamma)'(t) \d t \shorteqnote{(Par le lien diférentielle / dérivée.)}  \\ 
+   &= \int_{a}^{b} (F \circ \gamma)'(t) d t \shorteqnote{(Par le lien diférentielle / dérivée.)}  \\ 
    &= F(\gamma(b)) - F(\gamma(a)) \shorteqnote{(Théorème fondamental de l'analyse.)}  \\ 
 \end{flalign*}
 En particulier, on a montré le théorème suivant, généralisation du théorème fondamental de l'analyse, appelé souvent \textbf{théorème du gradient}:
 \begin{center}
    \textbf{Le travail le long d'un chemin d'un champ qui dérive d'un potentiel ne dépends que des bords du chemin choisi.}
 \end{center}
-C'est en fait même un cas particulier d'un théorème trés général qu'on verra plus tard apellé \textbf{théorème de Stokes} qui affirme que pour une forme différentielle \textbf{exacte}, ie qui s'écrive \(\d\omega\) pour \(\omega\) une autre forme différentielle, alors on a que l'intégrale ne dépends que des bords:
+C'est en fait même un cas particulier d'un théorème trés général qu'on verra plus tard apellé \textbf{théorème de Stokes} qui affirme que pour une forme différentielle \textbf{exacte}, ie qui s'écrive \(d\omega\) pour \(\omega\) une autre forme différentielle, alors on a que l'intégrale ne dépends que des bords:
 \[
-   \int_{A} \d \omega = \int_{\partial A} \omega
+   \int_{A} d \omega = \int_{\partial A} \omega
 \]
 \subsection*{\subsecstyle{Généralisations{:}}}
 On imagine alors qu'il doit être possible de généraliser ces concepts d'intégrales sur une courbe (espace de dimension 1) à des intégrales sur des \textbf{surfaces, volumes ...}. On aurait alors les deux\footnote[1]{Le concept d'intégrale de travail ne se généralise pas conceptuellement aux dimensions plus grandes pour des raisons évidentes.} concepts géométriques suivants:
@@ -962,7 +962,7 @@ Où la somme parcourt tout les rectangles de la subdivision. On définit alors l
 \end{center}
 Enfin on dit que \(f\) est \textbf{intégrable} sur \(R\) si et seulement si \textbf{l'intégrale supérieure et inférieure} sont égales, et on la note formellement:
 \[
-   \int_R f \d x_1 \ldots \d x_n \overset{\text{def.}}{=} \int_R f 
+   \int_R f d x_1 \ldots d x_n \overset{\text{def.}}{=} \int_R f 
 \]
 
 

@@ -32,7 +32,6 @@ Cette structure plus riche, qu'on appelle \textbf{monoide} nous permet alors d'i
    &\bullet \;\; \text{L'ensemble des chaines de caractères muni de la concaténation forme un monoide.}
 \end{align*}
 Les éléments neutres respectifs de ces exemples sont \(0_\N\) et la chaine de caractère vide.
-
 \subsection*{\subsecstyle{Morphismes {:}}}
 Aprés avoir défini une structure, on peut alors définir les transformations qui \textbf{préservent cette structure}.\<
 
@@ -74,22 +73,21 @@ Si la structure admet un symétrique pour la loi, alors:
 }
 \subsection*{\subsecstyle{Exemples {:}}}
 On peut considérer quelques exemples remarquables:
-\begin{align*}
-   &\bullet \;\; \text{\(\phi: n \in \N \longmapsto 2n \in 2\N\) est un morphisme (de monoide) de \((\N, +)\) dans \((2\N, +)\).}\\
-   &\bullet \;\; \text{\(\phi: x \in \R \longmapsto \exp(x) \in \R^{+*}\) est un isomorphisme (de groupe) de \((\R, +)\) dans \((\R^{+*}, \times)\).}\\  
-   &\bullet \;\; \text{\(\phi: M \in GL_{n}(\K) \longmapsto \det(M) \in \K^*\) est un morphisme (de groupe) de \((GL_{n}(\K), \times)\) dans \((\K, \times)\).}\\
-   &\bullet \;\; \text{\(\phi: z \in \C \longmapsto \overline{z} \in \C\) est un automorphisme (de corps) de \((\C, +, \times)\) dans \((\C, +, \times)\).}
-\end{align*}
+\begin{itemize}
+   \item \(\phi: n \in \N \longmapsto 2n \in 2\N\) est un morphisme (de monoide) de \((\N, +)\) dans \((2\N, +)\).
+   \item \(\phi: x \in \R \longmapsto \exp(x) \in \R^{+*}\) est un isomorphisme (de groupe) de \((\R, +)\) dans \((\R^{+*}, \times)\).
+   \item \(\phi: M \in GL_{n}(\K) \longmapsto \det(M) \in \K^*\) est un morphisme (de groupe) de \((GL_{n}(\K), \times)\) dans \((\K, \times)\).
+   \item \(\phi: z \in \C \longmapsto \overline{z} \in \C\) est un automorphisme (de corps) de \((\C, +, \times)\) dans \((\C, +, \times)\).
+\end{itemize}
 \pagebreak
 \subsection*{\subsecstyle{Sous-structures {:}}}
-
 Une fois une structure algébrique définie sur \(E\), on peut alors s'intéresser aux parties de \(E\) qui conservent cette structure, on les appellera alors \textbf{sous-structures} de \(E\).\<
 
 En particulier, on dira que \(F\) est une \textbf{sous-structure} de \(E\) (et on notera \(F < E\)) si elle vérifie:
 \begin{itemize}
    \item La partie \(F\) est stable par les lois.
-   \item Les éléments neutres\footnote[1]{\label{struct}\textbf{Si la structure impose leur existence}} appartient à \(F\) 
-   \item Les inverses\footnoteref{struct} des éléments de \(F\) appartient à \(F\)
+   \item Les éléments neutres\footnote[1]{\textbf{Si la structure impose leur existence}} appartient à \(F\) 
+   \item Les inverses\footnote[2]{\textbf{Si la structure impose leur existence}} des éléments de \(F\) appartient à \(F\)
 \end{itemize}
 
 On peut alors montrer les propositions suivantes:
@@ -98,7 +96,6 @@ On peut alors montrer les propositions suivantes:
    \item L'intersection d'une famille de sous-structures est une sous-structure
 \end{itemize}
 En particulier les noyaux de morphismes sont des sous-structures de la structure de départ.
-
 \subsection*{\subsecstyle{Structures Quotients {:}}}
 Dans le domaine ensembliste, on sait créer des ensembles quotients via une relation d'équivalence, on cherche par la suite à créer des ensembles quotients qui \textbf{conservent les propriétés de structure}, en particulier, on cherche des conditions sur une relation d'équivalence \(\sim\) pour que \(G/_\sim\) soit un groupe, un anneau, ou un corps.
 
@@ -116,22 +113,21 @@ On peut alors définir la \textbf{surjection canonique} qui est le morphisme \(\
 \addcontentsline{toc}{section}{Groupes}
 
 Soit \(G\) un ensemble \textbf{non-vide} muni d'une loi de composition interne associative\footnote[1]{Dans la suite, la loi de composition des groupes sera notée multiplicativement sauf exceptions.} telle que:
-\begin{align*}
-   &\bullet \;\; \text{Il existe \textbf{un élément neutre} pour la loi.} \\
-   &\bullet \;\; \text{Tout élément de \(G\) admet \textbf{un inverse} pour la loi.}
-\end{align*}
+\begin{itemize}
+   \item Il existe \textbf{un élément neutre} pour la loi.
+   \item Tout élément de \(G\) admet \textbf{un inverse} pour la loi.
+\end{itemize}
 Alors le couple \((G, \star)\) est appellé \textbf{groupe}. De plus si le groupe est \textbf{commutatif}, on dira alors que c'est un groupe \textbf{abélien}.\<
 
 On appellera \textbf{ordre du groupe} le cardinal (potentiellement infini) de l'ensemble sous-jacent, noté \(|G|\).
-
 \subsection*{\subsecstyle{Exemples {:}}}
 On peut alors considérer plusieurs groupes remarquables:
-\begin{align*}
-   &\bullet \;\; \text{Les \textbf{entiers relatifs} muni de l'addition usuelle.}\\
-   &\bullet \;\; \text{Les \textbf{isométries du plan} muni de la composition, on l'apelle le \textbf{groupe dihédral}.}\\   
-   &\bullet \;\; \text{Les \textbf{matrices inversibles} muni de la multiplication, on l'apelle le \textbf{groupe linéaire}.}\\
-   &\bullet \;\; \text{Les \textbf{bijections} sur un ensemble muni de la composition, on l'apelle le \textbf{groupe symétrique}.}
-\end{align*}
+\begin{itemize}
+   \item Les \textbf{entiers relatifs} muni de l'addition usuelle.
+   \item Les \textbf{isométries du plan} muni de la composition, on l'apelle le \textbf{groupe dihédral}.  
+   \item Les \textbf{matrices inversibles} muni de la multiplication, on l'apelle le \textbf{groupe linéaire}.
+   \item Les \textbf{bijections} sur un ensemble muni de la composition, on l'apelle le \textbf{groupe symétrique}.
+\end{itemize}
 \subsection*{\subsecstyle{Morphismes de groupes {:}}}
 Soit \(G, H\) deux groupes et \(\varphi: G \rightarrow H\), l'existence d'un élément neutre nous permet de définir alors \textbf{le noyau d'un morphisme} par:
 \[
@@ -142,133 +138,163 @@ En particulier, on peut alors montrer:
    Un morphisme est injectif si et seulement si son noyau est réduit à l'élément neutre.
 }
 \subsection*{\subsecstyle{Sous-groupes {:}}}
-Les sous-structures dans le cas des groupes sont naturellement les \textbf{sous-groupes}. Un cas remarquable est celui du \textbf{sous-groupe engendré} par \(H\) qu'on note:
-\customBox{width=10cm}{
-   \(\langle H \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \Z \Bigl\}\)
-}
-\begin{center}
-   \textit{C'est l'ensemble des combinaisons d'éléments de \(H\) et de leurs inverses.}
-\end{center}
-Une propriété fondamentale est que \(\langle H \rangle\) est un \textbf{opérateur de cloture} par la loi du groupe, ie c'est une application \textbf{idempotente, croissante et extensive}.\<
+Les sous-structures dans le cas des groupes sont naturellement les sous-groupes. Un cas remarquable est celui du \textbf{sous-groupe engendré} par \(H\) qu'on note:
+\[ 
+   \langle H \rangle := \Bigl\{ h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \Z \Bigl\}
+\]
+
+Une propriété fondamentale est que \(\langle H \rangle\) est un opérateur de cloture par la loi du groupe, ie c'est une application \textbf{idempotente, croissante et extensive}.\<
 
 On peut alors considérer le sous-groupe engendré par un élément \(h \in H\), en effet on a:
 \[
-   \langle h \rangle := \bigl\{ h^{k} \; ; \; k \in \Z \bigl\}
+   \langle h \rangle := \left\{ h^{k} \; ; \; k \in \Z \right\}
 \]
 On peut alors définir \textbf{l'ordre d'un élément} comme étant l'ordre du sous-groupe engendré associé (potentiellement infini).\<
 
 Ce sous-groupe permet de définir des groupes remarquables, en effet si un groupe est engendré par un unique élément, il est appelé \textbf{groupe cyclique} dont nous parleront plus loin dans ce chapitre.
 \pagebreak
-\subsection*{\subsecstyle{Action de groupe {:}}}
-Soit \(E\) un ensemble et \(G\) un groupe noté multiplicativement, on peut définir une \textbf{action de groupe} de \(G\) sur \(E\) par une application de la forme:
-\[
+
+\subsection*{\subsecstyle{Classes {:}}}
+On considère maintenant un sous-groupe \( H \leq G \), alors on peut définir deux relations d'équivalences sur \( G \) par:
+\[ 
+   \begin{cases}
+      g_1 \sim g_2 \iff \exists h \in H \; ; \; g_1 = g_2h\\
+      g_1 \sim g_2 \iff \exists h \in H \; ; \; g_1 = hg_2
+   \end{cases}
+\] 
+On appelle alors \textbf{classe à gauche} (resp. classe à droite) les classes d'équivalences pour ces deux relations et on note alors \( gH \) (resp. \( Hg \)) la classe d'un élément \( g \) pour cette relation. On note alors \( G/H \) l'ensemble quotient associé aux classes à gauche.
+\subsection*{\subsecstyle{Théorème de Lagrange {:}}}
+Ces classes induisent donc une partition de \( G \) en classes \textbf{de même cardinal}, en effet:
+\[ 
+   |gH| = \left|\left\{ gh \; ; \; h \in H \right\} \right| = |H|
+\]
+En outre on a une bijection qui associe à chaque élément de \( g \) sa classe et l'élément de \( H \) lui correspondant:
+\[ 
    \begin{aligned}
-      G \times E &\longrightarrow E\\
+      f : G &\longrightarrow (G/H, H)\\
+      g &\longmapsto (aH, h)
+   \end{aligned}
+\]
+Ceci nous permet donc de montrer le \textbf{théorème de Lagrange} qui nous donne que pour tout groupe fini \( G \), on a:
+\[ 
+   |G| = |G/H||H|
+\]
+Et comme corollaire immédiat la propriété suivante:
+\begin{center}
+   \textbf{Le cardinal d'un sous-groupe divise le cardinal du groupe.}
+\end{center}
+\subsection*{\subsecstyle{Sous-groupes normaux {:}}}
+On cherche alors à caractériser les sous-groupes tels que la relation d'équivalence définie ci-dessous soit \textbf{compatible} avec les opération de groupe, en d'autres termes on cherche à définir un groupe quotient pour cette relation. On peut alors montrer que les sous-groupes vérifiant cette compatibilité vérifient:
+\[ 
+   \forall g \in G \; ; \; gH = Hg 
+\]
+En d'autres termes les classes à droite et à gauche coincident. C'est alors immédiat que \textbf{tout sous-groupe d'un groupe abélien est normal}. Par ailleurs on peut caractériser les sous-groupes normaux d'une autre façon (détaillée au chapitre sur les actions de groupe) comme les sous-groupes qui vérifient:
+\[ 
+   \forall h \in H \; , \; \forall g \in G \; ; \; ghg^{-1} \in H 
+\]
+
+\chapter*{\chapterstyle{II --- Actions de groupe}}
+\addcontentsline{toc}{section}{Actions de groupe}
+Soit \( G \) un groupe et \( X \) un ensemble quelconque, dans ce chapitre on définit un notion fondamentale en théorie des groupes, la notion \textbf{d'action d'un groupe sur un ensemble.} En effet on appelera \textbf{action} du groupe \( G \) sur \( X \) une application de la forme:
+\[ 
+   \begin{aligned}
+      G \times X &\longrightarrow X\\
       (g, x) &\longmapsto g \cdot x
    \end{aligned}
 \]
-Elle doit alors vérifier les propriétés suivantes:
-\customBox{width = 10cm}{
-   \begin{align*}
-      &\textbf{Le neutre n'agit pas: }\forall x \in E \; ; \; e \cdot x = x\\
-      &\textbf{Associativité mixte: }\forall g, g' \in G \; ; \; g' \cdot (g \cdot x) = (g'g) \cdot x
-   \end{align*}
-}
+En outre une action doit vérifier deux autres propriétés:
+\begin{itemize}
+   \item \textbf{Le neutre n'agit pas: } \( \forall x \in X \; ; \; e \cdot x = x \)
+   \item \textbf{Associativité mixte: } \( \forall g_1, g_2, x \in G \times G \times X \; ; \; (g_1g_2) \cdot x = g_1(g_2 \cdot x) \)
+\end{itemize}
+On dira alors que \( G \) \textbf{agît} sur \( X \) et on notera alors \( G \curvearrowright X \).
 
-\underline{Exemple:} Considèrons le groupe \(\G_3\), il agit sur l'ensemble \(E = \left\{ A, B, C\right\}\) par l'action naturelle qui "mélange" l'ensemble \(E\), par exemple si on prends \(\sigma = (1, 2, 3)\), on associe \(\sigma(x)\) à chaque \(x \in E\).\+
-Composer des permutations et faire agir la composée reviendra alors à faire agir les composantes successivement, et la permutation identité n'agit pas. 
-\subsection*{\subsecstyle{Orbite {:}}}
-On considère un ensemble \(E\) et un groupe \(G\) qui agit sur \(E\), alors on définit \textbf{l'orbite} d'un élément \(x \in E\) par:
-\[
-   O_x := \Bigl\{ y \in E \; ; \; \exists g \in G \, , \, g \cdot x = y\Bigl\}   
-\]
-\begin{center}
-   \textit{L'orbite d'un élément est simplement l'ensemble des éléments atteint par l'action du groupe sur l'élément.}
-\end{center}
-\subsection*{\subsecstyle{Stabilisateur {:}}}
-On peut aussi définir \textbf{le stabilisateur} d'un élément \(x \in E\) par:
-\[
-   St_x := \Bigl\{ g \in G \; ; \; g \cdot x = x\Bigl\}   
-\]
-\begin{center}
-   \textit{Le stabilisateur d'un élément est simplement l'ensemble des éléments du groupe qui le laissent invariant.}
-\end{center}
-\subsection*{\subsecstyle{Classes {:}}}
-Soit \(H < G\) et \(g \in G\), on appelle \textbf{classe à gauche}\footnote[1]{On définit de manière analogue les \textbf{classes à droite}.} de \(g\) suivant \(H\) l'ensemble:
-\customBox{width=4.5cm}{
-   \(gH := \Bigl\{ gh \; ; \; h \in H \Bigl\}\)
-}
-Ce sont les \textbf{classes d'équivalences} naturelles pour la relation \(a \sim b \Longleftrightarrow aH = bH\).\<
-
-\underline{Exemple:} Considèrons le groupe \((\Z, \times)\), alors \(2\Z\) est la classe à gauche de \(2\) suivant \(\Z\). Les classes à gauche de la forme \(n\Z\) seront utiles pour définir les groupes quotients associés à \textbf{l'arithmétique modulaire}.
-\subsection*{\subsecstyle{Sous-groupes normaux{:}}}
-Soit \(H < G\) et \(g \in G\), on dit que \(H\) est un \textbf{sous-groupe normal} et on note \(H \lhd G\), si il vérifie:
-\customBox{width=5cm}{
-   \(
-      \forall g \in G \; ; \; gH = Hg     
-   \)
-}
-\begin{center}
-   \textit{Un sous-groupe est normal si et seulement si toutes classe à gauche est égale à sa classe à droite.}
-\end{center}
-On peut alors montrer la propriété suivante:
-\begin{center}
-   \textbf{La préimage d'un sous-groupe normal par un morphisme est un sous-groupe normal\footnote[2]{Donc en particulier, les noyaux de morphismes sont toujours des sous-groupes normaux.}.}
-\end{center}
-\subsection*{\subsecstyle{Conjugaison{:}}}
-On peut définir une action appellée \textbf{conjugaison} de \(G\) sur lui-meme par:
-\[
+\subsection*{\subsecstyle{Morphisme structurel{:}}}
+On se donne une action \( G \curvearrowright X\), alors il peut être utile de considérer la currifiée\footnote[1]{On rapelle que \( \mathcal{F}(E \times F, G) \cong \mathcal{F}(E, \mathcal{F}(F, G)) \) en tant qu'ensembles.} de cette action, ie:
+\[ 
    \begin{aligned}
-      G \times G &\longrightarrow G\\
-      (g, h) &\longmapsto ghg^{-1}
+      \phi : G &&\longrightarrow (X &\longrightarrow X)\\
+      g &&\longmapsto (x &\longmapsto g \cdot x)
    \end{aligned}
 \]
-On peut alors montrer la caracterisation suivante pour \(H < G\):
-\customBox{width=8cm}{
-   \(
-      H \unlhd G \Longleftrightarrow \forall g, h \in G \times H \; ; \; ghg^{-1} \in H   
-   \)
-}
-\begin{center}
-   \textit{Un sous-groupe est normal si et seulement si il est stable par conjugaison.}
-\end{center}
-\subsection*{\subsecstyle{Relations d'équivalence compatibles{:}}}
-L'intéret fondamental des sous-groupes normaux et qu'on peut alors caractériser les relations d'équivalences \textbf{compatibles} avec la loi de groupe.\<
+On peut alors montrer que cette fonction prends son image dans l'ensemble des bijections sur \( X \) (dont on montrera que c'est un groupe au chapitre sur le groupe symétrique) et que c'est un \textbf{morphisme de groupe}. L'action de \( G \) induit donc un morphisme de groupe, appelé \textbf{morphisme structurel} de la forme:
+\[ 
+   \phi : G \longmapsto \mathfrak{S}(X)
+\]
+En outre cette correspondante est bijective, il est donc équivalent de considérer une action d'un groupe sur un ensemble ou un morphisme structurel.
 
-En effet si \(H \lhd G\), alors on définit:
-\[
-   x \sim y \Longleftrightarrow xH = yH
+\subsection*{\subsecstyle{Action induite sur l'ensemble des parties {:}}}
+Si \(G\) agît sur \( X \) alors \( G\) agît alors naturellement sur \( \mathcal{P}(X)  \) par l'action:
+\[ 
+   (g, P) \mapsto g \cdot P := \left\{ g \cdot x \; ; \; x \in P \right\} 
 \]
-On peut alors vérifier que la relation est compatible avec la loi du groupe et donc l'ensemble quotient suivant est bien un groupe pour la loi induite:
-\[
-   G/_\sim \underset{not.}{=} G/H
-\]
-\subsection*{\subsecstyle{Théorème de Lagrange{:}}}
-Pour tout \textbf{groupe fini} et muni des outils précédemment définis (notamment des concepts de classes\footnote[1]{On peut partitionner \(G\) en classes suivant \(H\) qui ont toutes le meme cardinal que \(H\) et donc on a:\[
-   |G| = |H| \times |G/H|\]}), on peut alors montrer la théorème fondamental suivant:
+\subsection*{\subsecstyle{Action induite sur les sous structures{:}}}
+On se pose alors deux questions naturelles:
+\begin{itemize}
+   \item Une action de \( G \) sur \( X \) induit-elle nécessairement une action de \( G \) sur \( Y \subseteq X \) ?
+   \item Une action de \( G \) sur \( X \) induit-elle nécessairement une action de \( H \leq G \) sur \(X\) ?
+\end{itemize}
+On peut alors montrer que la première question admet une réponse positive si et seulement si \( Y \) est \textbf{stable par l'action}.\<
+
+Pour la seconde question, elle admet toujours une réponse positive et on a même le résultat général suivant gràce au morphisme structurel, on considère deux groupes \( G, H \) reliés par un morphisme \( \phi \), et une action de \( H \) sur \( X \) de morphisme structurel \( \psi \), alors on a le diagramme:
 \begin{center}
-   \customBox{width=11cm}{
-      \textbf{L'ordre d'un sous-groupre divise l'ordre du groupe.}
-   }
+   \begin{tikzcd}[column sep=large, row sep=large]
+      G \arrow[r, "\phi"]
+         & H \arrow[r, "\psi"] & X
+   \end{tikzcd}
 \end{center}
+Et donc \( \phi \circ \psi \) définit bien un morphisme structurel de \( G \) sur \( \mathfrak{S}(X) \) et donc une action. Le cas particulier des sous-groupes se déduit en considérant \( \phi \) le morphisme d'inclusion d'un sous-groupe dans le groupe total.
+\pagebreak
+
+\subsection*{\subsecstyle{Orbites {:}}}
+Considérons un point \( a \in X \), alors on définit \textbf{l'orbite} de \( a \) sous l'action du groupe \( G \) par:
+\[ 
+   \text{Orb}_G(a) := \left\{ g \cdot a \; ; \; g \in G \right\} 
+\]
+Intuitivement, ce sont tout les points atteints par l'action de \( G \) sur le point initial \( a \). Une propriété fondamentale des orbites est la suivante, si on considère la relation suivante:
+\[ 
+   x \sim y \iff y \in \text{Orb}_G(x)
+\]
+Alors c'est une \textbf{relation d'équivalence}, et on a donc toujours une \textbf{partition} de \( X \) associée à l'action de \( G \), c'est la partition en orbites.
+\subsection*{\subsecstyle{Stabilisateurs {:}}}
+Considérons un point \( a \in X \), alors on définit \textbf{le stabilisateur} de \( a \) sous l'action du groupe \( G \) par:
+\[ 
+   \text{Stab}_G(a) := \left\{ g \in G \; ; \; g(a) = a\right\} 
+\]
+Intuitivement, ce sont tout les éléments du groupe qui laissent \( a \) invariant. Une propriété fondamentale des stabilisateurs est que c'est un \textbf{sous-groupe} du groupe \( G \). En outre si on considère le morphisme structurel \( \phi \) de l'action, on a:
+\[ 
+   \text{Ker}( \phi) = \bigcap_{x \in X} \text{Stab}_G(x) 
+\]
+\subsection*{\subsecstyle{Généralisations aux parties {:}}}
+On peut alors noter qu'il est aussi possible de définir les orbites et stabilisateurs de \textbf{parties}, en considérant les orbites et stabilisateurs pour l'action induite sur les parties définie plus haut.
+\subsection*{\subsecstyle{Vocabulaire {:}}}
+On peut alors nommer les actions de groupes qui vérifient certaines propriétés relatives aux ensembles définis plus haut, on appelle alors:
+\begin{itemize}
+   \item Action \textbf{transitive} une action qui n'admet qu'une seule orbite.
+   \item Action \textbf{libre} une action dont tout les stablisateurs sont triviaux.
+   \item Action \textbf{fidèle} une action dont le noyau du morphisme structurel est trivial.
+\end{itemize}
+On a alors d'aprés la caractérisation du noyau ci-dessus que toute action \textbf{libre} est \textbf{fidèle}.
+\subsection*{\subsecstyle{Action par automorphismes intérieurs{:}}}
+On peut alors aussi étudier l'action du groupe \( G \) sur \textbf{lui-même}, on obtient 
+
+
 \chapter*{\chapterstyle{II --- Théorèmes d'isomorphismes}}
 \addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
 On considère ici deux groupes \(G, F\), et \(H\) un sous-groupe normal de \(G\), on sait que \(H\) induit une relation d'équivalence compatible et donc qu'on peut définir le groupe quotient \(G/H\).\<
-
 \subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
 Soit \(\phi : G \longrightarrow F\) un morphisme, on peut alors montrer qu'il existe un unique morphisme \(\widetilde{\phi} : G/\Ker{\phi} \longrightarrow F\) tel que le diagramme soit commutatif\footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
 \begin{center}
-   \adjustbox{scale=1.5,center}{
-      \begin{tikzcd}[column sep=large, row sep=large]
-         G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
-         G/\Ker{\phi} \arrow[ru, "\widetilde{\phi}", swap, dashed]
-      \end{tikzcd}
-   }
+   \begin{tikzcd}[column sep=large, row sep=large]
+      G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
+      G/\Ker{\phi} \arrow[ru, "\widetilde{\phi}", swap, dashed]
+   \end{tikzcd}
 \end{center}
 En particulier, le morphisme \(\widetilde{\phi}'\) est injectif, et on montre qu'il surjectif sur \(\text{Im}(\phi)\) et donc on a le théorème suivant:
 \customBox{width=6cm}{
    \(G/\Ker{\phi} \cong \text{Im}(\phi)\) 
 }
+
 \chapter*{\chapterstyle{II --- Groupes Symétriques}}
 \addcontentsline{toc}{section}{Groupe Symétrique}
 On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<
@@ -276,14 +302,12 @@ On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe d
 On remarque alors aisément que l'ordre de \(\mathfrak{S}_n\) est \(n!\).\<
 
 Soit \(\sigma \in \mathfrak{S}_n\) une permutation de \(\inticc{1}{n}\), alors c'est une fonction bijective sur cet ensemble. En particulier, sachant que l'ensemble est fini, c'est une fonction définie par cas qu'on note alors par commodité horizontalement dans un tableau:
-
 \[
    \sigma =  \begin{pmatrix}
       1 & 2 & \ldots & n\\
       \sigma(1) & \sigma(2) & \ldots & \sigma(n)
    \end{pmatrix}
 \]
-
 \subsection*{\subsecstyle{Support {:}}}
 On appelle alors \textbf{support} d'une permutation le complémentaire des points fixes de \(\sigma\), ie on a:
 \[
@@ -294,11 +318,12 @@ Une des propriétés fondamentale qu'on peut déduire de cette définition est q
    Deux permutations à supports disjoints \textbf{commutent}.
 }
 \subsection*{\subsecstyle{Cycles {:}}}
-On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_n\) tels que:
+On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_k\) tels que:
 \[
    \begin{cases}
       \forall i \in \inticc{1}{k-1} \; ; \; \sigma(a_i) = \sigma(a_{i+1}) \\
-      \forall i \notin \inticc{1}{k-1} \; ; \; \sigma(a_i) = \sigma(a_{i})
+      \forall i \notin \inticc{1}{k} \; ; \; \sigma(a_i) = \sigma(a_{i}) \\
+      \sigma(a_k) = \sigma(a_1)
    \end{cases} 
 \]
 \begin{center}
@@ -329,8 +354,11 @@ On peut alors démontrer une propriété fondamentale de l'ordre des cycles:
    \textbf{Un \(k\)-cycle est d'ordre \(k\)}.
 }
 En effet si on considère le sous-groupe engendré par un tel cycle, on remarque que pour tout élément \(a \in \inticc{1}{n}\) \(\sigma^{k}(a) = a\), donc \(\sigma^{k} = \text{Id}\).
+
 \subsection*{\subsecstyle{Théorèmes de décomposition {:}}}
 Une des problématiques principales à propos des groupes symétriques est la question de la \textbf{décomposition d'une permutation} en cycles. On peut en effet montrer que \textbf{toute permutation se décompose en produit de cycles à support disjoints}.\<
+
+Pour ceci, on utilise le fait que toute permutation induit une \textbf{partition en orbites} de \( \inticc{1}{n} \), ces orbites correspondront alors au supports des cycles dans la décomposition.\<
 
 Par la suite, on peut alors constater directement que pour tout \(k\)-cycle \(\sigma = (a_1 \;\, \ldots \;\, a_k)\), on a:
 \customBox{width=6cm}{
@@ -340,50 +368,19 @@ Enfin, on conclura de ces deux propositions que \textbf{toute permutation se dé
 \customBox{width=3cm}{
    \(\langle \mathfrak{T}_n \rangle = \mathfrak{S}_n\)
 }
-\subsection*{\subsecstyle{Algorithme de décomposition {:}}}
-Dans cette section, on va présenter un algorithme permettant de décomposer une permutation quelconque en produit de transpositions.\+
-On considère la permutation suivante:
-\[
-   \sigma = \begin{pmatrix}
-      1 & 2 & 3 & 4\\
-      4 & 3 & 1 & 2
-   \end{pmatrix}  
+\subsection*{\subsecstyle{Conjugaison et permuations {:}}}
+On considère alors l'action de \(  \mathfrak{S}_n \) sur lui-même par conjugaison, on peut alors montrer que pour toute permutation \(\sigma\), on a:
+\[ 
+   \sigma(a_1, \ldots, a_n)\sigma^{-1} = (\sigma(a_1), \ldots, \sigma(a_n))
 \]
-On va chercher à créer un point fixe pour la dernière valeur du tableau, on remarque alors qu'il suffit de composer \(\sigma\) par \((2 \;\, 4)\) et on obtient:
-\[
-   (2 \;\, 4)\sigma = \begin{pmatrix}
-      1 & 2 & 3 & 4\\
-      2 & 3 & 1 & 4
-   \end{pmatrix}  
-\]
-On va chercher à créer un point fixe pour la troisème valeur du tableau, on remarque alors qu'il suffit de composer \((2 \;\, 4)\sigma\) par \((1 \;\, 3)\) et on obtient:
-\[
-   (1 \;\, 3)(2 \;\, 4)\sigma = \begin{pmatrix}
-      1 & 2 & 3 & 4\\
-      2 & 1 & 3 & 4
-   \end{pmatrix}  
-\]
-Enfin il suffit de composer par \((1 \;\, 2)\) pour obtenir:
-\customBox{width=5cm}{
-   \((1 \;\, 2)(1 \;\, 3)(2 \;\, 4)\sigma = \text{Id}\)
-}
-Et donc il suffit alors de passer les transpositions à l'inverse pour obtenir que:
-\[
-   \sigma = (2 \;\, 4)(1 \;\, 3)(1 \;\, 2)
-\]
-\subsection*{\subsecstyle{Signature {:}}}
-On appelle \textbf{inversion} par \(\sigma\) une paire \(\{i, j\} \in \inticc{1}{n}\) telle que:
-\[
-   i < j \text{ et } \sigma(i) > \sigma(j)  
-\] 
-On note alors \(\text{Inv}(\sigma)\) l'ensemble des inversions par \(\sigma\). On peut alors définir la \textbf{signature} de la permutation \(\sigma\) par:
-\customBox{width=4cm}{
-   \(\epsilon(\sigma) = (-1)^{|\text{Inv}(\sigma)|}\) 
-}
-Moralement:
+En particulier, on a alors que deux cycles sont conjugués si et seulement si ils ont la même longueur, et si on définit le \textbf{type d'une permutation} par le n-uplet \textbf{non ordonné} \( [l_1, \ldots, l_k] \) des longueurs des cycles dans sa décomposition en cycles, on a alors une caractérisation des classes de conjugaisons:
 \begin{center}
-   \textit{La signature correspond à la parité du nombre d'inversions.}
+   \textbf{Deux permutations sont conjuguées si et seulement si elles ont même type.}
 \end{center}
+
+\subsection*{\subsecstyle{Signature {:}}}
+A REFAIRE.
+
 \chapter*{\chapterstyle{II --- Groupes Cycliques}}
 \addcontentsline{toc}{section}{Groupes Cycliques}
 On appelle \textbf{groupe cyclique} un groupe \(G\) engendré par un unique élément qu'on notera \(g\). Le but de ce chapitre est de classifier ces groupes et d'identifier leurs caractéristiques.\<
@@ -459,8 +456,8 @@ On peut alors considérer plusieurs anneaux remarquables:
 \begin{itemize}
    \item Les \textbf{entiers relatifs} muni des opérations usuelles.
    \item Les \textbf{fonctions continues} muni de la somme et du produit.
-   \item Les \textbf{polynomes}\footnote{\label{coeff}A coefficients dans un anneau} muni de la somme et du produit.
-   \item Les \textbf{matrices}\footnoteref{coeff} muni de la somme et du produit.
+   \item Les \textbf{polynomes}\footnote[1]{A coefficients dans un anneau} muni de la somme et du produit.
+   \item Les \textbf{matrices}\footnote[1]{A coefficients dans un anneau} muni de la somme et du produit.
 \end{itemize}
 
 \subsection*{\subsecstyle{Propriétés Algébriques{:}}}

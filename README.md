@@ -5,11 +5,19 @@ Latex : Synthesis of the content of my major in mathematics at INUC of Albi + so
 Python : Numerical methods & applied maths tests.
 
 TODO : 
+- Finir projet oscillateurs harmoniques.
+
+- Refonte des probas avec theorie de la mesure + REVISIONS
+- Intérpréter les limites Stochastiques + REVISIONS
+- Etoffer Fondements
+- Finir/Etoffer Algèbre, théorèmes d'isomorphismes, théorème chinois.
+
+- REVISION CALCDIFF, AlgLin
+
 
 - Rajouter interprétation en termes de colonnes/lignes du produit matriciel
 - Affiner le chapitre sur les polynomes dès que l'approche structurelle est possible
 - Espaces affines et euclidiens potentiellement à affiner par la suite
-- Prévoir de parler des 4 espaces fondamentaux, ie des supplémentaires orthogonaux de Im(f) et Ker(f)
 - Raffiner AL1-2 ?
 
 - Séries de Fourier à revoir
@@ -17,9 +25,6 @@ TODO :
 - Etude métrique des courbes gauches
 - Raffiner Coniques
 - Quadriques ? 
-- Intérpréter les limites Stochastiques
-- Etoffer Topologie ?
-- Etoffer Fondements ?
 - Formes différentielles et intégrales curvilignes à finir
 - Raffiner/actualiser les chapitres primitifs
 

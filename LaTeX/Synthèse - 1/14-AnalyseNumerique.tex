@@ -336,7 +336,7 @@ Avec les \(x_k\) des points de \(\icc{a}{b}\) et \(\omega_k\) des réels donnés
 \subsection*{\subsecstyle{Formules de Newton-Cotes {:}}}
 On considère une subdivision régulière de \(\icc{a}{b}\) en \(n\) sous intervalles et \(P\) le polynome d'interpolation de \(f\) sur les \(n + 1\) points \((x_i)\) associés, alors on approche l'intégrale de \(f\) par l'intégrale de \(P\) ce qui nous donne directement\footnote[1]{On intégre simplement \(P\) et on utilise la linéarité de l'intégrale.} les poids de quadrature suivants:
 \[
-   w_i = \int_{a}^{b} L_{x_i} \d x
+   w_i = \int_{a}^{b} L_{x_i} dx
 \]
 Les cas particuliers de cette méthode nous donnes alors les forumes classiques suivantes:
 \begin{itemize}
@@ -442,7 +442,6 @@ On peut aussi perturber la matrice en \(A + \delta A\), alors on peut montrer de
    \frac{\vectNorm{\delta X}}{\vectNorm{X +\delta X}} \leq  \text{cond}(A)\frac{\vectNorm{\delta A}}{\opNorm{A}}
 \]
 En outre ces majorations \textbf{ne dépendent pas du conditionnement choisi}.
-
 \chapter*{\chapterstyle{XIV --- Analyse Matricielle II}}
 \addcontentsline{toc}{section}{Analyse Matricielle II}
 On a défini dans le chapitre précédent les outils principaux qui vont nous permettre d'élaborer des méthodes efficaces de résolution de système linéaire. En particulier on trouve deux grands types de techniques de résolution:
@@ -450,16 +449,139 @@ On a défini dans le chapitre précédent les outils principaux qui vont nous pe
    \item Les \textbf{méthodes directes} qui s'emploient à résoudre le système de manière exacte par calcul.
    \item Les \textbf{méthodes itératives} qui s'emploient à résoudre le système de manière approchées.
 \end{itemize}
-Dans ce chapitre nous traiterons des méthodes directes principales.
+Dans ce chapitre nous traiterons des méthodes directes principales, on considère une matrice \( A \in GL_n( \R) \) inversible ainsi qu'un vecteur \( b \in \mathcal{M}_{n, 1}( \R) \) un vecteur solution et on cherche à résoudre l'équation matricielle:
+\[ 
+   Ax = b \; ; \; x \in \mathcal{M}_{n, 1}( \R)
+\]
 \subsection*{\subsecstyle{Méthode de Gauss {:}}}
-
+On connaît alors un algorithme classique de résolution d'un tel système, \textbf{la méthode de Gauss}, en effet, en effectuant des \textbf{opérations élémentaires} sur les lignes, on peut échelonner la matrice \( A \) et obtenir la solution du systême, plus formellement, on peut montrer que pour une certaine famille de matrices élémentaires \( (\alpha_i E_{i})_{i \in I} \), on a:
+\[ 
+   I_n = \prod_{i \in I} \alpha_i E_{i} \times A
+\]
+Ou encore en considérant les inverse de ces matrices:
+\[ 
+   A = \prod_{i \in I} \alpha'_i E'_{i}
+\]
+Cette méthode permet donc d'obtenir la matrice inverse, en effectuant uniquement des produit par des matrices élémentaires, et même plus précisément, elle permet de \textbf{factoriser} \( A \) en produit de matrices plus simples.
 \subsection*{\subsecstyle{Factorisation LU {:}}}
-\subsection*{\subsecstyle{Factorisation de Cholesky {:}}}
+La factorisation LU est alors un rafinement de celle de Gauss, en particulier on peut montrer qu'il existe deux matrices \( L, U \) respectivement \textbf{triangulaire inférieure et supérieure} telles que:
+\[ 
+   A = LU 
+\]
+Et où \( L \) n'a que des 1 sur sa diagonale. Cette décomposition est en fait une application partielle de l'algorithme de Gauss, en effet, si on effectuer l'algorithme de Gauss en échelonnant la matrice vers le bas, et en s'arrétant à la dernière ligne, alors on obtient que:
+\[ 
+   U = \widetilde{L}A = \begin{pmatrix}
+   1 & 0 & \ldots & 0 & 0\\
+   l_{1,1} & 1 & \ldots & 0 & 0 \\
+   \vdots &  \vdots &  \ddots & \vdots &  \vdots \\
+   l_{n-2,1} & l_{n-2,2} & \ldots & 1 & 0\\
+   l_{n-1,1} & l_{n-1,2} & \ldots & l_{n-1,n-1} & 1
+   \end{pmatrix} A
+\]
+La matrice \( \widetilde{L} \) ainsi obtenue étant en fait le produit des premières matrices élémentaires de la méthode de Gauss.
 
+
+\subsection*{\subsecstyle{Factorisation de Cholesky {:}}}
+Finalement, on peut montrer qu'il existe une autre décomposition appelée \textbf{décomposition de Choleski} dans le cas où \( A \) est \textbf{symétrique définie positive}, alors il existe une matrice \( L \) triangulaire inférieure telle que:
+\[ 
+   A = LL^t 
+\]
+Une telle matrice est usuellement obtenue par identification des coefficients, où informatiquement par l'algorithme qui lui correspond.
 \chapter*{\chapterstyle{XIV --- Analyse Matricielle III}}
 \addcontentsline{toc}{section}{Analyse Matricielle III}
-Dans ce chapitre nous traiterons des méthodes itératives principales pour résoudre des systèmes linéaires.visent à construire une suite \((X_k)\) de vecteurs tels que \((X_k) \rightarrow X\). Pour ce faire 
-
+Dans ce chapitre nous traiterons des méthodes itératives principales pour résoudre des systèmes linéaires.visent à construire une suite \((X_k)\) de vecteurs tels que \((X_k) \underset{k \rightarrow \infty}{\longrightarrow} X\). Pour ce faire, on utilise une variante de \textbf{méthode du point fixe}, ie pour résoudre le système \( Ax = b \), on cherche à écrire ce système sous la forme:
+\[ 
+   x = F(x) = Bx + c
+\]
+Avec \( F \) une fonction affine du vecteur \( x \), usuellement obtenue en décomposant la matrice \( A \). Alors on peut construire une méthode itérative du point fixe, pour \( x_0 \in \R^n \) par:
+\[ 
+   x_{n+1} = Bx_n +c 
+\]
+Alors si cette suite converge, elle converge vers \( x \), et en outre on peut montrer qu'une condition nécessaire et suffisante de convergence est que:
+\[ 
+   \varrho(B) < 1 
+\]
 \subsection*{\subsecstyle{Méthode de Jacobi {:}}}
+On peut alors considérer une première décomposition donnée par:
+\[ 
+   A = = L + D + U 
+\]
+Alors en manipulant l'expression \( Ax = b \) et en inversant uniquement \( D \), on obtient le schéma itératif suivant:
+\[ 
+   x_{n+1} = - D^{-1}(L + U)x_n + D^{-1}b 
+\]
+Qui converge donc si et seulement si \( \rho(D^{-1}(L + U)) = \rho(A - I_n) < 1 \)
 \subsection*{\subsecstyle{Méthode de Gauss-Seidel {:}}}
-\subsection*{\subsecstyle{Méthode de surrelaxation successive {:}}}
+On peut alors considérer la même décomposition mais en manipulant l'expression \( Ax = b \) différement et en inversant cette fois \( D + E \), on obtient le schéma itératif suivant:
+\[ 
+   x_{n+1} = -(D + L)^{-1}Fx_n + (D + L)^{-1}b 
+\]
+Qui converge dans ce cas si et seulement si \( \rho((D + L)^{-1}U) < 1 \)
+\subsection*{\subsecstyle{Méthode de relaxation {:}}}
+On peut alors considérer la même décomposition mais en ajoutant un paramêtre\footnote[1]{Celui-ci doit nécessairement être dans \( \ioo{0}{2} \) pour que la méthode converge, mais ce n'est hélas pas suffisant sauf si \( A \) est définie positive.} \( \omega \in \ioo{0}{2} \), et manipulant l'expression \( Ax = b \) différement, on obtient le schéma itératif suivant:
+\[ 
+   x_{n+1} = \left (\frac{D}{ \omega} + L \right )^{-1} \left(F + \frac{1 - \omega}{ \omega}D \right)x_n + \left(\frac{D}{ \omega} + L \right)^{-1}b 
+\]
+Qui converge alors si et seulement si \( \rho((\frac{D}{ \omega} + L)^{-1}(F + \frac{1 - \omega}{ \omega}D)) < 1 \). Le choix du paramêtre est alors non trivial mais permet d'optimiser la vitesse de convergence. En outre si \( \omega = 1 \), on retrouve la méthode de Gauss-Seidel.
+\chapter*{\chapterstyle{XIV --- Optimisation Linéaire}}
+Dans ce chapitre nous traiterons les problèmes \textbf{d'optimisation} d'une fonction étant données un ensemble de contraintes.\<
+
+On considère donc une fonction \textbf{objectif} \( f : D \rightarrow \R \) à valeurs réelles, et on appelle alors \( D \) \textbf{ensemble admissible} et les points de \( D \) sont appelés \textbf{points admissibles}. En effet l'ensemble \( D \) représente alors les contraintes sous lesquelles on veut optimiser la fonction. Trés souvent cet ensemble est une partie de \( \R^n \) avec des propriétés géométriques utiles comme la convexité, en effet on peut classifier ce genre de probèmes (non-exhaustivement) par les catégories suivantes:
+\begin{itemize}
+   \item \textbf{L'optimisation linéraire}, où la fonction objectif est une forme linéaire et l'ensemble \( D \) est caractérisé par des contraintes linéaires.
+   \item \textbf{L'optimisation linéraire en nombres entiers}, où la fonction objectif est une forme linéaire et l'ensemble \( D \) est caractérisé par des contraintes linéaires mais où les points admissibles doivent être à composantes entières.
+   \item \textbf{L'optimisation quadratique}, où la fonction objectif est une forme quadratique et l'ensemble \( D \) est caractérisé par des contraintes linéaires.
+   \item \textbf{L'optimisation non-linéaire}, où la fonction objectif est une non-linéaire et l'ensemble \( D \) n'a pas de forme particulière.
+\end{itemize}
+On se concentrera dans cette partie sur les deux premières catégories.
+
+\subsection*{\subsecstyle{Définition {:}}}
+On se donne une forme linéaire \( f : \R^n \rightarrow \R \), qu'on cherche à maximiser sur un ensemble \( D \) défini par un ensemble d'inéquations de la forme:
+\[ 
+   D : \begin{cases}
+      a_{1, 1}x_1 + \ldots + a_{1, n}x_n \leq b_1\\
+      \quad\quad\quad\quad\quad \vdots\\
+      a_{m, 1}x_1 + \ldots + a_{m, n}x_n \leq b_m
+   \end{cases} 
+\]
+Où les \( (a_{i,j}), (b_k) \) sont des coefficients qui définissent les contraintes du problème. On voir alors que les coefficients \( a_{i,j} \) définissent une matrice \(A \in \mathcal{M}_{m, n}(\R)\), et que les \( b_k \) définissent un vecteur \( b \), on peut donc définir la \textbf{canonique} d'un problème d'optimisation linéaire par:
+\[ 
+   \mathcal{P} : \begin{cases}
+      \sup_x\{f(x)\}\\
+      Ax \leq b\\
+      x \geq 0
+   \end{cases}
+\]
+Où ici l'inégalité vectorielle \( x \leq y \) est à entendre composantes par composantes, ie 
+\[ 
+   x \leq y \iff \forall i \leq n \; ; \; x_i \leq y_i
+\]
+\uline{Exemple:} On pose \( f(x, y) = 3x + 2y \), alors on peut définir par exemple:
+\[ 
+   \mathcal{P} : \begin{cases}
+      \sup_x\{f(x)\} \\
+      x + 9y \leq 0 \\
+      2x - y \leq 0 \\
+      x, y \geq 0
+   \end{cases} \longleftrightarrow 
+   \begin{cases}
+      \sup_x\{f(x)\} \\
+      \begin{pmatrix}
+      1 & 9\\
+      2 & -1
+      \end{pmatrix} \begin{pmatrix} x \\ y  \end{pmatrix} \leq \begin{pmatrix} 0 \\ 0\end{pmatrix}\\
+      x, y \geq 0
+   \end{cases}
+\]
+
+\subsection*{\subsecstyle{Caractrisation du domaine admissible {:}}}
+On cherche à caractériser géométriquement le domaine admissible, défini par:
+\[ 
+   D := \left\{ x \in \R^n \; ; \; Ax \leq b \right\}  
+\]
+Et par les propriétés de l'inégalité vectorielle qu'on a défini, cet ensemble est en fait une intersection (finie) des demi-espaces:
+\[ 
+   D_i := \left\{ x \in \R^n \; ; \; (Ax - b)_i \leq 0 \right\} 
+\]
+Et c'est donc un \textbf{polytôpe convexe}. On cherche donc à optimiser la fonction objectif sur un sous-ensemble convexe de son domaine de définition.
+\subsection*{\subsecstyle{Existences de solutions {:}}}

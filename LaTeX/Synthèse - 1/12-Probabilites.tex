@@ -234,16 +234,16 @@ La \textbf{loi de Poisson} est utilisée pour déterminer le nombre d'événemen
 On considère maintenant un espace probabilisé \((\Omega, \mathcal{B}(\R), \mathbb{P})\) où l'ensemble des évènements \(\mathcal{B}(\R)\) est la \textbf{tribu borélienne} de \(\Omega\).\+
 On appelle alors \textbf{variable aléatoire continue} toute variable aléatoire \(X\) telle qu'il existe une fonction \(f_X\), positive, intégrable, continue par morceaux telle que:
 \[
-   \mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(t) \d t   
+   \mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(t) d t   
 \]
 On appellera alors \(f_X\) la \textbf{densité} de \(X\) et elle vérifie donc:
 \[
-   \int_{-\infty}^{+\infty} f(t) \d t = 1
+   \int_{-\infty}^{+\infty} f(t) d t = 1
 \]
 La densité définit alors exactement la  loi de la variable aléatoire et donc la probabilité d'un évemenent\footnote[1]{En particulier, on remarquera que la probabilité d'un intervalle réduit à un singleton est nulle, ie \(\mathbb{P}(X = x) = 0\).} donné \(A \in \mathscr{B}\) par:
 \customBox{width=5.5cm}{
    \[
-      \mathbb{P}(X \in \icc{a}{b}) = \int_{a}^{b} f_X(t) \d t
+      \mathbb{P}(X \in \icc{a}{b}) = \int_{a}^{b} f_X(t) d t
    \]
 }
 
@@ -296,11 +296,11 @@ Informellement, dans les cas discrets et simples (finis), on construit souvent u
 \subsection*{\subsecstyle{Cas continu}}
 On généralise la construction d'une variable aléatoire à densité, et on dira alors qu'un vecteur aléatoire est \textbf{continu} si et seulement si il existe une fonction, positive, intégrable \(f_V(x, y)\) et qui intègre à 1 telle que pour tout borélien \(B\), on ait:
 \[
-   \mathbb{P}(V \in B) = \iint_{\R^2} f(x,y)  \d x \d y
+   \mathbb{P}(V \in B) = \iint_{\R^2} f(x,y)  d x d y
 \]
 De manière analogue au cas discret, les lois marginales sont obtenues en \textbf{fixant} la variable considèrée et en sommant (intégrant) sur l'autre, par exemple, la loi marginale de \(X\) est donnée par:
 \[
-   f_X(x) = \int_{\R} f(x,y) \d y
+   f_X(x) = \int_{\R} f(x,y) d y
 \]
 
 \subsection*{\subsecstyle{Propriétés conservées}}
@@ -451,7 +451,7 @@ On étudie ici la variable à densité \(W\) dont la densité est notée \(f\), 
 De manière analogue au cas discret\footnote[2]{Informellement, on somme ``continument'' les produits des valeurs prises par la variable pondérées par leurs probabilités (données par la densité).}, l'espérance de \(W\) est donnée par:
 \customBox{width=4.5cm}{
    \[
-      \expectancy{W} := \int_{I} t \cdot f(t) \d t
+      \expectancy{W} := \int_{I} t \cdot f(t) d t
    \]
 }
 L'existence même de cette intégrale n'est pas acquise à priori, ie il est possible que \(f\) n'admette pas d'éspérance.
@@ -460,7 +460,7 @@ Dans le cas où elle existe, les propriétés de l'espérance (linéarité, croi
 Pour définir la variance d'une telle variable aléatoire, il faut alors que l'intégrale \(\expectancy{W^2}\) existe, et d'aprés le théorème de Koenig-Huyghens, on a alors: 
 \customBox{width=10cm}{
    \[
-      \variance{W} := \expectancy{W^2} - \expectancy{W}^2 = \int_{I} t^2 \cdot f(t) \d t - \Bigl(\int_{I} t\cdot f(t) \d t\Bigl)^2
+      \variance{W} := \expectancy{W^2} - \expectancy{W}^2 = \int_{I} t^2 \cdot f(t) d t - \Bigl(\int_{I} t\cdot f(t) d t\Bigl)^2
    \]
 }
 Alors les propriétés de la variance sont elles aussi conservées.

@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/vazn/Mathematics/Python/media/videos/Python/480p10/partial_movie_files/VectorFlow/2474274884_2268332985_4059824330.mp4'
+file 'file:/home/vazn/Mathematics/Python/media/videos/Python/480p10/partial_movie_files/VectorFlow/627300054_2919340033_1581770360.mp4'
+file 'file:/home/vazn/Mathematics/Python/media/videos/Python/480p10/partial_movie_files/VectorFlow/627300054_322564739_2214599149.mp4'

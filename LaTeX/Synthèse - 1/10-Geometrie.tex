@@ -176,7 +176,7 @@ On peut alors subdiviser \(I\) en différents intervalles et approximer la longu
 }
 On appelle alors \textbf{abcisse curviligne} d'origine \(t_0\), ou encore fonction longeur d'arc, la primitive:
 \[
-   s(t) = \int_{t_0}^{t} \vectNorm{\gamma'(x)} \d x
+   s(t) = \int_{t_0}^{t} \vectNorm{\gamma'(x)} d x
 \]
 Par exemple dans \(\R^2\) pour l'arc paramétré \((I, \gamma)\) avec \(I = \icc{0}{1}\) et \(\gamma(t) = (t, t^2)\), on obtient:
 \[
@@ -241,7 +241,6 @@ L'idée du repère de Frenet est alors de définir un \textbf{repère mobile d'o
    N(t) := R_\frac{\pi}{2}T(t) = \begin{pmatrix} 0 & -1\\ 1 & 0\end{pmatrix} T(t) 
 \]
 Le couple \((T(t), N(t))\) est alors appelé \textbf{repère (mobile) de Frenet}, on abrège souvent les notations de dépendance en \(t\) et on note alors ce repère \((T, N)\).
-
 \subsection*{\subsecstyle{Courbure{:}}}
 On paramétre à présent l'arc par son abcisse curviligne \(s\), on peut alors montrer par calcul direct que \(T'(s) \perp T(s) \) et en particulier, on a donc que le vecteur accélération \(T'(s)\) est colinéaire à \(N(s)\), et il existe donc un scalaire \(\kappa(s)\) tel que:
 \[
@@ -270,7 +269,6 @@ On considère une courbe \textbf{fermée} paramétrée par \((I, \gamma)\), alor
 \]
 Dans le cas d'une courbe fermée, c'est un multiple de \(2\pi\) qui donne le nombre de tours effectués.
 \pagebreak
-
 \subsection*{\subsecstyle{Cercle osculateur{:}}}
 On définit le concept de \textbf{cerlce osculateur} en un point \(\gamma(t)\) par la propriété suivante:
 \begin{center}
@@ -283,7 +281,6 @@ On définit alors le \textbf{rayon de courbure algébrique} comme étant l'inver
 Géométriquement, c'est le point à distance le rayon de courbure dans la direction de \(N(t)\), on peut alors vérifier que si on paramétre le cercle osculateur de la sorte, le contact est bien d'ordre au moins 2.\< 
 
 L'ensemble des tels centres de courbures, c'est à dire la courbe \(\Gamma'\) de l'arc paramétré \((I, C)\) est appelé \textbf{développée} de la courbe \(\Gamma\) et \(\Gamma\) est appelé \textbf{développante} de la courbe \(\Gamma'\).
-
 \subsection*{\subsecstyle{Théorème de l'accélération normale{:}}}
 On cherche maintenant une expression du vecteur accélération \(A(t)\) dans la base \((T, N)\), on a tout d'abord la formule suivante:
 \[
@@ -307,6 +304,7 @@ De manière plus pragmatique, cela donne par ailleurs un moyen simple de calcule
    \kappa(t) = a_N(t)\frac{1}{v^2(t)} = \dotproduct{\gamma''(t)}{N(t)}\frac{1}{v^2(t)}   
 \]
 Où toutes les quantités sont aisément calculables.
+
 \chapter*{\chapterstyle{X --- Courbes gauches}} % 
 \addcontentsline{toc}{section}{Etude métriques des courbes gauches}
 Dans ce chapitre, on s'intéresse à l'étude des propriétés métriques des \textbf{courbes gauches}, c'est à dire des courbes se situant dans \(\R^3\).
@@ -378,8 +376,8 @@ On peut considèrer alors quelques courbes remarquables:
 \end{figure}
 
 Ces courbes ont des propriétés trés intéressantes et se retrouvent, par exemple, en physique. En effet, la cycloïde (inversée) représente la pente qui minimise le temps de trajet d'une bille lancée en haut de celle ci. On dit que c'est une courbe \textbf{brachistochrone}.
-
 \subsection*{\subsecstyle{Aire d'une surface paramétrée A FAIRE{:}}}
+
 \chapter*{\chapterstyle{X --- Etude des équations coniques}} % 
 On appelle \textbf{conique} tout courbe algébrique dont les points \((x, y) \in E\) vérifiant une égalité de la forme:
 \[
@@ -471,5 +469,4 @@ On retrouve facilement ces caractérisations en explicitant les distances consid
 \end{itemize}
 
 \subsection*{\subsecstyle{Coniques projectives}}
-
 \chapter*{\chapterstyle{X --- Etude des équations quadriques}} % 

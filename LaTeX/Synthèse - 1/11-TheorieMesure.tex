@@ -132,7 +132,6 @@ On définit maintenant le concept fondamental de \textbf{propriété mesurable},
 \end{itemize}
 \uline{Exemple:} La fonction \(f : x \in \R \backslash \Q \mapsto x\) est définie p.p. car son ensemble de définition est plein.
 
-
 \chapter*{\chapterstyle{XI --- Fonctions mesurables}} % A REFAIRE
 \addcontentsline{toc}{section}{Fonctions mesurables} 
 On définit dans ce chapitre le concept fondamental de \textbf{fonction mesurable} qui sera l'analogue des fonctions continues en topologie, en effet ce seront les morphismes sur les espaces mesurables. Aussi ce seront les objets intégrables pour cette théorie.
@@ -427,3 +426,482 @@ La notion de continuité et de dérivabilité étant locale, pour montrer qu'une
 \]
 On considère alors que \(\R_+ = \bigcup_{b > 0} \ico{b}{+\infty}\) et que sur chaque intervalle, \(e^{-tx} \leq e^{-bx}\) qui ne dépends pas de \(t\) et donc sur chacun de ses intervalles \(F\) est continue, et ceci étant vrai pour tout \(b\), c'est donc vrai sur \(\R_+\) tout entier.
 
+\chapter*{\chapterstyle{XI --- Intégrales sur un espace produit}} % A REFAIRE
+\addcontentsline{toc}{section}{Intégrales sur un espace produit} 
+Dans ce chapitre, on cherche à définir une mesure sur l'espace euclidien \( \R^n \) et ainsi pouvoir définir l'intégrale des fonctions de la forme:
+\[ 
+   \begin{aligned}
+      f : D \subseteq \R^n &\longrightarrow \R\\
+      (x_1, \ldots, x_n) &\longmapsto f(x_1, \ldots, x_n)
+   \end{aligned}
+\]
+
+\subsection*{\subsecstyle{Tribu produit{:}}}
+Etant donné l'espace mesuré \(  \R, \mathcal{B}_{ \R}, \mu) \), on cherche à construire une tribu sur le produit cartésien \( \R \times \R \), alors de manière analogue à la topologie produit on définit:
+\begin{center}
+   \(    \mathcal{B}_{ \R} \otimes \mathcal{B}_{ \R}  \) est la \textbf{tribu engendrée} par les produit cartésiens de mesurables.
+\end{center} 
+On généralise alors en définissant une tribu produit sur un produit cartésien fini. Et on peut donc ainsi définir une tribu sur \( \R^n \). Par ailleurs, dans le cas de \( \R^n \) et des espaces à base dénombrable, on a l'équivalence suivante:
+\[ 
+   A \in \bigotimes_{i=1}^n \mathcal{B} \iff A = A_1 \times \ldots \times A_n \; ; \; (A_i) \in \mathcal{B} 
+\]
+En d'autres termes, pour ces espaces raisonnables, les mesurables de l'espace produit sont \textbf{exactement} les produits de mesurables. En outre, on peut noter que la tribu produit rends les \textbf{projections canoniques} mesurables.
+
+\subsection*{\subsecstyle{Mesure produit{:}}}
+On se donne alors deux espaces mesurables \( ( \Omega_1, \mathcal{B}_1, \mu_1) \) et \( ( \Omega_2, \mathcal{B}_2, \mu_2) \), on peut alors définir une tribu produit sur \( \Omega_1 \times \Omega_2 \), et on définit alors une mesure produit \( \mu_1 \otimes \mu_2 : \mathcal{B}_1 \otimes \mathcal{B}_2 \longrightarrow \overline{\R_+} \) par la mesure qui vérfie:
+\[ 
+   \forall A, B \in \mathcal{B}_1 \otimes \mathcal{B}_2 \; ; \; (\mu_1 \otimes \mu_2)(A \times B) = \mu_1(a)\mu_2(B)
+\]
+En d'autres termes, la mesure d'un mesurable du produit correspond à produit des mesures de chacune des composantes et on peut alors montrer le théorème suivant pour l'espace qu'on considère:
+\begin{center}
+   \textbf{Il existe une unique mesure sur la tribu borélienne produit qui vérifie cette propriété, on l'appelle la mesure de Lebesgue.}
+\end{center}
+En conclusion, on a généralisé la mesure de Lebesgue dans \( \R \) en une mesure de Lebesgue dans \( \R^n \) et elle correspond au produit des mesures des composantes.
+
+\subsection*{\subsecstyle{Intégration dans \( \R^n \){:}}}
+On considère alors l'espace mesure \((\R^n, \mathcal{B}, \mu)\), alors on peut définit l'intégrale d'une fonction \( f \) \textbf{positive}, et donc par suite d'une fonction quelconque comme dans le cas en dimension 1, ie:
+\[ 
+   \int_{ \R^n} f d\mu := \sup \left\{ \int_{ \R^n} e_n \; ; \; e_n \text{ étagée et } e_n \leq f\right\} 
+\]
+Mais on souhaite pouvoir ramener le \textbf{calcul} de telles intégrales à des calculs d'intégrales simples, en effet, on ne sait pas à priori calculer facilement d'intégrales sur \(\R^n\). On a alors deux puissants théorèmes qui permettent de ramener le calcul d'une intégrable sur un produit au calcul d'intégrales (simples) successives.
+\pagebreak
+
+\subsection*{\subsecstyle{Théorème de Tonelli{:}}}
+On se place pour le premier théorème dans le cas de \( \R^2 \) et d'une fonction \( f : (x, y) \mapsto f(x, y) \) \textbf{mesurable positive}.
+Alors l'intégrale de cette fonction par rapport à chacune des deux variables existe, et on peut définir les intégrales à paramètres suivantes:
+\[ 
+   x \mapsto \int_\R f(x, y)dy \quad\quad\quad\quad y \mapsto \int_\R f(x, y)dx
+\]
+Le théorème de Tonelli affirme alors que ces intégrales sont \textbf{mesurables} et que si on intègre ces intégrales à paramètres par rapport à leur paramètre, alors les intégrales obtenues sont \textbf{égales entre elles et égale à l'intégrale de \( f \)}, ie on a:
+\[ 
+   \int_{\R^2} f(x, y) dxdy = \int_\R \left( \int_\R f(x, y)dx  \right)dy = \int_\R \left( \int_\R f(x, y)dy  \right)dx
+\]
+
+\subsection*{\subsecstyle{Théorème de Fubini{:}}}
+On se place pour le second théorème dans le cas de \( \R^2 \) et d'une fonction \( f : (x, y) \mapsto f(x, y) \) \textbf{intégrable}.
+Alors les applications partielles \( f(x, \cdot), f( \cdot, y) \) sont \textbf{intégrables} et on peut définir les intégrales à paramètres suivantes:
+\[ 
+   x \mapsto \int_\R f(x, y)dy \quad\quad\quad\quad y \mapsto \int_\R f(x, y)dx
+\]
+Le théorème de Fubini affirme alors que ces intégrales à paramètres sont \textbf{intégrables} par rapport à leur paramètre et que les intégrales obtenues sont \textbf{égales entre elles et égale à l'intégrale de \( f \)}, ie on a:
+\[ 
+   \int_{\R^2} f(x, y) dxdy = \int_\R \left( \int_\R f(x, y)dx  \right)dy = \int_\R \left( \int_\R f(x, y)dy  \right)dx
+\]
+
+\subsection*{\subsecstyle{Calcul intégral{:}}}
+Ces deux théorèmes nous permettent alors facilement de calculer une intégrale sur \( \R^n \) ou sur un produit cartésien par intégration successive, par exemple soit à intégrer la fonction \( (x, y) \mapsto xy \) sur \( D = \icc{0}{1}^2 \), alors d'aprés Fubini, on a:
+\[ 
+   \int_D f(x, y)dxdy = \int_0^1 \left( \int_0^1 xydx \right) dy = \int_0^1 xdx \int_0^1ydy = \frac{1}{4}
+\] 
+Le problème est que souvent les domaine d'intégration ne sont absolument pas des produits cartésiens, mais on peut alors se ramener à un produit cartésien par:
+\[ 
+   \int_D f(x, y)dxdy = \int_{\R^2} f(x, y)\1_D(x, y)dxdy 
+\]
+Puis à exprimer l'indicatrice obtenue comme produit d'indicatrices simples, ie si par exemple on considère:
+\[ 
+   D = \left\{ (x,y) \in \R^2 \; ; \; a \leq x \leq b , x-1 \leq y \leq x + 1 \right\}
+\]
+Alors on a:
+\[ 
+   \1_D(x, y) = \1_{\icc{a}{b}}(x)\1_{\icc{x-1}{x+1}}(y)
+\]
+Donc finalement en choisissant un ordre d'intégration adapté et en utilisant la linéarité et les propriétés des indicatrices sur les intégrales réelles:
+\[ 
+   \int_D f(x, y)dxdy = \int_{\R^2} f(x, y)\1_{\icc{a}{b}}(x)\1_{\icc{x-1}{x+1}}(y)dxdy = \int_{a}^b \int_{x-1}^{x+1} f(x, y)dydx
+\]
+\pagebreak
+
+\subsection*{\subsecstyle{Théorème de changement de variable{:}}}
+On considère \( \psi : U \subseteq \R^n \mapsto \psi(U) \subseteq \R^n\) un \( \mathcal{C}^1 \)-difféomorphisme d'un ouvert \( U \) vers \( \phi(U) \), alors si \( f \) est une fonction intégrable, on a:
+\[ 
+   \int_{\psi(U)} f(x) dx = \int_U f(\psi(u)) |\text{J}_\psi(u)| du
+\]
+De plus une de ces fonctions est intégrable si et seulement si l'autre l'est. 
+
+\subsection*{\subsecstyle{Coordonées polaires{:}}}
+Un changement de coordonées usuel en dimension 2 est celui du \textbf{passage en coordonées polaires}, en effet chaque point \( (x, y) \) du plan cartésien peut être repéré par sa distance euclidienne à l'origine et son angle orienté par rapport au demi-axe des abscisses. On définit alors le changement de variables:
+\[ 
+   \phi(r, \theta) = ( r \cos( \theta),  r \sin( \theta)) = (x, y)
+\]
+
+Alors cette fonction est un \( \mathcal{C}^1 \)-difféormorphisme\footnote[1]{De \( \ioo{0}{+ \infty} \times \ioo{-\pi}{\pi} \longrightarrow \R^2 \,\backslash\, (\R_- \times \{0\}) \)}, et c'est donc un changement de variable qui permet d'exploiter \textbf{les symétries circulaires} du domaine de définition, par exemple si on intègre une fonction sur un secteur annulaire.
+
+\subsection*{\subsecstyle{Coordonées cylindriques{:}}}
+Un changement de coordonées usuel en dimension 3 est celui du \textbf{passage en coordonées cylindriques}, en effet chaque point \( (x, y, z) \) de l'espace cartésien peut être repéré par les coordonées polaires du point \( (x, y, 0) \) et sa hauteur \( z \). On définit alors le changement de variable:
+\[ 
+   \phi(r, \theta, z) = ( r \cos( \theta),  r \sin( \theta), z) = (x, y, z)
+\]
+
+Alors cette fonction est un \( \mathcal{C}^1 \)-difféormorphisme\footnote[2]{De \( \ioo{0}{+ \infty} \times \ioo{-\pi}{\pi} \times \R \longrightarrow \R^3 \,\backslash\, (\R_- \times \{0\} \times \R)\)}, et c'est donc un changement de variable qui permet d'exploiter \textbf{les symétries cylindriques} du domaine de définition, par exemple si on intègre une fonction sur un secteur cylindrique.
+
+\subsection*{\subsecstyle{Coordonées sphériques{:}}}
+Un changement de coordonées usuel en dimension 3 est celui du \textbf{passage en coordonées sphériques}, en effet chaque point \( (x, y, z) \) de l'espace cartésien peut être repéré par sa distance euclidienne à l'origine, sa \textbf{longitude} \( \theta \) et sa \textbf{latitude} \( \phi \). On définit alors le changement de variables:
+\[ 
+   \phi(r, \theta, \phi) = (r \cos( \phi) \cos( \theta), r \cos( \phi) \sin( \theta), r \sin( \phi)) = (x, y, z)
+\]
+Alors cette fonction est un \( \mathcal{C}^1 \)-difféormorphisme\footnote[3]{De \( \ioo{0}{+ \infty} \times \ioo{-\pi}{\pi} \times \ioo{0}{\pi} \longrightarrow \R^3 \,\backslash\, (\R_- \times \{0\} \times \R) \)}, et c'est donc un changement de variable qui permet d'exploiter \textbf{les symétries sphériques} du domaine de définition, par exemple si on intègre une fonction sur un secteur sphérique.
+
+\chapter*{\chapterstyle{XI --- Espaces de Lebesgue}} % A REFAIRE
+Un des grands intérêts de la théorie de la mesure est que l'on peut construire un espace de fonctions ayant de trés bonnes propriétés analytiques. Dans tout la suite, on considère \( (X, \mathcal{B}, \mu) \) un espace mesuré et \( \mathcal{M}(X) \) l'ensemble des fonctions mesurables définies sur celui-ci, on considère alors la relation d'équivalence:
+\[ 
+   f \sim g \iff f = g \; \text{presque partout}
+\]
+Alors cette relation est \textbf{compatible avec la structure d'algèbre} de \( (\mathcal{M}(X), +, \times, \cdot) \), ie on a que si \( f \sim f' \) et \( g \sim g' \) que:
+\[ 
+   \begin{cases}
+      f+f' \sim g+g'\\
+      ff' \sim gg'\\
+      \lambda f\sim \lambda f'
+   \end{cases}
+\]
+On peut donc considère \textbf{l'ensemble quotient} pour cette relation noté \( M(X) \), c'est \textbf{l'ensemble des fonctions mesurables modulo égalité presque partout.} Les éléments de cet ensemble sont donc des classes, mais en pratique, il arrive souvent que l'on identifie la classe à un de ses représentant, et dès lors qu'une relation \( \mathcal{R} \) entre deux fonctions est vraie \textbf{presque partout}, alors elle induit une relation dans \( M(X) \) vraie \textbf{partout} pour les classes, ie:
+\[ 
+   f_1 \mathcal{R} f_2 \; \text{presque partout} \iff f \mathcal{R} g 
+\]
+Par exemple si \( f_1 \leq f_2 \) presque partout, alors \( f \leq g \) et  a donc une relation d'ordre sur \( M(X, \R) \)
+\subsection*{\subsecstyle{Convergence {:}}}
+On peut munir \( M(X) \) d'une notion de convergence en disance qu'une suite \( (f_n) \) de classes converge si et seulement si il existe une suite de représentants qui converge (simplement) presque partout, en effet la limite simple d'une suite de fonctions mesurables est mesurable et définie presque partout. Donc cette limite ne dépends pas des représentant de la suite et on la note \( \lim f_n \)\<
+
+De même, on peut définir pour \( (f_n) \in M(X, \overline{\R}_+) \) la classe \( \sup f_n \) par la borne supérieur d'une suite de représentants.
+\subsection*{\subsecstyle{Intégrabilité {:}}}
+On peut alors remarquer que toutes les propriétés et théorèmes de l'intégration de Lebesgue peuvent se reformuler sur cet espace car l'intégrale ne distingue pas deux intégrandes égales presque partout en particulier, on peut reformuler:
+\begin{itemize}
+   \item La définition de l'intégrale d'une fonction (positive ou non).
+   \item La relation de Chasles et les propriétés de l'intégrale.
+   \item Le théorème de convergence monotone.
+   \item Le théorème de convergence dominée.
+   \item La finitude presque partout d'une fonction intégrable.
+   \item La nullité presque partout d'une fonction d'intégrale nulle.
+\end{itemize}
+En particulier pour le premier cas, on dira que \( f \in M(X) \) est \textbf{intégrable} si et seulement si:
+\[ 
+   \int_X |f| d\mu < \infty 
+\]
+Et en particulier, on notera l'ensemble des fonctions (classes de fonctions) intégrables \( L^1(X) \), c'est en fait le premier \textbf{espace de Lebesgue}.
+\pagebreak
+\subsection*{\subsecstyle{Normes {:}}}
+On généralise alors et on comprends qu'on peut esayer de définir plusieurs \textbf{normes} sur \( M(X) \), analogues aux normes fonctionelles sur \( C^0( \icc{a}{b}) \) pour \( p \in \ico{1}{ \infty} \) par:
+\[ 
+   \vectNorm{f}_p = \left ( \int_X |f|^p d \mu\right)^{ \frac{1}{p}} 
+\]
+Et pour \( p = \infty \), on généralise la norme infinie dans \( C^0( \icc{a}{b}) \) par la définition de \textbf{borne supérieure essentielle}, ie le plus petit réel étendu qui soit un \textbf{presque majorant}\footnote[1]{Un presque majorant étant un réel qui majore la fonction presque partout.}:
+\[ 
+   \vectNorm{f}_\infty = \inf\left\{ C \in \overline{\R}_+ \; ; \; f < C \right\} = \text{ess sup}_X\left|f \right| 
+\]
+Mais on voit alors que ces applications ne sont à priori pas à valeurs finies, donc ce ne sont pas des normes, on définit alors les \textbf{les espaces de Lebesgue} par:
+\[ 
+   L^p(X) := \left\{ f \in M(X) \; ; \; \vectNorm{f}_p < \infty \right\}  
+\]
+\subsection*{\subsecstyle{Inégalité de Hölder {:}}}
+Soit \( p, q \in \icc{1}{ \infty} \) tels que \( \frac{1}{p} + \frac{1}{q} \leq 1 \), alors pour \( r \in \icc{1}{ \infty}\) tel que:
+\[ 
+   \frac{1}{r} =  \frac{1}{p} + \frac{1}{q}
+\]
+On a \textbf{l'inégalié de Hölder}, gnéralisation de l'inégalité de Cauchy-Schwarz qui nous donne pour toutes \( f, g \in M(X) \) que:
+\[ 
+   \vectNorm{fg}_r \leq \vectNorm{f}_p \vectNorm{g}_q
+\]
+Cette inégalité nous permet d'obtenir une multitude de comparaisons entre le produit d'espaces de Lebesgue et l'espace de Lebesgue du produit, par exemple:
+\begin{itemize}
+   \item \textbf{Relation de conjugaison : } \( L^pL^q \subseteq L^r \)
+   \item \textbf{Cauchy-Schwarz : }\( L^2L^2 \subseteq L^1 \)
+   \item \textbf{Stabilisation par les fonctions bornées : }\( L^\infty L^p \subseteq L^p  \)
+\end{itemize}
+Ici l'ensemble \( L^aL^b \) est défini par \( \left\{ fg \; ; \; (f, g) \in L^a \times L^b \right\}  \), ce n'est \textbf{pas} un produit cartésien.
+\subsection*{\subsecstyle{Structure des espaces de Lebesgue {:}}}
+On peut alors montrer que les application ci-dessus sont bien des normes sur les espaces \( L^p(X) \), en outre ces espaces ont plusieurs particularités remarquables:
+\begin{itemize}
+   \item Ce sont des \textbf{sous espaces vectoriels} de \( M(X) \).
+   \item Ce sont des \textbf{espaces normés} pour les applications définies ci-dessus.
+   \item Ce sont des \textbf{espaces complets}.
+\end{itemize}
+On appelle alors de tels espaces \textbf{espaces de Banach}.
+\subsection*{\subsecstyle{Structure de l'espace \( L^2(X) \) {:}}}
+Dans le cas particulier de \( L^2(X)\), on a même une structure bien plus forte, en effet on peut montrer que la norme 2 est en fait issue d'un \textbf{produit scalaire} (hermitien) défini par:
+\[ 
+   \dotproduct{f}{g} := \int_X f \overline{g} d \mu  
+\]
+Un espace de Banach dont la norme est issue d'un produit scalaire est appelé \textbf{espace de Hilbert}.
+\pagebreak
+\subsection*{\subsecstyle{Espaces particuliers {:}}}
+Dans le cas où l'espace est de la forme \( (D, \mathscr{P}(D), c) \) avec \( D \) un ensemble dénombrable et la mesure de comptage, alors les espaces sont notés \( \ell^p(D) \) où tout simplement \( \ell^p \) si \( D = \N \), on a alors par les propriétés de la mesure de comptage que par définition \( \ell^p = \C^\N \) et les normes se reformulent par:
+\[ 
+   \vectNorm{u}_p := \left (\sum_{j \in \N} |u_j|^p \right )^{\frac{1}{p}}
+\]
+Et pour la norme infinie, on a équivalence avec la norme infinie classique sur \( \C^\N \).
+\subsection*{\subsecstyle{Injections canoniques dans le cas de \( \R^n \) {:}}}
+On peut alors montrer que certaines classes de \( L^p(\R^n) \) s'identifient naturellement à des fonctions, en effet:
+\begin{itemize}
+   \item L'espace des fonctions constantes s'injecte naturellement dans \( L^p( \R^n) \).
+   \item L'espace des fonctions continues, et même \(  \mathcal{C}^p(\R^n) \) s'injecte naturellement dans \( L^p( \R^n) \).
+\end{itemize}
+En effet si deux constantes sont égales presque partout, elles sont égales. Et si deux fonctions continues sont égales presque partout, alors en utilisant le fait évident que la mesure d'un ouvert est strictement positive, elle sont égales. En particulier, on identifiera alors par la suite \( \C \) et \(  \mathcal{C}^p( \R^n) \) comme des \textit{parties} de \( L^p( \R^n) \).
+
+\chapter*{\chapterstyle{XI --- Convolution}} % A REFAIRE
+On se place dans l'espace mesuré \( (\R^n, \mathscr{B}, \mu) \) et on considère deux fonctions \( f, g \in \overline{\mathscr{M}}_+ \), alors on définit \textbf{le produit de convolution} de \( f \) et \( g \) par la fonction:
+\[ 
+   \begin{aligned}
+      f * g : X &\longrightarrow \overline{\R}_+ \\
+      x &\longmapsto \int_{\R^n} f(x - y)g(y) dy 
+   \end{aligned}
+\]
+\subsection*{\subsecstyle{Domaine de définition {:}}}
+On peut alors montrer que le produit de convolution \( * \) est bien défini sur \( L^1 \times L^1 \), mais on peut étendre cette même définition à d'autres espaces et on a que l'opérateur \( * \) est bien défini sur:
+\begin{itemize}
+   \item \textbf{Relation de conjugaison duale: } \( L^p*L^q \subseteq L^r \) mais pour la relation \( \frac{1}{p} + \frac{1}{q} - 1 = \frac{1}{r} \)
+   \item \textbf{Cauchy-Schwarz dual: }\( L^2*L^2 \subseteq L^\infty \)
+   \item \textbf{Stabilisation par les fonctions intégrables : }\( L^1*L^p \subseteq L^p  \)
+\end{itemize}
+On peut alors remarquer une dualité entre le \textbf{produit classique} et le \textbf{produit de convolution}, en effet on a remplacé les symboles \( 1 \) et \( \infty \) et on a laissé invariant \( 2 \). En fait cette dualité est bien réelle et le passage à la dualité est fait par la \textbf{transformée de Fourier} que l'on verra au prochain chapitre.
+
+\subsection*{\subsecstyle{Propriétés {:}}}
+On peut alors montrer que la convolution est une opération \textbf{bilinéaire, associative et commutative}. Une propriété beaucoup plus remarquable est que la convolution \textbf{préserve la régularité} des fonctions en jeu, par exemple si \( f \in C^\infty\) et \( g \in L^1\), alors \( f * g \in C^\infty \) et on a:
+\[ 
+   \partial^\alpha(f * g) = \partial^\alpha(f) * g
+\]
+\subsection*{\subsecstyle{Interprétation {:}}}
+Ce produit, est un procédé qui permet de "lisser" une fonction irrégulière \( g \) par une \textbf{fonction de pondération} \( f \), en effet si on considère l'exemple de la fonction porte \(f = \1_{\icc{-\frac{1}{2}}{\frac{1}{2}}}\) et qu'on considére la fonction suivante pour \( x \in \R \):
+\[ 
+   h_x : y \longmapsto f(x - y)g(y)
+\]
+Alors faire varier le paramètre \( x \) reviens à réaliser un \textbf{fenêtrage} de la fonction \( g \) sur un intervalle glissant. La convolution revient alors à calculer l'aire sous la courbe fenetrée, ie une \textbf{moyenne} des valeurs de \( g \) sur la fenêtre où tout les points ont le même poids. Si on considère une fonction de pondération différente, les poids accordés au valeurs selon leurs positions dans la fenêtre peut varier. On peut aussi tout à fait considérer une fonction de pondération qui soit une fenêtre infinie et l'interprétation reste cohérente
+\pagebreak
+
+\subsection*{\subsecstyle{Illustration du phénomène {:}}}
+On considère \( f \) la fonction porte comme fonction de pondération et la fonction \(g = \1_{\R_+}\) comme notre signal irrégulier. Alors on illustre \(f * g\) et \( f * (f * g) \):
+\begin{center}
+   \begin{tikzpicture}
+      % Axes
+      \draw[->] (-5, 0) -- (5, 0) node[anchor=west] {$x$};
+      \draw[->] (0, -1) -- (0, 3.5) node[anchor=south] {$y$};
+   
+      % Rectangles et flèches
+      \draw[thick] (-4, 0) rectangle (-2, 2);
+      \draw[->] (-4.6,1) -- (-4.1, 1);
+   
+      \draw[thick] (-1, 0) rectangle (1, 2);
+      \draw[->] (-1.6, 1) -- (-1.1, 1);
+   
+      \draw[thick,dashed] (-0.5, 0) rectangle (1.5, 2);
+   
+      % Lignes de fonctions
+      \draw[thick] (0, 2) -- (5,2);
+   
+      % Hachures
+      %\fill[pattern=north east lines] (-4, 0) -- (-4, 2) -- (-2, 2) -- (-2,0) -- cycle;
+      \fill[pattern=north east lines] (0, 0) -- (0, 2) -- (1, 2) -- (1,0) -- cycle;
+      \fill[pattern=dots] (1, 0) -- (1, 2) -- (1.5, 2) -- (1.5,0) -- cycle;
+   
+      % Labels
+      \node at (4.5, 2.3) {$1_{\R_+}$};
+      \node at (-4, -0.5) {$x-1$};
+      \node at (-2, -0.5) {$x$};
+      \node at (-1, -0.5) {$x-1$};
+      \node at (1, -0.5) {$x$};
+   
+      % Légende
+      \node at (6,1) {Première itération : $f = 1_{[0,1]} \ast 1_{\R_+}$};
+   \end{tikzpicture}
+
+   \begin{tikzpicture}
+      % Axes
+      \draw[->] (-5, 0) -- (5, 0) node[anchor=west] {$x$};
+      \draw[->] (0, -1) -- (0, 3.5) node[anchor=south] {$y$};
+   
+      % Rectangles et flèches
+      \draw[thick] (-4, 0) rectangle (-2, 2);
+      \draw[->] (-4.6,1) -- (-4.1, 1);
+   
+      \draw[thick] (-1, 0) rectangle (1, 2);
+      \draw[->] (-1.6, 1) -- (-1.1, 1);
+   
+      \draw[thick,dashed] (-0.5, 0) rectangle (1.5, 2);
+   
+      % Lignes de fonctions
+      \draw[thick] (0,0) -- (2, 2) -- (5,2);
+   
+      % Hachures
+      \fill[pattern=north east lines] (0,0) -- (1,1) -- (1,0) -- cycle ;
+      \fill[pattern=dots] (1,0) -- (1,1) -- (1.5,1.5) -- (1.5,0) -- cycle ;
+   
+      % Labels
+      \node at (4.5, 2.3) {$f$};
+      \node at (-4, -0.5) {$x-1$};
+      \node at (-2, -0.5) {$x$};
+      \node at (-1, -0.5) {$x-1$};
+      \node at (1, -0.5) {$x$};
+   
+      % Légende
+      \node at (6,1) {Seconde itération : $1_{[0,1]} \ast f$};
+   \end{tikzpicture}
+\end{center}
+
+\subsection*{\subsecstyle{Element neutre et suites régularisantes{:}}}
+Soit \( f \in L^p \), on pourrait alors se demander si il existe un \textbf{élément neutre} pour cette opération. Et il se trouve qu'on montrera dans le chapitre suivant qu'il n'en existe pas. On souhaite alors approcher un tel élément neutre, en effet si il existait une suite de fonctions \( 1_n \) \textit{proche} de cet élément, ie telle que:
+\[ 
+   \vectNorm{1_n * f - f}_p \longrightarrow 0
+\]
+Alors la fonction \( 1_n * f \) serait proche de \( f \) mais gagnerait la régularité de \( 1_n \), cela motive la définition d'une \textbf{approximation de l'unité} comme étant une suite de fonctions positives intégrables \( (\phi_n)_n \) telles que pour tout \( \epsilon \) positif:
+\[ 
+   \begin{cases}
+      \displaystyle \int_{\R^n} \phi_n(x) dx = 1\vspace{5pt} \\
+      \displaystyle \int_{\mathcal{B}(0, \epsilon)^c} \phi_n(x) dx \longrightarrow 0
+   \end{cases} 
+\]
+\uline{Exemple:} Une suite de fonctions portes de longueurs \( 1/n \) et de hauteurs \( n \) vérifient bien ces hypothèses, ce sont donc des approximations de l'unité.\<
+
+Si de plus les \( (phi_n)_n \) sont lisses, on l'appelera alors \textbf{suite régularisante}, et si on a \( f \) une fonction d'intégrale 1, on peut construire une suite régularisante (si \( f \) est lisse) en posant (pour \( n \) la dimension de l'espace):
+\[ 
+   \phi_k(x) = k^n f(kx)
+\]
+Finalement étant muni de cette construction, on peut alors montrer qu'une telle suite régularisante vérifie bien la propriété asymptotique initiale de cette section, et approxime donc bien un élément neutre pour la convolution.
+
+\chapter*{\chapterstyle{XI --- Transformée de Fourier}} % A REFAIRE
+On se place dans l'espace mesuré\footnote[1]{Elle se définit en toute généralité dans \( \R^n \) en remplaçant \( \xi x \) par \( \xi \cdot x \), mais on choisit ici de simplifier l'exposition.} \( (\R, \mathscr{B}, \mu) \), on notera \( \mathcal{C}_b \) l'ensemble des fonctions continues bornées, alors on définit \textbf{la transformée de Fourier} de \( f \) par la fonction:
+\[ 
+   \begin{aligned}
+      \mathcal{F} : L^1 &\longrightarrow \mathcal{C}_b \\
+      f &\longmapsto \hat{f}
+   \end{aligned}
+\]
+Où \( \hat{f} \) est la fonction suivante:
+\[ 
+   \quad\quad\quad\quad\quad\quad\quad\begin{aligned}
+      \hat{f} : \R &\longrightarrow \C \\
+      \xi &\longmapsto \int_{ \R} e^{-2\pi i\xi x} f(x)dx
+   \end{aligned}
+\]
+L'intérêt de cette transformation est d'exploiter les symétries circulaires des fonctions \(x \mapsto e^{-2\pi i\xi x} \) pour détecter le spectre fréquentiel d'une fonction \( f \) donnée, qu'on appelera souvent \textbf{signal} dans ce contexte. On dira alors que \( f \) est dans le \textbf{domaine temporel} et \( \hat{f} \) dans le \textbf{domaine fréquentiel}. Voici une représentation heuristique de la transformation:
+
+\begin{center}
+   \definecolor{lightgray}{rgb}{0.8, 0.8, 0.8} %grid of coordinate system, axes
+   \definecolor{midgray}{rgb}{0.6, 0.6, 0.6} %layer of border
+   \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4} %curves, fill under curve
+   \vspace{5pt}
+   \begin{tikzpicture}[scale=1.7, every node/.style={scale=1.7}] %create tikz picture
+      \pgfplotsset{compat=1.8}
+   
+       \begin{axis}[ %create 3d plot within tikz
+           set layers=standard, %use predefined layers
+           view={50}{30}, %perspective adjustment
+           domain=0:10, %plot limit in time direction
+           samples y=1, %samples for frequency direction
+           unit vector ratio*=1 2 1, %rescale unit vectors
+           hide axis, %do not plot axes
+           xtick=\empty, ytick=\empty, ztick=\empty, %no ticks on coordinate axes
+           clip=false %let me plot outside the coordinate system
+       ]
+           %limit variables
+           \def\xmax{100} %limits for curves and layers
+           \def\xmin{0}
+           \def\ymax{35}
+           \def\ymin{5}
+           \def\zmax{25}
+           \def\zmin{-5}
+           \def\xlayer{110} %frequency layer
+           \def\sumcurve{0} %sum curve of time signal
+   
+           %frequency curves
+           \pgfplotsinvokeforeach{1,2,3}{ %for each frequency component
+               \draw [on layer=background, lightgray] (axis cs:0,#1,0) -- (axis cs:10,#1,0); %axes
+               \addplot3 [on layer=main, darkgray, smooth, samples=200] (x,#1,{1.3*sin(2*#1*x*(157))/(#1*2)}); %plot curves (curves are somewhat arbitrary)
+   
+               \xdef\sumcurve{\sumcurve + sin(#1*x*(157))/(#1*2)} %add current curve to sumcurve
+           }
+   
+           %transparent layers
+           \fill[white,opacity=0.7] (\xmin,0,\zmin) -- (\xmin,0,\zmax) -- (\xmax,0,\zmax) -- (\xmax,0,\zmin) -- cycle; %transparent layer in time space
+           \fill[white,opacity=0.7] (\xlayer,\ymin,\zmin) -- (\xlayer,\ymin,\zmax) -- (\xlayer,\ymax,\zmax) -- (\xlayer,\ymax,\zmin) -- cycle; % transparent layer for frequency space
+   
+           %grid lines
+           \pgfplotsinvokeforeach{\xmin,\xmin+5,...,\xmax}{ %create horizontal grid lines (time layer)
+               \draw[lightgray,opacity=0.6] (#1,0,\zmin) -- (#1,0,\zmax);
+           }
+           \pgfplotsinvokeforeach{\ymin,\ymin+2.5,...,\ymax}{ %create horizontal grid lines (frequency layer)
+               \draw[lightgray,opacity=0.6] (\xlayer,#1,\zmin) -- (\xlayer,#1,\zmax);
+           }
+           \pgfplotsinvokeforeach{\zmin,\zmin+5,...,\zmax}{ %create vertical grid lines (both layers)
+               \draw[lightgray,opacity=0.6] (\xmin,0,#1) -- (\xmax,0,#1);
+               \draw[lightgray,opacity=0.6] (\xlayer,\ymin,#1) -- (\xlayer,\ymax,#1);
+           }
+   
+           %borders layer
+           \draw[DarkBlue3] (\xmin,0,\zmin) -- (\xmin,0,\zmax) -- (\xmax,0,\zmax) -- (\xmax,0,\zmin) -- cycle; %time space layer border line
+           \draw[BrightRed1] (\xlayer,\ymin,\zmin) -- (\xlayer,\ymin,\zmax) -- (\xlayer,\ymax,\zmax) -- (\xlayer,\ymax,\zmin) -- cycle; %frequency space layer border line
+   
+           %sum curve
+           \addplot3 [DarkBlue3, thick, samples=200] (x,0,{\sumcurve+rand/7+0.2*sin(x*400)}); %sum curve time space with added random noise
+   
+           % frequency curve
+           \addplot3 [BrightRed1, name path=f,samples=200,domain=0.5:3.5] (11,x,{rand/30+2*sin((x-0.7)*180)^200*e^(-x/2)-0.3}); %experimentally modified curve with noise
+   
+           %create fill under curve
+           \addplot3 [name path=ax,draw=none,samples=2,domain=0.5:3.5] (11,x,-0.5); %create fill axis
+           \addplot3 [BrightRed1] fill between [of=f and ax]; %create fill between curve and axis
+   
+           %create coordinate axis
+           \draw[-{stealth}] (\xmin,0,\zmin-6) -- (\xmax/5.3,0,\zmin-6); %time axis
+           \draw[-{stealth}] (\xlayer,\ymin+1,\zmin-6) -- (\xlayer,\ymin+\ymax/4,\zmin-6); %frequency axis
+   
+           %axis labels
+           \node[scale=0.6, rotate=-30] at (5,0,-19) {Temps}; %axis time space
+           \node[scale=0.6, rotate=23] at (100,17.5,-26) {Fréquence}; %axis frequency space
+       \end{axis}
+   \end{tikzpicture}
+\end{center}
+
+\subsection*{\subsecstyle{Lemme de Riemann-Lebesgue {:}}}
+Une résultat fondamental de cette transformation est la suivante:
+\begin{center}
+   \textbf{La transformée de Fourier d'une fonction est un fonction qui tends vers zéro à l'infini.}
+\end{center}
+On notera \( \mathcal{C}_0 \) les fonctions qui tendent vers 0 à l'infini.
+
+\pagebreak
+\subsection*{\subsecstyle{Propriétés {:}}}
+On peut alors montrer plusieurs propriétés de cette transformation, en notant \( P(x) =  2i\pi x\), on a:
+\begin{itemize}
+   \item C'est une \textbf{opérateur linéaire continu} pour la norme infini sur \(  \mathcal{C}_0 \).
+   \item C'est une \textbf{opérateur autoadjoint} pour le produit scalaire de \( L^2 \).
+   \item C'est une \textbf{opérateur injectif}.
+   \item Elle transforme \textbf{les produits par des polynômes en dérivées}, ie si \( f \in L^1\), alors:
+   \[ 
+      \mathcal{F}(Pf) = -(\mathcal{F}(f))'
+   \]
+   \item Elle transforme \textbf{les dérivées en produit par des polynômes}, ie si \( f \in L^1 \cap \mathcal{C}^1 \) et que \( f' \in L^1 \), alors:
+   \[ 
+      \mathcal{F}(f') = P\mathcal{F}(f) 
+   \]
+\end{itemize}
+La dernière propriétés est trés puissante dans l'étude des équations différentielles, en effet si on considère une fonction lisse \( y \) vérifiant par exemple:
+\[ 
+   y''(t) + y'(t) =  f(t)
+\]
+Alors on pourrait penser à appliquer la transformation de Fourier à cette équation, et ainsi transformer l'équation différentielle en équation algébrique:
+\[ 
+   P^2(t)\hat{y}(t) + P(t)\hat{y}(t) = \hat{f}(t) 
+\]
+Et finalement obtenir
+\[ 
+   \hat{y}(t) = \frac{\hat{f}(t)}{P^2(t) + P(t)}
+\]
+Alors si on arrivait à \textbf{inverser} la transformation de Fourier, on pourrait reconstituer \( y \) et conclure. On cherche donc à trouver une partie de \( \mathcal{C}_0 \) telle que la transformation restreinte soit surjective.
+
+\subsection*{\subsecstyle{Inverse {:}}}
+La transformation est injective, donc en particulier si on restreint \( \mathcal{F} \) à son image \( \mathcal{F}(L^1) \), alors on obtient une \textbf{bijection}, mais on préfère se restreindre à la partie \( \mathscr{A} := L^1 \cap \mathcal{F}(L^1) \) des fonctions dites \textbf{Fourier-intégrables}, alors on peut montrer que son inverse est donné par la formule:
+\[ 
+   \mathcal{F}^{-1}(f) = \int_\R e^{2 \pi i \xi x} \hat{f}(x) dx
+\]
+
+\subsection*{\subsecstyle{Propriétés de l'ensemble des fonctions Fourier-intégrables {:}}}
+On peut alors montrer que \( \mathscr{A} \subseteq L^1 \cap \mathcal{C}_0 \) donc \( \mathscr{A} \subseteq L^1 \cap L^\infty \subseteq L^p \) et en outre, \( \mathscr{A} \) est \textbf{stable par produit simple et de convolution.} En outre on a la propriété suivant entre le produit simple et le produit de convolution:
+\[ 
+   \hat{fg} = \hat{f}*\hat{g} 
+\]
+
+\subsection*{\subsecstyle{Egalité de Plancherel{:}}}
+En particulier si deux fonctions \( f, g \in \mathscr{A} \), on a alors \textbf{l'égalité de Plancherel}:
+\[ 
+   \dotproduct{f}{g} =  \dotproduct{\hat{f}}{\hat{g}}
+\]
+En d'autres termes, la transformée de Fourier est une \textbf{isométrie} de \( \mathscr{A} \) sur lui même pour la norme 2. On peut alors montrer que la transformée de Fourier est \textbf{continue} sur \( \mathscr{A} \) et en utilisant le \textbf{théorème de pronlongement uniforme}, ainsi que le fait que \( L^1 \cap L^2 \) est dense dans \( L^2 \), on peut alors montrer qu'il existe un unique prolongement de Fourier sur tout \( L^2 \) et c'est une isométrie bijective.
