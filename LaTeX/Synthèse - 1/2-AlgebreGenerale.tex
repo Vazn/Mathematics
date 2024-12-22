@@ -153,7 +153,6 @@ On peut alors définir \textbf{l'ordre d'un élément} comme étant l'ordre du s
 
 Ce sous-groupe permet de définir des groupes remarquables, en effet si un groupe est engendré par un unique élément, il est appelé \textbf{groupe cyclique} dont nous parleront plus loin dans ce chapitre.
 \pagebreak
-
 \subsection*{\subsecstyle{Classes {:}}}
 On considère maintenant un sous-groupe \( H \leq G \), alors on peut définir deux relations d'équivalences sur \( G \) par:
 \[ 
@@ -192,7 +191,84 @@ En d'autres termes les classes à droite et à gauche coincident. C'est alors im
 \[ 
    \forall h \in H \; , \; \forall g \in G \; ; \; ghg^{-1} \in H 
 \]
+\chapter*{\chapterstyle{II --- Théorèmes d'isomorphismes}}
+\addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
+Une des motivations de la notion de groupe quotient est entre autres de pouvoir trouver des \textbf{isomorphismes} entre des groupes connus, dans ce chapitre, on énonce les trois grands théorèmes utilisables pour atteindre cet objectif.
 
+\subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
+Soit \(\phi : G \longrightarrow F\) un morphisme, on rapelle que tout les noyaux sont normaux et on peut alors montrer qu'il existe un unique isomorphisme \(\widetilde{\phi} : G/\Ker{\phi} \longrightarrow F\) tel que le diagramme soit commutatif \footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
+            G/\Ker{\phi} \arrow[r, "\widetilde{\phi}", dashed] & \text{Im}(F) \arrow[u, "\iota", swap, hook]
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
+En effet, le passage au quotient rend le morphisme injectif, donc surjectif sur son image, et le diagramme commute, ie on a \( \phi = \iota \circ \widetilde{ \phi} \circ \pi \).\<
+
+De manière plus générale, on a la \textbf{propriété universelle du quotient} pour \( H \unlhd G \) tel que \( H \subseteq \ker(\phi) \), alors on a l'existence d'un morphisme \( \widetilde{\phi} \) tel que le diagramme suivant commute:
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
+            G/\Ker{\phi} \arrow[ur, "\widetilde{\phi}", swap, dashed]
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
+\subsection*{\subsecstyle{Deuxième théorème d'isomorphisme {:}}}
+On considère ici deux sous groupe normaux \( H, K \) de \( G \) tel que \( H \subseteq K \), alors on a les deux projections suivantes:
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            G \arrow[d, "\pi_1", swap, two heads] \arrow[r, "\pi_2", two heads] & G/K\\
+            G/H
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
+On peut alors utiliser la propriété universelle du quotient pour compléter le diagramme par un morphisme \( \phi \) (par ailleurs surjectif):
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            G \arrow[d, "\pi_1", swap, two heads] \arrow[r, "\pi_2", two heads] & G/K\\
+            G/H \arrow[ru, "\phi", dashed, two heads]
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
+Enfin, on peut appliquer le premier théorème d'isomorphisme à \( \phi \) pour obtenir le diagramme suivant:
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            G \arrow[d, swap, "\pi_1", two heads] \arrow[r, "\pi_2" two heads]&  G/K\\
+            G/H \arrow[ru, "\phi", two heads, dashed] \arrow[d, "\pi", swap, two heads]&    \\
+            (G/H)/Ker(\phi) \arrow[ruu, "\widetilde{\phi}",bend right, dashed]&   
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
+On peut alors montrer que \( \text{Ker}(\phi) = K/H\) et donc qu'on a l'isomorphisme suivant:
+\[ 
+   (G/H)/(K/H) \cong G/K
+\]
+\subsection*{\subsecstyle{Troisième théorème d'isomorphisme {:}}}
+
+\subsection*{\subsecstyle{Caractère universel {:}}}
+Le parti pris a été fait de mettre cette section dans le chapitre sur les groupes, mais ceci est trompeur, les trois théorèmes ci-dessus sont en fait vrais dans un cadre bien plus général, et pour des objets bien plus généraux apellés \textbf{algèbres universelles}, en particulier tout structure sur laquelle on peut définir une notion de quotient compatibles avec les opérations vérifie alors des analogues de ces théorèmes. En particulier:
+\begin{itemize}
+   \item On peut quotienter un ensemble par la relation d'équivalence "avoir la même image" et obtenir alors de tels théorèmes.
+   \item On peut quotienter un anneau par un \textbf{idéal} et obtenir alors de tels théorèmes.
+   \item On peut quotienter un espace vectoriel (ou même un module) par un sous-espace et obtenir alors de tels théorèmes.
+\end{itemize}
+\subsection*{\subsecstyle{Applications {:}}}
 \chapter*{\chapterstyle{II --- Actions de groupe}}
 \addcontentsline{toc}{section}{Actions de groupe}
 Soit \( G \) un groupe et \( X \) un ensemble quelconque, dans ce chapitre on définit un notion fondamentale en théorie des groupes, la notion \textbf{d'action d'un groupe sur un ensemble.} En effet on appelera \textbf{action} du groupe \( G \) sur \( X \) une application de la forme:
@@ -222,7 +298,6 @@ On peut alors montrer que cette fonction prends son image dans l'ensemble des bi
    \phi : G \longmapsto \mathfrak{S}(X)
 \]
 En outre cette correspondante est bijective, il est donc équivalent de considérer une action d'un groupe sur un ensemble ou un morphisme structurel.
-
 \subsection*{\subsecstyle{Action induite sur l'ensemble des parties {:}}}
 Si \(G\) agît sur \( X \) alors \( G\) agît alors naturellement sur \( \mathcal{P}(X)  \) par l'action:
 \[ 
@@ -272,29 +347,56 @@ On peut alors nommer les actions de groupes qui vérifient certaines propriété
 \begin{itemize}
    \item Action \textbf{transitive} une action qui n'admet qu'une seule orbite.
    \item Action \textbf{libre} une action dont tout les stablisateurs sont triviaux.
-   \item Action \textbf{fidèle} une action dont le noyau du morphisme structurel est trivial.
+   \item Action \textbf{fidèle} une action dont le noyau du morphisme structurel est trivial\footnote[1]{On a alors d'aprés la caractérisation du noyau ci-dessus que toute action \textbf{libre} est \textbf{fidèle}.}.
 \end{itemize}
-On a alors d'aprés la caractérisation du noyau ci-dessus que toute action \textbf{libre} est \textbf{fidèle}.
+On dira aussi qu'une action transitive et libre est \textbf{simplement transitive}, et on peut caractériser cette action par le fait que pour tout paire d'éléments \( x, y \in E\), il existe un \textbf{unique} élement de \( g \) qui relie \( x \) à \( y \).
 \subsection*{\subsecstyle{Action par automorphismes intérieurs{:}}}
-On peut alors aussi étudier l'action du groupe \( G \) sur \textbf{lui-même}, on obtient 
+On peut alors aussi étudier l'action du groupe \( G \) sur \textbf{lui-même}, on obtient alors un nouveau moyen d'étude du groupe \( G \), en particulier, on a deux actions remarquables:
+\begin{itemize}
+   \item \textbf{L'action par translation:} \( \forall g, h \in G, g \cdot h = gh\)
+   \item \textbf{L'action par conugaison:} \( \forall g, h \in G, g \cdot h = ghg^{-1}\)
+\end{itemize}
+Ceci permet une reformulation plus élégante du concept de sous-groupe normal, en effet un sous-groupe est normal si et seulement si il est \textbf{stable par l'action de conjugaison}.
+\pagebreak 
 
+\subsection*{\subsecstyle{Centralisateur{:}}}
+Le stabilisateur d'un élément \( g \) pour la relation de conjugaison est alors appelé \textbf{centralisateur} et noté \( Z(g) \), et c'est l'ensemble des éléments qui commutent avec \( g \).\<
 
-\chapter*{\chapterstyle{II --- Théorèmes d'isomorphismes}}
-\addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
-On considère ici deux groupes \(G, F\), et \(H\) un sous-groupe normal de \(G\), on sait que \(H\) induit une relation d'équivalence compatible et donc qu'on peut définir le groupe quotient \(G/H\).\<
-\subsection*{\subsecstyle{Premier théorème d'isomorphisme {:}}}
-Soit \(\phi : G \longrightarrow F\) un morphisme, on peut alors montrer qu'il existe un unique morphisme \(\widetilde{\phi} : G/\Ker{\phi} \longrightarrow F\) tel que le diagramme soit commutatif\footnote[1]{Un \textbf{diagramme commutatif} est une collection d'objets et de morphismes tels tout les chemins (de composition) partant d'un objet vers un autre donnent le meme résultat (ie sont le meme morphisme).}:
+On peut définir le centralisateur d'une partie, noté \( Z(H) \) qui est l'intersection de tout les centralisateurs de ses éléments, ie l'ensemble des éléments du groupe qui commutent avec tout les éléments de \( H \), ie on a:
+\[ 
+   Z(H) := \left\{ g \in G \; ; \; \forall h \in P \; , \; gh = hg\right\}  
+\]
+En particulier pour tout groupe \( G \), on appelle \textbf{centre} du groupe et on note \( Z(G) \), l'ensemble des éléments qui commutent avec tout les autres éléments. 
+\subsection*{\subsecstyle{Normalisateur{:}}}
+En affaiblissant la définition ci dessus, on peut définir le \textbf{normalisateur} d'une partie \( H \), noté \( N(H) \), et c'est le stabilisateur de l'action par la conjugaison sur les \textbf{parties}, ie:
+\[ 
+   N(H) := \left\{ g \in G \; ; \; gH = Hg\right\}  
+\]
+\subsection*{\subsecstyle{Relation orbites stabilisateurs{:}}}
+On peut alors montrer que si on fixe \( x \in X \), alors il existe une bijection entre \( G/\text{Stab}(x) \longrightarrow \text{Orb}(x)\) et en particulier, on a alors la relation fondamentale suivante dite \textbf{relation orbites-stabilisateurs}:
+\[ 
+   \left|G \right| = \left|\text{Orb}(x)\right| \left|\text{Stab}(x)\right|
+\]
+Et donc en particulier, le cardinal d'une orbite (ou d'un stabilisateur) \textbf{divise l'ordre de } \( G \).
+\subsection*{\subsecstyle{Formules des classes{:}}}
+On peut alors utiliser le fait que \( X \) se partitionne en orbites pour obtenir une expression du cardinal de \( X \) apellée \textbf{formule des classes} où \( n \) désigne le nombre d'orbites:
+\[ 
+   \left|X\right| = \sum_{i = 1}^n  \left| \text{Orb}(x_i) \right| = \sum_{i = 1}^n  \frac{\left|G \right|}{\left|\text{Stab}(x_i)\right|}
+\]
+Un des intérêts de cette formule est par exemple qu'elle permet de connaître le nombre d'orbites d'une action ou de montrer l'existence de points fixes (ie de points dont l'orbite est de cardinal 1), en effet on considère les diviseurs de l'ordre du groupe \( (d_1, \ldots, d_k) \) et \( (a_1, \ldots, a_k) \) le nombre d'orbites de cette taille, on obtient alors une equation de la forme suivante, qui peut souvent s'étudier facilement dans les cas simples avec peu de diviseurs:
+\[ 
+   |X| = \sum a_kd_k 
+\]
+\subsection*{\subsecstyle{Formules de Burnside{:}}}
+Une autre formule important liée aux actions de groupe est \textbf{la formule de Burnside} qui permet de dénombrer les orbites de l'action, et en particulier, on peut alors \textbf{compter des éléments modulo une action de groupe}, on a la formule suivante:
+\[ 
+   n = \frac{1}{|G|} \sum_{g \in G} |\text{Fix(g)}| 
+\]
+Où \( \text{Fix(g)} := \left\{x \in X \; ; \; g \cdot x = x \right\}\) est l'ensemble des points fixés par \( g \). Cette formule est fondamentale en combinatoire, par exemple imaginons que nous souhaitions compter le nombre de colliers \textbf{différents} de 5 perles à deux couleurs. Alors ici "différents" signifie que un des colliers dénombré est égal à un autre aprés une rotation ou une reflexion, on considèrera ce collier comme le même que le premier. 
 \begin{center}
-   \begin{tikzcd}[column sep=large, row sep=large]
-      G \arrow[d, "\pi", swap, two heads] \arrow[r, "\phi"] & F\\
-      G/\Ker{\phi} \arrow[ru, "\widetilde{\phi}", swap, dashed]
-   \end{tikzcd}
+   \textit{L'idée principale est donc bien de compter des éléments modulo l'action sur l'ensemble, ie en identifiant deux éléments dans la même orbite.}
 \end{center}
-En particulier, le morphisme \(\widetilde{\phi}'\) est injectif, et on montre qu'il surjectif sur \(\text{Im}(\phi)\) et donc on a le théorème suivant:
-\customBox{width=6cm}{
-   \(G/\Ker{\phi} \cong \text{Im}(\phi)\) 
-}
-
+Compter ces colliers revient donc à compter les orbites de l'action par symétries d'un groupe sur l'ensemble de tout les colliers possibles. Et la formule de Burnside nous permet donc d'effectuer ce calcul.
 \chapter*{\chapterstyle{II --- Groupes Symétriques}}
 \addcontentsline{toc}{section}{Groupe Symétrique}
 On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<
@@ -313,10 +415,8 @@ On appelle alors \textbf{support} d'une permutation le complémentaire des point
 \[
    \text{Supp}(\sigma) := \bigl\{ i \in \N \; ; \; \sigma(i) \neq i \bigl\}   
 \]
-Une des propriétés fondamentale qu'on peut déduire de cette définition est que:
-\customBox{width=10cm}{
-   Deux permutations à supports disjoints \textbf{commutent}.
-}
+Une des propriétés fondamentale qu'on peut déduire de cette définition est que \textbf{deux permutations à supports disjoints commutent}.
+
 \subsection*{\subsecstyle{Cycles {:}}}
 On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_k\) tels que:
 \[
@@ -385,61 +485,40 @@ A REFAIRE.
 \addcontentsline{toc}{section}{Groupes Cycliques}
 On appelle \textbf{groupe cyclique} un groupe \(G\) engendré par un unique élément qu'on notera \(g\). Le but de ce chapitre est de classifier ces groupes et d'identifier leurs caractéristiques.\<
 
-Dans toute la suite, on utilisera le morphisme surjectif\footnote[1]{Car \(\langle g \rangle = G\) donc tout les éléments de \(G\) s'écrivent comme une puissance de \(g\).} suivant:
+\subsection*{\subsecstyle{Classification {:}}}
+Dans cette section, on utilisera le morphisme surjectif suivant:
 \[
    \begin{aligned}
       \phi: \Z &\longrightarrow G\\
       n &\longmapsto g^n
    \end{aligned}
 \]
-
-\subsection*{\subsecstyle{Cas infini {:}}}
-Dans le cas ou \(G\) est infini, le morphisme \(\phi\) est injectif et donc on a la caractérisation suivante:
-\customBox{width=2cm}{
-   \(
-      G \cong \Z
-   \)
-}
+On raisonne sur la finitude de \( G \) et on peut alors caractériser tout les groupes cycliques trés simplement, en effet:
+\begin{itemize}
+   \item Si \(G\) est infini, le morphisme \(\phi\) est \textbf{injectif} et on a l'isomorphisme \( G \cong \Z \)
+   \item Si \(G\) est fini, on utilise le \textbf{premier théorème d'isomorphisme} et on a l'isomorphisme  \( G \cong \Z/n\Z \)
+\end{itemize}
 \begin{center}
-   \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre infini, celui des entiers naturels.}
+   \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre n (resp. d'ordre infini), celui des classes de congruences modulo n (resp. celui des entiers).}
 \end{center}
-\subsection*{\subsecstyle{Cas fini {:}}}
-Dans le cas ou \(G\) est d'ordre \(n \in \N\), on peut utiliser le \textbf{premier théorème d'isomorphisme} pour montrer qu'il existe un isomorphisme:
-\[
-   \psi : \Z/\Ker{\phi} \longrightarrow G
+\subsection*{\subsecstyle{Le groupe \( \Z/n\Z \) {:}}}
+On remarque alors l'importance du groupe \( \Z/n\Z \), c'est le prototype de groupe cyclique fini. On peut alors montrer que ces groupes correspondent à l'ensemble des \textbf{restes par la division euclidienne par \( n \)} et l'égalité dans ces groupes corresponds à ce qu'on appelle la \textbf{congruence}.\<
+
+\uline{Exemple:} Dans \( \Z/6\Z\), on a \( 2 = 8 = 14 \ldots\) en effet ces nombres ont le même reste par la division euclidienne par \( 6 \).
+\subsection*{\subsecstyle{Générateurs de \( \Z/n\Z \) {:}}}
+On sait que la classe de 1 ou -1 engendre le groupe  \( \Z/n\Z \) comme image de générateurs de \( \Z \), on se pose la question si il existe d'autres générateurs. En effet c'est le cas, en particulier si \( p \wedge n = 1 \), d'aprés la relation de Bézout, on peut montrer que sommer \( p \) un certain nombre de fois permettra d'obtenir 1 et donc d'engendrer le groupe.\<
+
+Il y a donc \( \phi(n) \) générateurs de  \( \Z/n\Z \) où \( \phi \) est \textbf{l'indicatrice d'Euler}.
+\subsection*{\subsecstyle{Théorème chinois {:}}}
+Un des grands théorèmes sur les groupes cycliques est le suivant, si on considère \( p_1, \ldots, p_k \in \N \) des nombres premiers entre eux, et qu'on note \( n \) leur produit, alors on peut montrer facilement qu'on a l'isomorphisme suivant:
+\[ 
+   \Z/n \Z \cong \Z/ p_1 \Z \times \ldots \times \Z/ p_k \Z
 \]
-Et donc en particulier sachant que \(\Ker{\phi} = n\Z\), on a:
-\customBox{width=3cm}{
-   \(
-      G \cong \Z/n\Z
-   \)
-}
-\begin{center}
-   \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre n, celui des classes de congruences modulo n.}
-\end{center}
-\subsection*{\subsecstyle{Indicatrice d'Euler {:}}}
-On définit \textbf{la fonction indicatrice d'Euler} par:
-\[
-   \begin{aligned}
-      \varphi: \N &\longrightarrow \N\\
-      n &\longmapsto n \prod_{p|n}{\left(1-\frac{1}{p}\right)}
-   \end{aligned}
+En particulier si \( n = p_1^{\alpha_1} \ldots p_k^{\alpha_k} \) décompé en facteurs premiers, alors on a:
+\[ 
+   \Z/n \Z \cong \Z/ p_1^{ \alpha_1} \Z \times \ldots \times \Z/ p_k^{ \alpha_k} \Z
 \]
-Le produit se faisant sur tout les diviseurs premiers distincts de \(n\). L'utilité de cette fonction vient de la propriété suivante:
-\customBox{width=13cm}{
-   \textbf{Le nombre d'entiers inférieurs à \(n\) et premiers avec \(n\) est de \(\varphi(n)\).}
-}
-
-\underline{Exemple:} \(\varphi(30) = \varphi(2\times3\times5) = 30\times\left(1-\frac{1}{2}\right)\left(1-\frac{1}{3}\right)\left(1-\frac{1}{5}\right) = 30\times\frac{1}{2}\times\frac{2}{3}\times\frac{4}{5} = 8\)
-\subsection*{\subsecstyle{Propriétés {:}}}
-On peut alors de démontrer les propriétés suivantes:
-
-\begin{center}
-   \begin{itemize}
-      \item Tout groupe cyclique est \textbf{abélien}.
-      \item Tout \textbf{sous-groupe} d'un groupe cyclique est cyclique.
-   \end{itemize}
-\end{center}
+C'est la \textbf{décomposition primaire d'un groupe cyclique}. Elle s'interprète en comprenant par exemple que la donnée du reste par 6 d'un entier est exactement equivalente à la donnée de son reste par 3 et 2.
 
 \chapter*{\chapterstyle{II --- Anneaux}}
 \addcontentsline{toc}{section}{Anneaux}
@@ -542,60 +621,6 @@ On peut alors considérer plusieurs corps remarquables:
    \item Les \textbf{nombres constructibles} à la règle et au compas.
 \end{itemize}
 
-\chapter*{\chapterstyle{II --- Arithmétique dans \(\Z\)}}
-\addcontentsline{toc}{section}{Arithmétique dans Z}
-
-\subsection*{\subsecstyle{Division Euclidienne {:}}}
-Soit \(a, b \in \Z \times \Z^*\), on montre qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
-
-\customBox{width=4cm}{
-   \(
-      a = bq + r
-   \)
-}
-On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\).
-
-\subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
-
-Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(d\) qui vérifie:
-\customBox{width=5cm}{
-   \begin{align*}
-      &\bullet \;\; d \, | \, a \text{ et } d \, | \, b \\
-      &\bullet \;\; d' \, | \, a \text{ et } d' \, | \, b \implies d' \leq d
-   \end{align*}
-}
-Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. \<
-
-Une caractérisation utile permet de montrer que si \(d\) est un diviseur commun à \(a\) et \(b\), alors \(d = \text{pgcd}(a , b)\) si et seulement si pour tout diviseur commun \(d'\) de \(a\) et \(b\):
-\customBox{width=2cm}{
-   \(
-      d' \, | \, d   
-   \)
-}
-
-\subsection*{\subsecstyle{Théorème de Bézout {:}}}
-Soit \(a, b\in \Z^2\), on peut montrer qu'il existe deux entiers \(n_1, n_2 \in \Z^2\) tels que:
-\customBox{width=5cm}{
-   \(
-      n_1a+n_2b = a \wedge b
-   \)
-}
-\begin{center}
-   \textit{
-       Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
-   }
-\end{center}
-
-\subsection*{\subsecstyle{Lemme de Gauss {:}}}
-Soit 3 entiers \(a, b, c \in \Z\), alors\footnote[1]{Partir d'une combinaison linéaire donnée par Bézout.}:
-\customBox{width=5.5cm}{
-   \[
-      \begin{cases} 
-         a \, | \, bc \\
-         a \wedge b = 1
-      \end{cases} \implies a \, | \, c
-   \]
-}
 \chapter*{\chapterstyle{II --- Corps des Complexes}} % 99% Fini
 \addcontentsline{toc}{section}{Corps des Complexes}
 

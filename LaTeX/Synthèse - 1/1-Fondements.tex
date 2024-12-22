@@ -98,7 +98,6 @@ Une récurrence forte n'est alors qu'une récurrence qui nécessite des hypothè
 \addcontentsline{toc}{subsection}{Récurrences imbriquées}
 
 Soit \(\P_{n,m}\) une propriété qui dépend \textbf{de deux variables entières}, alors on pourrait prouver \(\P_{n, 0}\) par récurrence et alors cela constituerait l'initialisation d'une récurrence imbriquée qui supposerait par exemple \(\P_{n, k}\) vraie pour prouver \(\P_{n, k+1}\).
-
 \chapter*{\chapterstyle{I --- Ensembles}}
 \addcontentsline{toc}{section}{Ensembles}
 
@@ -213,7 +212,6 @@ De manière analogue, en considérant \(\{0, 1\}\) comme les valeurs de vérité
 }
 
 Cette structure est à la base de la logique formelle et vérifie les même axiomes que l'algèbre de l'ensemble des parties d'un ensemble.
-
 \chapter*{\chapterstyle{I --- Relations}}
 \addcontentsline{toc}{section}{Relations}
 
@@ -312,7 +310,6 @@ Quelques exemples connus de structures quotient:
     &\bullet \textbf{ L'anneau } \Z \,/\, n\Z := (\Z \,/\, \sim, +, \times) \textbf{ pour la relation } a \sim b \Longleftrightarrow a \equiv b [n] \\
     &\bullet \textbf{ Le corps } \Q := ((\Z \, ; \, \Z \, \backslash \, \{0\}) \, / \, \sim, +, \times) \textbf{ pour la relation } (a, b) \sim (c, d) \Longleftrightarrow ad = bc
 \end{align*}
-
 \chapter*{\chapterstyle{I --- Fonctions \& Applications}}
 \addcontentsline{toc}{section}{Fonctions \& Applications}
 
@@ -450,7 +447,6 @@ Si il existe une bijection de \(\R\) dans \(E\), alors on dit que \(E\) est un e
 \]
 
 Il n'existerait aucun ensemble dont le cardinal se situerait entre \(\aleph_0\) et \(\aleph_1\), c'est \textbf{l'hypothèse du continu}.
-
 \chapter*{\chapterstyle{I --- Dénombrement}} % 75% Fini
 \addcontentsline{toc}{section}{Dénombrement}
 
@@ -554,3 +550,57 @@ On peut même pour définir la \textbf{formule du multinôme de Newton} qui gén
 \[
    (x_1 + x_2 + \ldots + x_p)^n = \sum_{k_1+k_2+\ldots+k_p = n} \binom{n}{k_1, k_2 \ldots, k_n} x_1^{k_1} x_2^{k_2} \ldots x_p^{k_p}
 \]
+
+\chapter*{\chapterstyle{II --- Arithmétique élémentaire}}
+\addcontentsline{toc}{section}{Arithmétique élémentaire}
+Dans ce chapitre on énonce quelques définitions et propriétés arithmétiques simples dans \( \Z \), qui seront généralisées plus tard dans le chapitre d'algèbre au cas général.
+\subsection*{\subsecstyle{Division Euclidienne {:}}}
+Soit \(a, b \in \Z \times \Z^*\), on peut montrer qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
+\[ 
+    a = bq + r
+\]
+On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\). La preuve se fait par l'exibition de l'algorithme bien connu.
+
+\subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
+Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(a \wedge b\) qui vérifie:
+\[ 
+    a \wedge b := \max \left\{ n \in \N \; ; \; n | a \text{ et } n | b \right\} 
+\]
+Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. En effet c'est le dernier reste non-nul de celui ci.
+
+\subsection*{\subsecstyle{Plus petit commun multiple{:}}}
+Soit \(a, b \in \Z\) non simultanément nuls, alors le ppcm est l'entier \(a \vee b\) qui vérifie:
+\[ 
+    a \vee b := \min \left\{ n \in \N \; ; \; a | n \text{ et } b | n \right\} 
+\]
+Alors on l'appelle \textbf{plus petit commun multiple} de \(a\) et de \(b\) et on le note \(a \vee b\).
+
+\subsection*{\subsecstyle{Identité de Bézout {:}}}
+Soit \(a, b\in \Z^2\), on peut montrer par une extension de l'algorithme d'Euclide appelé \textbf{algorithme d'Euclide étendu} qu'il existe deux entiers \(u, v \in \Z^2\) tels que:
+\[
+      au + bv = a \wedge b
+\]
+\begin{center}
+   \textit{
+       Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
+   }
+\end{center}
+\subsection*{\subsecstyle{Lemme de Gauss {:}}}
+Soit 3 entiers \(a, b, c \in \Z\), alors gràce à l'identité de Bézout, on peut montrer le \textbf{lemme de Gauss}:
+\[
+    \begin{cases} 
+        a \, | \, bc \\
+        a \wedge b = 1
+    \end{cases} \implies a \, | \, c
+\]
+\subsection*{\subsecstyle{Indicatrice d'Euler {:}}}
+En algèbre, il sera utile de connaître \textbf{le nombre d'entiers inférieurs à \(n\) et premiers avec \(n\)}, pour ceci on définit \textbf{la fonction indicatrice d'Euler} par:
+\[
+   \begin{aligned}
+      \varphi: \N &\longrightarrow \N\\
+      n &\longmapsto n \prod_{p|n}{\left(1-\frac{1}{p}\right)}
+   \end{aligned}
+\]
+Le produit se faisant sur tout les diviseurs premiers distincts de \(n\). L'utilité de cette fonction vient de la propriété suivante que justement \( \phi(n) \) est exactement le nombre d'entiers inférieurs à \( n \) et premiers avec \( n \).\<
+
+\underline{Exemple:} \(\varphi(30) = \varphi(2\times3\times5) = 30\times\left(1-\frac{1}{2}\right)\left(1-\frac{1}{3}\right)\left(1-\frac{1}{5}\right) = 30\times\frac{1}{2}\times\frac{2}{3}\times\frac{4}{5} = 8\)
