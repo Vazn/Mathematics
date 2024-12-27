@@ -1,0 +1,371 @@
+\documentclass{beamer}
+\usepackage{fontspec}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{unicode-math}   % Pour définir les polices mathématiques
+\usepackage{pgfplots}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{esvect}
+\usepackage{tcolorbox}
+\usepackage{cmbright}
+
+\usepackage{xcolor}
+\usepackage{tikz, tkz-fct, tkz-euclide}
+\usetikzlibrary{calc,patterns,angles,quotes}
+
+\renewcommand{\comment}[1]{}
+
+\pgfplotsset{compat = newest}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes,arrows,arrows.meta,angles,quotes,patterns,patterns.meta}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing}
+
+
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+\definecolor{BrightRed2}{RGB}{210, 115, 115}
+\definecolor{DarkBlueX}{RGB}{43, 68, 92}
+\definecolor{DarkBlue0}{RGB}{53, 78, 102}
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+\definecolor{DarkGreen3}{RGB}{83, 132, 108}
+\definecolor{DarkGreen2}{RGB}{58, 132, 94}
+\definecolor{DarkGreen1}{RGB}{90, 162, 126}
+\newcommand{\firasans}[1]{{\usefont{T1}{FiraSans}{m}{n}#1}}
+
+\usetheme{metropolis}
+\setbeamercolor{frametitle}{bg=DarkBlue1, fg=white}
+
+\setbeamercolor{progress bar}{fg=DarkBlue1}
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1.5pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1.5pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
+\makeatother
+
+\setmainfont{Fira Sans}[Weight=300, ItalicFont={Fira Sans Italic}]
+\tikzset{every picture/.style={font=\rmfamily}}
+
+% Title page details: 
+\title{Modélisation}
+\subtitle{Systêmes périodiques et pseudo-périodiques}
+\author{Cavazzoni Christophe}
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+    \begin{frame}{Table des matières}
+        \setbeamertemplate{section in toc}[sections numbered]
+        \tableofcontents
+    \end{frame}
+    
+    \section{Introduction}
+        \begin{frame}{Introduction}
+            \begin{itemize}
+                \item On appelle \textbf{système dynamique continu} un ensemble d'éléments qui intéragissent entre eux et dont l'évolution dans le temps est décrite par une loi continue.
+                \item On appelle \textbf{systèmes périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné.
+                \item On appelle \textbf{systèmes pseudo-périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné mais dont \textbf{l'amplitude décroît} avec le temps.
+            \end{itemize}
+        \end{frame}
+        \begin{frame}{Introduction}
+            Nous étudiront principalement 2 cas de sytèmes périodiques:
+            \begin{itemize}
+               \item Le cas du \textbf{système masse-ressort}.
+               \item Le cas du \textbf{pendule simple non-linéaire}.
+            \end{itemize}
+        \end{frame}
+        \begin{frame}{Introduction}
+        Les systèmes que l'on veut modéliser sont des systèmes basées sur les lois de la physique, on utilisera:
+            \begin{itemize}
+            \item Le \textbf{principe fondamental de la dynamique} qui nous permettra de déterminer l'accélération de l'objet.
+            \item Certains objets on des propriétés particulières qui demanderont d'autres concepts physiques (ressorts notamment).
+            \end{itemize}
+        \end{frame}
+
+    \section{Systême masse-ressort}
+        \subsection{Modélisation}
+            \begin{frame}{Modélisation}
+                Voici un schéma illustrant la situation \textbf{à l'équilibre}:
+                \begin{figure}
+                    \centering
+                    \begin{tikzpicture}[>=stealth]
+                        \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
+                        rectangle ++ (4,0.5);
+                        \draw[decorate,decoration={coil,segment length=5pt,aspect=0.7,amplitude=4pt,
+                            pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.5)
+                            node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
+
+                        \draw[<->, DarkGreen3] (-0.5,4.96) -- node[left=1mm] {$l$} (-0.5, 2.54);
+
+                    \draw[DarkGreen3] (m.east) edge[dashed] (m.east-|2,0);
+                    \draw[DarkGreen3] (m.west) edge[dashed] (m.west-|-2,0);
+                    \end{tikzpicture}
+                    \caption{Schéma de la situation}
+                \end{figure}
+            \end{frame}
+            \begin{frame}{Paramètres}
+                On peut tout d'abord identifier les \textbf{paramétres du modèle}:
+                \begin{itemize}
+                    \item La masse de l'objet.
+                    \item La longeur du ressort.
+                    \item La force de gravité.
+                \end{itemize}
+            \end{frame}
+            \begin{frame}{Paramètre spécifique}
+                Aussi, on peut remarque que si quand la masse est à l'équilibre et si on note \(l_0\) la longueur du ressort à vide, alors la force de gravité est proportionelle à l'élongation du ressort, ie on a:
+                \[
+                mg = k(l - l_0)
+                \]
+                On appelle alors \(k\) la \textbf{constante de raideur} du ressort. Cette constante sera un autre paramêtre de notre modèle.
+            \end{frame}
+            \begin{frame}{Bilan des forces}
+                On effectue le bilan des forces:
+                \begin{figure}
+                    \centering               
+                    \begin{tikzpicture}[>=stealth]
+                    \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
+                    rectangle ++ (4,1);
+                    \draw[decorate,decoration={coil,segment length=7pt,aspect=0.7,amplitude=4pt,
+                        pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.02)
+                        node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
+            
+                    \draw[dashed, DarkGreen3] (0.5,2) -- (1.5, 2);
+                    \draw[dashed, DarkGreen3] (0.5,2) -- (-1.5, 2);
+                    \draw[->, thick, DarkGreen3] (0,1) -- node[right]{$\vv{F}$} (0, 0.30);
+                    \draw[->, thick, BrightRed2] (0,5.0) -- node[right]{$\vv{F}$} (0, 5.70);
+                \end{tikzpicture}
+                \caption{Bilan des forces}
+                \end{figure}    
+            \end{frame}     
+            \begin{frame}{Mise en équation}
+                la force qu'exercerce le ressort dans la direction de l'équilibre est donc linéairement proportionelle à la distance avec l'équilibre, et donc d'aprés le \textbf{principe fondamental de la dynamique}, ie on a:    
+                \[
+                    \vv{a}(t) = \frac{1}{m}\sum \vv{F}(t)
+                \]
+                Et donc l'équation du mouvement est donnée par:
+                \[
+                    \boxed{y''(t) = -\frac{k}{m}y(t)}
+                \]
+            \end{frame}      
+        \subsection{Résolution}
+            \begin{frame}{Résolution}
+                L'équation précédente et facilement résoluble, en effet c'est une equation linéaire et on peut remarquer facilement que les fonctions solutions sont de la forme:
+                \[
+                    y(t) = c_1\text{\fontfamily{cmr}\selectfont cos}(\omega t) + c_2\text{\fontfamily{cmr}\selectfont sin}(\omega t) \; ; \; \omega = \sqrt{\frac{k}{m}}
+                \]
+            \end{frame}
+        \subsection{Etude des solutions}
+            \begin{frame}{Portraits de phase non-amorti}
+                \vspace{7.5pt}
+                \begin{figure}
+                    \centering
+                    \begin{tikzpicture}
+                        \tikzset{%
+                                my arrow/.style={
+                                postaction={decorate,decoration={
+                                markings,
+                                mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
+                            }
+                        }
+                        \begin{axis}[
+                        xmin = -2, xmax = 2,
+                        ymin = -2, ymax = 2,
+                        zmin = 0, zmax = 1,
+                        axis equal image,
+                        xtick distance = 1,
+                        ytick distance = 1,
+                        view = {0}{90},
+                        scale = 1,
+                        xlabel = {$y$},
+                        ylabel = {$y'$},
+                        colormap/viridis,
+                        ]
+                        \addplot3[
+                            point meta = {sqrt(x^2+y^2)},
+                            quiver = {
+                                u = {y/sqrt(x^2+y^2)},
+                                v = {-x/sqrt(x^2+y^2)},
+                                scale arrows = 0.15,
+                            },
+                            quiver/colored = {mapped color!50},
+                            -stealth,
+                            domain = -2:2,
+                            domain y = -2:2,
+                        ] {0};
+                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ({0.5*cos(deg(x))}, {-0.5*sin(deg(x))});      
+                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ( {cos(deg(x))}, {-sin(deg(x))} );   
+                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ( {1.5*cos(deg(x))}, {-1.5*sin(deg(x))} );      
+                        \end{axis}
+                    \end{tikzpicture}
+               \end{figure}
+            \end{frame}
+            \begin{frame}{Ajout d'un terme d'amortissement}
+                On essaie maintenant de rendre le modèle plus réaliste en ajoutant la contribution des frottements de l'air. Pour \(\lambda > 0\) un coefficient de frottements, on ajoute la contrainte \textbf{linéaire} suivante:
+                \[
+                   y''(t) = -\frac{k}{m}y(t) - \lambda y'(t)
+                \]
+            \end{frame}
+            \begin{frame}{Portrait de phase amorti}
+                \vspace{7.5pt}
+                \begin{figure}
+                    \centering
+                    \begin{tikzpicture}
+                        \tikzset{%
+                           my arrow/.style={
+                           postaction={decorate,decoration={
+                           markings,
+                           mark=between positions 0.001 and 0.15 step 0.03 with {\arrow[line width=1.5pt]{stealth}}}}
+                           }
+                        }
+                        \begin{axis}[
+                           xmin = -2, xmax = 2,
+                           ymin = -2, ymax = 2,
+                           zmin = 0, zmax = 1,
+                           axis equal image,
+                           xtick distance = 1,
+                           ytick distance = 1,
+                           view = {0}{90},
+                           scale = 1,
+                           xlabel = {$y$},
+                           ylabel = {$y'$},
+                           colormap/viridis,
+                        ]
+                        \def\length{sqrt(y^2 + (-x - 0.5*y)^2)}
+                           \addplot3[
+                              point meta = {\length},
+                              quiver = {
+                                 u = {y/\length},
+                                 v = {(-x - 0.5*y)/\length},
+                                 scale arrows = 0.15,
+                              },
+                              quiver/colored = {mapped color!50},
+                              -stealth,
+                              domain = -2:2,
+                              domain y = -2:2,
+                              axis equal image
+                           ] {0};
+                           \addplot[my arrow, mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass1.dat}; 
+                           \addplot[my arrow, mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass2.dat};
+                           \addplot[my arrow,mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass3.dat};
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{figure}
+            \end{frame}
+    
+    \section{Pendule simple}
+        \subsection{Modélisation}
+            \begin{frame}{Modélisation}
+                Voici un schéma qui illustre la situation \textbf{à l'équilibre}:
+                \begin{figure}
+                    \centering
+                    \begin{tikzpicture}[>=stealth, scale=1.2]
+                        \draw[thick] (0,5) -- (0,2.5) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
+                        \draw[DarkGreen3] (0, 1.5) edge[dashed] (0, 2.1) node[below] {Equilibre};
+                        \draw[<->, DarkGreen3] (-0.3,4.96) -- node[left=1mm] {$l$} (-0.3, 2.84);
+
+                        \filldraw (0, 5) circle (2.5pt);
+                    \end{tikzpicture}
+                    \caption{Schéma de la situation}
+                \end{figure}
+            \end{frame}
+            \begin{frame}{Paramètres}
+                On peut tout d'abord identifier les \textbf{paramétres du modèle}:
+                \begin{itemize}
+                \item La masse de l'objet.
+                \item La longeur du ressort.
+                \item La constante de gravité.
+                \end{itemize}        
+            \end{frame}
+            \begin{frame}{Bilan des forces}
+                On effectue le bilan des forces:
+                \begin{figure}
+                    \begin{tikzpicture}[>=stealth, scale=1.2]
+                        \coordinate (pivot) at (0, 5);
+                        \coordinate (equilibrium) at (0, 1.5);
+                        \coordinate (pendulum) at (1.76, 3.23);
+                        \pic[<-, draw, angle eccentricity=1.6, angle radius = 0.7cm, thick] {angle = equilibrium--pivot--pendulum};
+                        \pic[<-, draw, angle eccentricity=0.85, angle radius = 2.9cm, color = DarkGreen1, thick] {angle = equilibrium--pivot--pendulum};
+                        \node at (-0.35, 4.4) {$\theta(t)$};
+                        \node[color = DarkGreen1] at (-0.35, 2.6) {$l\theta(t)$};
+            
+                        \filldraw (pivot) circle (2.5pt);
+                        \draw[thick] (pivot) -- (pendulum) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
+                        \draw[DarkGreen3] (equilibrium) edge[dashed] (pivot) node[below] {Equilibre};
+            
+                        \draw[->, thick, DarkGreen3] (1.76, 2.93) -- node[right]{$\vv{F}_G$} (1.76, 2);
+                        \draw[->, thick, BrightRed1] (1.545, 3.445) -- (1, 3.999);
+                        \node[BrightRed1] at (1.55, 3.9) {$\vv{F}_T$};
+                    \end{tikzpicture}
+                    \caption{Bilan des forces}
+                \end{figure}
+            \end{frame}
+            \begin{frame}{Mise en équation}
+                D'aprés le \textbf{principe fondamental de la dynamique}, on a l'accélaration angulaire donnée par:
+                \[
+                    \vv{a}(t) = \frac{1}{m}\sum\vv{F}(t)
+                \]
+                Et donc finalement en utilisant des relations trigonométriques, la composante d'acceleration dans le sens de la course du pendule est donnée par:
+                \[
+                    \boxed{\theta''(t) = - \frac{g}{l}\text{\fontfamily{cmr}\selectfont sin}(\theta)}
+                \]
+            \end{frame}
+        \subsection{Résolution}
+            \begin{frame}{Résolution impossible}
+                Malheureusement, la résolution analytique de ce problême est \textbf{trés complexe} et est impossible pour nous. On se contente donc d'une \textbf{étude qualitative} et de la \textbf{résolution numérique} du problème.
+            \end{frame}
+        \subsection{Etude des solutions}
+            \begin{frame}{Portraits de phase non-amorti}
+            \end{frame}
+            \begin{frame}{Ajout d'un terme d'amortissement}
+                On essaie maintenant de rendre le modèle plus réaliste en ajoutant la contribution des frottements de l'air. Pour \(\lambda > 0\) un coefficient de frottements, on ajoute la contrainte \textbf{linéaire} suivante:
+                \[
+                    \theta''(t) = - \frac{g}{l}\text{\fontfamily{cmr}\selectfont sin}(\theta) - \lambda \theta'(t)
+                 \]
+            \end{frame}
+            \begin{frame}{Portraits de phase amorti}
+                \begin{figure}
+                    \centering
+                    \begin{tikzpicture}
+                            \tikzset{%
+                            my arrow/.style={
+                            postaction={decorate,decoration={
+                            markings,
+                            mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
+                            }
+                        }
+                        \def\xdom{3}
+                        \def\ydom{1.5}
+                        \begin{axis}[
+                            xmin = -\xdom, xmax = \xdom + 2*3.1415,
+                            ymin = -\ydom, ymax = \ydom,
+                            zmin = 0, zmax = 1,
+                            xtick distance = 1,
+                            ytick distance = 1,
+                            view = {0}{90},
+                            xlabel = {$y$},
+                            ylabel = {$y'$},
+                            colormap/viridis,
+                        ]
+                        
+                        \def\length{sqrt(y^2 + 0.125 * (sin(deg(x)) + 0.2*y)^2)}
+                            \addplot3[
+                            point meta = {\length},
+                            quiver = {
+                                u = {y/\length},
+                                v = {(- 0.125 *(sin(deg(x))) - 0.2*y)/\length},
+                                scale arrows = 0.25,
+                            },
+                            quiver/colored = {mapped color!50},
+                            -stealth,
+                            domain = -\xdom : \xdom + 2*3.1415 ,
+                            domain y = -\ydom : \ydom,
+                            ] {0};
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{figure}
+            \end{frame}
+\end{document}

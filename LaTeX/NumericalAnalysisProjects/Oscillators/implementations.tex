@@ -1,0 +1,66 @@
+\chapter{Implémentations \& traitement des données}
+Dans cette partie, je partage les différent moyens informatiques utilisés pour réaliser ce projet.
+   \subsection{Méthode d'Euler}
+      Pour calculer les différents portraits de phase, il a fallu être capable de générer les points des courbes solutions d'équations, différentielles, pour cela, on utilise la méthode bien connue d'Euler, qu'on généralise en une fonction qui à tout \textbf{champ de vecteur} et \textbf{conditions initiales} retourne une courbe intégrale sur un intervalle de temps donné, voici le code en question implémenté en Sagemaths:
+      \begin{center}
+         \begin{lstlisting}[language=Python, caption=Méthode d'Euler générale]
+               def eulerMethod(vField, time, stepSize, *initialConditions): 
+               # Prends un champ de vecteur et approxime une ligne de flot pour des
+               # conditions initiales donnees et une duree t
+               
+                  n = floor(time / stepSize)     
+                  # Nombre d'iterations necessaire pour completer l'intervalle de temps
+               
+                  L = []
+                  P0 = vector(initialConditions)
+                  for i in range(n):
+                     L.append(P0)
+                     P0 = vector(tuple(approx(P0[i]) for i in range(len(initialConditions))))  
+                     P0 = P0 + stepSize*vField(*P0) 
+                     # gamma(t0 + h) ~ gamma(t0) + hgamma'(t0) = gamma(t0) + hF(gamma(t0))
+                  
+                  return L # Retourne une liste de points
+            \end{lstlisting}
+      \end{center}
+   \pagebreak
+   \subsection{Traitement et affichage des données}
+      Par la suite, on va utiliser cet algorithme pour générer les 8 courbes intégrales du pendule (seul exemple non trivial), les formater et les envoyer sous forme de fichier data dans le dossier LaTeX qui s'occupera alors de l'affichage:
+      \begin{center}
+         \begin{lstlisting}[language=Python, caption=Méthode d'Euler générale]
+               # 2D Pendulum
+               def computePendulumData():
+                  # Precision presque ideale: 0.0025
+                  acc = 0.0025
+                  # Trajectoires aperiodiques
+                  aperiodicFlowPoints1 = eulerMethod(H, 12.5, acc, -3, 2) # Longueur d'arc 12.5
+                  aperiodicFlowPoints2 = eulerMethod(H, 13, acc, -3, 1) # Longueur d'arc 13
+                  aperiodicFlowPoints3 = eulerMethod(H, 13, acc, 9, -1) # Longueur d'arc 13
+                  aperiodicFlowPoints4 = eulerMethod(H, 12.5, acc, 9, -2) # Longueur d'arc 12.5
+               
+                  # Trajectoires periodiques
+                  periodicFlowPoints1 = eulerMethod(H, 12, acc, 2.14, 0) # Longueur d'arc 12
+                  periodicFlowPoints2 = eulerMethod(H, 7, acc, 1.14, 0) # Longueur d'arc 7
+                  periodicFlowPoints3 = eulerMethod(H, 12, acc, 4.14, 0) # Longueur d'arc 12
+                  periodicFlowPoints4 = eulerMethod(H, 7, acc, 5.14, 0) # Longueur d'arc 7
+                  return [
+                     aperiodicFlowPoints1, aperiodicFlowPoints2, 
+                     aperiodicFlowPoints3, aperiodicFlowPoints4, 
+                     periodicFlowPoints1, periodicFlowPoints2, 
+                     periodicFlowPoints3, periodicFlowPoints4
+                  ]
+               
+               def sendFormattedPendulumData(L):
+                  pointListToPgfPlot(L[0], 'C:\\.....\\data\\aperiodic1.dat')
+                  pointListToPgfPlot(L[1], 'C:\\.....\\data\\aperiodic2.dat')
+                  pointListToPgfPlot(L[2], 'C:\\.....\\data\\aperiodic3.dat')
+                  pointListToPgfPlot(L[3], 'C:\\.....\\data\\aperiodic4.dat')
+               
+                  pointListToPgfPlot(L[4], 'C:\\.....\\data\\periodic1.dat')
+                  pointListToPgfPlot(L[5], 'C:\\.....\\data\\periodic2.dat')
+                  pointListToPgfPlot(L[6], 'C:\\.....\\data\\periodic3.dat')
+                  pointListToPgfPlot(L[7], 'C:\\.....\\data\\periodic4.dat')
+               
+               sendFormattedPendulumData(computePendulumData()) # Envoie les donnees
+         \end{lstlisting}
+      \end{center}
+      Finalement, une fois ceci fait, la package TikZ récupère directement les données dans le dossier "data" et trace la courbe sur le graphique du champ de vecteur. Cette démarche de fournir à LaTeX des données précalculées à l'avance était nécessaire car LaTeX étant un langage de typographie, il ne sait pas calculer (ou alors que des calculs trés simple) et il ne sait bien sûr pas résoudre ou tracer les solutions des équations différentielles considérées.

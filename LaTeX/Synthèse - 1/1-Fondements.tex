@@ -101,50 +101,42 @@ Soit \(\P_{n,m}\) une propriété qui dépend \textbf{de deux variables entière
 \chapter*{\chapterstyle{I --- Ensembles}}
 \addcontentsline{toc}{section}{Ensembles}
 
-Soit \(E\), \(F\) et \(X\) trois ensembles quelconques.
-On note tout d'abord que l'intersection est prioritaire sur la réunion lors d'opérations sur les ensembles et que les deux opérations sont \textbf{distributives} l'une par rapport à l'autre.
-
+Soit \(E\) un ensemble de parties. On munit cet ensemble des opérations élémentaires d'union, d'intersection ainsi que de complémentation définies pour toutes familles d'ensembles \( (A_i)_I \) par:
+\begin{itemize}
+    \item \textbf{Union:} \(x \in \bigcup_i A_i \iff \exists i \in I \; ; \; x \in A_i\)
+    \item \textbf{Intersection:} \(x \in \bigcap_i A_i \iff \forall i \in I \; ; \; x \in A_i\)
+    \item \textbf{Complémentaire:} \(x \in A^c \iff x \not \in A\)
+\end{itemize}
+Ces opérations sont compatibles entre elles au sens où elle sont distributives l'une sur l'autre et associatives (pour une suite d'un seul type d'opération, si il y a mélange d'intersections et d'unions, on n'a pas associativité).
 \subsection*{\subsecstyle{Inclusion {:}}}
 \addcontentsline{toc}{subsection}{Inclusion}
 
-L'inclusion est une \textbf{relation d'ordre} sur l'ensemble des parties de \(E\), et donc on en déduit qu'elle est \textbf{réflexive, transitive et antisymétrique}. Si l'inclusion est stricte, on parle de \textbf{sous-ensemble propre}.\<
+On définit une \textbf{relation d'ordre} sur l'ensemble des parties de \(E\) appelée inclusion, elle est \textbf{réflexive, transitive et antisymétrique}. Si l'inclusion est stricte, on parle de \textbf{sous-ensemble propre}. En particulier, les opérations élémentaires préservent l'inclusion, en effet si \( F \subseteq G \), on a:
+\begin{align*}
+    F \cap X \subseteq G \cap X \\
+    F \cup X \subseteq G \cup X
+\end{align*}
 
-Si \(E \subseteq F\), on a:
-\begin{flalign*}
-    E \cap F = E\\
-    E \cup F = F
-\end{flalign*}
-Aussi, les opérations élémentaires préservent l'inclusion:
-
-\customBox{width=4cm}{
-    \begin{align*}
-        E \cap X \subseteq F \cap X \\
-        E \cup X \subseteq F \cup X
-    \end{align*}
-}
-
-
-\subsection*{\subsecstyle{Complémentaire et de la différence {:}}}
-\addcontentsline{toc}{subsection}{Complémentaire et différence}
-
-
-Si \(F \subseteq E\), alors \(F^c\) est l'ensemble qui contient tout les éléments de \(E\) qui \textbf{ne sont pas} dans \(F\) et on a définit alors \textbf{la différence ensembliste}:
-\[
-   E \;\backslash\; F = E \cap F^c  
+Néanmoins la complémentation inverse l'inclusion:
+\[ 
+    F^c \subseteq E^c \\
 \]
-Par ailleurs, \textbf{les lois de De Morgan} nous donnent:
-\customBox{width=4cm}{
-    \begin{align*}
-        (E \cap F)^c = E^c \cup F^c \\
-        (E \cup F)^c = E^c \cap F^c
-    \end{align*}
-}
+\subsection*{\subsecstyle{Complémentaire et différence {:}}}
+\addcontentsline{toc}{subsection}{Complémentaire et différence}
+On peut montrer deux propriétés fondamentales du complémentaire apellées \textbf{lois de De Morgan} qui nous donnent:
+\begin{align*}
+    (E \cap F)^c = E^c \cup F^c \\
+    (E \cup F)^c = E^c \cap F^c
+\end{align*}
+On peut aussi raffiner la notion de complémentaire en définissant \textbf{la différence ensembliste} pour tout partie \(F, G \subseteq E\), on pose:
+\[
+   F \;\backslash\; G = F \cap G^c  
+\]
 \underline{Cas particulier {:}}
 On peut aussi définir l'opération de \textbf{différence symétrique} notée \(\Delta\) qui permet d'obtenir tout les éléments qui appartiennent exactement à un seul des deux ensembles:
 \[
    E \Delta F = (E \cup F) \;\backslash\; (E \cap F)   
 \]
-
 \subsection*{\subsecstyle{Produit cartésien {:}}}
 \addcontentsline{toc}{subsection}{Produit cartésien}
 
@@ -155,20 +147,21 @@ Plus formellement, on note:
 \[
      \prod_{i=1}^{n} E_i = \Bigl\{ (e_1, e_2, \ldots, e_{n-1}, e_n) \; ; \; e_1 \in E_1, e_2 \in E_2, \ldots,  e_n \in E_n \Bigl\}
 \]
+Le produit cartésien est distributif sur l'union et l'intersection ie si on note \( \star \) une de ces deux opérations, on a:
+\[ 
+   A \times (B \star C) = (A \times B) \star (A \times C) 
+\]
 \pagebreak
-
 \subsection*{\subsecstyle{Cardinalité {:}}}
 \addcontentsline{toc}{subsection}{Cardinalité}
 
 Supposons que \(E\) et \(F\) tout deux inclus dans \(X\) et ayant \textbf{un nombre fini d'éléments}. On a alors différentes propriétés:
-\customBox{width=6cm}{
-    \begin{align*}
-        |E \cup F| &= |E| + |F| - |E \cap F| \\
-        |E \times F| &= |E| \times |F| \\
-        |E^c| &= |X| - |E| \\
-        |\Pow_E| &= 2^{|E|}
-    \end{align*}
-}
+\begin{align*}
+    |E \cup F| &= |E| + |F| - |E \cap F| \\
+    |E \times F| &= |E| \times |F| \\
+    |E^c| &= |X| - |E| \\
+    |\Pow_E| &= 2^{|E|}
+\end{align*}
 \subsection*{\subsecstyle{Partitions et recouvrements{:}}}
 \addcontentsline{toc}{subsection}{Partitions et recouvrements}
 
@@ -185,7 +178,6 @@ On remarque immédiatement deux partitions singulières:
 On peut donc intuitivement parler de \textbf{finesse} d'une partition, en regard de la taille des parties de la famille.\<
 
 On peut généraliser le concept de partitition à celui de \textbf{recouvrement}, alors \(E\) ne nécessite que d'être contenu par l'union des \((P_i)\).
-
 \subsection*{\subsecstyle{Algèbre de Boole {:}}}
 \addcontentsline{toc}{subsection}{Algèbre de Boole}
 
@@ -341,8 +333,7 @@ On définit \textbf{le graphe} de \(f\) comme suit:
 \[
    G_f:= \Bigl\{ (x, f(x)) \in E \times F \; ; \; x \in E\Bigl\}   
 \]
-Intuitivement, c'est l'ensemble des points de l'espace d'arrivée qui sont sur la courbe de la fonction.
-
+Intuitivement, c'est l'ensemble des couples d'éléments, des points, qui caractérise uniquement la fonction.
 \subsection*{\subsecstyle{Restrictions \& Prolongements {:}}}
 \addcontentsline{toc}{subsection}{Restrictions \& Prolongements}
 
@@ -350,103 +341,79 @@ On note \(f|_A\) la restriction de \textbf{l'ensemble de départ} de \(f\) à un
 On note \(f|^B\) la restriction de \textbf{l'ensemble d'arrivée} de \(f\) à une partie \(B\) de \(F\).\<
 
 Soit \(x \in D_f\), on appelle \textbf{prolongement} de \(f\), l'application \(g\) telle que \(D_f \subset D_g\) et \(g(x) = f(x)\)
-
 \subsection*{\subsecstyle{Image directe {:}}}
 \addcontentsline{toc}{subsection}{Image directe}
 
-On appelle \textbf{image directe} d'une partie \(A\) de \(E\) l'ensemble des images par \(f\) des éléments de \(A\), ie:
-\customBox{width=5cm}{
-    \(f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\}\)
-}
+Une fonction induit canoniquement une autre fonction sur l'ensemble des parties, notée aussi \( f \), qui à chaque partie associe la partie \textbf{image directe}, ie pour toute partie \(A\) de \(E\) on définit:
+\[
+    f(A) := \Bigl\{ f(x) \; ; \; x \in A \Bigl\}
+\]
 
 L'image directe est compatible avec \textbf{certaines opérations ensemblistes}, plus précisément:
-\begin{multicols}{2}
-    \begin{itemize}
-        \item \(f(A \cap B) = f(A) \cap f(B)\)
-        \item \(f(A \cup B) \subset f(A) \cup f(B)\)
-    \end{itemize}
-\end{multicols}
-
+\begin{itemize}
+    \item \textbf{Intersection:} \(f(A \cap B) = f(A) \cap f(B)\)
+    \item \textbf{Union:} \(f(A \cup B) \subset f(A) \cup f(B)\)
+\end{itemize}
 \subsection*{\subsecstyle{Image Réciproque {:}}}
 \addcontentsline{toc}{subsection}{Image Réciproque}
-On appelle \textbf{image réciproque} d'une partie \(B\) de \(F\) l'ensemble des antécédents par \(f\) des éléments de \(B\), ie:
-\customBox{width=6cm}{
-    \(f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\} \)
-}
-
+Toute fonction induit aussi une autre fonction sur l'ensemble des parties qui à chaque partie associe la partie \textbf{image réciproque}, ie pour toute partie \(A\) de \(E\) on définit:
+\[
+    f^{-1}(B) := \Bigl\{ x \in A \; ; \; f(x) \in B \Bigl\} 
+\]
 L'image réciproque est compatible avec \textbf{toutes les opérations ensemblistes}, plus précisément:
-\begin{multicols}{2}
-    \begin{itemize}
-        \item \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\)
-        \item \(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\)
-    \end{itemize}
-\end{multicols}
-
+\begin{itemize}
+    \item \textbf{Intersection:} \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\)
+    \item \textbf{Union:} \(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\)
+\end{itemize}
 \subsection*{\subsecstyle{Injections {:}}}
 \addcontentsline{toc}{subsection}{Injections}
 
-L'application \(f\) est injective si et seulement si:
-\customBox{width=8cm}{
-    \(\forall x_1, x_2 \in E^2 \; ; \; f(x_1) = f(x_2) \implies x_1 = x_2 \)
-}
-En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au maximum une solution dans E} pour montrer que \(f\) est injective.\+
-Si \(g \circ f\) est injective alors \(f\) est nécessairement injective.\<
+L'application \(f\) est dite \textbf{injective} si et seulement si:
+\[
+    \forall x_1, x_2 \in E^2 \; ; \; f(x_1) = f(x_2) \implies x_1 = x_2 
+\]
+Avoir une injection de \( E \longrightarrow F \) permet \textbf{d'identifier une partie de \( F \) à \( E \)}. Réciproquement, la non-injectivité représente le fait que la fonction détruit de l'information \footnote[1]{Dans le sens où si deux valeurs différentes ont la même image, on ne peut plus les distinguer à l'arrivée.}, ou alors que l'espace d'arrivée est trop petit.\<
 
-Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une injection, alors on a nécessairement \(|E| \leq |F|\)
-
+Si on considère une composée \(g \circ f\) injective alors on peut montrer que \(f\) est nécessairement injective. L'injectivité est stable par composition.
 \subsection*{\subsecstyle{Surjections {:}}}
 \addcontentsline{toc}{subsection}{Surjections}
 
-L'application \(f\) est surjective si et seulement si:
-\customBox{width=6cm}{
-    \(\forall y \in F \; , \; \exists x \in E \; ; \; f(x) = y\)
-}
+L'application \(f\) est dite \textbf{surjective} si et seulement si:
+\[ 
+    \forall y \in F \; , \; \exists x \in E \; ; \; f(x) = y
+\]
+Avoir une surjection de \( E \longrightarrow F \) permet \textbf{d'identifier une partie de \( E \) à \( F \)}. Réciproquement, la non-surjectivité indique que la fonction transporte trop peu d'informations, ou que l'espace d'arrivée est trop grand.\<
 
-En particulier, il suffit de montrer que l'équation \(f(x) = y\) admet \textbf{au moins une solution dans E} pour montrer que \(f\) est surjective.\+
-Si \(g \circ f\) est surjective alors \(g\) est nécessairement surjective.\<
-
-Si \(E\) et \(F\) sont des ensembles finis, et que \(f\) est une surjection, alors on a nécessairement \(|F| \leq |E|\)
-
+Si on considère une composée \(g \circ f\) injective alors on peut montrer que \(g\) est nécessairement surjective. La surjectivité est stable par composition.
 \subsection*{\subsecstyle{Bijections {:}}}
 \addcontentsline{toc}{subsection}{Bijections}
 
-L'application \(f\) est bijective si et seulement si elle est surjective et injective.\+  
-Dans ce cas, \textbf{une application réciproque} \(g\) existe et elle vérifie:
+L'application \(f\) est bijective si et seulement si elle est surjective et injective. Dans ce cas, \textbf{une application réciproque} \(g\) existe et elle vérifie:
 \[
     \begin{cases}
         f \circ g &= Id_F \\
         g \circ f &= Id_E
     \end{cases}
 \]
-
-
-Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective.
-\begin{center}
-    \textit{
-        Intuitivement, les bijections sont exactement \textbf{les applications inversibles à gauche et à droite} par une même application.
-    }
-\end{center}
-Si \(f\) et \(g\) sont bijectives, alors \(f \circ g\) est bijective et \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\)
-
-\subsection*{\subsecstyle{Equipotence {:}}}
-\addcontentsline{toc}{subsection}{Equipotence}
-
-Soit \(E\) et \(F\) deux ensembles quelconques.\+
+Réciproquement, si il existe une application \(g\) telle que \(f\) soit inversible à gauche et à droite par \(g\), alors \(f\) est bijective. Aussi la bijectivité est stable par composition.
+\subsection*{\subsecstyle{Equipotence \& Cardinalités {:}}}
+\addcontentsline{toc}{subsection}{Equipotence & Cardinalités}
+On peut étendre la notion de cardinalité d'un ensemble fini via la notion d'application, en particulier on dira que pour tout ensembles \( A, B \), alors:
+\begin{itemize}
+   \item Si il existe une injection \(f : E \longrightarrow F\), alors on a nécessairement \(|E| \leq |F|\)
+   \item Si il existe une surjection \(f : E \longrightarrow F\), alors on a nécessairement \(|E| \geq |F|\)
+\end{itemize}
 Si il existe une bijection de \(E\) vers \(F\), alors on dit que ces ensembles sont \textbf{équipotents}, et on a:
 \[
     |E| = |F|
 \]
-Cette définition du cardinal par les bijections permet de parler de cardinal d'un ensemble dans le cas \textbf{infini}.\+
-Si il existe une bijection entre \(\N\) et \(E\), on dit que \(E\) est un ensemble \textbf{dénombrable} et on note:
-\[
-    |E| = \aleph_0
-\]
-Si il existe une bijection de \(\R\) dans \(E\), alors on dit que \(E\) est un ensemble \textbf{indénombrable} et on note:
-\[
-    |E| = \aleph_1
-\]
+Cette définition du cardinal par les bijections permet de parler de cardinal d'un ensemble dans le cas \textbf{infini}. En particulier:
+\begin{itemize}
+   \item Si il existe une bijection entre \(\N\) et \(E\), on dit que \(E\) est \textbf{dénombrable}\footnote[2]{En fait, une injection suffit car on considérera par la suite que les ensembles finis sont dénombrables.} et on note \(|E| = \aleph_0\)
+   \item Si il existe une bijection de \(\R\) dans \(E\), alors on dit que \(E\) est \textbf{indénombrable} et on note \(|E| = \aleph_1\)
+\end{itemize}
 
-Il n'existerait aucun ensemble dont le cardinal se situerait entre \(\aleph_0\) et \(\aleph_1\), c'est \textbf{l'hypothèse du continu}.
+Dans notre cadre théorique (ZFC), il n'existe aucun ensemble dont le cardinal se situerait entre \(\aleph_0\) et \(\aleph_1\), c'est \textbf{l'hypothèse du continu}.
 \chapter*{\chapterstyle{I --- Dénombrement}} % 75% Fini
 \addcontentsline{toc}{section}{Dénombrement}
 
@@ -461,7 +428,6 @@ On appelle \textbf{liste} à \(p\) éléments de \(E\) un p-uplet constitué d'�
       Dans une liste, l'ordre compte et les répétitions sont possibles
    }
 \end{center}
-En effet, dans \(\N^2\) par exemple, on sait que \((1, 2) \neq (2, 1)\) et que \((1, 1)\) est un 2-uplet valide.\<
 
 On peut alors montrer que le nombre d'applications d'un ensemble à \(p\) éléments dans un ensemble à \(n\) éléménts est \(p^n\)
 
@@ -498,7 +464,7 @@ On apelle alors \textbf{coefficient binomial} et on note \(\binom{n}{p}\) le nom
 }   
 
 On peut remarquer que le nombre de parties à \(p\) éléménts de \(E\) est exactement le nombre d'arrangements à \(p\) éléménts de \(E\) auquel on retire toutes les permutations des \(p\) éléments choisis, ce qui revient exactement à \textbf{retirer la contrainte d'ordre}.
-
+\pagebreak
 \subsection*{\subsecstyle{Propriétés du coefficient binomial}}
 Le coefficient binomial possède plusieurs propriétés intéréssantes, on peut tout d'abord remarquer une \textbf{symétrie} évidente mais aussi:
 \[
@@ -551,9 +517,17 @@ On peut même pour définir la \textbf{formule du multinôme de Newton} qui gén
    (x_1 + x_2 + \ldots + x_p)^n = \sum_{k_1+k_2+\ldots+k_p = n} \binom{n}{k_1, k_2 \ldots, k_n} x_1^{k_1} x_2^{k_2} \ldots x_p^{k_p}
 \]
 
-\chapter*{\chapterstyle{II --- Arithmétique élémentaire}}
+\chapter*{\chapterstyle{I --- Arithmétique élémentaire}}
 \addcontentsline{toc}{section}{Arithmétique élémentaire}
-Dans ce chapitre on énonce quelques définitions et propriétés arithmétiques simples dans \( \Z \), qui seront généralisées plus tard dans le chapitre d'algèbre au cas général.
+Dans ce chapitre on énonce quelques définitions et propriétés arithmétiques simples dans \( \Z \), qui seront généralisées plus tard dans le chapitre d'algèbre au cas général. Dans cet ensemble on peut définir une relation d'ordre de divisibilité définie par:
+\[ 
+   a | b \iff \exists k \in \Z \; ; \; b = ak 
+\]
+On dira alors que \( b \) est un multiple de \( a \) et que \( a \) divise \( b \). On notera \( \mathcal{D}(n) \) l'ensemble des diviseurs de \( n \) et \( n\Z \) l'ensemble de ses multiples. Une première propriété trés utile de cette relation et que si \( a \) divise \( b, c \) alors pour tout \( n, m \in \Z \) on a:
+\[ 
+   a | nb + mc 
+\]
+
 \subsection*{\subsecstyle{Division Euclidienne {:}}}
 Soit \(a, b \in \Z \times \Z^*\), on peut montrer qu'il existe un unique couple \((q, r) \in \Z \times \N\) avec \(r < |b|\) tel que:
 \[ 
@@ -561,22 +535,31 @@ Soit \(a, b \in \Z \times \Z^*\), on peut montrer qu'il existe un unique couple 
 \]
 On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\). La preuve se fait par l'exibition de l'algorithme bien connu.
 
+
 \subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
 Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(a \wedge b\) qui vérifie:
 \[ 
     a \wedge b := \max \left\{ n \in \N \; ; \; n | a \text{ et } n | b \right\} 
 \]
-Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). Pour le trouver en pratique, on peut utiliser l'algorithme d'Euclide. En effet c'est le dernier reste non-nul de celui ci.
+Alors on l'appelle \textbf{plus grand diviseur commun} de \(a\) et de \(b\) et on le note \(a \wedge b\). On peut alors monter plusieurs propriétés de cette quantité:
+\begin{itemize}
+   \item \textbf{Maximalité:} Si \( d \) est un diviseur commun de \( a, b \) alors \( d | a \wedge b \).
+   \item \textbf{Réduction:} On peut réduire le pgcd par division euclidienne, ie \( a \wedge b = b \wedge r \).
+\end{itemize}
+On peut alors définir la notion de deux entier \( n, m \) \textbf{premiers entre eux} par le fait que \( n \wedge m = 1 \).
 
 \subsection*{\subsecstyle{Plus petit commun multiple{:}}}
 Soit \(a, b \in \Z\) non simultanément nuls, alors le ppcm est l'entier \(a \vee b\) qui vérifie:
 \[ 
     a \vee b := \min \left\{ n \in \N \; ; \; a | n \text{ et } b | n \right\} 
 \]
-Alors on l'appelle \textbf{plus petit commun multiple} de \(a\) et de \(b\) et on le note \(a \vee b\).
+Alors on l'appelle \textbf{plus petit commun multiple} de \(a\) et de \(b\) et on le note \(a \vee b\). On peut alors monter plusieurs propriétés de cette quantité:
+\begin{itemize}
+    \item \textbf{Minimalité:} Si \( d \) est un multiple commun de \( a, b \) alors c'est un multiple de \( a \vee b\).
+ \end{itemize}
 
 \subsection*{\subsecstyle{Identité de Bézout {:}}}
-Soit \(a, b\in \Z^2\), on peut montrer par une extension de l'algorithme d'Euclide appelé \textbf{algorithme d'Euclide étendu} qu'il existe deux entiers \(u, v \in \Z^2\) tels que:
+Soit \(a, b\in \Z^2\), on peut montrer par une extension de l'algorithme d'Euclide appelé \textbf{algorithme d'Euclide étendu}\footnote[1]{En effet remontrer l'algorithme par subsitution permet d'écrire le dernier reste non nul, le pgcd, comme combinaison linéaire des deux nombres de départ.} qu'il existe deux entiers \(u, v \in \Z^2\) tels que:
 \[
       au + bv = a \wedge b
 \]
@@ -585,6 +568,8 @@ Soit \(a, b\in \Z^2\), on peut montrer par une extension de l'algorithme d'Eucli
        Il existe donc une combinaison linéaire (à coefficients entiers) de \(a, b\) qui donne leur PGCD.
    }
 \end{center}
+\pagebreak
+
 \subsection*{\subsecstyle{Lemme de Gauss {:}}}
 Soit 3 entiers \(a, b, c \in \Z\), alors gràce à l'identité de Bézout, on peut montrer le \textbf{lemme de Gauss}:
 \[
@@ -593,6 +578,14 @@ Soit 3 entiers \(a, b, c \in \Z\), alors gràce à l'identité de Bézout, on pe
         a \wedge b = 1
     \end{cases} \implies a \, | \, c
 \]
+
+\subsection*{\subsecstyle{Nombres premiers {:}}}
+On appelle nombres premiers tout nombre différent de 1 qui n'admet aucun diviseur. Il existe une infinité de nombres premiers et on a le \textbf{théorème de décomposition}:
+\[ 
+   \forall n \in \Z \; ; \; n = \prod_{p \in \mathcal{P}} p^{v_{p}(n)} 
+\]
+Où \( v_p(n) = \max \left\{ k \in \N \; ; \; p^k | n \right\}  \) est apellée \textbf{valuation p-adique} de \( n \).
+
 \subsection*{\subsecstyle{Indicatrice d'Euler {:}}}
 En algèbre, il sera utile de connaître \textbf{le nombre d'entiers inférieurs à \(n\) et premiers avec \(n\)}, pour ceci on définit \textbf{la fonction indicatrice d'Euler} par:
 \[

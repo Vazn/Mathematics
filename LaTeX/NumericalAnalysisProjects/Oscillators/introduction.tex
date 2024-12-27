@@ -1,0 +1,30 @@
+\chapter{Introduction}
+   \subsection{Definitions}
+      Dans ce rapport, nous allons nous pencher sur l'étude et la modélisation de \textbf{systèmes dynamiques} particuliers appelés \textbf{systèmes périodiques}. Tout d'abord nous définissons les concepts en jeu.
+
+      \begin{itemize}
+         \item On appelle \textbf{système dynamique} un ensemble d'éléments qui intéragissent entre eux et dont l'évolution dans le temps est décrite par une loi, qui pourra être soit physique, soit chimique, etc... Nous nous intéresseront au cas particulier des systèmes périodiques qui sont des sytèmes dynamiques régis par les lois physiques élémentaires, et dont les interactions varient \textbf{continument}, ie ce sont des \textbf{systèmes dynamiques à temps continu.}
+         \item On appelle \textbf{systèmes périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné.
+         \item On appelle \textbf{systèmes pseudo-périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné mais dont \textbf{l'amplitude décroît} avec le temps. Ces systêmes modélisent parfaitement les phénomènes de frottement ou d'amortissement que nous modéliserons.
+      \end{itemize}
+
+   \subsection{Cas étudiés}
+      Nous étudiront principalement 2 cas de sytèmes périodiques:
+      \begin{itemize}
+         \item Le cas du \textbf{système masse-ressort}.
+         \item Le cas du \textbf{pendule simple non-linéaire}.
+      \end{itemize}
+      L'objectif étant d'identifier les paramêtres du système, modéliser leur mouvement via des équations différentielles, et étudier ces équations et les propriétés de leurs solutions (portrait de phase, points d'équilibre, solutions périodiques et si le temps le permet, stabilité.).
+
+   \subsection{Techniques de modélisation utilisées}
+   Les systèmes que l'on veut modéliser sont des systèmes basées sur les lois de la physique, on utilisera donc principalement les concepts suivants pour modéliser les phénomènes:
+   \begin{itemize}
+      \item Le \textbf{principe fondamental de la dynamique} qui nous permettra d'établir que \(a = \frac{1}{m} \sum\vv{F}\).
+      \item On devra donc souvent effectuer le \textbf{bilan des forces} qui s'appliquent à notre objet.
+      \item Certains objets on des propriétés particulières qui demanderont d'autres concepts physiques (ressorts notamment).
+   \end{itemize}
+   Ces techniques nous permettront alors de nous ramener à l'étude d'une équation différentielle de la forme:
+   \[
+      y''(t) = F(t, y(t), y'(t))
+   \]
+   Et on pourra alors utiliser l'arsenal mathématique à notre disposition pour l'étudier.

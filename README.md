@@ -7,11 +7,7 @@ Python : Numerical methods & applied maths tests.
 TODO : 
 - Finir projet oscillateurs harmoniques.
 
-- Refonte des probas avec theorie de la mesure + REVISIONS
-- Intérpréter les limites Stochastiques + REVISIONS
-- Etoffer Fondements
-- Finir/Etoffer Algèbre, théorèmes d'isomorphismes, théorème chinois.
-
+- REVISIONS probas
 - REVISION CALCDIFF, AlgLin
 
 
@@ -26,6 +22,4 @@ TODO :
 - Raffiner Coniques
 - Quadriques ? 
 - Formes différentielles et intégrales curvilignes à finir
-- Raffiner/actualiser les chapitres primitifs
-
 

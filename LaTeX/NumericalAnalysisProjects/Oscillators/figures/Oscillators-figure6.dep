@@ -1,4 +1,0 @@
-figures/Oscillators-figure6.pdf: data/pendulumEq1.dat
-figures/Oscillators-figure6.pdf: data/pendulumEq2.dat
-figures/Oscillators-figure6.pdf: data/pendulumEq2.dat
-figures/Oscillators-figure6.pdf: data/pendulumEq3.dat
