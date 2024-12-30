@@ -216,7 +216,6 @@ On appelle \textbf{arité} le nombre d'éléments mis en jeu par la relation.\+ 
 \]
 \textbf{Par abus de langage}, on appelle \textbf{classe} un ensemble d'ensembles.\+
 Formellement une classe n'est pas un ensemble mais un élément primitif de la théorie ZFC, mais ici on verra qu'on appelle classe des objets qui \textbf{sont} des ensembles.
-
 \subsection*{\subsecstyle{Zoologie {:}}}
 \addcontentsline{toc}{subsection}{Zoologie}
 
@@ -230,7 +229,6 @@ Il existe un grand nombre de relations très connues et élémentaires, par exem
     &\bullet \text{ La relation de parallélisme de deux droites du plan}
 \end{align*}
 On peut remarque que la relation d'appartenance à un ensemble est une relation binaire fondamentale, à la base de la théorie des ensembles.
-
 \subsection*{\subsecstyle{Relations binaires {:}}}
 \addcontentsline{toc}{subsection}{Relations binaires}
 
@@ -252,7 +250,6 @@ Elle peut aussi être \textbf{transitive}:
 \]
 On appelle aussi relation \textbf{totale} une relation telles si pour toute paire d'éléments, on a \(\mathscr{R}(x, y) \lor \mathscr{R}(y, x)\).
 \pagebreak
-
 \subsection*{\subsecstyle{Relations d'ordre {:}}}
 \addcontentsline{toc}{subsection}{Relations d'ordre}
 
@@ -261,14 +258,12 @@ Une \textbf{relation d'ordre} est une relation \textbf{réflexive, antisymétriq
 Des relations d'ordre très connues sont la relation \(\leq\) sur les ensembles de nombres ou la relation \(\subseteq\) sur l'ensemble des parties de \(E\).\<
 
 On appelle relation de \textbf{préordre} toute relation relation d'ordre qui n'est pas antisymétrique. Intuitivement, une relation de préordre est une relation d'ordre à ``équivalence près`` des éléments.
-
 \subsection*{\subsecstyle{Relations d'équivalence {:}}}
 \addcontentsline{toc}{subsection}{Relations d'équivalence}
 
 Une \textbf{relation d'équivalence} est une relation \textbf{réflexive, symétrique et transitive}. Intuitivement, elle met en relation les éléments des ensembles qui sont ``similaires``.\<
 
 Des relations d'équivalence très connues sont la relation \(=\) et \(\equiv\) sur les ensembles de nombres, ou encore la relation \(\sim\) sur l'ensemble des fonctions.
-
 \subsection*{\subsecstyle{Classes d'équivalence {:}}}
 \addcontentsline{toc}{subsection}{Classes d'équivalence}
 
@@ -284,28 +279,35 @@ D'après les propriété de la relation, on a alors:
     \(x \sim y \Longleftrightarrow [x] = [y]\)
 }
 Et on appelle \textbf{représentant} de \([x]\) tout élément qui appartient à \([x]\).
-
 \subsection*{\subsecstyle{Ensembles quotient {:}}}
 \addcontentsline{toc}{subsection}{Ensembles quotient}
 
-L'ensemble des classes d'équivalence de \(E\) forme alors une \textbf{partition} de \(E\), et on appelle \textbf{ensemble quotient}, ou encore \textbf{ensemble quotienté par la relation d'équivalence} l'ensemble:
+L'ensemble des classes d'équivalence de \(E\) forme alors une \textbf{partition} de \(E\), et on l'appelle alors \textbf{ensemble quotient}:
 \[
-    E / \sim \; := \Bigr\{ [x] \in \Pow(E) \; ; \; x \in E \Bigr\}
+    E /_\sim \; := \Bigr\{ [x] \in \Pow(E) \; ; \; x \in E \Bigr\}
 \]
-C'est alors un ensemble de classes d'équivalences par rapport à la relation \(\sim\).\<
+On a alors une application \( \pi : x \in E \longmapsto [x] \in E /_\sim \) apellée \textbf{surjection canonique} qui associe sa classe à tout élément.\<
 
-Travailler avec l'ensemble quotient revient alors à ne pas distinguer les éléments équivalents entre eux.\+
-On peut aussi créer des \textbf{structures} quotient, il suffit alors de quotienter une structure algébrique de telle sorte que les propriétés de structure soient conservées.\<
+Travailler avec l'ensemble quotient revient alors à \textbf{identifier} les éléments équivalents entre eux. C'est une opération fondamentale dans tout les domaines des mathématiques, en effet par exemple on pourra comprendre (à l'aide du chapitre suivant) que si on a une application \( f : E \longrightarrow F \) et qu'on définit sur \( E \) la relation d'équivalence: 
+\[ 
+   x \sim y \iff f(x) = f(y)
+\]
+Alors on a identifié les éléments génants l'injectivité et on a donc obtenu une bijection entre \( E / \sim \) et \( F \), ie on a le modèle primitif du \textbf{premier théorème d'isomorphisme}:
+\begin{center}
+   \begin{tikzpicture}[baseline= (a).base]
+      \node[scale=1.25] (a) at (0,0){
+         \begin{tikzcd}[row sep = large, column sep = large]
+            E \arrow[d, "\pi", swap, two heads] \arrow[r, "f"] & F\\
+            E/_\sim \arrow[r, "\widetilde{\phi}", dashed] & \text{Im}(f) \arrow[u, "\iota", swap, hook]
+         \end{tikzcd}
+      };
+   \end{tikzpicture}
+\end{center}
 
-Quelques exemples connus de structures quotient:
-\begin{align*}
-    &\bullet \textbf{ L'anneau } \Z \,/\, n\Z := (\Z \,/\, \sim, +, \times) \textbf{ pour la relation } a \sim b \Longleftrightarrow a \equiv b [n] \\
-    &\bullet \textbf{ Le corps } \Q := ((\Z \, ; \, \Z \, \backslash \, \{0\}) \, / \, \sim, +, \times) \textbf{ pour la relation } (a, b) \sim (c, d) \Longleftrightarrow ad = bc
-\end{align*}
-\chapter*{\chapterstyle{I --- Fonctions \& Applications}}
+\chapter*{\chapterstyle{I --- Applications}}
 \addcontentsline{toc}{section}{Fonctions \& Applications}
 
-On appelle \textbf{fonction} ou \textbf{application} des cas particulier de relation entre deux ensembles, soit \(f, g\) deux fonctions telles que:
+On appelle \textbf{application} un cas particulier de relation entre deux ensembles, soit \(f, g\) deux applications telles que:
 \[
    \begin{aligned}
       f: E &\longrightarrow F\\
@@ -317,10 +319,9 @@ On appelle \textbf{fonction} ou \textbf{application} des cas particulier de rela
       x&\longmapsto g(x)
    \end{aligned}
 \]
+Si \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\). On note alors \(E^F\) l'ensemble des \textbf{applications} de E vers F.
 
-On note \(D_f\) le sous-ensemble de \(E\) tel que \(f(x)\) existe, alors \(f\) est une \textbf{application} si et seulement si \(E = D_f\) et on note alors \(\mathscr{F}(E, F)\) l'ensemble des \textbf{applications} de E vers F.\<
 
-Si \(F \subseteq G\), alors on définit \textbf{la composée} \(g \circ f\) par la fonction \(h: x \in E \longmapsto g(f(x)) \in H\)
 
 \subsection*{\subsecstyle{Cas des suites {:}}}
 Une suite à valeurs dans \(E\) n'est alors qu'un cas particulier en la forme d'une fonction \(u : \N \longrightarrow E\), ce sont des objets d'étude trés importants en analyse et notamment en topologie. Dans le cas des suites on peut définir la notion de \textbf{suite extraite}, car si \(u_n\) est une suite dans \(E\) et \(k_n\) est \textbf{suite d'entiers croissante}, alors on définit une suite extraite de \(u_n\) par:
@@ -533,8 +534,7 @@ Soit \(a, b \in \Z \times \Z^*\), on peut montrer qu'il existe un unique couple 
 \[ 
     a = bq + r
 \]
-On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\). La preuve se fait par l'exibition de l'algorithme bien connu.
-
+On appelle alors cette décomposition \textbf{la division euclidienne} de \(a\) par \(b\). La preuve se fait par l'exhibition de l'algorithme bien connu.
 
 \subsection*{\subsecstyle{Plus grand diviseur commun {:}}}
 Soit \(a, b \in \Z\) non simultanément nuls, alors le pgcd est l'entier \(a \wedge b\) qui vérifie:

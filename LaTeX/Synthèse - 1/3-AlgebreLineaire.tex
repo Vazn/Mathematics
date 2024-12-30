@@ -1,70 +1,47 @@
 \chapter*{\chapterstyle{III --- Espaces Vectoriels}} % 99% Fini
 \addcontentsline{toc}{section}{Espaces Vectoriels}
-
+L'algèbre linéaire est une partie de l'algèbre générale s'intéressant à une structure particulière omniprésente en mathématiques, la structure \textbf{d'espace vectoriel}, c'est une structure tout comme les groupes et les anneaux et elle formalise la plupart des notions géométriques usuelles dans les espaces commes \( \R^2 \) ou \( \R^3 \). Tout les résultats d'algèbre générale s'appliquent bien évidemment à cette structure.
 \subsection*{\subsecstyle{Définition {:}}}
-Soit \(E\) un ensemble \textbf{non-vide}, \(K\) un corps commutatif, et \(u \in E\), on dit alors que \((E, +, \cdot)\) est un \textbf{espace vectoriel sur K} si les conditions ci-dessous sont réunies:
-\begin{align*}
-   &\bullet \;\;\; (E, +) \text{ est un \textbf{groupe abélien}} \\
-   &\bullet \;\; \text{ La loi \(\cdot\) est une application de \(K \times E \longrightarrow E\)} \\
-   &\bullet \;\; \text{ La loi \(\cdot\) vérifie \textbf{la distributivité mixte et l'associativité mixte}} \\
-   &\bullet \;\;\; 1 \cdot u = u
-\end{align*}
-
-On appelle alors \textbf{vecteurs} les éléments de \(E\) et \textbf{scalaires} les éléments de \(K\).
+Soit \(E\) un ensemble non-vide et \(\K\) un corps commutatif. On dira alors que \((E, +, \cdot)\) est un \textbf{espace vectoriel sur \( \K \)} si les conditions ci-dessous sont réunies:
+\begin{itemize}
+   \item \((E, +)\) est un \textbf{groupe abélien}.
+   \item La loi externe \( \cdot \) est une \textbf{action de groupe} sur \( E \) qui vérifie la \textbf{distributivité mixte}.
+\end{itemize}
+On appelle alors vecteurs les éléments de \(E\) et scalaires les éléments de \(\K\).
 \subsection*{\subsecstyle{Sous-espaces vectoriels {:}}}
-Soit \(F \subseteq E\), on dit que \(F\) est un \textbf{sous-espace vectoriel} si et seulement si:
-\begin{align*}
-   &\bullet \;\; F \text{ est non vide.} \\
-   &\bullet \;\; F \text{ est stable par somme.} \\
-   &\bullet \;\; F \text{ est stable par multiplication externe.}
-\end{align*}
+Soit \(F \subseteq E\), on dit que \(F\) est un \textbf{sous-espace vectoriel} et on note \( F \leq E \) si et seulement si:
+\begin{itemize}
+   \item \( F \) est non-vide.
+   \item \( F \) est stable par somme.
+   \item \( F \) est stable par multiplication externe.
+\end{itemize}
 
-Il est utile de noter que \textbf{l'intersection} de deux sous-espaces vectoriels est aussi un sous-espace vectoriel mais que l'union de deux sous-espaces vectoriels n'est \textbf{en général} pas un sous-espace vectoriel.\<
-
-Un cas particulier est celui du \textbf{sous-espace vectoriel engendré} par \(F\) qu'on note:
+On montre alors facilement que \textbf{l'intersection} de deux sous-espaces vectoriels est aussi un sous-espace vectoriel mais que l'union de deux sous-espaces vectoriels n'est en général pas un sous-espace vectoriel.
+\subsection*{\subsecstyle{Sous-espace engendré {:}}}
+On se donne une partie \( F \) de \( E \), on peut alors caractériser le \textbf{sous-espace vectoriel engendré} comme défini dans le chapitre d'algèbre par:
 \[
-   \text{Vect(\(F\))} := \Biggl\{ \sum_{i=0}^{n} \lambda_i u_i\; ; \; \lambda_{i} \in K \; , \; u_{i} \in F \Biggl\}
+   \text{Vect(\(F\))} := \left\{ \sum_{i=0}^{n} \lambda_i u_i\; ; \; (\lambda_{i}, u_{i}) \in \K \times F \; , \;  n \in \N  \right\}
 \]
 \begin{center}
     \textit{
-        C'est \textbf{l'ensemble des combinaisons linéaires} des vecteurs de \(F\).
+      On dit que de telles combinaisons sont \textbf{des combinaisons linéaires} de vecteurs de \(F\). Le sous-espace engendré est donc l'ensemble des combinaisons linéaires finies de vecteurs de \( F \).
     }
 \end{center}
-
-Soit \((A_n)_{n \in \N}\) une famille de parties de \(E\), alors on a la propriété suivante:
-\customBox{width=5.5cm}{
-   \[
-      \sum_{i \in \N} \text{Vect(\(A_i\))} = \text{Vect\(\Bigl(\bigcup_{i \in \N} A_i\Bigl)\)}
-   \]
-}
-
-Une propriété fondamentale est que Vect(\(F\)) est un \textbf{opérateur de clôture} par combinaison linéaire, ie c'est une application \textbf{idempotente, croissante et extensive}.
-
 \subsection*{\subsecstyle{Familles libre et génératrices {:}}}
-Soit \(\Fam := (u_1, u_2, \ldots, u_{n-1}, u_n)\) une famille de vecteurs de \(E\).\<
+Soit \(\Fam := (u_1, \ldots, u_n)\) une famille de vecteurs de \(E\).\<
 
 On dit que \(\Fam\) est \textbf{génératrice} de E si on a \(E = \text{Vect(\(\Fam\))}\).\+
 On dit que \(\Fam\) est \textbf{libre} si tout combinaison linéaire nulle de vecteurs de \(\Fam\) est à coefficient tous nuls.\<
 
-Formellement, \(\Fam\) est libre si et seulement si on a:
+Cette proposition signifie exactement que l'on ne peut pas obtenir un vecteur comme combinaison linéaire d'autres vecteurs, en effet si un des coefficients était non nul, il suffirait d'isoler le vecteur correspondant et il serait alors redondant. Formellement, on a:
 \[
     \forall (\lambda_1, \ldots, \lambda_n) \in K^n \; ; \; \Biggr[ \sum_{i=0}^n \lambda_i u_i = 0_E \implies (\lambda_1, \ldots, \lambda_n) = (0, \ldots, 0) \Biggr]  
 \]
 \pagebreak
-
-Soit \(\Fam := (u_1, \ldots, u_k, \ldots, u_n)\) une famille libre et génératrice.\<
-
-Si un vecteur \(v\) n'appartient pas à \(\text{Vect(\(\Fam\))}\), alors la famille étendue \((u_1, \ldots, u_n, v)\) est toujours libre.\+
-Si un vecteur \(u_k\) appartient à \(\text{Vect(\(\Fam\))}\), alors la famille réduite \((u_1, \ldots, u_{k-1}, u_{k+1}, \ldots, u_n)\) est toujours génératrice.
-
 \subsection*{\subsecstyle{Bases {:}}}
-On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}, et on a le théorème suivant:
-\customBox{width=8cm}{
-   Tout espace vectoriel possède une base.
-}
+On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}. Ce concept permet alors de caractériser le fait que tout élément de \( E \) peut s'écrire comme une \textbf{unique} combinaison linéaire des vecteurs de la base.\<
 
-Soit \(\mathscr{B} = (e_1, e_2, \ldots, e_{n-1}, e_{n})\) une base de \(E\).\+
-On appelle \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\) les coefficients de la décomposition de \(u\) dans la base \(\mathscr{B}\) et on note:
+Soit \(\mathscr{B} = (e_1, \ldots, e_{n})\) une base de \(E\). On appelle \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\) les coefficients de la décomposition de \(u\) dans la base \(\mathscr{B}\) et on note:
 \[
     [u]^{\mathscr{B}} = [\lambda_1 e_1 + \lambda_2 e_2 + \ldots + \lambda_{n-1} e_{n-1} + \lambda_{n-1} e_{n-1} ]^{\mathscr{B}} = 
     \begin{pmatrix}
@@ -73,48 +50,36 @@ On appelle \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\) les coeff
         \lambda_{n}
     \end{pmatrix}
 \]
-
-\subsection*{\subsecstyle{Sommes et espaces supplémentaires{:}}}
-Soit \(n\) un entier naturel et \((F_n)_{n \in \N}\) une famille de \(n\) sous-espaces vectoriels de \(E\), considérons la somme ensembliste \(S_n\) telle que:
+\subsection*{\subsecstyle{Sommes et sommes directes{:}}}
+Soit \(n\) un entier naturel et \((F_k)_{k \leq n}\) une famille finie de sous-espaces vectoriels de \(E\), Alors on peut construire le plus petit sous espace vectoriel qui contient tout les \( (F_k) \) par:
 \[
-    S_n := \sum_{n\in\N} F_n := \Biggl\{ \sum_{n\in\N} u_n \; ; \; u_n \in F_n\Biggl\}
+   S := \sum_{k \leq n} F_k := \left\{ \sum_{k \leq n} u_k  \; ; \; u_k \in F_k \right\}
 \]
-Soit \((u_1, u_2, \ldots, u_n)\) un n-uplet de vecteurs quelconques du produit cartésien des \(F_n\), alors la somme est dite \textbf{directe} si et seulement si:
-\customBox{width=10cm}{
-   \(
-      u_1 + u_2 + \ldots + u_n = 0_E \implies (u_1, u_2, \ldots, u_n) = (0, 0, \ldots, 0)
-  \)
-}
+On dira alors que cette somme est \textbf{directe} si et seulement si la décomposition de zéro dans la somme est \textbf{unique}\footnote[1]{En particulier si \( n=2 \), on montre directement qu'une condition nécessaire et suffisante pour que la somme soit directe est que: \[ 
+   F \cap G = \left\{ 0_E \right\}  
+\]}, ie:
+\[ 
+   \sum_{k \leq n} u_k = 0_E  \; ; \; u_k \in F_k \implies (u_1, u_2, \ldots, u_n) = (0, 0, \ldots, 0)
+\]
 
 Et on la note alors:
 \[
-    S_n = \bigoplus_{n\in\N} F_n
+   S = \bigoplus_{k \leq n} F_k
+\]
+Si de plus la somme est égale à \textbf{l'espace entier}, alors on dira que les \(F_k\) sont \textbf{supplémentaires} dans \(E\).
+\subsection*{\subsecstyle{Caractérisation par les bases{:}}}
+Soit \(\B_k\) des bases de chacun des \(F_k\), soit la famille \(\Fam = (\B_1, \B_2, \ldots, \B_n)\), ie la famille constituée de bases des \(F_k\) concaténées. Alors on a alors le théorème suivant:
+\[
+   \Fam \text{ est une base de } S \Longleftrightarrow \sum_{k \leq n} F_k = \bigoplus_{k \leq n} F_n
 \]
 
-Soit \(\B_n\) des bases des \(F_n\), soit la famille \(\Fam_n = (\B_1, \B_2, \ldots, \B_n)\), \textbf{ie les bases des \(F_n\) mises ``bout à bout``}.\+
-Alors on a alors le théorème suivant:
-\customBox{width=7.5cm}{
-   \[
-      \Fam_n \text{ est une base de } S_n \Longleftrightarrow S_n = \bigoplus_{n\in\N} F_n
-  \]
-}
+\subsection*{\subsecstyle{Espaces vectoriels quotient{:}}}
+Les espaces vectoriels étant des groupes commutatifs par définition, tout ses sous groupes sont normaux, et la compatibilité par la loi externe est directe, on peut donc définir pour tout \( F \leq E \), \textbf{l'espace vectoriel quotient} \( E/F \).
+\begin{itemize}
+   \item \uline{Exemple 1:} Si \( E = \R^2 \) et \( F = \text{Vect}(1, 0) \), alors \( E/F \) est \textbf{l'ensemble des droites parallèles à l'axe des abcisses}.
+   \item \uline{Exemple 2:} Si \( E = \R_3[X] \) et \( F = \text{Vect}(X^2) \), alors \( E/F \) est \textbf{l'ensemble des polynômes qui ne différent que d'un terme quadratique}.
+\end{itemize}
 
-Si \textbf{l'espace entier} est engendré par \(S_n\) et que la somme est \textbf{directe}, alors on dira que les \(F_n\) sont \textbf{supplémentaires} dans \(E\).
-    
-\subsection*{\subsecstyle{Hyperplans {:}}}
-Soit \(F\) un sous-espace vectoriel de \(E\).\+
-\(F\) est un \textbf{hyperplan} de E si et seulement si il vérifie l'une des conditions équivalentes suivantes:
-\begin{align*}
-    &\bullet \text{ Il existe \textbf{une droite vectorielle} \(G\) de \(E\) telle que \(F \oplus G = E\).} \\
-    &\bullet \text{ \(H\) est défini par une \textbf{équation linéaire homogène} non triviale.}
-\end{align*}
-Les hyperplans donc les \textbf{sous-espaces propres maximaux} de \(E\).
-
-\begin{center}
-    \textit{
-        Résoudre un système d'équations homogènes revient donc à chercher \textbf{l'intersection} des hyperplans que représentent ces équations et donc l'ensemble des solutions est lui aussi nécessairement \textbf{un sous-espace vectoriel}.
-    }
-\end{center}
 \chapter*{\chapterstyle{III --- Espaces Affines}} % 90 Fini
 \addcontentsline{toc}{section}{Espaces affines}
 Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.
@@ -162,7 +127,54 @@ Soit \(i\in\inticc{1}{n}\), alors pour tout point \(A \in \mathscr{E}\), on appe
 Il est important de noter que le couple \((V, +)\) forme un espace affine de \textbf{direction lui-même}. En effet, si on considère un élément de \(V\) comme un point, alors le couple  \((V, +)\) forme un espace affine de direction \(V\) et la loi \(+\) est alors exactement la loi de composition interne de \(V\).\<
 
 L'unique vecteur \(u\) tel que \(A + u = B\) est exactement \(B - A\) (ici \(A, B\) sont des points de \(V\) qui se trouvent être des vecteurs dans ce cas particulier).
+\chapter*{\chapterstyle{III --- Théorie de la dimension}} % Fini 99%
+\addcontentsline{toc}{section}{Théorie de la dimension}
 
+Dans ce chapitre, on considérera un espace vectoriel \(E\) qui admet une famille génératrice \textbf{finie}. On dira alors que \(E\) est de \textbf{dimension finie}.
+
+\subsection*{\subsecstyle{Théorème de la base incomplète{:}}}
+\addcontentsline{toc}{subsection}{Théorème de la base incomplète}
+
+Soit \(\mathcal{L}\) une famille libre et \(\mathcal{G}\) une famille génératrice de \(E\), le concept de dimension se définit gràce au \textbf{théorème de la base incomplète}:
+\begin{itemize}
+   \item On peut \textbf{compléter} \(\mathcal{L}\) en une base de \(E\) par ajouts de vecteurs de \(\mathcal{G}\).
+   \item On peut \textbf{extraire} de \(\mathcal{G}\) une base de \(E\).
+\end{itemize}
+Ce théorème permet alors d'assurer \textbf{l'existence} d'une base d'une espace vectoriel de dimension finie. Il se démontre par exhibition d'un algorithme qui complête \( \mathcal{L} \) en une base.
+\subsection*{\subsecstyle{Théorème de la dimension{:}}}
+\addcontentsline{toc}{subsection}{Théorème de la dimension}
+
+On peut alors montrer que le cardinal d'une partie libre est toujours inférieur au cardinal d'une partie génératrice\footnote[1]{Aussi appellé \textbf{lemme de Steiniz}.}, de cette considération, on peut alors montrer directement \textbf{le théorème de la dimension} qui énonce que toutes les bases d'un espace vectoriel de dimensions fini ont \textbf{même cardinal}.\<
+
+Ce théorème permet alors d'assurer \textbf{l'unicité} du cardinal des bases d'une espace vectoriel de dimension finie.
+\subsection*{\subsecstyle{Définition de la dimension{:}}}
+\addcontentsline{toc}{subsection}{Définition de la dimension}
+
+Des deux théorèmes précédents, on a alors l'existence de bases d'une espace de dimension fini, et l'unicité de leur cardinal, on peut alors définir \textbf{la dimension d'une espace vectoriel} \(E\) comme ce cardinal et on la note \(\text{dim}(E)\).
+
+\subsection*{\subsecstyle{Espaces de dimension finie{:}}}
+\addcontentsline{toc}{subsection}{Espaces de dimension finie}
+
+Considérons maintenant \(E\) un espace vectoriel de dimension finie \(n\) est \(\Fam\) une famille de \(n\) vecteurs de \(E\). Alors par déduction immédiate de la définition de dimension, on a:
+\begin{center}
+   \(\Fam\) est libre \(\Longleftrightarrow\) \(\Fam\) est génératrice \(\Longleftrightarrow\) \(\Fam\) est une base.
+\end{center}
+Soient \(F, G\) deux sous-espaces de \(E\). La dimension permet aussi de prouver des \textbf{égalités} d'espaces vectoriels, gràce aux propriétés suivantes:
+\begin{itemize}
+   \item Si \( F \subseteq G \) et \( \text{dim}(F) = \text{dim}(G) \), alors \( F = G \).
+   \item Si \(F, G\) sont en \textbf{somme directe} et que \( \text{dim}(F) + \text{dim}(G) = \text{dim}(E) \), alors ils sont \textbf{supplémentaires}.
+\end{itemize}
+Enfin on peut calculer la dimension d'une somme avec la \textbf{formule de Grassmann}:
+\[ 
+   \text{dim}(F + G) = \text{dim}(F) + \text{dim}(G) - \text{dim}(F \cap G)
+\]
+\subsection*{\subsecstyle{Rang d'une famille de vecteurs{:}}}
+\addcontentsline{toc}{subsection}{Rang d'une famille de vecteurs}
+Soit \(E\) un espace vectoriel de dimension finie et \(\Fam\) une famille de vecteurs de cet espace, alors on appelle \textbf{rang} de \(\Fam\) l'entier:
+\[ 
+   \text{rg}(\Fam) = \text{dim}(\text{Vect}(\Fam))
+\]
+C'est simplement \textbf{la dimension du sous-espace engendré par la famille}.
 \chapter*{\chapterstyle{III --- Applications Linéaires}} % Fini 99%
 \addcontentsline{toc}{section}{Applications linéaires}
 
@@ -171,59 +183,18 @@ Soit deux \(\K\)-espaces vectoriels \(E\) et \(F\), et \(f : E \longrightarrow F
 \subsection*{\subsecstyle{Définition{:}}}
 \addcontentsline{toc}{subsection}{Définition}
 
-On dit que \(f\) est une \textbf{application linéaire} ou \textbf{morphisme d'espaces vectoriels} si et seulement si pour tout couple de vecteurs \(u, v \in E\) et pour tout scalaire \(\lambda\) elle vérifie: 
-\customBox{width=8cm}{
-   \[
-      \begin{aligned}
-         &\bullet \textbf{ Additivité : } f(u + v) = f(u) + f(v)\\
-         &\bullet \textbf{ Homogénéité : } f(\lambda u) = \lambda f(u)\\
-     \end{aligned}
-  \]
-}
-On note alors \(\mathcal{L}(E, F)\) l'ensemble des applications linéaires de \(E\) vers \(F\).\<
-
-On appelle \textbf{isomorphisme} tout application linéaire bijective.\+
-On appelle \textbf{endomorphisme} tout application linéaire d'un ensemble dans lui-même.\+
-On appelle \textbf{automorphisme} tout application linéaire bijective d'un ensemble dans lui-même\footnote[1]{On appelle l'ensemble des automorphismes \textbf{le groupe linéaire} de \(E\) qu'on note \(GL(E)\).}.\<
-
-On appelle \textbf{forme linéaire} tout application linéaire qui a pour ensemble d'arrivée \textbf{le corps de base}\footnote[2]{On appelle l'ensemble des formes linéaires \textbf{l'espace dual} de \(E\) qu'on note \(E^*\).}.
-
+On dit que \(f\) est une \textbf{application linéaire} si c'est un \textbf{morphisme d'espaces vectoriels}, ie si et seulement si pour tout couple de vecteurs \(u, v \in E\) et pour tout scalaire \(\lambda\) elle vérifie: 
+\begin{itemize}
+   \item \textbf{ Loi  interne : } \( f(u + v) = f(u) + f(v) \)
+   \item \textbf{ Loi  externe : } \( f(\lambda u) = \lambda f(u) \)
+\end{itemize}
+On note alors \(\mathcal{L}(E, F)\) l'ensemble des applications linéaires de \(E\) vers \(F\). Si \( F = \K \), on dira que \( f \) est une \textbf{forme linéaire}.
 \subsection*{\subsecstyle{Propriétés{:}}}
 \addcontentsline{toc}{subsection}{Propriétés}
 
-On s'intéresse au propriétés de l'ensemble \(\mathcal{L}(E, F)\), tout d'abord on peut prouver aisément que c'est \textbf{un sous-espace vectoriel} de l'espace des fonctions, ie il est stable par somme et par multiplication exeterne.\+
-En outre, \textbf{la composée de deux applications linéaires est linéaire}.\<
+On s'intéresse au propriétés de l'ensemble \(\mathcal{L}(E, F)\), c'est un ensemble de morphismes donc d'aprés le chapitre d'algèbre la composée de morphismes et l'inverse d'un morphisme bijectif est un morphisme.\<
 
-Considérons une application linéaire bijective de \(\mathcal{L}(E, F)\), alors:
-\begin{center}
-   \textbf{Sa réciproque est nécessairement linéaire\footnote[3]{Découle directement des définitions.}}.
-\end{center}
-
-\subsection*{\subsecstyle{Image et Noyau{:}}}
-\addcontentsline{toc}{subsection}{Image et Noyau}
-
-On appelle \textbf{image} d'une application linéaire l'image telle que définie pour les applications classiques.\+
-On appelle \textbf{noyau} d'une application linéaire tout \textbf{les antécédent du vecteur nul}.\+
-\[
-   \text{Im}(f) := \Bigl\{ f(u) \; ; \; u \in E \Bigl\}
-   \quad\quad\quad\quad\quad
-   \text{Ker}(f) := \Bigl\{ u \in E \; ; \; f(u) = 0_F \Bigl\}
-\]
-On voit directement que \(\text{Im}(f)\) est un \textbf{sous-espace vectoriel} de l'ensemble d'arrivée et que \(\text{Ker}(f)\) est un \textbf{sous-espace vectoriel} de l'ensemble de départ.\<
-
-En particulier si \(E = \text{Vect}(e_1, e_2, \ldots, e_n)\) pour une certaine famille \((e_i)_{i\in \N}\), alors on a\footnote[5]{Idem.}:
-\customBox{width=11cm}{
-   \(
-      \text{Im}(f) = f(\text{Vect}(e_1, e_2, \ldots, e_n)) = \text{Vect}(f(e_1), f(e_2), \ldots, f(e_n))
-  \)
-}
-
-Une propriété fondamentale du noyau\footnote[6]{De manière générale, cette propriété est vraie pour le noyau de tout morphisme de groupe, on peut alors voir la ``taille'' du noyau comme \textbf{une mesure de la non-injectivité} du morphisme.} est la suivante:
-\customBox{width=15.5cm}{
-   Une application linéaire est injective si et seulement si son noyau est réduit au vecteur nul.
-}
-\pagebreak
-
+En outre en considèrant les espaces vectoriels comme groupes additifs, on vérifie que le noyau d'un morphisme est un sous-espace bien défini et caractérise l'injectivité de ce dernier. De même, l'image de générateurs engendre l'image qui est aussi un sous-espace.
 \subsection*{\subsecstyle{Caractérisations par les familles{:}}}
 \addcontentsline{toc}{subsection}{Caractérisations par les familles}
 
@@ -232,19 +203,15 @@ Soit \(\mathscr{F} = (e_i)_{i \in \N}\) une famille de \(E\) et un endomorphisme
    \item L'image d'une famille libre est libre \(\Longleftrightarrow f\) est injective.
    \item L'image d'une famille génératice est génératice \(\Longleftrightarrow f\) est surjective.      
 \end{itemize}
-
-\subsection*{\subsecstyle{Endomorphismes remarquables{:}}}
-\addcontentsline{toc}{subsection}{Endomorphismes remarquables}
-
-On considère ici des endomorphismes remarquables comme:
+\subsection*{\subsecstyle{Endomorphismes élémentaires remarquables{:}}}
+\addcontentsline{toc}{subsection}{Endomorphismes élémentaires remarquables}
+On définit ici des endomorphismes élémentaires remarquables comme:
 \begin{itemize}
-   \item Les homotéthies: Elles sont caractérisées par \(\varphi_k : u \longmapsto ku\)
-   \item Les symétries: Elles sont caractérisées par \(\varphi \circ \varphi = \text{Id}_E\)
-   \item Les projecteurs: Elles sont caractérisées par \(\varphi \circ \varphi = \varphi\)
+   \item \textbf{Les homotéthies:} Elles sont caractérisées par \(\varphi_k : u \longmapsto ku\)
+   \item \textbf{Les symétries:}Elles sont caractérisées par \(\varphi \circ \varphi = \text{Id}_E\)
+   \item \textbf{Les projecteurs:} Elles sont caractérisées par \(\varphi \circ \varphi = \varphi\)
 \end{itemize}
-Précisons le cas des projecteurs, en effet si on considère deux sous-espaces \(F, G\) supplémentaires dans \(E\), alors chaque élément \(u \in E\) admet une décomposition unique de la forme \(u = v_F + v_G\).\<
-
-Alors le projecteur de direction \(F\) sur \(G\) est exactement l'application \(\varphi\) telle que:
+Précisons le cas des projecteurs, en effet si on considère deux sous-espaces \(F, G\) supplémentaires dans \(E\), alors chaque élément \(u \in E\) admet une décomposition unique de la forme \(u = v_F + v_G\). Cette décomposition définit canoniquement deux projecteurs, par exemple celui de direction \(F\) sur \(G\) qui est l'application \(\varphi\) telle que:
 \[
    \varphi(u) = v_G
 \]
@@ -266,7 +233,26 @@ Graphiquement, pour \(\varphi\) le projecteur de direction \(F\) sur \(G\):
       \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (1.5,1.5) node[above left] {$u$};
    \end{tikzpicture} 
 \end{center}
-
+\subsection*{\subsecstyle{Applications linéaires en dimension finie{:}}}
+\addcontentsline{toc}{subsection}{Applications linéaires en dimension finie}
+On étends la définition de rang d'une famille à celle du \textbf{rang d'une application linéaire}, qu'on note \(\text{rg}(f)\), qui correspond à \textbf{la dimension de son image}. Soit \(f \in \mathcal{L}(E, F)\) une application de rang fini, alors d'après le premier théorème d'isomorphisme:
+\[ 
+   E/\text{ker}(f) \cong \text{Im}(f) 
+\]
+Et donc on a égalité des dimensions et aprés avoir montré que \( \text{dim}(E/F) = \text{dim}(E) - \text{dim}(F) \), on en déduis le \textbf{théorème du rang}:
+\[ 
+   \text{dim}(E) = \text{rg}(f) + \text{dim}(\text{Ker}(f))
+\]
+Ce thèorème permet alors de caractériser l'injectivité et la surjectivité d'une application linéaire par:
+\begin{itemize}
+   \item \(f\) est injective si et seulement si \(\text{rg}(f) = \text{dim}(E)\)
+   \item \(f\) est surjective si et seulement si \(\text{rg}(f) = \text{dim}(F)\)
+\end{itemize}
+En particulier, si \(E\) et \(F\) sont deux espaces vectoriels \textbf{de même dimension} alors:
+\begin{center}
+   \(f\) est injective \(\Longleftrightarrow\) \(f\) est surjective \(\Longleftrightarrow\) \(f\) est bijective
+\end{center}
+Ceci caractérise alors \textbf{les isomorphismes en dimension finie}.
 \subsection*{\subsecstyle{Applications multilinéaires{:}}}
 \addcontentsline{toc}{subsection}{Applications multilinéaires}
 
@@ -283,137 +269,34 @@ Une telle application est dite:
    \item \textbf{Antisymétrique} si permuter deux variables change le signe du résultat.\footnote[2]{\underline{Exemple:} \(f(e_1, e_2) = -f(e_2, e_1)\), en particulier, le signe du résultat aprés une permutation \(\sigma\) dépends alors de \textbf{la signature de la permutation} (la parité du nombre de permutations effectuées).}
    \item  \textbf{Altérnée} si elle s'annule à chaque fois qu'on l'évalue sur un k-uplet contenant deux vecteurs identiques.\footnote[3]{\underline{Exemple:} \(f(e_1, e_1) = 0\)}
 \end{itemize}
-\chapter*{\chapterstyle{III --- Théorie de la dimension}} % Fini 99%
-\addcontentsline{toc}{section}{Théorie de la dimension}
 
-Dans ce chapitre, on considérera un espace vectoriel \(E\) qui admet une famille génératrice \textbf{finie}. On dira alors que \(E\) est de \textbf{dimension finie}.
-
-\subsection*{\subsecstyle{Théorème de la base incomplète{:}}}
-\addcontentsline{toc}{subsection}{Théorème de la base incomplète}
-
-Soit \(\mathcal{L}\) une famille libre et \(\mathcal{G}\) une famille génératrice de \(E\), le concept de \textbf{dimension} se définit gràce au \textbf{théorème de la base incomplète}:
-\begin{itemize}
-   \item On peut \textbf{compléter} \(\mathcal{L}\) en une base de \(E\) par ajouts de vecteurs de \(\mathcal{G}\).
-   \item On peut \textbf{extraire} de \(\mathcal{G}\) une base de \(E\) (corollaire immédiat).
-\end{itemize}
-Ce théorème permet alors d'assurer \textbf{l'existence} d'une base d'une espace vectoriel de dimension finie.
-
-\subsection*{\subsecstyle{Théorème de la dimension{:}}}
-\addcontentsline{toc}{subsection}{Théorème de la dimension}
-
-Il est évident que le cardinal d'une partie libre est toujours inférieur au cardinal d'une partie génératrice \footnote[1]{Aussi appellé \textbf{lemme de Steiniz}.}, de cette considération, on peut alors montrer \textbf{le théorème de la dimension}:
-\customBox{width=13cm}{
-   Toutes les bases d'un espace vectoriel de dimensions fini ont \textbf{même cardinal}.
-}
-Ce théorème permet alors d'assurer \textbf{l'unicité} du cardinal des bases d'une espace vectoriel de dimension finie.
-
-\subsection*{\subsecstyle{Définition de la dimension{:}}}
-\addcontentsline{toc}{subsection}{Définition de la dimension}
-
-Des deux théorèmes précédents, on a alors l'existence de bases d'une espace de dimension fini, et l'unicité de leur cardinal, on peut alors définir \textbf{la dimension d'une espace vectoriel} comme ce cardinal et on la note \(\text{dim}(E)\).\<
-
-On peut alors en déduire la dimension des espaces vectoriels communs:
-\begin{itemize}
-   \item L'espace vectoriel classique \(\K^n\) est de dimension \(n\).
-   \item L'espace vectoriel des polynômes de degré au plus \(n\) est de dimension \(n + 1\).
-   \item Une droite vectorielle est de dimension \(1\).
-   \item Un plan vectoriel est de dimension \(2\).
-\end{itemize}
-
-\subsection*{\subsecstyle{Espaces de dimension finie{:}}}
-\addcontentsline{toc}{subsection}{Espaces de dimension finie}
-
-Considérons maintenant \(E\) un espace vectoriel de dimension finie \(n\) est \(\Fam = (e_i)_{i \in \N}\) une famille de \(n\) vecteurs de \(E\).\+
-Alors par déduction immédiate\footnote[2]{En effet par exemple sachant qu'elle est libre et possède \(n\) vecteurs, si ce n'était pas une base, on pourrait rajouter un/des vecteur pour obtenir une base, et donc dim\((E) \neq n \implies \bot\).} de la définition de dimension, on a:
-\customBox{width=11cm}{
-   \(\Fam\) est libre \(\Longleftrightarrow\) \(\Fam\) est génératrice \(\Longleftrightarrow\) \(\Fam\) est une base.
-}
-En effet, intuitivement on comprends que si une famille possède \textbf{le bon nombre de vecteurs}, alors il suffit qu'elle soit libre (ou génératrice) pour que ce soit une base.\<
-
-Soient \(F, G\) deux sous-espaces de \(E\). La dimension permet aussi de prouver des \textbf{égalités} d'espaces vectoriels, gràce à la propriété:
-\[
-   \begin{rcases}
-      F \subset G \\
-      \text{dim}(F) = \text{dim}(G)
-   \end{rcases}\implies F = G
-\]
-Aussi, on peut alors \textbf{caractériser} le fait que \(F\) et \(G\) soient \textbf{supplémentaires} dans \(E\) par:
-\[
-   F \oplus G = E \Longleftrightarrow \begin{cases}
-      F \cap G = \{0_E\}\\
-      \text{dim}(F) + \text{dim}(G) = \text{dim}(E)
-   \end{cases}
-\]
-Enfin on peut calculer \textbf{la dimension d'une somme}\footnote[1]{Le cas d'égalité est intéressant car il intervient pour des sous-espaces d'intersection nulle, et alors la dimension de la somme est simplement égale à la somme des dimensions.} avec la \textbf{formule de Grassmann}:
-\customBox{width=8cm}{
-   \(
-      \text{dim}(F + G) = \text{dim}(F) + \text{dim}(G) - \text{dim}(F \cap G)
-   \)
-}
-
-
-\subsection*{\subsecstyle{Rang {:}}}
-\addcontentsline{toc}{subsection}{Rang}
-
-Soit \(E\) un espace vectoriel de dimension finie et \(\Fam = (e_i)_{i \in \N}\) une famille de vecteurs de cet espace, alors on appelle \textbf{rang} de \(\Fam\) l'entier:
-\customBox{width=5cm}{
-   \(\text{rg}(\Fam) = \text{dim}(\text{Vect}(\Fam))\)
-}
-
-Informellement, le rang est simplement \textbf{la dimension de l'espace engendré par la famille}.\<
-
-On étends cette définition à celle du \textbf{rang d'une application linéaire}, qu'on note \(\text{rg}(f)\), qui correspond à \textbf{la dimension de son image}, et on définit ainsi une application linéaire \textbf{de rang fini}.
-
-\subsection*{\subsecstyle{Applications linéaires en dimension finie{:}}}
-\addcontentsline{toc}{subsection}{Applications linéaires en dimension finie}
-
-Soit \(f \in \mathcal{L}(E, F)\) une telle application, alors on peut montrer le \textbf{théorème du rang}:
-\customBox{width=7cm}{
-   \(
-      \text{dim}(E) = \text{rg}(f) + \text{dim}(\text{Ker}(f))
-   \)
-}
-
-Ce thèorème permet alors de caractériser l'injectivité et la surjectivité d'une application linéaire par:
-\begin{itemize}
-   \item \(f\) est injective si et seulement si \(\text{rg}(f) = \text{dim}(E)\)
-   \item \(f\) est surjective si et seulement si \(\text{rg}(f) = \text{dim}(F)\)
-\end{itemize}
-
-En particulier, si \(E\) et \(F\) sont deux espaces vectoriels \textbf{de même dimension} alors:
-\customBox{width=10cm}{
-   \(f\) est injective \(\Longleftrightarrow\) \(f\) est surjective \(\Longleftrightarrow\) \(f\) est bijective
-}
-On caractérise ainsi \textbf{les isomorphismes en dimension finie}\footnote[2]{Toutes ces propriétés n'étant que de simples applications du théorème du rang.}.
 \chapter*{\chapterstyle{III --- Espace des matrices}} % Fini 99%
 \addcontentsline{toc}{section}{Espace des matrices}
 
-On appelle \textbf{matrice} à \(n\) lignes et \(p\) colonnes à coefficients dans \(\K\) toute application \(M : \inticc{1}{n} \times \inticc{1}{p} \longrightarrow \K\), en d'autres termes \textbf{tout famille de scalaires indexée par }\(\inticc{1}{n} \times \inticc{1}{p}\).\<
+On appelle \textbf{matrice} à \(n\) lignes et \(p\) colonnes à coefficients dans un anneau \(\mathbb{A}\) toute application de la forme:
+\[
+   M : \inticc{1}{n} \times \inticc{1}{p} \longrightarrow \mathbb{A}
+\]
+Il s'agit d'une généralisation du concept de suite sous forme de suite à \textbf{deux indices}, qu'on peut alors voir comme un tableau de nombres tel qu'en chaque position \((i, j)\), on ait un élément \(a_{ij} \in \mathbb{A}\). A l'instar des suites, on notera \(M = (a_{ij})\) pour faire référence à la matrice \(M\).\<
 
-Informellement, il s'agit d'une généralisation du concept de suite sous forme de suite à \textbf{deux indices}, qu'on peut alors voir comme un tableau de nombres tel qu'en chaque position \((i, j)\), on ait un scalaire \(a_{ij} \in \K\).\< 
+On note alors \(\mathcal{M}_{n, p}(\mathbb{A})\) l'espaces des matrices à \( n \) lignes et \( p \) colonnes à coefficients dans \( \mathbb{A} \).
 
-A l'instar des suites, on note \(M = (a_{ij})_{\substack{1 \leq i \leq n\\1 \leq j \leq p}}\) pour faire référence au terme général de \(M\) en position \((i,j)\).
-
-\subsection*{\subsecstyle{Définition et propriétés{:}}}
-\addcontentsline{toc}{subsection}{Définition}
-
-On appelle \textbf{espace des matrices} à \(n\) lignes et \(p\) colonnes à coefficient dans \(\K\), et on note \(\mathcal{M}_{n, p}(\K)\), l'espace de toutes les matrices comme définies ci-dessus.\<
-
-On définit \textbf{la somme} de deux matrices comme la matrice dont le terme en position \((i, j)\) est la sommes des termes des deux matrices en cette position, informellement, on additionne simplement \textbf{composante par composante}.\+
-On définit \textbf{la multiplication} d'une matrice par un scalaire comme la matrice dont tout les termes sont multipliés par ce scalaire.\<
-
-Pour ces deux lois l'ensemble \((\mathcal{M}_{n, p}(\K), +, \cdot)\) est alors muni d'une structure \textbf{d'espace vectoriel} sur \(\K\) (de dimension \(n \times p\)) ayant pour vecteur nul \(0_E\) la matrice dont tout les coefficients sont nuls.
+\subsection*{\subsecstyle{Structure{:}}}
+\addcontentsline{toc}{subsection}{Structure}
+On peut alors munir cete espace d'une structure \textbf{d'espace vectoriel} sur \( \K \) par les opérations suivantes:
+\begin{itemize}
+   \item On définit \textbf{la somme} de deux matrices par la matrice obtenue en sommant par composantes.
+   \item On définit \textbf{la multiplication} d'une matrice par un scalaire comme la matrice dont tout les termes sont multipliés par ce scalaire.
+\end{itemize}
+Le vecteur nul de cet espace est alors la matrice nulle composée uniquement de zéros.
 
 \subsection*{\subsecstyle{Produit matriciel{:}}}
 \addcontentsline{toc}{subsection}{Produit matriciel}
 
-Soit \(A = (a_{i, j}) \in \mathcal{M}_{n, m}(\K)\) et \(B = (b_{k, j}) \in \mathcal{M}_{m, p}(\K)\).\+
-Alors on définit\footnote[1]{Il faut que le nombre de colonnes de la première soit égal au nombre de lignes de la seconde pour que les matrices soient dites \textbf{compatibles}.}  la matrice \(C := AB = (c_{i,j})\) comme étant la matrice telle que:
-\customBox{width=3.5cm}{
-   \[
-      c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}
-   \]
-}
+Soit \(A = (a_{i, j}) \in \mathcal{M}_{n, m}(\K)\) et \(B = (b_{k, j}) \in \mathcal{M}_{m, p}(\K)\). Alors on définit\footnote[1]{Il faut que le nombre de colonnes de la première soit égal au nombre de lignes de la seconde pour que les matrices soient dites \textbf{compatibles}.}  la matrice \(C := AB = (c_{i,j})\) comme étant la matrice telle que:
+\[
+   c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}
+\]
 
 En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui se comprends visuellement par:\+
 \begin{center}
@@ -454,43 +337,23 @@ En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui 
       \draw[color=BrightRed1, line width=0.5mm] (C-3-1.north west) rectangle (C-3-1.south east);
     \end{tikzpicture}
 \end{center}
-Le coefficient à \color{BrightRed1} la troisième ligne, première colonne \color{black} est obtenu en multipliant \color{BrightBlue1} la troisième ligne par la première colonne.\color{black}\<
+Le coefficient à \color{BrightRed1} la troisième ligne, première colonne \color{black} est obtenu en multipliant \color{BrightBlue1} la troisième ligne par la première colonne.\color{black}
 
-On appelle \textbf{matrice identité} la matrice neutre pour cette opération, c'est la matrice composée uniquement de \(1\) sur toute la diagonale principale, et de \(0\) partout ailleurs.\<
+\subsection*{\subsecstyle{Cas des matrices carrées à coefficients dans un corps{:}}}
+\addcontentsline{toc}{subsection}{Cas des matrices carrées à coefficients dans un corps}
+Si \( n = p \), et que \( \mathbb{A} = \K \) est un corps, alors toutes les matrices en jeu sont carrées et cette loi est \textbf{interne}. On peut alors montrer que \( (\mathcal{M}_n(\mathbb{\K}), +, \times)\) est un \textbf{anneau unitaire non-commutatif et non-intègre}.\<
 
-En considérant cette définition, il est évident que le produit matrice n'est en général \textbf{pas commutatif}. Par ailleurs \textbf{le produit de deux matrices non nulles peut être nul}.
+En particulier, le neutre pour cette loi est la matrice identité nulle partout et dont les termes diagonaux sont tous égaux à 1.
 \pagebreak
-
-Sous réserve de compatibilités des tailles matrices, on a les propriétés suivantes:
-\begin{multicols}{2}
-   \begin{itemize}
-      \item Associativité
-      \item La matrice identité est neutre
-      \item Distributivité
-      \item La matrice nulle est absorbante
-   \end{itemize}
-\end{multicols}   
-
-Considérons maintenant des matrices \textbf{carrées} de même taille, le produit est alors toujours défini et on peut définir une \textbf{puissance positive de matrice}, qu'on note \(A^n\) qui vérifie alors:
-
-\begin{multicols}{2}
-   \begin{itemize}
-      \item \((A^p)^q = A^{pq}\)
-      \item \(A^pA^q = A^{p +q}\)
-   \end{itemize}
-\end{multicols}    
 
 \subsection*{\subsecstyle{Transposition{:}}}
 \addcontentsline{toc}{subsection}{Transposition}
 
-Soit \(M = (x_{i,j})\in \mathcal{M}_{n, m}(\K)\), on définit maintenant \textbf{l'opération de transposition} d'une matrice notée \(M^\mathsf{T}\), c'est \textbf{une application linéaire involutive} définie par:
-\customBox{width=3cm}{
-   \(
-      M^\mathsf{T} = (x_{j,i})
-   \)
-}
-
-Intuitivement, cette application transforme \textbf{chaque ligne en colonne et invérsement}. Par exemple:
+Soit \(M = (x_{i,j})\in \mathcal{M}_{n, m}(\K)\), on définit \textbf{l'opération de transposition} d'une matrice notée \(M^\mathsf{T}\), c'est \textbf{une application linéaire involutive} définie par:
+\[ 
+   M^\mathsf{T} = (x_{j,i})
+\]
+Intuitivement, cette application transforme \textbf{chaque ligne en colonne et inversement}. Par exemple:
 \[
    \begin{pmatrix}
       a & b & c\\
@@ -503,12 +366,9 @@ Intuitivement, cette application transforme \textbf{chaque ligne en colonne et i
    \end{pmatrix}
 \]
 Il faut aussi noter son comportement par rapport au produit matriciel de deux matrices \(A, B\), précisément on a:
-\customBox{width=3.5cm}{
-   \(
-      (AB)^\top = B^\top A^\top
-   \)
-}
-
+\[ 
+   (AB)^\top = B^\top A^\top
+\]
 
 \subsection*{\subsecstyle{Trace{:}}}
 \addcontentsline{toc}{subsection}{Trace}
@@ -518,11 +378,9 @@ On définit aussi une autre application linéaire appellée \textbf{trace d'une 
    \text{tr}(A) := \sum_{i=1}^{n} a_{i, i}   
 \]
 Elle est donc linéaire mais on a aussi:
-\customBox{width=3.5cm}{
-   \(
-      \text{tr}(AB) = \text{tr}(BA)  
-   \)
-}
+\[ 
+   \text{tr}(AB) = \text{tr}(BA)  
+\]
 
 
 \subsection*{\subsecstyle{Matrice d'une famille de vecteurs{:}}}
@@ -610,9 +468,12 @@ Puis on calcule les coordonées de ces vecteurs dans la base d'arrivée, et on l
 Cette construction implique qu'il suffit donc, pour une base donnée, de \textbf{calculer les images des vecteurs de cette base}, puis leur coordonées pour décrire la transformation.\<
 
 Si \(E\) et \(F\) sont de dimensions respectives \(n\) et \(p\), on peut alors construire \textbf{un isomorphisme fondamental}:
+\newcommand{\widesim}[2][1.5]{
+  \mathrel{\overset{#2}{\scalebox{#1}[1]{$\sim$}}}
+}
 \customBox{width=7cm}{
    \(
-      \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \xlongrightarrow{\sim} \mathcal{M}_{n, p}(\K) 
+      \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \xlongrightarrow{\widesim{}} \mathcal{M}_{n, p}(\K) 
    \)
 }
 
