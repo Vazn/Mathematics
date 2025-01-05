@@ -366,8 +366,6 @@ Compter ces colliers revient donc à compter les orbites de l'action par symétr
 \addcontentsline{toc}{section}{Groupe Symétrique}
 On appelle \textbf{groupe symétrique} et on note \(\mathfrak{S}_n\) le groupe des \textbf{permutations} de l'ensemble \(\inticc{1}{n}\) muni de la composition des applications.\<
 
-On remarque alors aisément que l'ordre de \(\mathfrak{S}_n\) est \(n!\).\<
-
 Soit \(\sigma \in \mathfrak{S}_n\) une permutation de \(\inticc{1}{n}\), alors c'est une fonction bijective sur cet ensemble. En particulier, sachant que l'ensemble est fini, c'est une fonction définie par cas qu'on note alors par commodité horizontalement dans un tableau:
 \[
    \sigma =  \begin{pmatrix}
@@ -375,15 +373,15 @@ Soit \(\sigma \in \mathfrak{S}_n\) une permutation de \(\inticc{1}{n}\), alors c
       \sigma(1) & \sigma(2) & \ldots & \sigma(n)
    \end{pmatrix}
 \]
+On remarque que ce groupe est doté d'une action naturelle sur \( \inticc{1}{n} \) donnée par \( \sigma \cdot k = \sigma(k) \).
 \subsection*{\subsecstyle{Support {:}}}
 On appelle alors \textbf{support} d'une permutation le complémentaire des points fixes de \(\sigma\), ie on a:
 \[
    \text{Supp}(\sigma) := \bigl\{ i \in \N \; ; \; \sigma(i) \neq i \bigl\}   
 \]
-Une des propriétés fondamentale qu'on peut déduire de cette définition est que \textbf{deux permutations à supports disjoints commutent}.
-
+Une des propriétés qu'on peut déduire directement de cette définition est que deux permutations à supports disjoints commutent.
 \subsection*{\subsecstyle{Cycles {:}}}
-On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_k\) tels que:
+On appelle \textbf{k-cycle}\footnote[1]{Si \( k = 2 \), on appellera un tel \( k \)-cycle une \textbf{transposition}.} une permutation \(\sigma\) telle qu'il existe \(k \geq 2\) et \(k\) éléments deux à deux distincts \(a_1, \ldots, a_k\) tels que:
 \[
    \begin{cases}
       \forall i \in \inticc{1}{k-1} \; ; \; \sigma(a_i) = \sigma(a_{i+1}) \\
@@ -391,16 +389,10 @@ On appelle \textbf{k-cycle} une permutation \(\sigma\) telle qu'il existe \(k \g
       \sigma(a_k) = \sigma(a_1)
    \end{cases} 
 \]
-\begin{center}
-   \textit{Un k-cycle laisse fixe tout les éléments sauf pour une certaine famille \((a_i)\) pour laquelle chaque élément est envoyé sur le suivant.}
-\end{center}
 On peut alors noter un tel cycle par la notation suivante qui décrit tout les éléments affectés par la permutation:
 \[
    \sigma = (a_1, \ldots, a_n)  
 \]
-
-Le cas particulier des \(2\)-cycles est intéressant, en effet un \(2\)-cycle \textbf{échange deux valeurs} de \(\inticc{1}{n}\), ils sont d'une importance particulière et on les appelle \textbf{transpositions}.\<
-
 \underline{Exemple:} La permutation suivante est un 3-cycle:
 \[
    \sigma =  \begin{pmatrix}
@@ -408,31 +400,32 @@ Le cas particulier des \(2\)-cycles est intéressant, en effet un \(2\)-cycle \t
       2 & 3 & 1 & 4
    \end{pmatrix} = (1 \;\, 2 \;\, 3)
 \]
-Si \(\sigma\) est un \(k\)-cycle et que \(a\) n'est pas un point fixe, alors on en déduit\footnote[1]{En effet par exemple \(\sigma(a)\) est la valeur suivante dans le cycle, et le cycle parcourt tout les points non-fixes par construction} que le support de \(\sigma\) est donné par:
+\subsection*{\subsecstyle{Cycles et orbites {:}}}
+Si \(\sigma\) est un \(k\)-cycle et que \(a\) n'est pas un point fixe, alors on en déduit que la donnée du support de \(\sigma\) est équivalente à la donnée de l'orbite de celle-ci (plus précisément du sous groupe engendré par celle-ci) pour son action naturelle, ie:
 \[
-   \text{Supp}(\sigma) = \bigl\{a, \sigma(a), \sigma^2(a), \ldots, \sigma^{k-1}(a) \bigl\}
+   \text{Supp}(\sigma) = \bigl\{a, \sigma(a), \sigma^2(a), \ldots, \sigma^{k-1}(a) \bigl\} = \text{Orb}_\sigma(a)
 \]
-
 \subsection*{\subsecstyle{Ordre {:}}}
 On peut alors démontrer une propriété fondamentale de l'ordre des cycles:
-\customBox{width=7cm}{
+\begin{center}
    \textbf{Un \(k\)-cycle est d'ordre \(k\)}.
-}
+\end{center}
+
 En effet si on considère le sous-groupe engendré par un tel cycle, on remarque que pour tout élément \(a \in \inticc{1}{n}\) \(\sigma^{k}(a) = a\), donc \(\sigma^{k} = \text{Id}\).
+\subsection*{\subsecstyle{Théorème de décomposition en cycles {:}}}
+Une des problématiques principales à propos des groupes symétriques est la question de la décomposition d'une permutation en permutation plus simples. On peut tout d'abord montrer que \textbf{toute permutation se décompose en produit de cycles à support disjoints}.\<
 
-\subsection*{\subsecstyle{Théorèmes de décomposition {:}}}
-Une des problématiques principales à propos des groupes symétriques est la question de la \textbf{décomposition d'une permutation} en cycles. On peut en effet montrer que \textbf{toute permutation se décompose en produit de cycles à support disjoints}.\<
+Pour ceci, on utilise le fait que toute permutation induit une \textbf{partition en orbites} de \( \inticc{1}{n} \), ces orbites correspondront alors au supports des cycles dans la décomposition. Il reste à choisir un représentant de chaque orbite et la décomposition en cycles est acquise.
+\subsection*{\subsecstyle{Théorème de décomposition en transpositions {:}}}
+Par la suite, on peut alors constater directement que pour tout \(k\)-cycle \(\sigma = (a_1 \;\, \ldots \;\, a_k)\), on a une décomposition canonique en produit de transpositions:
+\[ 
+   \sigma = (a_1 \;\, a_2)(a_2 \;\, a_3)\ldots(a_{k-1} \;\, a_k)
+\]
 
-Pour ceci, on utilise le fait que toute permutation induit une \textbf{partition en orbites} de \( \inticc{1}{n} \), ces orbites correspondront alors au supports des cycles dans la décomposition.\<
-
-Par la suite, on peut alors constater directement que pour tout \(k\)-cycle \(\sigma = (a_1 \;\, \ldots \;\, a_k)\), on a:
-\customBox{width=6cm}{
-   \(\sigma = (a_1 \;\, a_2)(a_2 \;\, a_3)\ldots(a_{k-1} \;\, a_k)\)
-}
 Enfin, on conclura de ces deux propositions que \textbf{toute permutation se décompose en produit de transpositions}, ou en d'autres termes si on note \(\mathfrak{T}_n\) l'ensemble des transpositions:
-\customBox{width=3cm}{
-   \(\langle \mathfrak{T}_n \rangle = \mathfrak{S}_n\)
-}
+\[ 
+   \langle \mathfrak{T}_n \rangle = \mathfrak{S}_n
+\]
 \subsection*{\subsecstyle{Conjugaison et permuations {:}}}
 On considère alors l'action de \(  \mathfrak{S}_n \) sur lui-même par conjugaison, on peut alors montrer que pour toute permutation \(\sigma\), on a:
 \[ 
@@ -442,14 +435,26 @@ En particulier, on a alors que deux cycles sont conjugués si et seulement si il
 \begin{center}
    \textbf{Deux permutations sont conjuguées si et seulement si elles ont même type.}
 \end{center}
-
 \subsection*{\subsecstyle{Signature {:}}}
-A REFAIRE.
+On considère une permutation \( \sigma \) de type \( [l_1, \ldots, l_k] \), alors chacun de ses cycles se décompose en \textbf{le} produit de \( l_i-1 \) transpositions défini ci-dessus. Il est alors naturel de définir alors la fonction suivante:
+\[ 
+   m(\sigma) = \sum_{i \leq k} (l_i-1)
+\]
+C'est le total du nombre de transpositions dans la décomposition en transpositions définie plus haut. On peut alors définir la \textbf{signature} d'une permutation par:
+\[ 
+   \epsilon(\sigma) = (-1)^{m(\sigma)} 
+\]
+On montre alors facilement que cette fonction est un \textbf{morphisme de groupe} de \( \mathfrak{S}_n \longrightarrow ( \left\{ -1 , 1 \right\}, \times ) \) et que trivialement la signature d'une transposition est \( -1 \).
+\begin{itemize}
+   \item Si \( \epsilon( \sigma) = 1\), on dira que cette permutation est \textbf{paire}.
+   \item Si \( \epsilon( \sigma) = -1\), on dira que cette permutation est \textbf{impaire}.
+\end{itemize}
+L'ensemble des permutations de signature paire est alors un groupe (c'est le noyau de \( \epsilon \)), qu'on appelle \textbf{groupe alterné} et qu'on note \( \mathfrak{A}_n \).
 \chapter*{\chapterstyle{II --- Groupes Cycliques}}
 \addcontentsline{toc}{section}{Groupes Cycliques}
 On appelle \textbf{groupe cyclique} un groupe \(G\) engendré par un unique élément qu'on notera \(g\). Le but de ce chapitre est de classifier ces groupes et d'identifier leurs caractéristiques.\<
  
-On considère tout d'abord le groupe quotient \( \Z /n\Z \), on peut alors remarque que les éléments de ce groupe sont exactement \textbf{les classes de restes possibles par la division euclidienne par \( n \)}.  Par exemple le groupe \( \Z/6\Z\) représente le fait que \( 2 \equiv 8 \equiv 14 [6]\).
+On considère tout d'abord le groupe quotient \( \Z /n\Z \), on peut alors remarque que les éléments de ce groupe sont exactement \textbf{les classes de restes possibles par la division euclidienne par \( n \)}. On notera l'égalité dans ce contexte \( a = b \text{ (mod } n) \) en comprenant que ceci signife que \( a + n\Z = b + n\Z \)
 
 \subsection*{\subsecstyle{Classification {:}}}
 Dans cette section on retourne dans le case d'un groupe cyclique général \( G \) et on définit le morphisme surjectif suivant:
@@ -468,13 +473,12 @@ On raisonne sur la finitude de \( G \) et on peut alors caractériser tout les g
    \textit{Il n'y a donc qu'un seul groupe cyclique d'ordre n (resp. d'ordre infini), celui des classes de congruences modulo n (resp. celui des entiers).}
 \end{center}
 On remarque alors l'importance du groupe quotient \( \Z/n\Z \), c'est le prototype de groupe cyclique fini.
-
 \subsection*{\subsecstyle{Générateurs de \( \Z/n\Z \) {:}}}
 On sait donc que ce groupe est \textbf{cyclique} d'ordre \( n \), en particulier il est engendré par \( 1 \), mais aussi par toutes les classes dont le représentant est premier avec \( n \), en effet si \( a \) est un tel élément alors d'aprés le théorème de Bézout, on a:
 \[ 
    \exists u, v \in \Z \; ; \; au + bn = 1 
 \]
-Donc en particulier \( [a] + \ldots + [a] = 1 \) dans \( \Z /n\Z \) et par la suite, \( a \) engendre tout le groupe. Il y a donc \( \varphi(n) \) générateurs de ce groupe.
+Donc en particulier \( a + \ldots + a = 1 \mod{n}\) et par la suite, \( a \) engendre tout le groupe. Il y a donc \( \varphi(n) \) générateurs de ce groupe.
 \subsection*{\subsecstyle{Théorème chinois {:}}}
 Un des grands théorèmes sur les groupes cycliques est le suivant, si on considère \( p_1, \ldots, p_k \in \N \) des nombres premiers entre eux, et qu'on note \( n \) leur produit, alors on peut montrer facilement qu'on a l'isomorphisme suivant:
 \[ 
@@ -592,8 +596,8 @@ De même on définit alors \textbf{la forme exponentielle} de \(z\) l'expression
 On peut alors étendre les propriétés usuelles de l'exponentielle à \(\C\) et on en déduit:
 \customBox{width=6cm}{
    \begin{align*}
-      \arg(zz') &\eqmod{2\pi} \arg(z) + \arg(z')\\
-      \arg(\frac{z}{z'}) &\eqmod{2\pi} \arg(z) - \arg(z')
+      \arg(zz') = \arg(z) + \arg(z') \mod{2\pi}\\
+      \arg(\frac{z}{z'}) = \arg(z) - \arg(z') \mod{2\pi}
    \end{align*}
 }
 
@@ -682,110 +686,138 @@ Le nombre \(j\) est singulier, car il vérifie:
 }
 
 Graphiquement, on peut observer que les affixes des nombres \(1\), \(j\) et \(\overline{j}\) forment un triangle équilatéral inscrit dans le cercle trigonométrique.
-\chapter*{\chapterstyle{II --- Anneau des Polynômes}} % 75% Fini
+\chapter*{\chapterstyle{II --- Anneau des Polynômes}} % 99% Fini
 \addcontentsline{toc}{section}{Anneau des Polynômes}
-
-\subsection*{\subsecstyle{Définition {:}}}
-Soit \(K\) un corps, et \(n \in \N\), on appelle \textbf{polynômes} à coefficients dans \(K\) en l'indéterminée \(X\) les éléments de l'ensemble:
+Soit \(\mathbb{A}\) un anneau commutatif, on construit l'ensemble des \textbf{polynômes} à coefficients dans \(\mathbb{A}\) comme l'ensemble des suites \textbf{nulles à partir d'un certain rang} d'éléments de \(\mathbb{A}\), on peut alors munir cet ensemble des opérations naturelles suivantes:
+\begin{itemize}
+   \item Une \textbf{addition} effectuée termes à termes.
+   \item Une \textbf{multiplication par un scalaire} effectuée termes à termes.
+   \item Une \textbf{multiplication polynomiale} définie par distributivité comme:
+   \[ 
+      PQ = (p_0q_0, p_1q_0 + p_0q_1, \ldots) = \left( \sum_{k=0}^n P_kQ_{n-k} \right)_{n \in \N} 
+   \]
+   C'est bien une suite nulle à partir d'un certain rang et elle correspondra alors à la distributivité usuelle\footnote[1]{C'est un cas particulier de produit de convolution discret, voir le chapitre sur la convolution.}.
+\end{itemize}
+On note alors \( X := (0, 1, 0, \ldots ) \) et on appelle cette suite \textbf{indeterminée}, on remarque alors que:
 \[
-   K[X] := \Biggl\{ \; \sum_{i=0}^n a_{i}X^{i} \; ; \; a_i \in K \;\Biggl\}
+   \forall n, m \in \N \; ; \; X^nX^m = X^{n + m}
 \]
-
-\subsection*{\subsecstyle{Degré et Valuation {:}}}
-Soit \(P, Q, R \in K[X]\).\+
-On définit tout d'abord une propriété fondamentale appelée \textbf{degré} de \(P\) telle que deg\((P)\) est le plus grand coefficient non nul de P.
-On a alors les propriétés du degré ci-dessous:
-\customBox{width=7cm}{
-   \begin{align*}
-      \deg(P + Q) &\leq \max(\deg(P), \deg(Q))\\
-      \deg(PQ) &= \deg(P) + \deg(Q)
-  \end{align*}
-}
-
-La valuation est définie de manière analogue comme le plus petit coefficient non nul de P.
-\subsection*{\subsecstyle{Opérations {:}}}
-On considère ci-dessous que deg\((P)\) = \(n\) et deg\((Q)\) = \(m\) et on note \(a_i, b_i\) les coefficients de \(P\) (resp. \(Q\)).\<
-
-On adjoint à cet ensemble une loi d'addition qui est simplement effectuée terme à termes.\+
-On adjoint à cet ensemble une loi de multiplication se définit explicitement comme suit:
-\[
-   PQ := \sum_{k=0}^{n+m}\sum_{i+j = k} a_{i}b_{i}X^{k}
+Et par suite que tout polynôme peut s'écrire comme combinaison linéaire de cette indeterminée, ce qui nous donne finalement l'expression canonique d'un polynôme et donc la définition canonique de l'ensemble des polynômes en l'indeterminée \( X \) donnée par:
+\[ 
+   \mathbb{A}[X] := \left\{ \sum_{n \in \N} a_kX^k \; ; \; (a_k) \in \mathbb{A}^\N \right\} 
 \]
-
-Muni de ces deux opérations, on donne à cet ensemble une structure \textbf{d'anneau}\footnote[1]{Intègre car les coefficients viennent d'un corps.}.\<
-
-On ajoute aussi une opération appelée \textbf{dérivation formelle} d'un polynôme qui s'effectue comme la dérivation analytique usuelle.
-\subsection*{\subsecstyle{Divisibilité {:}}}
-On définit tout d'abord une \textbf{division euclidienne} de deux polynômes qui se comporte comme la division euclidienne usuelle, à la différence que la condition d'arrêt porte sur le \textbf{degré du reste} qui doit être inférieur à celui du diviseur.\<
-
-Soit \(U, V \in R[X]^2\), on peut aussi définir une relation de \textbf{divisibilité} entre deux polynômes, cette relation est \textbf{transitive et réflexive} et on a aussi:
-\customBox{width=6.5cm}{
-  \(
-      D|A \land D|B \implies D| UA + VB   
-  \)
-}
-
-\subsection*{\subsecstyle{Racines et Factorisation {:}}}
-On dit que \(\alpha\) est une \textbf{racine} de \(P\) si \(P(\alpha) = 0\).\+
-On montre alors le théorème fondamental ci-dessous:
-\customBox{width=5cm}{
-  \(
-      P(\alpha) = 0 \Longleftrightarrow (X - \alpha) | P  
-   \)
-}
+Où la suite \( (a_n) \) est nulle à partir d'un certain rang.
+\subsection*{\subsecstyle{Structure {:}}}
+Ces opérations et la structure d'anneau commutatif des coefficients donnent alors une structure \textbf{d'anneau commutatif} à l'ensemble \( \mathbb{A}[X] \), en outre on pourra aussi vérifier aprés avoir lu le chapitre correspondant que c'est un \textbf{espace vectoriel} de dimension infinie, et dont une base est donnée par:
+\[ 
+   (1, X, X^2, \ldots) 
+\]
+Finalement, si \( \mathbb{A} \) est intégre (par exemple dans le cas usuel où c'est un corps), l'anneau \( \mathbb{A}[X] \) l'est aussi.
+\subsection*{\subsecstyle{Evaluation {:}}}
+Soit \( R \) un anneau quelconque qui contient \( \mathbb{A} \), et \( x \in R \) alors on peut montrer qu'il existe une application fondamentale, dite application \textbf{d'évaluation} donné par:
+\[ 
+   \begin{aligned}
+      \phi : \mathbb{A}[X] \times R &\longrightarrow R \\
+      (P, x) &\longmapsto P(x) = \sum a_kx^k
+   \end{aligned} 
+\]
+En effet, si on fixe un élément \( x \in R \), alors on a simplement \( \forall P \in \mathbb{A}[X] \; ; \; \phi(P, x) = P(x) \) qui est simplement le polynôme inital dont on a substitué l'indeterminée par un élément de l'anneau. En particulier si \( R = \mathbb{A}[X] \), on a directement l'identification \( P = P(X) \).
 \pagebreak
 
+Dans la suite on se restreint au cas \( \mathbb{A} = \K \) des polynômes à coefficients dans un corps. Cette contrainte supplémentaire nous permettra de développer une arithmétique plus riche des polynômes.
+\subsection*{\subsecstyle{Degré et Valuation {:}}}
+Soit \(P, Q \in \K[X]\), on peut alors définir tout une propriété fondamentale appelée \textbf{degré} de \(P\) qui découle directement de la construction des polynômes:
+\[ 
+   \text{deg}(P) := \max\left\{ k \in \N \; ; \; a_k \neq 0 \right\}  
+\]
+On a alors les propriétés opératoires du degré ci-dessous:
+\begin{itemize}
+   \item \textbf{Degré de la somme: }\( \deg(P + Q) \leq \max(\deg(P), \deg(Q)) \)
+   \item \textbf{Degré du produit: }\( \deg(PQ) = \deg(P) + \deg(Q) \) 
+\end{itemize}
+La valuation est définie de manière analogue comme le plus petit coefficient non nul de P.
+\subsection*{\subsecstyle{Divisibilité {:}}}
+On peut naturellement définir une notion de \textbf{divisibilité} dans l'anneau \( \mathbb{A}[X] \) qui vérifie toute les propriétés usuelles, mais la notion de degré nous permet aussi de définir une \textbf{division euclidienne} de deux polynômes qui se comporte comme la division euclidienne usuelle, à la différence que la condition d'arrêt porte sur le \textbf{degré du reste}.\<
+
+Plus précisément, on a le théorème suivant pour tout couple \( A, B \in \K[X] \):
+\[ 
+   \exists! (Q, R) \in \K[X] \; ; \; A = BQ + R \text{ avec } \text{deg}(R) < \text{deg}(B) 
+\]
+La démonstration de ce théorème se fait de manière analogue à celui de \( \Z \), ie en exhibant l'algorithme de division. Ce théorème donne alors à \( \K[X] \) une structure \textbf{d'anneau Euclidien}, dont découle les conséquences suivantes:
+\begin{itemize}
+   \item \textbf{Anneau de Bezout:} La relation de Bezout est vraie pour les polynômes.
+   \item \textbf{Anneau principal:} Les idéaux sont principaux.
+   \item \textbf{Anneau factoriel:} Il existe une décomposition en facteurs premiers.
+\end{itemize}
+\subsection*{\subsecstyle{Racines{:}}}
+Soit \(\alpha \in \K\) et \( P \in \K[X]\), alors on peut montrer le théorème fondamental ci-dessous:
+\[ 
+   P(\alpha) = 0 \iff (X - \alpha) | P \iff P \in ((X - \alpha))
+\]
+On dira alors que \( \alpha \) est \textbf{racine} de \( P \) si une de ces conditions est vérifiée.
+\subsection*{\subsecstyle{Multiplicité{:}}}
 On appelle \textbf{multiplicité d'une racine} \(\alpha\) l'entier \(m\) tel que:
 \[
    \Bigr[ (X - \alpha)^m | P \Bigr] \; \land \; \Bigr[(X - \alpha)^{m+1} \nmid P\Bigr]
 \]
-Si on note \(P^{m}\) la dérivée n-ième de \(P\), on a aussi:
+On en déduit que pour une racine \(\alpha\) de multiplicité \(m\), on peut \textbf{factoriser} \(P\) par \((X-\alpha)^m\).\<
+
+Si on considère maintenant plusieurs racines \textbf{distinctes} \(a_0, a_1, \ldots, a_{n-1}, a_n\) de multiplicité respectivement \(m_0, m_1, \ldots, m_{n-1}, m_n\), le lemme de Gauss nous permet de montrer qu'alors:
+\begin{flalign*}
+   \left[ \prod_{i=0}^{n}(X-\alpha_i)^{m_i} \right] \; \biggr| \; P \shorteqnote{(On peut factoriser par le produit des \((X-\alpha_i)^{m_i}\))}
+\end{flalign*}
+\subsection*{\subsecstyle{Caractérisation de la multiplicité{:}}}
+Si on note \(P^{m}\) la dérivée n-ième de \(P\), on peut caractériser le fait que \( \alpha \) soit de multiplicité \( m \) par:
 \[
    P^{m}(\alpha) = 0 \; \land \; P^{m + 1}(\alpha) \neq 0
 \]
-
-On en déduit que pour une racine \(\alpha\) de multiplicité \(m\), on peut \textbf{factoriser} \(P\) par \((X-\alpha)^m\).\<
-
-Si on considère maintenant plusieurs racines \textbf{distinctes} \(a_0, a_1, \ldots, a_{n-1}, a_n\) de multiplicité respectivement \(m_0, m_1, \ldots, m_{n-1}, m_n\), on peut montrer la propriété suivante:
-\begin{flalign*}
-   \Bigr[ \prod_{i=0}^{n}(X-\alpha_i)^{m_i} \Bigr] \; \Biggr| \; P \shorteqnote{(On peut factoriser par le produit des \((X-\alpha_i)^{m_i}\))}
-\end{flalign*}
+\subsection*{\subsecstyle{Facteurs premiers {:}}}
+On appelle \textbf{facteurs premiers} de \( \K[X]\) les polynômes (non-constants) qui n'admettent pas de \textbf{diviseurs stricts} (non-constants), ces éléments dépendents du corps considéré, en effet par exemple:
+\begin{itemize}
+   \item \textbf{Dans \( \R[X] \):} \(X^2 + 1\) est premier.
+   \item \textbf{Dans \( \C[X] \):} \(X^2 + 1 = (X - i)(X + i)\) n'est pas premier.
+\end{itemize}
+On dira qu'un polynôme est \textbf{scindé} sur \( \K[X] \) si ses facteurs sont tous de degré 1.
 \subsection*{\subsecstyle{Décomposition {:}}}
-On appelle décomposition d'un polynôme \(P\) une factorisation \textbf{irréductible} de \(P\), cette décomposition dépend du corps considéré, en effet si on considère \(\C[X]\), on peut montrer le \textbf{théorème fondamental de l'Algèbre} ci-dessous:
-\customBox{width=11cm}{
-   Tout polynôme de degré \(n\) admet \(n\) racines dans \(\C\).
-}
+Un des grans thèmes de l'étude des polynômes est alors la recherche de la décomposition de ceux-ci en facteurs premiers, par exemple: 
 
-Par suite, on peut montrer que tout les polynômes de \(\C[X]\) sont \textbf{scindés}\footnote[1]{C'est à dire que tout les polynômes irréductibles de \(\C[X]\) sont de degré 1.}.\+
-Par contre dans \(\R[X]\), il existe évidemment des polynômes de degré 2 irréductibles.\<
-
-Soit \(z \in \C\), il existe une propriété très utile pour décomposer un polynôme \textbf{à coefficients réel} qui est:
-\[
-   P(z) = 0 \implies P(\overline{z}) = 0
+\begin{itemize}
+   \item Si on considère l'anneau \( \C[X] \), on peut alors montrer le \textbf{théorème fondamental de l'Algèbre}:
+   \begin{center}
+      \textbf{Tout polynôme non-constant admet une racine.}
+   \end{center}
+   Et donc en particulier par récurrence tout les polynômes de \( \C[X] \) sont \textbf{scindés}.
+   \item Si on considère l'anneau \( \R[X] \), il existe donc des polynômes de degré 2 irréductibles. Mais on sait alors qu'il ceux ci ont des racines complexes, et par évaluation on trouve la propriété intéressante suivante:
+   \[
+      P(z) = 0 \implies P(\overline{z}) = 0
+   \]
+   \item Si on considère l'anneau \( \mathbb{F}_2[X] \), on peut par exemple remarquer la factorisation:
+   \(
+      X^2 + 1 = (X + 1)^2 
+   \)
+\end{itemize}
+\subsection*{\subsecstyle{Polynômes en plusieurs indeterminées {:}}}
+On peut alors généraliser la construction des polynômes en une indeterminée \( X \) en un anneau de polynômes en plusieurs indeterminées \( \mathbb{A}[X_1, \ldots, X_n] \) qu'on définit par récurrence par:
+\[ 
+   \mathbb{A}[X_1, \ldots, X_n] =    \left( \mathbb{A}[X_1, \ldots, X_{n-1}] \right)[X_n]
 \]
-\subsection*{\subsecstyle{Fonctions symétriques des racines {:}}}
-On définit le \(k\)-ième \textbf{polynôme symétrique} à \(n\) indéterminées comme la somme des produits à \(k\) facteurs de ses indéterminées, et on le note \(\sigma_k\). \<
-
-Par exemple pour un polynôme en trois indéterminées \(a, b, c\), on a successivement:
-\begin{flalign*}
-    &\sigma_1 = a + b  + c\shorteqnote{(Somme des produits à 1 facteur)}\\
-    &\sigma_2 = ab + ac + bc \shorteqnote{(Somme des produits à 2 facteurs)}\\
-    &\sigma_3 = abc\shorteqnote{(Somme des produits à 3 facteurs)}
-\end{flalign*}
-De manière générale on a:
-\[
-    \sigma_k(x_1, \ldots, x_n) = \sum_{1 \leq i_1 < \ldots < i_k \leq n} x_{i_1}x_{i_2} \ldots x_{i_k}
+C'est aussi un \textbf{anneau commutatif}, aussi intègre si \( \mathbb{A} \) l'est et ses éléments sont alors de la forme:
+\[ 
+   \mathbb{A}[X_1, \ldots, X_n] := \left\{ \sum_{i_1, \ldots, i_n \in \N} a_{i_1, \ldots, i_n}X_1^{i_1} \ldots X_n^{i_n}\right\}  
 \]
-Soit \(P \in K[X]\) un polynôme de degré \(n\), on note \(x_1, x_2, \ldots, x_{n-1}, x_n\) ses \(n\) racines et \(a_1, a_2, \ldots, a_{n-1}, a_n\) ses \(n\) coefficients.\+
-Alors, pour tout \(k \in \inticc{0}{n}\), on a le \textbf{théorème}:
-\customBox{width=8cm}{
-   \[\sigma_k(x_1, x_2, \ldots, x_{n-1}, x_n) = (-1)^{k}\frac{a_{n-k}}{a_n}\]
-}
-
-Ce théorème permet d'obtenir une relation \textbf{coefficient-racines}.\<
-
-\underline{Exemple:} \(\begin{cases}
-    &\text{Pour \(k = 1\), on trouve que la somme des racines de \(P\) vaut \(-\frac{a_{n-1}}{a_n}\)}\\
-    &\text{Pour \(k = 2\), on trouve que la somme des doubles produits des racines de \(P\) vaut \(\frac{a_{n-2}}{a_n}\)}\\
-    &\ldots\ldots\ldots\ldots\ldots\ldots
-\end{cases}\)\<
+Où la somme est finie, ie où l'ensemble des coefficients \( (a_{i_1, \ldots, i_n})_{i_1, \ldots, i_n \in \N} \) est une famille finie. Quelques exemples:
+\begin{itemize}
+   \item \textbf{Dans \( \R[X, Y] \):} \( P = 2X^2 + 3XY - Y \)
+   \item \textbf{Dans \( \C[X, Y, Z] \):} \( P = iX^2Y^2 + 2iX - 5Z \)
+\end{itemize}
+\subsection*{\subsecstyle{Relations coefficients racines {:}}}
+On peut trouver une relation entre les coefficients et les racines d'un polynôme qui peut souvent nous permettre de nous ramener à la résolution d'un système et potentiellement trouver les racines, en effet on suppose la décomposition acquise alors on a:
+\[ 
+   P = \sum_{k=0}^n a_kX^k = a_n(X - \alpha_1) \ldots (X - \alpha_n)
+\]
+En développant on trouve alors des relations pour la somme, la somme des doubles produits, la somme des triples produits, etc, et le produit des racines:
+\begin{itemize}
+   \item \textbf{La somme des racines: } \(\sum_{1 \leq i \leq n} \alpha_i = (-1)^1 \frac{a_{n-1}}{a_n} \)
+   \item \textbf{La somme des k-produits des racines: } \( \sum_{1 \leq i_1 < \ldots < i_k \leq n} \alpha_{i_1} \ldots \alpha_{i_k} = (-1)^k \frac{a_{n-k}}{a_n} \)
+   \item \textbf{Le produit des racines: } \(\alpha_1 \ldots \alpha_n = (-1)^n \frac{a_0}{a_n} \)
+\end{itemize}

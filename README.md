@@ -7,14 +7,9 @@ Python : Numerical methods & applied maths tests.
 TODO : 
 - Finir projet oscillateurs harmoniques.
 
-- REVISIONS probas
-- REVISION CALCDIFF, AlgLin
-
-
 - Rajouter interprétation en termes de colonnes/lignes du produit matriciel
-- Affiner le chapitre sur les polynomes dès que l'approche structurelle est possible
 - Espaces affines et euclidiens potentiellement à affiner par la suite
-- Raffiner AL1-2 ?
+- Raffiner AL2 ?
 
 - Séries de Fourier à revoir
 - Transposée / Ajdoint à relier avec la dualité / Produit scalaire. Clarifier

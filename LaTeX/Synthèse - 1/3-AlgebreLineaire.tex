@@ -39,17 +39,11 @@ Cette proposition signifie exactement que l'on ne peut pas obtenir un vecteur co
 \]
 \pagebreak
 \subsection*{\subsecstyle{Bases {:}}}
-On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}. Ce concept permet alors de caractériser le fait que tout élément de \( E \) peut s'écrire comme une \textbf{unique} combinaison linéaire des vecteurs de la base.\<
-
-Soit \(\mathscr{B} = (e_1, \ldots, e_{n})\) une base de \(E\). On appelle \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\) les coefficients de la décomposition de \(u\) dans la base \(\mathscr{B}\) et on note:
-\[
-    [u]^{\mathscr{B}} = [\lambda_1 e_1 + \lambda_2 e_2 + \ldots + \lambda_{n-1} e_{n-1} + \lambda_{n-1} e_{n-1} ]^{\mathscr{B}} = 
-    \begin{pmatrix}
-        \lambda_1\\
-        \vdots\\
-        \lambda_{n}
-    \end{pmatrix}
+On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}. Ce concept permet alors de caractériser le fait que tout élément de \( E \) peut s'écrire comme une \textbf{unique} combinaison linéaire des vecteurs de la base, ie si on considère \(\mathscr{B} = (e_1, \ldots, e_{n})\) une base de \(E\) on a:
+\[ 
+   \forall u \in E \; ; \; u = \sum_{i \leq n} u_ie_i 
 \]
+Pour une certaine famille \( (u_i) \), qu'on appelle alors \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\).
 \subsection*{\subsecstyle{Sommes et sommes directes{:}}}
 Soit \(n\) un entier naturel et \((F_k)_{k \leq n}\) une famille finie de sous-espaces vectoriels de \(E\), Alors on peut construire le plus petit sous espace vectoriel qui contient tout les \( (F_k) \) par:
 \[
@@ -66,20 +60,22 @@ Et on la note alors:
 \[
    S = \bigoplus_{k \leq n} F_k
 \]
-Si de plus la somme est égale à \textbf{l'espace entier}, alors on dira que les \(F_k\) sont \textbf{supplémentaires} dans \(E\).
+Si de plus la somme est égale à l'espace entier, alors on dira que les \(F_k\) sont \textbf{supplémentaires} dans \(E\). 
 \subsection*{\subsecstyle{Caractérisation par les bases{:}}}
 Soit \(\B_k\) des bases de chacun des \(F_k\), soit la famille \(\Fam = (\B_1, \B_2, \ldots, \B_n)\), ie la famille constituée de bases des \(F_k\) concaténées. Alors on a alors le théorème suivant:
 \[
    \Fam \text{ est une base de } S \Longleftrightarrow \sum_{k \leq n} F_k = \bigoplus_{k \leq n} F_n
 \]
+\subsection*{\subsecstyle{Hyperplans{:}}}
+En particulier on définit alors le concept \textbf{d'hyperplan} comme tout espace dont le supplémentaire est une droite. Ce sont exactement les espaces définis par une équation cartésienne non triviale.\<
 
+Un systême d'équations homogènes revient alors à déterminer l'intersection d'hyperplans.
 \subsection*{\subsecstyle{Espaces vectoriels quotient{:}}}
 Les espaces vectoriels étant des groupes commutatifs par définition, tout ses sous groupes sont normaux, et la compatibilité par la loi externe est directe, on peut donc définir pour tout \( F \leq E \), \textbf{l'espace vectoriel quotient} \( E/F \).
 \begin{itemize}
    \item \uline{Exemple 1:} Si \( E = \R^2 \) et \( F = \text{Vect}(1, 0) \), alors \( E/F \) est \textbf{l'ensemble des droites parallèles à l'axe des abcisses}.
    \item \uline{Exemple 2:} Si \( E = \R_3[X] \) et \( F = \text{Vect}(X^2) \), alors \( E/F \) est \textbf{l'ensemble des polynômes qui ne différent que d'un terme quadratique}.
 \end{itemize}
-
 \chapter*{\chapterstyle{III --- Espaces Affines}} % 90 Fini
 \addcontentsline{toc}{section}{Espaces affines}
 Soit \(\mathscr{E}\) un ensemble non-vide et \(V\) un \(\R\)-espace vectoriel de dimension \(n\) finie.
@@ -151,7 +147,6 @@ Ce théorème permet alors d'assurer \textbf{l'unicité} du cardinal des bases d
 \addcontentsline{toc}{subsection}{Définition de la dimension}
 
 Des deux théorèmes précédents, on a alors l'existence de bases d'une espace de dimension fini, et l'unicité de leur cardinal, on peut alors définir \textbf{la dimension d'une espace vectoriel} \(E\) comme ce cardinal et on la note \(\text{dim}(E)\).
-
 \subsection*{\subsecstyle{Espaces de dimension finie{:}}}
 \addcontentsline{toc}{subsection}{Espaces de dimension finie}
 
@@ -174,7 +169,10 @@ Soit \(E\) un espace vectoriel de dimension finie et \(\Fam\) une famille de vec
 \[ 
    \text{rg}(\Fam) = \text{dim}(\text{Vect}(\Fam))
 \]
-C'est simplement \textbf{la dimension du sous-espace engendré par la famille}.
+C'est simplement \textbf{la dimension du sous-espace engendré par la famille}. D'aprés la section ci-dessus on a donc une caracation des bases, en effet:
+\[ 
+   \mathscr{F} \text{ est une base } \iff \text{rg}(\mathscr{F}) = n 
+\]
 \chapter*{\chapterstyle{III --- Applications Linéaires}} % Fini 99%
 \addcontentsline{toc}{section}{Applications linéaires}
 
@@ -269,7 +267,6 @@ Une telle application est dite:
    \item \textbf{Antisymétrique} si permuter deux variables change le signe du résultat.\footnote[2]{\underline{Exemple:} \(f(e_1, e_2) = -f(e_2, e_1)\), en particulier, le signe du résultat aprés une permutation \(\sigma\) dépends alors de \textbf{la signature de la permutation} (la parité du nombre de permutations effectuées).}
    \item  \textbf{Altérnée} si elle s'annule à chaque fois qu'on l'évalue sur un k-uplet contenant deux vecteurs identiques.\footnote[3]{\underline{Exemple:} \(f(e_1, e_1) = 0\)}
 \end{itemize}
-
 \chapter*{\chapterstyle{III --- Espace des matrices}} % Fini 99%
 \addcontentsline{toc}{section}{Espace des matrices}
 
@@ -283,22 +280,16 @@ On note alors \(\mathcal{M}_{n, p}(\mathbb{A})\) l'espaces des matrices à \( n 
 
 \subsection*{\subsecstyle{Structure{:}}}
 \addcontentsline{toc}{subsection}{Structure}
-On peut alors munir cete espace d'une structure \textbf{d'espace vectoriel} sur \( \K \) par les opérations suivantes:
+On peut alors munir ces espaces des opérations suivantes:
 \begin{itemize}
    \item On définit \textbf{la somme} de deux matrices par la matrice obtenue en sommant par composantes.
    \item On définit \textbf{la multiplication} d'une matrice par un scalaire comme la matrice dont tout les termes sont multipliés par ce scalaire.
-\end{itemize}
-Le vecteur nul de cet espace est alors la matrice nulle composée uniquement de zéros.
-
-\subsection*{\subsecstyle{Produit matriciel{:}}}
-\addcontentsline{toc}{subsection}{Produit matriciel}
-
-Soit \(A = (a_{i, j}) \in \mathcal{M}_{n, m}(\K)\) et \(B = (b_{k, j}) \in \mathcal{M}_{m, p}(\K)\). Alors on définit\footnote[1]{Il faut que le nombre de colonnes de la première soit égal au nombre de lignes de la seconde pour que les matrices soient dites \textbf{compatibles}.}  la matrice \(C := AB = (c_{i,j})\) comme étant la matrice telle que:
-\[
-   c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}
-\]
-
-En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui se comprends visuellement par:\+
+   \item On définit \textbf{la multiplication} de deux matrices \(A = (a_{i, j}) \in \mathcal{M}_{n, m}(\K)\) et \(B = (b_{k, j}) \in \mathcal{M}_{m, p}(\K)\) compatibles\footnote[1]{Il faut que le nombre de colonnes de la première soit égal au nombre de lignes de la seconde pour que les matrices soient compatibles.} par la matrice \(C := AB = (c_{i,j})\) comme étant la matrice telle que:
+   \[
+      c_{i, j} = \sum_{k=1}^{n}a_{i, k}b_{k, j}
+   \]
+\end{itemize} 
+En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui se comprends visuellement\footnote[2]{Le coefficient à \color{BrightRed1} la troisième ligne, première colonne \color{black} est obtenu en multipliant \color{BrightBlue1} la troisième ligne par la première colonne.\color{black}} par:
 \begin{center}
    \begin{tikzpicture}[    
       every left delimiter/.style={xshift=.55em},
@@ -337,15 +328,16 @@ En particulier, on appelle ce produit \textbf{un produit ligne par colonne} qui 
       \draw[color=BrightRed1, line width=0.5mm] (C-3-1.north west) rectangle (C-3-1.south east);
     \end{tikzpicture}
 \end{center}
-Le coefficient à \color{BrightRed1} la troisième ligne, première colonne \color{black} est obtenu en multipliant \color{BrightBlue1} la troisième ligne par la première colonne.\color{black}
+En particulier si \( n = p \), et que \( \mathbb{A} = \K \) est un corps, le cas le plus courant, alors toutes les matrices en jeu sont carrées et cette loi est \textbf{interne}.\<
 
-\subsection*{\subsecstyle{Cas des matrices carrées à coefficients dans un corps{:}}}
-\addcontentsline{toc}{subsection}{Cas des matrices carrées à coefficients dans un corps}
-Si \( n = p \), et que \( \mathbb{A} = \K \) est un corps, alors toutes les matrices en jeu sont carrées et cette loi est \textbf{interne}. On peut alors montrer que \( (\mathcal{M}_n(\mathbb{\K}), +, \times)\) est un \textbf{anneau unitaire non-commutatif et non-intègre}.\<
+On peut alors montrer que \( (\mathcal{M}_n(\mathbb{\K}), +, \times)\) est un \textbf{anneau unitaire} (mais ni commutatif ni intègre). Le neutre pour la multiplication est alors la matrice identité nulle partout et dont les termes diagonaux sont tous égaux à 1.
+\subsection*{\subsecstyle{Matrices inversibles{:}}}
+\addcontentsline{toc}{subsection}{Matrices inversibles}
+On dira qu'une matrice \( M \in \mathscr{M}_n( \K) \) est \textbf{inversible} si elle admet un inverse pour la multiplication matricielle, en outre on appelle l'ensemble des matrices carrées inversibles de taille \(n\) \textbf{le groupe linéaire} d'ordre \(n\), qu'on note GL\(_n(\K)\), c'est un groupe pour la multiplication matricielle.\<
 
-En particulier, le neutre pour cette loi est la matrice identité nulle partout et dont les termes diagonaux sont tous égaux à 1.
-\pagebreak
+Et en particulier, on montre facilement que \((AB)^{-1} = B^{-1}A^{-1}\). Dans le cas d'une matrice inversible, on peut alors étendre notre définition de puissance d'une matrice au cas d'entiers négatifs.\<
 
+On donnera aussi par la suite une interprétation géométrique de ce groupe et plusieurs méthodes efficaces pour prouver l'existence d'inverses et les calculer.
 \subsection*{\subsecstyle{Transposition{:}}}
 \addcontentsline{toc}{subsection}{Transposition}
 
@@ -369,7 +361,10 @@ Il faut aussi noter son comportement par rapport au produit matriciel de deux ma
 \[ 
    (AB)^\top = B^\top A^\top
 \]
-
+Enfin, on peut montrer que la transposition est compatible avec l'inversion, ie on a:
+\[ 
+   (M^{-1})^{\top} = (M^{\top})^{-1} 
+\] 
 \subsection*{\subsecstyle{Trace{:}}}
 \addcontentsline{toc}{subsection}{Trace}
 
@@ -377,47 +372,47 @@ On définit aussi une autre application linéaire appellée \textbf{trace d'une 
 \[
    \text{tr}(A) := \sum_{i=1}^{n} a_{i, i}   
 \]
-Elle est donc linéaire mais on a aussi:
+Elle est donc linéaire mais on a aussi par calcul direct:
 \[ 
    \text{tr}(AB) = \text{tr}(BA)  
 \]
 
-
+\subsection*{\subsecstyle{Application coordonées{:}}}
+Si on fixe une base \( \mathscr{B} \) de \( E \), alors tout vecteur \( u \in E \) admet des coordonées dans cette base et donc on peut définir l'isomorphisme suivant:
+\[ 
+   \begin{aligned}
+      [ \cdot ]_{ \mathscr{B}} : E &\longrightarrow \mathscr{M}_{n, 1}( \K) \\
+      u &\longmapsto \begin{pmatrix}
+      u_1\\
+      \vdots\\
+      u_n
+      \end{pmatrix} 
+   \end{aligned} 
+\]
+On peut alors identifier ainsi les vecteurs de \( E \) avec leurs cordonnées, mais non canoniquement, ie cette représentation dépends de la base fixée. En outre on a une action naturelle de \( \mathscr{M}_n( \K) \) sur les vecteurs colonnes définie par \( M \cdot X = MX \). De cette manière on peut déja intuiter que la multiplication matricielle se comporte comme une transformation (linéaire) des coordonées des vecteurs de l'espace.
 \subsection*{\subsecstyle{Matrice d'une famille de vecteurs{:}}}
 \addcontentsline{toc}{subsection}{Matrice d'une famille de vecteurs}
 
-Soit \(\mathscr{F} = (e_i)_{i\in\N}\), alors on peut définir \textbf{la matrice de la famille} dans une base \(\mathscr{B}\) par:
-\customBox{width=7cm}{
-   \(
-      \text{Mat}_{\mathscr{B}}(\mathscr{F}) = ([e_1]_{\mathscr{B}}, [e_2]_{\mathscr{B}}, \ldots, [e_n]_{\mathscr{B}})  
-   \)
-}
-
-\begin{center}
-   \textit{
-      La matrice d'une famille est donc constituée des coordonées des vecteurs\+
-      dans la base donnée (en colonnes).
-   }
-\end{center}
+Soit \(\mathscr{F} = (e_i)_{i \leq k}\) une famille de \( k \) vecteurs et \( \mathscr{B} \) une base de \( E \), alors on peut définir \textbf{la matrice de la famille} dans la base par:
+\[
+   \text{Mat}_{\mathscr{B}}(\mathscr{F}) = \left([e_1]_{\mathscr{B}}, [e_2]_{\mathscr{B}}, \ldots, [e_n]_{\mathscr{B}} \right)  
+\]
+C'est la matrice des coordonées des vecteurs de la famille. 
+\subsection*{\subsecstyle{Espaces des colonnes et des lignes{:}}}
+Réciproquement, pour toute matrice \( M = (C_1, \ldots, C_n) = (L_1, \ldots, L_p)\), on peut voir cette matrice comme la matrice d'une famille de vecteurs (ou la transposée d'une telle matrice), et on définit alors:
+\begin{itemize}
+   \item L'espaces des colonnes de \( M \) par \( \text{Vect}(C_1, \ldots, C_n) \)
+   \item L'espaces des lignes de \( M \) par \( \text{Vect}(L_1, \ldots, L_n) \)
+\end{itemize}
+Ces espaces sont alors des sous espaces de \(\mathscr{M}_{n, 1}( \K) \cong \K^n \) ou de \(\mathscr{M}_{p, 1}( \K) \cong \K^p\) et seront particulièrement importants car des méthodes matricielles trés puissantes nous permettront d'étudier des familles par leur représentation matricielle.
 \pagebreak
-
 \subsection*{\subsecstyle{Matrice d'une application linéaire{:}}}
 \addcontentsline{toc}{subsection}{Matrice d'une application linéaire}
 
-Soit \(E, F\) deux espaces vectoriels (de bases \(\mathscr{B} = (e_i)_{i \in \N}\) et \(\mathscr{C}=(f_i)_{i \in \N}\)) et \(f \in \mathcal{L}(E, F)\).\<
-
-Alors on peut associer à l'application \(f\) \textbf{une unique matrice} dans les bases \(\mathscr{B, C}\), qu'on note alors Mat\(_{\mathscr{B, C}}(f)\) qu'on construit comme suit:
-\customBox{width=9cm}{
-   \(
-      \text{Mat}_{\mathscr{B, C}}(f) = ([f(e_1)]_{\mathscr{C}}, [f(e_2)]_{\mathscr{C}}, \ldots, [f(e_n)]_{\mathscr{C}})
-   \)
-}
-\begin{center}
-   \textit{
-      La matrice d'une application linéaire est donc constituée des coordonées dans la base d'arrivée de l'image des vecteurs de la base de départ (en colonnes).
-   }
-\end{center}
-
+Soit une application linéaire \( f : E \rightarrow F \) telle que \(\mathscr{B} = (e_i)_{i \leq n}\) est une base de \( E \) et \(\mathscr{C}=(f_i)_{i \leq p}\)). Alors on peut associer à l'application \(f\) \textbf{une unique matrice} dans les bases \(\mathscr{B, C}\), qu'on note alors Mat\(_{\mathscr{B, C}}(f)\) qu'on construit comme suit:
+\[ 
+   \text{Mat}_{\mathscr{B, C}}(f) = \left([f(e_1)]_{\mathscr{C}}, [f(e_2)]_{\mathscr{C}}, \ldots, [f(e_n)]_{\mathscr{C}}\right)
+\]
 \underline{Exemple:} Considérons un endomorphisme de \(\R^3\) et sa base canonique notée \((e_1, e_2, e_3)\), telle que \(f(x, y, z) = (2x+1, 3x, z-1)\). Alors on calcule l'image des vecteurs de la base de départ, ie:
 \begin{multicols}{3}
 \begin{itemize}
@@ -463,31 +458,25 @@ Puis on calcule les coordonées de ces vecteurs dans la base d'arrivée, et on l
     };
     \end{tikzpicture}
 \end{center}
-
-
-Cette construction implique qu'il suffit donc, pour une base donnée, de \textbf{calculer les images des vecteurs de cette base}, puis leur coordonées pour décrire la transformation.\<
-
-Si \(E\) et \(F\) sont de dimensions respectives \(n\) et \(p\), on peut alors construire \textbf{un isomorphisme fondamental}:
-\newcommand{\widesim}[2][1.5]{
-  \mathrel{\overset{#2}{\scalebox{#1}[1]{$\sim$}}}
-}
-\customBox{width=7cm}{
-   \(
-      \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \xlongrightarrow{\widesim{}} \mathcal{M}_{n, p}(\K) 
-   \)
-}
-
-\begin{center}
-   \textit{On peut alors considèrer, que du point de vue de l'algèbre linéaire, l'espace des application linéaires et l'espace des matrices sont identiques\footnote[1]{En dimension finie}.}
-\end{center}
-
-Dans la suite, pour plus de lisibilité, on considèrera un endomorphisme \(f\) de \(\R^2\) de matrice \(M\) dans la base canonique \(\mathscr{C}\).
-Alors, appliquer une transformation linéaire à un vecteur \(u \in E\) revient à \textbf{multiplier ce vecteur par la matrice associée}\footnote[2]{Il suffit de partir du produit matriciel et d'utiliser la définition de \(M\) comme étant la matrice de \(f\) et les règles de calculs sur les vecteurs colonnes.}, ie on a:
-\customBox{width=4cm}{
-   \(
-      [f(u)]_{\mathscr{C}} = M \times [u]_{\mathscr{C}}
-   \)
-}
+On peut alors reformuler ce résultat par le fait que l'application ci-desosus est une bijection:
+\[ 
+   \text{Mat}_{\mathscr{B, C}} : \mathcal{L}(E, F) \longrightarrow \mathcal{M}_{n, p}(\K) 
+\]
+\subsection*{\subsecstyle{Propriété de morphisme{:}}}
+On peut alors montrer que cette bijection est bien plus riche qu'une simple bijection, en particulier \textbf{c'est un isomorphismes d'anneaux} pour les structures ci-dessous:
+\[ 
+   \text{Mat}_{\mathscr{B, C}} : (\mathcal{L}(E, F), +, \circ) \longrightarrow (\mathcal{M}_{n, p}(\K), +, \times)
+\]
+En effet, soit \( f \in \mathcal{L}(F, G)\) et \( g \in \mathcal{L}(E, F)\) avec \( \mathscr{B}, \mathscr{C}, \mathscr{D} \) des bases de réciproquement \( E, F, G \). Alors on peut montrer la propriété suivante qui caractérise alors la matrice d'une composée, et motive la construction artificielle du produit matriciel:
+\[ 
+   \text{Mat}(f \circ g)_{\mathscr{B}, \mathscr{D}} = \text{Mat}_{\mathscr{C}, \mathscr{D}}(f) \times \text{Mat}_{\mathscr{B}, \mathscr{C}}(g)  
+\]
+En d'autres termes, la matrice de la composée est le produit des matrices.
+\subsection*{\subsecstyle{Action naturelle{:}}}
+Alors, appliquer une application linéaire à un vecteur \(u \in E\) revient exactement à faire agir la matrice de \( f \) pour l'action naturelle sur les vecteurs coordonées, ie on a:
+\[ 
+   [f(u)]_{\mathscr{C}} = \text{Mat}_{\mathscr{B}, \mathscr{C}}(f)\times [u]_{\mathscr{C}}
+\]
 
 \underline{Exemple:} Soit \(f\) de matrice 
 \(M = \begin{pmatrix}
@@ -510,187 +499,61 @@ et \(u = (5, 3)\), calculer les coordonées de \(f(u)\) revient à calculer:
    \end{pmatrix} 
 \]
 Enfin l'isomorphisme entre ces deux espaces nous permet de définir \textbf{le noyau et l'image d'une matrice}, comme simplement étant le noyau ou l'image de l'application linéaire associée à cette matrice.
-
-\subsection*{\subsecstyle{Matrices inversibles{:}}}
-\addcontentsline{toc}{subsection}{Matrices inversibles}
-
-Soit \(M \in \mathcal{M}_n(\K)\) une matrice carrée, alors on dit que \(M\) est \textbf{inversible} si il existe un inverse pour la loi de multiplication des matrices, ie si il existe une matrice \(A^{-1}\) telle que:
-\customBox{width=3.5cm}{
-   \(
-      AA^{-1}=\text{Id}_n
-   \)
-}
-
-En particulier, si on considère l'application linéaire associée à \(M\), alors:
-\begin{center}
-   \(M\) inversible \(\Longleftrightarrow\) \(f\) est inversible
-\end{center}
-
-On appelle l'ensemble des matrices carrées inversibles de taille \(n\) \textbf{le groupe linéaire} d'ordre \(n\), qu'on note GL\(_n(\K)\), c'est un groupe pour la multiplication matricielle, ie on a:
-\[
-   A, B \in \text{GL}_n(\K) \Longleftrightarrow AB \in \text{GL}_n(\K)
-\]
-Et en particulier, on montre\footnote[1]{Intuitivement, c'est équivalent à l'inverse d'une composée car les matrices ``sont'' des applications au sens de l'algèbre linéaire.} que \((AB)^{-1} = B^{-1}A^{-1}\). Dans le cas d'une matrice inversible, on peut alors étendre notre définition de puissance d'une matrice au cas d'entiers négatifs.\<
-
-Intuitivement:
-\begin{center}
-   \textit{Le groupe \(\text{GL}_n(\K)\) est donc le groupe \textbf{des automorphismes} de \(E\), c'est à dire le groupe \textbf{des transformations} (linéaires) de \(E\) qui sont \textbf{réversibles}.}
-\end{center}
-Visuellement, on comprends directement l'idée d'automorphisme d'un espace, son lien avec la bijectivité, la matrice inverse est alors la représentation algèbrique de la transformation inverse (ici avec une rotation de \(\R^2\) de \(45\) degrés):
-\begin{center}
-   \begin{tikzpicture}
-      \draw[step=0.45cm, color=black!20, dashed] (-1.75,-1.75) grid (1.75,1.75);
-      \draw[-latex, color=BrightBlue1, thick] (0,0) -- (0,1.5) node[below left] {$y$};
-      \draw[-latex, color=BrightBlue1, thick] (0,0) -- (1.5,0) node[below left] {$x$};
-      \draw[-latex, color=BrightRed1, thick] (0,0) -- (1,1.2) node[below right] {$u$};
-  
-      \draw[-latex] (2,0) -- (3,0);
-      \draw[] (2,-0.05) -- (2,0.05);
-      \draw[] node[] at (2.5,0.3){$\varphi$};
-  
-      \draw[step=0.45cm, color=black!20, dashed, shift={(5.5 cm, 0)}, rotate=45] (-1.75,-1.75) grid (1.75,1.75);
-      \draw[-latex, color=BrightBlue1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (0,1.5) node[below left] {$\varphi(y)$};
-      \draw[-latex, color=BrightBlue1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (1.5,0) node[below right] {$\varphi(x)$};
-      \draw[-latex, color=BrightRed1, thick, shift={(5.5 cm, 0)}, rotate=45] (0,0) -- (1,1.2) node[below right] {$\varphi(u)$};
-  
-      \draw[-latex] (8,0) -- (9,0);
-      \draw[] (8,-0.05) -- (8,0.05);
-      \draw[] node[] at (8.65,0.375){$\varphi^{-1}$};
-  
-      \draw[step=0.45cm, color=black!20, dashed, shift={(11 cm, 0)}] (-1.75,-1.75) grid (1.75,1.75);
-      \draw[-latex, color=BrightBlue1, thick, shift={(11 cm, 0)}] (0,0) -- (0,1.5) node[below left] {$y$};
-      \draw[-latex, color=BrightBlue1, thick, shift={(11 cm, 0)}] (0,0) -- (1.5,0) node[below left] {$x$};
-      \draw[-latex, color=BrightRed1, thick, shift={(11 cm, 0)}] (0,0) -- (1,1.2) node[below right] {$u$};
-    \end{tikzpicture}   
-\end{center}
-Enfin, on peut montrer que \textbf{la transposition} est compatible avec l'inverse, ie on a:
-\customBox{width=4cm}{
-   \(
-      (M^{-1})^{\top} = (M^{\top})^{-1} 
-   \)
-}  
-Montrer qu'une matrice est inversible consiste simplement à calculer \textbf{le rang de la matrice}, comme expliqué dans la partie suivante.\+ 
-Par ailleurs, calculer l'inverse peut se réaliser de plusieurs manières, la méthode la plus générale consiste à résoudre l'équation d'inconnue \(X\) de la forme:
-\[
-   AX = Y   
-\]
-
-On définira aussi une application fondamentale nommée \textbf{déterminant} qui sera définie dans le prochain chapitre et qui caractérise exactement toutes les matrices inversibles et donne une autre manière de calculer l'inverse.
-\pagebreak
-
 \subsection*{\subsecstyle{Rang d'une matrice{:}}}
 \addcontentsline{toc}{subsection}{Rang d'une matrice}
 
-On a défini précédemment le concept de rang d'un famille et de rang d'une application linéaire, on peut généraliser cette définition en celle de \textbf{rang d'une matrice}, en effet on a simplement:
+On a défini précédemment le concept de rang d'une application linéaire comme la dimension de son image, et en particulier comme la dimension du sous-espace engendré par les images des vecteurs de base \( (f(e_i))_{i \leq n} \), on peut étendre cette définition au \textbf{rang d'une matrice}, en effet on a simplement:
 \begin{center}
    \textit{Le rang d'une matrice est la dimension de l'espace de ses colonnes.}
 \end{center}
 
-Soit \(M \in \mathcal{M}_n(\K)\), dont on note les colonnes \(\Fam = (C_1, C_2, \ldots, C_n)\), alors si le rang de la matrice est \(n\), on peut en déduire plusieurs propriétés:
-\begin{multicols}{2}
-   \begin{itemize}
-      \item La matrice est inversible.
-      \item La famille \(\Fam\) est une base de \(\K^n\).
-   \end{itemize}
-\end{multicols}
-On remarque donc que le rang nous donne \textbf{énormément d'informations} sur la matrice, la famille des colonnes, et l'application linéaire associée.
-
+On remarque donc que le rang d'une matrice nous donne \textbf{énormément d'informations} sur la matrice, la famille de vecteurs de l'espace des colonnes, et l'application linéaire associée. En particulier, on peut donc caractériser les matrices inversibles et les bases par la maximalité du rang de la matrice associée.
 \subsection*{\subsecstyle{Matrice de passage{:}}}
 \addcontentsline{toc}{subsection}{Matrice de passage}
 
-On considère un espace vectoriel \(E\) et deux bases \(\Fam=(e_1, \ldots, e_n), \Fam'=({e}_1', \ldots, {e}_n')\) de cet espace.\+
-On appelle \textbf{matrice de passage} de \(\Fam\) à \(\Fam'\) la matrice \(P\) qu'on construit comme suit:
-\customBox{width=7cm}{
-   \(
-      \text{Pass}(\Fam, \Fam') = ([e_1']_{\Fam}, [e_2']_{\Fam}, \ldots, [e_n']_{\Fam}) 
-   \)
-} 
+On considère un espace vectoriel \(E\) et deux bases \(\mathscr{B} =(e_1, \ldots, e_n), \mathscr{B}'=({e}_1', \ldots, {e}_n')\) de cet espace.\+
+On appelle \textbf{matrice de passage} de \(\mathscr{B}\) à \(\mathscr{B}'\) la matrice ci-dessous:
+\[ 
+   \text{Pass}(\mathscr{B}, \mathscr{B}') = ([e_1']_{\mathscr{B}}, [e_2']_{\mathscr{B}}, \ldots, [e_n']_{\mathscr{B}}) 
+\]
+
 \begin{center}
    \textit{
       La matrice de passage est donc constituée des coordonées dans l'ancienne base des vecteurs de la nouvelle base(en colonnes).
    }
 \end{center}
-
-\underline{Exemple:} Considèrons deux bases de \(\R^2\) telles que \(\Fam = [(1, 2), (3, 4)]\) et \(\Fam' = [(5, 6), (7, 8)]\), alors on a:
-\[
-   [5, 6]_\Fam = \begin{pmatrix} -1 \\ 2\end{pmatrix}
-   \quad\quad\quad\quad
-   [7, 8]_\Fam = \begin{pmatrix} 3 \\ -2\end{pmatrix}
+Une matrice de passage \( \text{Pass}(\mathscr{B}, \mathscr{B}') \) est alors \textbf{nécessairement inversible} d'inverse la matrice de passage \( \text{Pass}(\mathscr{B}', \mathscr{B}) \)
+\subsection*{\subsecstyle{Utilisations{:}}}
+Pour tout vecteur \( u \in E \), cette matrice permet alors de représenter ce vecteur dans une nouvelle base par:
+\[ 
+   [u]_{ \mathscr{B}'} = \text{Pass}(\mathscr{B}', \mathscr{B})[u]_{\mathscr{B}} 
 \]
-On range ensuite ces coordonées en colonnes dans la matrice, et on obtient:
-\begin{center}
-   \vspace{-5pt}   
-   \begin{tikzpicture}[      
-      every left delimiter/.style={xshift=.55em},
-      every right delimiter/.style={xshift=-.55em},
-   ]
-   \draw node[] at (-2.35, 0) {$\text{Pass}(\Fam, \Fam') = $};
 
-   \draw node[color = BrightBlue1] at (-0.5, 1.5) {$e_1'$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (-0.5, 1.25) -- (-0.5, 0.85);
+On peut aussi vouloir chercher à représenter un endomorphisme \( f \) dans une base différente, et en effet on peut montrer qu'on a:
+\[ 
+   \text{Mat}_{ \mathscr{B}'}(f) = \text{Pass}(\mathscr{B}', \mathscr{B}) \text{Mat}_{\mathscr{B}}(f) \text{Pass}(\mathscr{B}, \mathscr{B}')
+\]
+La notation fait alors sens de manière générale car \( \text{Pass}(\mathscr{B}, \mathscr{B}') \) prends en entrée une colonne de cordonnées dans la base \(\mathscr{B}'\) et renvoie celui dans la base précédente qui peut alors être évalué par la matrice et être retransformé par la suite.\<
 
-   \draw node[color = BrightBlue1] at (0.5, 1.5) {$e_2'$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (0.5, 1.25) -- (0.5, 0.85);
-
-   \draw node[color = BrightBlue1] at (1.75, 0.440) {$e_1$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.1, 0.465) -- (1.5, 0.465);
-
-   \draw node[color = BrightBlue1] at (1.75, -0.490) {$e_2$};
-   \draw[-latex, dashed, thick, color = BrightBlue1!50] (1.1, -0.465) -- (1.5, -0.465);
-
-   \matrix[
-      matrix of math nodes, ampersand replacement=\&,
-      left delimiter=(, right delimiter=), inner ysep=2pt, column sep=0.8em, row sep = 0.8em,
-      nodes={
-         inner sep=0.5em,outer sep=0,text width=1em,align=center
-      }
-   ]{
-      -1 \& 3 \\ 
-      2 \& -2 \\ 
-   };
-   \end{tikzpicture}
-\end{center}
-
-Une matrice de passage est alors \textbf{nécessairement inversible}\footnote[1]{Car son rang est égal à sa dimension par construction.}, et si on note \(U = [u]_{\Fam}\) et \(U' = [u]_{\Fam'}\)on a alors le théorème fondamental suivant:
-\customBox{width=3cm}{
-   \(
-      U' = P^{-1}U
-   \)
-} 
-
-\begin{center}
-   \textit{La matrice de passage nous permet alors de représenter un même vecteur\+ 
-   dans une base différente.}
-\end{center}
-Considérons maintenant un endomorphisme \(f\) de matrices \(M = \text{Mat}(\Fam, f), M' = \text{Mat}(\Fam', f)\) dans les deux bases respectivement, alors on a:
-\customBox{width=3.5cm}{
-   \(
-      M' = P^{-1}MP
-   \)
-}
-\begin{center}
-   \textit{La matrice de passage nous permet alors de représenter un même endomorphisme\+ 
-   dans une base différente.}
-\end{center}
-\pagebreak
-
+De manière générale, on notera souvent \(U, U'\) le vecteurs dans la base initiale (resp. dans la base finale), \( M, M' \) la matrice dans la base initiale (resp. dans la base finale) et \( P = \text{Pass}( \mathscr{B}, \mathscr{B}') \), alors on a les formules suivantes:
+\[ 
+   U' = P^{-1}U \quad\quad\quad\quad\quad\quad M' = P^{-1}MP
+\]
 \subsection*{\subsecstyle{Matrices semblables{:}}}
 \addcontentsline{toc}{subsection}{Matrices semblables}
 
-On dira alors que deux matrices \(A, B \in \mathcal{M}_n(\K)\) sont \textbf{semblables} si il existe une matrice de passage telle que la relation ci-dessus soit vérifiée.
-Ce qui signifie exactement que:
-\customBox{width=14cm}{
-   \textit{Deux matrices semblables représentent \textbf{la même transformation géométrique} \+
-   dans des bases différentes.}
-}
-
-En particulier on appelle alors \textbf{invariants de similitude} les propriétés qui \textbf{ne dépendent pas du choix de la base}, on peut alors montrer que:
-\customBox{width=13cm}{
-   Le rang et la trace d'une matrice sont des invariants de similitude.
-}
-   
-Un cas remarquable de matrices semblables est celui de la transposée, en effet dans un corps, une matrice est sa transposée sont semblables.
-
+On remarque alors plus clairement que le fait de changer la représentation d'une matrice correspond à \textbf{une action par conjugaison} de \( GL_n(\K) \), on appelle alors les classes de conjugaisons \textbf{classes de similitude} et on dira que deux éléments dans la même classe sont \textbf{semblables}. 
+\begin{center}
+   \textit{Ces deux matrices représentent alors le même endomorphisme, la même transformation géométrique, dans des bases différentes.}
+\end{center}
+En particulier on appelle alors \textbf{invariants de similitude} les propriétés qui ne dépendent pas du choix du représentant, on a alors plusieurs invariants:
+\begin{itemize}
+   \item La dimension du noyau.
+   \item La dimension de l'image, ie le rang.
+   \item La trace.
+   \item D'autres invariants définis plus tard comme le déterminant, le polynôme caractéristique et minimal.
+\end{itemize}   
+\pagebreak
 \subsection*{\subsecstyle{Matrices remarquables{:}}}
 \addcontentsline{toc}{subsection}{Matrices remarquables}
 
@@ -745,7 +608,7 @@ Dans ce chapitre nous allons présenter brièvement différentes matrices remarq
    \end{subfigure}
 \end{figure}
 
-Puis on a deux types de matrices qui sont liées à la symétrie des coefficients et à \textbf{l'opération de transposition}\footnote[1]{En effet une matrice symétrique est égale à sa transposée et une matrice antisymétrique à \textbf{l'opposée} de sa transposée}:
+Puis on a deux types de matrices qui sont liées à la symétrie des coefficients et à \textbf{l'opération de transposition}:
 \begin{figure}[h]
    \color{DarkBlue1}
    \centering
@@ -779,7 +642,7 @@ Puis on a deux types de matrices qui sont liées à la symétrie des coefficient
    \end{subfigure}
 \end{figure}
 
-On a aussi \textbf{les matrices élémentaires} qui sont obtenus par \textbf{opérations élémentaires}\footnote[2]{Voir la partie suivante.} sur la matrice identité:
+On a aussi \textbf{les matrices élémentaires} qui représentent les \textbf{opérations élémentaires}\footnote[1]{Voir la section suivante.}:
 \begin{figure}[h]
    \color{DarkBlue1}
    \centering
@@ -845,22 +708,39 @@ Enfin, on a \textbf{les matrices orthogonales} qui sont des matrices telles que 
       \caption*{\color{DarkBlue1}Matrice de rotation}
    \end{subfigure}
 \end{figure}
-
+\subsection*{\subsecstyle{Lien avec les systêmes linéaires homogènes{:}}}
+On peut aussi remarquer qu'il y a une correpondance directe et bijective entre les \textbf{systêmes linéaires homogènes} d'inconnues \( (x_1, \ldots, x_n) \) et les \textbf{équations vectorielles} d'inconnue \( X \), en effet on a:
+\[ 
+   \begin{cases}
+      a_{1, 1}x_1 + \ldots + a_{1, p}x_p = 0\\
+      \vdots\quad\quad\quad\quad\quad \vdots\quad\quad\quad\quad\quad \vdots\\
+      a_{n, 1}x_1 + \ldots + a_{n, p}x_p = 0
+   \end{cases} \iff f(x_1, \ldots, x_p) = (0, \ldots, 0) \iff AX = 0
+\]
+On peut alors montrer que l'ensemble des solutions est exactement le noyau de \( f \), de manière générale, le cas le plus courant est celui de \( n = p \) et la matrice est carrée, mais on a deux autres cas:
+\begin{itemize}
+   \item Si \( n > p \), on dira que le système est \textbf{sur-contraint} et généralement les solutions sont triviales.
+   \item Si \( n < p \), on dira que le système est \textbf{sous-contraint} et généralement les solutions sont non-triviales.
+\end{itemize}
+Si on ajoute un second membre non-nul \( b \), alors le systême est dit \textbf{non-homogène}, dans ce cas si il existe une \textbf{solution particulière}, alors l'ensemble des solutions est un sous-espace affine\footnote[2]{Plus précisément, on a \( \mathscr{S} = \text{Ker}(f) + S_p \) où \( S_p \) est une solution particulière.} de direction le noyau de \( f \). Sinon l'ensemble des solutions est vide. 
 \pagebreak
+\subsection*{\subsecstyle{Opérations élémentaires{:}}}
+Etant donnée une matrice \( M \in \mathscr{M}_n( \K) \), on définit une \textbf{opérations élémentaire sur les colonnes}\footnote[1]{Il peut être utile de noter que fondamentalement, on peut à la fois opérer \textbf{sur les colonnes} ou sur \textbf{les lignes}, en multipliant les matrices élémentaires par la gauche plutôt que par la droite.} de \( M \) par la multiplication à droite par une matrice élémentaire comme définies plus haut.\<
+
+Ces opérations correpondent alors au fait d'échanger, de multiplier par un scalaire, ou de faire une combinaison linéaires des colonnes de la matrice. Ces opérations sont fondamentales car elles conservent beaucoup de propriétés:
+\begin{itemize}
+   \item Le noyau et sa dimension.
+   \item L'image et sa dimension.
+\end{itemize}
+En particulier si \( \mathscr{E} \) est l'ensemble des matrices élémentaires on définit la relation d'équivalence:
+\[ 
+   M \sim M' \iff \exists E \in \mathscr{E} \; ; \; ME = M' 
+\]
+Informellement et sauf cas particuliers, on effectue souvent les opérations élémentaires directement sur la matrice sans expliciter la matrice élémentaire associée.
 \subsection*{\subsecstyle{Echelonnements \& Calculs{:}}}
 \addcontentsline{toc}{subsection}{Echelonnements et calculs}
 
-La théorie permettant de lier matrices, applications linéaires et familles de vecteurs, l'étude des espaces vectoriels engendrés par les colonnes ou les lignes d'une matrice revêt alors une importantce capitale qui est l'objet de cette partie.\<
-
-On appelle \textbf{opérations élémentaires} sur une matrice \(M\), l'une de ces 3 opérations:
-\begin{itemize}
-   \item Multiplier une colonne par un scalaire
-   \item Ajouter une colonnes à une autre
-   \item Echanger deux colonnes
-\end{itemize}
-Il est alors possible de montrer que ces trois opérations préservent \textbf{le sous-espace engendré}\footnote[1]{L'échange ne change évidement rien, et le sous espace engendré ne change pas pas multiplication par un scalaire ou ajout d'un vecteur venant de la famille en question.} par les colonnes de la matrice, donc en particulier \textbf{le rang, le noyau et l'image} sont préservés.\<
-
-Enfin, on appellera \textbf{matrice équivalente} à \(M\) et on notera \(M' \sim M\) la matrice \(M\) à laquelle on a appliqué une ou plusieurs opérations élémentaires.
+La théorie permettant de lier matrices, applications linéaires et familles de vecteurs, l'étude du noyau et de l'image d'une matrice revêt alors une importantce capitale qui est l'objet de cette partie.\<
 
 On dira qu'une matrice \(M\) est \textbf{échelonée} si la matrice obtenue aprés application d'opérations élémentaires est de la forme générale:
 \begin{center}
@@ -872,13 +752,12 @@ On dira qu'une matrice \(M\) est \textbf{échelonée} si la matrice obtenue apr�
          matrix of math nodes, ampersand replacement=\&,
          left delimiter=(, right delimiter=),  outer sep = 0pt,inner sep=4.5pt
       ] (A) {
-         {\alpha_1} \& {0} \& {0} \& {0}\& {0}\\ 
-         {*} \& {\alpha_2} \& {0} \& {0}\& {0}\\ 
+         {*} \& {0} \& {0} \& {0}\& {0}\\ 
          {*} \& {*} \& {0} \& {0}\& {0}\\ 
-         {*} \& {*} \& {\alpha_3} \& {0}\& {0}\\
+         {*} \& {*} \& {0} \& {0}\& {0}\\ 
+         {*} \& {*} \& {*} \& {0}\& {0}\\
       };
-      \draw[color=BrightBlue1, line width=0.5mm] (A-1-1.north west) -- (A-1-1.north east) -- (A-1-1.south east) -- (-0.1, 0.57)-- (-0.1, -0.64) -- (A-4-3.north east)-- (A-4-3.south east);
-
+      \draw[color=BrightBlue1, line width=0.5mm] (A-1-1.north west) -- (A-1-1.north east) -- (A-1-1.south east) -- (-0.25, 0.54)-- (-0.25, -0.64) -- (0.25, -0.64)-- (A-4-3.south east);
    \end{tikzpicture}   
 \end{center}
 En d'autres termes, on \textbf{creuse} la matrice pour faire apparaître des zéros sur la partie triangulaire supérieure.\+
@@ -892,19 +771,17 @@ Présentons maintenant les différentes informations que nous pouvons tirer de c
    \item On peut trouver un supplémentaire d'une famille, on échelonne la matrice de la famille, et on complète la matrice par des vecteurs de la base canonique\footnote[2]{Ou alors de telle sorte que la matrice reste échelonnée.}, ces vecteurs formeront alors un supplémentaire.
    \item On peut trouver les équations cartésiennes d'un sous-espace engendré par une famille, pour cela on augmente la matrice de la famille par une matrice d'indéterminées, et on échelonne. Alors la dernière colonne fournira les equations cartésiennes du sous-espace.
    \item On peut trouver le \textbf{noyau, l'image} d'une matrice, gràce à la variante \textbf{avec mémorisation}, alors les colonnes nulles aprés échelonnement permettent d'en déduire des vecteurs envoyés du noyau, et les colonnes non-nulles constituent une base de l'image (voir l'exemple ci-aprés).
+   \item On peut résoudre les sytèmes de la forme \( AX = B \) et donc inverser des matrices par une extension de cette méthode.
 \end{enumerate}
-Il peut être utile de noter que fondamentalement, on peut à la fois échelonner \textbf{sur les colonnes} ou sur \textbf{les lignes}. En effet, le rang est invariant par transposition, on aurait tout aussi bien pu développer des opération élémentaires sur les lignes, et les résultats seraient équivalents.
-
-\pagebreak
-
+\subsection*{\subsecstyle{Exemples d'utilisations{:}}}
 Soit \(M = (C_1, C_2, C_3) = \begin{pmatrix} 1 & 2 & 1\\ 3 & 4 & 2\\ 5 & 6 & 3\end{pmatrix}\), nous allons présenter quelques exemples:
 \begin{itemize}
    \item Cherchons le rang de la matrice, on a:
    \[
       M = \begin{pmatrix} 1 & 2 & 1\\ 3 & 4 & 2\\ 5 & 6 & 3\end{pmatrix} \sim  \begin{pmatrix} 1 & 0 & 0\\ 3 & 2 & 2\\ 5 & 4 & 4\end{pmatrix} \sim  \begin{pmatrix} 1 & 0 & 0\\ 3 & 2 & 0\\ 5 & 4 & 0\end{pmatrix} \sim  \begin{pmatrix} 1 & 0\\ 3 & 2\\ 5 & 4\end{pmatrix}
    \]
-   La matrice est échelonnée sur \(2\) colonnes, donc son rang est \(2\). En particulier, \((C_1, C_2, C_3)\) n'est pas une base de \(\R^3\), la matrice (donc l'endomorphisme associé) n'est pas inversible.
-   \item Cherchons un sous-espace supplémentaire à \((C_1, C_2, C_3)\) en reprenant l'échelonnement ci-dessus, on a simplement à rajouter des colonnes à \(M\) de sorte qu'elle soit échelonnée sur 3 colonnes, par exemple:
+   La matrice est échelonnée sur \(2\) colonnes, donc son rang est \(2\). En particulier, \((C_1, C_2, C_3)\) n'est pas une base et la matrice (et l'endomorphisme associé) ne sont pas inversibles.
+   \item Pour trouver un sous-espace supplémentaire à \((C_1, C_2, C_3)\) en reprenant l'échelonnement ci-dessus, on a simplement à rajouter des colonnes à \(M\) de sorte qu'elle soit échelonnée sur 3 colonnes, par exemple:
    \[
       M' = \begin{pmatrix} 1 & 0 & 0\\ 3 & 2 & 0\\ 5 & 4 & 1\end{pmatrix}
    \]
@@ -924,203 +801,47 @@ Soit \(M = (C_1, C_2, C_3) = \begin{pmatrix} 1 & 2 & 1\\ 3 & 4 & 2\\ 5 & 6 & 3\e
    \]
    On en conclut qu'une base de l'image est \([(1, 3, 5), (0, 2, 4)]\).\+
    Le noyau est de dimension 1 et par la mémorisation, une combinaison linéaire nulle est \(0C_1-C_2+2C_3\), le vecteur \((0, -1, 2)\) est bien dans le noyau et est donc une base du noyau.
-
-\end{itemize}\<
-\chapter*{\chapterstyle{III --- Déterminant}} % Fini 99%
-\addcontentsline{toc}{section}{Déterminant}
-
-Soit \(A = (a_{i,j})\) une matrice carrée de taille \(n\), nous cherchons à définir une application \(\phi: \mathcal{M}_n(\K) \longrightarrow \R\) telle que:
-\[
-   A \in \text{GL}_n(\K) \Longleftrightarrow \phi(A) = 0
-\]
-\subsection*{\subsecstyle{Définition{:}}}
-\addcontentsline{toc}{subsection}{Définition}
-
-On peut alors montrer\footnote[1]{Particulièrement difficile..} qu'une telle application existe qu'on appellera \textbf{déterminant}, qu'on note \(|A|\) et qu'on définit alors par récurrence:
-\begin{itemize}
-   \item Si \(n = 1\) alors \(|(a)| = a \) 
-   \item Sinon \(|A| := a_{1, 1}|A_{1, 1}| - a_{1, 2}|A_{1, 2}| + \ldots + (-1)^{n+1}a_{1, n}|A_{1, n}|\)
-\end{itemize}
-Où la notation \(A_{1, 1}\) signifie la matrice \(A\) à laquelle on a retiré la première ligne et la première colonne. \<
-
-Cette opération s'appelle aussi \textbf{développement selon la première ligne} du déterminant, elle se comprends visuellement par:
-\[
-   |A| = \begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = 
-   a \begin{vmatrix} \square & \square & \square \\ \square & e & f \\ \square & h & i \end{vmatrix} - 
-   b \begin{vmatrix} \square & \square & \square \\ d & \square & f \\ g & \square & i \end{vmatrix} + 
-   c \begin{vmatrix} \square & \square & \square \\ d & e & \square \\ g & h & \square \end{vmatrix}   
-\]
-On peut ainsi \textbf{développer le déterminant} selon n'importe quelle ligne ou colonne en suivant cette règle. On régresse ainsi vers des déterminants de plus petite taille, et aprés plusieurs étapes, vers un réel.
-
-\subsection*{\subsecstyle{Propriétés{:}}}
-\addcontentsline{toc}{subsection}{Propriétés}
-
-On peut montrer que cette application est \textbf{une forme multilinéaire alternée} en les colonnes ou lignes de la matrice, en particulier, on a les propriétés suivantes:
-\begin{itemize}
-   \item Ajouter à une colonne une combinaison linéaire \textbf{des autres colonnes} ne change pas le déterminant.
-   \item Echanger deux colonnes d'une matrice change le signe du determinant.
-   \item Si deux colonnes sont égales ou qu'une des colonnes est nulle, le déterminant est nul.
-\end{itemize}
-En outre la multilinéarité sur les colonnes ou lignes implique:
-\customBox{width=3cm}{
-   \(|\lambda A| = \lambda^n |A|\)
-}
-Et on peut aussi montrer que le déterminant est multiplicatif, ie:
-\customBox{width=4cm}{
-   \(|A \times B| = |A|\times|B|\)
-}
-
-Si on considère une famille \(\Fam = (e_1 , \ldots, e_n)\) de vecteurs de coordonées \((C_1, \ldots, C_n)\) dans une certaine base \(\mathscr{B}\), alors on peut définir le déterminant \textbf{d'une famille de vecteurs} dans cette base par:
-\[
-   |\Fam|_{\mathscr{B}} = |(C_1, \ldots, C_n)|
-\]
-\begin{center}
-   \textit{Le déterminant d'une famille par rapport à \(\mathscr{B}\) est alors simplement le déterminant de la matrice construite avec les coordonées de ses vecteurs dans la base \(\mathscr{B}\).}
-\end{center}
-
-Soit deux bases \(\mathscr{B, B'}\), on pourrait alors considèrer \textbf{l'effet d'un changement de base} sur un tel déterminant et on a alors:
-\customBox{width=5cm}{
-   \(
-      |\Fam|_{\mathscr{B'}} = |\Fam|_{\mathscr{B}} \times |\mathscr{B'}|_{\mathscr{B}}
-   \)
-}
-
-\subsection*{\subsecstyle{Cofacteurs{:}}}
-\addcontentsline{toc}{subsection}{Cofacteurs}
-
-Reprenons en simplifant la définition donnée plus haut du développement selon la première ligne:
-\[
-   |A| := a_{1, 1}|A_{1, 1}| - a_{1, 2}|A_{1, 2}| + \ldots + (-1)^{n+1}a_{1, n}|A_{1, n}| = \sum_{j=1}^{n}a_{1, j}(-1)^{j+1}|A_{1, j}|
-\]
-On appelle alors \textbf{cofacteur} de l'élément \(a_{i, j}\) le scalaire:
-\customBox{width=5cm}{
-   \(
-      \text{cof}(a_{i, j}) := (-1)^{j+i}|A_{i, j}|
-   \)
-}   
-Intuitivement en reprenant la visualisation exposée plus haut:
-\[
-   a \begin{vmatrix} \square & \square & \square \\ \square & \color{BrightRed1}e & \color{BrightRed1}f \\ \square & \color{BrightRed1}h & \color{BrightRed1}i \end{vmatrix} - 
-   b \begin{vmatrix} \square & \square & \square \\ \color{BrightRed1}d & \square & \color{BrightRed1}f \\ \color{BrightRed1}g & \square & \color{BrightRed1}i \end{vmatrix} + 
-   c \begin{vmatrix} \square & \square & \square \\ \color{BrightRed1}d & \color{BrightRed1}e & \square \\ \color{BrightRed1}g & \color{BrightRed1}h & \square \end{vmatrix}  
-\]
-Ce sont simplement les déterminants mineurs que l'on calcule à chaque itération \textbf{en tenant compte du signe qui précède le coefficient}.\+
-En pratique pour trouver le signe du cofacteur, on ne calcule pas \((-1)^{i + j}\), mais on le détermine par \textbf{la règle de l'échiquier} qu'on peut se représenter comme suit:
-\[
-   \begin{vmatrix} + & - & + & - & \ldots \\ - & + & - & + &\ldots \\ + & - & + & - &\ldots \\ \vdots & \vdots & \vdots & \vdots \\\end{vmatrix}
-\]
-
-\underline{Exemple:} Pour \(\begin{pmatrix}
-   1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
-\end{pmatrix}\), le cofacteur du coefficient en position \((1, 2)\) est 
-\(- \begin{vmatrix} 4 & 6 \\ 7 & 9\end{vmatrix} \)
-
-\subsection*{\subsecstyle{Comatrice{:}}}
-\addcontentsline{toc}{subsection}{Comatrice}
-
-On peut alors définir \textbf{la comatrice} d'une matrice \(A\) donnée, c'est en fait simplement \textbf{la matrice des cofacteurs} de \(A\), ie le terme en position \((i, j)\) de la comatrice est exactement le cofacteur de l'élement en position \((i, j)\). \<
-
-L'intérêt principal de la comatrice est de calculer l'inverse de matrices inversibles, en effet, on peut montrer l'identité:
-\[
-   A \times \text{com}(A)^{\top} = |A|I_n   
-\]
-Et en particulier si le déterminant est non-nul (donc si \(A\) est inversible), on a:
-\customBox{width=4.5cm}{
-   \[
-      A^{-1} = \frac{1}{|A|}\text{com}(A)^{\top}  
+   \item Cherchons la solution du système \( AX = (1, 2, 3) \), on construit alors la \textbf{matrice augmentée} ci-dessous qu'on échelonne en reportant les opérations sur la colonne augmentée:
+   \begin{center}
+      \begin{tikzpicture}[    
+         every left delimiter/.style={xshift=.55em},
+         every right delimiter/.style={xshift=-.55em}
+      ]
+         \matrix[
+            matrix of math nodes, ampersand replacement=\&,
+            left delimiter=(, right delimiter=),  outer sep = 0pt
+         ] (A) {
+            1 \& 2 \& 1 \& 1\\ 
+            3 \& 4 \& 2 \& 2\\ 
+            5 \& 6 \& 3 \& 3\\ 
+         };
+         \draw node at (1.5, 0) {$\sim$};
+         \matrix[
+            matrix of math nodes, ampersand replacement=\&,
+            left delimiter=(, right delimiter=),  outer sep = 0pt
+         ] (B) at (3, 0) {
+            1 \& 2 \& 1 \& 1\\ 
+            0 \& 2 \& 1 \& 1\\ 
+            0 \& 0 \& 0 \& 0\\ 
+         };
+         \draw[color=black] (A-1-3.north east) -- (A-3-3.south east);
+         \draw[color=black] (B-1-3.north east) -- (B-3-3.south east);
+      \end{tikzpicture}   
+   \end{center}
+   On en conclut en repassant au systême que \( z \) est un paramètre libre, ie le système équivalent est:
+   \[ 
+      \begin{cases}
+         x + 2y + z = 1\\
+         2y + z = 2\\
+         z \in \R 
+      \end{cases} 
+   \] 
+   En résolvant pour \( (x, y) \), on trouve:
+   \[ 
+      \mathscr{S} = \left\{ (x, y, z) \in \R^3 \; ; \; (x, y, z) = \left(0, \frac{(1 + \lambda)}{2}, \lambda \right) , \lambda \in \R\right\} = \left(0, \frac{1}{2}, 0 \right) + \text{Ker}(f)
    \]
-}   
-Cette formule est néanmoins particulièrement inexploitable pour \(n > 3\) du fait de la quantité de calcul à réaliser.
-
-\subsection*{\subsecstyle{Formules de Cramer{:}}}
-\addcontentsline{toc}{subsection}{Formules de Cramer}
-
-On considère un systême linéaire de \(n\) équations à \(n\) inconnues, alors on peut l'écrire matriciellement sous la forme:
-\[
-   AX = B   
-\]
-Pour \(A \in \mathcal{M}_n(\K)\), \(X\) un vecteur indéterminé, et \(B\) le vecteur fixé du second membre des équations.
-\pagebreak
-
-Un tel système est dit \textbf{système de Cramer} si la matrice \(A\) est inversible, il possède alors une unique solution qui s'écrit matriciellement \(X = A^{-1}B\). \<
-
-Alors on montre que sa i-ème inconnue \(x_i\) (et par suite la solution tout entière X = \((x_1, \ldots, x_n)\)) est donnée par:
-\customBox{width=2.5cm}{
-   \[
-      x_i = \frac{|A_i|}{|A|}
-   \]
-} 
-Dans laquelle \(A_i\) désigne la matrice obtenue en remplaçant la i-ème colonne de \(A\) par le second membre \(B\)\<
-
-\underline{Exemple:}
-\[
-   \begin{cases} 
-      x + 4y + 8z = 2 \\
-      2x + 5y + 8z = 2 \\
-      3x + 6y + 9z = 3 \\
-   \end{cases}   \Longleftrightarrow 
-   \begin{pmatrix}
-      1 & 4 & 8 \\
-      2 & 5 & 8 \\
-      3 & 6 & 9
-   \end{pmatrix} 
-   \begin{pmatrix}
-      x \\
-      y \\
-      z  
-   \end{pmatrix} =
-   \begin{pmatrix}
-      2 \\
-      2 \\
-      3  
-   \end{pmatrix}
-\]
-Alors on a:
-\[
-   y = \frac{
-      \begin{vmatrix}
-         1 & \color{BrightRed1} 2 & 8 \\
-         2 & \color{BrightRed1} 2 & 8  \\
-         3 & \color{BrightRed1} 3 & 9
-      \end{vmatrix}
-   }{|A|} = \frac{6}{-3} = -2
-\]
-
-\subsection*{\subsecstyle{Volume orienté{:}}}
-\addcontentsline{toc}{subsection}{Volume orienté}
-
-Le déterminant admet un interprétation géométrique intéressante liée au concept d'aire, de volumes, et d'hypervolumes de manière générale. \<
-
-Considérons le cas simple d'une base \(\mathscr{B} = (e_1, e_2)\) de vecteurs de \(\R^2\), alors le déterminant de cette base correspond \textbf{à l'aire algébrique\footnote[2]{C'est une aire ``signée'', ie l'aire géométrique est donc la valeur absolue de cette aire algébrique.} du parallélogramme formé par les deux vecteurs}, ie:
-\begin{center}
-   \begin{tikzpicture}[xscale=1.6, yscale=1.4]
-      \draw[black!15] (-0.5,0) -- (4,0);
-      \draw[black!15] (0, -0.5) -- (0,2);
-
-      \draw[color=black!0, fill=BrightBlue1!25] (0,0) -- (0.6, 1.5) -- (3.1, 1.9) -- (2.5, 0.4);
-
-      \draw node[color=DarkBlue1, rotate=8] at (1.55, 0.95) {$|\text{det}(e_1, e_2)|$};
-
-      \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (0.6, 1.5) node[left] {$e_1$};
-      \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (2.5, 0.4) node[below right] {$e_2$};
-
-      \draw[color=DarkBlue1, dashed] (0.6, 1.5) -- (3.1, 1.9)-- (2.5, 0.4);
-
-
-   \end{tikzpicture}
-\end{center}
-Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf{l'hypervolume algébrique} du parallélotope formé par ces \(n\) vecteurs.\<
-
-\subsection*{\subsecstyle{Orientation{:}}}
-On peut alors définir \textbf{l'orientation d'un espace vectoriel}, en effet, on dira que deux bases \(\mathscr{B}, \mathscr{B'}\) ont meme orientation si et seulement si:
-\[
-   \text{det}(\text{Pass}(\mathscr{B}, \mathscr{B'})) > 0
-\]
-Si on fixe alors une base orientée canoniquement, on qualifie son orientation (et celles de toutes les bases de meme orientation) de \textbf{directe} et les bases d'orientation opposée sont alors d'orientation \textbf{indirecte}.\<
-
-\underline{Exemple:} Dans le cas de \(\R^n\), la base canonique est la base qui, par convention, est d'orientation directe.\<
-
-On peut alors définir le \textbf{groupe spécial linéaire}, noté SL\((\R)\), des endomorphismes qui respectent l'orientation de l'espace.
+   Cette méthode permet aussi d'inverser une matrice inversible en faisant apparaître un produit matriciel dans le membre augmenté et l'identité dans le membre de gauche.
+\end{itemize}
 \chapter*{\chapterstyle{III --- Dualité}}
 \addcontentsline{toc}{section}{Dualité}
 On définit dans ce chapitre une notion fondamentale en algèbre linéaire, trés liée à celle de produit scalaire, qui est celle \textbf{d'espace dual} d'un espace vectoriel \(E\), qu'on notera \(E^*\) et qu'on définit par:
@@ -1141,56 +862,52 @@ On introduit de nouvelles notations pratique, tout d'abord on utilisera souvent 
       \delta_{n}^m = 0 \text{ sinon }
    \end{cases}
 \]
-
 \subsection*{\subsecstyle{Propriétés{:}}}
 On souhaite caractériser la forme d'une forme linéaire \(\phi\) de l'espace dual. On a directement par linéarité que:
 \[
    \forall x \in E \; ; \; \phi(x) = \phi\left(\sum_{i}x^ie_i\right) = \sum_{i}x^i\phi(e_i)  
 \]
 Donc en particulier, on a que évidemment que \(\phi\) est caractérisée par ses images des vecteurs de base, et réciproquement si une application \(\phi'\) est telle que \(\phi = \sum_{i}x_ia_i\), alors \(\phi'\) est une forme linéaire sur \(E\).
-
 \subsection*{\subsecstyle{Base duale{:}}}
-En dimension finie, on a alors le théorème fondamental suivant:
-\begin{center}
-   \textbf{L'espace vectoriel et son dual sont isomorphes.}
-\end{center}
-En effet, on a tout d'abord égalité des dimensions\footnote[2]{Car \(\dim\mathcal{L}(E, F) = \dim\mathcal{L}(E)\dim\mathcal{L}(F)\)}. Fixons une base \(\mathscr{B} = (e_1, \ldots, e_n)\) de \(E\), alors si on considère la famille de formes linéaires suivantes:
+Fixons une base \(\mathscr{B} = (e_1, \ldots, e_n)\) de \(E\), alors si on considère la famille de formes linéaires suivantes:
 \[
    \begin{aligned}
       e_i^* : E &\longrightarrow \R \\
-      \sum_{i}x^ie_i &\longmapsto x_i
+      \sum_{k \leq n}x_ke_k &\longmapsto x_i
    \end{aligned}
 \]
-Alors elle forme alors une base de \(E^*\) qu'on appelera \textbf{base duale} de \(\mathscr{B}\) et qu'on notera \(\mathscr{B}^*\).
-\begin{center}
-   \textit{C'est une famille de projections qui a chaque vecteur associe la coordonée correspondante.}
-\end{center}
-Elle vérifie en outre la relation suivante:
+Ce sont les projections sur les différentes coordonées. Alors cette famille forme une base de \(E^*\) qu'on appelera \textbf{base duale} de \(\mathscr{B}\) et qu'on notera \(\mathscr{B}^*\). Elle vérifie en outre la relation suivante:
 \[
    e_i^*(e_j) = \delta_{i}^j
 \]
-
+\subsection*{\subsecstyle{Isomorphisme{:}}}
+En particulier, si on fixe une base \( \mathscr{B} \) de \( E \), on a l'isomorphisme fondamental suivant:
+\[ 
+   \begin{aligned}
+      \phi_{\mathscr{B}} : E &\longrightarrow E^* \\
+      e_i &\longmapsto e_i^*
+   \end{aligned} 
+\]
+C'est un isomorphisme non canonique car il dépends de la base choisie.
 \subsection*{\subsecstyle{Base antéduale{:}}}
 On considère alors le problème inverse, et on se donne une base \(\mathscr{B} = (\phi_1, \ldots, \phi_n)\) du dual de \(E\), alors il existe une unique base \((e_1, \ldots, e_n)\) de \(E\) telle que:
 \[
    \forall i \in \inticc{1}{n} \; ; \; \phi_i = e_i^*   
 \] 
-Ou dit autrement il existe une base \(\mathscr{C}\) de \(E\) telle que \(\mathscr{C}^* = \mathscr{B}\).
-
+Ou dit autrement il existe une base \(\mathscr{C}\) de \(E\) telle que \(\mathscr{C}^* = \mathscr{B}\), on dira alors que cette base est \textbf{l'antéduale} de \( \mathscr{B} \).
 \subsection*{\subsecstyle{Hyperplans{:}}}
-On rapelle alors que d'aprés le cours de première année, on appelle hyperplan tout sous-espace dont le supplémentaire est une droite, on peut alors caractériser les hyperplans en termes de formes linéaires par la proposition suivante:
+On rapelle alors qu'un hyperplan est par définition un sous-espace dont le supplémentaire est une droite, on peut alors caractériser les hyperplans en termes de formes linéaires par la proposition suivante:
 \begin{center}
    \textbf{Les hyperplans sont exactements les noyaux de formes linéaires.}
 \end{center}
-
-\subsection*{\subsecstyle{Vecteurs covariants et contravariants{:}}}
-On deux bases \( \mathscr{C}, \mathscr{B}\) de \(E\) et un vecteur \(u\) de coordonées respectives \(U, U'\), on a la propriété de changement de base suivante pour des notations évidentes:
+\subsection*{\subsecstyle{Vecteurs contravariants{:}}}
+Soit deux bases \( \mathscr{C}, \mathscr{B}\) de \(E\) et un vecteur \(u\) de coordonées respectives \(U, U'\), on a la propriété de changement de base suivante:
 \[
-   U' = P^{-1}U
+   U' = \text{Pass}(\mathscr{C}, \mathscr{B})U
 \]
-On voit alors ici que les coordonées aprés le changement de base dépendent de \textbf{l'inverse de la matrice de passage}. On dira dans ce cas qu'un vecteur est \textbf{contravariant par rapport aux bases de \(E\)}.\<
-
-Maintenant on considère un vecteur \(u \in E^*\), alors on peut calculer les bases duales \(\mathscr{C}^*, \mathscr{B}^*\) et utiliser la même formule pour montrer que pour des notations évidentes on a:
+On voit alors ici que les coordonées aprés le changement de base dépendent de \textbf{l'inverse de la matrice de passage}. On dira dans ce cas qu'un vecteur est \textbf{contravariant}\footnote[1]{Par rapport aux bases de l'espace de référence \( E \)}.
+\subsection*{\subsecstyle{Vecteurs covariants{:}}}
+Maintenant soit deux bases \( \mathscr{C}^*, \mathscr{B}^*\) de \(E^*\) et un covecteur \(u\) de coordonées respectives \(U, U'\), on peut utiliser la même formule pour montrer qu'on a:
 \[
    U' = \text{Pass}(\mathscr{B}^*, \mathscr{C}^*)U
 \]
@@ -1211,6 +928,145 @@ On voit alors ici que les coordonées aprés le changement de base (en ligne) d�
 \begin{center}
    \textbf{La notion de vecteurs contravariants et covariants est centrale en algèbre multilinéaire, elle permet la définition d'objets généraux appelés tenseurs qui généralisent ce concept.}
 \end{center}
+\chapter*{\chapterstyle{III --- Déterminant}} % Fini 99%
+\addcontentsline{toc}{section}{Déterminant}
+
+Soit \(A = (a_{i,j})\) une matrice carrée de taille \(n\), nous cherchons à définir une application \(\phi: \mathcal{M}_n(\K) \longrightarrow \R\) telle que:
+\[
+   A \in \text{GL}_n(\K) \Longleftrightarrow \phi(A) \neq 0
+\]
+\subsection*{\subsecstyle{Définition{:}}}
+\addcontentsline{toc}{subsection}{Définition}
+On définit l'application suivante appelée \textbf{déterminant}, qu'on note \(|A|\) ou \( \text{det}( \cdot) \) et qu'on définit par récurrence:
+\begin{itemize}
+   \item Si \(n = 1\) alors \(|(a)| = a \) 
+   \item Sinon \(|A| := a_{1, 1}|A_{1, 1}| - a_{1, 2}|A_{1, 2}| + \ldots + (-1)^{n+1}a_{1, n}|A_{1, n}|\)
+\end{itemize}
+Où la notation \(A_{1, 1}\) signifie la matrice \(A\) à laquelle on a retiré la première ligne et la première colonne. \<
+
+Cette opération s'appelle aussi \textbf{développement selon la première ligne} du déterminant, elle se comprends visuellement par:
+\[
+   |A| = \begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = 
+   a \begin{vmatrix} \square & \square & \square \\ \square & e & f \\ \square & h & i \end{vmatrix} - 
+   b \begin{vmatrix} \square & \square & \square \\ d & \square & f \\ g & \square & i \end{vmatrix} + 
+   c \begin{vmatrix} \square & \square & \square \\ d & e & \square \\ g & h & \square \end{vmatrix}   
+\]
+On régresse ainsi vers des déterminants de plus petite taille, et aprés plusieurs étapes, vers un réel.
+\subsection*{\subsecstyle{Propriétés{:}}}
+\addcontentsline{toc}{subsection}{Propriétés}
+On peut montrer que cette application est \textbf{une forme multilinéaire alternée} en les colonnes de la matrice, en particulier, on a les propriétés suivantes:
+\begin{itemize}
+   \item Ajouter à une colonne une combinaison linéaire \textbf{des autres colonnes} ne change pas le déterminant.
+   \item Echanger deux colonnes d'une matrice change le signe du determinant.
+   \item Si deux colonnes sont égales ou qu'une des colonnes est nulle, le déterminant est nul.
+\end{itemize}
+\subsection*{\subsecstyle{Forme analytique{:}}}
+\addcontentsline{toc}{subsection}{Forme analytique}
+Le déterminant étant une application définie sur \( E^n \), on peut calculer son expression par rapport à une base \( (e_i)_{ i \leq n} \), en effet on a:
+\[ 
+   \text{det}(a_1, \ldots, a_n) = \text{det}\left( \sum_{i_1} a_{i_1, 1}e_{i_1}, \ldots, \sum_{i_n} a_{i_n, 1}e_{i_n} \right) = \sum_{i_1, \ldots, i_n \leq n}  a_{i_1, 1} \ldots a_{i_n, n} \times \text{det}(e_{i_1}, \ldots, e_{i_n})
+\]
+
+Mais beaucoup de ces termes sont nuls, en particulier les termes non nuls sont exactement les permutations des colonnes de la matrice, et donc on peut simplifier l'expression en:
+\[ 
+   \text{det}(a_1, \ldots, a_n) = \sum_{\sigma \in \mathfrak{S}_n} a_{ \sigma(1), 1} \ldots a_{\sigma(n) , n}\times \text{det}(e_{\sigma(1)}, \ldots, e_{\sigma(n)})
+\]
+Puis finalement, on remarque que le déterminant du membre de droite peut être remis dans le bon ordre modulo la signature de la permutation considérée et on obtient l'expression finale:
+\[ 
+   \text{det}(a_1, \ldots, a_n) = \sum_{\sigma \in \mathfrak{S}_n} \epsilon(\sigma) a_{ \sigma(1), 1} \ldots a_{\sigma(n) , n}
+\]
+Cette forme nous permet alors de montrer que le déterminant de la transposée est égale au déterminant de \( A \), et donc par la suite qu'on peut dévelloper un déterminant selon n'importe quelle ligne ou colonne et obtenir le même résultat au signe près.
+\subsection*{\subsecstyle{Propriété de morphisme{:}}}
+Muni de cette forme explicite, on peut alors montrer que le déterminant est un \textbf{multiplicatif}, ie on a que:
+\[ 
+   \forall A, B \in \mathscr{M}_n(\K) \; ; \; \text{det}(AB) = \text{det}(A)\text{det}(B) 
+\]
+En particulier si \( A \) est inversible, on montre alors que \( \text{det}(A^{-1}) = (\text{det}(A))^{-1} \) et donc que \( \text{det}(A) \) n'est pas nul\footnote[1]{La réciproque, importante, de ce résultat sera montrée dans la section sur la comatrice et permettra de conclura que le déterminant répond bien à la question introductive de ce chapitre.}. De plus on montre de la même manière que le déterminant est un \textbf{invariant de similitude}.
+\subsection*{\subsecstyle{Déterminant d'une famille{:}}}
+Si on considère une famille \(\Fam = (e_1 , \ldots, e_n)\) de vecteurs de coordonées \((C_1, \ldots, C_n)\) dans une certaine base \(\mathscr{B}\), alors on peut définir le déterminant \textbf{d'une famille de vecteurs} dans cette base par:
+\[
+   \text{det}_{\mathscr{B}}(\Fam) = \text{det}_{\mathscr{B}}(C_1, \ldots, C_n)
+\]
+Soit deux bases \(\mathscr{B, B'}\), on pourrait alors considèrer \textbf{l'effet d'un changement de base} sur un tel déterminant et on a alors:
+\[ 
+   \text{Mat}_{\mathscr{B}'}(\Fam) = \text{Pass}(\mathscr{B}', \mathscr{B})\text{Mat}_{\mathscr{B}}(\Fam)
+\]
+Et donc le determinant dans la nouvelle base est égal à celui dans l'ancienne modulo le déterminant de la matrice de changement de coordonées.
+\subsection*{\subsecstyle{Orientation d'une base{:}}}
+On peut alors définir \textbf{l'orientation d'un espace vectoriel}, en effet, on dira que deux bases \(\mathscr{B}, \mathscr{B'}\) ont même orientation si et seulement si:
+\[
+   \text{det}(\text{Pass}(\mathscr{B}, \mathscr{B'})) > 0
+\]
+Si on fixe alors une base orientée canoniquement, on qualifie son orientation (et celles de toutes les bases de meme orientation) de \textbf{directe} et les bases d'orientation opposée sont alors d'orientation \textbf{indirecte}.Par exemple dans le cas de \(\R^n\), la base canonique est la base qui, par convention, est d'orientation directe.
+\subsection*{\subsecstyle{Cofacteurs{:}}}
+\addcontentsline{toc}{subsection}{Cofacteurs}
+
+Reprenons en simplifant la définition donnée plus haut du développement selon la i-ème ligne:
+\[
+   |A| := a_{i, 1}|A_{i, 1}| - a_{i, 2}|A_{1, 2}| + \ldots + (-1)^{n+i}a_{i, n}|A_{i, n}| = \sum_{j=1}^{n}a_{i, j}(-1)^{i+j}|A_{i, j}|
+\]
+On appelle alors \textbf{cofacteur} de l'élément \(a_{i, j}\) le scalaire:
+\[ 
+   \text{cof}(a_{i, j}) := (-1)^{j+i}|A_{i, j}|
+\]
+Ce sont simplement les déterminants mineurs que l'on calcule à chaque itération \textbf{en tenant compte du signe qui précède le coefficient}. En pratique pour trouver le signe du cofacteur, on ne calcule pas \((-1)^{i + j}\), mais on le détermine par la règle de l'échiquier qu'on peut se représenter comme suit:
+\[
+   \begin{vmatrix} + & - & + & - & \ldots \\ - & + & - & + &\ldots \\ + & - & + & - &\ldots \\ \vdots & \vdots & \vdots & \vdots \\\end{vmatrix}
+\]
+
+\underline{Exemple:} Pour \(\begin{pmatrix}
+   1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9
+\end{pmatrix}\), le cofacteur du coefficient en position \((1, 2)\) est 
+\(- \begin{vmatrix} 4 & 6 \\ 7 & 9\end{vmatrix} \)
+\pagebreak
+\subsection*{\subsecstyle{Comatrice{:}}}
+\addcontentsline{toc}{subsection}{Comatrice}
+
+On peut alors définir \textbf{la comatrice} d'une matrice \(A\) donnée, c'est en fait simplement \textbf{la matrice des cofacteurs} de \(A\), ie le terme en position \((i, j)\) de la comatrice est exactement le cofacteur de l'élement en position \((i, j)\). \<
+
+L'intérêt principal de la comatrice est de calculer l'inverse de matrices inversibles, en effet, on peut montrer l'identité:
+\[
+   A \times \text{com}(A)^{\top} = \text{det}(A)I_n   
+\]
+Et en particulier si le déterminant est non-nul, alors \( A \) est \textbf{inversible} et on a une formule explicite pour l'inverse de \( A \) donnée par:
+\[ 
+   A^{-1} = \frac{1}{\text{det}(A)}\text{com}(A)^{\top}  
+\]
+Cette formule est néanmoins particulièrement inexploitable pour \(n > 3\) du fait de la quantité de calcul à réaliser.
+\subsection*{\subsecstyle{Conclusion du problème introductif{:}}}
+\begin{itemize}
+   \item Dans la section sur la propriété de morphisme on a montré que si \( A \) est inversible, alors nécéssairement son déterminant est non-nul. 
+   \item Dans la section sur la comatrice, on a montré que réciproquement si le déterminant de la matrice est non-nul, alors elle est inversible.
+\end{itemize}
+On a donc bien montré que l'application déterminant ainsi définie répond bien au problème posé en début de chapitre et caractérise bien l'inversibilité d'une matrice. En outre c'est un morphisme de groupe: 
+\[ 
+   \text{det}( \cdot) : GL_n( \K) \longrightarrow \K^*
+\]
+Et en outre il ne dépends pas de la représentation matricielle choisie vu que c'est un invariant de similitude. C'est donc une quantité intrinséque des endomorphismes.
+\subsection*{\subsecstyle{Volume orienté{:}}}
+\addcontentsline{toc}{subsection}{Volume orienté}
+
+Le déterminant admet un interprétation géométrique intéressante liée au concept d'aire, de volumes, et d'hypervolumes de manière générale. \<
+
+Considérons le cas simple d'une base \(\mathscr{B} = (e_1, e_2)\) de vecteurs de \(\R^2\), alors le déterminant de cette base correspond \textbf{à l'aire algébrique\footnote[1]{C'est une aire ``signée'', ie l'aire géométrique est donc la valeur absolue de cette aire algébrique.} du parallélogramme formé par les deux vecteurs}, ie:
+\begin{center}
+   \begin{tikzpicture}[xscale=1.6, yscale=1.4]
+      \draw[black!15] (-0.5,0) -- (4,0);
+      \draw[black!15] (0, -0.5) -- (0,2);
+
+      \draw[color=black!0, fill=BrightBlue1!25] (0,0) -- (0.6, 1.5) -- (3.1, 1.9) -- (2.5, 0.4);
+
+      \draw node[color=DarkBlue1, rotate=8] at (1.55, 0.95) {$|\text{det}(e_1, e_2)|$};
+
+      \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (0.6, 1.5) node[left] {$e_1$};
+      \draw[-latex, color=DarkBlue1, thick] (0, 0) -- (2.5, 0.4) node[below right] {$e_2$};
+
+      \draw[color=DarkBlue1, dashed] (0.6, 1.5) -- (3.1, 1.9)-- (2.5, 0.4);
+
+
+   \end{tikzpicture}
+\end{center}
+Plus généralement, le déterminant d'une famille de \(n\) vecteurs est \textbf{l'hypervolume algébrique} du parallélotope formé par ces \(n\) vecteurs.
 
 \chapter*{\chapterstyle{III --- Introduction à la réduction}}
 \addcontentsline{toc}{section}{Introduction à la réduction}
