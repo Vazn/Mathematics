@@ -1,0 +1,155 @@
+\chapter{Variétés}
+   Dans toute la suite, on considère un espace topologique séparé \( M \).
+   \section{Cartes locales}
+      On apelle \textbf{carte locale} de \( M \) un couple \( (U, \phi) \) tel que:
+      \begin{itemize}
+         \item \( U \) soit un \textbf{ouvert} de \( M \).
+         \item \( \phi \) soit un \textbf{homéomorphisme} de \( U \longrightarrow \phi(U) \subseteq \R^n \) pour un \( n \) convenable.
+      \end{itemize}
+      On dira alors que l'application \( \phi^{-1} \) paramétrise \( U \), et que les \textbf{coordonées locales} des points de \( U \) sont leurs images par \( \phi \).
+   \section{Compatibilité des cartes}
+      On considère deux cartes \( (U_i, \phi_i), (U_j, \phi_j) \) deux cartes locales qui s'intersectent, alors on dit que ces deux cartes sont \textbf{compatibles} si et seulement si l'application de changement de carte suivante est un \textbf{homéomorphisme}:
+      \[ 
+         \phi_{ij} = \phi_j \circ \phi_i^{-1} : \phi_i(U_i \cap U_j) \longrightarrow \phi_j(U_i \cap U_j)
+      \]
+      L'application \( \phi_{ij} \) est apellée application de changement de cartes, on peut la représenter comme ci-dessous:
+      \begin{figure}[ht!]
+         \centering
+            \begin{tikzpicture}[scale=1,]
+               \path[->] (0.8, 0) edge [bend right] node[left, xshift=-2mm] {$\phi_i$} (-1, -2.9);
+               \draw[white,fill=white] (0.06,-0.57) circle (.15cm);
+
+               \path[->] (4.2, 0) edge [bend left] node[right, xshift=2mm] {$\phi_j$} (6.2, -2.8);
+               \draw[white, fill=white] (4.54,-0.12) circle (.15cm);
+           
+               % Manifold
+               \draw[smooth cycle, tension=0.4, fill=white, pattern color=white, pattern=north west lines, opacity=0.7] plot coordinates{(2,2) (-0.5,0) (3,-2) (5,1)} node at (3,2.3) {$M$};
+           
+               % Help lines
+               %\draw[help lines] (-3,-6) grid (8,6);
+           
+               % Subsets
+               \draw[smooth cycle, pattern color=BrightRed1, pattern=north east lines] 
+                   plot coordinates {(1,0) (1.5, 1.2) (2.5,1.3) (2.6, 0.4)} 
+                   node [label={[label distance=-0.3cm, xshift=-2cm, fill=white]:$U_i$}] {};
+               \draw[smooth cycle, pattern color=BrightBlue1, pattern=north west lines] 
+                   plot coordinates {(4, 0) (3.7, 0.8) (3.0, 1.2) (2.5, 1.2) (2.2, 0.8) (2.3, 0.5) (2.6, 0.3) (3.5, 0.0)} 
+                   node [label={[label distance=-0.8cm, xshift=.75cm, yshift=1cm, fill=white]:$U_j$}] {};
+           
+               % First Axis
+               \draw[thick, ->, >=stealth] (-2.5,-5) -- (-0.25, -5);
+               \draw[thick, ->, >=stealth] (-2.5,-5) -- (-2.5, -2.5);
+           
+               % Arrow from i to j
+               \draw[->] (0, -3.85) -- node[midway, above]{$\phi_j \circ \phi_i^{-1}$} (4.5, -3.85);
+           
+               % Second Axis
+               \draw[thick, ->, >=stealth] (5.25, -5) -- (7.5, -5);
+               \draw[thick, ->, >=stealth] (5.25, -5) -- (5.25, -2.5);
+           
+               % Sets in R^m
+               \draw[white, pattern color=BrightRed1, pattern=north east lines] (-0.67, -3.06) -- +(180:0.8) arc (180:270:0.8);
+               \fill[even odd rule, white] [smooth cycle] plot coordinates{(-2, -4.5) (-2, -3.2) (-0.8, -3.2) (-0.8, -4.5)} (-0.67, -3.06) -- +(180:0.8) arc (180:270:0.8);
+               \draw[smooth cycle] plot coordinates{(-2, -4.5) (-2, -3.2) (-0.8, -3.2) (-0.8, -4.5)};
+               \draw (-1.45, -3.06) arc (180:270:0.8);
+           
+               \draw[white, pattern color=BrightBlue1, pattern=north west lines] (5.7, -3.06) -- +(-90:0.8) arc (-90:0:0.8);
+               \fill[even odd rule, white] [smooth cycle] plot coordinates{(7, -4.5) (7, -3.2) (5.8, -3.2) (5.8, -4.5)} (5.7, -3.06) -- +(-90:0.8) arc (-90:0:0.8);
+               \draw[smooth cycle] plot coordinates{(7, -4.5) (7, -3.2) (5.8, -3.2) (5.8, -4.5)};
+               \draw (5.69, -3.85) arc (-90:0:0.8);    
+            \end{tikzpicture}
+            \caption{Exemple de deux cartes}
+      \end{figure} 
+   \section{Atlas et variétés}
+      On apelle alors \textbf{atlas} de \( M \) une famille \(\mathcal{A} = (U_i, \phi_i)_{i \in I}\) de cartes locales qui recouvrent \( M \) et qui sont compatibles. En outre on définit:
+      \begin{itemize}
+         \item Si \( \phi_{ij} \) est un homéomorphisme, on dit que l'atlas est topologique et que \( M \) est une \textbf{variété topologique}.
+         \item Si \( \phi_{ij} \) est différentiable, on dit que l'atlas est différentiel et que \( M \) est une \textbf{variété différentielle}.
+         \item Si \( \phi_{ij} \) est de classe \( \mathcal{C}^k \), on dit que l'atlas est de classe \( \mathcal{C}^k \) et que \( M \) est une variété de classe \( \mathcal{C}^k \).
+      \end{itemize}
+      Dans le cas particulier \( k = \infty \), on dira usuellement que l'atlas et la variété sont \textbf{lisses}.     
+   \section{Topologie d'une variété}
+   De manière générale, on définit les propriétés topologiques d'une variété par ses propriétés en tant qu'espace topologique, donc naturellement:
+      \begin{itemize}
+         \item On dira alors que \( M \) est \textbf{compacte} si l'espace topologique sous-jaçent l'est.
+         \item On dira alors que \( M \) est \textbf{connexe} si l'espace topologique sous-jaçent l'est.
+         \item On peut donc parler d'intérieur, d'adhérence d'une partie de \( M \), etc ...
+         \item ...
+      \end{itemize}
+\chapter{Variétés à bord}
+   On veut alors pouvoir relaxer cette définition pour prendre en compte une catégorie plus large d'espaces topologiques, en particulier si on considère le disque ouvert \( D^1 \), c'est trivialement\footnote[1]{Comme graphe d'une fonction constante définie sur un ouvert.} une variété, mais le disque fermé \( \text{adh}(D^1) \) ne l'est pas. La différence fondamentale étant qu'un ouvert qui contient un point du bord du disque fermé n'est pas homéomorphe à un ouvert de \( \R^2 \) Mais à un ouvert du demi-plan \( \R \times \R_+ \).
+
+   \section{Bord du demi-espace \( \R^n_+ \)}
+   On note \( \R^n_+ := \left\{ x \in \R^n  \; ; \; x_n \geq 0\right\} \). Cet espace sera notre prototype de partie avec un bord, en effet si on considère cet espace en tant que partie de \( \R^n \), son bord est bien défini:
+   \[ 
+      \partial \R^n_+ := \R^n_+ \backslash \text{int}(\R^n_+) = \left\{ x \in \R^n \; ; \; x_n = 0\right\}  
+   \]
+   Par exemple dans le cas de \( \R^2_+ \), on a:
+      \begin{figure}[ht!]
+         \centering
+         \begin{tikzpicture}
+            % Hachures pour x < 0
+            \fill[pattern=north east lines, pattern color=black!50] (-2,-2) rectangle (0,2);
+            
+            \draw[line width = 0.8] (-2,0) -- (2,0);
+            \draw[color=BrightRed1, line width = 1.5] (0,-2) -- (0,2) node[below right] {$\partial \mathbb{R}^2_+$};
+            \draw[color=BrightRed1, line width = 1.5] (0,-2) -- (0,2);
+        \end{tikzpicture}
+        \caption{Le demi plan \( \R^2_+ \) et son bord}
+      \end{figure}
+   \vspace{-15pt}
+   \section{Variété à bord}
+   On donne élargit alors notre définition d'une variété, qui sera notre définition générale pour la suite. On se donne une variété \( M \) muni de son atlas \( (U_i, \phi_i)_{i \in I} \) et on rajoute la contrainte suivante sur les cartes:
+   \[ 
+      \forall i \in I \; ; \; \phi_i : U_i \longmapsto V_i \text{ avec } V_i \text{ un ouvert de } \R^n_+
+   \]
+   Ceci nous permet de définir le bord d'une variété par:
+   \[ 
+      \partial M := \left\{ x \in M  \; ; \; \forall (U_i, \phi_i) \in \mathcal{A} \; ; \; x \in U_i \implies \phi_i(x) \in \partial\R^n_+\right\}  
+   \]
+   Alors on peut montrer que c'est bien une généralisation du concept de variété, en effet si une variété définie de la sorte n'a pas de bords, ie si \( \partial M = \emptyset\), alors on peut construire un atlas au sens du chapitre 2.\<
+
+   En particulier, on peut remarquer que \( \R^n_+ \) lui-même est bien une variété à bord ce qui est bien cohérent ...
+\chapter{Exemples de variétés}
+   Dans ce chapitre, on présente quelques exemples simples de variétés différentielles, leurs atlas et quelques unes de leurs propriétés.
+   \section{Le cercle \( S^1 \)}
+   \section{La sphere \( S^2 \)}
+   \section{Plan projectif \( \R P^2 \) ?}
+\chapter{Espaces tangents}
+On aimerait alors pouvoir généraliser la notion \textbf{d'espace tangent} à une courbe, surface ... lisse de \( \R^n \) à des variétés abstraites comme définies dans les deux premiers chapitres. Pour ce faire, il est fondamental de comprendre que les variétés ainsi définies ne sont \textbf{pas} des objets de \( \R^k \) et donc on doit définir cette notion purement intrinséquement, via l'atlas notamment.
+
+\section{Courbe sur une variété}
+On définit la notion de \textbf{courbe paramétrée} sur une variété \( M \) par la donnée d'une application \( \gamma : I \longmapsto M \) par exemple si on considère la sphère unité \(\mathbb{S}^2 \backslash N\) paramétrée par l'inverse de la projection stéréographique qu'on notera \( S(u, v) \), alors l'application suivante est une courbe sur la sphère:
+\[ 
+   \gamma : t \in \ioo{0}{1} \longmapsto S(2t^3, t^2)
+\]
+\section{Vecteur tangent}
+On se donne une courbe \( \gamma :  I \rightarrow M\) dérivable et un réel \( t_0 \in I \), alors on veut définir le \textbf{vecteur tangent} à la courbe \( \gamma \) au point \( x = \gamma(t_0) \), pour ceci on utilise les cartes, en effet on dire que \( u \in \R^n \) est tangent à la courbe en \( x \) si et seulement si:
+\[ 
+   \forall (U_i, \phi_i) \in \mathcal{A} \; ; \; x \in U_i \implies u \sim (\phi_i \circ \gamma)'(t_0) 
+\]
+Le problème étant que ceci dépends de la carte car si le vecteur tangent à la courbe est unique, sa \textbf{représentation} (ou encore ses \textbf{coordonées}) dans les cartes ne l'est pas (elle varie avec \( d\phi_{ij} \)) donc ça marche pas ... Impossible de définir uniquement le vecteur tangent à une courbe ?!
+\section{Courbes tangentes}
+On fixe un point \( x \in M \) et on veut maintenant définir un espace vectoriel associé à ce point, qui correspondrait aux vecteurs tangents à la variété en ce point. Pour ceci, on définit une relation d'équivalence sur les courbes sur \( M \), en particulier, pour deux courbes paramétrées \( \gamma_1, \gamma_2 \) sur \( M \) telles que \( \gamma_1(t_0) = \gamma_2(t_0) = x \). Alors on définit:
+\[ 
+   \gamma_1 \sim \gamma_2 \iff \forall (U_i, \phi_i) \in \mathcal{A} \; ; \; x \in U_i \implies (\phi_i \circ \gamma_1)'(t_0) = (\phi_i \circ \gamma_2)'(t_0)
+\]
+On remarque tout d'abord que les hypothèse peuvent être affaiblies, en effet si la propriété est vraie pour \textbf{une carte} \( (U_i, \phi_i) \), alors par changement de carte on a que: ?\<
+
+
+On obtient donc la définition suivante:
+\[ 
+   \gamma_1 \sim \gamma_2 \iff \exists (U, \phi) \in \mathcal{A} \; ; \; x \in U \text{ et } (\phi \circ \gamma_1)'(t_0) = (\phi \circ \gamma_2)'(t_0)
+\]
+C'est bien une relation d'équivalence sur l'ensemble des courbes de \( M \) qui passent par \( x \), on appelle une classe d'équivalence pour cette relation \textbf{vecteur tangent} à la courbe en \( x \) et l'ensemble quotient est donc \textbf{l'ensemble des vecteurs tangents} ou plus formellement \textbf{l'espace tangent} au point \( x \) définit par:
+\[ 
+   TM_x := \left\{ [\gamma] \in \mathcal{F}(I, \R) \; ; \;   \right\}  
+\]
+\<
+Il faut maintenant montrer:
+\begin{itemize}
+   \item Que c'est bien un e.v (sous-ev ? Le neutre ?) de dimension \( n \).
+   \item Définir la différentielle d'une application de \( M \longmapsto N \).
+   \item Montrer que celle ci est bien définie sur les espaces tangents.
+   \item Propriétés algèbriques, règle de la chaine etc...
+\end{itemize}
