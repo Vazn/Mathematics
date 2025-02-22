@@ -1,2 +1,107 @@
-\chapter*{\chapterstyle{XIII --- Introduction}} % A REFAIRE
+\chapter*{\chapterstyle{XIII --- Introduction}}
 \addcontentsline{toc}{section}{Introduction} 
+
+Dans ce chapitre, on cherche à résoudre le problème inverse de celui du probabiliste, qui est de décrire une expérience aléatoire qui suit une loi donnée. En effet le but de la statistique inférentielle est \textbf{d'inférer} une loi de probabilité étant données des réalisations de l'expérience aléatoire. Par exemple on peut considèrer un tirage à pile ou face qui nous donnerais les réalisations suivantes:
+\[ 
+   \left\{ PPPFFPPPPPPFP \right\}  
+\]
+Comment savoir quelle loi suit cette expérience aléatoire ?
+\subsection*{\subsecstyle{Modèle statistique et échantillonage}}
+On appelle \textbf{échantillon} un vecteur de variables aléatoires \textbf{indépendantes et identiquement distribuées} (abrégé en iid. par la suite) de la forme suivante:
+\[ 
+   (X_1, \ldots, X_n) 
+\] 
+Chaque composante de ce vecteur représente alors un résultat de l'expérience aléatoire et l'objectif du statisticien est alors de réussir à approcher leur loi. Cette approche s'applique aux expériences dont les répétitions sont raisonnablement considérées comme indépendantes entre elles.\<
+
+Ces variables suivent une même loi \( \mathbb{P}_{X_{i}} \) inconnues à priori. Ici on peut alors s'apercevoir qu'on peut modéliser le problème de différentes façon:
+\begin{itemize}
+   \item Le \textbf{modèle paramétrique} suppose que \( \mathbb{P}_{X_{i}} \) dépends d'un paramètre \( \theta \in \Theta \subseteq \R^n \) et qu'alors celle ci est "bien approchée" par une loi uniquement déterminée par \( \theta \). C'est la cas usuel car beaucoup des lois classique sont determinées par un ou plusieurs paramètres.
+   \item Le \textbf{modèle non-paramétrique} suppose que \( \mathbb{P}_{X_{i}} \) dépends d'un paramètre de dimension infinie, souvent une densité. Ceci permet alors de considèrer les lois possibles comme un sous espace de fonctions.
+\end{itemize}
+Dans ce chapitre nous nous intéressons uniquement au cas paramétrique.
+\subsection*{\subsecstyle{Statistiques}}
+Dans toute la suite, on se donne un échantillon \( (X_1, \ldots, X_n) \) de variables aléatoires iid. On appele \textbf{statistique} tout fonction mesurable \( T \) des observation ie toute fonction de la forme:
+\[ 
+   T(X_1, \ldots, X_n) 
+\]
+Voici plusieurs exemples de statistiques:
+\begin{center}
+   \(X_1 \quad\quad\quad\quad \sum_{i = 1}^n X_i \quad\quad\quad\quad \cos(X_2 + 7X_3) \quad\quad\quad\quad (X_1, \text{exp}(X_7))\) 
+\end{center}
+\subsection*{\subsecstyle{Estimateurs}}
+L'objet d'étude principal du statisticien est le concept \textbf{d'estimateur}. C'est une statistique qui prends ses valeurs dans le domaine de définition de \( \theta \). Voici plusieurs exemples d'estimateurs:
+\begin{itemize}
+   \item Un estimateur naturel de l'espérance de \( X_i \) est \textbf{la moyenne de l'échantillon} définie par:
+   \[ 
+       T(X_1, \ldots, X_n) = \frac{1}{n}\sum_{i = 1}^n X_i
+   \]
+   \item Un estimateur bien moins naturel de l'espérance de \( X_i \) est donné par:
+   \[ 
+       T(X_1, \ldots, X_n) = X_1
+   \]
+\end{itemize}
+Ce dernier exemple nous fait comprendre que l'ensemble des estimateurs possible est gigantesque et beaucoup de ceux-ci ne sont pas pertinent pour des raisons assez inituives. En effet on aimerait pouvoir dire les choses suivantes:
+\begin{itemize}
+   \item Qu'un estimateur "raisonnable" d'un paramètre \( \theta \) "converge" dans un sens précis vers la vraie valeur de \( \theta \) si la taille de l'échantillon est grande.
+   \item Qu'un estimateur "raisonnable" d'un paramètre \( \theta \) "utilise bien toute les informations" données par l'échantillon.
+   \item Qu'un estimateur "raisonnable" d'un paramètre \( \theta \) ne sous-estime (ou sur-estime) pas \( \theta \), ie qu'il n'introduit pas de biais.
+\end{itemize}
+Ces concepts donneront naissance aux trois définitions suivantes qui permettront de caractériser la qualité d'un estimateur, celles de \textbf{convergence, exhaustivité et absence de biais}. Sous des bonens hypothèses de régularité, on pourra aussi introduire la notion \textbf{d'efficacité}, qui décrira à quel point l'ajout de nouvelles observations rajoute de l'information.
+\subsection*{\subsecstyle{Fonction de vraisemblance}}
+En inférence, on peut aussi voir le paramêtre à estimer \( \theta \) comme une variable aléatoire et alors estimer à quel point une valeurs donnée de \( \theta \) explique l'échantillon \( (X_1, \ldots, X_n) \), on appelle cette quantité \textbf{la vraisemblance} de \( \theta \) et elle est décrite par la statistique:
+\[ 
+   \theta \mapsto \mathcal{L}(X_1, \ldots, X_n, \theta) = \prod_{i = 1}^n f_{\theta}(X_i)
+\]
+Où ici \( f_{\theta} \) est la fonction de masse ou de densité de n'importe lequel des \( X_i \) pour la valeur \( \theta \). C'est bien une statistique, et étant donnée une réalisation de l'échantillon \( (x_1, \ldots, x_n) \), on obtient un réel qui quantifie la vraisemblance de \( \theta \) pour ces réalisations.\<
+
+Dans des nombreux cas et du fait du produit, il est pratique de plutôt calculer la \textbf{log-vraisemblance} donnée par \( \theta \mapsto \ln( \mathcal{L}(X_1, \ldots, X_n, \theta)) \). 
+\subsection*{\subsecstyle{Score et information de Fischer}}
+La fonction de vraisemblance est souvent une fonction qu'on cherche à maximiser (voir la section suivante) et son gradient est une statistique d'importance. On définit donc le \textbf{score} d'un échantillon par la statistique:
+\[ 
+   s_X(\theta) = \nabla \text{ln}(\mathcal{L}(X, \theta)) 
+\]
+Alors cette statistique s'annule quand la fonction de vraisemblance atteint un point critique. Ceci permettra de détecter les maximums (voir section suivante à nouveau) et aussi à définir \textbf{l'information de Fischer}:
+\[ 
+   I_X(\theta) = \mathbb{V}(s_X(\theta))
+\]
+Cette dernière quantifie l'information apportée par l'échantillon sur le paramêtre \(\theta\). Si \( I(\theta) \) est grand, l'échantillon peut apporter beaucoup d'informations, et inversement.
+\subsection*{\subsecstyle{Méthode du maximum de vraisemblance}}
+Un des intérêts de la vraisemblance est de pouvoir trouver un estimateur du paramêtre \( \theta \). En effet étant donnée son interprétation, on peut cherche à \textbf{maximiser la vraisemblance}, et alors obtenir un estimateur raisonnable de \( \theta \). En particulier, on définit alors:
+
+\[ 
+   \hat{\theta} := \sup \left\{ \mathcal{L}(X_1, \ldots, X_n, \theta) \; ; \; \theta \in \Theta  \right\}
+\]
+Pour faire ceci, une méthode classique consiste à calculer les points d'annulation du score, ie les points d'annulation du gradient puis vérifier que chercher un extremum.\<
+
+\uline{Exemple:}
+\chapter*{\chapterstyle{XIII --- Qualité d'un estimateur}} % A REFAIRE
+Dans ce chapitre, on définit différentes notions liées à la \textbf{qualité} d'un estimateur \( T \) d'un paramêtre \( \theta \). Ces notions nous permettrons alors de trouver des estimateurs pertinents.
+
+\subsection*{\subsecstyle{Estimateur sans biais}}
+Une des qualités principales d'un estimateur qu'on souhaiterais définir est l'absence de biais, et on dira alors que \( \hat{ \theta} \) est \textbf{sans-biais}:
+\[ 
+   \mathbb{E}(\hat{\theta}_n) - \theta = 0
+\]
+On dira aussi que l'estimateur est \textbf{asymptotiquement sans biais} ssi:
+\[ 
+   \mathbb{E}(\hat{\theta}_n) - \theta \underset{n \longrightarrow \infty}{ \longrightarrow} 0
+\]
+\subsection*{\subsecstyle{Estimateur convergent}}
+La qualité principale qu'on recherche d'un estimateur \( \hat{\theta}_n =  T(X_1, \ldots, X_n) \) est qu'il \textbf{converge en probabilité} vers \( \theta \), ie si:
+\[ 
+   \forall \epsilon > 0 \; ; \; \lim_{n \longrightarrow \infty} \mathbb{P}(|\hat{\theta}_n - \theta| > \epsilon) = 0 
+\]
+On peut alors montrer via l'inégalité de Bienaymé-Tchebychev qu'une condition suffisante plus pratique pour montrer la convergence est que:
+\begin{itemize}
+   \item L'estimateur sois \textbf{asymptotiquement sans biais}.
+   \item La variance de l'estimateur tende vers 0.
+\end{itemize}  
+\subsection*{\subsecstyle{Estimateur exhaustif}}
+L'exhaustivité d'une statistique quantifie le fait à quel point la statistique contient l'ensemble de l'information sur le(s) paramètre(s) de la loi de probabilité. Elle est définie par:
+\subsection*{\subsecstyle{Estimateur efficace}}
+L'efficacité d'un estimateur quantifie le bénéfice du rajout d'observation, ie plus un estimateur est efficace, plus l'échantillon d'observations nécessaire pour atteindre un objectif de précision sera petit. L'efficacité d'un estimateur est donné par la formule suivante:
+\[ 
+   e(\hat{ \theta}) = \frac{1}{I_{\hat{\theta}}(\theta) \mathbb{V}(\hat{\theta})} 
+\]
+Où ici \( I \) est l'information de Fischer associée.
+\chapter*{\chapterstyle{XIII --- Intervalles de confiance}} % A REFAIRE

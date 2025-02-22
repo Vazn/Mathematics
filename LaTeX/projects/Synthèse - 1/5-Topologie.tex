@@ -115,7 +115,6 @@ Et on peut caractériser cette propriété par le fait que tout ouvert non vide 
 Dans de nombreux cas, on exige de la topologie la condition spécifique de \textbf{séparer les points}, ie on souhaite que pour tout points distincts \(x, y\), il existe deux ouverts \textbf{disjoints} qui contiennent respectivement \(x, y\).\<
 
 On apelle \textbf{espace séparé} ou encore \textbf{espace de Hausdorff} un espace topologique qui vérifie cette propriété. La plupart des espaces étudiés en analyse sont des espaces séparés.
-
 \chapter*{\chapterstyle{V --- Espaces Métriques \& Normés}}
 \addcontentsline{toc}{section}{Espaces Métriques \& Normés}
 Soit \(E\) un ensemble, le cas le plus courant d'espace topologique est le cas des espaces munis d'une application apellée \textbf{distance} ou aussi métrique, c'est une application de \(E \times E\) dans \(\R^+\) qui vérifie:
@@ -165,43 +164,23 @@ Dans un espace vectoriel normé, on dira alors que deux normes sont \textbf{équ
 \[
    c\vectNorm{x}_1 \leq \vectNorm{x}_2 \leq C\vectNorm{x}_1
 \]
-Ici "équivalentes" signifique donc que si il existe une boule pour une norme, alors il existe une boule plus petite et plus grande que celle-ci pour l'autre, en particulier \textbf{les topologies engendrées par ces normes sont égales}\footnote[1]{Néanmoins la réciproque est fausse, si deux topologies métriques sont égales, alors les métriques induisant ces topologies ne sont pas nécessairement équivalentes ! La notion de distances équivalentes est plus forte que celle de topologies équivalentes (égales)}.\+
+Ici "équivalentes" signifique donc que si il existe une boule pour une norme, alors il existe une boule plus petite et plus grande que celle-ci pour l'autre, en particulier \textbf{les topologies engendrées par ces normes sont égales}\footnote[1]{Néanmoins la réciproque est fausse, si deux topologies métriques sont égales, alors les métriques induisant ces topologies ne sont pas nécessairement équivalentes ! La notion de distances équivalentes est plus forte que celle de topologies équivalentes}.\+
 La notion de norme équivalente permet de montrer la propriété trés utile suivante:
 \begin{center}
    Dans un espace vectoriel normé de dimension finie, toutes les normes sont \textbf{équivalentes}.
 \end{center}
 \subsection*{\subsecstyle{Exemples de boules en dimension finie {:}}}
-On considère ici l'espace vectoriel usuel \(\R^2\), on peut alors définir les \textbf{normes de Hölder} définies comme suit:
-\customBox{width=6cm}{
-   \({||u||}_p = (|u_1|^p + |u_2|^p)^{\frac{1}{p}}\)
-}
-En particulier pour \(p=2\), on reconnait \textbf{la norme euclidienne standard}. On peut aussi définir \textbf{la norme infini} par:
-\customBox{width=6cm}{
-   \({||u||}_\infty = \sup\{|u_1|, |u_2|\}\)
-}
+On considère ici l'espace vectoriel usuel \(\R^n\) (ou plus généralement sur les espaces \( \ell^p \)), on peut alors définir les \textbf{normes de Hölder} définies comme suit:
+\[ 
+   {||u||}_p = \left(\sum_{i \leq n} |u_i|^p \right)^{\frac{1}{p}}
+\]
 
-On peut représenter les boules pour quelques valeurs de \(p\):
-\begin{center}
-   \begin{tikzpicture}[
-      >=stealth,scale=1,line cap=round,
-      bullet/.style={circle,inner sep=0.5pt,fill}
-   ]
-      \draw[->] (-2,0) -- (2,0);
-      \draw[->] (0,-2) -- (0, 2);
-
-      \draw[DarkBlue1] (-1.75,0)--(-1.75,1.75)--(0,1.75)--(1.75,1.75)--(1.75,0)--(1.75,-1.75)--(0,-1.75)--(-1.75,-1.75)--cycle;
-      \draw[BrightBlue1] (-1.75,0)--(0,1.75)--(1.75,0)--(0,-1.75)--cycle;
-      \draw[BrightRed1](0,0) circle (1.75);
-
-      \draw[DarkBlue1] node at (2.5, 1.60) {$p = \infty$};
-      \draw[BrightRed1] node at (2.4, 1.20) {$p = 2$};
-      \draw[BrightBlue1] node at (2.4, 0.75) {$p = 1$};
-   \end{tikzpicture}   
-\end{center}
-
-\pagebreak
+En particulier pour \(p=2\), ces normes définissent \textbf{la norme euclidienne standard}. On peut aussi définir \textbf{la norme infinie} par:
+\[ 
+   {||u||}_\infty = \sup\{|u_1|, |u_2|\}
+\]
 \subsection*{\subsecstyle{Exemples de boules en dimension infinie {:}}}
-On considère ici l'espace vectoriel des \textbf{fonction continues} sur l'intervalle \(\icc{a}{b}\), on peut alors étendre les \textbf{normes de Hölder} définies comme suit:
+On considère ici l'espace vectoriel des \textbf{fonction continues} (ou comme vu plus loin sur les fonctions des espaces \( L^p \)) sur l'intervalle \(\icc{a}{b}\), on peut alors étendre les \textbf{normes de Hölder} définies comme suit:
 \[ 
    {||f||}_p = \left (\int_{a}^{b} |f(t)|^p dt \right)^{\frac{1}{p}}
 \]
@@ -320,7 +299,6 @@ Et on peut alors aussi en déduire une caractérisation séquentielle de la cont
    \lim_{n \rightarrow +\infty} f(u_n) = f(\lim_{n \rightarrow +\infty}u_n) = f(a)
 \]
 \pagebreak
-
 \subsection*{\subsecstyle{Homéomorphismes{:}}}
 On considère deux espaces topologiques \(E\) et \(F\), ainsi qu'une fonction \(f : E \longrightarrow F\), alors on dit que \(f\) est \textbf{un homéomorphisme} si et seulement si elle est \textbf{bijective, continue et à réciproque continue}, on dira alors que \(E\) et \(F\) sont \textbf{homéomorphes}.\<
 
@@ -331,7 +309,6 @@ Les homéomorphismes sont les isomorphismes pour la structure d'espace topologiq
    \item La compacité.
 \end{itemize}
 Ces concepts fondamentaux en topologie sont définis dans les chapitres suivants.
-
 \subsection*{\subsecstyle{Continuité uniforme {:}}}
 \addcontentsline{toc}{subsection}{Continuité uniforme}
 Dans les espaces métriques, il existe une propriété de régularité \textbf{plus forte que la continuité} appelée \textbf{continuité uniforme}\footnote[1]{Il est important de noter que la continuité uniforme n'est plus une propriété locale, mais globale.} définie comme:
@@ -361,7 +338,6 @@ La \(K\)-lipschitziannité étant une propriété plus forte que la continuité 
 
 
 Par ailleurs si \(K \in \ico{0}{1}\), alors on dit que \(f\) est \textbf{contractante}, ce type de fonctions a souvent un trés bon comportement de convergence quand on le retrouve comme propriété de suites récurrentes par exemple.
-
 \chapter*{\chapterstyle{V --- Connexité}}
 \addcontentsline{toc}{section}{Connexité}
 On considère un espace topologique \((E, \mathcal{T})\), on dira alors qu'un tel espace est \textbf{connexe} si et seulement si il ne peut \textbf{pas} s'écrire comme la réunion de \textbf{deux ouverts disjoints et non-vides}. Cela reflète alors la compréhénsion naturelle qu'on a du concept de connexité, ie que l'espace est "d'un seul tenant".\<
@@ -388,7 +364,6 @@ C'est une notion strictement plus forte que la connexité, en effet on peut mont
 \begin{center}
    \(E\) connexe par arcs \(\implies\) \(E\) connexe
 \end{center}
-
 \subsection*{\subsecstyle{Propriétés{:}}}
 On peut alors montrer les propriétés suivantes:
 \begin{itemize}
@@ -404,7 +379,6 @@ On peut alors montrer les propriétés suivantes:
 Si on considère un espace topologique \(E\) et un point \(x \in E\), alors toutes l'union des parties connexes qui contiennent \(x\) est connexe et c'est la plus grande partie connexe qui contient \(x\) pour l'ordre de l'inclusion, on l'appelle alors \textbf{composante connexe} de \(x\) dans \(E\) et on la note \(C_x\).\<
 
 On peut alors partitionner l'espace en les composantes connexes de ses points, en particulier si l'espace est lui-meme connexe, il n'y a qu'une seule composante connexe. On peut de manière équivalente définir les \textbf{composantes connexes par arcs}.
-
 \subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
 Les espaces connexes ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
 \begin{center}
@@ -414,7 +388,6 @@ On peut alors commencer à distinguer l'intéret de la notion de connexité, en 
 \begin{center}
    \textbf{L'image par une fonction continue à valeurs rélles définie sur un connexe est un intervalle.}
 \end{center}
-
 \subsection*{\subsecstyle{Passage du local au global{:}}}
 Une des forces de la notion de connexité est qu'elle permet de \textbf{passer du local au global}, ie de considèrer une propriété vraie localement et de l'étendre à une propriété globale, par exemple on peut montrer la propriété suivante:
 \begin{center}
@@ -434,7 +407,6 @@ Mais \( D \) est discret donc ses connexes sont les singletons et on a que \( f(
    \exists n \in D \; ; \; \forall t \in E \; ; \; f(t) = n
 \]
 Ce qui nous a bien permi d'inverser les quantificateurs.
-
 \chapter*{\chapterstyle{V --- Compacité}}
 \addcontentsline{toc}{section}{Compacité}
 On considère un espace topologique \((E, \mathcal{T})\) et un \textbf{recouvrement ouvert} de cet espace, ie une famille quelconque \((A_i)_{i \in I}\) d'ouverts de \(E\) telle que:
@@ -451,7 +423,6 @@ On dira alors que l'espace est \textbf{compact} si il vérifie \textbf{la propri
 Dans le cas où l'espace ambiant est séparé, on a une propriété trés forte sur les compacts, en effet on peut montrer que la topologie de \( E \) sépare les compacts et les points qui n'en font pas partie et par suite que \textbf{tout compact est fermé}.\<
 
 Par la suite on s'intéressera surtout aux espaces séparés, donc on considérera que l'espace ambiant l'est toujours.
-
 \subsection*{\subsecstyle{Propriétés{:}}}
 On peut alors montrer les propriétés suivantes:
 \begin{itemize}
@@ -466,20 +437,17 @@ En considérant une suite d'un espace compact \( E \), on peut alors montrer (vi
    Tout suite d'une espace compact admet \textbf{une valeur d'adhérence}.
 \end{center}
 En particulier dans un espace métrique, les valeurs d'adhérence sont exactement les limites de sous-suites, donc tout suite dans un compact admet une \textbf{sous-suite convergente}.
-
 \subsection*{\subsecstyle{Caractérisation séquentielle{:}}}
 Dans un espace métrique, on a même la réciproque et on peut donc caractériser les parties compactes par les suites, en effet on dira que \(K \subseteq E\) est compact si et seulement si:
 \begin{center}
    \textbf{Toute suite à valeurs dans \(K\) admet une suite extraite convergente.}
 \end{center}
 Cette caractérisation permet alors parfois de démontrer plus facilement la compacité.
-
 \subsection*{\subsecstyle{Théorème de Borel-Lebesgue {:}}}
 Dans les espaces métriques, on peut alors obtenir d'autres propriétés des parties compactes, en effet on peut montrer qu'elles sont \textbf{bornées}, notamment en montrant que leur diamètre est fini. Dans \(\R^n\) et donc dans tout espace vectoriel normé, on a même l'équivalence entre fermé-borné et compact, appelé théorème de Borel-Lebesgue:
 \begin{center}
    \textbf{Une partie de \(\R^n\) est compacte si et seulement si elle est fermée est bornée.}
 \end{center}
-
 \subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
 Les espaces compacts ont beaucoup de bonnes propriétés analytiques, tout d'abord on a la propriété suivante:
 \begin{center}
@@ -494,7 +462,6 @@ Un résultat trés utile sur la compacité est le \textbf{théorème de Heine} q
 \begin{center}
    \textbf{Tout fonction continue définie sur un compact y est uniformément continue.}
 \end{center}
-
 \chapter*{\chapterstyle{V --- Complétude}}
 \addcontentsline{toc}{section}{Complétude}
 On s'intéresse dans ce chapitre à une structure plus riche que celle d'espace topologique, en effet on peut remarque que la notion d'homéomorphisme ne preserve certaines notions analytiques, comme l'équivalence entre distances, ou encore le concept que l'on définira plus loin apellé \textbf{suites de Cauchy}. On considère donc une version plus restricive d'homéomorphisme, appelée \textbf{homéomorphisme uniforme}, où l'on requiert que l'homéomorphisme soit uniformément continu.\<
@@ -516,7 +483,6 @@ On peut alors trés facilement montrer que tout suite de Cauchy est bornée, et 
    \textbf{Toute suite de Cauchy admettant une valeur d'adhérence converge.}
 \end{center}
 C'est le premier exemple d'invariant uniforme, en effet si on considère \( f : E \longmapsto F \) un homéomorphisme uniforme et \( (x_n) \) une suite de Cauchy de \( E \), alors \( (f(x_n)) \) est une suite de Cauchy.
-
 \subsection*{\subsecstyle{Complétude{:}}}
 On définit alors la structure principale de ce chapitre:
 \begin{center}
@@ -525,7 +491,6 @@ On définit alors la structure principale de ce chapitre:
 En particulier, si \( E \) est un espace vectoriel normé, on dira que c'est un \textbf{espace de Banach}. On peut alors montrer que \( \R \) est complet, en effet si on considère une suite de Cauchy de \( \R \), elle est bornée et donc incluse dans un compact, et d'aprés Bolzano-Weierstrass, elle admet une valeur d'adhérence donc elle converge.\<
 
 On peut alors en déduire un lien entre compacité et complétude, gràce à Bolzano-Weierstrass, on montre directement que \textbf{tout espace compact est complet.}
-
 \subsection*{\subsecstyle{Complétude et fermeture {:}}}
 On peut alors montrer un lien fort entre la complétude et la fermeture, en effet gràce à la caractérisation séquentielle, on peut montrer qu'une partie complète est nécessairement \textbf{fermée}. La réciproque est partiellement vraie, en effet on a:
 \begin{center}
@@ -538,7 +503,6 @@ On peut alors montrer une caractérisation puissante de espaces de Banach, en ef
 \begin{center}
    \textbf{Un espace vectoriel normé est complet si et seulement si toute série absolument convergente est convergente.}
 \end{center}
-
 \subsection*{\subsecstyle{Théorème du point fixe de Banach-Picard{:}}}
 Une application puissante de la complétude qui est utilisée dans beaucoup d'applications numériques est le théorème du point fixe de Banach-Picard, on considère une fonction \( f : E \longmapsto E \) où \( E \) est \textbf{complet} et telle que \( f \) soit \textbf{contractante}, ie:
 \[ 

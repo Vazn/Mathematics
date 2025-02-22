@@ -1,37 +1,47 @@
 \chapter*{\chapterstyle{IX --- Introduction}}
 \addcontentsline{toc}{section}{Introduction} 
-Soit \(E\) un espace vectoriel normé, \(U\) un \textbf{ouvert} de \(R\) et \(F\) une fonction \textbf{continue} sur \(U \times E^{n+1}\), alors on appelle \textbf{équation différentielle ordinaire} d'ordre \(n\) tout équation de la forme:
+Soit \(n, p\) des entiers et \(F\) une fonction \textbf{continue} sur \(\Omega \subseteq \R \times (\R^{p})^n\), alors on appelle \textbf{équation différentielle ordinaire} d'ordre \(n\) tout équation de la forme:
 \[
-   \forall x \in U \; ; \; F(x, y(x), \ldots, y^{(n)}(x)) = 0
+   F(t, y(t), \ldots, y^{(n)}(t)) = 0
 \]
-Où \(y\) est une fonction de \(\R\) dans \(E\) à déterminer. Par exemple, on pose:
+Où \(y\) est une fonction d'un intervalle \( I \) dans \(\R^p\) à déterminer. Par exemple, on pose:
 \[
    \begin{cases}
-      F_1(x, y, y') = y'(x) - y(x)\\
-      F_2(x, y, y') = cos(x)y'(x) - y^2(x)\\
-      F_3(x, y, y') = 3 + arctan(x) + y'(x) - e^xy(x)\\ 
-      F_4(x, y, y', y'') = x^2 + 3y(x)y'(x) + cos(y''(x))
+      F_1(t, y, y') = y'(t) - y(t)\\
+      F_2(t, y, y') = cos(t)y'(t) - y^2(t)\\
+      F_3(t, y, y') = 3 + arctan(t) + y'(t) - e^xy(t)\\ 
+      F_4(t, y, y', y'') = t^2 + 3y(t)y'(t) + cos(y''(t))
    \end{cases} \implies
    \begin{cases}
-      E_1 : y'(x) - y(x) = 0 \\
-      E_2 : cos(x)y'(x) - y^2(x) = 0 \\
-      E_3 : 3 + arctan(x) + y'(x) - e^xy(x) = 0 \\
-      E_4 : x^2 + 3y(x)y'(x) + cos(y''(x)) = 0
+      E_1 : y'(t) - y(t) = 0 \\
+      E_2 : cos(t)y'(t) - y^2(t) = 0 \\
+      E_3 : 3 + arctan(t) + y'(t) - e^xy(t) = 0 \\
+      E_4 : t^2 + 3y(t)y'(t) + cos(y''(t)) = 0
    \end{cases}
 \]
 On peut aussi remarque que cette définition permet à \(y\) d'être à valeurs vectorielles et dans ce cas on obtient alors un \textbf{système différentiel}, par exemple pour \(E = \R^2\) et \(F_1\), on obtient:
 \[
    E : \begin{cases}
-      y'_1(x) = y_1(x)\\
-      y'_2(x) = y_2(x)
+      y'_1(t) = y_1(t)\\
+      y'_2(t) = y_2(t)
    \end{cases}
 \]
 \subsection*{\subsecstyle{Forme résolue{:}}}
-Dans des cas trés précieux, on peut isoler la plus grand dérivée, et on dira alors que l'équation différentielle est \textbf{sous forme résolue} si et seulement si il existe une fonction \(F\) continue sur \(U \times E^{n+1}\) telle que:
+Dans des cas trés précieux, on peut isoler la plus grand dérivée, et on dira alors que l'équation différentielle est \textbf{sous forme résolue} si et seulement si il existe une fonction \(F\) continue sur \(\R \times (\R^p)^{n-1}\) telle que:
 \[
    y^{(n)}(x) = F(x, y(x), \ldots, y^{(n-1)}(x))
 \]
-On ne s'intéressera souvent qu'à ce cas particulier pour simplifier la compréhension.
+On ne s'intéressera dans ce cours qu'à ce cas particulier pour simplifier la compréhension, sauf cas simples où l'on peut se ramener à une forme réduite. Par la suite on appelera \textbf{équation associée à \( F \)} d'ordre \( n \) une équation de la forme ci-dessus.
+\subsection*{\subsecstyle{Solution d'une équation différentielle{:}}}
+On dira que \((I, y)\) est une \textbf{solution} de l'équation différentiellé d'ordre \( n \) associée à \( F \) si et seulement si \( I \) est un intervalle, \(y \in \mathcal{C}^n(I, \R^p)\) et que:
+\[ 
+   \forall t \in I \; ; \; (t, y(t), \ldots, y^{(n-1)}(t)) \in \Omega \; \text{ et } \; y^{(n)}(t) = F(t, y(t), \ldots, y^{(n-1)}(t))
+\]
+On remarque alors que le domaine de définition d'une même fonction solution peut changer et on peut alors définir une notion de solution \textbf{maximale et globale} par:
+\begin{itemize}
+   \item Une solution est \textbf{maximale} si et seulement si elle ne peut pas être prolongée en une autre solution définie sur une intervalle.
+   \item Une solution est \textbf{globale} si et seulement \( \Omega \) est de la forme \(I \times (\R^p)^{n-1}\) et que \( y \) est une solution définie sur \( I \).
+\end{itemize}
 \subsection*{\subsecstyle{Réduction de l'ordre{:}}}
 On se donne une équations différentielle résolue d'ordre \(n\), alors on pose:
 \[
@@ -55,23 +65,46 @@ Alors on a directement que:
 \begin{center}
    \textit{Fondamentalement, comprendre les EDO à l'ordre 1 c'est comprendre toutes les EDO.}
 \end{center}
+\subsection*{\subsecstyle{Problème de Cauchy{:}}}
+Etant donné une équation d'ordre 1, et \( (t_0, y_0) \in \Omega \), on appele \textbf{problème de Cauchy} associée à l'équation \( (E) \) le problème suivant:
+\[ 
+   P: \begin{cases}
+      y' = f(t, y)\\
+      y(t_0) = y_0
+   \end{cases} 
+\]
+Une question fondamentale de la théorie des equations differentielles ordinaires consiste à savoir sous quelles hypothèses sur \(  f \)tout problème de Cauchy associé à une équation admet une solution et les propriété de celles ci.
+\subsection*{\subsecstyle{Raccordement de solutions{:}}}
+Si on obtient deux solutions \( ( \ioo{a}{b}, y_1), (\ioo{b}{c}, y_2) \), alors on peut s'intéresser à raccorder ces deux solutions en une unique solution sur \( \ioo{a}{c} \). C'est en fait possible sous la condition suivante:
+\[ 
+   \lim_{x \rightarrow b} y_1(b) = \lim_{x \rightarrow b} y_2(b)
+\]
+\subsection*{\subsecstyle{Expression intégrale des solutions{:}}}
+Considérons l'équation du premier ordre \((E)\) et le problème de Cauchy associé au couple \( (t_0, y_0) \), alors \( y \) est solution du problème de Cauchy ssi:
+\[ 
+   \forall t \in I \; ; \; y(t) = y_0 + \int_{t_0}^t f(s, y(s))ds 
+\]
+En réinterprétant cette équation et en définissant l'opérateur suivant:
+\[ 
+   \Phi : y \in \mathcal{C}^0(I, \R^p) \longmapsto (t \mapsto y_0 + \int_{t_0}^t f(s, y(s))ds) \in \mathcal{C}^0(I, \R^p)
+\]
+Alors une solution est exactement un \textbf{point fixe} de cet opérateur.
 
-\subsection*{\subsecstyle{Cas particuliers{:}}}
-On peut alors classifier 2 cas particuliers intéressants:
-\begin{itemize}
-   \item Les équations différentielles \textbf{linéaires}, ce qui signifie simplement que \(F\) est linéaire.
-   \item Les équations différentielles \textbf{autonomes}, ce qui signifie simplement que \(F\) ne dépends pas de \(x\).
-   \item Les équations différentielles \textbf{à paramètres}, ce qui signifie simplement que \(F\) dépends pas d'un paramètre \(\lambda\), on étudie alors une famille d'équations.
-\end{itemize}
+\chapter*{\chapterstyle{IX --- Théorie linéaire}}
+\addcontentsline{toc}{section}{Théorie linéaire} 
+On appele donc une équation différentielle linéaire une équation différentielle de la forme suivante:
+\[ 
+   y'(t) = A(t)y(t) + B(t) 
+\]
+Où \(A \in \mathcal{C}^0(I, \mathcal{M}_p( \R))\) et \(B \in \mathcal{C}^0(I, \mathcal{M}_{p, 1}( \R))\). Ce type d'équation trés spécifique permet d'utiliser la théorie de l'algèbre linéaire pour en trouver des solutions et/ou étudier leurs solutions.
+\subsection*{\subsecstyle{Cauchy-Lipschitz linéaire{:}}}
+\subsection*{\subsecstyle{Exponentielle matricielle{:}}}
+\subsection*{\subsecstyle{Exponentielle matricielle{:}}}
+\subsection*{\subsecstyle{Exponentielle matricielle{:}}}
 
-\chapter*{\chapterstyle{IX --- Résolution}}
-\addcontentsline{toc}{section}{Résolution} 
 
-\chapter*{\chapterstyle{IX --- Equations linéaires}}
-\addcontentsline{toc}{section}{Equations linéaires} 
-
-\chapter*{\chapterstyle{IX --- Equations non-linéaires}}
-\addcontentsline{toc}{section}{Equations non-linéaires} 
+\chapter*{\chapterstyle{IX --- Théorie non-linéaires}}
+\addcontentsline{toc}{section}{Théorie non-linéaires} 
 
 \chapter*{\chapterstyle{IX --- Introduction à l'étude qualitative}}
 \addcontentsline{toc}{section}{Introduction à l'étude qualitative} 

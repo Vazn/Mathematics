@@ -1,4 +1,4 @@
-\chapter*{\chapterstyle{IV --- Espaces Quadratiques}}
+\chapter*{\chapterstyle{V --- Espaces Quadratiques}}
 \addcontentsline{toc}{section}{Espaces Quadratiques}
 On se donne un espace vectoriel \(E\), on dira que c'est un \textbf{espace quadratique} si et seulement si on peut définir une \textbf{forme bilinéaire symétrique} sur cet espace.\<
 
@@ -174,7 +174,7 @@ On peut alors montrer \textbf{la loi d'inertie de Sylvester} et si on a la forme
    q(x) = \alpha_1l_1(x)^2 + \ldots + \alpha_nl_n(x)^2
 \]
 Alors on cette loi nous donne que \(p\) est exactement le nombre de coefficients \(\alpha_i\) strictement positifs, et \(q\) le nombre de coefficients négatifs.
-\chapter*{\chapterstyle{IV --- Espaces Préhilbertiens Réels}}
+\chapter*{\chapterstyle{V --- Espaces Préhilbertiens Réels}}
 \addcontentsline{toc}{section}{Espaces Préhilbertiens Réels}
 On appelle \textbf{espace préhilbertien réel} un \(\R\)-espace vectoriel muni d'une forme \textbf{bilinéaire symétrique définie et positive}, c'est à dire une forme qui vérifie:
 
@@ -275,7 +275,7 @@ On vérifie alors que cette application est bien définie est on a alors la prop
    \textbf{L'application transposée est représentée dans les bases correspondates par la matrice transposée.}
 \end{center}
 Ce qui donne finalement une interprétation fonctionnelle de la matrice transposée. A FINIR, LA TRANSPOSEE EST EXACTEMENT LADJOINT, LIEN AVEC TOUT LE RESTE A FAIRE, UNIQUE APPLICATION QUI VERFIE <f(x), y> = <x, tf(y)>, DUALITE.
-\chapter*{\chapterstyle{IV --- Espaces Euclidiens}}
+\chapter*{\chapterstyle{V --- Espaces Euclidiens}}
 \addcontentsline{toc}{section}{Espaces Euclidiens}
 On appelle \textbf{espace euclidien} tout espace préhilbertien réel \textbf{de dimension finie}. Dans toute la suite on prendra \((e_1, \ldots, e_n)\) une base de \(E\).
 
@@ -363,7 +363,8 @@ Soit \((e_1, \ldots, e_n)\) une base de \(E\), on cherche alors à élaborer un 
 \begin{center}
    \textit{Moralement, on "redresse" chaque vecteur de la base initiale en lui retirant son défaut d'orthogonalité représenté par sa projection sur le sous-espace précédent.}
 \end{center}
-\chapter*{\chapterstyle{IV --- Espaces Hemitiens}}
+
+\chapter*{\chapterstyle{V --- Espaces Hemitiens}}
 \addcontentsline{toc}{section}{Espaces Hemitiens}
 On peut généraliser la notion de produit scalaire au cas des espaces vectoriels sur \(\C\), en particulier, on dira demandera alors que la forme \(f : H\times H \rightarrow \C\) soit:
 \customBox{width=11cm}{
@@ -430,7 +431,146 @@ On se donne un élément \(\phi\) du dual d'un espace hermitien alors, dans ce c
    \exists w \in H \; , \; \forall x \in H \; ; \; \phi(x) = \dotproduct{x}{w}   
 \]
 A nouveau, cela signifie que toute forme linéaire est \textbf{exactement représentée} par le produit scalaire pour un certain vecteur \(w\), en particulier, on a donc une bijection entre \(H\) et son dual.\<
-\chapter*{\chapterstyle{IV --- Endomorphismes Remarquables}}
+\chapter*{\chapterstyle{V --- Opérateurs bornés}}
+\addcontentsline{toc}{section}{Opérateurs bornés}
+On s'intéresse dans ce chapitre à l'espace des applications linéaires \(\mathcal{L}(E, F)\) où \( E, F \) sont normés. C'est un exemple fondamental en analyse fonctionnelle et en mathématiques en général. On s'intéressera dans ce chapitre à la \textbf{continuité} de ces applications et à poser quelques bases de topologie sur cet espace.
+\subsection*{\subsecstyle{Continuité des applications linéaires {:}}}
+Soit \(f : E \rightarrow F\) un opérateur linéaire, alors on a le théorème fondamental suivant qui énonce que \(f\) est continue sur son domaine de définition si et seulement si elle vérifie une des conditions équivalentes suivantes:
+\begin{itemize}
+   \item Elle est continue en 0.
+   \item Elle est bornée sur la boule unité.
+   \item Elle est uniformément continue.
+   \item Elle est lipschitzienne.
+\end{itemize}
+On dira alors que l'opérateur est \textbf{borné}. Muni des ces équivalences, on peut démontrer la propriétés fondamentale suivante:
+\begin{center}
+   \textbf{En dimension finie, tout les opérateurs linéaires sont bornés.}
+\end{center}
+\subsection*{\subsecstyle{Normes d'opérateur {:}}}
+On peut munir \( \mathcal{L}(E) \) lui même d'une norme appelée \textbf{norme d'opérateur} d'un opérateur \(f\) par la quantité suivante:
+\[
+   \opNorm{f} = \inf \left\{ K \; ; \; \forall x \in E \; \vectNorm{f(x)} \leq K \right\} = \sup_{\vectNorm{x} = 1} \vectNorm{f(x)}
+\]
+En outre si \( E \) est de dimension finie, par l'isomorphisme usuel entre l'espace des application linéaires et celui des matrices, on définit de même la \textbf{norme d'opérateur d'une matrice} par:
+\[
+   \opNorm{M} = \inf \left\{ K \; ; \; \forall x \in \mathcal{M}_n(\K) \; \vectNorm{MX} \leq K \right\} = \sup_{\vectNorm{X} = 1} \vectNorm{MX}
+\]
+On peut alors caractériser la continuité d'un opérateur par le fait que sa norme d'opérateur soit \textbf{finie}.
+\subsection*{\subsecstyle{Normes matricielles {:}}}
+On appelle \textbf{norme matricielle} toute norme sur un espace de matrice qui est aussi une \textbf{norme d'algèbre}, ie telle que:
+\[
+   \vectNorm{AB} \leq \vectNorm{A}\vectNorm{B}
+\]
+Par exemple, la norme de Frobenius est une norme matricielle. On a alors la propriété\footnote[1]{Pour montrer ceci il faut remarquer que pour tout \(x \in E\), on a \(\vectNorm{f(x)} = \opNorm{f}\vectNorm{x}\).} suivante:
+\begin{center}
+   \textbf{Toute norme d'opérateur est une norme matricielle.}
+\end{center}
+\subsection*{\subsecstyle{Normes usuelles {:}}}
+On peut alors chercher à savoir à quoi correspondent les normes d'opérateurs induites par les normes usuelles, on peut montrer qu'elles vérifient:
+\begin{itemize}
+   \item La norme 1: \(\opNorm{A}_{1} = \max_{1 \leq j \leq n} \sum_{1 \leq i \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des colonnes.}
+   \item La norme infinie: \(\opNorm{A}_{\infty} = \max_{1 \leq i \leq n} \sum_{1 \leq j \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des lignes.}
+   \item La norme 2: \(\opNorm{A}_{2} = \sqrt{\rho({}^tAA)}\) où \(\rho(M)\) est le \textbf{rayon spectral} de \(M\).
+\end{itemize}
+
+On peut alors chercher à savoir à quoi correspondent les normes d'opérateurs induites par les normes usuelles, on peut montrer qu'elles vérifient:
+\begin{itemize}
+   \item La norme 1: \(\opNorm{A}_{1} = \max_{1 \leq j \leq n} \sum_{1 \leq i \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des colonnes.}
+   \item La norme infinie: \(\opNorm{A}_{\infty} = \max_{1 \leq i \leq n} \sum_{1 \leq j \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des lignes.}
+   \item La norme 2: \(\opNorm{A}_{2} = \sqrt{\rho({}^tAA)}\) où \(\rho(M)\) est le \textbf{rayon spectral} de \(M\).
+\end{itemize}
+
+\chapter*{\chapterstyle{V --- Espaces de Hilbert}}
+\addcontentsline{toc}{section}{Espaces de Hilbert}
+Dans ce chapitre avancé, en utilisant les notions définies dans le chapitre de topologie et de théorie de la mesure, on cherche à généraliser la notion \textbf{d'orthogonalité}, de \textbf{de base orthogonale} dans le cadre d'un espace vectoriel de dimension quelconque. Pour ceci, on se donne un espace préhilbertien \( H \) à priori complexe muni de sa forme sesquilinéaire.
+\begin{center}
+   \textbf{On dire que \( H \) est un espace de Hilbert si il est complet pour la norme induite par le produit scalaire.}
+\end{center}
+En particulier, les espaces de Hilbert sont donc des espace de Banach. Dans tout la suite, on fixera la semi-linéarité du produit scalaire à gauche.
+\subsection*{\subsecstyle{Exemples {:}}}
+Les deux exemples canoniques d'espaces de Hilbert sont  les espaces \( \ell^2(\N) \) et \( L^2(\R) \) munis des produits scalaires respectifs suivants:
+\[ 
+   \dotproduct{u}{v} = \sum_{i \in \N} \overline{u_i}v_i \quad\quad\quad \dotproduct{f}{g} = \int_\R \overline{f}g d\mu
+\]
+En outre, en utilisant le résultat donnant que tout espace vectoriel de dimension finie est complet, on peut montrer que \( \R^n, \C^n \) et plus généralement que tout les espaces vectoriels de dimension finie sont des espaces de Hilbert pour leurs produits scalaires respectifs.
+\subsection*{\subsecstyle{Orthogonalité {:}}}
+On généralise alors naturellement la définition de l'orthogonalité à ce cas par:
+\[ 
+   \forall x, y \in H \; ; \; x \perp y \iff \dotproduct{x}{y} = 0
+\]
+Cette définition nous permet alors naturellement d'étendre la notion \textbf{famille orthogonale et orthonormale} ainsi que celle \textbf{d'orthogonal d'une partie}. On montre alors la propriétés fondamentale suivante pour l'orthogonal:
+\begin{center}
+   \textbf{C'est un sous-espace vectoriel fermé.}
+\end{center}
+En effet, en dimension infinie, les sous-espaces ne sont pas nécessairement fermés (contre-exemple ?). On peut montrer néanmoins que l'orthogonal l'est car il s'exprime comme l'intersection des fermés suivants:
+\[ 
+   A^\perp = \bigcap \text{Ker}(\dotproduct{x}{\cdot}) 
+\]
+\subsection*{\subsecstyle{Projection orthogonale {:}}}
+On généralise la notion de projection orthogonale du cadre euclidien, et on appelera \textbf{projeté} du point \( x \in H \) sur une partie \( C \) nécéssairement \textbf{convexe et fermée} comme le point \(p_C(x) \in C\) si il existe défini par:
+\[ 
+   \vectNorm{p_C(x) - x} = \min\left\{ \vectNorm{c - x} \; ; \; c \in C \right\} 
+\]
+C'est le point de \( C \) à distance minimale avec \( x \). On peut alors montrer qu'un tel projeté \textbf{existe toujours} dans un espace de Hilbert. En outre ce point est caractérisé par le \textbf{lemme de l'angle obtus}, ie c'est l'unique point de \( C \) qui vérifie:
+\[ 
+   \forall x \in H \; \forall c \in C \; ; \; \text{Re}\left(\dotproduct{x - p_C(x)}{c - p_C(x)}\right) \leq 0 
+\]
+Ceci signifie alors que, conformément à notre intuition, l'angle entre le segment qui relie \(x\) et \( p_C(x) \) et \( x \) et n'importe quel point de \( C \) est \textbf{toujours obtus}.
+\pagebreak
+\subsection*{\subsecstyle{Décomposition orthogonale {:}}}
+Soit \( F \) un sous-espace vectoriel \textbf{fermé} de \( H \), alors on peut montrer que dans ce cadre, on a la décomposition en somme directe suivante:
+\[ 
+   H = E \oplus E^\perp 
+\]
+Alors dans ce cas, on peut définir la projection sur chaque composante, elle est \textbf{linéaire et idempotente}, et dans ce cas elle correpond à la projection sur une partie définie plus haut. On aussi la propriété suivante du double ortogonal:
+\[ 
+   A^{\perp\perp} = \text{adh}(\text{Vect}(A))
+\]
+\subsection*{\subsecstyle{Familles totales {:}}}
+On se donne une famille \( (e_i)_{i \in I} \), alors on dira que cette famille est \textbf{totale} si et seulement si on a:
+\[ 
+   \text{adh}\left(\text{Vect}(e_i)\right) = H  
+\]
+Ce concept nous permettra par la suite de définir la notion de \textbf{base orthogonale}. Plus généralement on dira qu'une partie \( A \) est totale si et seulement si \( \text{adh}\left(\text{Vect}(A)\right) = H \). On peut alors caractériser les parties totales par:
+\begin{center}
+   \( A \) est \textbf{totale} \( \iff A^\perp = \left\{ 0 \right\} \)
+\end{center}
+\uline{Exemple:} La famille \( (x^n)_{n \in \N} \) est \textbf{totale} dans l'ensemble des fonctions continues sur un segment, c'est le \textbf{théorème de Weierstrass}.
+
+\subsection*{\subsecstyle{Théorème de Pythagore {:}}}
+On se donne une famille dénombrable orthogonale \( (e_i)_{i \in D} \), alors on peut montrer la propriété suivante:
+\[ 
+   (e_i)_{i \in D} \text{ est \textbf{sommable}} \iff (\vectNorm{e_i})_{i \in D} \in \ell^2(D)
+\]
+Et dans ce cas on a le \textbf{théorème de Pythagore}:
+\[ 
+   \vectNorm{ \sum e_i }^2 = \sum \vectNorm{e_i}^2
+\]
+\subsection*{\subsecstyle{Bases Hilbertiennes {:}}}
+On peut alors définir le concept de \textbf{base Hilbertienne} d'un espace de Hilbert \( H \), et on dira qu'une famille \( (e_i)_{i \in D} \) dénombrable est une \textbf{base de Hilbert} de \( H \) si et seulement si:
+\begin{itemize}
+   \item C'est une \textbf{famille orthogonale}.
+   \item C'est une \textbf{famille totale}.
+\end{itemize}
+Un espace de Hilbert qui admet un partie dénombrable dense admet une base de Hilbert et on dira alors qu'il est \textbf{séparable}. On peut alors montrer les propriétés suivantes:
+\begin{itemize}
+   \item \textbf{Décomposition:} Si \( x \in H \), alors on peut montrer que la famille \( (\dotproduct{e_i}{x}e_i)_{i \in D} \) est sommable et que:
+   \[ 
+      x = \sum_{i \in D}\dotproduct{e_i}{x}e_i
+   \]
+   \item \textbf{Egalité de Parseval:} Par Pythagore on a alors:
+   \[ 
+      \vectNorm{x}^2 = \sum_{i \in D} \left|\dotproduct{e_i}{x}\right|^2
+   \]
+   \item \textbf{Isomorphisme des coordonées:} Il existe alors un isomorphisme qui à chaque vecteur lui associe ses coordonées:
+   \[ 
+      \begin{aligned}
+         \phi : H &\longrightarrow \ell^2(D) \\
+         x &\longmapsto \left(\dotproduct{e_i}{x}\right)_{i \in D}
+      \end{aligned}
+   \]
+\end{itemize}
+\chapter*{\chapterstyle{V --- Endomorphismes Remarquables}}
 \addcontentsline{toc}{section}{Endomorphismes Euclidiens}
 Aprés avoir défini les espaces euclidiens et hermitiens, on cherche maintenant à s'intéresser aux endomorphismes qui on des propriétés intéressantes en regard du produit scalaire, on sera alors amené à les définir et les étudier. Dans tout la suite, le corps de base peut être \(\K = \R\) ou \(\K = \C\) et l'espace est muni d'un produit scalaire correspondant.
 \subsection*{\subsecstyle{Isométries{:}}}
@@ -536,7 +676,8 @@ Cette définition est alors équivalente à la propriété suivante:
    \forall x \in E\backslash\{0_E\} \; \dotproduct{x}{f(x)} > 0 
 \]
 Les matrices symetriques définies positives définissent alors des nouveaux produits scalaires.
-\chapter*{\chapterstyle{IV --- Isométries en petite dimension}}
+
+\chapter*{\chapterstyle{V --- Isométries en petite dimension}}
 \addcontentsline{toc}{section}{Isométries en petite dimension}
 On va maintenant étudier le cas particulier des isométries dans le cas de la petite dimension, c'est à dire dans le cas où \(E\) est de dimension \(2\) ou \(3\), on introduira un outil pratique dans ce contexte qui est le \textbf{produit vectoriel} et on classifiera les isométries dans cet espace.
 

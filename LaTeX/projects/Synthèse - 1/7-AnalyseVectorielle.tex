@@ -2,7 +2,6 @@
 \addcontentsline{toc}{section}{Fonctions Vectorielles}
 
 Dans ce chapitre nous étudions les propriétés analytiques et de régularité d'un ensemble plus général de fonctions, les \textbf{fonctions d'une variable à valeurs vectorielles} et plus précisément, on se concentrera principalement sur le cas des fonctions de \(\R\) dans \(\R^n\) muni de sa structure euclidienne si nécessaire.
-
 \subsection*{\subsecstyle{Définition{:}}}
 Soit \(A \subset \R\) une partie de \(\R\) et \((f_1, f_2, \ldots, f_n)  \in \mathcal{F}(A, \R)\) des fonctions réelles, alors on appelle \textbf{fonction vectorielle} les fonctions de la forme:
 \[
@@ -79,7 +78,6 @@ On peut par la suite définir plus d'outils analytiques sur cet ensemble de fonc
    \item On appelle \textbf{point critique} un point \(f(t)\) tel que \(f'(t) = 0\)
 \end{itemize}
 On appelle \textbf{point multiple} un point \(P\) de \(E\) tel qu'il existe \((t_0, \ldots, t_k)\) deux à deux distincts tels que \(\forall i \in \inticc{1}{k} \; f(t_i) = P\) et on appelle alors \textbf{multiplicité} l'entier \(k\).
-
 \chapter*{\chapterstyle{VII --- Fonctions à plusieurs variables}}
 \addcontentsline{toc}{section}{Fonctions à plusieurs variables}
 
@@ -100,7 +98,6 @@ On peut alors définir quelques notions de vocabulaire:
    \item Si la fonction est à valeur scalaire, on dira que c'est \textbf{un champ de scalaires}.
    \item Si la fonction est à valeur vectorielles, on dira que c'est \textbf{un champ de vecteurs}.
 \end{itemize}
-
 \subsection*{\subsecstyle{Représentations{:}}}
 On cherche alors à représenter de telles fonctions, on sait que dans le cas élémentaire des fonctions à une seule variable, on peut représenter le \textbf{graphe} d'une fonction \(f\) donné par:
 \[
@@ -130,12 +127,10 @@ Si on considère par exemple une fonction de \(\R^2\) dans \(\R\), c'est alors u
 \pagebreak
 
 Dans le cas général néanmoins, il est plus difficile de représenter ce type de fonctions mais on peut par exemple s'inspirer des fonctions \(\C \rightarrow \C\) et utiliser la \textbf{couleur} comme 4-ème dimension de l'image. On peut aussi de manière heuristique représenter simplement le domaine de départ et/ou d'arrivée pour étudier le comportement de la fonction.
-
 \subsection*{\subsecstyle{Cas des champs de vecteurs{:}}}
 De manière générale, le caractère multidimensionnel de l'espace d'arrivée importe peu dans tout le chapitre qui va suivre, les notions analytiques étant définies à partir d'une limite, elles passeront aux composantes comme les notions évoquées au chapitre précédent.\<
 
 Dans toute la suite on considèrera alors souvent le cas épuré de champs de scalaires et il est attendu d'adapter les résultat élémentaires aux cas à valeurs vectorielles.
-
 \subsection*{\subsecstyle{Lignes de niveaux{:}}}
 On considère une fonction \(f : \R^2 \rightarrow \R\), alors on appelle \textbf{ligne de niveau} associé à la valeur \(\lambda\) l'ensemble suivant:
 \[
@@ -163,7 +158,6 @@ C'est une courbe plane qui représente l'ensemble des points du plan ou la fonct
    \captionsetup{labelformat=empty}
    \caption{Lignes de niveau de la fonction \(f : (x, y) \mapsto \exp(-x^2 - y^2)\)}
 \end{figure}
-
 \subsection*{\subsecstyle{Changements de variables{:}}}
 L'étude des fonctions à plusieurs variables va nous amener à étudier les \textbf{changements de variables} que nous allons définir:
 \begin{center}
@@ -176,7 +170,6 @@ En particulier, on verra que le passage en coordonées polaires défini comme su
       (r, \theta) &\longmapsto (r\cos(\theta), r\sin(\theta))
    \end{aligned}
 \]
-
 \chapter*{\chapterstyle{VII --- Limite \& Continuité}}
 \addcontentsline{toc}{section}{Limite \& Continuité} 
 Dans ce chapitre et comme vu dans le chapitre de Topologie, nous étudirons le concept de limite dans le cas d'une fonction à plusieurs variables, plus précisément, sauf exceptions, dans le cas d'un champ de scalaire. Dans les cas ou les généralités sont triviales, on utilisera sans vergogne l'exemple canonique d'une fonction \(f : \R^2 \rightarrow \R\). On rapelle qu'une limite d'une telle fonction se caractérise métriquement par la propriété:
@@ -235,56 +228,6 @@ En tant que conséquence directe de la définition topologique, on dira alors qu
    \lim_{(x, y) \rightarrow A} f(x, y) = f(A)   
 \]
 Et toute les propriétés opératoires usuelles sont alors aisément démontrées. En particulier, on peut montrer que toutes les fractions rationnelles sont continues sur leur ensemble de définition, et donc tout les polynomes.
-
-\chapter*{\chapterstyle{VII --- Cas des applications linéaires}}
-\addcontentsline{toc}{section}{Cas des applications linéaires}
-On s'intéresse dans ce chapitre à l'espace des applications linéaires \(\mathcal{L}(E, F)\) sur des espaces de dimensions finies. \<
-
-C'est un exemple fondamental en analyse numérique et en mathématiques en général car les problèmes non-linéaires étant complexes, on se ramène souvent à la linéarisation d'un problème pour sa résolution. On cherche donc à affiner notre compréhension de la continuité de ces applications et poser quelques bases de topologie sur cet espace.
-\subsection*{\subsecstyle{Continuité des applications linéaires {:}}}
-Soit \(f : E \rightarrow F\) une application linéaire, alors on a le théorème fondamental suivant qui énonce que \(f\) est continue sur son domaine de définition si et seulement si elle vérifie une des conditions équivalentes suivantes:
-\begin{itemize}
-   \item Elle est continue en 0.
-   \item Elle est bornée sur la boule unité.
-   \item Elle est uniformément continue.
-   \item Elle est lipschitzienne.
-\end{itemize}
-En particulier, muni des ces équivalences, on peut démontrer la propriétés fondamentale suivante:
-\begin{center}
-   \textbf{En dimension finie, toutes les applications linéaires sont continues.}
-\end{center}
-
-\subsection*{\subsecstyle{Normes d'opérateur {:}}}
-On se donne une application linéaire et on munit \(E, F\) de deux normes \(\vectNorm{\cdot}_p, \vectNorm{\cdot}_q\), alors on apelle \textbf{norme d'opérateur} de \(f\) la quantité suivante:
-\[
-   \opNorm{f}_{p, q} = \sup_{\vectNorm{v}_p = 1} \vectNorm{f(v)}_q
-\]
-En outre par l'isomorphisme usuel entre l'espace des application linéaires et celui des matrices, on définit de même la \textbf{norme d'opérateur d'une matrice} par:
-\[
-   \opNorm{M}_{p, q} = \sup_{\vectNorm{V}_p = 1} \vectNorm{MV}_q
-\]
-On notera alors \(\opNorm{f}_{p}\) si la norme est la même au départ et à l'arrivée. On peut alors caractériser la continuité d'un opérateur par le fait que sa norme d'opérateur soit \textbf{finie}.
-
-
-\subsection*{\subsecstyle{Normes matricielles {:}}}
-On appelle \textbf{norme matricielle} toute norme sur un espace de matrice qui est aussi une \textbf{norme d'algèbre}, ie telle que:
-\[
-   \vectNorm{AB} \leq \vectNorm{A}\vectNorm{B}
-\]
-Par exemple, la norme de Frobenius est une norme matricielle. On a alors la propriété\footnote[1]{Pour montrer ceci il faut remarquer que pour tout \(x \in E\), on a \(\vectNorm{f(x)} = \opNorm{f}\vectNorm{x}\).} suivante:
-\begin{center}
-   \textbf{Toute norme d'opérateur est une norme matricielle.}
-\end{center}
-
-\subsection*{\subsecstyle{Normes usuelles {:}}}
-On peut alors chercher à savoir à quoi correspondent les normes d'opérateurs induites par les normes usuelles, on peut montrer qu'elles vérifient:
-\begin{itemize}
-   \item La norme 1: \(\opNorm{A}_{1} = \max_{1 \leq j \leq n} \sum_{1 \leq i \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des colonnes.}
-   \item La norme infinie: \(\opNorm{A}_{\infty} = \max_{1 \leq i \leq n} \sum_{1 \leq j \leq n} |a_{i,j}|\), c'est le \textbf{maximum de la somme des lignes.}
-   \item La norme 2: \(\opNorm{A}_{2} = \sqrt{\rho({}^tAA)}\) où \(\rho(M)\) est le \textbf{rayon spectral} de \(M\).
-\end{itemize}
-
-
 
 \chapter*{\chapterstyle{VII --- Dérivées Directionnelles}}
 \addcontentsline{toc}{section}{Dérivées Directionnelles} 
@@ -420,7 +363,6 @@ On aimerait alors que cette définition remplisse les memes roles que ceux rempl
 \begin{center}
    \textit{En résumé, le concept de dérivée directionnelle manque de puissance.}
 \end{center}
-
 \chapter*{\chapterstyle{VII --- Différentielle}}
 \addcontentsline{toc}{section}{Différentielle} 
 Nous allons à présent définir le vrai concept équivalent à la dérivée usuelle, qui nous permettra de généraliser l'idée d'application tangente en un point, d'étudier les extrema d'une fonction et d'étudier toutes les propriétés différentielles d'une fonction à plusieurs variables de manière générale.\<
@@ -669,48 +611,6 @@ Ainsi que la règle de l'inversion d'une fonction inversible:
 \[
    (Jf_{a})^{-1} = J(f^{-1})_{f(a)}
 \]
-
-\chapter*{\chapterstyle{VII --- Etude d'Extrema}}
-\addcontentsline{toc}{section}{Etude d'Extrema} 
-Un des intérets de la notion de dérivée d'une fonction réelle est de pouvoir étudier les extrema de cette fonction, en particulier, un point capital du cours d'analyse réelle est la définition de \textbf{point critique}, qui sont les points d'annulation de la dérivée, et on a alors la condition nécessaire suivante:
-\begin{center}
-   \textbf{Si un point est un extremum, alors c'est un point critique.}
-\end{center}
-On veut généraliser cette notion au cas des \textbf{champs scalaires}
-
-\subsection*{\subsecstyle{Points critiques{:}}}
-De manière parfaitement analogue, si \(f\) est une fonction définie sur un ouvert \(\mathcal{U}\), alors on définit les \textbf{points critiques}, qui sont les points d'annulation de la différentielle, et on a alors la condition nécessaire suivante:
-\begin{center}
-   \textbf{Si un point est un extremum, alors c'est un point critique.}
-\end{center}
-Informellement, on comprends naturellement que les seuls extrema possibles seront ceux où l'application linéaire tangente est nulle, donc un plan horizontal. Néanmoins la condition n'est que nécessaire, en effet on considère la fonction:
-\[
-   f : (x, y) \mapsto xy   
-\]
-Alors sa différentielle est nulle en \((0, 0)\), mais ce point n'est pas un extremum, il suffit d'étudier quelques restrictions pour le montrer. On a donc besoin d'outils plus puissants pour trouver ces extrema. 
-
-\subsection*{\subsecstyle{Hessienne{:}}}
-On suppose maintenant que \(f \in \mathcal{C}^2(\R^n)\), alors elle admet toutes ses dérivées partielles secondes et elle vérifie le \textbf{théorème de Schwarz}. On définit alors la \textbf{matrice Hessienne} de \(f\) par:
-\[
-   \mathcal{H}f_{(x, y)} = \left(\partialD{{}^2f}{x_ix_j}\right)_{i ,j \in \inticc{1}{n}} = 
-   \begin{pmatrix}
-      \partialD{{}^2f}{x_1^2} & \ldots & \partialD{{}^2f}{x_1x_{n}}\\ 
-      \vdots & \ddots & \vdots\\ 
-      \partialD{{}^2f}{x_{1}x_n} & \ldots & \partialD{{}^2f}{x_{n}^2}\\   
-   \end{pmatrix}   
-\]
-Cette matrice est \textbf{symétrique} d'aprés le théorème de Schwarz, elle définit donc une forme bilinéaire symétrique et une forme quadratique, qu'on appelera forme hessienne, qui jouera un rôle important pour la suite.
-\subsection*{\subsecstyle{Classification des points critiques{:}}}
-Dans le cas réel, pour classifier les points critiques d'une fonction, on étudiait la convexité de cette fonction, et en particulier le signe de la dérivée seconde, ceci permettait de différencier les maxima, minima et point cols (ou point d'inflexions). D'une certaine manière, on généralise cette approche au cas général en étudiant \textbf{le signe de la Hessienne} au sens du signe d'une forme quadratique, et on a les cas suivants:
-\begin{itemize}
-   \item Si la forme hessienne n'est \textbf{ni positive ni négative} en un point critique, alors le point est un \textbf{point col}.
-
-   \item Si la forme hessienne est \textbf{définie positive} en un point critique, alors la fonction est localement convexe et le point est un \textbf{minimum}.
-   \item Si la forme hessienne est \textbf{définie négative} en un point critique, alors la fonction est localement concave et le point est un \textbf{maximum}.
-   \item Sinon la méthode ne permet pas de conclure.
-\end{itemize}
-On se ramène donc à l'étude des valeurs propres de la Hessienne, et de leurs signes ou dit autrement, de la signature de la forme quadratique Hessienne.
-
 \chapter*{\chapterstyle{VII --- Théorèmes généraux}}
 \addcontentsline{toc}{section}{Théorèmes généraux} 
 Dans cette section, nous allons utiliser toutes les notions construites au chapitre précédent pour essayer de généraliser les grands théorèmes sur les fonctions réelles dérivables, en particulier les deux théorèmes suivants:
@@ -816,9 +716,91 @@ Alors d'aprés ce corollaire, on a directement, pour \(g \in \mathcal{C}^1(\R)\)
    f(x, y) = g(y)   
 \]
 
+\chapter*{\chapterstyle{VII --- Optimisation I}}
+\addcontentsline{toc}{section}{Optimisation I} 
+Un des intérets de la notion de dérivée d'une fonction réelle est de pouvoir étudier les extrema de cette fonction, en particulier, un point capital du cours d'analyse réelle est la définition de \textbf{point critique}, qui sont les points d'annulation de la dérivée, et on a alors la condition nécessaire suivante:
+\begin{center}
+   \textbf{Si un point est un extremum, alors c'est un point critique.}
+\end{center}
+On veut généraliser cette notion au cas des \textbf{champs scalaires}, pour à terme être capable de trouver les extrema de telles fonctions.
+
+\subsection*{\subsecstyle{Points critiques{:}}}
+De manière parfaitement analogue, si \(f\) est une fonction définie sur un ouvert \(\mathcal{U}\), alors on définit les \textbf{points critiques}, qui sont les points d'annulation de la différentielle, et on a alors la condition nécessaire suivante:
+\begin{center}
+   \textbf{Si un point est un extremum, alors c'est un point critique.}
+\end{center}
+Informellement, on comprends naturellement que les seuls extrema possibles seront ceux où l'application linéaire tangente est nulle, donc un plan horizontal. Néanmoins la condition n'est que nécessaire, en effet on considère la fonction:
+\[
+   f : (x, y) \mapsto xy   
+\]
+Alors sa différentielle est nulle en \((0, 0)\), mais ce point n'est pas un extremum, il suffit d'étudier quelques restrictions pour le montrer. On a donc besoin d'outils plus puissants pour trouver ces extrema. 
+\subsection*{\subsecstyle{Hessienne{:}}}
+On suppose maintenant que \(f \in \mathcal{C}^2(\R^n)\), alors elle admet toutes ses dérivées partielles secondes et elle vérifie le \textbf{théorème de Schwarz}. On définit alors la \textbf{matrice Hessienne} de \(f\) par:
+\[
+   \mathcal{H}f_{(x, y)} = \left(\partialD{{}^2f}{x_ix_j}\right)_{i ,j \in \inticc{1}{n}} = 
+   \begin{pmatrix}
+      \partialD{{}^2f}{x_1^2} & \ldots & \partialD{{}^2f}{x_1x_{n}}\\ 
+      \vdots & \ddots & \vdots\\ 
+      \partialD{{}^2f}{x_{1}x_n} & \ldots & \partialD{{}^2f}{x_{n}^2}\\   
+   \end{pmatrix}   
+\]
+Cette matrice est \textbf{symétrique} d'aprés le théorème de Schwarz, elle définit donc une forme bilinéaire symétrique et une forme quadratique, qu'on appelera forme hessienne, qui jouera un rôle important pour la suite.
+\subsection*{\subsecstyle{Classification des points critiques{:}}}
+Dans le cas réel, pour classifier les points critiques d'une fonction, on étudiait la convexité (locale) de cette fonction, et en particulier le signe de la dérivée seconde, ceci permettait de différencier les maxima, minima et point cols (ou point d'inflexions). D'une certaine manière, on généralise cette approche au cas général en étudiant \textbf{le signe de la Hessienne} au sens du signe d'une forme quadratique, et on a les cas suivants:
+\begin{itemize}
+   \item Si la forme hessienne n'est \textbf{ni positive ni négative} en un point critique, alors le point est un \textbf{point col}.
+
+   \item Si la forme hessienne est \textbf{définie positive} en un point critique, alors la fonction est localement convexe et le point est un \textbf{minimum}.
+   \item Si la forme hessienne est \textbf{définie négative} en un point critique, alors la fonction est localement concave et le point est un \textbf{maximum}.
+   \item Sinon la méthode ne permet pas de conclure.
+\end{itemize}
+On se ramène donc à l'étude des valeurs propres de la Hessienne, et de leurs signes ou dit autrement, de la signature de la forme quadratique Hessienne. Ceci s'interprète en disant que, de manière analogue au cas réel, le signe de la hessienne caractérise la \textbf{convexité locale} de la fonction.
+
+\chapter*{\chapterstyle{VII --- Optimisation II}}
+\addcontentsline{toc}{section}{Optimisation II} 
+Pour aller plus loin, on peut s'intéresser à essayer d'optimiser une fonction \( f : \R^n \longrightarrow \R \) sous la contrainte que \(x \in \left\{ x \in \R^n \; ; \; g(x) = 0 \right\}\) où \( f, g \) sont lisses et où \( g \) satisfait les conditions du théorème des fonctions implicites (ie que \( dg \) soit de rang maximal, partout pour simplifier). En d'autres termes on veut résoudre le problème d'optimisation suivant:
+\[ 
+   (P) :\begin{cases}
+      \sup f(x)\\
+      x \in C := \left\{ x \in \R^n \; ; \; g(x) = 0 \right\} 
+   \end{cases} 
+\] 
+On cherche alors une méthode permettant de résoudre un tel problème, et plus particulièrement une méthode permettant de passer de ce problème à un \textbf{problème d'optimisation sans contraintes}.
+\subsection*{\subsecstyle{Conditions nécéssaires {:}}}
+On considère un point \( x \in \R^n \) qui est solution du problème, et \( v \) un vecteur \textbf{tangent} à \( \left\{ x \in \R^n \; ; \; g(x) = 0\right\}\), alors on peut montrer que nécessairement:
+\[ 
+   df_x(v) = 0 \iff \dotproduct{\nabla f(x)}{v} = 0
+\]
+Ce qui s'interprète alors par le fait que \( \nabla f_x \) est \textbf{orthogonal} à l'espace tangent à \( \left\{ x \in \R^n \; ; \; g(x) = 0\right\} \), or celui ci (par le théorème des fonctions implicites) peut localement s'écrire comme:
+\[ 
+   \left\{ x \in \R^n \; ; \; \dotproduct{\nabla g(x)}{x} = 0\right\} =  \left\{ \nabla g(x) \right\}^\perp 
+\]
+Finalement on trouve alors que \( f \) est orthogonale à un orthogonal et donc colinéaire au \textbf{gradient de la contrainte}, ie on a:
+\[ 
+   \exists \lambda \in \R \; ; \; \nabla f(x) = \lambda\nabla g(x) 
+\]
+Plus généralement, si on a \( m \) contraintes données par des fonction \( g_i \), on a;
+\[ 
+   \exists (\lambda_i) \in \R^m \; ; \; \nabla f(x) = \sum_{i=1}^m \lambda_i \nabla g_i(x) 
+\]
+\subsection*{\subsecstyle{Lagrangien {:}}}
+On encapsule alors toutes les contraintes du problème en posant la fonction suivante appellée \textbf{lagrangien} du problème:
+\[ 
+   \mathcal{L}(x, \lambda) = f(x) + \dotproduct{\lambda}{g(x)} 
+\]
+Alors c'est une fonction lisse de ses variables et si \( x \) est solution du problème, on montre que l'on a nécessairement:
+\[ 
+   \nabla \mathcal{L}(x, \lambda) = 0
+\]
+Cette fonction nous donne alors une condition \textbf{nécessaire} que doit vérifier un extremum sous contrainte.
+\subsection*{\subsecstyle{Méthode d'optimisation {:}}}
+On peut donc construire une méthode qui permet de résoudre de tels problèmes. En effet, on peut appliquer l'algorithme suivant:
+\begin{itemize}
+   \item On cherche à montrer \textbf{l'existence} d'un extermum sous contraintes (par exemple par compacité de \( C \)).
+   \item On calcule les \textbf{points critiques du Lagrangien} qui sont alors tout les \textbf{candidats} possibles.
+\end{itemize}
+
 \chapter*{\chapterstyle{VII --- Formes différentielles}}
-
-
 \chapter*{\chapterstyle{VII --- Intégrales Curvilignes}}
 \addcontentsline{toc}{section}{Intégrales Curvilignes} 
 
@@ -881,7 +863,6 @@ On imagine alors qu'il doit être possible de généraliser ces concepts d'inté
    \item L'intégrale sur une surface d'un \textbf{champ scalaire} qui quantifierait le volume entre la courbe et le plan des paramétres.
    \item L'intégrale sur une surface d'un \textbf{champ vectoriel} qui quantifierait la tendance au champ de vecteurs à traverser la surface.
 \end{itemize}
-
 \chapter*{\chapterstyle{VII --- Intégrales Multiples}}
 \addcontentsline{toc}{section}{Intégrales Curvilignes} 
 Dans ce chapitre on cherche à généraliser la notion d'intégrale d'une fonction d'une seule variable sur un segment à la notion d'intégrale d'une fonction réelle \textbf{de plusieurs variables qu'on supposera bornée}, ici on considérera principalement \(f : \R^2 \rightarrow \R\) pour simplifier l'exposition. On a alors deux nouveaux concepts d'intégrales qui se présentent:

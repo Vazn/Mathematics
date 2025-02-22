@@ -75,6 +75,7 @@ On peut alors se rendre compte qu'une propriété manquante à \(\R\) est que ce
    \overline{R} := \R \cup {-\infty, +\infty}
 \]
 Les opérations algébriques ne s'étendent alors pas parfaitement mais les symboles "infinis" ainsi ajoutés facilitent beaucoup l'énoncé de certains théorèmes et en particulier on a alors une meilleure propriété de la borne supérieure car on a que \textbf{toute partie non-vide admet une borne supérieure et inférieure}, éventuellement infinies.
+
 \chapter*{\chapterstyle{VI --- Limites réelles}} % 95% Fini
 \addcontentsline{toc}{section}{Limites réelles}
 On sait déja étudier la convergence de fonctions et de suites depuis le chapitre sur la topologie et la définition du concept de limite, ici on étudiera plus précisément les application (et suites) dans \(\R\) ou \(\C\) et les conséquences des propriétés spécifiques de \(\R\) sur la convergence.\<
@@ -139,9 +140,7 @@ On peut alors remarquer que ces suites sont monotones et bornées, donc elles co
    \end{cases}
 \]
 On calcule donc ici la plus petite borne supérieure possible, et la plus grande borne inférieure possible, on peut alors montrer que la suite \(u_n\) converse \textbf{exactement} si ces deux limites sont égales.
-
 \subsection*{\subsecstyle{Comparaison Asymptotique {:}}}
-
 On dit qu'une fonction \(f\) est \textbf{dominée} par la fonction \(g\) \textbf{au voisinage} de \(a \in \overline{\R}\) et on note alors \(f = O(g)\) si et seulement si il existe une fonction \textbf{bornée} \(\theta\) telle qu'on ait la propriété ci-dessous dans un voisinage de \(a\).\+
 C'est une relation de \textbf{préordre} sur les fonctions, et elle est aussi \textbf{linéaire et multiplicative}.
 \[
@@ -201,6 +200,7 @@ Enfin, il est utile de connaître ces équivalents usuels, on considère le cas 
       On remarquera dans le chapitre sur les développements limités que la grande majorité de ces équivalents ne sont que le premier terme non-nul du développement limité d'une fonction.
    }
 \end{center}
+
 \chapter*{\chapterstyle{VI --- Continuité}} % 99% Fini
 \addcontentsline{toc}{section}{Continuité}
 On étudie ici les propriétés des fonctions réelles continues, dont on sait montrer la continuité depuis le chapitre de topologie, ici on s'intéteressera aux spécificités des fonctions continues réelles, notamment leurs comportement vis à vis des opérations et les différents raffinements de la notion de continuité que l'on pourrait développer.
@@ -213,36 +213,7 @@ On note \(\mathscr{C}(D, \K)\) l'ensemble des fonctions continues sur \(D\) à v
    }
 \end{center}
 De plus, l'inverse d'une fonction continue qui ne s'annule pas est aussi une fonction continue, et la composition de fonctions continues composables est aussi une fonction continue\footnote[1]{Attention pour la composition il faut bien considèrer les domaines de défintion manipulés.}.
-\subsection*{\subsecstyle{Prolongement par continuité {:}}}
-\addcontentsline{toc}{subsection}{Prolongement par continuité}
 
-Considérons une fonction \(f\) continue sur un intervalle \(I \backslash \{a\}\), telle que sa limite en \(a\) existe, alors on peut considèrer la fonction \(\widetilde{f}\) définie par:
-\[
-   \begin{aligned}
-      \widetilde{f}: I &\longrightarrow \R \; ; \; x &\longmapsto \begin{cases}
-         \widetilde{f}(a) = \lim_{a} f(x) \text{ si } x = a\\
-         \widetilde{f}(x) = f(x) \text{ sinon}
-      \end{cases}
-   \end{aligned}
-\]
-Alors par construction \(\widetilde{f}\) est bien continue sur tout \(I\) et on l'appelle \textbf{le prolongement par continuité} de \(f\) en \(a\).
-\subsection*{\subsecstyle{Théorème des valeurs intermédiaires{:}}}
-\addcontentsline{toc}{subsection}{Théorème des valeurs intermédiaires}
-Le chapitre de topologie nous a permi de montrer que l'image d'un connexe par une application continue est un connexe, or dans les réels, on a que:
-\begin{center}
-   \textbf{Les connexes de \(\R\) sont exactements les intervalles.}
-\end{center}
-On en déduit donc le théorème des valeurs intermédiaires:
-\begin{center}
-   \textbf{L'image continue d'un intervalle est un intervalle.}
-\end{center}
-\subsection*{\subsecstyle{Théorème des bornes atteintes{:}}}
-Le chapitre de topologie nous a aussi permi de montrer que l'image d'un compact par une application continue est un compact, or dans les réels, on a donc dans ce cas particulier deux conséquences:
-\begin{itemize}
-   \item L'image continue d'un compact est borné.
-   \item Les bornes sont atteintes.
-\end{itemize}
-En particulier, l'image continue d'un segment est un segment.
 \subsection*{\subsecstyle{Théorème de la bijection{:}}}
 On déduis du théorème des valeurs intermédiaires que si \(f\) est continue sur \(\ioo{a}{b}\) et \textbf{strictement monotone} alors:
 \begin{center}
