@@ -1,0 +1,46 @@
+\documentclass{report}
+\input{../Header.tex}
+\input{../Commands.tex}
+\input{../Style.tex}
+
+\begin{document}
+   \chapter*{\chapterstyle{Théorie générale}}
+      Soit \( n \in \N\) et \( f : \Omega \longrightarrow \R \) avec \( \Omega \subseteq \R \times \R^n \). On considère l'EDO d'ordre \( n \) suivante:
+      \[ 
+         (E) : y^{(n)} = f(t, y, y' \ldots, y^{n-1}) 
+      \]
+      Montrons que \( y \) est une solution de \( E \) si et seulement \( Y = (y, \ldots, y^{(n-1)})\) est solution de l'équation d'ordre 1 suivante:
+      \[ 
+         (\widetilde{E}) : Y' = F(t, Y) 
+      \]
+      Avec \(F\) définie par:
+      \[ 
+         \begin{aligned}
+            F : \Omega &\longrightarrow \R \\
+            (t, X_1, \ldots, X_n) &\longmapsto (X_2, \ldots, X_{n-1}, f(t, X_1, \ldots, X_n))
+         \end{aligned} 
+      \]
+      \begin{proof}[\unskip\nopunct]
+         \uline{Sens direct:} Si \( y \in \mathcal{C}^n(I)\) est solution de \( (E) \),  alors pour tout \( t \in I \), on a \( (t, y(t), \ldots, y^{(n-1)}(t)) \in \Omega \) et elle vérifie l'équation. Posons:
+         \[ 
+            \forall t \in I \; ; \; Y(t) = \begin{pmatrix}
+            y(t)\\
+            \vdots\\
+            y^{(n-1)}(t)
+            \end{pmatrix}
+         \]
+         Alors pour tout \( t \in I \), on a bien \( (t, Y(t)) \in \Omega \) et en dérivant on trouve bien que \( Y \) vérifie:
+         \[ 
+            Y'(t) = F(t, Y(t))
+         \] 
+         \uline{Sens réciproque:} Si \( Y = (y, \ldots, y^{(n-1)})\) est solution de \(\widetilde{E} \) pour \( y \in \mathcal{C}^n \), alors on a:
+         \[ 
+            \forall t \in I \; ; \; (t, Y(t)) \in \Omega \text{ et } Y'(t) = F(t, Y(t)) 
+         \]
+         Et donc par définition de \( F \):
+         \[ 
+            (t, y(t), \ldots, y^{(n-1)}(t)) \in \Omega \text{ et } y^{(n)}(t) = f(t, y(t), \ldots, y^{(n-1)}(t)) 
+         \]
+         En d'autres termes, \( y \) est bien solution de \( (E) \).
+      \end{proof}
+\end{document}

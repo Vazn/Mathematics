@@ -65,7 +65,6 @@
          \caption{Exemple de deux cartes}
    \end{figure} 
    En outre si \( M \) est muni d'un atlas tel que deux cartes sont systématiquement \( \mathcal{C}^k \)-compatibles, on dira que \( M \) est une \textbf{variété différentielle} (ou encore d'une structure différentielle) de classe \( \mathcal{C}^k \).
-
    \section{Notion de différentiabilité}
    Etant donné une application \( f : M \longmapsto \R \), la structure différentielle nous permet alors de généraliser la définition de différentiabilité dans \( \R^n \) à une notion de différentiabilité dans \( M \) en un point \( x \), en effet pour \( (U, \phi) \) une carte qui contient \( x \), on donne la définition suivante:
    \begin{center}
@@ -75,7 +74,7 @@
    \begin{center}
       \( f \) est \textbf{différentiable} en \( x \) si et seulement si \( \psi \circ f \circ \phi^{-1}\) est \textbf{différentiable} en \( \phi(x) \)
    \end{center}
-   Ces deux définitions nécessitent alors de vérifier que ceci ne dépends pas des cartes choisies, et donc (dans le premier cas) que \( f \circ \phi^{-1} \) est différentiable si et seulement si \( f \circ \psi^{-1} \) est différentiable. Ceci est vrai \textbf{exactement} gràce à la contrainte de régularité des application de changement de carte.\<
+   Ces deux définitions nécessitent alors de vérifier que ceci ne dépends pas des cartes choisies, et donc (dans le premier cas) que \( f \circ \phi^{-1} \) est différentiable si et seulement si \( f \circ \psi^{-1} \) est différentiable. Ceci est vrai \textbf{exactement} gràce à la contrainte de régularité des application de changement de carte.
 \chapter{Variétés à bord}
    On veut alors pouvoir relaxer cette définition pour prendre en compte une catégorie plus large d'espaces topologiques, en particulier si on considère le disque ouvert \( D^1 \), c'est trivialement\footnote[1]{Comme graphe d'une fonction constante définie sur un ouvert.} une variété, mais le disque fermé \( \text{adh}(D^1) \) ne l'est pas. La différence fondamentale étant qu'un ouvert qui contient un point du bord du disque fermé n'est pas homéomorphe à un ouvert de \( \R^2 \) Mais à un ouvert du demi-plan \( \R \times \R_+ \).
 
@@ -178,10 +177,11 @@ On en déduis donc que \( TM_p \) est un espace vectoriel de dimension \( n \) e
 \[ 
    \partialD{}{x_i}\biggr|_p := d\phi^{-1}\left( \partialD{}{x_i}\biggr|_{\phi(p)}\right) 
 \]
-Ce sont des dérivations dont l'action sur une fonction lisse \( f \) est définie par la dérivation partielle dans les coordonées locales:
+Ce sont des dérivations dont l'action sur une fonction lisse\footnote[1]{Si \( f : M \longrightarrow N \) alors on peut aussi définir une action de ces dérivées partielles en composantes en notant \( f_j(p) = (\psi \circ f)_j(p) \) la \( j \)-ième composante de \( f \), et alors \( \partialD{}{x_i}\bigr|_p(f) := \left(\partialD{}{x_i}\bigr|_p(f_1), \ldots,  \partialD{}{x_i}\bigr|_p(f_n)\right) \)} \( f \) est définie par la dérivation partielle dans les coordonées locales:
 \[ 
    \partialD{}{x_i}\biggr|_p(f) = \partialD{f \circ \phi^{-1}}{x_i}(\phi(p))
 \]
+
 \pagebreak
 \section{Fibré tangent}
 On cherche alors a globaliser la notion d'espace tangent et considérer \textbf{l'ensemble de tout les espaces tangents}. Ce point de vue est fructueux car il permettra de définir de manière simple la notion de champs de vecteurs sur une variété.\< 
@@ -247,8 +247,18 @@ Où on identifiera \( V(p) \triangleq v_p \). Alors plus précisément, si on fi
 \]
 \pagebreak
 
-\section{Espace cotangent en un point:}
-On peut alors définir \textbf{l'espace cotangent} d'une variété comme le dual de l'espace tangent. On notera une base de cet espace, dans des coordonées locales, par la famille \( (dx_i)_{i \leq n} \) qui vérifie par définition pour la base définie dans le paragraphe suivant que:
+\section{Pushforward d'un champs de vecteurs}
+Soit \( f : M \longrightarrow N \) une application lisse, l'utilité principale de la différentielle est de pouvoir transporter des vecteurs tangents à \( M \) sur des vecteurs tangents à \( N \), on peut alors se demander si on peut transporter un champs de vecteurs \( X : p \longrightarrow TM \) de la sorte, on peut toujours définir:
+\[ 
+   g_X : p \in M \longmapsto (f(p), df_p(X_p)) \in TN
+\]
+Mais ce n'est pas à proprement parler un champs de vecteurs sur \( N \) du fait du domaine de définition, néanmoins si \( f \) est une \textbf{difféomorphisme}, on peut définir le \textbf{pushforward} de \( X \) induit par \( f \) par:
+\[ 
+   f_*X : q \in N \longmapsto (q \; ; \; df_{f^{-1}(q)}(X_{f^{-1}(q)})) \in TN
+\]
+On obtient bien ainsi un champs de vecteurs sur \( N \).
+\chapter{Espaces cotangents sur une variété}
+On peut alors considérer naturellement l'espace dual à l'espace tangent en un point \( p \in M \) et on définit ainsi \textbf{l'espace cotangent} en un point. On notera une base de cet espace, dans des coordonées locales, par la famille \( (dx_i)_{i \leq n} \) qui vérifie par définition pour la base définie dans le chapitre précédent que:
 \[ 
    dx_i\left(\partialD{}{x_j}\biggr|_p\right) = \delta_{i, j}
 \]
@@ -261,7 +271,7 @@ On appelle cet ensemble le \textbf{fibré cotangent} de \( M \) et il est défin
 \]
 C'est, par définition du dual d'un fibré vectoriel\footnote[1]{Le dual du fibré, c'est le fibré des duals (:}, le dual de \( TM \). Aussi, il vérifie des propriétés analogues au fibré vectoriel et c'est aussi une variété de dimension \( 2n \).
 \section{Identification de la différentille à une forme:}
-L'expression de la différentielle d'une fonction \( f : M \longrightarrow \R \) s'identifie à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : R \longrightarrow \R \)on a:
+L'expression de la différentielle d'une fonction \( f : M \longrightarrow \R \) s'identifie à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : \R \longrightarrow \R \) on a:
 \begin{align*}
    df_p(v)(g) &= \sum_{i=1}^n v_i df_p\left(\partialD{}{x_i}\biggr|_p\right)(g)\\
    &= \sum_{i=1}^n v_i \partialD{g \circ f}{x_i}(p)\\
@@ -285,7 +295,7 @@ L'expression de la différentielle d'une fonction \( f : M \longrightarrow N \) 
    &= \sum_{i=1}^n v_i \sum_{j=1}^m \partialD{g}{y_j}(f(p)) \partialD{f_j}{x_i}(p)\\
    &= \left(\sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}\right)(g)
 \end{align*}
-Où ici \( f_j \) représente les coordonées locales de \( f \) au voisinage de \( f(p) \) ? Ceci étant vrai pour toute fonction lisse \( g \), on trouve l'expression suivante:
+Où ici \( f_j \) représente les coordonées locales de \( f \) au voisinage de \( f(p) \), ie \( f_j = (\psi \circ f)_j(p) \). Ceci étant vrai pour toute fonction lisse \( g \), on trouve l'expression suivante:
 \[ 
    df_p(v) = \sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}
 \]
@@ -293,7 +303,7 @@ Or, le vecteur de base \(\partialD{}{y_j}\) de \( TN_{f(p)} \) s'identifiant nat
 \[ 
    df_p(v) \triangleq \sum_{i=1}^n \left( \partialD{f_1}{x_i}(p), \ldots, \partialD{f_m}{x_i}(p)\right)dx_i(v) = (df_{1, p}(v), \ldots, df_{m, p}(v))
 \]
-
+De manière analogue on peut aussi remarque que la matrice de la différentielle dans les cartes est alors donnée par la jacobienne associée.
 \chapter{Formes différentielles sur une variété}
 On peut alors définir la notion de \textbf{champs de covecteurs} sur une variété \( M \), ie la notion de 1-forme différentielle. Elle est définie par la donnée d'une application lisse de la forme:
 \[ 
@@ -330,6 +340,21 @@ Qui, d'aprés le chapitre introductif sur l'algèbre tensorielle, s'écrivent da
 On appelle \textbf{forme volume} sur \( M \) tout élément de \( \Omega^n(M) \) qui ne \textbf{s'annule pas}. On dira alors que \( M \) est \textbf{orientable}.
 
 \pagebreak
+\section{Evaluation d'un forme}
+Une 1-forme différentielle \( \omega \) étant un champs de formes linéaires, si on fixe \( p \in M \), on peut alors évaluer cette forme en un champs de vecteurs \( X \), et cette opération est donnée par:
+\[ 
+   \omega(X) : p \longmapsto \omega_p(X_p)
+\]
+Alors, on peut exprimer cette évaluation en coordonées locales, ie si on a une forme différentielle d'ordre \( k \) et un champs de vecteurs de la forme suivante:
+\[
+   \omega(p) = \sum_{i \leq n} \omega_{i}(p) dx_{i} \quad\quad\quad\quad X = \sum_{i \leq n} x_i \partialD{}{x_i}\biggr|_{\phi(p)}
+\]
+Alors on a par définition de la base duale:
+\begin{align*}
+   \omega(X)(p) &=  \sum_{1 \leq i \leq n} \omega_{i}(p) dx_{i}\left(\sum_{j \leq n} x_j \partialD{}{x_j}\biggr|_{\phi(p)} \right)\\
+   &=  \sum_{1 \leq i \leq n} \omega_{i}(p)x_i
+\end{align*} 
+Donc pour un point \( p \) fixé, une 1-forme est un objet qui prends un \textbf{champs de vecteurs} et retourne une \textbf{fonction} de \( p \). De manière analogue on peut généraliser et évaluer une \( k \)-forme sur \( k \) champs de vecteurs et obtenir une fonction.
 \section{Dérivée extérieure locale}
 En un point \( p \in M \), on peut alors définir l'opérateur de \textbf{dérivée extérieure} (au voisinage du point \( p \)) conformément au chapitre I par:
 \[ 
@@ -340,16 +365,47 @@ En un point \( p \in M \), on peut alors définir l'opérateur de \textbf{dériv
 \]
 Où \( d \omega \) est défini encoordonées locales conformément à la définition usuelle par différentiation de la fonction coefficients:
 \[ 
-   d \omega(p) = \sum_{1 \leq i_1 < \ldots < i_k \leq n} d\omega_{i_1, \ldots, i_k}(p) \wedge dx_{i_1} \wedge \ldots \wedge dx_{i_k}
+   d \omega_p = \sum_{1 \leq i_1 < \ldots < i_k \leq n} d\omega_{i_1, \ldots, i_k}(p) \wedge dx_{i_1} \wedge \ldots \wedge dx_{i_k}
 \]
-On aimerait alors pouvoir définir cet opérateur globalement, comme dans le cas de \( \R^n \).
+On peut alors faire une remarque sur cette définition, si \( f \) est une fonction lisse alors la différentielle \( df_p \) s'identifie bien à l'application de cet opérateur à \( f \) en tant que \( 0 \)-forme. En particulier si \( x_i \) est la fonction i-ème coordonée, alors ceci justifie la notation \( dx_i \) pour la base de l'espace cotangent.
 \section{Dérivée extérieure globale}
-On montre alors (help) qu'il existe bien une telle application, ie qu'on peut définir:
+On aimerait alors pouvoir définir cet opérateur globalement, comme dans le cas de \( \R^n \), on montre alors que cette définition locale ne dépends pas du choix de la carte et donc on peut définir cet opérateur globalement:
 \[ 
    \begin{aligned}
       d^k : \Omega^k(M) &\longrightarrow \Omega^{k+1}(M) \\
       \omega &\longmapsto d \omega
    \end{aligned} 
 \]
-Et qu'elle vérifie toutes les propriétés de la dérivée extérieure dans \( \R^n \) (on espère ..).
+Et alors il vérifie toutes les propriétés de la dérivée extérieure de \( \R^n \).
+\section{Pullback d'un champs de covecteurs}
+Dans la section sur les champs de vecteurs, on a vu que la différentielle d'une application \( f : M \longrightarrow N \) permet de transporter ceux-ci par \textbf{pushforward}. On définit ici le concept dual (associé à l'adjoint de la différentielle) qui permet de transporter des champs de covecteurs dans le sens opposé.\<
 
+Etant donnée une \( 1 \)-forme différentielle \( \omega \) sur \( N \), on peut alors \textbf{toujours} définir le \textbf{pullback} de \( \omega \) induit par \( f \) par:
+\[ 
+   f^*\omega : p \in M \longrightarrow (p, \omega_{f(p)} \circ df_p) \in TM^*
+\]
+Alors c'est bien une forme différentielle sur \( M \). 
+\section{Pullback d'une forme différentielle}
+De manière générale pour une \( k \)-forme on définit en composant par un \( k \)-uplet de différentielles de \( f \):
+\[ 
+   f^*\omega : p \in M \longrightarrow (p, \omega_{f(p)} \circ (df_p, \ldots, df_p)) \in TM^*
+\]
+\section{Propriétés du pullback}
+Le pullback d'une \( k \)-forme sera un des outils principaux pour construire la théorie de l'intégration sur une variété. On a donc besoin d'étudier ses propriétés, alors on peut montrer qu'on a:
+\begin{itemize}
+   \item Le pullback est \textbf{linéaire}.
+   \item Le pullback respecte le \textbf{produit extérieur}:
+   \[ 
+      f^*(\omega \wedge \eta) = f^*(\omega) \wedge f^*(\eta)
+   \]
+   \item Le pullback respecte la \textbf{dérivée extérieure}:
+   \[ 
+      f^*(d\omega) = d(f^*\omega)
+   \]
+\end{itemize}
+\chapter{Orientation d'une variété à bord}
+Dans le troisième chapitre, on a définit la notion de variété à bord, puis par la suite celle de forme volume qui définit une orientation sur une variété \( M \). On se pose alors la question suivante:
+\begin{center}
+   \textit{Est-il possible de construire une orientation sur \( \partial M \) étant donnée une orientation sur \( M \) ?}
+\end{center}
+On considère par la suite une variété à bord de dimension \( n \)
