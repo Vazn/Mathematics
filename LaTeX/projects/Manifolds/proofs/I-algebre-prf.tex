@@ -1,13 +1,12 @@
-\chapter{Elements d'algèbre tensorielle}
-
-\section{L'espaces des tenseurs est un espace vectoriel}
+\section*{\uline{Elements d'algèbre tensorielle {:}}}
+   \subsection*{L'espaces des tenseurs est un espace vectoriel {:}}
 On considère l'espace \( \mathscr{T}^p(E) \) l'espace des tenseurs p-covariants, montrons que c'est un sev de \( \mathcal{F}(E^p, \R) \), on a:
 \begin{itemize}
    \item L'application nulle est bien un tenseur p-covariant.
    \item Si \( T, T' \in \mathscr{T}^p(E)\), alors \( T + T' = (v_1, \ldots, v_p) \mapsto T(v_1, \ldots, v_p) + T'(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
    \item Si \( T \in \mathscr{T}^p(E)\), alors \( \lambda T = (v_1, \ldots, v_p) \mapsto \lambda T(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
 \end{itemize}
-\section{Le produit tensoriel est bien défini}
+   \subsection*{Le produit tensoriel est bien défini {:}}
 On considère: 
 \begin{align*}
    \otimes : \mathscr{T}^p(E) \times \mathscr{T}^q(E) &\longrightarrow \mathscr{T}^{p+q}(E)\\
@@ -18,8 +17,8 @@ Avec le tenseur \(\alpha \otimes \beta\) défini par:
    (\alpha \otimes \beta)(x_1, \ldots, x_p, y_1, \ldots, y_q) = \alpha(x_1, \ldots, x_p)\beta(y_1, \ldots, y_q)
 \]
 Alors si \( (x_1, \ldots, x_p, y_1, \ldots, y_q) \in E^{p+q} \), par linéarité de chacun des tenseurs, on vérifie bien que \( \alpha \otimes \beta \) est bien multilinéaire.
-\section{Base et dimension de l'espace des tenseurs}
-Si on note \((e_i)_{i \leq n}\) une base de \(E\) et \( T \in \mathscr{T}^p(E)\), alors on peut montrer que l'on a:
+   \subsection*{Base et dimension de l'espace des tenseurs {:}}
+   Si on note \((e_i)_{i \leq n}\) une base de \(E\) et \( T \in \mathscr{T}^p(E)\), alors on peut montrer que l'on a:
    \begin{flalign*}
       T(x_1, \ldots, x_p) &= T\left( \sum_{1 \leq i_1 \leq n} x_{1, i_1}e_{i_1}, \ldots, \sum_{1 \leq i_p \leq n} x_{p, i_p}e_{i_p} \right)\\
       &= \sum_{1 \leq i_1, \ldots, i_p \leq n} x_{1, i_1} \ldots x_{p, i_p} T(e_{i_1}, \ldots, e_{i_p})
@@ -37,7 +36,9 @@ Si on note \((e_i)_{i \leq n}\) une base de \(E\) et \( T \in \mathscr{T}^p(E)\)
       \sum_{1 \leq i_1, \ldots, i_p \leq n} \lambda_{i_1, \ldots, i_p} e^{i_1} \otimes \ldots \otimes e^{i_p} =0:
    \]
    Alors si on évalue cette forme en \( (e_{i_1}, \ldots, e_{i_p}) \), on annule tout les termes sauf \( \lambda_{i_1, \ldots, i_p} \) qui est donc nul. Et en répétant ceci, on trouve que les \( (\lambda_{i_1, \ldots, i_p}) \) sont tous nuls. Cette famille est donc une base et la dimension de l'espace est alors \( p^n \).
-\section{Propriété de signature d'un tenseur antisymétrique}
+   
+   \pagebreak
+   \subsection*{Propriété de signature d'un tenseur antisymétrique {:}}
 On se donne une permutation \( \sigma \in S_p \) et un tenseur antisymétrique \( T \in \mathscr{T}^p(E) \), montrons que:
 \[ 
    T_\sigma(x_1, \ldots, x_n) = \epsilon(\sigma)T(x_1, \ldots, x_n)
@@ -55,7 +56,7 @@ Alors par récurrence, on répète le processus pour obtenir:
    T_\sigma = (-1)^kT
 \]
 Où \( k \) est le nombre de transposition dans la décomposition de \( \sigma \) et ce coefficient est exactement \( \epsilon( \sigma) \).
-\section{L'antisymétrique d'un tenseur est bien antisymétrique}
+   \subsection*{L'antisymétrisation d'un tenseur est bien antisymétrique {:}}
 On se donne un tenseur \( T \in \mathscr{T}^p(E) \), montrons que le tenseur suivant est bien antisymétrique:
 \[ 
    \text{Asym}(T)(x_1, \ldots, x_p) = \frac{1}{p!} \sum_{ \sigma \in S_p} \epsilon(\sigma)T(x_{\sigma(1)}, \ldots, x_{ \sigma(p)})
@@ -70,7 +71,7 @@ On a que si on permute \( x_i, x_j \) avec \( i \leq j \), on a:
 \end{align*}
 Donc \( \text{Asym}(T) \) est bien antisymétrique.
 \pagebreak
-\section{Base et dimension de l'espace des tenseurs antisymétriques}
+   \subsection*{Base et dimension de l'espace des tenseurs antisymétriques {:}}
 On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-tenseur antisymétrique, alors par multilinéarité:
    \begin{flalign*}
       T &= \sum_{1 \leq i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
@@ -84,32 +85,33 @@ On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-t
       &= \sum_{1 \leq i_1 < \ldots < i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \wedge \ldots \wedge e^{i_p}
    \end{flalign*}
    Donc la famille est génératrices des tenseurs antisymétriques. En outre elle est libre par un argument similaire à celui des tenseurs simples. En particulier, un tel tenseur est donc uniquement déterminé par son image sur toutes les vecteurs de la base indéxés par une suite strictement croissante, et il y a \( \binom{n}{p} \) telles suites, c'est donc la dimension de \(\Lambda^p E^*\).
-\section{Propriétés algébriques du produit extérieur}
-\begin{itemize}
-   \item \textbf{Bilinéarité et alternance:}
-   \item \textbf{Déterminant:} Soit \( \mathcal{B} = (e^i)_{i \leq n} \) une base duale de \( E \) ainsi ), alors on a par définition:
-   \begin{align*}
-      e^1 \wedge \ldots \wedge e^n = \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}
-   \end{align*}
-   Donc si on considère \( (x_1, \ldots, x_n) \) des vecteurs de \( E \), alors on évalue:
-   \begin{align*}
-      e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}(x_1, \ldots, x_n)\\
-      &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)}(x_1) \ldots e^{\sigma(n)}(x_n)\\
-      &= \sum_{\sigma \in S^n} \epsilon(\sigma) x_{1, \sigma(1)} \ldots x_{1, \sigma(n)}\\
-      &= \text{det}_\mathcal{B}(x_1, \ldots, x_n)
-   \end{align*}
-   Attention ici la notation \( x_{i,j} \) signifie bien la \( j \)-ième coordonée de \( x_i \) dans la base (non canonique a priori) des \( (e_i) \).
+   \subsection*{Propriétés algébriques du produit extérieur {:}}
+      \begin{itemize}
+         \item \textbf{Bilinéarité et alternance:}
+         \item \textbf{Déterminant:} Soit \( \mathcal{B} = (e^i)_{i \leq n} \) une base duale de \( E \) ainsi ), alors on a par définition:
+         \begin{align*}
+            e^1 \wedge \ldots \wedge e^n = \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}
+         \end{align*}
+         Donc si on considère \( (x_1, \ldots, x_n) \) des vecteurs de \( E \), alors on évalue:
+         \begin{align*}
+            e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}(x_1, \ldots, x_n)\\
+            &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)}(x_1) \ldots e^{\sigma(n)}(x_n)\\
+            &= \sum_{\sigma \in S^n} \epsilon(\sigma) x_{1, \sigma(1)} \ldots x_{1, \sigma(n)}\\
+            &= \text{det}_\mathcal{B}(x_1, \ldots, x_n)
+         \end{align*}
+         Attention ici la notation \( x_{i,j} \) signifie bien la \( j \)-ième coordonée de \( x_i \) dans la base (non canonique a priori) des \( (e_i) \).
 \end{itemize}
 
+\pagebreak
 
-\chapter{Formes différentielles dans \( \R^n \)}
-   \section{Linéarité de la dérivée extérieure}
+\section*{\uline{Formes différentielles dans \( \R^n \){:}}}
+   \subsection*{Linéarité de la dérivée extérieure {:}}
    On se donne \( \omega, \eta \) deux une \( k \)-formes sur \( \R^n \) ainsi que \( \lambda \) un scalaire, alors on a:
    \[ 
-      d( \omega + \lambda\eta) = d\left( \sum_I (f_I + \lambda g_I)(x) dx_I\right) = \sum_I d(f_I + \lambda g_I)(x) \wedge dx_I
+      d( \omega + \lambda\eta) = d\left( \sum_I (f_I + \lambda g_I)(x) dx^I\right) = \sum_I d(f_I + \lambda g_I)(x) \wedge dx^I
    \]
    Où le \( d \) du dernier membre est simplement la différentielle usuelle, qui est linéaire d'aprés la théorie du calcul différentiel élémentaire, ce qui permet de conclure.
-   \section{Formule de Leibniz}
+   \subsection*{Formule de Leibniz {:}}
    On se donne \( \omega, \eta \) respectivement une \( k \)-forme et une \( p \)-forme sur \( \R^n \) alors on a:
    \[ 
       \begin{cases}
@@ -135,8 +137,7 @@ On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-t
    \end{flalign*}
    Où pour trouver \((\star)\), on identifie le premier terme, et on utilise le fait que \( \eta_J(p), dx_I \) sont respectivement une \( 1- \) forme et une \( k \)-forme et il y a donc \( k \) échanges à faire et donc \( k \) application de l'antisymétrie.
    \pagebreak
-
-   \section{Propriété fondamentale de la dérivée extérieure}
+   \subsection*{Propriété fondamentale de la dérivée extérieure {:}}
    On considère une \( k \) forme \( \omega = \sum_I \omega_I dx^I\), alors on a:
    \[ 
       d\omega = \sum_I d\omega_I \wedge dx_I = \sum_I \sum_{i \leq n} \partialD{\omega_I}{x_i}dx^i \wedge dx^I
