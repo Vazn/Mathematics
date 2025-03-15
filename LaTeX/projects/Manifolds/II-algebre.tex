@@ -25,116 +25,130 @@
          T(x_1, \ldots, x_p) &= T\left( \sum_{i_1 \leq n} x_{1, i_1}e_{i_1}, \ldots, \sum_{i_p \leq n} x_{p, i_p}e_{i_p} \right)\\
          &= \sum_{i_1, \ldots, i_p \leq n} x_{1, i_1} \ldots x_{p, i_p} T(e_{i_1}, \ldots, e_{i_p})
       \end{flalign*}
-      Mais on remarque alors que le produit \( x_{1, i_1} \ldots x_{p, i_p} \) consiste alors en l'évaluation de \(e_{i_1}^* \otimes \ldots \otimes e_{i_p}^* \) en \( (x_1, \ldots, x_p) \) et donc on obtient:
+      Mais on remarque alors que le produit \( x_{1, i_1} \ldots x_{p, i_p} \) consiste alors en l'évaluation de \(e^{i_1} \otimes \ldots \otimes e^ {i_p} \) en \( (x_1, \ldots, x_p) \) et donc on obtient:
       \begin{flalign*}
-         T &= \sum_{i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e_{i_1}^* \otimes \ldots \otimes e_{i_p}^*
+         T &= \sum_{i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
       \end{flalign*}
-      En d'autres termes tout \( p \)-tenseur \( T \) est engendré par la famille de \( n^p \) vecteurs \( (e_{i_1}^* \otimes \ldots \otimes e_{i_p}^*)_{i_1, \ldots, i_p \leq n} \). On peut alors montrer qu'elle est libre et donc que c'est une base de \(\mathcal{T}^p(E)\).
+      En d'autres termes tout \( p \)-tenseur \( T \) est engendré par la famille de \( n^p \) vecteurs \( (e^{i_1} \otimes \ldots \otimes e^{i_p})_{i_1, \ldots, i_p \leq n} \). On peut alors montrer qu'elle est libre et donc que c'est une base de \(\mathcal{T}^p(E)\).
   
    \pagebreak
+   \section{Permutations des indices}
+   Alors pour tout permuation \(\sigma \in S_p\), on définit l'action d'une permutation sur un tenseur \( T \in \mathscr{T}^p(E) \) par:
+   \[ 
+      T_\sigma(x_1, \ldots, x_n) = T(x_{\sigma(1)}, \ldots, x_{\sigma(n)})
+   \]
    \section{Tenseurs antisymétriques}
    On appelle \textbf{tenseur antisymétrique} tout \( p \)-tenseur \( T \) tel que:
    \[ 
       \forall i, j \in \inticc{1}{p} \; ; \; T(\ldots, x_j, \ldots, x_i, \ldots) = -T(\ldots, x_i, \ldots, x_j, \ldots)
+   \]
+   On peut alors montrer une propriété naturelle de tels tenseurs:
+   \[ 
+      \forall \sigma \in S_p \; ; \; T_\sigma(x_1, \ldots, x_n) = \epsilon(\sigma)T(x_1, \ldots, x_n) 
    \]
    \section{Antisymétrisation}
    On se donne un tenseur \(T\) qui soit \(p\)-covariant, alors on chercher à construire un tenseur \(p\)-covariant \textbf{antisymétrique} à partir de \(T\), et on peut alors montrer que le tenseur suivant convient:
    \[
       \text{Asym}(T)(x_1, \ldots, x_p) = \frac{1}{k!}\sum_{\sigma \in S_p}\epsilon(\sigma)T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})
    \]
-   En d'autres termes que \( T \) est bien antisymétrique.
+   En d'autres termes que \( T \) est bien antisymétrique. 
    \section{Produit extérieur}
-   On peut alors définir un produit antisymétrique appelé surtout \textbf{produit extérieur} de deux tenseurs par \textbf{\color{red}\underline{Problème}: Il manque un coefficient pour que la base de la section d'aprés soit correcte ?}:
+   On peut alors définir un produit antisymétrique appelé surtout \textbf{produit extérieur} de deux tenseurs d'ordre respectifs \( p, q \) par:
    \[
-      (T \wedge T') = \text{Asym}(T \otimes T')
+      (T \wedge T') = \frac{(p+q)!}{p!q!}\text{Asym}(T \otimes T')
    \]
-   En d'autres termes:
+   La présence du coefficient est motivée par des considérations techniques\footnote[1]{Ce coefficient permet alors d'exprimer une base simple des tenseurs antisymétriques.}. En d'autres termes:
    \[
-      (T \wedge T')(x_1, \ldots, x_p, x_{p+1}, \ldots, x_{p+q}) =  \frac{1}{(p+q)!}\sum_{\sigma \in S_{p+q}}\epsilon(\sigma) T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})T'(x_{\sigma(p+1)}, \ldots, x_{\sigma(p+q)})
+      (T \wedge T')(x_1, \ldots, x_p, x_{p+1}, \ldots, x_{p+q}) =  \frac{1}{p!q!}\sum_{\sigma \in S_{p+q}}\epsilon(\sigma) T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})T'(x_{\sigma(p+1)}, \ldots, x_{\sigma(p+q)})
    \]
    C'est ce produit extérieur qui nous sera surtout utile pour définir les formes différentielles.
    \section{Algèbre extérieure}
    On appelle alors \textbf{p-ième puissance extérieure} l'ensemble de toutes les formes \(p\)-linéaires alternées qu'on note \(\Lambda^p E^*\). Une base est alors donnée par l'ensemble:
    \[
-      \Bigl\{ e_{i_1}^* \wedge \ldots \wedge e_{i_p}^* \; ; \; 1 \leq e_{i_1}^* < \ldots < e_{i_p}^* \leq n  \Bigl\}
+      \Bigl\{ e^{i_1} \wedge \ldots \wedge e^{i_p} \; ; \; 1 \leq i_1 < \ldots < i_p \leq n  \Bigl\}
    \]
-   En effet, on utilise la même approche que pour le produit tensoriel, soit \( T \) un p-tenseur antisymétrique, alors:
-   \begin{flalign*}
-      T &= \sum_{i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e_{i_1}^* \otimes \ldots \otimes e_{i_p}^*
-   \end{flalign*}
-   Mais \( T \) est antisymétrique, donc les indices des termes non nuls sont différents, ie on somme en fait sur \( I = \left\{ (i_1, \ldots, i_p) \; ; \; \forall p, q \; i_p \neq i_q \right\}\). Aussi par un raisonnement combinatoire, il est équivalent de sommer sur des indices distincts et de sommer sur des indices strictement croissants puis sur toutes les permutations de ceux ci, ie on a:
-   \begin{flalign*}
-      T &= \sum_{1 \leq i_1 < \ldots < i_p \leq n} \sum_{\sigma \in S_p} T(e_{\sigma(i_1)}, \ldots, e_{\sigma(i_p)}) e_{\sigma(i_1)}^* \otimes \ldots \otimes e_{\sigma(i_p)}^*\\
-      &= \sum_{1 \leq i_1 < \ldots < i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) \sum_{\sigma \in S_p} \epsilon(\sigma) e_{\sigma(i_1)}^* \otimes \ldots \otimes e_{\sigma(i_p)}^*\\
-      &= {\color{red}p!} \sum_{1 \leq i_1 < \ldots < i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e_{i_1}^* \wedge \ldots \wedge e_{i_p}^*
-   \end{flalign*}
-   En particulier, un tel tenseur est uniquement déterminé par son image sur toutes les vecteurs de la base indéxés par une suite strictement croissante, et il y a \( \binom{n}{p} \) telles suites, c'est donc la dimension de \(\Lambda^p E^*\).\<
+   Dans le cas où \( E = \R^n \), on note alors \( (dx_1, \ldots, dx_n) \) la base duale de la base canonique et on exprime généralement une forme \( p \)-linéaire alternée dans celle ci.\<
 
    \uline{Exemple:} Si \( E = \R^3 \), on note la base duale \((dx, dy, dz)\), alors on a que:
    \[
       \Lambda^2E^* = \text{Vect}(dx \wedge dy, dx \wedge dz, dy \wedge dz)
    \]
-   On appele aussi les éléments de la \(p\)-ième puissance extérieure des \textbf{multivecteurs}.
-\chapter{Formes différentielles dans \( \R^n \)}
-   Dans ce chapitre on peut maintenant définir un object fondamental de la géométrie différentielle, le concept de \textbf{p-forme différentielle} sur \(\R^n\) qui sera simplement définie par:
-   \begin{center}
-      \textbf{Une p-forme différentielle est un champs de tenseurs covariants antisymétriques.}
-   \end{center}
-   Ceci s'intérprète alors comme la donnée en chaque point \(x\) de \(\R^n\) d'un tenseur covariant antisymétrique. Formellement, on a:
-   \[
-      \omega(x) = \sum_{1 \leq i_1 < \ldots < i_p \leq n} f_{{i_1, \ldots, i_p}}(x) dx_{i_1} \wedge \ldots \wedge dx_{i_p}
-   \]
-   Enfin, on considérera pour simplifier que \(f\) est de classe \( \mathcal{C}^\infty \), on note alors \( \Omega^k(E)\) l'ensemble des fonctions lisses de \( E \) dans \(\Lambda^kE^*\), ie l'ensemble des \( k \)-formes différentielles sur \( E \).
+   \pagebreak
+   \section{Propriétés algébriques du produit extérieur}
+   On peut alors montrer plusieurs propriététés importantes du produit extérieur:
+   \begin{itemize}
+      \item Le produit extérieur est \textbf{bilinéaire et alterné}.
+      \item Si \( \mathcal{B} = (e^i)_{i \leq n} \) est une base duale de \( E \), on a:
+      \[ 
+         \forall x_1, \ldots, x_n \in E \; ; \; e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) = \text{det}_{\mathcal{B}}(x_1, \ldots, x_n)
+      \]
+   \end{itemize}
+   En particulier on remarque alors que le déterminant canonique dans \( \R^n \) n'est que l'application de la forme multinéaire alternée canonique \( e^1 \wedge \ldots \wedge e^n \) de \( \Lambda^n(\R^n) \).
 
+\chapter{Formes différentielles dans \( \R^n \)}
+   Dans ce chapitre on peut maintenant définir un object fondamental de la géométrie différentielle, le concept de \textbf{k-forme différentielle} sur \(\R^n\) qui sera simplement définie par:
+   \begin{center}
+      \textbf{Une k-forme différentielle est un champs de k-tenseurs covariants antisymétriques.}
+   \end{center}
+   Ceci s'intérprète alors comme la donnée en chaque point \(p\) de \(\R^n\) d'un tenseur covariant antisymétrique. Formellement, on a dans la base canonique:
+   \[
+      \omega(p) = \sum_{1 \leq i_1 < \ldots < i_k \leq n} f_{{i_1, \ldots, i_k}}(p) dx^{i_1} \wedge \ldots \wedge dx^{i_k}
+   \]
+   Où ici on considérera que \(f\) est de classe \( \mathcal{C}^\infty \). On note alors \( \Omega^k(E)\) l'ensemble des fonctions lisses de \( E \) dans \(\Lambda^kE^*\), ie l'ensemble des \( k \)-formes différentielles sur \( E \).
+   \section{Notation multi-indices}
+   Trés souvent pour simplifier l'expression d'une \( k- \)forme, il sera pratique de noter \(I = (1 \leq i_1 < \ldots < i_k \leq n)\) et d'écrire alors sous forme plus condensée:
+   \[ 
+      \omega(p) = \sum_I f_{I}(p) dx^I
+   \]
+   \section{Produit extérieur des formes}
+   On sait définir le produit extérieur des tenseurs covariants, on peut alors définir le produit extérieur de deux formes \( \omega, \eta \) d'ordre respectifs \( p, q \) par:
+   \[ 
+      \begin{aligned}
+         \omega \wedge \eta : \R^n &\longrightarrow \Lambda^{p+q}E^* \\
+         p &\longmapsto \omega(p) \wedge \eta(p)
+      \end{aligned}
+   \]
+   \section{Produit intérieur des formes}
+      Le produit extérieur permet pour une forme \( \omega \) donnée d'augmenter son ordre par produit avec une autre forme \( \eta \). On aura besoin par la suite de la propriété inverse qui à partir de \( \omega \) construit une $k-1$-forme.\<
+
+      Cette opération apellée \textbf{produit intérieur} nécessite alors une autre donnée, celle d'un \textbf{champs de vecteurs} $X$, en effet on peut alors définir:
+      $$
+         \iota_X(\omega) : p \mapsto \iota_X(\omega)(p) = \omega(F(p), \cdot, \ldots, \cdot)
+      $$
+      Moralement, la donnée d'un vecteur en tout point permet de définir une $k-1$ forme en considérant la forme de départ avec sa première variable fixée sur le vecteur donné. Ceci se généralise et on peut alors construire une \( k-p \) forme avec la donnée de \( p \) champs de vecteurs.
    \section{Dérivée extérieure}
-   On introduit alors un opérateur sur les \(p\)-formes appelée \textbf{dérivée extérieure} qu'on définit par:
+   On introduit alors un opérateur sur les \(k\)-formes appelée \textbf{dérivée extérieure} qu'on définit par:
    \begin{align*}
       d_k : \Omega^k(E) &\longrightarrow \Omega^{k+1}(E)\\
       \omega &\longmapsto d\omega
    \end{align*}
    Il agit alors sur une \(k\)-forme par différentiation de la fonction coefficients, ie on a:
    \[
-      d\omega(x) = \sum_{1 \leq i_1 < \ldots < i_p \leq n} df(x) \wedge dx_{i_1} \wedge \ldots \wedge dx_{i_p}
+      d\omega(p) = \sum_I df(p) \wedge dx^I
    \]
-   \uline{Exemple 1:} Si on considère la 1 forme de \(\R^3\) suivante:
-   \[
-      \omega = y dx 
-   \]
-   Alors on différentie simplement la fonction coefficient et on obtient:
-   \[
-      d\omega = d(ydx) = \left(\partialD{y}{x}dx + \partialD{y}{y}dy\right) \wedge dx = dy \wedge dx
-   \]
-   \uline{Exemple 2:} On considère la 2-forme de \(\R^3\) suivante:
-   \[
-      \omega = A(x, y, z)dx \wedge dy
-   \]
-   Alors on différentie simplement la fonction coefficient et on obtient:
-   \begin{align*}
-      d\omega = d(A(x, y, z)dx \wedge dy) &= \left(\partialD{A}{x}dx + \partialD{A}{y}dy + \partialD{A}{z}dz\right) \wedge dx \wedge dy \\
-      &= \left(\partialD{A}{x} - \partialD{A}{y}\right) dx \wedge dy - \partialD{A}{z}dx \wedge dz - \partialD{A}{z}dy \wedge dz
-   \end{align*}
+   En particulier, si \( \omega \) est une \( 0 \)-forme, ie une fonction, on retrouve la différentielle d'une fonction.
    \section{Propriétés de la dérivée}
    On peut alors montrer que la dérivée extérieure est bien définie et possède les propriétés suivantes:
    \begin{itemize}
       \item On a que la dérivée est un opérateur linéaire.
-      \item On a la \textbf{formule de Leibniz généralisée}, pour \(\omega\) une \(k\)-forme et \(\alpha\) une \(l\)-forme : \[d(\omega \wedge \alpha) = d\omega \wedge \alpha + (-1)^k\omega \wedge d\alpha\]
+      \item On a la \textbf{formule de Leibniz généralisée}, pour \(\omega\) une \(k\)-forme et \(\eta\) une \(l\)-forme : \[d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k\omega \wedge d\eta\]
       \item On a la \textbf{propriété fondamentale} de la dérivée extérieure:
       \[ 
          d_{k+1} \circ d_k = 0 
       \]
    \end{itemize}
    \section{Forme volume}
-   Dans \(\R^n\), le cas particulier des \(n\)-formes différentielles est fondamental, en effet on appelle ces formes \textbf{formes volumes} et si on fixe une base \( \mathcal{B} = (e_1, \ldots, e_n) \), elles s'écrivent toutes de la forme:
-   \[
-      \text{vol}_\mathcal{B} = f(e_1, \ldots, e_n)e_1^* \wedge \ldots \wedge e_n^*
-   \]
-   En particulier \( \dim(\Lambda^n( \R^n)) = 1\) et si on fixe la contrainte que \( \text{vol}_\mathcal{B}(e_1, \ldots, e_n) = 1 \), on retrouve:
+   Dans \(\R^n\), le cas particulier des \(n\)-formes différentielles est fondamental, en effet soit \( \omega \) une telle forme, alors elle vérifie dans la base canonique:
    \[ 
-      \text{vol}_\mathcal{B}(x_1, \ldots, x_n) = \sum_{\sigma \in S_n} \epsilon(\sigma) x_{1, \sigma(1)} \ldots x_{n, \sigma(n)} = \text{det}_B(x_1, \ldots, x_n)
+      \forall x \in \R^n \; ; \; \omega(p) =  f(p)dx^1 \wedge \ldots \wedge dx^n
    \]
-   De manière générale dans \( \R^n \), on fixe la base canonique \( \mathcal{C} \) comme base de référence et on a alors, par exemple:
+   Si \( f \) ne s'annule jamais, on dira alors que \( \omega \) est une \textbf{forme volume}. C'est en fait la donnée en tout point de \( \R^n \) d'un multiple du déterminant canonique. On peux alors identifier le déterminant canonique à la \( n \)-forme différentielle (constante) suivante:
+   \[ 
+      \omega(p) = dx^1 \wedge \ldots \wedge dx^n = \text{det}
+   \]
+   On a alors, par exemple:
    \begin{itemize}
       \item Dans \(\R^1\), on a \(\text{det} = dx\)
       \item Dans \(\R^3\) on a \(\text{det} = dx \wedge dy \wedge dz\)
    \end{itemize}
-   En particulier, on a par exemple dans \(\R^2\), que \(\text{vol}(u, v) = (dx \wedge dy)(u, v) = u_1v_2 - u_2v_1 = \text{det}_\mathcal{C}(u, v)\) comme on l'attendrais intuitivement.
+   En particulier, on a par exemple dans \(\R^2\), que \((dx \wedge dy)(u, v) = u_1v_2 - u_2v_1 = \text{det}(u, v)\) comme on l'attendrais intuitivement.

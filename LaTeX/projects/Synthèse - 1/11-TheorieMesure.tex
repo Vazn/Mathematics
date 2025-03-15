@@ -22,7 +22,6 @@ De manière générale, quand on considère des objets trés réguliers (fonctio
    \end{aligned}
 \]
 Où \(\1_\Q\) désigne la fonction indicatrice des rationnels, alors on montre facilement que cette fonction n'est pas intégrable au sens de Riemann, en effet on a \(\displaystyle\int_I^-{f} = 0 \neq 1 = \displaystyle\int_I^+{f}\), mais on pourra définit cette intégrale gràce à la théorie de Lebesgue.
-
 \chapter*{\chapterstyle{XI --- Espaces Mesurables}} % A REFAIRE
 \addcontentsline{toc}{section}{Espaces Mesurables} 
 On définit tout d'abord dans ce chapitre le concept fondamental de \textbf{tribu} sur un ensemble, qui est un concept analogue à celui de topologie, mais beaucoup moins restrictif, les morphismes de tels espaces seront alors les fonctions mesurables, en lieu et place des fonctions continues.
@@ -77,7 +76,6 @@ Par exemple voici une liste non exhaustive d'exemples sur \(\R\) de boréliens :
    \item Les ensembles dénombrables.
 \end{itemize}
 On voit alors que la tribu des boréliens contient \textbf{beaucoup de parties}, en particulier (hautement non-trivial), elle a la cardinalité de \(\R\).
-
 \chapter*{\chapterstyle{XI --- Espaces Mesurés}} % A REFAIRE
 \addcontentsline{toc}{section}{Espaces Mesurés} 
 
@@ -131,7 +129,6 @@ On définit maintenant le concept fondamental de \textbf{propriété mesurable},
    \item On dira qu'une propriété est vraie \textbf{presque partout} (qu'on abrégera souvent en p.p.) si cette partie est pleine.
 \end{itemize}
 \uline{Exemple:} La fonction \(f : x \in \R \backslash \Q \mapsto x\) est définie p.p. car son ensemble de définition est plein.
-
 \chapter*{\chapterstyle{XI --- Fonctions mesurables}} % A REFAIRE
 \addcontentsline{toc}{section}{Fonctions mesurables} 
 On définit dans ce chapitre le concept fondamental de \textbf{fonction mesurable} qui sera l'analogue des fonctions continues en topologie, en effet ce seront les morphismes sur les espaces mesurables. Aussi ce seront les objets intégrables pour cette théorie.
@@ -160,7 +157,6 @@ On peut alors caractériser la mesurabilité d'une partie \(A\) par la mesurabil
 \[
    A \in \mathscr{A} \Longleftrightarrow \1_A \in \mathscr{M}(X, \R)
 \]
-
 \chapter*{\chapterstyle{XI --- Fonctions boréliennes}} % A REFAIRE
 \addcontentsline{toc}{section}{Fonctions boréliennes} 
 On s'attarde dans ce chapitre sur le concept de fonctions boréliennes sur \((X, \mathscr{A})\) à valeurs dans \(\K = \R\) ou \(\C\), on notera l'ensemble de telles fonctions \(\mathscr{M}(X_\mathscr{A}, \K)\) ou quand le contexte\footnote[1]{Ici on munira \textbf{toujours} les fonctions mesurables réelles ou complexe de leur tribu borélienne à l'arrivée.} est évident \(\mathscr{M}(X, \K)\). Alors dans ce cas on a des propriétés de stabilité trés fortes:
@@ -186,7 +182,6 @@ Ici on note \(\overline{\R}_+\) la demi-droite ie, \(\overline{\R}_+ = \icc{0}{\
    \item Enfin l'opération \textbf{conventionnelle}\footnote[2]{\textbf{En théorie de la mesure uniquement}, en effet on voudrait pouvoir dire que la mesure de l'aire de la fonction nulle est nulle, néanmoins on a \(f^{-1}(0) = \R\) de mesure infinie, donc par convention on dira que la hauteur nulle multipliée par cette longueur infinie est nulle.} donnée par:  \(0 \times \infty = 0\).
 \end{itemize}
 On note alors que cette demi-droite est le compactifié de la demi-droite classique, et on peut donc étendre la topologie de la demi-droite à la demi-droite étendue. On peut alors définir une \textbf{tribu borélienne} sur cette demi-droite.
-
 \subsection*{\subsecstyle{Propriétés des fonctions mesurables positives étendues {:}}}
 On note tout d'abord que toute partie de \(\overline{\R}_+\) est \textbf{majorée}, donc on a la propriété suivante:
 \begin{center}
@@ -214,7 +209,6 @@ Donc par exemple:
    \item \(\sup\{f_n\}(0) = \sup_{n \in \N}\{\arctan(0)\} = \sup\{0\} = 0\)
    \item \(\sup\{f_n\}(1) = \sup_{n \in \N}\{\arctan(0)\} = \sup_{n \in \N}\{\arctan(n)\} = \frac{\pi}{2}\)
 \end{itemize}
-
 \subsection*{\subsecstyle{Fonctions étagées {:}}}
 On peut maintenant définir l'objet principal qui va nous permettre de définir notre nouvelle notion d'intégrale, on rapelle tout d'abord qu'une \textbf{fonction en escalier} est, pour une famille de \(n\) \textbf{intervalles} \((A_i)\) de \(X\) et de scalaires \((\lambda_i)\) est une fonction de la forme suivante:
 \[
@@ -224,7 +218,6 @@ C'est cette forme que l'on veut généraliser en considérant non plus des inter
 \[
    e = \sum_{i \leq n} \lambda_i\1_{A_i}
 \]
-
 \subsection*{\subsecstyle{Théorème d'approximation {:}}}
 On peut alors montrer le résultat fondamental suivant, l'analogue du théorème de Stone-Weirstrass pour les fonctions continues qui affirme la propostion suivante:
 \begin{center}
@@ -352,7 +345,6 @@ Comme pour le cas de l'intégrale de Riemann, on a que pour \(f\) une fonction i
    \int_{X} f(x) dx = \int_{X'} f \circ \phi |\phi'|dx   
 \]
 Plus précisément, alors la fonction de droite est intégrable et leurs intégrales sont égales. En outre on peut retrouver l'expression usuelle du chagement de variable en considérant l'intégrale signée sur un segment.
-
 \chapter*{\chapterstyle{XI --- Grands Théorèmes}} % A REFAIRE
 \addcontentsline{toc}{section}{Grands Théorèmes} 
 
@@ -379,7 +371,6 @@ On peut appliquer ce théorème à la suite des sommes parties d'une série de f
    \forall n \in \N \; ; \; \left|\sum_{k=0}^{n} f_k(x)\right| \leq g
 \]
 Mais on peut affaiblir légérement le théorème en rajoutant les hypothèses 
-
 \chapter*{\chapterstyle{XI --- Intégrales à paramètres}} % A REFAIRE
 \addcontentsline{toc}{section}{Intégrales à paramètres} 
 Dans ce chapitre on considère des fonctions de la forme suivante:
@@ -425,7 +416,6 @@ La notion de continuité et de dérivabilité étant locale, pour montrer qu'une
    \forall t \in \R_+ \; ; \; |f(\cdot, t)| = e^{-tx} \leq g
 \]
 On considère alors que \(\R_+ = \bigcup_{b > 0} \ico{b}{+\infty}\) et que sur chaque intervalle, \(e^{-tx} \leq e^{-bx}\) qui ne dépends pas de \(t\) et donc sur chacun de ses intervalles \(F\) est continue, et ceci étant vrai pour tout \(b\), c'est donc vrai sur \(\R_+\) tout entier.
-
 \chapter*{\chapterstyle{XI --- Intégrales sur un espace produit}} % A REFAIRE
 \addcontentsline{toc}{section}{Intégrales sur un espace produit} 
 Dans ce chapitre, on cherche à définir une mesure sur l'espace euclidien \( \R^n \) et ainsi pouvoir définir l'intégrale des fonctions de la forme:
@@ -636,7 +626,6 @@ On peut alors montrer que certaines classes de \( L^p(\R^n) \) s'identifient nat
    \item L'espace des fonctions continues, et même \(  \mathcal{C}^p(\R^n) \) s'injecte naturellement dans \( L^p( \R^n) \).
 \end{itemize}
 En effet si deux constantes sont égales presque partout, elles sont égales. Et si deux fonctions continues sont égales presque partout, alors en utilisant le fait évident que la mesure d'un ouvert est strictement positive, elle sont égales. En particulier, on identifiera alors par la suite \( \C \) et \(  \mathcal{C}^p( \R^n) \) comme des \textit{parties} de \( L^p( \R^n) \).
-
 \chapter*{\chapterstyle{XI --- Convolution}} % A REFAIRE
 On se place dans l'espace mesuré \( (\R^n, \mathscr{B}, \mu) \) et on considère deux fonctions \( f, g \in \overline{\mathscr{M}}_+ \), alors on définit \textbf{le produit de convolution} de \( f \) et \( g \) par la fonction:
 \[ 
@@ -755,7 +744,6 @@ Si de plus les \( (phi_n)_n \) sont lisses, on l'appelera alors \textbf{suite r�
    \phi_k(x) = k^n f(kx)
 \]
 Finalement étant muni de cette construction, on peut alors montrer qu'une telle suite régularisante vérifie bien la propriété asymptotique initiale de cette section, et approxime donc bien un élément neutre pour la convolution.
-
 \chapter*{\chapterstyle{XI --- Transformée de Fourier}} % A REFAIRE
 On se place dans l'espace mesuré\footnote[1]{Elle se définit en toute généralité dans \( \R^n \) en remplaçant \( \xi x \) par \( \xi \cdot x \), mais on choisit ici de simplifier l'exposition.} \( (\R, \mathscr{B}, \mu) \), on notera \( \mathcal{C}_b \) l'ensemble des fonctions continues bornées, alors on définit \textbf{la transformée de Fourier} de \( f \) par la fonction:
 \[ 
@@ -905,3 +893,96 @@ En particulier si deux fonctions \( f, g \in \mathscr{A} \), on a alors \textbf{
    \dotproduct{f}{g} =  \dotproduct{\hat{f}}{\hat{g}}
 \]
 En d'autres termes, la transformée de Fourier est une \textbf{isométrie} de \( \mathscr{A} \) sur lui même pour la norme 2. On peut alors montrer que la transformée de Fourier est \textbf{continue} sur \( \mathscr{A} \) et en utilisant le \textbf{théorème de pronlongement uniforme}, ainsi que le fait que \( L^1 \cap L^2 \) est dense dans \( L^2 \), on peut alors montrer qu'il existe un unique prolongement de Fourier sur tout \( L^2 \) et c'est une isométrie bijective.
+\chapter*{\chapterstyle{XI --- Séries de Fourier}} % A REFAIRE
+Dans ce chapitre, on cherche à repliquer le concept de la transformée de Fourier dans le cadre des signaux \textbf{périodiques}. En d'autres termes de décomposer un tel signal en somme de signaux élémentaires. Dans toute la suite, on étudiera sans perte de généralité les fonctions \( 1 \)-périodiques, celles ci s'identifient alors à des fonctions sur le cercle \( \R/\Z \), ou encore aux fonctions définies sur le segment \( \icc{0}{1} \).
+
+\subsection*{\subsecstyle{Famille de Fourier {:}}}
+L'idée principale, à nouveau, est de considérer la famille particulières dite \textbf{famille de Fourier} suivante:
+\[ 
+   \mathcal{F} := \left(e^{2i\pi kx}\right)_{k \in \Z} = (e_k)_{k \in \Z}
+\]
+On peut alors montrer que \( \mathcal{F} \) est une \textbf{base Hilbertienne} de l'espace des fonctions périodiques \( L^2(\icc{0}{1})\).
+\subsection*{\subsecstyle{Coefficients de Fourier {:}}}
+En particulier d'aprés la théorie hilbertienne, si \( f \in L^2(\icc{0}{1}) \), alors on appelle \textbf{coefficients de Fourier} de \( f \) et on note \( c_k(f) \) la famille de terme général \(\dotproduct{e_k}{f}\) et on a:
+\begin{itemize}
+   \item L'égalité de décomposition:
+   \[ 
+      f = \sum_{n \in \Z} \dotproduct{e_k}{f}e_k = \sum_{n \in \Z} c_k(f)e_k
+   \]
+   \item Le théorème de Pythagore:
+   \[ 
+      \vectNorm{f}^2 = \sum_{n \in \Z} \left|\dotproduct{e_k}{f}\right|^2 = \sum_{n \in \Z} \left|c_k(f)\right|^2
+   \]
+\end{itemize}
+On appelle alors la série ci-dessus \textbf{série de Fourier} de \( f \).
+\subsection*{\subsecstyle{Symmétrisation des coefficients {:}}}
+Si on considère la série de Fourier d'une fonction, on peut écrire:
+\begin{flalign*}
+   f &= \sum_{k \in \Z} c_k(f)e_k\\
+   &= c_0(f) + \sum_{n = 1}^\infty c_k(f)e^{2i \pi kx} + c_{-k}e^{-2i \pi kx} \shorteqnote{(Les termes de la somme sont appelés \( n \)-ième \textbf{harmoniques} de \( f \))}\\
+   &= c_0(f) + \sum_{n = 1}^\infty (c_k(f) + c_{-k}(f))\cos(2 \pi kx) + (i(c_k(f) - c_{-k}(f)))\sin(2 \pi kx)\\
+   &= c_0(f) + \sum_{n = 1}^\infty a_k(f)\cos(2 \pi kx) + b_k(f)\sin(2 \pi kx)
+\end{flalign*}
+Ainsi on peut aussi décomposer \( f \) dans la base \((\cos(2 \pi kx), \sin(2 \pi kx))_{k \in \N} \) et écrire \( f \) comme une \textbf{série trigonométrique}. Ceci simplifie alors grandement certains applications nécessitant de représenter la série par exemple. Les relations entre les coefficients étant par ce qui précéde:
+\[ 
+   \begin{cases}   
+      \displaystyle
+      a_k(f) = c_k(f) + c_{-k}(f) = 2 \int_0^1 \cos(2 \pi kx)f(x)dx\\
+      \displaystyle
+      b_k(f) = i(c_k{f} - c_{-k}(f)) = 2 \int_0^1 \sin(2 \pi kx)f(x)dx
+   \end{cases}
+\]
+En outre ceci permet d'utiliser la parité de la fonction, en effet on a:
+\begin{itemize}
+   \item Si \( f \) est \textbf{paire}, on a \( \forall k \in \N^* \; ; \; b_k = 0 \)
+   \item Si \( f \) est \textbf{impaire}, on a \( \forall k \in \N^* \; ; \; a_k = 0 \)
+\end{itemize}
+\subsection*{\subsecstyle{Transformée de Fourier périodique {:}}}
+Néanmoins de manière générale, on étends cette définition au cas des fonctions \( f \in L^1( \icc{0}{1}) \) et on définit la transformée de Fourier périodique par:
+\[
+   \begin{aligned}
+      \mathcal{F}: L^1( \icc{0}{1}) &\longrightarrow \ell^\infty(\Z)\\
+      f &\longmapsto (c_k(f))_{k \in \Z}
+   \end{aligned}
+\]
+On peut alors montrer les propriétés suivantes analogues à la transformée de Fourier non-périodique:
+\begin{itemize}
+   \item \textbf{Lemme de Riemann-Lebesgue:} La transformée de Fourier est une famille qui tends vers \( 0 \) aux infinis.
+   \item \textbf{Injectivité:} La transformée de Fourier est une fonction injective.
+   \item \textbf{Dérivations:} La transformée de Fourier transforme aussi les dérivées en produits par des polynômes de manière analogue au cas non-périodique, ie on a:
+   \[ 
+      \mathcal{F}(f') = (2i\pi k c_k(f))_{k \in \Z}
+   \]
+\end{itemize} 
+\subsection*{\subsecstyle{Modes de convergence de la série de Fourier {:}}}
+On appelle \textbf{somme partielle de Fourier} la somme:
+\[ 
+   S_n(f) = \sum_{k = -n}^n c_k(f)e_k 
+\] 
+Alors le cas où \( f \in L^2(\icc{0}{1}) \), on a égalité de décomposition dans \( L^2(\icc{0}{1} \) et donc plus précisément, la famille est sommable et donc pour l'énumération de cette somme partielle, on a:
+\[ 
+   \lim_{n \rightarrow \infty}\vectNorm{f - S_n(f)}_2 = 0
+\]
+Ceci nous dit alors que la somme partielle de Fourier convergence dans cet espace, donc presque partout, mais ne dit rien de sa convergence \textbf{ponctuelle ou uniforme}. Ces problèmes difficiles font l'objet des sections suivantes.
+
+\subsection*{\subsecstyle{Convergence uniforme {:}}}
+On définit \textbf{l'algèbre de Weiner} par l'ensemble suivant:
+\[ 
+   W(\icc{0}{1}) := \left\{ f \in L^1(\icc{0}{1}) \; ; \; \left(\vectNorm{c_k(f)e_k}_\infty\right)_{k \in \Z} = \left(|c_k(f)|\right)_{k \in \Z} \text{ est sommable.} \right\}  
+\]
+Alors si une fonction \( f \) appartient à cet ensemble, on peut montrer que la série de Fourier de celle-ci \textbf{converge uniformément}, et donc ponctuellement, et on a:
+\[ 
+   \lim_{n \rightarrow \infty}\vectNorm{f - S_n(f)}_\infty = 0
+\]
+On peut alors montrer une condition nécessaire à l'appartenance à \( W(\icc{0}{1}) \), en effet on a:
+\[ 
+   \mathcal{C}^0(\icc{0}{1}) \cap \mathcal{C}^1_{pm}(\icc{0}{1}) \subseteq W(\icc{0}{1})
+\]
+En particulier \( \mathcal{C}^1(\icc{0}{1}) \subseteq W(\icc{0}{1}) \) et les fonctions périodiques \( \mathcal{C}^1 \) admettent une série de Fourier uniformément convergente.
+
+\subsection*{\subsecstyle{Convergence ponctuelle {:}}}
+De manière encore plus générale, si \( f \in \mathcal{C}^1_{pm}( \icc{0}{1})\), alors on peut montrer le résultat suivant:
+\[ 
+   S_n(f) \longrightarrow \frac{f(x^+) + f(x^-)}{2} 
+\]
+Où \( f(x^+) \) et \(  f(x^-)  \) représentent la limite par valeurs supérieures et inférieures de \( f \) en chaque point.

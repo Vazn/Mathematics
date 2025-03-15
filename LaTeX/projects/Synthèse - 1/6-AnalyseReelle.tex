@@ -95,7 +95,7 @@ On peut définir un type spécifique de limite sur \(\R\) appelé \textbf{limite
    \forall \epsilon > 0 , \exists \delta > 0 , \forall x \in X \; ; \; x - a < \delta \implies |f(x) - l| < \epsilon
 \]
 Et on peut alors caractériser l'existence d'une limite en un point par l'égalité des deux limites latérales en ce point.
-\subsection*{\subsecstyle{Carcatére borné {:}}}
+\subsection*{\subsecstyle{Carctére borné {:}}}
 Une des principales conséquences du caractère métrique de \(\R\) sur les limites de fonctions est la suivante:
 \begin{center}
    Toute fonction qui admet une limite en un point est \textbf{localement bornée} en ce point\footnote[1]{En particulier, si \(f\) est une suite, elle est \textbf{globalement bornée}.}.
@@ -200,7 +200,6 @@ Enfin, il est utile de connaître ces équivalents usuels, on considère le cas 
       On remarquera dans le chapitre sur les développements limités que la grande majorité de ces équivalents ne sont que le premier terme non-nul du développement limité d'une fonction.
    }
 \end{center}
-
 \chapter*{\chapterstyle{VI --- Continuité}} % 99% Fini
 \addcontentsline{toc}{section}{Continuité}
 On étudie ici les propriétés des fonctions réelles continues, dont on sait montrer la continuité depuis le chapitre de topologie, ici on s'intéteressera aux spécificités des fonctions continues réelles, notamment leurs comportement vis à vis des opérations et les différents raffinements de la notion de continuité que l'on pourrait développer.
@@ -569,7 +568,6 @@ Enfin on dit que \(f\) est \textbf{intégrable} si et seulement si \textbf{l'int
 \]
 L'ensemble des fonctions intégrables sur \(\icc{a}{b}\) est noté \(\mathscr{I}(\icc{a}{b})\).
 \pagebreak
-
 \subsection*{\subsecstyle{Caractérisation {:}}}
 \addcontentsline{toc}{subsection}{Caractérisation}
 
@@ -586,7 +584,6 @@ De cette proposition, nous pouvons alors montrer que plusieurs classes de foncti
    \textit{Toute fonction continue est intégrable.}\+
    \textit{Toute fonction monotone est intégrable. }
 \end{center}
-
 \subsection*{\subsecstyle{Propriétés {:}}}
 \addcontentsline{toc}{subsection}{Propriétés}
 
@@ -604,8 +601,6 @@ L'intégrale vérifie aussi \textbf{l'inégalité triangulaire}, en effet on a:
 \[ 
    \Bigl| \int_{a}^{b} f(t) d t \Bigl| \leq \int_{a}^{b} |f(t)| d t 
 \]
-  
-
 \subsection*{\subsecstyle{Théorème fondamental du calcul intégral {:}}}
 \addcontentsline{toc}{subsection}{Théorème fondamental du calcul intégral}
 
@@ -620,7 +615,6 @@ Par ailleurs, si \(f\) est intégrable et que l'on en connaît une primitive \(F
 }   
 
 \underline{Exemple:} Calculons \(I = \int_{x}^{2x} f(t) d t\) pour \(f = \cos(3t)\). On a \(I = F(2x) - F(x)\) pour \(F = \frac{\sin(3x)}{3}\) une primitive de \(f\) donc \(I = \frac{\sin(3x) - \sin(6x)}{3}\)
-
 \subsection*{\subsecstyle{{Formule de la moyenne:}}}
 \addcontentsline{toc}{subsection}{Formule de la moyenne}
 Si \(f\) est continue sur le segment \(\icc{a}{b}\), alors il existe un \(c\) dans cet intervalle\footnote[1]{La preuve est immédiate, \(f\) est continue donc \(\int_{a}^{b} f(t) d t = F(a) - F(b)\) et on conclut directement par le théorème des accroissements finis.} tel que:
@@ -632,7 +626,6 @@ Dans un cas plus général\footnote[2]{Même idée de démonstration, en utilisa
 \[
    f(c)\int_{a}^{b} g(t) d t = \int_{a}^{b} f(t)g(t) d t
 \]
-
 \subsection*{\subsecstyle{Sommes de Riemann {:}}}
 \addcontentsline{toc}{subsection}{Sommes de Riemann}
 
@@ -649,7 +642,6 @@ Une somme de Riemann représente la somme d'aires de rectangles dans le cas part
 \[
    S =  \frac{1}{n}\sum_{k=0}^{+\infty} \frac{1}{1 + \frac{k}{n}} = \frac{1}{n}\sum_{k=0}^{+\infty} f\Bigl(\frac{k}{n}\Bigl) = \int_{0}^{1} f(t) d t = \ln(1 + x) \Bigl|_{0}^{1} = \ln(2)
 \]
-
 \subsection*{\subsecstyle{Techniques de calcul générales{:}}}
 \addcontentsline{toc}{subsection}{Techniques de calcul générales}
 
@@ -664,8 +656,6 @@ On montre par ailleurs la formule du \textbf{changement de variable}, elle nous 
 \customBox{width=6.5cm}{
    \[\int_{a}^{b} f(\varphi(t))\varphi'(t) d t = \int_{\varphi(a)}^{\varphi(b)} f(x) d x\]
 }  
-
-
 \subsection*{\subsecstyle{Intégration de fonctions complexes{:}}}
 \addcontentsline{toc}{subsection}{Intégration de fonctions complexes}
 
@@ -682,7 +672,6 @@ Alors on peut utiliser les propriétés suivantes et profiter des propriétés d
    I = \int e^{-x}\mathscr{R}(e^{ix}) d x = \int \mathscr{R}(e^{x(i- 1)}) d x = \mathscr{R}(\int e^{x(i - 1)} d x) = \mathscr{R}(\frac{1}{i - 1}e^{x(i - 1)}) = \frac{e^{-x}}{2}(\sin(x) - \cos(x))
 \]
 On remarque ici que l'intégrale \(\int e^{\alpha x} d x\) se comporte de manière identique si \(\alpha\) est réel ou complexe.
-
 \subsection*{\subsecstyle{Décomposition en éléments simples{:}}}
 \addcontentsline{toc}{subsection}{Décomposition en éléments simples}
 
@@ -716,7 +705,6 @@ Pour finir pour trouver le dernier coefficient, on peut par exemple réduire au 
 \begin{align*}
    \frac{2X+1}{(X-1)(X+1)^2(X^2+1)} &= \color{BrightRed1}\underbrace{\color{black}\frac{3}{8(X-1)} + \frac{-1}{8(X+1)}+ \frac{1}{4(X+1)^2}}_\text{Première espèce} \color{black}+\color{BrightRed1}\underbrace{\color{black} \frac{-X - 3}{4(X^2+1)}}_\text{Seconde espèce} 
 \end{align*}
-
 \subsection*{\subsecstyle{Intégration des éléments simples{:}}}
 \addcontentsline{toc}{subsection}{Intégration des éléments simples}
 
@@ -1209,66 +1197,6 @@ L'application principale des fonctions analytiques est la résolution des équat
 Par identification des coefficients, on trouve donc que \(a_0\) est un réel quelconque et que \(a_n = na_{n-1}\), ie que \(a_n = \frac{a_0}{n!}\), et finalement on peut donc identifier les fonctions de la forme \(f(x) = ce^x\) avec la série entière obtenue.
 \chapter*{\chapterstyle{VI --- Séries de Fourier}}
 \addcontentsline{toc}{section}{Séries de Fourier}
-On se propose dans ce chapitre d'étudier des séries de fonctions particulières, qui sont à la base de \textbf{l'analyse harmonique} qui vise à étudier les signaux périodiques ou non et à le représenter comme \textbf{superpositions de signaux élémentaires}.
-
-\subsection*{\subsecstyle{Polynômes trigonométriques{:}}}
-On définit pour se faire les \textbf{polynômes trigonométriques} à coefficients complexes\footnote[1]{On peut alors les définir algébriquement comme étant \(\C[exp(it)]\) et montrer que ces polynômes on bien une structure d'anneau (et même d'algèbre) de manière analogue aux polynômes usuels.}, qui sont les fonctions de la forme suivante:
-\[
-   f(x) = \sum_{k=-n}^{n} e^{ik\omega t} \underset{not.}{=} \sum_{k = 0}^{n} c_k e^{ik\omega t} + c_{-k}e^{-ik\omega t}    
-\]
-On a ici \(c_n\) deux suites de coefficients complexes et \(\omega\) un réel. Plus généralement, gràce\footnote[2]{En exprimant \(e^{ik\omega x}\) sous forme trigonométrique, on montre facilement que \(\begin{cases} a_n = c_n + c_{-n} \\ b_n = i(c_n - c_{-n}) \end{cases}\)} aux formules d'Euler, on peut montrer que tout polynôme trigonométrique peut s'écrire graàce aux fonctions trigonométriques classiques par:
-\[
-   S = \frac{a_0}{2} + \sum_{k=1}^{n} a_kcos(k\omega t) + b_ksin(k\omega t)   
-\]
-On peut alors facilment voir que ces polynômes sont \(\frac{2\pi}{\omega}\)-périodiques. On généralise alors à nouveau ce concept de polynômes trigonométriques au concept de \textbf{séries trigonométriques} qui, sous réserve d'existence, seront de la forme:
-\[
-   S = \sum_{k=-\infty}^{\infty} e^{ik\omega t} = \frac{a_0}{2} + \sum_{k=1}^{\infty} a_kcos(k\omega t) + b_ksin(k\omega t)
-\]
-La grande idée de Fourier est de considérer une fonction périodique \(f\) et d'essayer de décomposer cette fonction en une série trigonométrique, et donc de déterminer les suites de coefficients \(a_n, b_n, c_n\) adaptées à \(f\).
-
-\subsection*{\subsecstyle{Coefficients de Fourier{:}}}
-On considère maintenant une fonction \(2\pi\)-périodique \(f\) telle qu'elle soit développable en série de Fourier, ie que la série trigonométrique suivante converge uniformément:
-\[
-   f(x) = \sum_{n = -\infty}^{+\infty} c_n e^{inx}   
-\]
-Alors on cherche la forme du coefficient \(c_m\) de cette décomposition pour \(m \in \Z\), on transforme alors l'égalité en:
-\[
-   f(x)e^{-imx} = \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)}
-\]
-L'idée étant alors de remarquer que si on intègre cette relation sur une période, on obtient:
-\begin{align*}
-   \int_{0}^{2\pi} f(x)e^{-imx} d x &= \int_{0}^{2\pi} \sum_{n = -\infty}^{+\infty} c_n e^{ix(n - m)} d x \\
-   & = \sum_{n = -\infty}^{+\infty} c_n \int_{0}^{2\pi} e^{ix(n - m)} d x\\
-   & = 2\pi c_m
-\end{align*}
-En effet toutes les intégrales sont nulles pour \(n \neq m\), ce qui nous donne donc l'expression générale des coefficients \footnote[1]{Avec le premier coefficient donné par \(c_0\), c'est la valeur moyenne de la fonction sur une période.} de Fourier de \(f\):
-\[
-   c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)e^{-inx} d x
-\]
-On note souvent \(c_n(f)\) simplement \(c_n\) quand il n'y a pas de confusions possibles. Alors gràce aux relations explicitées dans la note de bas de page ci-dessus, on peut retrouver les coefficients \(a_n, b_n\) si nécéssaires.
-
-\subsection*{\subsecstyle{Propriétés des coefficients{:}}}
-On peut alors montrer plusieurs propriétés trés pratiques des coefficients de Fourier:
-\begin{itemize}
-   \item Si \(f\) est \textbf{paire} alors on a pour tout \(n\) que \(c_n = c_{-n}\)
-   \item Si \(f\) est \textbf{impaire} alors on a pour tout \(n\) que \(c_n = -c_{-n}\).
-\end{itemize}
-Ces propriétés permettent souvent de calculer plus facilement les coefficients de Fourier.
-
-\subsection*{\subsecstyle{Théorème de Jordan-Dirichlet{:}}}
-Il reste maintenant à comprendre quelles sont les conditions pour qu'une fonction \(2\pi\)-périodique soit développable en série de Fourier on considère donc les coefficients construits plus haut et on s'intéresse à la convergence de la série :
-\[
-   \sum_{n = 1}^{+\infty} a_n\cos(nx) + b_n\sin(nx) = \sum_{n = -\infty}^{+\infty} c_ne^{inx}   
-\]
-C'est l'objet du \textbf{théorème de Jordan-Dirichlet} qui affirme que:
-\begin{itemize}
-   \item Si \(f\) est \(C^1\) par morceaux, alors sa série de Fourier converge vers \(\frac{f(x^+) + f(x^-)}{2}\).
-   \item Si \(f\) est de plus \textbf{continue} alors sa série de Fourier converge \textbf{normalement} vers \(f\).
-\end{itemize}
-Ceci signifie alors informellement le résultat principal de ce chapitre:
-\begin{center}
-   \textit{Si une fonction périodique est suffisement régulière, elle est décomposable en série de Fourier.}
-\end{center}
 
 \subsection*{\subsecstyle{Harmoniques{:}}}
 Pour une fonction périodique donnée qui serait développable en série de Fourier, on définit sa \textbf{fréquence} par la quantité \(F = \frac{1}{T}\) on remarque alors qu'elle se décompose sous la forme d'une somme de fonctions trigonométriques telles que \textbf{leurs fréquences est multiple de la fréquence de la fonction}, on appelle alors la fréquence de la fonction \textbf{fréquence fondamentale} ou \textbf{première harmonique}, et on définit la \textbf{n-ième harmonique} par:
@@ -1281,80 +1209,3 @@ On trouve alors directement une autre expression de la série de Fourier équiva
 \] 
 Cette expression peut être pratique car elle permet de passer rapidement de la série de Fourier complexe à la série de Fourier réelle, en appairant les termes d'indices opposés et en utilisant les formules d'Euler.
 \pagebreak
-\subsection*{\subsecstyle{Formule de Parseval{:}}}
-Enfin, une formule fondamentale de la théorie des séries de Fourier est celle de \textbf{Parseval}, on définit d'abord le produit scalaire suivant sur l'espace des fonctions \(T\)-périodiques:
-\[
-   \dotproduct{f}{g} := \frac{1}{T}\int_T f(t)\overline{g(t)} d t   
-\]
-On considère alors la famille suivante de vecteurs suivante:
-\[
-   \mathscr{B} = (e^{in\omega x})_{n \in \Z}
-\]
-Alors cette famille est \textbf{orthogonale} donc libre, et elle engendre l'espace des polynômes trigonométriques, gràce à cette approche, on a alors que:
-\[
-   c_n(f) = \dotproduct{f}{e_n}
-\]
-On peut alors montrer une généralisation du \textbf{théorème de Pythagore} dans les espaces de dimension infinie dotés d'une base \(\mathscr{B}\) par:
-\[
-   \vectNorm{x}^2 = \sum_{e_i \in \mathscr{B}}\dotproduct{x}{e_i}^2
-\]
-Et donc dans ce cas particulier, on obtient l'égalité suivante:
-\[
-   \frac{1}{T} \vectNorm{f}^2 = \frac{1}{T} \int_{0}^{2\pi} |f(t)|^2 d t = \sum_{n=-\infty}^{+\infty} |c_n|^2 = \frac{a_0^2}{4} + \frac{1}{2} \sum_{n=1}^{+\infty} a_n^2 + b_n^2
-\]
-On peut en donner une interprétation physique assez évocatrice, en effet ce théorème se résume à dire que:
-\begin{center}
-   \textit{L'énergie de la fonction periodique est exactement décrite par la somme des énérgies des différentes harmoniques.}
-\end{center}
-Cette formule permet alors de calculer de nouvelles sommes si l'intégrale est facile à calculer, par exemple on peut facilement\footnote[1]{Il faut considèrer la fonction \(2\pi\) périodique égale à \(x\) sur \(\ico{-\pi}{\pi}\) puis appliquer Parseval} résoudre le problème de Bâle et montrer:
-\[
-   \sum_{n=1}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{6}   
-\]
-\pagebreak
-
-\subsection*{\subsecstyle{Exemples d'un développement {:}}}
-On considère la fonction \(2-\pi\) périodique telle que:
-\[
-   f(x) = x^2-\pi^2 \text{ sur } \inticc{-\pi}{\pi}
-\]
-On remarque rapidement qu'elle est périodique et continue, elle est donc décomposable en série de Fourier, calculons ses coefficients:
-\begin{flalign*}
-   c_n(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-int} d t\\
-   &= \frac{1}{2\pi} \int_{-\pi}^{\pi} (t^2 - \pi^2)e^{-int} d t\\
-   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} d t - \pi^2\int_{-\pi}^{\pi}e^{-int} d t\right)\\
-   &= \frac{1}{2\pi} \left(\int_{-\pi}^{\pi} t^2e^{-int} d t\right)\shorteqnote{(Intégrale d'une fonction impaire sur un intervalle symétrique.)} \\ 
-   &= \frac{1}{-2n\pi i} \left(-2\pi^2i\sin(n\pi) - \frac{4\pi}{in}\cos(n\pi) + \frac{4}{in^2}\sin(n\pi)\right) \shorteqnote{(Aprés 2 IPP et utilisation des formules d'Euler.)}\\
-   &= \frac{2\cos{n\pi}}{n^2} \shorteqnote{(Car \(\sin(n\pi)\) est nul)}\\
-   &= \frac{2(-1)^n}{n^2}
-\end{flalign*}
-Aussi le premier coefficient est donné par:
-\begin{flalign*}
-   c_0(f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} t^2 - \pi^2 d t \\
-   &= \frac{-2\pi^2}{3}
-\end{flalign*}
-
-Finalement, on calcule les harmoniques:
-\[
-   H_n(f) : x \longmapsto c_n(f)e^{inx} + c_{-n}(f)e^{-inx} = \frac{2(-1)^n}{n^2} (e^{inx} + e^{-inx}) = \frac{4(-1)^n}{n^2}cos(nx)
-\]
-Enfin on a donc le développement en série de Fourier donné par:
-\[
-   S(f) = \frac{-2\pi^2}{3} + \sum_{n=1}^{+\infty} \frac{4(-1)^n}{n^2}cos(nx)
-\]
-\subsection*{\subsecstyle{Application au calcul d'une somme {:}}}
-D'aprés l'égalité de Parseval, on a alors que:
-\[
-   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 d t = \sum_{-\infty}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} |c_n(f)|^2 = \frac{4\pi^4}{9} + 2\sum_{n=1}^{+\infty} \frac{4}{n^4}
-\]
-Aussi on a:
-\[
-   \frac{1}{2\pi}\int_{-\pi}^{\pi}|f(t)|^2 d t = \frac{1}{2\pi}\int_{-\pi}^{\pi}(x^2 - \pi^2)^2 d t = \frac{8\pi^4}{15}
-\]
-Donc finalement on trouve que:
-\[
-   \sum_{n=1}^{+\infty} \frac{8}{n^4} = \frac{8\pi^4}{15} - \frac{8\pi^4}{9} = \frac{4\pi^4}{45}
-\]
-Et donc on a réussi à calculer la somme suivante:
-\[
-   \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90}
-\]
