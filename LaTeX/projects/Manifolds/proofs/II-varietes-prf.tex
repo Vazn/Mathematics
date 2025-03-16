@@ -1,0 +1,92 @@
+\section*{\uline{Variétés {:}}}
+   \subsection*{La différentiabilité est bien définie {:}}
+   Soit \( f : M \longrightarrow \R \), il s'agit de montrer que pour \( p \in M \) et deux cartes \( (U, \phi), (V, \psi) \) qui le contiennent, alors:
+   \[ 
+      f \circ \phi \text{ différentiable} \iff  f \circ \psi \text{ différentiable}
+   \]
+   Alors on a: 
+   \[ 
+      f \circ \psi^{-1} = f \circ \phi^{-1} \circ \phi \circ \psi^{-1} = f \circ \phi^{-1} \circ c_{\psi, \phi}
+   \]
+   Où \( c \) est l'application de changement de carte associée. On en déduit donc que si \( f \circ \psi^{-1} \) est différentiable alors \(f \circ \phi^{-1}\). De manière analogue si \( f : M \longrightarrow N \) est différentiable pour deux cartes \( (U, \phi), (V, \psi) \) de \( p, f(p) \), alors par composition, on en déduis de même.
+
+
+\section*{\uline{Espaces tangents dans \( \R^n \) {:}}}
+   \subsection*{Propriété des dérivations {:}}
+   Si \( f \) est une fonction lisse constante égale à \( c \in \R \), et \( D \) une dérivation au point \( p \in \R^n \), alors \( Df = 0 \), en effet on a:
+   \begin{flalign*}
+      D(fg) &= D(f)g(p) + f(p)D(g) \iff \\
+      D(cg) &= D(f)g(p) + cD(g) \iff \shorteqnote{(Car \( fg = cg \) en tant que fonction.)}\\
+      cD(g) &= D(f)g(p) + cD(g) \shorteqnote{(Linéarité de \( D \).)}
+   \end{flalign*}
+   On conclut de la dernière égalité que \( D(f)g(p) = 0 \) et il suffit alors de choisir \( g \) de telle sorte qu'elle ne s'anulle pas en \( p \) pour conclure.
+   \subsection*{\( T\R^n_p \) est un espace vectoriel isomorphe à \( \R^n \) {:}}
+   On considère l'application suivante:
+   \[ 
+      \begin{aligned}
+         \Phi : \R^n_p &\longrightarrow T\R^n_p \\
+         v &\longmapsto \sum_{i \leq n} v_i \partialD{}{x_i}\biggr|_p
+      \end{aligned} 
+   \]
+   \uline{Linéarité:} Découle directement de la définition ..\+
+   \uline{Injectivité:} Supposons que \( v \in \R^n_p \) soit tel que:
+   \[ 
+      D = \Phi(v) = 0
+   \]
+   Alors pour toute fonction lisse \( f \in \mathcal{F}(\R^n_p, \R) \), on a \( Df = 0 \). Alors en particulier pour les fonctions coordonées \( (x_i)_{i \leq n} \), on a:
+   \[ 
+      \sum_{j \leq n}v_j \partialD{x_i}{x_j}\biggr|_p = v_i = 0
+   \]
+   Donc toutes les composantes de \( v \) sont nulles et \( v = 0 \).\+
+   \uline{Surjectivité:}
+   {\textbf{\color{red} A finir !}}
+
+\section*{\uline{Espaces tangents dans \( M \) {:}}}
+   \subsection*{Propriété de la différentielle {:}}
+      On considère \( f: M \longrightarrow N \) lisse et un point \( p \in M \), et on considère l'application suivante:
+      \[ 
+         df_p : D \in TM_p \longmapsto D( \cdot  \circ f) \in TN_{f(p)}
+      \]
+      \begin{itemize}
+         \item \textbf{Bien définie:} Si \( D \) est une dérivation en \( p \), alors \( g \circ f \) est bien lisse et on a: 
+         \begin{flalign*}
+            df_p(D)(gh) &= D(gh \circ f)\\
+            &= D((g \circ f)(h \circ f))\\
+            &= D(g \circ f)(h \circ f)(p) + (g \circ f)(p)D(h \circ f) \shorteqnote{(Car \( D \) est une dérivation en \( p \).)}\\
+            &= df_p(g)h(f(p)) + g(f(p))df_p(h)
+         \end{flalign*}
+         Et donc \( df_p(D) \) est bien une dérivation en \( f(p) \).
+         \item \textbf{Linéarité:} Découle directement de la définition.
+         \item \textbf{Règle de la chaîne:} Soit \( f : M \longrightarrow N \) et \( g : N \longrightarrow L \) deux applications lisses entre des variétés. Soit \( p \in M \), alors par définition:
+         \[ 
+            d(g \circ f)_p : D \in TM_p \longmapsto D(\cdot \circ g \circ f)) \in TL_{g(f(p))} 
+         \]
+         Il s'agit de montrer que cette fonction est égale à \(dg_{f(p)} \circ df_p \), les domaines de définition coincident bien, soit \( D \) une dérivation de \( TM_p \), alors on a:
+         \[ 
+            dg_{f(p)} \circ df_p(D) = dg_{f(p)}(df_p(D)) = dg_{f(p)}(D( \cdot \circ f)) = D(\cdot \circ g \circ f)
+         \]
+         On a donc égalité des images et donc égalité des fonctions.
+      \end{itemize}
+      \subsection*{Propriété de structure {:}}
+      Finalement montrons que si \( f : M \longrightarrow N \) est un \textbf{difféomorphisme}, alors \( df_p \) en un \textbf{isomorphisme} en tout point. On utilisera le lemme (presque évident) suivant:
+      \[ 
+         d(Id_M)_p = Id_{TM_p} 
+      \]
+      Alors si \( f \) est un difféormorphisme, en tout point \( p \), on a:
+      \[ 
+         \begin{cases}
+            d(f^{-1} \circ f)_p = df^{-1}_{f(p)} \circ df_p = Id_{TM_p}\\
+            d(f \circ f^{-1})_{f(p)} = df_{p} \circ df^{-1}_{f(p)} = Id_{TN_{f(p)}}
+         \end{cases}
+      \]
+      Finalement, ceci montre que \( df_p \) est bijective d'inverse \( df^{-1}_{f(p)} \) et linéaire par définition, on a donc bien:
+      \[ 
+         TM_p \cong TN_{f(p)} 
+      \]
+      On en déduit directement en utilisant que toute carte \( \phi \) est un difféomorphisme et donc qu'en tout point d'une variété on a:
+      \[ 
+         TM_p \cong T\R^n_{\phi(p)} \cong \R^n 
+      \]
+
+   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) {:}}
+      {\textbf{\color{red} A finir !}}

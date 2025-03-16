@@ -111,9 +111,115 @@
    En particulier, on peut remarquer que \( \R^n_+ \) lui-même est bien une variété à bord ce qui est bien cohérent ...
 \chapter{Exemples de variétés}
    Dans ce chapitre, on présente quelques exemples simples de variétés différentielles, leurs atlas et quelques unes de leurs propriétés.
-   \section{Le cercle \( S^1 \)}
-   \section{La sphere \( S^2 \)}
-   \section{Plan projectif \( \R P^2 \) ?}
+   \section{Variété triviale}
+   On considère l'espace topologique \( \widetilde{\R^2} = \R^2 \backslash D\) où \(D = \left\{ (x, y) \in \R^2 \; ; \; x < 0 \right\}\), alors il est muni de la carte triviale cartésienne de \( \R^2 \) par définition. On peut aussi considérer la carte (globale) polaire, on a donc deux cartes:
+   \[ 
+      \begin{aligned}
+         \phi : \widetilde{\R^2} &\longrightarrow \widetilde{\R^2} \\
+         (x, y) &\longmapsto (x, y)
+      \end{aligned} \quad\quad
+      \begin{aligned}
+         \psi^{-1} : \ioo{0}{+\infty} \times \ioo{-\pi}{\pi} &\longrightarrow \widetilde{\R^2} \\
+         (r, \theta) &\longmapsto (r \cos( \theta), r \sin( \theta))
+      \end{aligned}
+   \]
+   Alors l'application de changement de carte est facilement donnée par \( \psi^{-1} \) qui est bien un difféomorphisme. Ceci démontre alors que \( \widetilde{\R^2} \) muni de la carte cartésienne et polaire est muni d'une structure de variété différentielle.
+   
+   \section{Variétés simples}
+   On peut montrer facilement que tout les objets suivants sont des variétés différentielles:
+   \begin{itemize}
+      \item Les \textbf{graphes de fonctions lisses}.
+      \item Les \textbf{courbes paramétrées} par une application lisses et sans points critiques.
+   \end{itemize}
+   \section{Le cercle \( \mathbb{S}^1 \)}
+   On considère le cercle unité \( \mathbb{S}^1 \), alors il existe de multiples manière de munir cet espace topologique d'une structure différentielle. La plus élégante consiste à fixer \( N, S \) le pôles nord et sud du cercle et à considèrer les deux cartes correspondant à la \textbf{projection stéréographique} passant par ces points.
+   \begin{figure*}[h]
+      \centering
+      \begin{tikzpicture}  
+         % Définitions des variables
+         \def\R{2} % Rayon du cercle
+         \def\xp{1.2} % Coordonnée x du point P sur le cercle
+         \def\yp{sqrt(\R*\R - \xp*\xp)} % Calcul de y pour rester sur le cercle
+         \def\xpp{\xp / (1 - \yp/\R)} % Coordonnée x de P' par projection
+         \def\ypp{0} % P' est sur l'axe x
+
+         % Dessin du cercle
+         \draw[thick] (0,0) circle (\R);
+         
+         % Axe horizontal (plan de projection)
+         \draw[thick, dashed] (-7,0) -- (7,0);
+         \draw[thick, dashed] (0,-2) -- (0,2);
+
+         % Pôle nord
+         \fill[black] (0,\R) circle (2pt) node[above] {$N$};
+
+         % Point P sur le cercle
+         \fill[] ({\xp},{\yp}) circle (2pt) node[above right] {$(x,y)$};
+         % Projection P' sur l'axe x
+         \fill[] ({\xpp},{\ypp}) circle (2pt) node[below] {$p_N(x,y)$};
+         % Projection (lignes)
+         \draw[dashed, thick] ({\xp},{\yp}) -- (0,\R); % Ligne vers le pôle nord
+         \draw[thick] ({\xp},{\yp}) -- ({\xpp},{\ypp}); % Projection
+      \end{tikzpicture}
+      \caption{Projection stéréographique via le pôle Nord}
+   \end{figure*}
+
+   Alors, des faits géométriques élémentaires permettent de trouver l'expression analytique de ces deux projections:
+   \[ 
+      \begin{aligned}
+         p_N : \mathbb{S}^1 &\longrightarrow \R \\
+         (x, y) &\longmapsto \frac{x}{1-y}
+      \end{aligned} \quad\quad
+      \begin{aligned}
+         p_S : \mathbb{S}^1 &\longrightarrow \R \\
+         (x, y) &\longmapsto \frac{x}{1+y}
+      \end{aligned}
+   \]
+   Alors on vérifie que ces deux applications sont des homéomorphismes sur leur image, d'inverses:
+   \[ 
+      \begin{aligned}
+         p_N^{-1} : \R &\longrightarrow \mathbb{S}^1 \\
+         x &\longmapsto \left(\frac{2x}{x^2+1}, \frac{1-x^2}{x^2+1}\right)
+      \end{aligned} \quad\quad
+      \begin{aligned}
+         p_S^{-1} : \R &\longrightarrow \mathbb{S}^1 \\
+         x &\longmapsto \left(\frac{2x}{x^2+1}, \frac{x^2-1}{x^2+1}\right)
+      \end{aligned}
+   \]
+   Ceci munit le cercle d'une structure de variété topologique, en outre on peut montrer que les applications de changement de cartes sont différentiables. Et donc le cercle est bien muni d'une structure différentielle.
+   \section{La sphere \( \mathbb{S}^2 \)}
+   On considère la sphère unité \( \mathbb{S}^2 \), alors il existe de multiples manière de munir cet espace topologique d'une structure différentielle. La plus élégante consiste à nouveau à fixer \( N, S \) le pôles nord et sud de la sphère et à considèrer les deux cartes correspondant à la \textbf{projection stéréographique} passant par ces points.
+   \begin{figure*}[h]
+      \centering
+         \begin{tikzpicture}[scale=1.25]
+            \coordinate (A) at (3,-0.25);
+            \coordinate (P) at (0,2);
+      
+            \draw (0:2cm)   arc[radius=2cm,start angle=0,end angle=180]
+                  (210:2cm) arc[radius=2cm,start angle=210,end angle=330];
+            \draw (180:2cm) arc[x radius=2cm, y radius=0.5cm, start angle=180,end angle=360];
+      
+            \draw [dashed] (210:2cm) 
+                  arc[start angle=210,delta angle=-30,radius=2cm]
+                  arc[start angle=180,delta angle=-180,x radius=2cm,y radius=0.5cm]
+                  arc[start angle=0,delta angle=-30,radius=2cm];
+      
+            \draw [dashed] (80:2cm and 0.5cm) -- (260:2cm and 0.5cm);
+            \draw [dashed] (150:2cm) coordinate(ul) -- (30:2cm) coordinate(ur);
+      
+            \draw (-4.5,-1) -- (3.5,-1) -- (4.5,1) -- (ur) (ul) -- (-3.5,1) -- (-4.5,-1);
+      
+            \draw (A) -- (P) coordinate[pos=0.47](B);
+            \path (A) node[circle, fill, inner sep=1pt, label=below:{$ p_N(x,y,z) $}]{};
+            \path (B) node[circle, fill, inner sep=1pt, label=left:{$ (x, y, z) $}]{};
+            \path (P) node[circle, fill, inner sep=1pt, label=above:{$N$}]{};
+            \draw [dashed] (-2,0) -- (2,0);
+         \end{tikzpicture}
+      \caption{Projection stéréographique de la sphère par rapport au pôle Nord}
+   \end{figure*}
+   On peut alors de manière analogue au cercle, trouver l'expression analytique des deux projections et montrer qu'elles munissent \( \mathbb{S}^2 \) d'une structure de variété différentielle.
+
+
 \chapter{Espaces tangents dans \( \R^n \)}
 On aimerait alors pouvoir généraliser la notion \textbf{d'espace tangent} à une courbe, surface ... lisse de \( \R^n \) à des variétés abstraites comme définies dans les deux premiers chapitres. Pour ce faire, il est fondamental de comprendre que les variétés ainsi définies ne sont \textbf{pas} des objets de \( \R^k \), donc la notion de vecteur tangent géométrique perd son sens.\<
 
@@ -124,7 +230,7 @@ Soit \(x \in \R^n\), on dira qu'un opérateur linéaire \( D: \mathcal{C}^\infty
 \[ 
    D(fg) = D(f)g(x) + f(x)D(g) 
 \]
-En particulier, les opérateurs de dérivées partielles d'une fonction lisse sont des dérivations.
+En particulier, les opérateurs de dérivées partielles d'une fonction lisse sont des dérivations. On peut aussi facilement montrer que si \( f \) est constant \( Df = 0 \) pour toute dérivation \( D \).
 \section{Vecteurs géométriques:}
 On considère l'espace \(\R^n_p := \left\{ p \right\} \times \left\{ v \; ; \; v \in \R^n \right\}\) des vecteurs \textbf{tangents géométriques}. On note ses éléments \( u_p \in \R^n_p\), alors on munit cet ensemble des opérations naturelles suivantes:
 \begin{itemize}
@@ -133,21 +239,16 @@ On considère l'espace \(\R^n_p := \left\{ p \right\} \times \left\{ v \; ; \; v
 \end{itemize}
 Alors cet espace est naturellement muni d'une structure d'espace vectoriel de base canonique évidente \( (p, e_i)_{i \leq n} \).
 \section{Espace tangent \( T\R^n_p \):}
-On appelle alors \textbf{espace tangent} à \( \R^n_p \) l'ensemble \( T\R^n_p \) de toutes les dérivations de fonctions lisses définies sur \( \R^n \). On pose alors l'application suivante:
+On appelle alors \textbf{espace tangent} à \( \R^n_p \) l'ensemble \( T\R^n_p \) de toutes les dérivations de fonctions lisses définies sur \( \R^n_p \). On pose alors l'application suivante:
 \[ 
    \begin{aligned}
       \Phi : \R^n_p &\longrightarrow T\R^n_p \\
-      v_p &\longmapsto \left( f \mapsto \sum_{i \leq n} v_i \partialD{f}{x_i}(p) \right)
+      v_p &\longmapsto \sum_{i \leq n} v_i \partialD{}{x_i}\biggr|_p
    \end{aligned} 
 \]
-Alors on remarque plusieurs propriétés:
-\begin{itemize}
-   \item L'espace \( T\R^n_p \) est trivialement un espace vectoriel.
-   \item L'application ci-dessus est un isomorphisme.
-\end{itemize}
-Ceci nous permet alors d'identifier vecteurs et dérivations, en outre, on en déduit une base de \( T\R^n_p \) qui est alors donnée par:
+Alors on montre la propriété fondamentale qui est que \( \Phi \) est un \textbf{isomorphisme linéaire}. Ceci nous permet alors d'identifier vecteurs et dérivations, en outre, on en déduit une base de \( T\R^n_p \) qui est alors donnée par:
 \[ 
-   \Phi(e_i) = \left(f \longmapsto \partialD{f}{x_i}(p)\right) =: \partialD{}{x_i}\biggr|_p
+   \Phi(e_i) = \partialD{}{x_i}\biggr|_p
 \] 
 \chapter{Espaces tangents sur une variété}
 On généralise l'approche du chapitre précédent au cas des variétés, et on en déduit une définition de l'espace tangent en un point, intrinsèque et qui ne dépends pas des cartes. Dans toute la suite, on considèrera une fonction \( f : M \longrightarrow N \) point \( p \in M \), une carte \( \phi = (x_1, \ldots, x_n) \) et \( \psi = (y_1, \ldots, y_n) \) qui contiennent respectivement \( p \) et \( f(p) \)
@@ -161,7 +262,7 @@ On considère alors une application lisse \( f : M \longmapsto N \) et \( p \in 
       D &\longmapsto \left( g \longmapsto D(g \circ f) \right)
    \end{aligned} 
 \]
-On peut alors vérifier que cette application est bien définie et qu'elle vérifie les propriétés suivantes:
+C'est moralement une application qui transporte les dérivations. On peut alors vérifier que cette application est bien définie et qu'elle vérifie les propriétés suivantes:
 \begin{itemize}
    \item Elle est \textbf{linéaire}.
    \item Elle vérifie la \textbf{règle de la chaîne:} \( d(f \circ g)_p = df_{g(p)} \circ dg_p \)
@@ -179,7 +280,7 @@ On en déduis donc que \( TM_p \) est un espace vectoriel de dimension \( n \) e
 \]
 Ce sont des dérivations dont l'action sur une fonction lisse\footnote[1]{Si \( f : M \longrightarrow N \) alors on peut aussi définir une action de ces dérivées partielles en composantes en notant \( f_j(p) = (\psi \circ f)_j(p) \) la \( j \)-ième composante de \( f \), et alors \( \partialD{}{x_i}\bigr|_p(f) := \left(\partialD{}{x_i}\bigr|_p(f_1), \ldots,  \partialD{}{x_i}\bigr|_p(f_n)\right) \)} \( f \) est définie par la dérivation partielle dans les coordonées locales:
 \[ 
-   \partialD{}{x_i}\biggr|_p(f) = \partialD{f \circ \phi^{-1}}{x_i}(\phi(p))
+   \partialD{}{x_i}\biggr|_pf = \partialD{f \circ \phi^{-1}}{x_i}(\phi(p))
 \]
 
 \pagebreak
