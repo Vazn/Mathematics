@@ -218,8 +218,6 @@
       \caption{Projection stéréographique de la sphère par rapport au pôle Nord}
    \end{figure*}
    On peut alors de manière analogue au cercle, trouver l'expression analytique des deux projections et montrer qu'elles munissent \( \mathbb{S}^2 \) d'une structure de variété différentielle.
-
-
 \chapter{Espaces tangents dans \( \R^n \)}
 On aimerait alors pouvoir généraliser la notion \textbf{d'espace tangent} à une courbe, surface ... lisse de \( \R^n \) à des variétés abstraites comme définies dans les deux premiers chapitres. Pour ce faire, il est fondamental de comprendre que les variétés ainsi définies ne sont \textbf{pas} des objets de \( \R^k \), donc la notion de vecteur tangent géométrique perd son sens.\<
 
@@ -347,7 +345,6 @@ Où on identifiera \( V(p) \triangleq v_p \). Alors plus précisément, si on fi
    V(p) = \sum_{i = 1}^n V_i(p) \partialD{}{x_i}\biggr|_p
 \]
 \pagebreak
-
 \section{Pushforward d'un champs de vecteurs}
 Soit \( f : M \longrightarrow N \) une application lisse, l'utilité principale de la différentielle est de pouvoir transporter des vecteurs tangents à \( M \) sur des vecteurs tangents à \( N \), on peut alors se demander si on peut transporter un champs de vecteurs \( X : p \longrightarrow TM \) de la sorte, on peut toujours définir:
 \[ 
@@ -358,6 +355,7 @@ Mais ce n'est pas à proprement parler un champs de vecteurs sur \( N \) du fait
    f_*X : q \in N \longmapsto (q \; ; \; df_{f^{-1}(q)}(X_{f^{-1}(q)})) \in TN
 \]
 On obtient bien ainsi un champs de vecteurs sur \( N \).
+
 \chapter{Espaces cotangents sur une variété}
 On peut alors considérer naturellement l'espace dual à l'espace tangent en un point \( p \in M \) et on définit ainsi \textbf{l'espace cotangent} en un point. On notera une base de cet espace, dans des coordonées locales, par la famille \( (dx_i)_{i \leq n} \) qui vérifie par définition pour la base définie dans le chapitre précédent que:
 \[ 
@@ -371,7 +369,7 @@ On appelle cet ensemble le \textbf{fibré cotangent} de \( M \) et il est défin
    TM^* = \bigsqcup_{p \in M} TM^*_p = \bigcup_{p \in M} \{p\} \times TM^*_p
 \]
 C'est, par définition du dual d'un fibré vectoriel\footnote[1]{Le dual du fibré, c'est le fibré des duals (:}, le dual de \( TM \). Aussi, il vérifie des propriétés analogues au fibré vectoriel et c'est aussi une variété de dimension \( 2n \).
-\section{Identification de la différentille à une forme:}
+\section{Identification de la différentielle à une forme:}
 L'expression de la différentielle d'une fonction \( f : M \longrightarrow \R \) s'identifie à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : \R \longrightarrow \R \) on a:
 \begin{align*}
    df_p(v)(g) &= \sum_{i=1}^n v_i df_p\left(\partialD{}{x_i}\biggr|_p\right)(g)\\
@@ -388,7 +386,7 @@ Or, le vecteur de base \(\partialD{}{t}\) de \( T\R_{f(p)} \) s'identifie nature
    df_p(v) \triangleq \sum_{i=1}^n \partialD{f}{x_i}(p)dx_i(v)
 \]
 On remarque alors que \( df_p \in TM^*_p \), on peut donc identifier la différentielle d'une fonction scalaire évaluée en un point à un vecteur cotangent, ie une forme linéaire sur l'espace tangent.
-\section{Identification de la différentille dans le cas général:}
+\section{Identification de la différentielle dans le cas général:}
 L'expression de la différentielle d'une fonction \( f : M \longrightarrow N \) s'identifie aussi à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : M \longrightarrow \R \)on a:
 \begin{align*}
    df_p(v)(g) &= \sum_{i=1}^n v_i df_p\left(\partialD{}{x_i}\biggr|_p\right)(g)\\
