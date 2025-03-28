@@ -64,7 +64,7 @@
          \]
          On a donc égalité des images et donc égalité des fonctions.
       \end{itemize}
-      \subsection*{Propriété de structure {:}}
+   \subsection*{Propriété de structure {:}}
       Finalement montrons que si \( f : M \longrightarrow N \) est un \textbf{difféomorphisme}, alors \( df_p \) en un \textbf{isomorphisme} en tout point. On utilisera le lemme (presque évident) suivant:
       \[ 
          d(Id_M)_p = Id_{TM_p} 
@@ -85,8 +85,203 @@
          TM_p \cong T\R^n_{\phi(p)} \cong \R^n 
       \]
 
-   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) {:}}
-      {\textbf{\color{red} A finir !}}
-
+   \subsection*{Changement de représentation des vecteurs tangents {:}}
+   Si \( (U, \phi), (V, \psi) \) sont deux cartes qui contiennent un point \( p \), alors si on note \( x_i, y_i \) les coordonées respectives dans la première et la deuxième carte et \( c = \psi \circ \phi^{-1} \) l'application de changement de carte alors pour toute fonction lisse \( g \), on a:   
+   \begin{flalign*}
+      \partialD{}{x_i}\biggr|_p g &= \partialD{g \circ \phi^{-1}}{x_i}(\phi(p))\\
+      &= \partialD{g \circ \psi^{-1} \circ \psi \circ \phi^{-1}}{x_i}(\phi(p))\\
+      &= \sum_{j \leq n} \partialD{g \circ \psi^{-1}}{y_j}(\psi(p))\partialD{c_j}{x_i}(\phi(p)) \shorteqnote{(Règle de la chaîne dans \( \R^n \))}\\
+      &= \sum_{j \leq n} \partialD{c_j}{x_i}(\phi(p))\partialD{}{y_j}\biggr|_pg
+   \end{flalign*}
+   Ceci étant vrai pour toute application \( g \), on a donc:
+   \[ 
+      \partialD{}{x_i}\biggr|_p = \sum_{j \leq n} \partialD{c_j}{x_i}(\phi(p)) \partialD{}{y_j}\biggr|_p
+   \]
+   Si on note \( (x_1, \ldots, x_n)\) les composantes de \( \phi(p) \), on a donc:
+   \[ 
+      \partialD{}{x_i}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)} = \sum_{j \leq n} \partialD{c_j}{x_i}(x_1, \ldots, x_n) \partialD{}{y_j}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)}
+   \]
+   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) - Partie 1 {:}}
+      On définit donc le fibré tangent à \( M \) comme la réunion disjointe \( \bigsqcup_{p \in M} TM_p \), alors le seul objet à notre disposition est la projection:
+      \[ 
+         \begin{aligned}
+            \pi : TM &\longrightarrow M \\
+            (p, v) &\longmapsto p
+         \end{aligned} 
+      \]
+      On procède par étapes:
+      \begin{itemize}
+         \item Tout d'abord on définit une \textbf{topologie} sur \( TM \) gràce à \( \pi \) en effet, on considère la topologie engendrée par la famille suivante:
+         \[ 
+            \left\{  \pi^{-1}(\mathcal{O}) \; ; \; \mathcal{O} \in \mathcal{T}_M \right\} 
+         \]
+         C'est en fait la plus petite topologie qui rende \( \pi \) continue.
+         \item On doit alors construire un atlas de \( TM \), soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \), et on définit un prototype de carte locale pour un point du fibré par:
+         \[ 
+            \begin{aligned}
+               \widetilde{\phi} : \pi^{-1}(U) &\longrightarrow \phi(U) \times \R^n \\
+               (p, v) &\longmapsto (\phi(p), v_1, \ldots, v_n)
+            \end{aligned}
+         \]
+         Où ici les \( (v_i) \) sont les coordonées du vecteur \( v \in TM_p \) dans la base associée à la carte locale \( \phi \).
+      \end{itemize}
+      Définissons maintenant l'atlas sur \( TM \), on considère l'atlas \( (U_i, \phi_i) \) de \( M \), alors elles recouvrent \( M \). On pose alors \((\pi^{-1}(U_i), \Phi_i)\) où \( \Phi_i \) est la carte locale définie plus haut. On doit montrer que:
+      \begin{enumerate}
+         \item Les \( \pi^{-1}(U_i) \) recouvrent \( TM \).
+         \item Les \( \Phi_i \) sont des homéomorphismes sur leurs images.
+         \item Les applications de changement de cartes sont lisses.
+      \end{enumerate}
+   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) - Partie 2 {:}}
+      \begin{enumerate}
+         \item Soit \( (p, v) \) un point de \( TM \), alors si \( (U, \phi) \) est une carte qui contient \( p \), on a que \((p, v) \in \pi^{-1}(U)\), donc on a bien un recouvrement.
+         \item Les \( \widetilde{\phi}_i \) sont des bijections sur leurs images, en effet on peut écrire l'inverse pour tout \((x_1, \ldots, x_n, v_1, \ldots, v_n) \in \phi(U) \times \R^n \), on pose:
+         \[ 
+            \widetilde{\phi}^{-1}(x_1, \ldots, x_n, v_1, \ldots, v_n) = \left(\phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n} v_i\partialD{}{x_i}\bigg|_{\phi^{-1}(x_1, \ldots, x_n)}\right)
+         \]
+         Aussi, \( \widetilde{\phi}, \widetilde{\phi}^{-1} \) sont continues par composantes, pour la première composante car \( \phi \) est continue, et pour les autres ?
+         \item Les applications de changement de cartes sont lisses, en effet soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), alors \( (\pi^{-1}(U), \Phi), (\pi^{-1}(V), \Psi) \) sont les cartes correspondantes de \( TM \), alors:
+         \[ 
+            \begin{cases}
+               E = \Phi(\pi^{-1}(U) \cap \pi^{-1}(V)) = \phi(U \cap V) \times \R^n\\
+               F = \Psi(\pi^{-1}(U) \cap \pi^{-1}(V)) = \psi(U \cap V) \times \R^n
+            \end{cases}
+         \]
+         Et donc on peut calculer l'application de changement de cartes:
+         \begin{align*}
+            \Psi \circ \Phi^{-1}(x_1, \ldots, x_n, v_1, \ldots, v_n) 
+            &= \Psi\left(\phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n} v_i \partialD{}{x_i}\bigg|_{\phi^{-1}(x_1, \ldots, x_n)} \right)\\ 
+            &= \left(\psi \circ \phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n}\sum_{j \leq n} v_i \partialD{c_j}{x_i}(x_1, \ldots, x_n) \partialD{}{y_j}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)} \right)
+         \end{align*} 
+      \end{enumerate}
 \section*{\uline{Chapitre 9 - Espaces cotangents dans \( M \) {:}}}
+   \subsection*{Différentielle abstraite et différentielle usuelle - Partie 1:}
+      L'expression de la différentielle d'une fonction \( f : M \longrightarrow \R \) s'identifie à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : \R \longrightarrow \R \) on a:
+      \begin{align*}
+         df_p(v)(g) &= \sum_{i=1}^n v_i df_p\left(\partialD{}{x_i}\biggr|_p\right)(g)\\
+         &= \sum_{i=1}^n v_i \partialD{g \circ f}{x_i}(p)\\
+         &= \sum_{i=1}^n v_i \partialD{g}{t}(f(t))\partialD{f}{x_i}(p)\\
+         &= \left(\sum_{i=1}^n v_i \partialD{f}{x_i}(p)\partialD{}{t}\biggr|_{f(p)}\right)(g)
+      \end{align*}
+      Ceci étant vrai pour toute fonction lisse \( g \), on trouve l'expression suivante:
+      \[ 
+         df_p(v) = \sum_{i=1}^n v_i \partialD{f}{x_i}(p)\partialD{}{t}\biggr|_{f(p)}
+      \]
+   \subsection*{Différentielle abstraite et différentielle usuelle - Partie 2:}
+      L'expression de la différentielle d'une fonction \( f : M \longrightarrow N \) s'identifie aussi à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : M \longrightarrow \R \) on a:
+      \begin{align*}
+         df_p(v)(g) &= \sum_{i=1}^n v_i df_p\left(\partialD{}{x_i}\biggr|_p\right)(g)\\
+         &= \sum_{i=1}^n v_i \partialD{g \circ f}{x_i}(p)\\
+         &= \sum_{i=1}^n v_i \sum_{j=1}^m \partialD{g}{y_j}(f(p)) \partialD{f_j}{x_i}(p)\\
+         &= \left(\sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}\right)(g)
+      \end{align*}
+      Où ici \( f_j \) représente les coordonées locales de \( f \) au voisinage de \( f(p) \), ie \( f_j = (\psi \circ f)_j(p) \). Ceci étant vrai pour toute fonction lisse \( g \), on trouve l'expression suivante:
+      \[ 
+         df_p(v) = \sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}
+      \]
 \section*{\uline{Chapitre 10 - Formes différentielles dans \( M \) {:}}}
+   \subsection*{Existence de la dérivée extérieure locale - Analyse {:}}
+      On procède par analyse-synthèse, et on considère une dérivée extérieure \( d \) qui vérifie les axiomes. Alors pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), on a nécessairement:
+      \begin{flalign*}
+         d\omega_p &= d\left(\sum_I \omega_I(p) dx^I\right)\\
+         &=\sum_I d(\omega_I(p) dx^I)\shorteqnote{(Linéarité)} \\
+         &= \sum_I d\omega_I(p) \wedge dx^I + \omega_I(p)d(dx^I)\shorteqnote{(Leibniz)}\\
+         &= \sum_I d\omega_I(p) \wedge dx^I
+      \end{flalign*}
+      La dernière ligne venant du fait que \( d(dx^I) = 0 \), en effet on explicite les indices et par une récurrence assez évidente et \( d^2 = 0 \) on conclut.
+   \subsection*{Existence de la dérivée extérieure locale - Synthèse {:}}
+      Pour tout \( p \in M \), pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), alors on définit dans les coordonées locales associées à une carte \( (U, \phi) \) l'opérateur suivant:
+      \[ 
+         d\omega_p = \sum_I d\omega_I(p) \wedge dx^I
+      \]
+      Alors on doit montrer que cet opérateur est bien une dérivée extérieure.
+   
+   \subsection*{Généralisation de la différentielle {:}}
+   Si \( f \in \Omega^0(M) \), c'est une fonction lisse, et alors \( d \) agit par définition par différentiation des coefficients, l'unique coefficient de la \( 0 \)-forme \( f \), étant elle même, on conclut.
+   \subsection*{Linéarité de la dérivée extérieure {:}}
+   On se donne \( \omega, \eta \) deux \( k \)-formes sur \( M \) ainsi que \( \lambda \) un scalaire, alors on a:
+   \[ 
+      d( \omega + \lambda\eta)_p = d\left( \sum_I (f_I + \lambda g_I)(p) dx^I\right) = \sum_I d(f_I + \lambda g_I)(p) \wedge dx^I = d\omega_p + \lambda d\eta_p
+   \]
+   \subsection*{Formule de Leibniz {:}}
+   On se donne \( \omega, \eta \) respectivement une \( k \)-forme et une \( l \)-forme sur \( M \) alors on a:
+   \[ 
+      \begin{cases}
+         \omega_p = \sum_I \omega_I(p)dx^I\\
+         \eta_p = \sum_J \eta_J(p)dx^J
+      \end{cases} 
+   \]
+   On a alors:
+   \[ 
+      (\omega \wedge \eta)_p = \sum_{I, J} (\omega_I\eta_J)(p)dx^I \wedge dx^J
+   \]
+   Appliquons la dérivée extérieure:
+   \[ 
+      d(\omega \wedge \eta)_p = \sum_{I, J} d(\omega_I\eta_J)(p) \wedge dx^I \wedge dx^J
+   \]
+   Les fonctions différentiées sont scalaires, donc on applique la règle du produit:
+   \begin{flalign*}
+      d(\omega \wedge \eta)_p &= \sum_{I, J} \left(d\omega_I(p)\eta_J(p) + \omega_I(p)d\eta_J(p)\right) \wedge dx^I \wedge dx^J \shorteqnote{(Par définition.)}\\
+      &= \sum_{I, J} d\omega_I(p)\eta_J(p)\wedge dx^I \wedge dx^J  + \sum_{I, J} \omega_I(p)d\eta_J(p) \wedge dx^I \wedge dx^J \shorteqnote{(Distributivité du produit extérieur.)}\\
+      &= \sum_{I, J} d\omega_I(p) \wedge dx^I \wedge \eta_J(p)dx^J  + \sum_{I, J} d\eta^J(p) \wedge \omega^I(p)dx^I \wedge dx^J \shorteqnote{(Bilinéarité du produit extérieur.)}\\
+      &= d(\omega \wedge \eta)_p + (-1)^k\sum_{I, J} \omega_I(p)dx^I \wedge d\eta_J(p) \wedge  dx^J \shorteqnote{$(\star)$}\\
+      &= d(\omega \wedge \eta)_p + (-1)^k(\omega \wedge d\eta)_p\\
+      &= (d\omega \wedge \eta + (-1)^k(\omega \wedge d\eta))_p
+   \end{flalign*}
+   Où pour trouver \((\star)\), on identifie le premier terme, et on utilise le fait que \( \eta_J(p), dx_I \) sont respectivement une \( 1- \) forme et une \( k \)-forme et il y a donc \( k \) échanges à faire et donc \( k \) application de l'antisymétrie.
+   \subsection*{Propriété fondamentale de la dérivée extérieure {:}}
+   On considère une \( k \) forme \( \omega = \sum_I \omega_I dx^I\), alors on a:
+   \[ 
+      d\omega = \sum_I d\omega_I \wedge dx_I = \sum_I \sum_{i \leq n} \partialD{\omega_I}{x_i}dx^i \wedge dx^I
+   \]
+   Et donc si on dérive à nouveau on obtient:
+   \[ 
+      dd\omega =  \sum_I \sum_{i \leq n} \sum_{j \leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i \wedge dx^I
+   \]
+   On peut alors montrer que pour \( I \) fixé, on a:
+   \[ 
+      \sum_{1 \leq i, j\leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i = 0
+   \]
+   En effet si \( i = j \) c'est évident, mais si \( i \neq j \), on a que:
+   \[ 
+      \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i + \frac{\partial^2 \omega_I}{\partial x_i \partial x_j} dx^i \wedge dx^j = 0
+   \]
+   En effet, \( \omega_I \) est une fonction lisse donc on applique Schwartz et les dérivées croisés sont égales, mais les produit extérieurs \( dx^i \wedge dx^j \) sont opposés. Ceci nous permet d'appairer les termes en \( n \) sommes nulles (il y a \( 2n \)) termes dans la somme).
+   \subsection*{Existence de la dérivée extérieure globale{:}}
+   Pour tout \( p \in M \), pour toute \( k- \)forme \( \omega \in \Omega^k(M)\), alors on définit dans les coordonées locales associées à une carte \( (U, \phi) \) l'opérateur suivant:
+   \[ 
+      d\omega_p = \sum_I d\omega_I(p) \wedge dx^I
+   \]
+   Alors on doit montrer que cet opérateur est bien défini, ie que \( d\omega_p \) ne dépends pas de la carte \( (U, \phi) \) choisie.
+   \subsection*{Bonne définition {:}}
+   Soit \( \omega \in \Omega^k(M) \), soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), montrons que \( d\omega_p \) est bien définie, on a dans les deux cartes:
+   \[ 
+      \begin{cases}
+         \omega_p = \sum_I a_I(p)dx^I \\
+         \omega_p = \sum_I b_I(p)dy^I
+      \end{cases} 
+   \]
+   Mais alors sur l'intersection de ces cartes, il existe une dérivée extérieure comme définie plus haut, et c'est un opérateur local donc on a l'implication suivante sur \( U \cap V \):
+   \[ 
+      \sum_I a_I(p)dx^I = \sum_I b_I(p)dy^I \implies \sum_I da_I(p) \wedge dx^I = \sum_I db_I(p) \wedge dy^I
+   \]
+\section*{\uline{Chapitre 11 - Orientation d'une variété à bord {:}}}
+   \subsection*{Propriétés du produit intérieur {:}}
+   \subsection*{Expression en coordonées {:}}
+
+   \subsection*{Existence du champs de vecteurs sortant {:}}
+   Soit $M$ une variété à bords, on souhaite montrer l'existence d'un champs de vecteurs $X : p \rightarrow TM$ \textbf{sortant} sur une variété. Dans chaque carte $(U_\alpha, \phi_\alpha)$, on peut construire une fonction $f_\alpha$ qui soit nulle sur $U_\alpha \cap \partial M$ et strictement positive en dehors du bord. On considère par la suite une partition de l'unité $(\rho_\alpha)$ induite par l'atlas, alors:
+      $$
+         f = \sum_\alpha \rho_\alpha f_\alpha
+      $$
+      Alors par construction $f|_{U_\alpha} = f_\alpha$ et donc en tout point de son domaine de définition, cette fonction coïncide avec les $f_\alpha$ et sa $n$-ième dérivée partielle est donc un vecteur entrant. Donc:
+      $$
+         p \longmapsto (p, -\frac{\partial f}{\partial x_n}\big|_p) \in TM
+      $$
+      C'est bien un champs de vecteurs sortant.
+   \subsection*{Le produit intérieur avec le champs sortant oriente bien le bord {:}}
+
+\section*{\uline{Chapitre 12 - Intégrale locale d'une forme {:}}}
+
+\section*{\uline{Chapitre 13 - Intégrale d'une forme {:}}}
+
+\section*{\uline{Chapitre 14 - Théorème de Stokes {:}}}

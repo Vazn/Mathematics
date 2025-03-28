@@ -1,11 +1,11 @@
 \section*{\uline{Chapitre 0 - Elements d'algèbre tensorielle {:}}}
    \subsection*{L'espaces des tenseurs est un espace vectoriel {:}}
-On considère l'espace \( \mathscr{T}^p(E) \) l'espace des tenseurs p-covariants, montrons que c'est un sev de \( \mathcal{F}(E^p, \R) \), on a:
-\begin{itemize}
-   \item L'application nulle est bien un tenseur p-covariant.
-   \item Si \( T, T' \in \mathscr{T}^p(E)\), alors \( T + T' = (v_1, \ldots, v_p) \mapsto T(v_1, \ldots, v_p) + T'(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
-   \item Si \( T \in \mathscr{T}^p(E)\), alors \( \lambda T = (v_1, \ldots, v_p) \mapsto \lambda T(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
-\end{itemize}
+      On considère l'espace \( \mathscr{T}^p(E) \) l'espace des tenseurs p-covariants, montrons que c'est un sev de \( \mathcal{F}(E^p, \R) \), on a:
+      \begin{itemize}
+         \item L'application nulle est bien un tenseur p-covariant.
+         \item Si \( T, T' \in \mathscr{T}^p(E)\), alors \( T + T' = (v_1, \ldots, v_p) \mapsto T(v_1, \ldots, v_p) + T'(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
+         \item Si \( T \in \mathscr{T}^p(E)\), alors \( \lambda T = (v_1, \ldots, v_p) \mapsto \lambda T(v_1, \ldots, v_p) \) qui est bien linéaire en chaque argument.
+      \end{itemize}
    \subsection*{Le produit tensoriel est bien défini {:}}
 On considère: 
 \begin{align*}
@@ -86,73 +86,17 @@ On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-t
    \end{flalign*}
    Donc la famille est génératrices des tenseurs antisymétriques. En outre elle est libre par un argument similaire à celui des tenseurs simples. En particulier, un tel tenseur est donc uniquement déterminé par son image sur toutes les vecteurs de la base indéxés par une suite strictement croissante, et il y a \( \binom{n}{p} \) telles suites, c'est donc la dimension de \(\Lambda^p E^*\).
    \subsection*{Propriétés algébriques du produit extérieur {:}}
-      \begin{itemize}
-         \item \textbf{Bilinéarité et alternance:}
-         \item \textbf{Déterminant:} Soit \( \mathcal{B} = (e^i)_{i \leq n} \) une base duale de \( E \) ainsi ), alors on a par définition:
-         \begin{align*}
-            e^1 \wedge \ldots \wedge e^n = \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}
-         \end{align*}
-         Donc si on considère \( (x_1, \ldots, x_n) \) des vecteurs de \( E \), alors on évalue:
-         \begin{align*}
-            e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}(x_1, \ldots, x_n)\\
-            &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)}(x_1) \ldots e^{\sigma(n)}(x_n)\\
-            &= \sum_{\sigma \in S^n} \epsilon(\sigma) x_{1, \sigma(1)} \ldots x_{1, \sigma(n)}\\
-            &= \text{det}_\mathcal{B}(x_1, \ldots, x_n)
-         \end{align*}
-         Attention ici la notation \( x_{i,j} \) signifie bien la \( j \)-ième coordonée de \( x_i \) dans la base (non canonique a priori) des \( (e_i) \).
-\end{itemize}
-
-\pagebreak
-
-\section*{\uline{Chapitre 3 - Formes différentielles dans \( \R^n \){:}}}
-   \subsection*{Linéarité de la dérivée extérieure {:}}
-   On se donne \( \omega, \eta \) deux une \( k \)-formes sur \( \R^n \) ainsi que \( \lambda \) un scalaire, alors on a:
-   \[ 
-      d( \omega + \lambda\eta) = d\left( \sum_I (f_I + \lambda g_I)(x) dx^I\right) = \sum_I d(f_I + \lambda g_I)(x) \wedge dx^I
-   \]
-   Où le \( d \) du dernier membre est simplement la différentielle usuelle, qui est linéaire d'aprés la théorie du calcul différentiel élémentaire, ce qui permet de conclure.
-   \subsection*{Formule de Leibniz {:}}
-   On se donne \( \omega, \eta \) respectivement une \( k \)-forme et une \( p \)-forme sur \( \R^n \) alors on a:
-   \[ 
-      \begin{cases}
-         \omega = \sum_I \omega_I(x)dx^I\\
-         \eta = \sum_J \eta_J(x)dx^J
-      \end{cases} 
-   \]
-   On a alors:
-   \[ 
-      (\omega \wedge \eta)(p) = \sum_{I, J} (\omega_I\eta_J)(p)dx^I \wedge dx^J
-   \]
-   Appliquons la dérivée extérieure:
-   \[ 
-      d(\omega \wedge \eta)(p) = \sum_{I, J} d(\omega_I\eta_J)(p) \wedge dx^I \wedge dx^J
-   \]
-   Les fonctions différentiées sont scalaires, donc on applique la règle du produit:
-   \begin{flalign*}
-      d(\omega \wedge \eta)(p) &= \sum_{I, J} \left(d\omega_I(p)\eta_J(p) + \omega_I(p)d\eta_J(p)\right) \wedge dx^I \wedge dx^J \shorteqnote{(Par définition.)}\\
-      &= \sum_{I, J} d\omega_I(p)\eta_J(p)\wedge dx^I \wedge dx^J  + \sum_{I, J} \omega_I(p)d\eta_J(p) \wedge dx^I \wedge dx^J \shorteqnote{(Distributivité du produit extérieur.)}\\
-      &= \sum_{I, J} d\omega_I(p) \wedge dx^I \wedge \eta_J(p)dx^J  + \sum_{I, J} d\eta^J(p) \wedge \omega^I(p)dx^I \wedge dx^J \shorteqnote{(Bilinéarité du produit extérieur.)}\\
-      &= d(\omega \wedge \eta)(p) + (-1)^k\sum_{I, J} \omega_I(p)dx^I \wedge d\eta_J(p) \wedge  dx^J \shorteqnote{$(\star)$}\\
-      &= (d\omega \wedge \eta)(p) + ((-1)^k\omega \wedge d\eta)(p)
-   \end{flalign*}
-   Où pour trouver \((\star)\), on identifie le premier terme, et on utilise le fait que \( \eta_J(p), dx_I \) sont respectivement une \( 1- \) forme et une \( k \)-forme et il y a donc \( k \) échanges à faire et donc \( k \) application de l'antisymétrie.
-   \pagebreak
-   \subsection*{Propriété fondamentale de la dérivée extérieure {:}}
-   On considère une \( k \) forme \( \omega = \sum_I \omega_I dx^I\), alors on a:
-   \[ 
-      d\omega = \sum_I d\omega_I \wedge dx_I = \sum_I \sum_{i \leq n} \partialD{\omega_I}{x_i}dx^i \wedge dx^I
-   \]
-   Et donc si on dérive à nouveau on obtient:
-   \[ 
-      dd\omega =  \sum_I \sum_{i \leq n} \sum_{j \leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i \wedge dx^I
-   \]
-   On peut alors montrer que pour \( I \) fixé, on a:
-   \[ 
-      \sum_{1 \leq i, j\leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i = 0
-   \]
-   En effet si \( i = j \) c'est évident, mais si \( i \neq j \), on a que:
-   \[ 
-      \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i + \frac{\partial^2 \omega_I}{\partial x_i \partial x_j} dx^i \wedge dx^j = 0
-   \]
-   En effet, \( \omega_I \) est une fonction lisse donc on applique Schwartz et les dérivées croisés sont égales, mais les produit extérieurs \( dx^i \wedge dx^j \) sont opposés. Ceci nous permet d'appairer les termes en \( n \) sommes nulles (il y a \( 2n \)) termes dans la somme).
- 
+   ...
+   \subsection*{Déterminant {:}}
+   Soit \( \mathcal{B} = (e^i)_{i \leq n} \) une base duale de \( E \) ainsi ), alors on a par définition:
+   \begin{align*}
+      e^1 \wedge \ldots \wedge e^n = \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}
+   \end{align*}
+   Donc si on considère \( (x_1, \ldots, x_n) \) des vecteurs de \( E \), alors on évalue:
+   \begin{align*}
+      e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)} \otimes \ldots \otimes e^{\sigma(n)}(x_1, \ldots, x_n)\\
+      &= \sum_{\sigma \in S^n} \epsilon(\sigma) e^{\sigma(1)}(x_1) \ldots e^{\sigma(n)}(x_n)\\
+      &= \sum_{\sigma \in S^n} \epsilon(\sigma) x_{1, \sigma(1)} \ldots x_{1, \sigma(n)}\\
+      &= \text{det}_\mathcal{B}(x_1, \ldots, x_n)
+   \end{align*}
+   Attention ici la notation \( x_{i,j} \) signifie bien la \( j \)-ième coordonée de \( x_i \) dans la base (non canonique a priori) des \( (e_i) \).

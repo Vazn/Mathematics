@@ -1,0 +1,50 @@
+\chapter{Elements de topologie}
+On va dans toute la suite étudier des espaces topologiques tels qu'il sera souvement aisé de définir des objets \textbf{localement}, mais on aimera étendre cette définition en un objet \textbf{global} (ce sera par exemple le cas pour définir généraliser l'intégrale). Un des outils topologique trés puissant pour se faire est celui de \textbf{partition de l'unité}.
+
+\section{Partition de l'unité}
+Dans toute la suite, on considérera un espace topologique \( M \) compact et un recouvrement de cet espace par des ouverts \((U_i)_{i \in I}\). On appelle \textbf{partition de l'unité} subordonée au recouvrement de \( M \) une famille de fonctions \( (\rho_i)_{i \in I} \) de \( M \longrightarrow \icc{0}{1} \) telles que \( \text{supp}( \rho_i) \subseteq U_i \) et:
+\[ 
+   \sum_{i \leq n} \rho_i = 1
+\]
+Dans le cas général où le recouvrement n'est pas fini, on imposera un caractère \textbf{localement fini}, c'est à dire que pour tout point \( x \in M\), il appartient à un nombre fini de cartes.
+\begin{figure*}[h]
+   \centering
+      \begin{tikzpicture}[xscale=1.5,yscale=1.25]       
+         % 5 fonctions lisses phi_1 à phi_5
+         \draw[domain=0:4,smooth,BrightBlue1,thick] plot (\x,{2*exp(-5*(\x-0)*(\x-0))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[BrightBlue1] at (0.175,1.5) {$\phi_1$};
+         
+         \draw[domain=0:4,smooth,BrightBlue1,thick] plot (\x,{2*exp(-5*(\x-1)*(\x-1))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[BrightBlue1] at (1,1.5) {$\phi_2$};
+         
+         \draw[domain=0:4,smooth,BrightBlue1,thick] plot (\x,{2*exp(-5*(\x-2)*(\x-2))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[BrightBlue1] at (2,1.5) {$\phi_3$};
+         
+         \draw[domain=0:4,smooth,BrightBlue1,thick] plot (\x,{2*exp(-5*(\x-3)*(\x-3))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[BrightBlue1] at (3,1.5) {$\phi_4$};
+         
+         \draw[domain=0:4,smooth,BrightBlue1,thick] plot (\x,{2*exp(-5*(\x-4)*(\x-4))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[BrightBlue1] at (3.825,1.5) {$\phi_5$};
+         
+         % Somme des fonctions (constante à 1)
+         \draw[domain=0:4,smooth,black,dashed, line width = 1.1] plot (\x,{2*exp(-5*(\x-0)*(\x-0))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4))) + 2*exp(-5*(\x-1)*(\x-1))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4))) + 2*exp(-5*(\x-2)*(\x-2))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4))) + 2*exp(-5*(\x-3)*(\x-3))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4))) + 2*exp(-5*(\x-4)*(\x-4))/(exp(-5*(\x-0)*(\x-0))+exp(-5*(\x-1)*(\x-1))+exp(-5*(\x-2)*(\x-2))+exp(-5*(\x-3)*(\x-3))+exp(-5*(\x-4)*(\x-4)))});
+         \node[] at (4.3,2) {$\sum \phi_i$};
+
+         % Axe des x (intervalle [0, 1])
+         \draw[->, thick] (0,0) -- (5,0);
+         \node[] at (0, -0.25){$0$};
+         \node[] at (4, -0.25){$1$};
+                  
+         % Axe des y
+         \draw[->, thick] (0,0) -- (0,2.5);
+         \node[] at (-0.25,2) {$1$};
+   \end{tikzpicture}
+   \caption{Partition de l'unité de l'intervalle \( \ioo{0}{1} \)}
+\end{figure*}
+
+En effet supposons que l'on considère par exemple une fonction \( f \) définie sur \( \ioo{0}{1} \), qu'on recouvre celui ci par des ouverts \( (U_i)_{i \in I} \) et qu'on considère une partition de l'unité subordonée, alors on a alors:
+\[ 
+   f = \sum \rho_i f = \sum \rho_i f \bigr|_{\text{supp}(\rho_i)} = \sum \rho_i f \bigr|_{U_i}
+\]
+Et donc en particulier \( \int_{\ioo{0}{1}} f = \sum \int_{U_i} \rho_i f  \)
+

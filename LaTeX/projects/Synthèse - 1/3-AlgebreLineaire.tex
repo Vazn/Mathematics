@@ -45,22 +45,9 @@ On appelle \textbf{base} de \(E\) une famille \textbf{libre et génératrice}. C
 \]
 Pour une certaine famille \( (u_i) \), qu'on appelle alors \textbf{coordonnées} de \(u\) dans la base \(\mathscr{B}\).
 \subsection*{\subsecstyle{Sommes et sommes directes{:}}}
-Soit \(n\) un entier naturel et \((F_k)_{k \leq n}\) une famille finie de sous-espaces vectoriels de \(E\), Alors on peut construire le plus petit sous espace vectoriel qui contient tout les \( (F_k) \) par:
-\[
-   S := \sum_{k \leq n} F_k := \left\{ \sum_{k \leq n} u_k  \; ; \; u_k \in F_k \right\}
-\]
-On dira alors que cette somme est \textbf{directe} si et seulement si la décomposition de zéro dans la somme est \textbf{unique}\footnote[1]{En particulier si \( n=2 \), on montre directement qu'une condition nécessaire et suffisante pour que la somme soit directe est que: \[ 
-   F \cap G = \left\{ 0_E \right\}  
-\]}, ie:
-\[ 
-   \sum_{k \leq n} u_k = 0_E  \; ; \; u_k \in F_k \implies (u_1, u_2, \ldots, u_n) = (0, 0, \ldots, 0)
-\]
+Soit \(n\) un entier naturel et \((F_k)_{k \leq n}\) une famille finie de sous-espaces vectoriels de \(E\), Alors on peut construire la somme des ces sous-espaces vue comme la somme de sous-groupes précédemment définie. On peut alors montrer que c'est le plus petit sous espace vectoriel qui contient tout les \( (F_k) \).\<
 
-Et on la note alors:
-\[
-   S = \bigoplus_{k \leq n} F_k
-\]
-Si de plus la somme est égale à l'espace entier, alors on dira que les \(F_k\) sont \textbf{supplémentaires} dans \(E\). 
+On définit de même la somme directe de sous-espaces ainsi que la supplémentarité, comme la somme directe et la supplémentarité de ces sous-groupes.
 \subsection*{\subsecstyle{Caractérisation par les bases{:}}}
 Soit \(\B_k\) des bases de chacun des \(F_k\), soit la famille \(\Fam = (\B_1, \B_2, \ldots, \B_n)\), ie la famille constituée de bases des \(F_k\) concaténées. Alors on a alors le théorème suivant:
 \[

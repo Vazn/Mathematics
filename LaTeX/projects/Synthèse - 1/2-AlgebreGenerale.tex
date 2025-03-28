@@ -144,10 +144,7 @@ Ceci nous permet donc de montrer le \textbf{théorème de Lagrange} qui nous don
 \[ 
    |G| = |G/H||H|
 \]
-Et comme corollaire immédiat la propriété suivante:
-\begin{center}
-   \textbf{Le cardinal d'un sous-groupe divise le cardinal du groupe.}
-\end{center}
+Et comme corollaire immédiat que \textbf{le cardinal d'un sous-groupe divise le cardinal du groupe}.
 \subsection*{\subsecstyle{Sous-groupes normaux {:}}}
 On cherche alors à caractériser les sous-groupes tels que la relation d'équivalence définie ci-dessous soit \textbf{compatible} avec les opération de groupe, en d'autres termes on cherche à définir un groupe quotient pour cette relation. On peut alors montrer que les sous-groupes vérifiant cette compatibilité vérifient:
 \[ 
@@ -158,6 +155,16 @@ En d'autres termes les classes à droite et à gauche coincident. C'est alors im
    \forall h \in H \; , \; \forall g \in G \; ; \; ghg^{-1} \in H 
 \]
 La propriété fondamentale de ces groupes, qui utilise le premier résultat du chapitre suivant est que les sous groupes normaux de \( G \) sont exactement les \textbf{noyaux} de morphismes de domaine \( G \).
+\subsection*{\subsecstyle{Somme et sommes directes {:}}}
+Si \( G \) est \textbf{commutatif}, et que \( (H_i)_{i \in I} \) est une famille de sous-groupes, on peut aussi construire une autre structure fondamentale appelée somme de sous-groupes par:
+\[ 
+   \sum_I H_i := \Bigg\{ \sum_I h_i \; ; \; h_i \in H_i \Bigg\}  
+\]
+Alors c'est un sous-groupe normal si les sous-groupes termes sont normaux. En outre, si tout élément de cet ensemble se décompose de manière \textbf{unique}, ce qui corresponds à dire que \( e \) se décompose de manière unique\footnote[1]{En particulier si \( n=2 \), on montre directement qu'une condition nécessaire et suffisante pour que la somme soit directe est que \(F \cap G = \left\{ 0_E \right\}\)}, on dira que la somme est \textbf{directe} et on notera:
+\[ 
+   \sum_I H_i = \bigoplus_I H_i
+\]
+Si de plus \( G = \sum_I H_i \), on dira généralement que les \( H_i \) sont \textbf{supplémentaires} dans \( G \).
 \chapter*{\chapterstyle{II --- Théorèmes d'isomorphismes}}
 \addcontentsline{toc}{section}{Théorèmes d'isomorphismes}
 Une des motivations de la notion de groupe quotient est entre autres de pouvoir trouver des \textbf{isomorphismes} entre des groupes connus, dans ce chapitre, on énonce les trois grands théorèmes utilisables pour atteindre cet objectif.
@@ -499,12 +506,17 @@ Soit \(A\) un ensemble \textbf{non-vide} muni de deux lois de composition intern
    &\bullet \;\; \text{La loi \(\times\) est distributive sur la loi \(+\).}\\
    &\bullet \;\; \text{Il existe \textbf{un élément neutre} pour la loi \(\times\).}
 \end{align*}
-Alors le triplet \((A, +, \times)\) est appellé \textbf{anneau}. Si la loi multiplicative est \textbf{commutative}, on dira alors que c'est un anneau commutatif. On définit aussi de nouveau types d'élément remarquable spécifiques au cas des anneaux:
+Alors le triplet \((A, +, \times)\) est appellé \textbf{anneau}. Si la loi multiplicative est \textbf{commutative}, on dira alors que c'est un anneau commutatif. On peux définir une notion de \textbf{divisibilité} dans un anneau par la définition naturelle:
+\[ 
+   x \, \big| \, y \iff \exists a \in A \; ; \; ax = y
+\]
+On définit aussi de nouveau types d'élément remarquable spécifiques au cas des anneaux:
 \begin{itemize}
-   \item On dit qu'un élément \(x \in A\) est \textbf{un diviseur de zéro}\footnote[1]{Ici c'est un diviseur de zéro \textbf{à droite}, on définit de même les diviseurs de zéro \textbf{à gauche}.} si il existe \( y \) tel que \( xy = 0 \).
+   \item On dit qu'un élément \(x \in A\) est \textbf{un inversible}\footnote[1]{Ici c'est un inversible \textbf{à droite}, on définit de même les inversible \textbf{à gauche}.} si il existe \( y \) tel que \( xy = 1 \).
+   \item On dit qu'un élément \(x \in A\) est \textbf{un diviseur de zéro}\footnote[2]{Ici c'est un diviseur de zéro \textbf{à droite}, on définit de même les diviseurs de zéro \textbf{à gauche}.} si il existe \( y \) tel que \( xy = 0 \).
    \item On dit qu'un élément \(x \in A\) est \textbf{un nilpotent} si il existe \( n \in \N \) tel que \(x^n = 0\).
 \end{itemize}
-On définit aussi les \textbf{inversibles} à droite ou à gauche pour la seconde loi. On dira qu'un anneau sans diviseurs de zéro est \textbf{intègre}, et dans ce cas on a la propriété suivante trés puissante:
+On dira qu'un anneau sans diviseurs de zéro est \textbf{intègre}, et dans ce cas on a la propriété suivante trés puissante:
 \[ 
    \forall x, y \in A \; ; \; xy = 0 \implies x = 0 \text{ ou } y = 0 
 \]
@@ -516,40 +528,70 @@ On peut alors considérer plusieurs anneaux remarquables:
    \item Les \textbf{fonctions continues} muni de la somme et du produit forment un anneau.
    \item Les \textbf{matrices} muni de la somme et du produit forment un anneau.
 \end{itemize}
-
 \subsection*{\subsecstyle{Propriétés Algébriques{:}}}
 Pour deux éléments \(a, b \in A\) qui commutent, on a \textbf{la formule du binome de Newton}:
 \[
    (a + b)^n = \sum_{k=0}^{n}\binom{n}{k} a^k b^{n-k}   
+\]
+Sous les même hypothèses on a aussi la formule de factorisation:
+\[ 
+   a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + \ldots + b^{n-1}) 
 \]
 \subsection*{\subsecstyle{Sous-anneaux {:}}}
 Les sous-structures dans le cas des groupes sont naturellement les \textbf{sous-anneaux}. Un cas remarquable est celui du \textbf{sous-anneau engendré} par \(H\):
 \[ 
    \langle H \rangle := \left\{ \sum_{k=1}^{n} \pm h_1^{k_1}h_2^{k_2} \ldots h_n^{k_n}\; ; \; n \in \N \; , \; h_i \in H \; , \; k_i \in \N \right\}
 \]
-On peut alors imagine généraliser la notion de sous-groupe normal, ie une sous-structure qui permet de quotient, mais il se trouve qu'alors la notion de sous-anneau engendré n'est pas la bonne notion, et on définit plutôt la notion \textbf{d'idéal} qui est un sous groupe additif de \(A\) qui soit stable par multiplication (à droite et à gauche) par n'importe quel élément de l'anneau.
-
+On peut alors imaginer généraliser la notion de sous-groupe normal, ie une sous-structure qui permet que le quotient \( A/I \) soit un anneau, mais il se trouve qu'alors la notion de sous-anneau engendré n'est pas la bonne notion.
+\subsection*{\subsecstyle{Idéal {:}}}
+En effet, on se donne un anneau \( A \) et un sous-groupe \( I \) de \( A \), alors on veut pouvoir définir la multiplication de deux classes telle que celle-ci vérifie la propriété de morphisme de la projection canonique ie:
+\[ 
+   \pi(ab) = \pi(a)\pi(b)
+\]
+Pour ceci, étant données deux classes \( a + H \) et \( b + H \), alors nécessairement on doit avoir:
+\[ 
+   (a + H)(b + H) = ab + Hb + aH + H = ab + H
+\]
+Ceci nous donne alors la condition supplémentaire sur \( I \) pour que ce quotient soit bien défini, on dira alors que \( I \) est un \textbf{idéal} de \( A \) si et seulement si:
+\[ 
+   \forall (a, x) \in A \times I \; ; \; ax \in I
+\]
+En d'autres termes, un idéal est un sous-anneau \textbf{stable par multiplication externe} par des éléments de l'anneau. Ceci nous donne alors directement la propriété souhaitée sur les classes et la bonne définition de l'anneau quotient.
+\subsection*{\subsecstyle{Propriétés des idéaux {:}}}
+Comme les sous-groupes normaux, les idéaux vérifient des propriétés naturelles:
+\begin{itemize}
+   \item Toute intersection d'idéaux est un idéal.
+   \item Toute somme d'idéaux est un idéal.
+   \item Tout noyau de morphisme d'anneau est un idéal.
+   \item Tout idéal est un noyau de morphisme d'anneau.
+\end{itemize}
+On définit alors \textbf{l'idéal engendré} par une partie \(X\) qu'on note \( (X) \) comme le plus petit idéal qui contient \( X \), en outre si \( X = \left\{ x_1, \ldots, x_n \right\}  \), ie si c'est une partie finie, on peut le caractériser par:
+\[ 
+   (X) := \left\{ a_1x_1 + \ldots + a_nx_n \; ; \; (a_i) \in A \right\}  
+\]
+Ce sont en fait exactement les \textbf{polynômes} en les éléments de \( X \) et à coefficients dans \( \mathbb{A} \). Si un idéal est engendré par un uniquement élément, on dira qu'il est \textbf{principal}, c'est l'analogue dans les anneaux des sous-groupes cycliques.
 \subsection*{\subsecstyle{Caractéristique {:}}}
 On définit la caractéristique d'un anneau non-nul par:
 \[
    \text{car}(A) := \min \left\{ n \in \N \; ; \;\underbrace{1 + \ldots + 1}_{\text{\(n\) sommandes}} = 0 \right\}
 \]
-Une autre formulation serait simplement que:
-\begin{center}
-   \textit{La caractéristique d'un anneau est l'ordre (additif) de l'unité multiplicative.}
-\end{center}
-\subsection*{\subsecstyle{Anneaux à PGCD {:}}}
-\subsection*{\subsecstyle{Anneaux Factoriels {:}}}
-\subsection*{\subsecstyle{Anneaux Principaux {:}}}
-\subsection*{\subsecstyle{Anneaux Euclidiens {:}}}
-On appelle \textbf{anneau Euclidiens} tout anneau \(A\) principal qui possède une \textbf{division euclidienne}. Dans un tel anneau, on peut alors faire \textbf{de l'arithmétique} comme dans l'anneau des entiers naturels.
-\subsection*{\subsecstyle{Schéma heuristique des structures d'anneaux {:}}}
-Pour mieux visualiser la hierarchie des différents types d'anneaux, on peut représenter la structure logique sous la forme de la suite d'implications suivantes:
-\begin{center}
-   \customBox{width = 16cm}{
-      \textbf{Euclidien} \(\implies\) \textbf{Principal} \(\implies\) \textbf{Factoriel} \(\implies\) \textbf{PGCD} \(\implies\) \textbf{Intégre} \(\implies\) \textbf{Commutatif}
-   }
-\end{center}
+Une autre formulation serait simplement que la caractéristique d'un anneau est l'ordre (additif) de l'unité multiplicative. Cette notion est fondamentale car elle permet en fait moralement de détecter des \textbf{sous-structures cycliques}. En particulier -> Exemples
+\subsection*{\subsecstyle{Vers la classification {:}}}
+L'objectif suivant aprés avoir défini cette structure est de comprendre que c'est cette structure qui généralise la notion d'arithmétique, et on peut alors chercher à trouver des anneaux qui vérifient alors des propriétés analogues à la structure arithmétique canonique qu'est \( \Z \). De manière non-exhaustive, on peut alors considérer les propriétés suivantes:
+\begin{itemize}
+   \item Dans quels anneaux a-t-on existence d'un plus grand diviseur commun ?
+   \item Dans quels anneaux a-t-on l'identité de Bézout ?
+   \item Dans quels anneaux a-t-on une division Euclidienne ?
+   \item Dans quels anneaux a-t-on une décomposition en éléments premiers ?
+\end{itemize}
+
+\chapter*{\chapterstyle{II --- Arithmétique dans les anneaux}}
+\addcontentsline{toc}{section}{Arithmétique dans les anneaux}
+On considère donc la relation de divisiblité dans un anneau \( \mathbb{A} \) qu'on considérera pour simplifier intégre et commutatif. Alors le lien naturel entre la divisibilité et la structure naturel d'idéal et donné par la propriété suivante:
+\[ 
+   a \, \big| \, b \iff (a) = (b) 
+\]
+
 \chapter*{\chapterstyle{II --- Corps}}
 \addcontentsline{toc}{section}{Corps}
 Soit \(A\) un anneau dont tout les éléments sauf \(0\) sont inversibles. Alors on dit que \(A\) est \textbf{un corps}.

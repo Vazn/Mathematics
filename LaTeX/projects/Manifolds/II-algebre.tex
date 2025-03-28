@@ -1,10 +1,10 @@
 \chapter{Elements d'algèbre tensorielle}
-   Dans ce chapitre, nous allons nous intéresser à l'object d'étude du domaine appelé \textbf{algèbre multilinéaire}, qui sont les \textbf{formes multilinéaires}, en particulier, on se donne un \(\R\)-espace vectoriel \(E\) de dimension \( n \), alors on appele \textbf{tenseur} d'ordre \((p, q)\) une application de la forme suivante:
+   On se donne un \(\K\)-espace vectoriel \(E\) de dimension \( n \), alors on appele \textbf{tenseur} d'ordre \((p, q)\) une application multilinéaire de la forme suivante:
    \begin{align*}
       T : \underbrace{E^* \times \ldots \times E^*}_\text{p} \times \underbrace{E \times \ldots \times E}_\text{q} \longrightarrow \K
    \end{align*}
-   Dans le contexte de ce projet, on s'intéresse principalement à la construction des fromes différentielles, et donc on s'intéressera surtout au cas où \( p = 0 \). On dira alors que \( T \) est un tenseur \textbf{covariant}.
-   \section{Structure de l'espace des tenseurs covariants}
+   Dans le contexte de ce projet, on s'intéressera surtout au cas où \( p = 0 \). On dira alors que \( T \) est un tenseur \textbf{covariant}. Si on a aussi \( q = 0 \), alors les tenseurs ainsi défini sont des fonctions sur l'espace nul, qui s'identifient aux scalaires du corps de base.
+   \section{Structure de l'ensemble des tenseurs covariants}
    On note alors \(\mathscr{T}^p(E)\) l'ensemble des \(p\)-tenseurs covariants, alors l'addition de deux formes et la multiplication par un scalaire étant bien définie, on peut montrer la propriété suivante:
    \begin{center}
       L'espace \( \mathscr{T}^p(E) \) a une structure de \( \K \)-espace vectoriel.
@@ -23,11 +23,11 @@
       On peut alors se demander si on peut trouver une base de cet espace, et en effet si on note \((e_i)_{i \leq n}\) une base de \(E\), alors on peut montrer que l'on a:
       \begin{flalign*}
          T(x_1, \ldots, x_p) &= T\left( \sum_{i_1 \leq n} x_{1, i_1}e_{i_1}, \ldots, \sum_{i_p \leq n} x_{p, i_p}e_{i_p} \right)\\
-         &= \sum_{i_1, \ldots, i_p \leq n} x_{1, i_1} \ldots x_{p, i_p} T(e_{i_1}, \ldots, e_{i_p})
+         &= \sum_{1 \leq i_1, \ldots, i_p \leq n} x_{1, i_1} \ldots x_{p, i_p} T(e_{i_1}, \ldots, e_{i_p})
       \end{flalign*}
       Mais on remarque alors que le produit \( x_{1, i_1} \ldots x_{p, i_p} \) consiste alors en l'évaluation de \(e^{i_1} \otimes \ldots \otimes e^ {i_p} \) en \( (x_1, \ldots, x_p) \) et donc on obtient:
       \begin{flalign*}
-         T &= \sum_{i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
+         T &= \sum_{1 \leq i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
       \end{flalign*}
       En d'autres termes tout \( p \)-tenseur \( T \) est engendré par la famille de \( n^p \) vecteurs \( (e^{i_1} \otimes \ldots \otimes e^{i_p})_{i_1, \ldots, i_p \leq n} \). On peut alors montrer qu'elle est libre et donc que c'est une base de \(\mathcal{T}^p(E)\).
   
@@ -61,93 +61,31 @@
    \[
       (T \wedge T')(x_1, \ldots, x_p, x_{p+1}, \ldots, x_{p+q}) =  \frac{1}{p!q!}\sum_{\sigma \in S_{p+q}}\epsilon(\sigma) T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})T'(x_{\sigma(p+1)}, \ldots, x_{\sigma(p+q)})
    \]
-   C'est ce produit extérieur qui nous sera surtout utile pour définir les formes différentielles.
-   \section{Algèbre extérieure}
+   \section{Puissance extérieure}
    On appelle alors \textbf{p-ième puissance extérieure} l'ensemble de toutes les formes \(p\)-linéaires alternées qu'on note \(\Lambda^p E^*\). Une base est alors donnée par l'ensemble:
    \[
       \Bigl\{ e^{i_1} \wedge \ldots \wedge e^{i_p} \; ; \; 1 \leq i_1 < \ldots < i_p \leq n  \Bigl\}
    \]
-   Dans le cas où \( E = \R^n \), on note alors \( (dx_1, \ldots, dx_n) \) la base duale de la base canonique et on exprime généralement une forme \( p \)-linéaire alternée dans celle ci.\<
-
-   \uline{Exemple:} Si \( E = \R^3 \), on note la base duale \((dx, dy, dz)\), alors on a que:
-   \[
-      \Lambda^2E^* = \text{Vect}(dx \wedge dy, dx \wedge dz, dy \wedge dz)
+   Si \( T \in \Lambda^p E^*\) alors on le notera (selon que l'on explicite les indices ou qu'on utilise la notation multi-indices) sous une des deux formes différentes suivantes dans cette base:
+   \[ 
+      T = \sum_{1 \leq i_1 < \ldots < i_p \leq n} T_{i_1, \ldots, i_p} dx^{i_1} \wedge \ldots \wedge dx^{i_p} = \sum_{I} T_{I} dx^I 
+   \]  
+   \section{Propriétés algébriques du produit extérieur}
+   On peut alors montrer que le produit extérieur est \textbf{bilinéaire et alterné}, en particulier, on peut montrer une expression explicite du produit extérieur de deux tenseurs \( T, T' \) d'ordre différents dans une base fixée:
+   \[ 
+      \sum_{I} T_{I} dx^I \wedge \sum_{J} T'_{J} dx^J = \sum_{I, J} T_{I}T'_{J} dx^I \wedge dx^J
    \]
    \pagebreak
-   \section{Propriétés algébriques du produit extérieur}
-   On peut alors montrer plusieurs propriététés importantes du produit extérieur:
-   \begin{itemize}
-      \item Le produit extérieur est \textbf{bilinéaire et alterné}.
-      \item Si \( \mathcal{B} = (e^i)_{i \leq n} \) est une base duale de \( E \), on a:
-      \[ 
-         \forall x_1, \ldots, x_n \in E \; ; \; e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) = \text{det}_{\mathcal{B}}(x_1, \ldots, x_n)
-      \]
-   \end{itemize}
+   \section{Déterminant}
+   Si \( \mathcal{B} = (e^i)_{i \leq n} \) est une base duale de \( E \), on a:
+   \[ 
+      \forall x_1, \ldots, x_n \in E \; ; \; e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) = \text{det}_{\mathcal{B}}(x_1, \ldots, x_n)
+   \]
    En particulier on remarque alors que le déterminant canonique dans \( \R^n \) n'est que l'application de la forme multinéaire alternée canonique \( e^1 \wedge \ldots \wedge e^n \) de \( \Lambda^n(\R^n) \).
-\chapter{Formes différentielles dans \( \R^n \)}
-   Dans ce chapitre on peut maintenant définir un object fondamental de la géométrie différentielle, le concept de \textbf{k-forme différentielle} sur \(\R^n\) qui sera simplement définie par:
-   \begin{center}
-      \textbf{Une k-forme différentielle est un champs de k-tenseurs covariants antisymétriques.}
-   \end{center}
-   Ceci s'intérprète alors comme la donnée en chaque point \(p\) de \(\R^n\) d'un tenseur covariant antisymétrique. Formellement, on a dans la base canonique:
-   \[
-      \omega(p) = \sum_{1 \leq i_1 < \ldots < i_k \leq n} f_{{i_1, \ldots, i_k}}(p) dx^{i_1} \wedge \ldots \wedge dx^{i_k}
-   \]
-   Où ici on considérera que \(f\) est de classe \( \mathcal{C}^\infty \). On note alors \( \Omega^k(E)\) l'ensemble des fonctions lisses de \( E \) dans \(\Lambda^kE^*\), ie l'ensemble des \( k \)-formes différentielles sur \( E \).
-   \section{Notation multi-indices}
-   Trés souvent pour simplifier l'expression d'une \( k- \)forme, il sera pratique de noter \(I = (1 \leq i_1 < \ldots < i_k \leq n)\) et d'écrire alors sous forme plus condensée:
-   \[ 
-      \omega(p) = \sum_I f_{I}(p) dx^I
-   \]
-   \section{Produit extérieur des formes}
-   On sait définir le produit extérieur des tenseurs covariants, on peut alors définir le produit extérieur de deux formes \( \omega, \eta \) d'ordre respectifs \( p, q \) par:
-   \[ 
-      \begin{aligned}
-         \omega \wedge \eta : \R^n &\longrightarrow \Lambda^{p+q}E^* \\
-         p &\longmapsto \omega(p) \wedge \eta(p)
-      \end{aligned}
-   \]
-   \section{Produit intérieur des formes}
-      Le produit extérieur permet pour une forme \( \omega \) donnée d'augmenter son ordre par produit avec une autre forme \( \eta \). On aura besoin par la suite de la propriété inverse qui à partir de \( \omega \) construit une $k-1$-forme.\<
-
-      Cette opération apellée \textbf{produit intérieur} nécessite alors une autre donnée, celle d'un \textbf{champs de vecteurs} $X$, en effet on peut alors définir:
-      $$
-         \iota_X(\omega) : p \mapsto \iota_X(\omega)(p) = \omega(F(p), \cdot, \ldots, \cdot)
-      $$
-      Moralement, la donnée d'un vecteur en tout point permet de définir une $k-1$ forme en considérant la forme de départ avec sa première variable fixée sur le vecteur donné. Ceci se généralise et on peut alors construire une \( k-p \) forme avec la donnée de \( p \) champs de vecteurs.
-   \section{Dérivée extérieure}
-   On introduit alors un opérateur sur les \(k\)-formes appelée \textbf{dérivée extérieure} qu'on définit par:
-   \begin{align*}
-      d_k : \Omega^k(E) &\longrightarrow \Omega^{k+1}(E)\\
-      \omega &\longmapsto d\omega
-   \end{align*}
-   Il agit alors sur une \(k\)-forme par différentiation de la fonction coefficients, ie on a:
-   \[
-      d\omega(p) = \sum_I df(p) \wedge dx^I
-   \]
-   En particulier, si \( \omega \) est une \( 0 \)-forme, ie une fonction, on retrouve la différentielle d'une fonction.
-   \section{Propriétés de la dérivée}
-   On peut alors montrer que la dérivée extérieure est bien définie et possède les propriétés suivantes:
+   \section{Cas dégénéré des 0-tenseurs}
+   Dans le cas de \(\mathscr{T}^0(E)\) toutes les définitions restent cohérentes:
    \begin{itemize}
-      \item On a que la dérivée est un opérateur linéaire.
-      \item On a la \textbf{formule de Leibniz généralisée}, pour \(\omega\) une \(k\)-forme et \(\eta\) une \(l\)-forme : \[d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k\omega \wedge d\eta\]
-      \item On a la \textbf{propriété fondamentale} de la dérivée extérieure:
-      \[ 
-         d_{k+1} \circ d_k = 0 
-      \]
+      \item Le produit tensoriel se réduit en la multiplication sur \( \K \).
+      \item Le produit extérieur dévient alors une somme sur l'unique symétrie de \( S_0 \), qui n'agit pas sur \( T \), ce qui se réduit aussi en la multiplication sur \( \K \).
+      \item La condition d'antisymétrie sur \( \mathscr{T}^0(E) \) étant vide, on a aussi \(\Lambda^0 E^* = \R\) de base le produit extérieur vide, par convention égal à 1.
    \end{itemize}
-   \section{Formes volumes}
-   Dans \(\R^n\), le cas particulier des \(n\)-formes différentielles est fondamental, en effet soit \( \omega \) une telle forme, alors elle vérifie dans la base canonique:
-   \[ 
-      \forall x \in \R^n \; ; \; \omega(p) =  f(p)dx^1 \wedge \ldots \wedge dx^n
-   \]
-   Si \( f \) ne s'annule jamais, on dira alors que \( \omega \) est une \textbf{forme volume}. C'est en fait la donnée en tout point de \( \R^n \) d'un multiple du déterminant canonique. On peux alors identifier le déterminant canonique à la \( n \)-forme différentielle (constante) suivante:
-   \[ 
-      \omega(p) = dx^1 \wedge \ldots \wedge dx^n = \text{det}
-   \]
-   On a alors, par exemple:
-   \begin{itemize}
-      \item Dans \(\R^1\), on a \(\text{det} = dx\)
-      \item Dans \(\R^3\) on a \(\text{det} = dx \wedge dy \wedge dz\)
-   \end{itemize}
-   En particulier, on a par exemple dans \(\R^2\), que \((dx \wedge dy)(u, v) = u_1v_2 - u_2v_1 = \text{det}(u, v)\) comme on l'attendrais intuitivement.
