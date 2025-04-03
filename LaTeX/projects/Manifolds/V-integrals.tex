@@ -1,25 +1,46 @@
-\chapter{Intégrale locale d'une forme sur une variété}
-Dans ce chapitre, nous définissons le concept principal qui menera au théorème de Stokes, ie la notion \textbf{d'intégrale d'une \( k \)-forme différentielle} sur une variété ORIENTEE (donc problème avec la version actuelle) \( M \) de dimensions \( k \). On expliquera alors pourquoi les formes différentielles sont les candidats les plus naturels à êtres intégrés. Puis on énoncera plusieurs propriétés fondamentales de l'intégrale dans ce cadre.
+\chapter{Intégrale d'une forme sur une variété}
+Dans ce chapitre, nous définissons le concept principal qui menera au théorème de Stokes, ie la notion \textbf{d'intégrale d'une forme volume sur une variété orientée}. L'optique étant de définir tout d'abord l'intégrale d'une telle forme dans \( \R^n \) et \( \mathbb{H}^n \), puis de s'y ramener dans le cas d'une variété.
 \section{Intégrale d'une fonction}
 Le problème principal dans la définition de l'intégrale sur une variété est le suivant, \textbf{intégrer une fonction dépends des cordonées choisies}. En effet on pourra imaginer définir l'intégrale d'une fonction \( f : M \longrightarrow \R \) à support compact \( D \) et dont celui ci est inclu dans une carte \((U, \phi)\) par:
 \[ 
    \int_D f = \int_{\phi(D)} f  \circ \phi^{-1} 
 \] 
-Mais en fait cette intégrale serait alors mal définie ! En effet si \( D \) est inclu dans deux cartes différentes \( (U, \phi), (V, \psi) \), on a:
+Mais en fait cette intégrale serait alors mal définie ! En effet si \( D \) est inclu dans deux cartes différentes \( (U, \phi), (V, \psi) \), les deux intégrales correspondantes sont différentes ! Ceci permet alors de justifier l'assertion suivante: \textbf{Les fonctions ne sont en fait pas la bons objets à intégrer.}
+\section{Intégrale locale sur \( \R^n \)}
+Les objets naturels pour être intégrés sur une variété de dimension \( n \) sont donc en fait les \(n\)-formes. Dans le cas simple de \( \R^n \), on considère une telle forme \(\omega = f(x_1, \ldots, x_n) dx^1 \wedge \ldots \wedge dx^n\). Si \( f \in L^1(\R^n) \), alors on dira que cette forme est \textbf{intégrable} et on définit son intégrale par: 
 \[ 
-   \int_{\phi(D)} f \circ \phi^{-1} = \int_{\psi(D)} f \circ \psi^{-1} \left|\text{det}J\Phi\right| \neq \int_{\psi(D)} f \circ \psi^{-1}
+   \int_{\R^n} \omega := \int_{\R^n} f(x_1, \ldots, x_n)dx^1 \wedge \ldots \wedge dx^n = \int_{\R^n} f(x_1, \ldots, x_n)dx^1\ldots dx^n
 \]
-Ceci permet alors de justifier l'assertion suivante:
-\begin{center}
-   \textbf{Les fonctions ne sont en fait pas la bons objets à intégrer.}   
-\end{center}
-\section{Intégrale locale}
-L'objet naturel pour être intégré sur une variété de dimension \( k \) sont donc en fait les \( k \)-formes. Nous commençons par définir leur intégrale dans le cas simple \( \omega \in \Omega^k_c(M) \) dont le support est inclu dans une carte locale \( (U, \phi) \). La définition de l'intégrale de \( \omega \) consiste alors à intégrer son expression en coordonées locales:
+On notera alors plus simplement \(\omega \in L^1(\R^n)\) si la fonction coefficient de \( \omega \) est intégrable, même si c'est un léger abus de notation.
+\section{Formule du changement de variable dans \( \R^n \)}
+Etant donnée une \( n-\)forme \( \omega \in L^1(\R^n) \) et un difféomorphisme \( F : \R^n \longrightarrow \R^n \), on montrer la formule suivante:
 \[ 
-   \int_M \omega := \int_{ \phi(U)} (\phi^{-1})^*\omega 
+   \int_{\R^n} F^*\omega = 
+   \begin{cases}
+      \displaystyle+\int_{\R^n} \omega \text{ Si $F$ \textbf{préserve} l'orientation.}\vspace{5pt}\\
+      \displaystyle-\int_{\R^n} \omega \text{ Si $F$ \textbf{inverse} l'orientation.}
+   \end{cases}
 \]
-Alors cette expression est bien définie et ne dépends pas du choix de la carte (SAUF ORIENTATION, AU SIGNE PRES). Ceci s'explique par le fait que la règle de transformation de la mesure est encapsulée dès le départ dans le concept de forme différentielle. En outre l'intégrale de droite est bien finie car le support de la forme est compact donc l'image de celui ci par la carte est un compact.
-\pagebreak
+En particulier, si \( F \) est de déterminant positif, on a égalité et la formule du changement de variable:
+\[ 
+   \int_{\R^n} \omega dx^1 \wedge \ldots \wedge dx^n = \int_{\R^n} (\omega \circ F) \text{det}(J_F) dx^1 \wedge \ldots \wedge dx^n
+\]
+\section{Intégrale locale sur \( M \)}
+On souhaite alors définir l'intégrale d'une \( n-\)forme \(\omega\) sur une variété orientée \( M \) et munie d'un \textbf{atlas orienté}. Si elle est telle que son support soit inclu dans une carte \( (U, \phi) \). Alors on dira que \( \omega \) est \textbf{intégrable} ssi \( (\phi^{-1})^*\omega \) l'est, et alors on définit:
+\[ 
+   \int_U \omega := \int_{ \phi(U)} (\phi^{-1})^*\omega 
+\]
+Cette expression est bien définie, ie ne dépends pas du choix de la carte. En effet par construction, les changements de cartes sont de déterminant positif et on applique alors la formule du changement de variables.
+\section{Intégrale sur \( M \)}
+On peut alors finalement définir l'intégrale d'une \( n-\)forme sur toute la variété. En effet soit \( \omega \in \Omega^n(M) \), alors on considère une partition de l'unité \( (\rho_\alpha) \) subordonée à l'atlas. On dira alors que \( \omega \) est \textbf{intégrable} si et seulement si \( (\phi_\alpha^{-1})^*\rho_\alpha \omega  \) l'est pour tout \( \alpha \) et alors on définit son intégrale par:
+\[ 
+   \int_M \omega := \sum_\alpha \int_{U_\alpha} \rho_\alpha \omega 
+\]
+On peut alors montrer que celle ci est bien définie, ie:
+\begin{itemize}
+   \item Elle ne dépend pas du choix de l'atlas orienté.
+   \item Elle ne dépend pas du choix de la partition de l'unité.
+\end{itemize}
 \section{Exemples et cas particuliers}
 On peut alors chercher à exprimer l'intégrale d'une fonction lisse à support compact sur un domaine simple comme un cas particulier d'intégrale d'une forme différentielle, et en effet c'est le cas:
 \begin{itemize}
@@ -35,19 +56,7 @@ On peut alors chercher à exprimer l'intégrale d'une fonction lisse à support 
 Aussi, ces dernières intégrales s'interpètent à nouveau comme des intégrales sur les variétés \( \ioo{a}{b}, \ioo{0}{1}^2 \) ? Peut on toujours interpréter le signe intégrale comme l'intégrale d'une forme sur une variété ?\<
 
 Néanmoins c'est bien une notion plus générale car elle nous permettra, à terme, de calculer l'intégrale de la 1-forme \( xdy + ydx \in \Omega^1(\R^2) \) qui n'est pas de la forme \( f(t)dt \) ceci sur une courbe (sous-variété de \( \R^2 \)), mais ce concept sera probablement omis car non nécessaire à Stokes et le temps manquera probablement.
-\section{Changement de variables}
-Si \( \omega \) est un \( k \)-forme sur la variété \( M \) et que \( \phi \) est une application lisse
-\chapter{Intégrale d'une forme sur une variété}
-Dans ce chapitre, pour une \( k \)-forme donnée, on cherche à définir son intègrale sur la variété \( M \), c'est une version \textbf{globale} de l'intégrale définie dans le chapitre ci-dessus et elle 
-\section{Théorème fondamental}
 
-
-\section{Intégrale d'une forme sur une variété}
-On considère alors une variété \( M \) de dimension \( k \) muni de son atlas \( (U_i, \phi_i)_{i \in I} \). Alors il existe \( (\rho_i)_{i \in I} \) une partition de l'unité subordonnée à l'atlas. Soit \( \omega \) une \( k \)-forme, alors on définit l'intégrale de \( \omega \) sur \( M \) par:
-\[ 
-   \int_M \omega = \sum_{i \in I} \int_{U_i} \rho_i\omega \bigr|_{U_i}
-\]
-Alors on se ramène à une somme (finie) d'intégrales de \( k \)-formes restreintes à une carte, qu'on peut donc intégrer en coordonées locales par le chapitre précédent.
 \chapter{Théorème de Stokes-Cartan}
 Dans tout les chapitres précédents, nous avons présenté un cadre théorique suffisant pour énoncer et comprendre le théorème fondamental de l'intégration, généralisation du théorème fondamental de l'analyse appellé \textbf{théorème de Stokes-Cartan}. On considère une variété \( M \) vérifiant plusieurs hypothèses:
 \begin{itemize}

@@ -179,6 +179,84 @@
          df_p(v) = \sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}
       \]
 \section*{\uline{Chapitre 10 - Formes différentielles dans \( M \) {:}}}
+      
+   \subsection*{Le pullback commute avec la différentielle}
+      Soit $x$ un fonction lisse sur $N$, alors d’après la règle de la chaîne:
+      \begin{align*}
+         \forall p \in M \; ; \; (dF^*x)_p &= (d(x \circ F))_p = dx_{F(p)} \circ dF_p = (F^*dx)_p 
+      \end{align*}
+   \subsection*{Linéarité du pullback}  
+      Soit $\lambda \in \mathbb{R}$, $\omega, \eta$ deux $k$-formes, alors pour tout point $p$ de $M$, on a:
+      \begin{align*}
+         (F^*(\lambda\omega + \eta))_p &= (\lambda\omega + \eta)_{F(p)} \circ (dF_p, \ldots, dF_p)\\ 
+         &=  (\lambda\omega_{F(p)} + \eta_{F(p)}) \circ (dF_p, \ldots, dF_p)\\ 
+         &= \lambda\omega_{F(p)} \circ (dF_p, \ldots, dF_p) + \eta_{F(p)} \circ (dF_p, \ldots, dF_p)\\ 
+         &= (\lambda F^*\omega)_p + (F^*\eta)_p\\
+         &= (\lambda F^*\omega + F^*\eta)_p
+      \end{align*}
+   \subsection*{Le pullback est compatible avec le produit extérieur}  
+      Soit $\omega, \eta$ respectivement des $k$ et $l$ formes sur $N$, alors pour tout point $p$ de $M$, on a:
+      \begin{align*}
+         (F^*(\omega \wedge \eta))_p &= (\omega \wedge \eta)_{F(p)} \circ (dF_{p}, \ldots, dF_{p})\\ 
+         &=   (\omega_{F(p)} \wedge \eta_{F(p)}) \circ (dF_{p}, \ldots, dF_{p})
+      \end{align*}
+      Soit $v_1, \ldots, v_{k+l}$ des vecteurs de $TM_p$, alors on évalue l'expression ci-dessus en:
+      $$
+         (\omega_{F(p)} \wedge \eta_{F(p)}) (dF_{p}(v_1), \ldots, dF_{p}(v_{k+l}))
+      $$
+      Puis par définition, la quantité ci-dessus est égale à:
+      \begin{align*}
+         \frac{1}{k!l!} \sum_{\sigma \in S_{k+l}} \epsilon(\sigma) (\omega_{F(p)} \otimes \eta_{F(p)})(dF_{p}(v_{\sigma(1)}), \ldots, dF_{p}(v_{\sigma(k+l)}))
+      \end{align*}
+      Puis par évaluation du produit tensoriel:
+      $$
+         \frac{1}{k!l!} \sum_{\sigma \in S_{k+l}} \epsilon(\sigma) \omega_{F(p)}\left[dF_{p}(v_{\sigma(1)}), \ldots, dF_p(v_{\sigma(k)})\right] \eta_{F(p)}\left[dF_{p}(v_{\sigma(k+1)}), \ldots, dF_p(v_{\sigma(k+l)})\right]
+      $$
+      Finalement, ceci est bien égal à
+      \begin{align*}
+         \frac{1}{k!l!} \sum_{\sigma \in S_{k+l}} \epsilon(\sigma) (\omega_{F(p)} \circ (dF_p, \ldots, dF_p)) \otimes (\eta_{F(p)} \circ (dF_p, \ldots, dF_p))(v_{\sigma(1)}, \ldots, v_{\sigma(k+l)})
+      \end{align*}
+      Qui corresponds bien à l'expression:
+      $$
+         (\omega_{F(p)} \circ (dF_{p}, \ldots, dF_{p})) \wedge (\eta_{F(p)} \circ (dF_{p}, \ldots, dF_{p})) = F^*\omega \wedge F^*\eta
+      $$
+      En particulier, dans le cas d'un produit avec une 0-forme, le produit extérieur est une multiplication scalaire et on a:
+      $$
+         F^*(g\omega) = (F^*g)(F^*\omega) = (g \circ F)F^*\omega
+      $$    
+   \subsection*{Expression en coordonées du pullback}
+      Cette fois on considère une $k$ forme $\omega$, alors en coordonnées locales, on a:
+      \begin{align*}
+      F^*\omega &= F^*\left[\sum_{I} \omega_{i_1, \ldots, i_n} dx^{i_1} \wedge \ldots \wedge dx^{i_n}\right]\\
+      &= \sum_{I} F^*(\omega_{i_1, \ldots, i_n} dx^{i_1} \wedge \ldots \wedge dx^{i_n})\\
+      &= \sum_{I} F^*\omega_{i_1, \ldots, i_n} F^*(dx^{i_1})  \wedge \ldots \wedge F^*(dx^{i_n})\\
+      &= \sum_{I} F^*\omega_{i_1, \ldots, i_n} d(F^*x^{i_1})  \wedge \ldots \wedge d(F^*x^{i_n})\\
+      &= \sum_{I} (\omega_{i_1, \ldots, i_n} \circ F) d(x^{i_1} \circ F)  \wedge \ldots \wedge d(x^{i_n} \circ F)\\
+      &= \sum_{I} (\omega_{i_1, \ldots, i_n} \circ F) dF^{i_1}  \wedge \ldots \wedge  dF^{i_n}
+      \end{align*}
+      Où on a utilisé successivement la linéarité, la compatibilité avec le produit extérieur et la commutation avec la différentielle usuelle du pullback. On a noté $dF^i = d(x^i \circ F)$.
+   \subsection*{Pullback d'une forme volume}
+      On se donne une forme volume $\omega$ sur $N$ et un difféomorphisme $F : M \longrightarrow N$, alors d'aprés l'expression trouvé précédemment, on a:
+      $$
+          F^*\omega = (\omega \circ F) dF^{1}  \wedge \ldots \wedge  dF^{n}
+      $$
+      Or par définition de la différentielle, on peut réecrire ceci en:
+      \[ 
+         F^*\omega = (\omega \circ F) \left(\sum_{{j_1} \leq n} \partialD{F^{1}}{x_{j_1}}dx^{j_1}  \wedge \ldots \wedge  \sum_{{j_n} \leq n} \partialD{F^{n}}{x_{j_1}}dx^{j_1}\right)
+      \]
+      Puis par multilinéarité on obtient:
+      \[ 
+         F^*\omega = (\omega \circ F) \sum_{1 \leq j_1 < \ldots < j_n \leq n} \partialD{F^{1}}{x_{j_1}}\ldots\partialD{F^{n}}{x_{j_n}} dx^{j_1}  \wedge \ldots \wedge  dx^{j_n}
+      \]
+      Or on somme en fait sur tout les indices distincts donc de manière équivalente sur toutes les permutations des indices:
+      \[ 
+         F^*\omega = (\omega \circ F) \sum_{\sigma \in S_n} \partialD{F^{1}}{x_{\sigma(1)}}\ldots\partialD{F^{n}}{x_{\sigma(n)}} dx^{\sigma(1)}\wedge \ldots \wedge  dx^{\sigma(n)}
+      \]
+      Finalement, par les propriétés du produit extérieur, on trouve:
+      \[ 
+         F^*\omega = (\omega \circ F) \left(\sum_{\sigma \in S_n} \epsilon(\sigma)\partialD{F^{1}}{x_{\sigma(1)}}\ldots\partialD{F^{n}}{x_{\sigma(n)}}\right) dx^{1}\wedge \ldots \wedge  dx^{n} = (\omega \circ F)\text{det}(J_F)dx^1 \wedge \ldots \wedge dx^n
+      \]
+   
    \subsection*{Existence de la dérivée extérieure locale - Analyse {:}}
       On procède par analyse-synthèse, et on considère une dérivée extérieure \( d \) qui vérifie les axiomes. Alors pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), on a nécessairement:
       \begin{flalign*}
@@ -264,24 +342,80 @@
    \[ 
       \sum_I a_I(p)dx^I = \sum_I b_I(p)dy^I \implies \sum_I da_I(p) \wedge dx^I = \sum_I db_I(p) \wedge dy^I
    \]
-\section*{\uline{Chapitre 11 - Orientation d'une variété à bord {:}}}
+
+   Dans toute la suite on considère $F : M \longrightarrow N$ une application lisse entre deux variétés.
+   \subsection*{Le pullback commute avec la dérivée extérieure}
+      Cette fois on considère une $k$ forme $\omega$, alors en coordonnées locales, on a:
+      \begin{align*}
+         F^*d\omega &= F^*\left[\sum_{I} d\omega_{i_1, \ldots, i_n} \wedge dx^{i_1} \wedge \ldots \wedge dx^{i_n}\right]\\
+         &= \sum_{I} F^*(d\omega_{i_1, \ldots, i_n} \wedge dx^{i_1}  \wedge \ldots \wedge dx^{i_n})\\
+         &= \sum_{I} F^*(d\omega_{i_1, \ldots, i_n}) \wedge F^*(dx^{i_1})  \wedge \ldots \wedge F^*(dx^{i_n})\\
+         &= \sum_{I} d(F^*\omega_{i_1, \ldots, i_n}) \wedge d(F^*x^{i_1})  \wedge \ldots \wedge d(F^*x^{i_n})\\
+         &= \sum_{I} d(\omega_{i_1, \ldots, i_n} \circ F) \wedge d(x^{i_1} \circ F)  \wedge \ldots \wedge d(x^{i_n} \circ F)\\
+         &= \sum_{I} d(\omega_{i_1, \ldots, i_n} \circ F) \wedge dF^{i_1}  \wedge \ldots \wedge  dF^{i_n}
+      \end{align*}
+      D'autre part en dérivant l'expression en coordonées locales obtenu plus haut, on trouve bien l'égalité.
+
+\pagebreak
+\section*{\uline{Chapitre 11 - Orientation d'une variété{:}}}
+   \subsection*{Carte orientée {:}}
+   Soit \( M \) une variété orientée de forme volume \( \omega = \omega_0 dy^1 \wedge \ldots \wedge dy^n \) qui représente l'orientation. Alors si \( \phi \) est une carte orientée positivement, il existe une fonction \( f \) positive telle que:
+   \[ 
+      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = f \cdot \omega
+   \]
+   Mais on a aussi d'aprés les propriétés du pullback:
+   \[ 
+      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = \text{det}(J\phi) dy^1 \wedge \ldots \wedge dy^n
+   \]
+   Donc en combinant ces deux information, on trouve que si \( \phi \) est orientée positivement, alors nécessairement:
+   \[ 
+      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = \frac{\text{det}(J\phi)}{\omega_0} \cdot \omega
+   \]
+   Si on avait choisi \( \omega_0 < 0\), alors {\color{red}ça ne marche pas}, ie on a nécessairement \( \text{det}(J\phi) <0 \)
    \subsection*{Propriétés du produit intérieur {:}}
    \subsection*{Expression en coordonées {:}}
-
-   \subsection*{Existence du champs de vecteurs sortant {:}}
-   Soit $M$ une variété à bords, on souhaite montrer l'existence d'un champs de vecteurs $X : p \rightarrow TM$ \textbf{sortant} sur une variété. Dans chaque carte $(U_\alpha, \phi_\alpha)$, on peut construire une fonction $f_\alpha$ qui soit nulle sur $U_\alpha \cap \partial M$ et strictement positive en dehors du bord. On considère par la suite une partition de l'unité $(\rho_\alpha)$ induite par l'atlas, alors:
+   
+   \subsection*{Existence d'un champs de vecteurs sortant}
+      On souhait construire un champs de vecteurs $X$ sur $M$ tel que pour tout point du bord $\partial M$, $X(p)$ soit un vecteur sortant. On considère une partition de l'unité subordonnée à l'atlas que l'on note $\rho_\alpha$, alors pour toute carte $U_\alpha$ qui intersecte le bord, on définit un champs de vecteur sortant en coordonnées locales:
       $$
-         f = \sum_\alpha \rho_\alpha f_\alpha
+         X_\alpha(p) = -\frac{\partial}{\partial x_n}\bigg|_p
       $$
-      Alors par construction $f|_{U_\alpha} = f_\alpha$ et donc en tout point de son domaine de définition, cette fonction coïncide avec les $f_\alpha$ et sa $n$-ième dérivée partielle est donc un vecteur entrant. Donc:
+      {\color{red}On peut alors étendre chacun de ces champs en un champs de vecteurs lisse $\widetilde{X_\alpha}$ sur $M$ qui vaut zéro partout et $X_\alpha$ sur $U_\alpha$.}\footnote{Ceci vient du fait que $\partial M$ est fermé apparemment ? Ne marche pas toujours ?}\\
+      
+      Alors on aimerait globaliser ce champs de vecteur en un champs de vecteur global par la partition de l'unité, on utilise la partition de l'unité et on pose:
       $$
-         p \longmapsto (p, -\frac{\partial f}{\partial x_n}\big|_p) \in TM
+         X = \sum_\alpha \rho_\alpha \widetilde{X_\alpha}
       $$
-      C'est bien un champs de vecteurs sortant.
-   \subsection*{Le produit intérieur avec le champs sortant oriente bien le bord {:}}
+      C'est bien un champs de vecteurs sur $M$, lisse car: 
+      \begin{align*}
+         X(p) &= \sum_\alpha \rho_\alpha(p) \widetilde{X_\alpha}(p) \\
+         &= \sum_\alpha \rho_\alpha(p) \sum_{i \leq n}\widetilde{X_{\alpha,i}}(p)\frac{\partial}{\partial x_i}\bigg|_p\\
+         &= \sum_\alpha\sum_{i \leq n} \rho_\alpha(p)\widetilde{X_{\alpha,i}}(p)\frac{\partial}{\partial x_i}\bigg|_p\\
+      \end{align*}
+      C'est une somme finie dont toutes les composantes sont lisses car les champs de vecteurs $\widetilde{X_\alpha}$ sont lisses. Aussi pour tout point du bord $p$, on a:
+      $$
+         X(p) = \sum_\alpha \rho_\alpha(p)\widetilde{X_{\alpha,n}}(p)\frac{\partial}{\partial x_n}\bigg|_p = \left(- \sum_\alpha \rho_\alpha(p)\right)\frac{\partial}{\partial x_n}\bigg|_p = -\frac{\partial}{\partial x_n}\bigg|_p
+      $$
+      Qui est bien un vecteur sortant.
+   \subsection*{Construction d'une forme volume sur $\partial M$}
+      On considère une variété orientable à bord $M$ et on note $\omega$ une forme volume sur $M$, montrons que l'on peut construire une forme volume sur $\partial M$. La construction est la suivante:
+      \begin{itemize}
+         \item On considère un champs sortant $S$ sur $\partial M$.
+         \item On construit le produit intérieur de $\iota_S\omega$, qui est une $n-1$ forme sur $M$.
+         \item La restriction\footnote{Plus précisement, le pullback par l'inclusion.}  de $\iota_S\omega$ au bord est alors une forme volume sur $\partial M$.
+      \end{itemize}
+      On sait déja que $\iota_S\omega$ est une $n-1$ forme lisse, supposons maintenant par l'absurde qu'il existe $p \in \partial M$ tel que cette forme s’annule. Ceci signifie que:
+      $$
+         \forall (v_1, \ldots, v_{n-1}) \in T\partial M_p \; ; \; \iota_S\omega(v_1, \ldots, v_{n-1}) = 0
+      $$
+      C'est donc en particulier vrai pour la base $(\frac{\partial}{\partial x_1}\big|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\big|_p)$, mais alors:
+      $$
+      \iota_S\omega\left(\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) = \omega\left(\frac{\partial}{\partial x_n}\bigg|_p,\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) =0
+      $$
+      Et la famille sur laquelle on évalue $\omega$ est une base de $TM_p$ donc $\omega$ s'annule en ce point, absurde.
+   \subsection*{Expression dans une carte de la forme volume sur $\partial M$}
+      On considère une variété orientable à bord $M$ et on note $\omega$ une forme volume sur $M$ et $\iota_S\omega$ la forme volume induite sur $\partial M$, on aimerait expliciter l'exression de cette forme dans une carte.
 
-\section*{\uline{Chapitre 12 - Intégrale locale d'une forme {:}}}
 
-\section*{\uline{Chapitre 13 - Intégrale d'une forme {:}}}
+\pagebreak
 
-\section*{\uline{Chapitre 14 - Théorème de Stokes {:}}}

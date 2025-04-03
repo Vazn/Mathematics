@@ -1,4 +1,59 @@
-\section*{\uline{Chapitre 11 - Orientation d'une variété à bords {:}}}
 \section*{\uline{Chapitre 12 - Intégrale locale d'une forme {:}}}
-\section*{\uline{Chapitre 13 - Intégrale globale d'une forme {:}}}
-\section*{\uline{Chapitre 14 - Théorème de Stokes-Cartan {:}}}
+   \subsection*{Changement de variables {:}}
+   Soit \( \omega \in \Omega^n( \R^n) \) une forme volume de coefficient \( \widetilde{\omega} \in L^1(\R^n) \) et \( F : \R^n \longrightarrow \R^n \) un difféormorphisme. Alors d'une part on a d'aprés la formule du changement de variables pour les fonctions:
+   \begin{itemize}
+      \item D'aprés la formule du changement de variable :
+      \[ 
+         \int_{\R^n} \omega =  \int_{\R^n} \widetilde{\omega}dx^1 \ldots dx^n = \int_{\R^n} \widetilde{\omega} \circ F |\text{det}(JF)| dx^1 \ldots dx^n
+      \]
+      \item D'aprés les propriétés du pullback :
+      \[ 
+         \int_{\R^n} F^*\omega = \int_{\R^n} \widetilde{\omega} \circ F \text{det}(JF) dx^1 \ldots dx^n
+      \]
+   \end{itemize}
+   On a donc bien égalité des deux membres de gauche si et seulement si \( |\text{det}(JF)| = \text{det}(JF) \), ie ssi \( \text{det}(JF) > 0 \).
+   \subsection*{L'intégrale locale est bien définie {:}}
+   Si \( M \) est muni d'un atlas orienté et qu'on considère deux cartes \( (U, \phi), (V, \psi) \), alors on a pour toute forme \( \omega \) l'égalité suivante:
+   \[ 
+      \int_{\phi(U)} (\phi^{-1})^* \omega = 
+   \]
+   \subsection*{L'intégrale est bien définie {:}}
+\pagebreak
+
+\section*{\uline{Chapitre 13 - Théorème de Stokes {:}}}
+   \subsection*{Stokes dans \( \mathbb{H}^n \) {:}}
+   On considère une \( n-1\) forme \(\omega \in \Omega_c^n(\mathbb{H}^n)\), alors elle est de la forme:
+   \[ 
+      \omega = \sum_{i = 1}^n \omega_i dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n
+   \]
+   Ou le chapeau désigne une ommission. Alors on calcule sa dérivée extérieure et on trouve:
+   \begin{align*}
+      d\omega &= \sum_{i = 1}^n \sum_{j = 1}^n \partialD{\omega_i}{x_j} dx^j \wedge dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\\
+      &=  \sum_{i = 1}^n (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \wedge \ldots \wedge dx^n
+   \end{align*}
+   \begin{itemize}
+      \item On calcule alors l'intégrale de celle-ci, et en appliquant Fubini ainsi que le théorème fondamental, on a:
+      \begin{flalign*}
+         \int_{\mathbb{H}^n} d\omega &= \sum_{i = 1}^n \int_{\mathbb{H}^n} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n\\
+         &=\int_{\mathbb{H}^n} \partialD{\omega_1}{x_1} dx^1 \ldots dx^n + \sum_{i = 2}^n \int_{\mathbb{H}^n} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n\\
+         &=\int_{\R^{n-1} \times \R_+} \partialD{\omega_1}{x_1} dx^1 \ldots dx^n + \sum_{i = 2}^n \int_{\R^{n-1} \times \R_+} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots  dx^n\\
+         &=\int_{\R^{n-1}}\left(\int_{\R_+}\partialD{\omega_1}{x_1} dx^1 \right) \ldots dx^n + \sum_{i = 2}^n (-1)^{i+1} \int_{\R^{n-2} \times \R_+} \left(\int_{\R} \partialD{\omega_i}{x_i} dx^i \right) dx^1 \ldots \widehat{dx^i} \ldots dx^n\\
+         &= -\int_{\mathbb{R}^{n-1}} \omega_1(0, x_2, \ldots, x_n) dx^2 \ldots dx^n
+      \end{flalign*}
+      Le terme de droite dans l'avant dernière égalité s'annulle car \( \omega \)  est à support compact.
+      \item Puis l'intégrale sur le bord:
+      \begin{align*}
+         \int_{\partial\mathbb{H}^n} \omega &= \int_{\partial\mathbb{H}^n} \sum_{i = 1}^n \omega_i(0, x_2, \ldots, x_n) dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\\
+         &= \sum_{i = 1}^n \int_{\partial\mathbb{H}^n}\omega_i(0, x_2, \ldots, x_n) dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\\
+         &= \int_{\partial\mathbb{H}^n}\omega_1(0, x_2, \ldots, x_n) dx^2 \wedge \ldots \wedge dx^n\\
+         &= -\int_{\R^{n-1}} \omega_1(0, x_2, \ldots, x_n) dx^2 \wedge \ldots \wedge dx^n
+      \end{align*}
+      L'avant dernière égalité venant du fait que \( dx^1 \) est identiquement nulle sur \( \partial\mathbb{H}^n \). {\textbf{\color{red} La dernière égalité ??}}
+   \end{itemize}
+   On a donc bien démontré le théorème de Stokes dans \( \mathbb{H}^n \).
+
+   \subsection*{Stokes dans \( M \) {:}}
+   Soit \( M \) une variété orientée munie de son atlas orienté \( (U_\alpha)_\alpha \) ainsi qu'un partition de l'unité \((\rho_\alpha)_\alpha\) associée. Soit \( \omega \in \Omega^n(M)\) une \( n-1 \) forme. On oriente \( \partial M\) avec l'orientation induite par un champs de vecteurs sortant. Alors en appliquant Stokes dans chaque carte, on a:
+   \begin{flalign*}
+      \int_{\partial M} \omega = \sum_\alpha \int_{\partial U_\alpha} \rho_\alpha \omega = \sum_\alpha \int_{U_\alpha} d(\rho_\alpha \omega) = \int_{M} d\omega
+   \end{flalign*}

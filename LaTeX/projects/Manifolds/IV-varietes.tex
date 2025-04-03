@@ -225,9 +225,9 @@
    \end{figure*}
    On peut alors de manière analogue au cercle, trouver l'expression analytique des deux projections et montrer qu'elles munissent \( \mathbb{S}^2 \) d'une structure de variété différentielle.
 \chapter{Espaces tangents dans \( \R^n \)}
-On aimerait alors pouvoir généraliser la notion \textbf{d'espace tangent} à une courbe, surface ... lisse de \( \R^n \) à des variétés abstraites comme définies dans les deux premiers chapitres. Pour ce faire, il est fondamental de comprendre que les variétés ainsi définies ne sont \textbf{pas} des objets de \( \R^k \), donc la notion de vecteur tangent géométrique perd son sens.\<
+   On aimerait alors pouvoir généraliser la notion \textbf{d'espace tangent} à une courbe, surface ... lisse de \( \R^n \) à des variétés abstraites comme définies dans les deux premiers chapitres. Pour ce faire, il est fondamental de comprendre que les variétés ainsi définies ne sont \textbf{pas} des objets de \( \R^k \), donc la notion de vecteur tangent géométrique perd son sens.\<
 
-L'approche fructueuse consiste alors à identifier \textbf{vecteurs} de \( \R^n \) et \textbf{dérivations} via la notion de dérivée directionnelle. On considère tout d'abord le cas de \( \R^n \), puis on généralise dans une variété quelconque.
+   L'approche fructueuse consiste alors à identifier \textbf{vecteurs} de \( \R^n \) et \textbf{dérivations} via la notion de dérivée directionnelle. On considère tout d'abord le cas de \( \R^n \), puis on généralise dans une variété quelconque.
    \section{Notion de dérivation:}
       Soit \(p \in \R^n\), on dira qu'un opérateur linéaire \( D: \mathcal{C}^\infty(\R^n) \longrightarrow \R \) est une \textbf{dérivation} en \( p \) si et seulement si elle vérifie la \textbf{règle de Leibniz} donnée par:
       \[ 
@@ -353,7 +353,12 @@ L'approche fructueuse consiste alors à identifier \textbf{vecteurs} de \( \R^n 
    \[ 
       V(p) = \sum_{i = 1}^n V_i(p) \partialD{}{x_i}\biggr|_p
    \]
-   Un tel champs de vecteurs est dit lisse au sens d'une application lisse entre les variétés \( M \) et \( TM \). On peut caractériser le caractère lisse d'un tel champs par le caractère lisse de toutes ses composantes.
+   Un tel champs de vecteurs est dit lisse au sens d'une application lisse entre les variétés \( M \) et \( TM \), on note alors $\mathfrak{X}(M) $ l'ensemble des champs de vecteurs lisse sur \( M \). On peut caractériser le caractère lisse d'un tel champs par le caractère lisse de toutes ses composantes.
+   \section{Opérations algébriques sur les champs de vecteurs}
+      On peut alors définir les opérations algébriques usuelles sur les champs de vecteurs, notamment si \( X, Y \) sont deux champs de vecteurs et \( \lambda \in \R \), alors on définit:
+      \[ 
+         X + Y : p \in M \longmapsto (p, X_p + Y_p) \in TM \quad\quad \lambda X: p \in M \longmapsto (p, \lambda X_p) \in TM
+      \]
    \section{Restriction d'un champs de vecteurs}
    On se donne un champs de vecteurs \( X \in \Omega^k(M) \), alors étant donnée une carte \( U \subseteq M \), on peut se demander si \( \omega \) se retreint un champs de vecteurs sur \( U \), on définit:
    \[ 
@@ -401,7 +406,7 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       \]
       Or, en faisant l'identification usuelle entre les dérivations est les vecteurs, on peut identifier cette expression à un vecteur de \(\R\) et on a aussi \( v_i = dx_i(v) \) donc on a l'identification naturelle suivante:
       \[ 
-         df_p(v) \triangleq \sum_{i=1}^n \partialD{f}{x_i}(p)dx_i(v)
+         df_p(v) \triangleq \sum_{i=1}^n \partialD{f}{x_i}(p)dx^i(v)
       \]
       On remarque alors que \( df_p \in TM^*_p \), on peut donc identifier la différentielle d'une fonction scalaire évaluée en un point à un vecteur cotangent, ie une forme linéaire sur l'espace tangent.\<
 
@@ -414,25 +419,24 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
          df_p(v) \triangleq (df_{1, p}(v), \ldots, df_{m, p}(v))
       \]
       De manière analogue on peut aussi remarque que la matrice de la différentielle dans les cartes est alors donnée par la jacobienne associée.
-
 \chapter{Formes différentielles}
    On peut alors définir la notion de \textbf{champs de tenseurs contravariants} sur une variété \( M \), appelés \( k \)-formes différentielles et dont l'ensemble est noté \( \Omega^k(M) \). Elles sont définies par la donnée d'une application lisse de la forme:
    \[ 
       \begin{aligned}
-         \omega : M &\longrightarrow \Lambda^k(TM^*) \\
+         \omega : M &\longrightarrow \Lambda^kTM^* \\
          p &\longmapsto (p, \omega_p)
       \end{aligned} 
    \]
    Où on identifiera \( \omega(p) \) et \(\omega_p\). Alors plus précisément, si on fixe \( p \in M \), alors dans des coordonées locales autout de ce point, on a:
    \[ 
-      \omega_p = \sum_{i = 1}^n \omega_i(p) dx_i
+      \omega_p = \sum_{i = 1}^n \omega_i(p) dx^i
    \]
-   Une telle forme est dite lisse au sens d'une application lisse entre les variétés \( M \) et \( \Lambda^k(TM^*) \). On peut caractériser le caractère lisse d'une telle forme par le caractère lisse de toutes ses composantes.
+   Une telle forme est dite lisse au sens d'une application lisse entre les variétés \( M \) et \( \Lambda^kTM^* \). On peut caractériser le caractère lisse d'une telle forme par le caractère lisse de toutes ses composantes.
 
    \section{Différentielle d'une fonction}
    On remarque alors qu'un exemple remarquable de 1-forme différentielle est celui de la différentielle elle même d'une fonction \( f : M \longrightarrow \R \), en effet, on a expliqué plus haut que l'on peut identifier:
    \[ 
-      df_p \triangleq \sum_{i=1}^n \partialD{f}{x_i}(p)dx_i
+      df_p \triangleq \sum_{i=1}^n \partialD{f}{x_i}(p)dx^i
    \]
    \section{Formes volumes}
       Le cas particulier des \(n\)-formes différentielles est fondamental, en effet soit \( \omega \) une telle forme, alors elle vérifie en coordonées locales:
@@ -452,6 +456,11 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       \[ 
          dx \wedge dy(u, v) = u_1v_2 - u_2v_1 = \text{det}(u, v)
       \]
+   \section{Opérations algébriques sur les formes différentielles}
+      On peut alors définir les opérations algébriques usuelles sur les formes différentielles, notamment si \( \omega, \eta \) sont deux formes différentielles de même degré et \( \lambda \in \R \), alors on définit:
+      \[ 
+         \omega + \eta : p \in M \longmapsto (p, \omega_p + \eta_p) \in \Lambda^kTM^* \quad\quad \lambda \omega: p \in M \longmapsto (p, \lambda \omega_p) \in \Lambda^kTM^*
+      \] 
    \section{Restriction d'un forme}
       On se donne une \(k\)-forme \( \omega \in \Omega^k(M) \), alors étant donnée une carte \( U \subseteq M \), on peut se demander si \( \omega \) se retreint en une forme différentielle lisse sur \( U \), on définit:
       \[ 
@@ -463,7 +472,7 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       \[ 
          \omega(X) : p \longmapsto \omega_p(X_p)
       \]
-      Alors, on peut exprimer cette évaluation en coordonées locales, ie si on a une 1-forme différentielle \( \omega \) et un champs de vecteurs \( X \) respectivement de la forme \( \omega = \sum_I \omega_I dx^I \) et \( X = \sum_i X_i \partialD{}{x_i}\big|_p\), on a directement par définition de la base duale:
+      Alors, on peut exprimer cette évaluation en coordonées locales, ie si on a une 1-forme différentielle \( \omega \) et un champs de vecteurs \( X \) respectivement de la forme \( \omega = \sum_I \omega_I dx^I \) et \( X = \sum_i x_i \partialD{}{x_i}\big|_p\), on a directement par définition de la base duale:
       \begin{align*}
          \omega(X)(p) = \sum_{1 \leq i \leq n} \omega_{i}(p)x_i(p)
       \end{align*} 
@@ -472,8 +481,8 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       Ponctuellement, on sait définir le produit extérieur de deux tenseurs covariants antisymétriques, on peut alors définir le produit extérieur de deux formes \( \omega, \eta \) d'ordre respectifs \( p, q \) par:
       \[ 
          \begin{aligned}
-            \omega \wedge \eta : \R^n &\longrightarrow \Lambda^{p+q}E^* \\
-            p &\longmapsto \omega(p) \wedge \eta(p)
+            \omega \wedge \eta : M &\longrightarrow \Lambda^{p+q}TM^* \\
+            p &\longmapsto (p, \omega_p \wedge \eta_p)
          \end{aligned}
       \]
       Alors, il vérifie des propriétés analogues au produit extérieur classique, car il les vérifie en tout point. Notamment, il est bilinéaire alterné, et se réduit à la multiplication scalaire sur les 0-formes.
@@ -496,13 +505,21 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
          \item Le pullback est \textbf{linéaire}.
          \item Le pullback respecte le \textbf{produit extérieur}:
          \[ 
-            f^*(\omega \wedge \eta) = f^*(\omega) \wedge f^*(\eta)
+            f^*(\omega \wedge \eta) = f^*\omega \wedge f^*\eta
          \]
          \item Le pullback respecte la \textbf{différentielle} d'une fonction:
          \[ 
             f^*(dx) = d(f^*x)
          \]
       \end{itemize}
+      Muni de ces propriétés on peut montrer pour une \( k-\)forme sur \( N \) que l'expression de son pullback en coordonées locales est donnée par:
+      \[ 
+         f^*\omega = \sum_I (\omega_I \circ f) df^{i_1} \wedge \ldots \wedge df^{i_n}
+      \]
+      En particulier, si \( \omega \) est une forme volume sur \( N \) et que \( f \) est un \textbf{difféomorphisme}, on peut montrer la propriété fondamentale suivante qui n'est pas sans rapeller celle du changement de variables:
+      \[ 
+         f^*\omega = (\omega \circ f) \text{det}(J_F) dx^{1} \wedge \ldots \wedge dx^{n}
+      \]
    \section{Opérateur local}
       Soit \( X \) un espace topologique et \( E \) un espace vectoriel, on considère alors l'espace de fonctions \(\mathcal{F}(X, E)\) et on appelle \textbf{opérateur local} sur cet espace un opérateur linéaire \(D\) qui vérifie:
       \[ 
@@ -553,22 +570,44 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       \]
       On note que si \( \omega \) est une \( 0-\)forme, ie une fonction, ce fait était déja vérifié car \( d \) coincide avec la différentielle usuelle dans ce cas.
 
-\chapter{Orientation d'une variété à bord}
-   Dans le troisième chapitre, on a définit la notion de variété à bord, puis par la suite celle de forme volume qui définit une orientation sur une variété \( M \). On se pose alors la question suivante:
-   \begin{center}
-      \textit{Est-il possible de construire une orientation sur \( \partial M \) étant donnée une orientation sur \( M \) ?}
-   \end{center}
-   On considère par la suite une variété à bord de dimension \( n \)
+\chapter{Orientation d'une variété}
+   Dans le troisième chapitre, on a défini la notion de variété à bord, puis par la suite celle de forme volume qui définit si une variété est orientable ou non. On se pose alors les questions suivantes
+   \begin{itemize}
+      \item \textit{Si une variété est orientable, qu'est ce qu'une "orientation" de celle ci ?}
+      \item \textit{Si une variété est orientable, est-ce que son bord l'est et comment l'orienter ?}
+   \end{itemize}
+   \section{Notion d'orientation}
+      On sait qu'une variété est orientable si et seulement si elle admet une \textbf{forme volume} \( \omega \), dont on rapelle l'expression \( \omega = fdx^1 \wedge \ldots \wedge dx^n \). Si une telle forme ne s'annule pas, alors \( f \) ne s'annule pas et est continue. En particulier on a donc la propriété suivante:
+      \begin{center}
+         \textbf{Une forme volume a un coefficient de signe constant sur les composantes connexes de la variété.}
+      \end{center}
+      On se ramene au cas des variétés connexes sans perte de généralité, alors ceci va nous permettre de définir la notion d'orientation, en effet on définit la relation d'équivalence suivante sur une telle variété:
+      \[ 
+          \forall \omega, \eta \in \Omega^n(M) \; ; \; \omega \sim \eta \iff \exists f > 0 \text{ telle que } \omega = f\eta 
+      \]
+      Alors il y a exactement deux classes d'équivalence pour cette relation, et on apelle \textbf{orientation} sur \( M \) le choix d'une de ces classes d'équivalence. Par exemple sur \( \R^3 \), voici deux représentants des deux classes d'équivalences:
+      \[ 
+         \text{det} = dx \wedge dy \wedge dz \quad\quad\quad \overline{\text{det}} = dy \wedge dx \wedge dz
+      \]
+      Si \( M \) est une variété orientée, ie telle qu'on a choisi une orientation sur celle-ci, on note \( -M \) la variété d'orientation opposée. 
+   \section{Cas particulier des variétés de dimension nulle}
+      Si \( M \) est de dimension nulle, alors c'est un ensemble fini de points, se pose alors la question suivante: 
+      \begin{center}
+         \textit{Que signifie alors une orientation sur une des composantes connexes (ie sur un point) ?}
+      \end{center}
+      C'est un fait simplement la donnée d'un signe \( \pm \) sur ce point, en effet une \( 0-\)forme est un nombre et donc une forme volume correspond ici à un nombre qui ne s'annule jamais.
+   \section{Atlas orientés}
+      Si on considère une variété orientée \( M \) muni de son atlas \( \mathcal{A} \), on dit que cet atlas est \textbf{orienté} si et seulement si pour toutes cartes dont l'intersection est non-nulle, le déterminant de l'application de changement de carte est positif. Un résultat d'équivalence important est alors le suivant:
+      \begin{center}
+         \textbf{Une variété est orientable si et seulement si elle admet un atlas orienté.}
+      \end{center}
    \section{Produit intérieur d'une forme}
          En effet, étant donné un champs de vecteurs \( X \), on peut construire une \( k-1 \) forme à partir d'une \( k \) forme par évaluation partielle en \( X \) sur la premier composante, cette opération apellée \textbf{produit intérieur} est définie par:
          \[ 
             \iota_X(\omega) : p \mapsto \omega(X_p, \cdot, \ldots, \cdot)
          \]
          Ceci se généralise et on peut alors construire une \( k-p \) forme avec la donnée de \( p \) champs de vecteurs.
-   \section{Propriétés du produit intérieur}
-   \section{Expression en coordonées du produit intérieur}
-
-   \section{Vecteur entrant}
+   \section{Vecteurs entrants et sortants}
       Soit $M$ une variété à bords, $p$ un point du bord et $(U, \phi)$ une carte qui contient $p$, alors tout vecteur de $v = TM_p$ est de la forme:
       \[ 
          v = \sum_{i \leq n} v_i \frac{\partial}{\partial x_i}
@@ -578,20 +617,116 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
          \item On dira que $v$ est \textbf{entrant} si et seulement si $v_n > 0$.
          \item On dira que $v$ est \textbf{sortant} si et seulement si $v_n < 0$. 
       \end{itemize}
-   \section{Champs de vecteurs sortants}
-      On cherche alors à définir un champs de vecteurs \( X \) sortant sur le bord de \( M \), on peut alors montrer qu'un tel champ existe et est:
-      \[ 
-         Blabla 
-      \]
-   
-   \pagebreak
+      On cherche alors à définir un champs de vecteurs sortant lisse \( X \) sur le bord de \( M \), on peut alors montrer qu'un tel champ \textbf{existe toujours} et il nous permettra alors de définir l'orientation sur \( \partial M \).  
    \section{Orientation du bord d'une variété}
-      Soit $M$ une variété orientable de forme volume $\omega$, $X$ un champs de vecteurs sortant lisse, alors on définit sur $\partial M$ la $n-1$ forme $\iota_X(\omega)$ On montre que c'est bien une forme volume sur le bord. En effet supposons que cette forme s’annule en un point $p \in \partial M$, alors cela signifie que:
-      $$
-         \iota_X(\omega)_p\left(\frac{\partial}{\partial x_1}, \ldots, \frac{\partial}{\partial x_{n-1}}\right) = 0
-      $$
-      Mais alors, le fait que $X_p$ soit sortant nous donne que la famille $(X_p, \frac{\partial}{\partial x_1}, \ldots, \frac{\partial}{\partial x_{n-1}})$ est une base de $TM_p$, et alors:
-      $$
-         \omega\left(X_p, \frac{\partial}{\partial x_1}, \ldots, \frac{\partial}{\partial x_{n-1}}\right) = 0
-      $$  
-      Et donc $\omega$ est nulle en $p$ ce qui est absurde.
+      Soit $M$ une variété orientable de forme volume $\omega$, $X$ un champs de vecteurs sortants lisse sur le bord de \( M \), alors on définit sur $\partial M$ la $n-1$ forme $\iota_X(\omega)$ et on montre que c'est bien une forme volume sur le bord. En particulier, on a la propriété fondamentale suivante:
+      \begin{center}
+         \textbf{Le bord d'une variété orientable à bord est orientable.}
+      \end{center}
+   \section{Exemples pratiques d'orientation du bord d'une variété}
+      De manière plus concrète, on peut considérer quelques exemples usuels de variété à bord pour essayer de mieux comprendre comment s'oriente le bord d'une variété. Voici quelques exemples:
+         \begin{figure}[htbp]
+            \centering
+            \begin{subfigure}{.3\textwidth}
+               \centering
+               \begin{tikzpicture}
+                  \tikzset{%
+                     my arrow1/.style={
+                     postaction={decorate,decoration={
+                     markings,
+                     mark=between positions 0.15 and 0.95 step 0.15 with {\arrow[line width=1.5pt, color=red]{stealth}}}}
+                     },
+                  }
+                  % Points d'extrémité
+                  \def\xa{-2} % Point a
+                  \def\ya{0}
+                  \def\xb{2}  % Point b
+                  \def\yb{0}
+   
+                  % Courbe paramétrée "quelconque" avec points de contrôle aléatoires
+                  \draw[thick, smooth, my arrow1, postaction={decorate}] (\xa, \ya) 
+                  .. controls (-1.5, 0.8) and (-1, -0.8) .. (-0.7, 0.5) 
+                  .. controls (-0.4, 1.2) and (-0.2, -1) .. (0.6, 0.6) 
+                  .. controls (1, 1.5) and (1.5, 1) .. (\xb, \yb);
+   
+                  % Points d'extrémité
+                  \filldraw (\xa, \ya) circle (1pt) node[below] {$\color{red}-a$};
+                  \filldraw (\xb, \yb) circle (1pt) node[below] {$\color{red}+b$};
+               \end{tikzpicture}
+               \caption*{(1) Cas d'une courbe}
+            \end{subfigure}
+            \centering
+            \begin{subfigure}{.3\textwidth}
+               \centering
+               \begin{tikzpicture}
+                  \tikzset{%
+                     my arrow1/.style={
+                     postaction={decorate,decoration={
+                     markings,
+                     mark=between positions 0 and 1 step 0.1 with {\arrow[line width=1.5pt, color=red]{stealth}}}}
+                     },
+                  }
+                  % Paramètres
+               \def\r{1} % Rayon du disque unité
+   
+               % Disque unité (cercle)
+               \draw[thick, my arrow1, postaction={decorate}] (0,0) circle (\r cm);
+               \draw[-stealth, red, thick] (0, 0) -- (0,0.5) node at (-0.3,0.35) {$\partial_2$};
+               \draw[-stealth, red, thick] (0, 0) -- (0.5,0) node at (0.4,-0.275) {$\partial_1$};
+   
+               % Champ de vecteurs normal externe (radial)
+               \foreach \angle in {0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5} {
+                  \draw[-stealth, draw opacity=0.4, thick] ({cos(\angle)*\r}, {sin(\angle)*\r}) -- ({cos(\angle)*1.5*\r}, {sin(\angle)*1.5*\r});
+                }
+               \end{tikzpicture}
+               \caption*{(2) Cas du cercle}
+            \end{subfigure}
+            \centering
+            \begin{subfigure}{0.3\textwidth}
+               \centering
+               \begin{tikzpicture}
+                  \tikzset{%
+                     my arrow1/.style={
+                     postaction={decorate,decoration={
+                     markings,
+                     mark=between positions 0 and 1 step 0.175 with {\arrow[line width=1.5pt, color=red]{stealth}}}}
+                     },
+                     my arrow2/.style={
+                     postaction={decorate,decoration={
+                     markings,
+                     mark=between positions 0 and 1 step 0.175 with {\arrowreversed[line width=1.5pt, color=red]{stealth}}}}
+                     },
+                  }
+                  % Paramètres du cylindre
+                  \def\r{1} % Rayon du cylindre
+                  \def\h{3} % Hauteur du cylindre
+   
+                  % Bord supérieur (ellipse en perspective)
+                  \draw[thick, my arrow2, postaction={decorate}] (0,\h) ellipse (\r cm and 0.3*\r cm);
+                  % Bord inférieur (ellipse en perspective)
+                  \draw[thick, my arrow1, postaction={decorate}] (0,0) ellipse (\r cm and 0.3*\r cm);
+               
+                  % Arêtes latérales reliant les bords
+                  \draw[thick] (-\r,0) -- (-\r,\h);
+                  \draw[thick] (\r,0) -- (\r,\h);
+                
+                  \draw[-stealth, red, thick] (0,1.5) -- (0,2) node at (-0.3,1.84) {$\partial_2$};
+                  \draw[-stealth, red, thick] (0,1.5) -- (0.5,1.5) node at (0.4,1.2) {$\partial_1$};
+
+                  % Vecteurs sortants sur le bord inférieur (vers le bas)
+                  \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                     \pgfmathsetmacro\xpos{\r * cos(\angle)}
+                     \pgfmathsetmacro\ypos{0.3 * \r * sin(\angle)}
+                     \draw[-stealth, black, draw opacity=0.35, thick] (\xpos, \ypos) -- (\xpos, \ypos - 0.3);
+                  }
+                  % Vecteurs sortants sur le bord supérieur (vers le haut)
+                  \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                     \pgfmathsetmacro\xpos{\r * cos(\angle)}
+                     \pgfmathsetmacro\ypos{\h + 0.3 * \r * sin(\angle)}
+                     \draw[-stealth, black, draw opacity=0.35, thick] (\xpos, \ypos) -- (\xpos, \ypos + 0.3);
+                  }
+               \end{tikzpicture}
+               \caption*{(3) Cas du cylindre}
+            \end{subfigure}      
+         \end{figure}
+      En fait on comprends alors que pour orienter le bord sachant une orientation sur l'intérieur, il suffit de placer le premier vecteur de la base de l'intérieur dans la même direction que le vecteur sortant et l'orientation du bord est alors l'ajout de vecteurs tels que la base complétée coincide avec la base de l'intérieur. Une autre remarque que l'on puisse faire est que ceci justifie le fait que l'orientation trigonométrique du cercle est celle retenue en général en mathématiques.

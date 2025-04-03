@@ -570,34 +570,83 @@ On définit alors \textbf{l'idéal engendré} par une partie \(X\) qu'on note \(
    (X) := \left\{ a_1x_1 + \ldots + a_nx_n \; ; \; (a_i) \in A \right\}  
 \]
 Ce sont en fait exactement les \textbf{polynômes} en les éléments de \( X \) et à coefficients dans \( \mathbb{A} \). Si un idéal est engendré par un uniquement élément, on dira qu'il est \textbf{principal}, c'est l'analogue dans les anneaux des sous-groupes cycliques.
+
 \subsection*{\subsecstyle{Caractéristique {:}}}
 On définit la caractéristique d'un anneau non-nul par:
 \[
    \text{car}(A) := \min \left\{ n \in \N \; ; \;\underbrace{1 + \ldots + 1}_{\text{\(n\) sommandes}} = 0 \right\}
 \]
 Une autre formulation serait simplement que la caractéristique d'un anneau est l'ordre (additif) de l'unité multiplicative. Cette notion est fondamentale car elle permet en fait moralement de détecter des \textbf{sous-structures cycliques}. En particulier -> Exemples
-\subsection*{\subsecstyle{Vers la classification {:}}}
-L'objectif suivant aprés avoir défini cette structure est de comprendre que c'est cette structure qui généralise la notion d'arithmétique, et on peut alors chercher à trouver des anneaux qui vérifient alors des propriétés analogues à la structure arithmétique canonique qu'est \( \Z \). De manière non-exhaustive, on peut alors considérer les propriétés suivantes:
-\begin{itemize}
-   \item Dans quels anneaux a-t-on existence d'un plus grand diviseur commun ?
-   \item Dans quels anneaux a-t-on l'identité de Bézout ?
-   \item Dans quels anneaux a-t-on une division Euclidienne ?
-   \item Dans quels anneaux a-t-on une décomposition en éléments premiers ?
-\end{itemize}
+
 
 \chapter*{\chapterstyle{II --- Arithmétique dans les anneaux}}
 \addcontentsline{toc}{section}{Arithmétique dans les anneaux}
-On considère donc la relation de divisiblité dans un anneau \( \mathbb{A} \) qu'on considérera pour simplifier intégre et commutatif. Alors le lien naturel entre la divisibilité et la structure naturel d'idéal et donné par la propriété suivante:
+On considère donc la relation de divisiblité dans un anneau \( \mathbb{A} \) qu'on considérera intégre et commutatif. Alors le lien naturel entre la divisibilité et la structure naturel d'idéal et donné par la propriété suivante:
 \[ 
-   a \, \big| \, b \iff (a) = (b) 
+   a \, \big| \, b \iff (b) \subseteq (a) 
 \]
+Les idéaux représentent en fait moralement l'analogue abstrait des multiples.
+\subsection*{\subsecstyle{Elements associés {:}}}
+On dit que deux éléments \( a, b \in \mathbb{A} \) sont \textbf{associés} si et seulement si ils vérifient:
+\[ 
+   a \, \big| \, b \text{ et } b \, \big| \, a
+\]
+On peut alors montrer que dans ce cas on a égalité des idéaux:
+\[ 
+   (a) = (b) 
+\]
+En outre deux éléments sont associés si et seulement si ils sont \textbf{égaux à un inversible prés}. Ceci généralise le fait que dans \( \Z \), on a \( a\Z = b\Z \iff a = \pm b\)
+\subsection*{\subsecstyle{Elements irréductibles{:}}}
+Dans un anneau, on dira qu'un élément \( x \) non-nul est \textbf{réductible} si et seulement si:
+\[ 
+    \begin{cases}
+      x \text{ n'est \textbf{pas inversible}}\\
+      \forall a, b \in \mathbb{A} \text{ tel que } x = ab \; ; \; a \in \mathcal{U}(A) \text{ ou } b \in \mathcal{U}(\mathbb{A})
+    \end{cases}
+\]
+En d'autres termes, un élément est irréductible si et seulement si il ne peut pas se factoriser en produit de non-inversibles. De manière analogue, un élément est réductible si une telle factorisation existe.
+\subsection*{\subsecstyle{PGCD et PPCM{:}}}
+On considère une famille \( (a_i)_{i \in I} \) d'éléments de \( \mathbb{A} \), on définit les éléments suivants:
+\begin{itemize}
+   \item Cette famille admet un \textbf{plus grand commun diviseur} qu'on note \( \bigwedge_I a_i \)  si et seulement si il existe un élément \( d \in \mathbb{A}\) vérifiant:
+   \begin{itemize}
+      \item \textbf{Diviseur commun:} \( \forall i \in I \; ; \; d \, | \, a_i \)
+      \item \textbf{Minimalité:} \( \forall d' \in A \; ; \; \forall i \in I \; ; \; d \, | \, a_i \implies d' \, | \, d\)
+   \end{itemize}
+   \item Cette famille admet un \textbf{plus petit commun multiple} qu'on note \( \bigvee_I a_i \) si et seulement si il existe un élément \( m \in \mathbb{A}\) vérifiant:
+   \begin{itemize}
+      \item \textbf{Multiple commun:} \( \forall i \in I \; ; \; a_i \, | \, m \)
+      \item \textbf{Maximalité:} \( \forall m' \in A \; ; \; \forall i \in I \; ; \; a_i \, | \, m \implies m \, | \, m'\)
+   \end{itemize}
+\end{itemize}
+Ces éléments n'existent pas a priori dans un anneau général. Néanmoins quand ils existent on peut montrer qu'ils ne sont en général pas unique, en effet, si \( d, d' \) sont des pgcd de \( (a_i)_{i \in I} \), alors \( d \) et \( d' \) sont \textbf{associés}, ie \textbf{égaux à un inversible prés}.
+\subsection*{\subsecstyle{Elements premiers entre eux{:}}}
+Pour une famille donnée \( (a_i)_{i \in I} \), on dira que ces éléments sont \textbf{premiers entre eux} si et seulement si ils admettent un pgcd et que:
+\[ 
+   \bigwedge_I a_i \in \mathcal{U}(\mathbb{A}) 
+\]
+C'est une généralisation directe de la définition dans \( \Z \).
+\pagebreak
+
+\subsection*{\subsecstyle{Idéaux premiers et maximaux{:}}}
+Il existe alors deux types d'idéaux trés importants qui sont définis par la richesse de la structure qu'ils engendrent sur le quotient:
+\begin{itemize}
+   \item Si \( A/I \) est \textbf{intègre}, on dira que \( I \) est \textbf{premier}.
+   \item Si \( A/I \) est \textbf{un corps}, on dira que \( I \) est \textbf{maximal}.
+\end{itemize}
+En particulier, on a trivialement que tout idéal maximal est premier. Les anneaux premiers sont un parallèle direct avec les nombres premiers, en effet on peut montrer que \( I \) est premier si et seulement si:
+\[ 
+   \forall ab \in I \; ; \; a \in I \text{ ou } b \in I 
+\]
+Qui n'est pas sans rapeller le lemme d'Euclide qui dit que si un nombre premier divise un produit, alors il divise l'un des facteurs. On dira alors qu'un élément \( a \in \mathbb{A} \) est premier si et seulement si \( (a) \) est premier.
+\subsection*{\subsecstyle{Idéaux premiers et maximaux{:}}}
+
+\chapter*{\chapterstyle{II --- Arithmétique dans les anneaux}}
+\addcontentsline{toc}{section}{Arithmétique dans les anneaux}
 
 \chapter*{\chapterstyle{II --- Corps}}
 \addcontentsline{toc}{section}{Corps}
-Soit \(A\) un anneau dont tout les éléments sauf \(0\) sont inversibles. Alors on dit que \(A\) est \textbf{un corps}.
-
-\subsection*{\subsecstyle{Exemples {:}}}
-On peut alors considérer plusieurs corps remarquables:
+Soit \(A\) un anneau dont tout les éléments non-nuls sont inversibles. Alors on dit que \(A\) est \textbf{un corps} et on le note en général \(\K\). Voici quelques exempels de corps remarquables:
 \begin{itemize}
    \item Les \textbf{réels} muni des opérations usuelles.
    \item Les \textbf{complexes} muni des opérations usuelles.
@@ -605,6 +654,73 @@ On peut alors considérer plusieurs corps remarquables:
    \item Les \textbf{corps finis} \(\mathbb{F}_p = \Z/p\Z\) pour \(p\) premier.
    \item Les \textbf{nombres constructibles} à la règle et au compas.
 \end{itemize}
+\subsection*{\subsecstyle{Idéaux maximaux{:}}}
+Etant donné un anneau intègre et commutatif, on peut vouloir définir, de manière analogue aux idéaux premiers, les idéaux tels que \( A/I \) est un corps. On apelle de tels idéaux \textbf{idéaux maximaux} et ils vérifient:
+\[ 
+   \forall J \leq \mathbb{A} \; ; \; I \subseteq J \implies J = A \text{ ou } J = I 
+\]
+En fait ce sont exactement les idéaux maximaux pour l'inclusion. Cette définition, ainsi que le fait que les \( p\Z \) sont facilement maximaux, permet de montrer que \(\mathbb{F}_p = \Z/p\Z\) sont bien des corps.
+\subsection*{\subsecstyle{Morphismes de corps{:}}}
+Un morphisme de corps est alors simplement un morphisme d'anneaux. Néanmoins dans ce cas particulier, on peut noter la proposition suivante:
+\begin{center}
+   \textbf{Tout les morphismes de corps sont injectifs.}
+\end{center}
+En particulier ceci nous indique que l'étude des relations entre les corps se ramène à des études d'inclusion abstraites, car si deux corps sont reliés par un morphisme, alors l'un est nécessairement plongé dans l'autre, ou plutôt, l'un est nécessairement une extension de l'autre, ce qui motive la partie suivante.
+\subsection*{\subsecstyle{Extension de corps{:}}}
+Etant donné deux corps de \( \K, \mathbb{F}\), on dira que \( \mathbb{F} \) est une \textbf{extension} de \( \K \) si et seulement si \( \K \subseteq \mathbb{F} \) ou plus généralement, si il existe un morphisme de corps (injectif donc) de \( \K \) dans \(\mathbb{F}\).
+\subsection*{\subsecstyle{Degré d'une extension{:}}}
+Si \( \mathbb{F} \) est une extension de corps de \( \K \), alors on peut voir \(\mathbb{F}\) comme un \(\mathbb{K}\)-espace vectoriel. On peut donc calculer sa dimesion que l'on appelle alors \textbf{degré de l'extension}, on le note \( [\mathbb{F} \; ; \; \mathbb{K}] \)
+\begin{itemize}
+   \item Si il est fini on dira que l'extension est \textbf{finie}.
+   \item Si il est égal à 1 on dira que l'extension est \textbf{simple}.
+   \item Si il est égal à 2 on dira que l'extension est \textbf{quadratique}.
+   \item ...
+\end{itemize}
+\uline{Exemple:} Si on considère l'extension de \(\Q\) donnée par \(\Q[\sqrt{2}]\), alors \( (1, \sqrt{2}) \) est une \textbf{base} de \(\Q[\sqrt{2}]\), et donc \( \text{dim}_\Q(\Q[\sqrt{2}]) = 2\) et l'extension est \textbf{quadratique}.
+\pagebreak
+
+\subsection*{\subsecstyle{Propriétés du degré{:}}}
+Si \( \mathbb{F} \subseteq \mathbb{K} \subseteq \mathbb{L} \) une suite d'extensions de corps, alors on a la propriété suivante dite de multiplicativité du degré:
+\[ 
+   [\mathbb{L} \; ; \; \mathbb{F}] = [\mathbb{L} \; ; \; \mathbb{K}][\mathbb{K} \; ; \; \mathbb{F}]
+\]
+En particulier, le degré des deux sous-extensions divise celui de l'extension.
+
+\subsection*{\subsecstyle{Elements algébriques et transcendants{:}}}
+Etant donnés deux corps \( \K, \mathbb{F} \), la théorie des corps se développe alors autour du concept d'élement algébrique et d'élément transcendant, pour tout \( \alpha \in \F \), on définit le morphisme suivant:
+\[ 
+   \begin{aligned}
+      \Phi_\alpha : \K[X] &\longrightarrow \K[\alpha] \subseteq \mathbb{F} \\
+      P &\longmapsto P(\alpha)
+   \end{aligned} 
+\]
+C'est le morphisme d'évaluation pour les polynômes de \( \K[X] \) dont on a étendu le domaine d'arrivée.
+\begin{itemize}
+   \item On dira que \( \alpha \) est \textbf{transcendant} sur \( \K \) si et seulement si ce morphisme est injectif.
+   \item On dira que \( \alpha \) est \textbf{algébrique} sur \( \K \) sinon.
+\end{itemize}
+\uline{Exemples:} 
+\begin{itemize}
+   \item Si on considère l'inclusion \( \Q \subseteq \R \), alors l'élément \( \sqrt{2} \) est algébrique sur \( \Q \).
+   \item Si on considère l'inclusion \( \Q \subseteq \Q[X] \), alors l'élément \( X \) est transcendant sur \( \Q \).
+   \item On peut montrer que \( \pi \) est transcendant sur \( \Q \).
+\end{itemize}
+\subsection*{\subsecstyle{Polynôme minimal d'un élément{:}}}
+On sait alors que \( \K[X] \) est toujours principal, donc si un élément est \textbf{algébrique}, alors son noyau est \textbf{principal}, ie on a:
+\[ 
+   \text{ker}(\Phi_\alpha) = (P_\alpha)
+\]
+On appelle alors \textbf{polynôme minimal} de \( \alpha \) l'élément unitaire qui engendre cet idéal. On appelle alors \textbf{degré} de \( \alpha \) dans \( \K \) le degré de ce polynôme. Si \( \alpha \) est algébrique, l'intérêt de ce polynôme est alors le suivant, par le premier théorème d'isomorphisme:
+\[ 
+   \K[X]/(\Phi_\alpha) \cong \K[\alpha] \cong \K(\alpha)
+\]
+En outre dans ce cas, \( \K[\alpha] \) est un \textbf{corps}.
+
+\subsection*{\subsecstyle{Base d'une extension algébrique{:}}}
+Si \( \alpha \) est algébrique, et que \( n = \text{deg}(\Phi_\alpha) \), alors on peut montrer la proposition suivante:
+\[ 
+   (1, \alpha, \ldots, \alpha^{n-1}) \textbf{ est une base de } \K[\alpha] 
+\]
 
 \chapter*{\chapterstyle{II --- Corps des Complexes}} % 99% Fini
 \addcontentsline{toc}{section}{Corps des Complexes}
