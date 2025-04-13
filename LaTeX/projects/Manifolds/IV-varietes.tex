@@ -577,30 +577,51 @@ On obtient bien ainsi un champs de vecteurs sur \( N \).
       \item \textit{Si une variété est orientable, est-ce que son bord l'est et comment l'orienter ?}
    \end{itemize}
    \section{Notion d'orientation}
-      On sait qu'une variété est orientable si et seulement si elle admet une \textbf{forme volume} \( \omega \), dont on rapelle l'expression \( \omega = fdx^1 \wedge \ldots \wedge dx^n \). Si une telle forme ne s'annule pas, alors \( f \) ne s'annule pas et est continue. En particulier on a donc la propriété suivante:
-      \begin{center}
-         \textbf{Une forme volume a un coefficient de signe constant sur les composantes connexes de la variété.}
-      \end{center}
-      On se ramene au cas des variétés connexes sans perte de généralité, alors ceci va nous permettre de définir la notion d'orientation, en effet on définit la relation d'équivalence suivante sur une telle variété:
+      Soit \( M \) une variété orientable, alors on définit la relation d'équivalence suivante sur les formes volumes:
       \[ 
-          \forall \omega, \eta \in \Omega^n(M) \; ; \; \omega \sim \eta \iff \exists f > 0 \text{ telle que } \omega = f\eta 
+         \forall \omega, \omega' \in \Omega^n(M) \; , \; \omega \sim \omega' \iff \exists f > 0 \text{ telle que } \omega = f \cdot \omega' 
       \]
-      Alors il y a exactement deux classes d'équivalence pour cette relation, et on apelle \textbf{orientation} sur \( M \) le choix d'une de ces classes d'équivalence. Par exemple sur \( \R^3 \), voici deux représentants des deux classes d'équivalences:
+      On appelle \textbf{orientation} de \( M \) un choix d'une classe d'équivalence pour chaque composante connexe de \( M \). Dans une de ces composantes connexes, on montre qu'il n'y a que \textbf{deux classes d'équivalences}.
+
+      Par exemple sur \( \R^3 \), voici deux représentants des deux classes d'équivalences:
       \[ 
          \text{det} = dx \wedge dy \wedge dz \quad\quad\quad \overline{\text{det}} = dy \wedge dx \wedge dz
       \]
-      Si \( M \) est une variété orientée, ie telle qu'on a choisi une orientation sur celle-ci, on note \( -M \) la variété d'orientation opposée. 
+      On note alors \( (M, \omega) \) une variété orientée par la forme volume \( \omega \). Si \( M \) est une variété orientée, ie telle qu'on a choisi une orientation sur celle-ci, on note \( -M \) la variété d'orientation opposée. 
    \section{Cas particulier des variétés de dimension nulle}
       Si \( M \) est de dimension nulle, alors c'est un ensemble fini de points, se pose alors la question suivante: 
       \begin{center}
          \textit{Que signifie alors une orientation sur une des composantes connexes (ie sur un point) ?}
       \end{center}
       C'est un fait simplement la donnée d'un signe \( \pm \) sur ce point, en effet une \( 0-\)forme est un nombre et donc une forme volume correspond ici à un nombre qui ne s'annule jamais.
-   \section{Atlas orientés}
-      Si on considère une variété orientée \( M \) muni de son atlas \( \mathcal{A} \), on dit que cet atlas est \textbf{orienté} si et seulement si pour toutes cartes dont l'intersection est non-nulle, le déterminant de l'application de changement de carte est positif. Un résultat d'équivalence important est alors le suivant:
+   \section{Atlas orienté}
+      On considère dans tout la suite une variété orientable \( M \) muni d'une forme volume \( \omega \). On définit alors la notion de \textbf{carte orientée} et on dira:
+      \begin{itemize}
+         \item Une carte est orientée \textbf{positivement} si la forme volume a un coefficient positif dans celle-ci.
+         \item Une carte est orientée \textbf{négativement} si la forme volume a un coefficient négatif dans celle-ci.
+      \end{itemize}
+
+      On appelle alors \textbf{atlas orienté} un atlas tel que:
+      \begin{itemize}
+         \item Les cartes sont orientées positivement.
+         \item Les changement de cartes ont un jacobien positif.
+      \end{itemize}
+      Un résultat d'équivalence important est alors le suivant:
       \begin{center}
          \textbf{Une variété est orientable si et seulement si elle admet un atlas orienté.}
       \end{center}
+   
+   
+   
+   \section{Difféomorphismes qui préservent l'orientation}
+      On peut alors considérer deux variétés \( (M, \omega), (N, \eta) \) deux variétés orientées munies de leur atlas orienté. Alors on dira qu'un difféomorphisme \( F : M \longrightarrow N \) \textbf{respecte l'orientation} si et seulement si:
+      \[ 
+         F^*\eta \sim \omega
+      \]
+      Or on peut caractériser ceci, en effet en évaluant ces deux expressions dans les cartes on peut monter que \( F \) respecte l'orientation si et seulement si:
+      \[ 
+         \text{det}(J_F) > 0
+      \]
    \section{Produit intérieur d'une forme}
          En effet, étant donné un champs de vecteurs \( X \), on peut construire une \( k-1 \) forme à partir d'une \( k \) forme par évaluation partielle en \( X \) sur la premier composante, cette opération apellée \textbf{produit intérieur} est définie par:
          \[ 

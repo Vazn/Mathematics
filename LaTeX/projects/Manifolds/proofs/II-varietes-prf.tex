@@ -109,14 +109,15 @@
             (p, v) &\longmapsto p
          \end{aligned} 
       \]
-      On procède par étapes:
-      \begin{itemize}
-         \item Tout d'abord on définit une \textbf{topologie} sur \( TM \) gràce à \( \pi \) en effet, on considère la topologie engendrée par la famille suivante:
-         \[ 
-            \left\{  \pi^{-1}(\mathcal{O}) \; ; \; \mathcal{O} \in \mathcal{T}_M \right\} 
-         \]
+      On définit simultanément une \textbf{topologie} sur \( TM \) et une carte. Soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \)
+      \[ 
+         \begin{aligned}
+            \widetilde{\phi} : \pi^{-1}(U) &\longrightarrow \phi(U) \times \R^n \\
+            (p, v) &\longmapsto (\phi(p), v_1, \ldots, v_n)
+         \end{aligned}         
+      \]
          C'est en fait la plus petite topologie qui rende \( \pi \) continue.
-         \item On doit alors construire un atlas de \( TM \), soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \), et on définit un prototype de carte locale pour un point du fibré par:
+         On doit alors construire un atlas de \( TM \), soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \), et on définit un prototype de carte locale pour un point du fibré par:
          \[ 
             \begin{aligned}
                \widetilde{\phi} : \pi^{-1}(U) &\longrightarrow \phi(U) \times \R^n \\
@@ -124,7 +125,6 @@
             \end{aligned}
          \]
          Où ici les \( (v_i) \) sont les coordonées du vecteur \( v \in TM_p \) dans la base associée à la carte locale \( \phi \).
-      \end{itemize}
       Définissons maintenant l'atlas sur \( TM \), on considère l'atlas \( (U_i, \phi_i) \) de \( M \), alors elles recouvrent \( M \). On pose alors \((\pi^{-1}(U_i), \Phi_i)\) où \( \Phi_i \) est la carte locale définie plus haut. On doit montrer que:
       \begin{enumerate}
          \item Les \( \pi^{-1}(U_i) \) recouvrent \( TM \).
@@ -358,22 +358,37 @@
 
 \pagebreak
 \section*{\uline{Chapitre 11 - Orientation d'une variété{:}}}
-   \subsection*{Carte orientée {:}}
-   Soit \( M \) une variété orientée de forme volume \( \omega = \omega_0 dy^1 \wedge \ldots \wedge dy^n \) qui représente l'orientation. Alors si \( \phi \) est une carte orientée positivement, il existe une fonction \( f \) positive telle que:
-   \[ 
-      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = f \cdot \omega
-   \]
-   Mais on a aussi d'aprés les propriétés du pullback:
-   \[ 
-      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = \text{det}(J\phi) dy^1 \wedge \ldots \wedge dy^n
-   \]
-   Donc en combinant ces deux information, on trouve que si \( \phi \) est orientée positivement, alors nécessairement:
-   \[ 
-      \phi^*(dx^1 \wedge \ldots \wedge dx^n) = \frac{\text{det}(J\phi)}{\omega_0} \cdot \omega
-   \]
-   Si on avait choisi \( \omega_0 < 0\), alors {\color{red}ça ne marche pas}, ie on a nécessairement \( \text{det}(J\phi) <0 \)
-   \subsection*{Propriétés du produit intérieur {:}}
-   \subsection*{Expression en coordonées {:}}
+   \section{Deux classes d'équivalences}
+      Si \( M \) est connexe et \( \omega, \omega' \) sont deux formes volumes alors l'espace des formes volumes en un point est de dimension 1, on a donc l'existence d'une fonction lisse \( f \) telle que:
+      \[ 
+         \forall p \in M \; ; \; \omega_p = f(p) \omega_p' 
+      \]
+      Aussi \( f \) n'est jamais nulle sinon les formes le seraient. Supposons maintenant par l'absurde:
+      \[ 
+         \begin{cases}
+            \exists p_0 \in M \; ; \; f(p_0) > 0\\
+            \exists p_1 \in M \; ; \; f(p_1) < 0
+         \end{cases} 
+      \]
+      Alors on a que \(f(M)\) est un connexe de \( \R \) qui contient des nombres positifs et négatifs, elle s'annule, ce qui est absurde. Donc on a bien que:
+      \begin{itemize}
+         \item Soit \( \omega = f \omega' \; ; \; f > 0 \)
+         \item Soit \( \omega = f\omega' \; ; \; f < 0 \) 
+      \end{itemize}
+      On a donc bien deux classes possibles sur une variété connexe, celle de \( \omega \) et celle de \( -\omega \). En outre si la variété n'est pas connexe, il suffit de faire ce raisonnement sur chaque composante connexe.
+   \section{Difféomorphismes qui préservent l'orientation}
+      On considére \( (M, \omega), (N, \eta) \) deux variétés orientées munies de leur atlas orienté. Alors on dira qu'un difféomorphisme \( F : M \longrightarrow N \) \textbf{respecte l'orientation} si et seulement si:
+      \[ 
+         F^*\eta \sim \omega
+      \]
+      Or on a:
+      \[ 
+         F^*\eta = (\widetilde{\eta} \circ F)\text{det}(J_F)dx^1 \wedge \ldots \wedge dx^n = \frac{\widetilde{\eta} \circ F}{\widetilde{\omega}}\text{det}(J_F) \omega
+      \]
+      La fraction étant positive car les cartes sont orientées positivement, on a donc que \( F \) respecte l'orientation si et seulement si:
+      \[ 
+         \text{det}(J_F) > 0
+      \]
    
    \subsection*{Existence d'un champs de vecteurs sortant}
       On souhait construire un champs de vecteurs $X$ sur $M$ tel que pour tout point du bord $\partial M$, $X(p)$ soit un vecteur sortant. On considère une partition de l'unité subordonnée à l'atlas que l'on note $\rho_\alpha$, alors pour toute carte $U_\alpha$ qui intersecte le bord, on définit un champs de vecteur sortant en coordonnées locales:
