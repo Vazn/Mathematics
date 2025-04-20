@@ -1,4 +1,4 @@
-\section*{\uline{Chapitre 0 - Elements d'algèbre tensorielle {:}}}
+\section*{\uline{Chapitre 1 - Elements d'algèbre tensorielle {:}}}
    \subsection*{L'espaces des tenseurs est un espace vectoriel {:}}
       On considère l'espace \( \mathscr{T}^p(E) \) l'espace des tenseurs p-covariants, montrons que c'est un sev de \( \mathcal{F}(E^p, \R) \), on a:
       \begin{itemize}
@@ -72,10 +72,10 @@ On a que si on permute \( x_i, x_j \) avec \( i \leq j \), on a:
 Donc \( \text{Asym}(T) \) est bien antisymétrique.
 \pagebreak
    \subsection*{Base et dimension de l'espace des tenseurs antisymétriques {:}}
-On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-tenseur antisymétrique, alors par multilinéarité:
-   \begin{flalign*}
-      T &= \sum_{1 \leq i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
-   \end{flalign*}
+   On utilise la même approche que pour l'espace des tenseurs, soit \( T \) un p-tenseur antisymétrique, alors par multilinéarité:
+      \begin{flalign*}
+         T &= \sum_{1 \leq i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
+      \end{flalign*}
 
    Mais \( T \) est antisymétrique, donc les indices des termes non nuls sont différents, ie on somme en fait sur \( I = \left\{ (i_1, \ldots, i_p) \; ; \; \forall p, q \; i_p \neq i_q \right\}\). Aussi par un raisonnement combinatoire, il est équivalent de sommer sur des indices distincts et de sommer sur des indices strictement croissants puis sur toutes les permutations de ceux ci, ie on a:
    \begin{flalign*}

@@ -1,12 +1,20 @@
 \chapter{Elements de topologie}
-On va dans toute la suite étudier des espaces topologiques tels qu'il sera souvement aisé de définir des objets \textbf{localement}, mais on aimera étendre cette définition en un objet \textbf{global} (ce sera par exemple le cas pour définir généraliser l'intégrale). Un des outils topologique trés puissant pour se faire est celui de \textbf{partition de l'unité}.
-
-\section{Partition de l'unité}
-Dans toute la suite, on considérera un espace topologique \( M \) compact et un recouvrement de cet espace par des ouverts \((U_i)_{i \in I}\). On appelle \textbf{partition de l'unité} subordonée au recouvrement de \( M \) une famille de fonctions \( (\rho_i)_{i \in I} \) de \( M \longrightarrow \icc{0}{1} \) telles que \( \text{supp}( \rho_i) \subseteq U_i \) et:
+On définit dans ce chapitre les outils principaux qui nous serviront à réaliser nos objectifs pour la suite, notamment pour pouvoir passer d'objets définis localement à des objets définis sur tout un espace, mais aussi le théorème d'invariance du domaine qui sera utile pour les constructions de base.
+\section{Fonction bosses}
+On appelle \textbf{fonction bosse} sur un ouvert \( U \subseteq \R^n \) toute fonction \( f \in \mathcal{C}^\infty_c(U, \R) \) et telle que:
 \[ 
-   \sum_{i \leq n} \rho_i = 1
+   f\big|_{\text{supp}(f)} = 1 
 \]
-Dans le cas général où le recouvrement n'est pas fini, on imposera un caractère \textbf{localement fini}, c'est à dire que pour tout point \( x \in M\), il appartient à un nombre fini de cartes.
+Un résultat classique d'analyse affirme que de telles fonctions existent toujours. Celles ci nous permettront d'étendre des objets définis localement, en objets définis globalement.
+\section{Partition de l'unité}
+Dans toute la suite, on considérera un espace topologique \( M \) muni d'un recouvrement ouvert \((U_i)_{i \in I}\). Une \textbf{partition de l'unité} induite par ce recouvrement est une famille de fonctions \( (\rho_i)_{i \in I} \) de \( M \) dans \( \icc{0}{1} \) et telles que:  
+\[ 
+   \begin{cases}
+      \text{supp}( \rho_i) \subseteq U_i\\
+      \sum_{i \leq n} \rho_i = 1
+   \end{cases}
+\]
+On imposera un caractère \textbf{localement fini} au recouvrement, c'est à dire que tout point \(x \in M\) appartient à un nombre fini d'ouverts. Ceci permet la finitude (ponctuellement) de la somme considérée.
 \begin{figure*}[h]
    \centering
       \begin{tikzpicture}[xscale=1.5,yscale=1.25]       
@@ -41,10 +49,22 @@ Dans le cas général où le recouvrement n'est pas fini, on imposera un caract�
    \end{tikzpicture}
    \caption{Partition de l'unité de l'intervalle \( \ioo{0}{1} \)}
 \end{figure*}
+\pagebreak
+\section{Opérateur local}
+      Soit \( X \) un espace topologique et \( E \) un espace vectoriel, on considère alors l'espace de fonctions \(\mathcal{F}(X, E)\) et on appelle \textbf{opérateur local} sur cet espace un opérateur linéaire \(D\) qui vérifie:
+      \[ 
+         \forall f, g \in \mathcal{F}(X, E) \; ; \;  \exists U \text{ ouvert } \; ; \; f|_U = g|_U \implies (Df)|_U = (Dg)|_U 
+      \]
+      Moralement, les opérateurs locaux sont ceux tels que si \( f, g \) sont indistinguables localement, alors \( Df, Dg \) le seront aussi.
+      \begin{itemize}
+         \item Les exemples types sont les opérateurs de dérivation, par rexemple \(T : f \longmapsto \frac{df}{dt}\)
+         \item Les contre-exemples types sont les opérateurs intégraux, par exemple \(T : f \longmapsto \int_0^1 f(t)dt\)
+      \end{itemize}
 
-En effet supposons que l'on considère par exemple une fonction \( f \) définie sur \( \ioo{0}{1} \), qu'on recouvre celui ci par des ouverts \( (U_i)_{i \in I} \) et qu'on considère une partition de l'unité subordonée, alors on a alors:
-\[ 
-   f = \sum \rho_i f = \sum \rho_i f \bigr|_{\text{supp}(\rho_i)} = \sum \rho_i f \bigr|_{U_i}
-\]
-Et donc en particulier \( \int_{\ioo{0}{1}} f = \sum \int_{U_i} \rho_i f  \)
+\section{Théorème de l'invariance du domaine}
+   En outre, on aura besoin du résultat de topologie suivant, qui sera admis, appelé \textbf{théorème de l'invariance du domaine}:
+
+   \begin{center}
+      Si \( f : U \longrightarrow V \) est une \textbf{injection continue} (en particulier, si c'est un homéomorphisme), alors \( f(U) \) est un \textbf{ouvert} de \( \R^n \).
+   \end{center}
 

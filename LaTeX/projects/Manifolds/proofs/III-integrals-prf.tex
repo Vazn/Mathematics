@@ -1,6 +1,6 @@
-\section*{\uline{Chapitre 12 - Intégrale locale d'une forme {:}}}
+\section*{\uline{Chapitre 12 - Intégrale d'une forme {:}}}
    \subsection*{Changement de variables {:}}
-   Soit \( \omega \in \Omega^n( \R^n) \) une forme volume de coefficient \( \widetilde{\omega} \in L^1(\R^n) \) et \( F : \R^n \longrightarrow \R^n \) un difféormorphisme. Alors d'une part on a d'aprés la formule du changement de variables pour les fonctions:
+   Soit \( \omega \in \Omega^n_c( \R^n) \) une \( n-\)forme et \( F : \R^n \longrightarrow \R^n \) un difféormorphisme. Alors d'une part on a d'aprés la formule du changement de variables pour les fonctions:
    \begin{itemize}
       \item D'aprés la formule du changement de variable :
       \[ 
@@ -11,9 +11,23 @@
          \int_{\R^n} F^*\omega = \int_{\R^n} \widetilde{\omega} \circ F \text{det}(JF) dx^1 \ldots dx^n
       \]
    \end{itemize}
-   On a donc bien égalité des deux membres de gauche si et seulement si \( |\text{det}(JF)| = \text{det}(JF) \), ie ssi \( \text{det}(JF) > 0 \).
+   On a donc bien égalité des deux membres si et seulement si \( |\text{det}(JF)| = \text{det}(JF) \), ie ssi \( \text{det}(JF) > 0 \).
    \subsection*{L'intégrale est bien définie {:}}
-   
+   On doit montrer que si \( (U_\alpha, \phi_\alpha) \) et \( (V_\beta, \psi_\beta) \) sont deux atlas orientés de \( M \), et que \( \rho_\alpha, \rho_\beta \) sont deux partitions de l'unité induite par ceux-ci, alors:
+   \begin{align}
+      \sum_\alpha \int_{U_\alpha} \rho_\alpha \omega =  \sum_\beta \int_{U_\beta} \rho_\beta \omega
+   \end{align}
+   On construit les deux nouveaux atlas suivants:
+   \[ 
+      (U_\alpha \cap V_\beta, \phi_\alpha|_{V_\beta}) \; ; \; (U_\alpha \cap V_\beta, \psi_\alpha|_{U_\beta})
+   \]
+   Ils sont orientés car toutes les cartes choisies sont seulement des restrictions de cartes positivement orientées par hypothèse. Alors on effectue le calcul suivant:
+   \begin{flalign*}
+      \sum_\alpha \int_{U_\alpha} \rho_\alpha \omega &= \sum_\alpha \int_{U_\alpha} \rho_\alpha \sum_\beta \rho_\beta \omega \shorteqnote{(Car la somme introduite vaut identiquement \( 1 \).)} \\
+      &= \sum_\alpha \sum_\beta \int_{U_\alpha} \rho_\alpha\rho_\beta \omega \shorteqnote{(Car les sommes sont localement finies.)}\\
+      &= \sum_\alpha \sum_\beta \int_{U_\alpha \cap V_\beta} \rho_\alpha\rho_\beta \omega \shorteqnote{(Car le support de l'intégrande est dans \( U_\alpha \cap V_\beta \).)}
+   \end{flalign*}
+   On peut effectuer le même calcul avec l'expression de droite de (1) et obtient bien l'égalité et l'intégrale est bien définie.
 \pagebreak
 
 \section*{\uline{Chapitre 13 - Théorème de Stokes {:}}}
@@ -28,26 +42,23 @@
       &=  \sum_{i = 1}^n (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \wedge \ldots \wedge dx^n
    \end{align*}
    \begin{itemize}
-      \item On calcule alors l'intégrale de celle-ci, et en appliquant Fubini ainsi que le théorème fondamental, on a:
+      \item On calcule alors l'intégrale de celle-ci judicieusement gràce à Fubini:
       \begin{flalign*}
-         \int_{\mathbb{H}^n} d\omega &= \sum_{i = 1}^n \int_{\mathbb{H}^n} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n\\
-         &=\int_{\mathbb{H}^n} \partialD{\omega_1}{x_1} dx^1 \ldots dx^n + \sum_{i = 2}^n \int_{\mathbb{H}^n} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n\\
-         &=\int_{\R^{n-1} \times \R_+} \partialD{\omega_1}{x_1} dx^1 \ldots dx^n + \sum_{i = 2}^n \int_{\R^{n-1} \times \R_+} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots  dx^n\\
-         &=\int_{\R^{n-1}}\left(\int_{\R_+}\partialD{\omega_1}{x_1} dx^1 \right) \ldots dx^n + \sum_{i = 2}^n (-1)^{i+1} \int_{\R^{n-2} \times \R_+} \left(\int_{\R} \partialD{\omega_i}{x_i} dx^i \right) dx^1 \ldots \widehat{dx^i} \ldots dx^n\\
-         &= -\int_{\mathbb{R}^{n-1}} \omega_1(0, x_2, \ldots, x_n) dx^2 \ldots dx^n
+         \int_{\mathbb{H}^n} d\omega &= \sum_{i = 1}^n \int_{\mathbb{R}^{n-1} \times \mathbb{R}_+} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n\\
+         &= \sum_{i = 1}^{n-1} \int_{\mathbb{R}^{n-1} \times \mathbb{R}_+} (-1)^{i+1} \partialD{\omega_i}{x_i} dx^1 \ldots dx^n + (-1)^{n+1}\int_{\mathbb{R}^{n-1} \times \mathbb{R}_+} \partialD{\omega_n}{x_n} dx^1 \ldots dx^n\\
+         &= \sum_{i = 1}^{n-1} (-1)^{i+1} \int_{\mathbb{R}^{n-2} \times \mathbb{R}_+} \left(\int_\mathbb{R} \partialD{\omega_i}{x_i} dx^i\right) dx^1 \ldots \widehat{dx^i} \ldots dx^n + (-1)^{n+1}\int_{\mathbb{R}^{n-1}} \left(\int_{\mathbb{R}_+} \partialD{\omega_n}{x_n} dx^n\right) dx^1 \ldots dx^{n-1} \\
+         &=(-1)^{n} \int_{\mathbb{R}^{n-1}} \omega_n(x_1, \ldots, x_{n-1}, 0) dx^1 \ldots dx^{n-1}
       \end{flalign*}
-      Le terme de droite dans l'avant dernière égalité s'annulle car \( \omega \)  est à support compact.
-      \item Puis l'intégrale sur le bord:
-      \begin{align*}
-         \int_{\partial\mathbb{H}^n} \omega &= \int_{\partial\mathbb{H}^n} \sum_{i = 1}^n \omega_i(0, x_2, \ldots, x_n) dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\\
-         &= \sum_{i = 1}^n \int_{\partial\mathbb{H}^n}\omega_i(0, x_2, \ldots, x_n) dx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\\
-         &= \int_{\partial\mathbb{H}^n}\omega_1(0, x_2, \ldots, x_n) dx^2 \wedge \ldots \wedge dx^n\\
-         &= -\int_{\R^{n-1}} \omega_1(0, x_2, \ldots, x_n) dx^2 \wedge \ldots \wedge dx^n
-      \end{align*}
-      L'avant dernière égalité venant du fait que \( dx^1 \) est identiquement nulle sur \( \partial\mathbb{H}^n \). La dernière vient du fait que \(\partial\mathbb{H}^n = - \R^{n-1}\).
+      Le terme de gauche dans l'avant dernière égalité s'annulle car \( \omega \)  est à support compact, le terme de droite se calcule par application du théorème fondamental de l'analyse.
+      \item Puis l'intégrale sur le bord où on note \( \iota : \partial \mathbb{H}^n \hookrightarrow \mathbb{H}^n\) se calcule par:
+      \begin{flalign*}
+         \int_{\partial\mathbb{H}^n} \iota^*\omega &= \int_{\partial\mathbb{H}^n} \sum_{k = 1}^n  \iota^*\left(\omega_idx^1 \wedge \ldots \wedge \widehat{dx^i} \wedge \ldots \wedge dx^n\right)\\
+         &= \int_{\partial\mathbb{H}^n}(\omega_n \circ \iota) dx^1 \wedge \ldots \wedge dx^{n-1} \shorteqnote{(Car \( d(x^n \circ \iota) = 0 \))}\\
+         &= (-1)^n \int_{\R^{n-1}} \omega_n(x_1, \ldots, x_{n-1}, 0) dx^1 \ldots dx^{n-1}
+      \end{flalign*}
+      En effet le difféomorphisme \( F : \mathbb{R}^{n-1} \longrightarrow \partial \mathbb{H}^n  \) préserve ou non les orientation choisies selon la parité de \( n \), donc quand on effectue le changement de variable, un facteur \( (-1)^n \) apparaît.
    \end{itemize}
    On a donc bien démontré le théorème de Stokes dans \( \mathbb{H}^n \).
-
    \subsection*{Stokes dans \( M \) {:}}
    Soit \( M \) une variété orientée munie de son atlas orienté \( (U_\alpha)_\alpha \) ainsi qu'un partition de l'unité \((\rho_\alpha)_\alpha\) associée. Soit \( \omega \in \Omega^n(M)\) une \( n-1 \) forme. On oriente \( \partial M\) avec l'orientation induite par un champs de vecteurs sortant. Alors en appliquant Stokes dans chaque carte, on a:
    \begin{flalign*}

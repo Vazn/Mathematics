@@ -1,0 +1,60 @@
+\usetheme{metropolis}
+\usepackage{IEEEtrantools,stackengine}
+
+% Texte en Fira Sans
+\usepackage{fontspec}
+\setmainfont{Fira Sans}
+\usepackage{mathtools, amsthm, amssymb, mathrsfs, interval, stmaryrd, centernot, esvect, cancel, commath, blkarray, empheq}
+% Maths en Latin Modern pour garder l’italique
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Tikz
+\usepackage{tikz, tkz-fct, tkz-euclide, tikz-cd, tkz-fct, pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{
+  angles, quotes, 3d, positioning,
+  shapes,fit, arrows, arrows.meta, calc, 
+  matrix, calligraphy, intersections, 
+  quotes, patterns, patterns.meta, 
+  decorations.pathreplacing, decorations.markings,decorations.pathmorphing,
+}
+\usepgfplotslibrary{fillbetween}
+\tikzset{
+  withparens/.style = {draw, outer sep=0pt,
+    left delimiter= (, right delimiter=),
+    above delimiter= (, below delimiter=),
+    align=center},
+  withbraces/.style = {draw, outer sep=0pt,
+    left delimiter=\{, right delimiter=\},
+    above delimiter=\{, below delimiter=\},
+    align=center}
+}
+\tikzcdset{
+  arrow style=tikz,
+  diagrams={>={Straight Barb[scale=1]}},
+}
+
+% Remplacement juste de \mathbb par une fonte avec un vrai blackboard bold
+\setmathfont[range={\mathbb}]{TeX Gyre Pagella Math}
+
+\definecolor{BrightBlue1}{RGB}{95, 150, 210}
+\definecolor{BrightRed1}{RGB}{210, 95, 95}
+\definecolor{BrightRed2}{RGB}{210, 115, 115}
+\definecolor{DarkBlueX}{RGB}{43, 68, 92}
+\definecolor{DarkBlue0}{RGB}{53, 78, 102}
+\definecolor{DarkBlue1}{RGB}{83, 108, 132}
+\definecolor{DarkBlue2}{RGB}{58, 94, 132}
+\definecolor{DarkBlue3}{RGB}{90, 126, 162}
+\definecolor{DarkGreen3}{RGB}{83, 132, 108}
+\definecolor{DarkGreen2}{RGB}{58, 132, 94}
+\definecolor{DarkGreen1}{RGB}{90, 162, 126}
+
+\setbeamercolor{frametitle}{bg=DarkBlue1, fg=white}
+
+\setbeamercolor{progress bar}{fg=DarkBlue1}
+\makeatletter
+    \setlength{\metropolis@titleseparator@linewidth}{1.5pt}
+    \setlength{\metropolis@progressonsectionpage@linewidth}{1.5pt}
+    \setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
+\makeatother

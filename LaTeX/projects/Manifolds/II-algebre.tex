@@ -20,23 +20,17 @@
       (\alpha \otimes \beta)(x_1, \ldots, x_p, y_1, \ldots, y_q) = \alpha(x_1, \ldots, x_p)\beta(y_1, \ldots, y_q)
    \]
    \section{Base et dimension}
-      On peut alors se demander si on peut trouver une base de cet espace, et en effet si on note \((e_i)_{i \leq n}\) une base de \(E\), alors on peut montrer que l'on a:
-      \begin{flalign*}
-         T(x_1, \ldots, x_p) &= T\left( \sum_{i_1 \leq n} x_{1, i_1}e_{i_1}, \ldots, \sum_{i_p \leq n} x_{p, i_p}e_{i_p} \right)\\
-         &= \sum_{1 \leq i_1, \ldots, i_p \leq n} x_{1, i_1} \ldots x_{p, i_p} T(e_{i_1}, \ldots, e_{i_p})
-      \end{flalign*}
-      Mais on remarque alors que le produit \( x_{1, i_1} \ldots x_{p, i_p} \) consiste alors en l'évaluation de \(e^{i_1} \otimes \ldots \otimes e^ {i_p} \) en \( (x_1, \ldots, x_p) \) et donc on obtient:
-      \begin{flalign*}
-         T &= \sum_{1 \leq i_1, \ldots, i_p \leq n} T(e_{i_1}, \ldots, e_{i_p}) e^{i_1} \otimes \ldots \otimes e^{i_p}
-      \end{flalign*}
-      En d'autres termes tout \( p \)-tenseur \( T \) est engendré par la famille de \( n^p \) vecteurs \( (e^{i_1} \otimes \ldots \otimes e^{i_p})_{i_1, \ldots, i_p \leq n} \). On peut alors montrer qu'elle est libre et donc que c'est une base de \(\mathcal{T}^p(E)\).
-  
-   \pagebreak
+      On peut alors se demander si on peut trouver une base de cet espace, et en effet si on note \((e_i)_{i \leq n}\) une base de \(E\), alors on peut montrer qu'une base de \(\mathcal{T}^p(E)\) est donnée par:
+      \[
+         \Bigl\{ e^{i_1} \otimes \ldots \otimes e^{i_p} \; ; \; 1 \leq i_1, \ldots, i_p \leq n  \Bigl\}
+      \]
    \section{Permutations des indices}
    Alors pour tout permuation \(\sigma \in S_p\), on définit l'action d'une permutation sur un tenseur \( T \in \mathscr{T}^p(E) \) par:
    \[ 
       T_\sigma(x_1, \ldots, x_n) = T(x_{\sigma(1)}, \ldots, x_{\sigma(n)})
    \]
+   \pagebreak
+
    \section{Tenseurs antisymétriques}
    On appelle \textbf{tenseur antisymétrique} tout \( p \)-tenseur \( T \) tel que:
    \[ 
@@ -68,20 +62,20 @@
    \]
    Si \( T \in \Lambda^p E^*\) alors on le notera (selon que l'on explicite les indices ou qu'on utilise la notation multi-indices) sous une des deux formes différentes suivantes dans cette base:
    \[ 
-      T = \sum_{1 \leq i_1 < \ldots < i_p \leq n} T_{i_1, \ldots, i_p} dx^{i_1} \wedge \ldots \wedge dx^{i_p} = \sum_{I} T_{I} dx^I 
+      T = \sum_{1 \leq i_1 < \ldots < i_p \leq n} T_{i_1, \ldots, i_p} e^{i_1} \wedge \ldots \wedge e^{i_p} = \sum_{I} T_{I} e^I 
    \]  
    \section{Propriétés algébriques du produit extérieur}
    On peut alors montrer que le produit extérieur est \textbf{bilinéaire et alterné}, en particulier, on peut montrer une expression explicite du produit extérieur de deux tenseurs \( T, T' \) d'ordre différents dans une base fixée:
    \[ 
-      \sum_{I} T_{I} dx^I \wedge \sum_{J} T'_{J} dx^J = \sum_{I, J} T_{I}T'_{J} dx^I \wedge dx^J
+      \sum_{I} T_{I} e^I \wedge \sum_{J} T'_{J} e^J = \sum_{I, J} T_{I}T'_{J} e^I \wedge e^J
    \]
    \pagebreak
    \section{Déterminant}
-   Si \( \mathcal{B} = (e^i)_{i \leq n} \) est une base duale de \( E \), on a:
+   Si \( (e^i)_{i \leq n} \) est une base duale d'une base \( \mathcal{B} \) de \( E \), on a:
    \[ 
       \forall x_1, \ldots, x_n \in E \; ; \; e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) = \text{det}_{\mathcal{B}}(x_1, \ldots, x_n)
    \]
-   En particulier on remarque alors que le déterminant canonique dans \( \R^n \) n'est que l'application de la forme multinéaire alternée canonique \( e^1 \wedge \ldots \wedge e^n \) de \( \Lambda^n(\R^n) \).
+   En particulier on remarque alors que le déterminant canonique dans \( \R^n \) n'est que l'application de la forme multinéaire alternée \( c^1 \wedge \ldots \wedge c^n \) de \( \Lambda^n(\R^n) \) où l'on a choisi l'ordre usuel (d'orientation directe) des vecteurs de la base canonique.
    \section{Cas dégénéré des 0-tenseurs}
    Dans le cas de \(\mathscr{T}^0(E)\) toutes les définitions restent cohérentes:
    \begin{itemize}

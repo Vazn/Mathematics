@@ -1,0 +1,100 @@
+% MATHS
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\A}{\mathbf{\mathscr{A}}}
+
+\newcommand{\B}{\mathbf{\mathscr{B}}}
+\newcommand{\Fam}{\mathbf{\mathscr{F}}}
+\renewcommand{\P}{\mathbf{\mathscr{P}}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\E}{\mathbf{\mathcal{E}}}
+\newcommand{\F}{\mathbf{\mathcal{F}}}
+\newcommand{\Pow}{\mathbf{\mathcal{P}}}
+\newcommand{\G}{\mathbf{\mathfrak{G}}}
+
+\newcommand{\<}{\bigskip}
+\newcommand{\+}{\par}
+
+% Notation equality
+
+\newcommand\notationEq{\stackrel{\mbox{
+    \begin{tiny}  
+        notation
+    \end{tiny}    
+}}{=}}
+
+% INTERVALS
+
+\intervalconfig{separator symbol =  \,; \,}
+
+\newcommand{\ioo}[2]{\interval[open]{#1}{#2}}
+\newcommand{\ioc}[2]{\interval[open left]{#1}{#2}}
+\newcommand{\ico}[2]{\interval[open right]{#1}{#2}}
+\newcommand{\icc}[2]{\interval{#1}{#2}}
+
+\newcommand{\intioo}[2]{\left\rrbracket{#1}\;;\;{#2}\right\llbracket}
+\newcommand{\intioc}[2]{\left\rrbracket{#1}\;;\;{#2}\right\rrbracket}
+\newcommand{\intico}[2]{\left\llbracket{#1}\;;\;{#2}\right\llbracket}
+\newcommand{\inticc}[2]{\left\llbracket{#1}\;;\;{#2}\right\rrbracket}
+
+% EQUATIONS NOTES
+
+\newcommand{\shorteqnote}[1]{ &  & \text{\small\llap{#1}}}
+\newcommand{\longeqnote}[1]{& & \\ \notag&  &  &  &  & \text{\small\llap{#1}}}
+
+% FUNCTIONS NOTATIONS
+
+\newcommand{\inject}{\hookrightarrow} 
+\newcommand{\surject}{\twoheadrightarrow}
+
+% MOD NOTATION
+
+\renewcommand{\mod}[1]{\text{ (mod ${#1}$)}} 
+
+% LINEAR ALGEBRA
+
+\newcommand{\dotproduct}[2]{\left\langle\;\! #1 \;\! | \;\! #2 \;\! \right\rangle}
+\newcommand{\vectNorm}[1]{\left\Vert#1 \right\Vert}
+
+\newcommand{\Ker}[1]{\text{Ker}#1}
+\newcommand{\Sp}[1]{\text{Sp}(#1)}
+\renewcommand{\Im}[1]{\text{Im}#1}
+
+\NewDocumentCommand{\opNorm}{sO{}m}{%
+  \IfBooleanTF{#1}{% automatic scaling, use with care
+    \left|\opnormkern\left|\opnormkern\left|
+    #3
+    \right|\opnormkern\right|\opnormkern\right|
+  }{
+    \mathopen{#2|\opnormkern #2|\opnormkern #2|}
+    #3
+    \mathclose{#2|\opnormkern #2|\opnormkern #2|}
+  }%
+}
+\newcommand{\opnormkern}{\mkern-1.5mu\relax}% adjust for the font
+
+% TOPOLOGY
+\newcommand{\ball}{\mathscr{B}}
+
+% CALCULUS
+\newcommand{\partialD}[2]{\frac{\partial #1}{\partial #2}}
+
+% GEOMETRY
+\newcommand{\RightAgnle}[4][5pt]
+{%
+    \draw($#3!#1!#2$)-- ($#3!2! ($ ($#3!#1!#2$)!.5! ($#3!#1!#4$)$)$)-- ($#3!#1!#4$);
+}
+
+% PROBABILITIES
+\newcommand{\probability}[1]{\mathbb{E} (#1)}
+\newcommand{\expectancy}[1]{\mathbb{E} (#1)}
+\newcommand{\variance}[1]{\mathbb{V} (#1)}
+\newcommand{\covariance}[1]{\mathbb{C} (#1)}

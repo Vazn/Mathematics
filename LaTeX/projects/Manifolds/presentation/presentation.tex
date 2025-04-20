@@ -1,58 +1,10 @@
 \documentclass{beamer}
-\usepackage{fontspec}
-\usepackage[french]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{unicode-math}   % Pour définir les polices mathématiques
-\usepackage{pgfplots}
-\usepackage{bookmark}
-\usepackage{hyperref}
-\usepackage{esvect}
-\usepackage{tcolorbox}
-\usepackage{cmbright}
-
-\usepackage{xcolor}
-\usepackage{tikz, tkz-fct, tkz-euclide}
-\usetikzlibrary{calc,patterns,angles,quotes}
-
-\renewcommand{\comment}[1]{}
-
-\pgfplotsset{compat = newest}
-\usetikzlibrary{calc}
-\usetikzlibrary{intersections}
-\usetikzlibrary{shapes,arrows,arrows.meta,angles,quotes,patterns,patterns.meta}
-\usetikzlibrary{decorations.markings,decorations.pathmorphing}
-
-
-\definecolor{BrightBlue1}{RGB}{95, 150, 210}
-\definecolor{BrightRed1}{RGB}{210, 95, 95}
-\definecolor{BrightRed2}{RGB}{210, 115, 115}
-\definecolor{DarkBlueX}{RGB}{43, 68, 92}
-\definecolor{DarkBlue0}{RGB}{53, 78, 102}
-\definecolor{DarkBlue1}{RGB}{83, 108, 132}
-\definecolor{DarkBlue2}{RGB}{58, 94, 132}
-\definecolor{DarkBlue3}{RGB}{90, 126, 162}
-\definecolor{DarkGreen3}{RGB}{83, 132, 108}
-\definecolor{DarkGreen2}{RGB}{58, 132, 94}
-\definecolor{DarkGreen1}{RGB}{90, 162, 126}
-\newcommand{\firasans}[1]{{\usefont{T1}{FiraSans}{m}{n}#1}}
-
-\usetheme{metropolis}
-\setbeamercolor{frametitle}{bg=DarkBlue1, fg=white}
-
-\setbeamercolor{progress bar}{fg=DarkBlue1}
-\makeatletter
-\setlength{\metropolis@titleseparator@linewidth}{1.5pt}
-\setlength{\metropolis@progressonsectionpage@linewidth}{1.5pt}
-\setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
-\makeatother
-
-\setmainfont{Fira Sans}[Weight=300, ItalicFont={Fira Sans Italic}]
-\tikzset{every picture/.style={font=\rmfamily}}
+\input{header.tex}
+\input{commands.tex}
 
 % Title page details: 
-\title{Modélisation}
-\subtitle{Systêmes périodiques et pseudo-périodiques}
+\title{Projet de recherche}
+\subtitle{Variétés différentielles \& Théorème de Stokes}
 \author{Cavazzoni Christophe}
 \begin{document}
     \begin{frame}
@@ -64,372 +16,506 @@
     \end{frame}
     
     \section{Introduction}
-        \begin{frame}{Introduction}
+    \section{Algèbre Tensorielle}
+        \begin{frame}{Tenseurs}
+            On considère un espace vectoriel $E$, alors un \textbf{tenseur} d'ordre $(p, q)$ est une application multilinéaire de la forme suivante:
+            $$
+                T : \underbrace{\addstackgap[1pt]{$E^* \times \ldots \times E^*$}}_\text{$p$} \times \underbrace{\addstackgap[1pt]{$E \times \ldots \times E$}}_\text{$q$} \longrightarrow \mathbb{K}
+            $$
+            Les tenseurs qui nous intéresseront dans ce projet seront ceux tels que $p = 0$, on les apelle tenseurs \textbf{covariants} dont on notera l'ensemble par $\mathscr{T}^q(E)$. C'est trivialement un espace vectoriel.
+        \end{frame}
+        \begin{frame}{Exemples}
+            Quelques exemples de tels tenseurs:
             \begin{itemize}
-                \item On appelle \textbf{système dynamique continu} un ensemble d'éléments qui intéragissent entre eux et dont l'évolution dans le temps est décrite par une loi continue.
-                \item On appelle \textbf{systèmes périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné.
-                \item On appelle \textbf{systèmes pseudo-périodiques} un système dynamique tel qu'il évolue de part et d'autres d'un point d'équilibre donné mais dont \textbf{l'amplitude décroît} avec le temps.
+                \item Les formes linéaires
+                \item Les produits scalaires
+                \item Le déterminant
             \end{itemize}
         \end{frame}
-        \begin{frame}{Introduction}
-            Nous étudiront principalement 2 cas de sytèmes périodiques:
-            \begin{itemize}
-               \item Le cas du \textbf{système masse-ressort}.
-               \item Le cas du \textbf{pendule simple non-linéaire}.
-            \end{itemize}
+        \begin{frame}{Produit tensoriel}
+            On définit sur toute paire de tenseurs covariants le \textbf{produit tensoriel} défini par:
+            \begin{align*}
+                \otimes : \mathscr{T}^p(E) \times \mathscr{T}^q(E) &\longrightarrow \mathscr{T}^{p+q}(E)\\
+                (\alpha, \beta) &\longmapsto \alpha \otimes \beta
+            \end{align*}
+            Avec le tenseur \(\alpha \otimes \beta\) défini par:
+            \[
+                (\alpha \otimes \beta)(x_1, \ldots, x_p, y_1, \ldots, y_q) = \alpha(x_1, \ldots, x_p)\beta(y_1, \ldots, y_q)
+            \]
         \end{frame}
-        \begin{frame}{Introduction}
-        Les systèmes que l'on veut modéliser sont des systèmes basées sur les lois de la physique, on utilisera:
-            \begin{itemize}
-            \item Le \textbf{principe fondamental de la dynamique} qui nous permettra de déterminer l'accélération de l'objet.
-            \item Certains objets on des propriétés particulières qui demanderont d'autres concepts physiques (ressorts notamment).
-            \end{itemize}
+        \begin{frame}{Base et dimension}
+            L'intérêt de ce produit est alors le suivant, une base de $\mathscr{T}^p(E)$ est donnée par la famille suivante:
+            \[
+                \mathscr{F} := (e^{i_1} \otimes \ldots \otimes e^{i_p})_{1 \leq i_1, \ldots, i_p \leq n}
+            \]
+            On a donc la dimension de cet espace égale à $p^n$ et une décomposition canonique de tout tenseur $T$ sous la forme:
+            \[
+                T = \sum_{i_1, \ldots, i_p} T_{i_1, \ldots, i_p} e^{i_1} \otimes \ldots \otimes e^{i_p}
+            \]
         \end{frame}
+        \begin{frame}{Tenseurs antisymétriques}
+            Une famille de tenseur trés utile pour la suite est celle des \textbf{tenseurs antisymétriques}, un tenseur est antisymétrique si et seulement si:
+            \[
+                \forall i, j \in \inticc{1}{n}  \; ; \; T(\ldots, x_j, \ldots, x_i, \ldots) = -T(\ldots, x_i, \ldots, x_j, \ldots)
+            \]
+            Ou encore de manière équivalente si:
+            \[
+                \forall \sigma \in \mathfrak{S}_n  \; ; \; T(x_{\sigma(1)}, \ldots, x_{\sigma(n)}) = \epsilon(\sigma)T(x_1, \ldots, x_n)
+            \]
 
-    \section{Systême masse-ressort}
-        \subsection{Modélisation}
-            \begin{frame}{Modélisation}
-                Voici un schéma illustrant la situation \textbf{à l'équilibre}:
-                \begin{figure}
-                    \centering
-                    \begin{tikzpicture}[>=stealth]
-                        \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
-                        rectangle ++ (4,0.5);
-                        \draw[decorate,decoration={coil,segment length=5pt,aspect=0.7,amplitude=4pt,
-                            pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.5)
-                            node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
-
-                        \draw[<->, DarkGreen3] (-0.5,4.96) -- node[left=1mm] {$l$} (-0.5, 2.54);
-
-                    \draw[DarkGreen3] (m.east) edge[dashed] (m.east-|2,0);
-                    \draw[DarkGreen3] (m.west) edge[dashed] (m.west-|-2,0);
-                    \end{tikzpicture}
-                    \caption{Schéma de la situation}
-                \end{figure}
-            \end{frame}
-            \begin{frame}{Paramètres}
-                On peut tout d'abord identifier les \textbf{paramétres du modèle}:
-                \begin{itemize}
-                    \item La masse de l'objet.
-                    \item La longeur du ressort.
-                    \item La force de gravité.
-                \end{itemize}
-            \end{frame}
-            \begin{frame}{Paramètre spécifique}
-                Aussi, on peut remarque que si quand la masse est à l'équilibre et si on note \(l_0\) la longueur du ressort à vide, alors la force de gravité est proportionelle à l'élongation du ressort, ie on a:
-                \[
-                mg = k(l - l_0)
-                \]
-                On appelle alors \(k\) la \textbf{constante de raideur} du ressort. Cette constante sera un autre paramêtre de notre modèle.
-            \end{frame}
-            \begin{frame}{Bilan des forces}
-                On effectue le bilan des forces:
-                \begin{figure}
-                    \centering               
-                    \begin{tikzpicture}[>=stealth]
-                    \path[pattern={Lines[angle=45,distance={8pt/sqrt(2)}]}] (-2,5) edge ++(4,0)
-                    rectangle ++ (4,1);
-                    \draw[decorate,decoration={coil,segment length=7pt,aspect=0.7,amplitude=4pt,
-                        pre=lineto,pre length=3mm,post=lineto,post length=3mm},thick] (0,5) -- (0,2.02)
-                        node[below,draw,minimum size=1cm,fill=DarkGreen1!50](m){$m$};
-            
-                    \draw[dashed, DarkGreen3] (0.5,2) -- (1.5, 2);
-                    \draw[dashed, DarkGreen3] (0.5,2) -- (-1.5, 2);
-                    \draw[->, thick, DarkGreen3] (0,1) -- node[right]{$\vv{F}$} (0, 0.30);
-                    \draw[->, thick, BrightRed2] (0,5.0) -- node[right]{$\vv{F}$} (0, 5.70);
-                \end{tikzpicture}
-                \caption{Bilan des forces}
-                \end{figure}    
-            \end{frame}     
-            \begin{frame}{Mise en équation}
-                la force qu'exercerce le ressort dans la direction de l'équilibre est donc linéairement proportionelle à la distance avec l'équilibre, et donc d'aprés le \textbf{principe fondamental de la dynamique}, ie on a:    
-                \[
-                    \vv{a}(t) = \frac{1}{m}\sum \vv{F}(t)
-                \]
-                Et donc l'équation du mouvement est donnée par:
-                \[
-                    \boxed{y''(t) = -\frac{k}{m}y(t)}
-                \]
-            \end{frame}      
-        \subsection{Résolution}
-            \begin{frame}{Résolution}
-                L'équation précédente et facilement résoluble, en effet c'est une equation linéaire et on peut remarquer facilement que les fonctions solutions sont de la forme:
-                \[
-                    y(t) = c_1\text{\fontfamily{cmr}\selectfont cos}(\omega t) + c_2\text{\fontfamily{cmr}\selectfont sin}(\omega t) \; ; \; \omega = \sqrt{\frac{k}{m}}
-                \]
-            \end{frame}
-        \subsection{Etude des solutions}
-            \begin{frame}{Portraits de phase non-amorti}
-                \vspace{7.5pt}
-                \begin{figure}
-                    \centering
-                    \begin{tikzpicture}
-                        \tikzset{%
-                                my arrow/.style={
-                                postaction={decorate,decoration={
-                                markings,
-                                mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
-                            }
-                        }
-                        \begin{axis}[
-                        xmin = -2, xmax = 2,
-                        ymin = -2, ymax = 2,
-                        zmin = 0, zmax = 1,
-                        axis equal image,
-                        xtick distance = 1,
-                        ytick distance = 1,
-                        view = {0}{90},
-                        scale = 1,
-                        xlabel = {$y$},
-                        ylabel = {$y'$},
-                        colormap/viridis,
-                        ]
-                        \addplot3[
-                            point meta = {sqrt(x^2+y^2)},
-                            quiver = {
-                                u = {y/sqrt(x^2+y^2)},
-                                v = {-x/sqrt(x^2+y^2)},
-                                scale arrows = 0.15,
-                            },
-                            quiver/colored = {mapped color!50},
-                            -stealth,
-                            domain = -2:2,
-                            domain y = -2:2,
-                        ] {0};
-                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ({0.5*cos(deg(x))}, {-0.5*sin(deg(x))});      
-                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ( {cos(deg(x))}, {-sin(deg(x))} );   
-                        \addplot [my arrow, samples=100, domain=0:2*pi, line width = 1, postaction={decorate},] ( {1.5*cos(deg(x))}, {-1.5*sin(deg(x))} );      
-                        \end{axis}
-                    \end{tikzpicture}
-               \end{figure}
-            \end{frame}
-            \begin{frame}{Ajout d'un terme d'amortissement}
-                On essaie maintenant de rendre le modèle plus réaliste en ajoutant la contribution des frottements de l'air. Pour \(\lambda > 0\) un coefficient de frottements, on ajoute la contrainte \textbf{linéaire} suivante:
-                \[
-                   y''(t) = -\frac{k}{m}y(t) - \lambda y'(t)
-                \]
-            \end{frame}
-            \begin{frame}{Portrait de phase amorti}
-                \vspace{7.5pt}
-                \begin{figure}
-                    \centering
-                    \begin{tikzpicture}
-                        \tikzset{%
-                           my arrow/.style={
-                           postaction={decorate,decoration={
-                           markings,
-                           mark=between positions 0.001 and 0.15 step 0.03 with {\arrow[line width=1.5pt]{stealth}}}}
-                           }
-                        }
-                        \begin{axis}[
-                           xmin = -2, xmax = 2,
-                           ymin = -2, ymax = 2,
-                           zmin = 0, zmax = 1,
-                           axis equal image,
-                           xtick distance = 1,
-                           ytick distance = 1,
-                           view = {0}{90},
-                           scale = 1,
-                           xlabel = {$y$},
-                           ylabel = {$y'$},
-                           colormap/viridis,
-                        ]
-                        \def\length{sqrt(y^2 + (-x - 0.5*y)^2)}
-                           \addplot3[
-                              point meta = {\length},
-                              quiver = {
-                                 u = {y/\length},
-                                 v = {(-x - 0.5*y)/\length},
-                                 scale arrows = 0.15,
-                              },
-                              quiver/colored = {mapped color!50},
-                              -stealth,
-                              domain = -2:2,
-                              domain y = -2:2,
-                              axis equal image
-                           ] {0};
-                           \addplot[my arrow, mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass1.dat}; 
-                           \addplot[my arrow, mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass2.dat};
-                           \addplot[my arrow,mark = none, color = black, postaction={decorate},] table {../data/springMass/springMass3.dat};
-                        \end{axis}
-                    \end{tikzpicture}
-                \end{figure}
-            \end{frame}
-    
-    \section{Pendule simple}
-        \subsection{Modélisation}
-            \begin{frame}{Modélisation}
-                Voici un schéma qui illustre la situation \textbf{à l'équilibre}:
-                \begin{figure}
-                    \centering
-                    \begin{tikzpicture}[>=stealth, scale=1.2]
-                        \draw[thick] (0,5) -- (0,2.5) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
-                        \draw[DarkGreen3] (0, 1.5) edge[dashed] (0, 2.1) node[below] {Equilibre};
-                        \draw[<->, DarkGreen3] (-0.3,4.96) -- node[left=1mm] {$l$} (-0.3, 2.84);
-
-                        \filldraw (0, 5) circle (2.5pt);
-                    \end{tikzpicture}
-                    \caption{Schéma de la situation}
-                \end{figure}
-            \end{frame}
-            \begin{frame}{Paramètres}
-                On peut tout d'abord identifier les \textbf{paramétres du modèle}:
-                \begin{itemize}
-                \item La masse de l'objet.
-                \item La longeur du ressort.
-                \item La constante de gravité.
-                \end{itemize}        
-            \end{frame}
-            \begin{frame}{Bilan des forces}
-                On effectue le bilan des forces:
-                \begin{figure}
-                    \begin{tikzpicture}[>=stealth, scale=1.2]
-                        \coordinate (pivot) at (0, 5);
-                        \coordinate (equilibrium) at (0, 1.5);
-                        \coordinate (pendulum) at (1.76, 3.23);
-                        \pic[<-, draw, angle eccentricity=1.6, angle radius = 0.7cm, thick] {angle = equilibrium--pivot--pendulum};
-                        \pic[<-, draw, angle eccentricity=0.85, angle radius = 2.9cm, color = DarkGreen1, thick] {angle = equilibrium--pivot--pendulum};
-                        \node at (-0.35, 4.4) {$\theta(t)$};
-                        \node[color = DarkGreen1] at (-0.35, 2.6) {$l\theta(t)$};
-            
-                        \filldraw (pivot) circle (2.5pt);
-                        \draw[thick] (pivot) -- (pendulum) node[circle, draw, minimum size=0.7cm, fill=DarkGreen1!50]{$m$};
-                        \draw[DarkGreen3] (equilibrium) edge[dashed] (pivot) node[below] {Equilibre};
-            
-                        \draw[->, thick, DarkGreen3] (1.76, 2.93) -- node[right]{$\vv{F}_G$} (1.76, 2);
-                        \draw[->, thick, BrightRed1] (1.545, 3.445) -- (1, 3.999);
-                        \node[BrightRed1] at (1.55, 3.9) {$\vv{F}_T$};
-                    \end{tikzpicture}
-                    \caption{Bilan des forces}
-                \end{figure}
-            \end{frame}
-            \begin{frame}{Mise en équation}
-                D'aprés le \textbf{principe fondamental de la dynamique}, on a l'accélaration angulaire donnée par:
-                \[
-                    \vv{a}(t) = \frac{1}{m}\sum\vv{F}(t)
-                \]
-                Et donc finalement en utilisant des relations trigonométriques, la composante d'acceleration dans le sens de la course du pendule est donnée par:
-                \[
-                    \boxed{\theta''(t) = - \frac{g}{l}\text{\fontfamily{cmr}\selectfont sin}(\theta)}
-                \]
-            \end{frame}
-        \subsection{Résolution}
-            \begin{frame}{Résolution impossible}
-                Malheureusement, la résolution analytique de ce problême est \textbf{trés complexe} et est impossible pour nous. On se contente donc d'une \textbf{étude qualitative} et de la \textbf{résolution numérique} du problème.
-            \end{frame}
-        \subsection{Etude des solutions}
-            \begin{frame}{Portraits de phase non-amorti}
-                \begin{tikzpicture}
-                       \tikzset{%
-                          my arrow/.style={
-                          postaction={decorate,decoration={
-                          markings,
-                          mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
-                          }
-                       }
-                       \def\xdom{3}
-                       \def\ydom{1.5}
-                       \begin{axis}[
-                          xmin = -\xdom, xmax = \xdom + 2*3.1415,
-                          ymin = -\ydom, ymax = \ydom,
-                          zmin = 0, zmax = 1,
-                          xtick distance = 1,
-                          ytick distance = 1,
-                          view = {0}{90},
-                          title = {\bf Portrait de phase: $F = [y,-sin(x)]$},
-                          height=7cm,
-                          xlabel = {$y$},
-                          ylabel = {$y'$},
-                          colormap/viridis,
-                          colorbar,
-                          colorbar style = {
-                             ylabel = {Norme}
-                          }
-                       ]
-                       
-                       \def\length{sqrt(y^2 + 0.125 * (sin(deg(x)))^2)}
-                          \addplot3[
-                             point meta = {\length},
-                             quiver = {
-                                u = {y/\length},
-                                v = {- 0.125 *(sin(deg(x)))/\length},
-                                scale arrows = 0.25,
-                             },
-                             quiver/colored = {mapped color!50},
-                             -stealth,
-                             domain = -\xdom : \xdom + 2*3.1415 ,
-                             domain y = -\ydom : \ydom,
-                          ] {0};
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum1.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum2.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum3.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum4.dat};
-              
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum5.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum6.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum7.dat}; 
-                          \addplot[mark = none, color = black!75, line width = 1.2,] table {../data/simplePendulum/undamped/pendulum8.dat}; 
-                       \end{axis}
-                \end{tikzpicture}
-            \end{frame}
-            \begin{frame}{Ajout d'un terme d'amortissement}
-                On essaie maintenant de rendre le modèle plus réaliste en ajoutant la contribution des frottements de l'air. Pour \(\lambda > 0\) un coefficient de frottements, on ajoute la contrainte \textbf{linéaire} suivante:
-                \[
-                    \theta''(t) = - \frac{g}{l}\text{\fontfamily{cmr}\selectfont sin}(\theta) - \lambda \theta'(t)
+        \end{frame}
+        \begin{frame}{Antisymétrisation}
+            On peut alors se demander si, à partir d'un tenseur quelconque $T$, on peut construire un tenseur antisymétrique et c'est le cas, en effet on définit:
+            \[
+                Asym(T)(x_1, \ldots, x_p) = \frac{1}{k!}\sum_{\sigma \in S_p}\epsilon(\sigma)T(x_{\sigma(1)}, \ldots, x_{\sigma(p)})
+             \]
+        \end{frame}
+        \begin{frame}{Produit extérieur}
+            Ceci nous permet de définir une nouvelle opératieur sur les tenseurs, le \textbf{produit extérieur} qui aura son utilité par la suite, on définit pour $T, T'$ deux tenseurs d'ordre respectifs $p ,q$ l'opération suivante:
+            \[
+                (T \wedge T') = \lambda Asym(T \otimes T')             
+            \]
+            C'est en fait moralement l'antisymétrisation du produit tensoriel, à la nuance près que des raisons techniques nécessitent le coefficient suivant:
+            \[
+                \lambda = \frac{(p+q)!}{p!q!}
+            \]
+        \end{frame}
+        \begin{frame}{Produit extérieur}
+            On considère l'ensemble de tout les $p$-tenseurs antisymétriques, qu'on note $\Lambda^p(E^*)$ et qu'on appelle \textbf{p-ième puissance extérieure} de $E$. Alors on peut montrer qu'une base de cet espace est donnée par:
+            \[
+                \mathscr{F} := (e^{i_1} \wedge \ldots \wedge e^{i_p})_{1 \leq i_1 < \ldots < i_p \leq n}
+            \]
+            On a donc la dimension de cet espace égale à $\binom{n}{p}$ et une décomposition canonique de tout tenseur antisymétrique $T$ sous la forme:
+            \[
+                T = \sum_{1 \leq i_1 < \ldots < i_p \leq n} T_{i_1, \ldots, i_p} e^{i_1} \wedge \ldots \wedge e^{i_p}
+            \]
+        \end{frame}        
+        \begin{frame}{Cas particuliers}
+            \begin{itemize}
+                \item Si on considère le cas dégénérés des $0$-tenseurs, on montre que $\mathcal{T}^0(E) = \Lambda^0(E) = \mathbb{K}$ et les produits tensoriels et extérieurs se réduisent à la multiplication scalaire.
+                \item Si on considère le cas des $n$-tenseurs, on montre que $\Lambda^n(E)$ est de dimension 1 et si on considère une base duale $(e^1, \ldots, e^n)$ d'une base $ \mathcal{B}$, alors on retrouve que:
+                \[ 
+                    \forall x_1, \ldots, x_n \in E \; ; \; e^1 \wedge \ldots \wedge e^n(x_1, \ldots, x_n) = det_{\mathcal{B}}(x_1, \ldots, x_n)
                  \]
-            \end{frame}
-            \begin{frame}{Portraits de phase amorti}
-                    \begin{tikzpicture}
-                       \tikzset{%
-                          my arrow/.style={
-                          postaction={decorate,decoration={
-                          markings,
-                          mark=between positions 0.25 and 1 step 0.15 with {\arrow[line width=1.5pt]{stealth}}}}
-                          }
-                       }
-                       \def\xdom{3}
-                       \def\ydom{1.5}
-                       \begin{axis}[
-                          xmin = -\xdom, xmax = \xdom + 2*3.1415,
-                          ymin = -\ydom, ymax = \ydom,
-                          zmin = 0, zmax = 1,
-                          xtick distance = 1,
-                          ytick distance = 1,
-                          view = {0}{90},
-                          title = {\bf Portrait de phase: $F = [y,-sin(x)-y]$},
-                          height=7cm,
-                          xlabel = {$y$},
-                          ylabel = {$y'$},
-                          colormap/viridis,
-                          colorbar,
-                          colorbar style = {
-                             ylabel = {Norme}
-                          }
-                       ]
-                       
-                       \def\length{sqrt(y^2 + 0.125 * (sin(deg(x)) + 0.2*y)^2)}
-                          \addplot3[
-                             point meta = {\length},
-                             quiver = {
-                                u = {y/\length},
-                                v = {(- 0.125 *(sin(deg(x))) - 0.2*y)/\length},
-                                scale arrows = 0.25,
-                             },
-                             quiver/colored = {mapped color!50},
-                             -stealth,
-                             domain = -\xdom : \xdom + 2*3.1415 ,
-                             domain y = -\ydom : \ydom,
-                          ] {0};
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum1.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum2.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum3.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum4.dat};
-              
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum5.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum6.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum7.dat}; 
-                          \addplot[mark = none, color = black!75, line width=1.05] table {../data/simplePendulum/damped/pendulum8.dat}; 
-                       \end{axis}
-                    \end{tikzpicture}
-            \end{frame}
+            \end{itemize}
+        \end{frame}     
+    \section{Variétés Différentielles}
+        \begin{frame}{Variétés Topologiques}
+            Dans tout la suite, on considèrera un espace topologique séparé $M$ et on cherche à formaliser la concept d'espace topologique \textit{localement euclidien}. Pour ceci on définit la notion de \textbf{carte locale} sur $M$, il s'agit d'un couple $(U, \phi)$ tel que:
+            \begin{itemize}
+               \item $U$ est un ouvert de M.
+               \item $\phi$ est un homéomorphisme de $U$ dans $\R^n$.
+            \end{itemize}
+            La donnée d'un ensemble $\mathcal{A}$ de cartes locales qui recouvrent $M$ est appelée \textbf{atlas} de $M$, et si un tel atlas existe, alors on dira que $M$ est muni d'un structure de \textbf{variété topologique}. On requiert aussi que tout les cartes ait la même dimension commune pour l'espace d'arrivée pour simplifier et on appelle ce nombre \textbf{dimension} de la variété.
+        \end{frame}
+        \begin{frame}{Variétés Différentielles}
+            La nature de nos motivations nous pousse alors a demander une structure plus riche sur $M$. On veut pouvoir faire du calcul différentiel sur de tels objets, on définit pour deux cartes \( (U, \phi), (U, \psi) \) qui s'intersectent la notion de cartes \( \mathcal{C}^k \)-\textbf{compatibles} si et seulement si l'application suivante est de classe \( \mathcal{C}^k \):
+            \[ 
+                \psi \circ \phi^{-1} : \phi(U \cap V) \longrightarrow \psi(U \cap V)
+            \]
+            L'application \( \psi \circ \phi^{-1} \) est apellée \textbf{application de changement de cartes}. Alors, si une variété est telle que son atlas soit de classe $C^k$, on dira qu'elle est munie d'une structure de \textbf{variété différentielle}, et si $k = \infty$ on dira plus simplement \textbf{variété lisse}.
+        \end{frame}
+        \begin{frame}{Illustration}
+            \begin{figure}[H]
+                \centering
+                   \begin{tikzpicture}[scale=0.95,]
+                      \path[->] (0.8, 0) edge [bend right] node[left, xshift=-2mm] {$\phi_i$} (-1, -2.9);
+                      \draw[white,fill=white] (0.06,-0.57) circle (.15cm);
+          
+                      \path[->] (4.2, 0) edge [bend left] node[right, xshift=2mm] {$\phi_j$} (6.2, -2.8);
+                      \draw[white, fill=white] (4.54,-0.12) circle (.15cm);
+                  
+                      % Manifold
+                      \draw[smooth cycle, tension=0.4, fill=white, pattern color=white, pattern=north west lines, opacity=0.7] plot coordinates{(2,2) (-0.5,0) (3,-2) (5,1)} node at (3,2.3) {$M$};
+                  
+                      % Help lines
+                      %\draw[help lines] (-3,-6) grid (8,6);
+                  
+                      % Subsets
+                      \draw[smooth cycle, pattern color=BrightRed1, pattern=north east lines] 
+                          plot coordinates {(1,0) (1.5, 1.2) (2.5,1.3) (2.6, 0.4)} 
+                          node [label={[label distance=-0.3cm, xshift=-2cm]:$U_i$}] {};
+                      \draw[smooth cycle, pattern color=BrightBlue1, pattern=north west lines] 
+                          plot coordinates {(4, 0) (3.7, 0.8) (3.0, 1.2) (2.5, 1.2) (2.2, 0.8) (2.3, 0.5) (2.6, 0.3) (3.5, 0.0)} 
+                          node [label={[label distance=-0.8cm, xshift=.75cm, yshift=1cm]:$U_j$}] {};
+                  
+                      % First Axis
+                      \draw[thick, ->, >=stealth] (-2.5,-5) -- (-0.25, -5);
+                      \draw[thick, ->, >=stealth] (-2.5,-5) -- (-2.5, -2.5);
+                  
+                      % Arrow from i to j
+                      \draw[->] (0, -3.85) -- node[midway, above]{$\phi_j \circ \phi_i^{-1}$} (4.5, -3.85);
+                  
+                      % Second Axis
+                      \draw[thick, ->, >=stealth] (5.25, -5) -- (7.5, -5);
+                      \draw[thick, ->, >=stealth] (5.25, -5) -- (5.25, -2.5);
+                  
+                      % Sets in R^m
+                      \draw[white, pattern color=BrightRed1, pattern=north east lines] (-0.67, -3.06) -- +(180:0.8) arc (180:270:0.8);
+                      \fill[even odd rule, white] [smooth cycle] plot coordinates{(-2, -4.5) (-2, -3.2) (-0.8, -3.2) (-0.8, -4.5)} (-0.67, -3.06) -- +(180:0.8) arc (180:270:0.8);
+                      \draw[smooth cycle] plot coordinates{(-2, -4.5) (-2, -3.2) (-0.8, -3.2) (-0.8, -4.5)};
+                      \draw (-1.45, -3.06) arc (180:270:0.8);
+                  
+                      \draw[white, pattern color=BrightBlue1, pattern=north west lines] (5.7, -3.06) -- +(-90:0.8) arc (-90:0:0.8);
+                      \fill[even odd rule, white] [smooth cycle] plot coordinates{(7, -4.5) (7, -3.2) (5.8, -3.2) (5.8, -4.5)} (5.7, -3.06) -- +(-90:0.8) arc (-90:0:0.8);
+                      \draw[smooth cycle] plot coordinates{(7, -4.5) (7, -3.2) (5.8, -3.2) (5.8, -4.5)};
+                      \draw (5.69, -3.85) arc (-90:0:0.8);    
+                   \end{tikzpicture}
+             \end{figure} 
+        \end{frame}
+        \begin{frame}{Intérêt de la définition}
+            Soit $f : M \longrightarrow \R$, la seule définition naturelle du concept de différentiabilité de $f$ est alors la suivante qui se ramène à la différentiabilité usuelle:
+            \begin{center}
+                \( f \) est \textbf{différentiable} en un point $\iff$ \( f \circ \phi^{-1} \) est \textbf{différentiable} en ce point
+            \end{center}
+            Or pour que cette définition soit valide, il faut qu'elle ne dépende par de la carte $(U, \phi)$ qui contienne $p$ ! Et donc que si on a deux cartes différentes, alors:
+            \begin{center}
+                \( f \circ \phi^{-1} \) \textbf{différentiable} $\iff$ \( f \circ \psi^{-1} \) \textbf{différentiable}
+            \end{center}
+            Alors si les changements de cartes sont différentiables, cette contrainte est bien respectée.
+
+        \end{frame}
+        \begin{frame}{Variétés à bord}
+            On veut alors pouvoir relaxer cette définition pour prendre en compte une catégorie plus large d’espaces topologiques qui auraient un "bord" dans le sens suivant. On définit le demi-espace par 
+            $$
+                \mathbb{H}^n := \left\{ x \in \R^n  \; ; \; x_n \geq 0\right\}
+            $$
+            C'est alors notre prototype d'espace à bord. En effet en tant que partie de $\R^n$, son bord est bien défini par:
+            \[
+                \partial \mathbb{H}^n = \mathbb{H}^n \backslash int(\mathbb{H}^n) = \left\{ x \in \R^n  \; ; \; x_n = 0\right\}
+            \]
+        \end{frame}      
+        \begin{frame}{Illustration}
+            Par exemple dans le cas de \( \mathbb{H}^2 \), on a:
+            \begin{figure}[ht!]
+               \centering
+               \begin{tikzpicture}
+                  % Hachures pour x < 0
+                  \fill[pattern=north east lines, pattern color=black!50] (-2,-2) rectangle (0,2);
+                  
+                  \draw[line width = 0.8] (-2,0) -- (2,0);
+                  \draw[color=BrightRed1, line width = 1.5] (0,-2) -- (0,2) node[below right] {$\partial \mathbb{H}^2$};
+                  \draw[color=BrightRed1, line width = 1.5] (0,-2) -- (0,2);
+              \end{tikzpicture}
+              \caption{Le demi plan \( \mathbb{H}^2 \) et son bord}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{Variétés à bord}
+            On élargit alors la notion de variété en celle dont les cartes on pour image un ouvert de $\mathbb{H}^n$ plutôt que $\R^n$. Ceci nous permet alors de définir le \textbf{bord d'une variété} par:
+            \[
+                \partial M := \left\{ p \in M  \; ; \; \exists (U, \phi) \in \mathcal{A} \; ; \; p \in U \text{ et } \phi(x) \in \partial\mathbb{H}^n\right\}  
+            \]
+            On peut alors montrer que c'est bien un concept plus général, ie que si la variété n'a pas de bords, alors on peut construire un atlas au sens défini au premier chapitre.
+        \end{frame}
+    \section{Quelques exemples}
+
+    \section{Espaces tangents}
+        \begin{frame}{Motivation}
+            On aimerait alors pouvoir définir la notion de \textbf{vecteur tangent} à une variété, ceci nous permettrait de manière analogue à $\R^n$ de définir des champs de vecteurs, des champs de covecteurs etc ..\<
+
+            Il se trouve alors que la meilleure manière de considérer la notion de vecteur est alors de les comprendre comme des objets qui agissent sur les fonctions lisses par \textbf{dérivation directionnelle}. 
+        \end{frame}
+        \begin{frame}{Dérivations dans $\R^n$}
+            Soit \(p \in \R^n\), on dira qu'un opérateur \( D: \mathcal{C}^\infty(\R^n) \longrightarrow \R \) est une \textbf{dérivation} en \( p \) si et seulement si il vérifie la \textbf{règle de Leibniz} donnée par:
+            \[ 
+               D(fg) = D(f)g(p) + f(p)D(g) 
+            \]
+            En particulier, les opérateurs de dérivées partielles d'une fonction lisse sont des dérivations.
+        \end{frame}
+        \begin{frame}{Espaces tangents $T\R^n_p$}
+            On appelle alors \textbf{espace tangent} à \( \R^n \) en \( p \) l'ensemble \( T\R^n_p \) de toutes les dérivations en \( p \) de fonctions lisses. On pose alors l'application suivante:
+            \[ 
+               \begin{aligned}
+                  \Phi : \R^n &\longrightarrow T\R^n_p \\
+                  v &\longmapsto \sum_{i \leq n} v_i \partialD{}{x_i}\biggr|_p
+               \end{aligned} 
+            \]
+            Où les \( v_i \) sont les coordonées de \( v \) dans la base canonique. Alors on montre la propriété fondamentale qui est que \( \Phi \) est un \textbf{isomorphisme}.
+        \end{frame}
+        \begin{frame}{Base}
+            Ceci nous permet alors d'identifier vecteurs et dérivations, en outre, on en déduit une base de \( T\R^n_p \) qui est alors donnée par:
+            \[ 
+               \Phi(e_i) = \partialD{}{x_i}\biggr|_p
+            \] 
+            Les "vecteurs" ainsi définis agissent sur les fonctions lisses par dérivation directionelle.
+        \end{frame}
+        \begin{frame}{Exemple}
+            On se place dans $T\R^2_{(x, y)}$ et on considère le vecteur suivant :
+            \[
+                v = \partialD{}{x}\bigg|_{(x, y)} + 2\partialD{}{y}\bigg|_{(x, y)}
+            \]
+            Soit la fonction lisse suivante \( f(x, y) = xy \), alors on a:
+            \[ 
+               vf = \partialD{f}{x}(x, y) + 2\partialD{f}{y}(x, y) = y + 2x
+            \]
+        \end{frame}
+        \begin{frame}{Espaces tangents $TM_p$}
+            Dans le cas d'une variété $M$, on définit de manière analogue les dérivations en un point, et on appelle \textbf{espace tangent} à \( M \) en \( p \) l'ensemble \( TM_p \) de toutes les dérivations en \( p \) de fonctions lisses.\<
+
+            Les questions suivantes se posent alors:
+            \begin{itemize}
+               \item Quelle est sa dimension ?
+               \item Peut on en trouver une base ?
+            \end{itemize}
+            Ces questions nécessitent de nouvelles définitions pour trouver leurs réponses. (oui encore des définitions ...)
+        \end{frame}
+        \begin{frame}{Différentielle}
+            Soit \( f : M \longmapsto N \) une application lisse et \( p \in M \). On définit alors la \textbf{différentielle} de l'application \( f \) en \( p \) par l'application suivante:
+            \[ 
+                \begin{aligned}
+                    df_p : TM_p &\longrightarrow TN_{f(p)} \\
+                    D &\longmapsto \left( g \longmapsto D(g \circ f) \right)
+                \end{aligned} 
+            \]
+            C'est moralement une application qui transporte les dérivations.
+        \end{frame}
+        \begin{frame}{Propriétés de la différentielle}
+            On peut alors vérifier que cette application est bien définie et qu'elle vérifie les propriétés suivantes:
+            \begin{itemize}
+               \item Elle est \textbf{linéaire}.
+               \item Elle vérifie la \textbf{règle de la chaîne:} \( d(f \circ g)_p = df_{g(p)} \circ dg_p \)
+               \item Si \( f \) est un \textbf{difféomorphisme}, alors \( \forall p \in M \; ; \; df_p \) est un \textbf{isomorphisme}.
+            \end{itemize}
+            En particulier si on considère une carte \( (U, \phi) \) qui contient \( p \), alors c'est un \textbf{difféomorphisme} et donc on a l'isomorphisme suivant:
+            \[ 
+               \begin{aligned}
+                  d\phi_p : TM_p &\longrightarrow T\R_{\phi(p)}^n
+               \end{aligned} 
+            \]        
+        \end{frame}
+        \begin{frame}{Base}
+            Finalement, la différentielle nous donne donc simultanément la dimension de $TM_p$ et une base \textbf{induite par la carte}, donnée par:
+            \[
+                \partialD{}{x_i}\biggr|_p := d\phi^{-1}\left( \partialD{}{x_i}\biggr|_{\phi(p)}\right) 
+            \]
+        \end{frame}
+        \begin{frame}{Fibré tangent}
+            On cherche alors a globaliser la notion d'espace tangent ponctuel et considérer \textbf{l'ensemble de tout les espaces tangents}. On appelle cet ensemble le \textbf{fibré tangent} de \( M \) et il est défini par:
+            \[ 
+                TM = \bigsqcup_{p \in M} TM_p = \bigcup_{p \in M} \{p\} \times TM_p
+            \]
+        \end{frame}         
+        \begin{frame}{Illustration}
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                   % Dessiner le cercle
+                   \draw[thick] (0,0) circle (2);
+                   
+                   % Définir des points sur le cercle et leurs tangentes
+                   \foreach \angle in {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360} {
+                      % Calcul des coordonnées du point sur le cercle
+                      \pgfmathsetmacro\x{2*cos(\angle)}
+                      \pgfmathsetmacro\y{2*sin(\angle)}
+                      
+                      % Calcul du vecteur tangent (perpendiculaire au rayon)
+                      \pgfmathsetmacro\tx{-sin(\angle)}
+                      \pgfmathsetmacro\ty{cos(\angle)}
+                      
+                      % Tracer une droite tangentielle passant par le point
+                      \draw[red, thick] 
+                         ({\x - 1.9*\tx}, {\y - 1.9*\ty}) -- 
+                         ({\x + 1.9*\tx}, {\y + 1.9*\ty});
+                   }
+                \end{tikzpicture}
+                \caption{Fibré tangent du cercle \( \mathbb{S}^1 \)}
+            \end{figure}
+        \end{frame}     
+        \begin{frame}{Structure du fibré tangent} 
+            Le fibré tangent hérite alors d'une projection de chaque vecteur sur son point base:
+            \[ 
+                \pi : (p, v) \in TM \mapsto p
+            \]
+            On peut alors montrer que \( TM \) peut être muni d'une topologie adéquate ainsi que d'un atlas, ceci munit donc celui-ci d'une structure de \textbf{variété différentielle} de dimension \( 2n \).
+        \end{frame} 
+        \begin{frame}{Champs de vecteurs} 
+            L'intérêt du fibré tangent est de pouvoir définir la notion de \textbf{champs de vecteurs} (lisse) sur une variété comme une application lisse de la forme suivante:
+            \[ 
+                X : p \in M \mapsto (p, v) \in TM
+            \]
+            On peut alors montrer que l'on peut effectuer les opérations vectorielles sur les champs de vecteurs, points par points, mais aussi les restreindre.
+        \end{frame}
+        \begin{frame}{Espaces cotangents et puissances exterieures}
+            On peut alors considérer naturellement l'espace dual à l'espace tangent en un point \( p \in M \) et on définit ainsi \textbf{l'espace cotangent} en un point. Il est alors naturellement muni d'une base duale à celle de $TM_p$ induite une carte, on note celle-ci $(dx_i)_{i \leq n}$ et elle vérifie:
+            \[ 
+                dx_i\left(\partialD{}{x_j}\biggr|_p\right) = \delta_{i, j}
+            \]
+            On peut alors considérer sa \( k \)-ième puissance extérieure \( \Lambda^k(TM_p^*) \) conformément au chapitre d'algèbre. On peut ainsi constuire des \textbf{tenseurs covariants antisymétriques} en un point de la variété.
+        \end{frame} 
+        \begin{frame}{Espaces cotangents et puissances exterieures}
+            Etant donnée une carte, alors on peut définir une base de chacun de ces espaces de la même manière que dans le chapitre d'algèbre et obtenir:
+            \begin{itemize}
+               \item Pour les vecteurs cotangents une expression de la forme \( \sum_{i \leq n} \omega_idx^i \).
+               \item Pour les tenseurs covariants antisymétriques une expression de la forme \( \sum_{I} \omega_Idx^I \).
+            \end{itemize}
+        \end{frame} 
+        \begin{frame}{Fibrés}
+            On peut alors globaliser les espaces cotangents et les puissances extérieures en fibrés de manière analogue:      
+            \begin{itemize}
+                \item En le \textbf{fibré cotangent} $TM^*$, qui est alors une variété de dimension $2n$.
+                \item En le \textbf{fibré extérieur} $\Lambda^kTM$, qui est alors une variété de dimension $n + \binom{n}{k}$.
+            \end{itemize}
+            Ceci nous permet alors de définir des champs de covecteurs et plus généralement des champs de tenseurs. Aussi toutes les opérations (produit tensoriel, extérieur, addition et multiplication scalaires) s'étendent à ces champs, à nouveau points par points.
+        \end{frame}   
+    \section{Formes différentielles}
+        \begin{frame}{Introduction}
+            On apelle alors \textbf{k-forme différentielle} tout champs de k-tenseurs covariant antisymétrique. On note alors l'ensemble de tels objets $\Omega^k(M)$. Formellement:
+            \[ 
+                \begin{aligned}
+                   \omega : M &\longrightarrow \Lambda^kTM^* \\
+                   p &\longmapsto (p, \omega_p)
+                \end{aligned} 
+             \]
+            L'intérêt de cette construction se comprendra plus tard mais on vera que ces objets sont les objets naturels à intégrer.
+        \end{frame}
+        \begin{frame}{Pullback}
+            Etant donnée une fonction lisse $f : M \longrightarrow N$, on peut alors naturellement transporter les formes différentielle sur $N$ en formes sur $M$ par une opération appellée \textbf{pullback} définie pour une \( k \)-forme \( \omega \) par:
+            \begin{align*}
+                f^*\omega : M  &\longrightarrow \Lambda^kTM^* \\
+                p &\longmapsto (p, \omega_{f(p)} \circ (df_p, \ldots, df_p))
+            \end{align*}
+        \end{frame}
+        \begin{frame}{Dérivée extérieure}
+            Un des outils principaux pour démontrer le théorème de Stokes est alors la généralisation de la notion de différentielle en un opérateur capable de différentier les \( k \)-formes.
+        \end{frame}        
+        \begin{frame}{Dérivée extérieure}
+            On appelle alors \textbf{dérivée extérieure} sur \( M \) la donnée pour tout \( k \in \N \) d'opérateurs linéaires de la forme:
+            \[ 
+               d_k : \Omega^k(M) \longrightarrow \Omega^{k+1}(M) 
+            \]
+            Qui vérifient les propriétés suivantes:
+            \begin{itemize}
+                \item \textbf{Généralisation:} Si \( f \in \Omega^0(M)\), alors \( df \) correspond à la différentielle usuelle de \( f \).
+                \item \textbf{Propriété fondamentale:} C'est un opérateur idempotent, ie \(d \circ d = 0\)
+                \item \textbf{Propriété de Leibniz:} Si \( \omega \in \Omega^k(M) \) et \( \eta \in \Omega^l(M) \), alors on a:
+                \[ 
+                   d(\omega \wedge \eta) = d\omega \wedge \eta + (-1)^k\omega \wedge d\eta 
+                \]
+            \end{itemize}
+        \end{frame}
+        \begin{frame}{Existence d'un dérivée extérieure}
+            On peut alors montrer qu'une telle dérivée \textbf{existe} et vérifie alors localement:
+            \[
+                d\omega = \sum_I d\omega_I \wedge dx^I
+            \]
+            En d'autres termes, dériver une forme revient à différentier ses fonctions coefficients.
+        \end{frame}
+        \begin{frame}{Propriétés opératoires}
+            On peut alors montrer que les trois opérations fondamentales sur les formes sont toutes compatibles algébriquement:
+            \begin{itemize}
+               \item Le produit extérieur
+               \item Le pullback
+               \item La dérivée extérieure
+            \end{itemize}
+            Plus précisément les combinaisons de telles opérations commutent entre elles.
+        \end{frame}
+    \section{Orientabilité et orientation}
+        \begin{frame}{Définition}
+            Les objets sur lesquels on souhaite définir l'intégrale sont en fait les variété muni d'une structure supplémentaire appellée \textbf{orientation}. On apelle \textbf{forme volume} sur $M$ tout élément de $\Omega^n(M)$ qui ne s'annule jamais. Alors on définit:
+            \begin{center}
+                Une variété est dite \textbf{orientable} si elle admet une forme volume.
+            \end{center}
+            Il existe alors deux classes de telles formes et on appelle \textbf{orientation} de $M$ le choix d'une telle classe.
+        \end{frame}
+        \begin{frame}{Atlas orienté}
+            On peut alors définir la notion de \textbf{difféomorphisme qui préserve l'orientation} et $F : (M, vol_M) \longrightarrow (N, vol_N)$ est un tel difféomorphisme si et seulement si:
+            \[
+                F^*vol_N \sim vol_M
+            \]
+            On munit alors toujours $\R^n$ de son orientation canonique et on dira alors qu'une carte est positivement orientée si le pullback de la forme volume par celle-ci est dans l'orientation de $\R^n$. Un atlas de telles carte existe alors toujours et est appelé \textbf{atlas orienté} de $M$.
+        \end{frame}
+        \begin{frame}{Orientation du bord}
+            Si $\partial M \neq \emptyset$, alors l'orientation de $M$ induit une orientation sur le bord, avec la donnée d'un champs de vecteur externe, qui se comprends visuellement comme ci dessous:
+            \begin{figure}[htbp]
+                \centering
+                   \begin{tikzpicture}
+                      \tikzset{%
+                         my arrow1/.style={
+                         postaction={decorate,decoration={
+                         markings,
+                         mark=between positions 0 and 1 step 0.175 with {\arrow[line width=1.5pt, color=red]{stealth}}}}
+                         },
+                         my arrow2/.style={
+                         postaction={decorate,decoration={
+                         markings,
+                         mark=between positions 0 and 1 step 0.175 with {\arrowreversed[line width=1.5pt, color=red]{stealth}}}}
+                         },
+                      }
+                      % Paramètres du cylindre
+                      \def\r{1} % Rayon du cylindre
+                      \def\h{3} % Hauteur du cylindre
+       
+                      % Bord supérieur (ellipse en perspective)
+                      \draw[thick, my arrow2, postaction={decorate}] (0,\h) ellipse (\r cm and 0.3*\r cm);
+                      % Bord inférieur (ellipse en perspective)
+                      \draw[thick, my arrow1, postaction={decorate}] (0,0) ellipse (\r cm and 0.3*\r cm);
+                   
+                      % Arêtes latérales reliant les bords
+                      \draw[thick] (-\r,0) -- (-\r,\h);
+                      \draw[thick] (\r,0) -- (\r,\h);
+                    
+                      \draw[-stealth, red, thick] (0,1.5) -- (0,2) node at (-0.3,1.84) {$\partial_2$};
+                      \draw[-stealth, red, thick] (0,1.5) -- (0.5,1.5) node at (0.4,1.2) {$\partial_1$};
+    
+                      % Vecteurs sortants sur le bord inférieur (vers le bas)
+                      \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                         \pgfmathsetmacro\xpos{\r * cos(\angle)}
+                         \pgfmathsetmacro\ypos{0.3 * \r * sin(\angle)}
+                         \draw[-stealth, black, draw opacity=0.35, thick] (\xpos, \ypos) -- (\xpos, \ypos - 0.3);
+                      }
+                      % Vecteurs sortants sur le bord supérieur (vers le haut)
+                      \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                         \pgfmathsetmacro\xpos{\r * cos(\angle)}
+                         \pgfmathsetmacro\ypos{\h + 0.3 * \r * sin(\angle)}
+                         \draw[-stealth, black, draw opacity=0.35, thick] (\xpos, \ypos) -- (\xpos, \ypos + 0.3);
+                      }
+                   \end{tikzpicture}
+             \end{figure}
+        \end{frame}
+    \section{Intégration}
+        \begin{frame}{Intégrale dans $\mathbb{R}^n$}
+            Définissons tout d'abord l'intégrale d'une $n$-forme $\omega \in \Omega^n_c(\R^n)$, simplement par:
+            \[
+                \int_{\R^n} \omega := \int_{\R^n} f(x_1, \ldots, x_n)dx^1 \wedge \ldots \wedge dx^n = \int_{\R^n} f(x_1, \ldots, x_n)dx^1\ldots dx^n
+            \]
+            Si $F$ est un difféomorphisme qui préserve l'orientation, on a la formule de changement de variable élégante:
+            \[
+                \int_{\R^n} F^*\omega = \int_{\R^n} \omega
+            \]
+        \end{frame}
+        \begin{frame}{Intégrale locale}
+            Dans tout la suite, les variétés sont orientées. On souhaite alors définir l'intégrale d'une \( n-\)forme \(\omega\)  telle que son support soit inclu dans une carte \( (U, \phi) \), alors on définit naturellement:
+            \[
+                \int_{U} \omega := \int_{\phi(U)} \phi^* \omega
+            \]
+            Cette définition est bien valide, ie ne dépends pas du choix de la carte qui contient le support de $U$ !
+
+        \end{frame}
+        \begin{frame}{Partition de l'unité}
+            Pour définir la notion d'intégrale sur tout $M$ nous avons besoin d'un dernier concept associé à l'atlas de $M$ appelé \textbf{partition de l'unité} associée à l'atlas $(U_\alpha, \rho_\alpha)$. Il s'agit d'une famille de fonction lisses telles que:
+            \begin{itemize}
+               \item $\sum_\alpha \rho_\alpha = 1$
+               \item $supp(\rho) \subseteq U_\alpha$
+            \end{itemize}
+            On peut alors montrer qu'une telle famille existe toujours.
+        \end{frame}
+        \begin{frame}{Intégrale globale}
+            On peut alors finalement définir l'intégrale d'une \( n-\)forme sur toute la variété. En effet soit \( \omega \in \Omega^n(M) \), alors on considère une partition de l'unité \( (\rho_\alpha) \) subordonée à l'atlas. Alors on définit son intégrale par:
+            \[ 
+                \int_M \omega := \sum_\alpha \int_{U_\alpha} \rho_\alpha \omega 
+            \]
+            On peut alors montrer que celle ci est bien définie, ie:
+            \begin{itemize}
+                \item Elle ne dépend pas du choix de l'atlas orienté.
+                \item Elle ne dépend pas du choix de la partition de l'unité.
+            \end{itemize}
+        \end{frame}
+    \section{Théorème de Cartan-Stokes}
+        \begin{frame}{Théorème de Cartan-Stokes}
+            On peut alors enfin généraliser le théorème fondamental de l'analyse sur n'importe quelle variété \textbf{orientée, compacte et à bord} et n'importe quelle $n-1$ forme $\omega$. C'est le théorème suivant dit de \textbf{Cartan-Stokes}:
+            \[
+                \int_{M} d\omega = \int_{\partial M} \omega
+            \]
+        \end{frame}
+    \section{Conclusion}
 \end{document}

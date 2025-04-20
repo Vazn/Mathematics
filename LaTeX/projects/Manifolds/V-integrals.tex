@@ -6,19 +6,19 @@ Le problème principal dans la définition de l'intégrale sur une variété est
    \int_D f = \int_{\phi(D)} f  \circ \phi^{-1} 
 \] 
 Mais en fait cette intégrale serait alors mal définie ! En effet si \( D \) est inclu dans deux cartes différentes \( (U, \phi), (V, \psi) \), les deux intégrales correspondantes sont différentes ! Ceci permet alors de justifier l'assertion suivante: \textbf{Les fonctions ne sont en fait pas la bons objets à intégrer.}
-\section{Intégrale locale sur \( \R^n \)}
+\section{Intégrale sur \( \R^n \)}
 Les objets naturels pour être intégrés sur une variété de dimension \( n \) sont donc en fait les \(n\)-formes. Dans le cas simple de \( \R^n \), on considère une telle forme \(\omega = f(x_1, \ldots, x_n) dx^1 \wedge \ldots \wedge dx^n\). Si \( f \in L^1(\R^n) \), alors on dira que cette forme est \textbf{intégrable} et on définit son intégrale par: 
 \[ 
    \int_{\R^n} \omega := \int_{\R^n} f(x_1, \ldots, x_n)dx^1 \wedge \ldots \wedge dx^n = \int_{\R^n} f(x_1, \ldots, x_n)dx^1\ldots dx^n
 \]
 On notera alors plus simplement \(\omega \in L^1(\R^n)\) si la fonction coefficient de \( \omega \) est intégrable, même si c'est un léger abus de notation.
 \section{Formule du changement de variable dans \( \R^n \)}
-Etant donnée une \( n-\)forme \( \omega \in L^1(\R^n) \) et un difféomorphisme \( F : \R^n \longrightarrow \R^n \), on montrer la formule suivante:
+Etant donnée une \( n-\)forme \( \omega \in L^1(\R^n) \) et un difféomorphisme \( F : \R^n \longrightarrow \R^n\), on montrer la formule suivante:
 \[ 
    \int_{\R^n} F^*\omega = 
    \begin{cases}
-      \displaystyle+\int_{\R^n} \omega \text{ Si $F$ \textbf{préserve} l'orientation.}\vspace{5pt}\\
-      \displaystyle-\int_{\R^n} \omega \text{ Si $F$ \textbf{inverse} l'orientation.}
+      \displaystyle+\int_{\R^n} \omega \text{ Si $F$ \textbf{préserve} l'orientation canonique.}\vspace{5pt}\\
+      \displaystyle-\int_{\R^n} \omega \text{ Si $F$ \textbf{inverse} l'orientation canonique.}
    \end{cases}
 \]
 En particulier, si \( F \) est de déterminant positif, on a égalité et la formule du changement de variable:
@@ -26,13 +26,13 @@ En particulier, si \( F \) est de déterminant positif, on a égalité et la for
    \int_{\R^n} \omega dx^1 \wedge \ldots \wedge dx^n = \int_{\R^n} (\omega \circ F) \text{det}(J_F) dx^1 \wedge \ldots \wedge dx^n
 \]
 \section{Intégrale locale sur \( M \)}
-On souhaite alors définir l'intégrale d'une \( n-\)forme \(\omega\) sur une variété orientée \( M \) et munie d'un \textbf{atlas orienté}. Si elle est telle que son support soit inclu dans une carte \( (U, \phi) \). Alors on dira que \( \omega \) est \textbf{intégrable} ssi \( (\phi^{-1})^*\omega \) l'est, et alors on définit:
+On souhaite alors définir l'intégrale d'une \( n-\)forme \(\omega\) sur une variété orientée \( M \) et munie d'un \textbf{atlas orienté}. Si elle est telle que son support soit inclu dans une carte \( (U, \phi) \). Alors on dira que \( \omega \) est \textbf{intégrable} ssi \( \phi^*\omega \) l'est, et alors on définit:
 \[ 
-   \int_U \omega := \int_{ \phi(U)} (\phi^{-1})^*\omega 
+   \int_U \omega := \int_{ \phi(U)} \phi^*\omega 
 \]
 Cette expression est bien définie, ie ne dépends pas du choix de la carte. En effet par construction, les changements de cartes sont de déterminant positif et on applique alors la formule du changement de variables.
 \section{Intégrale sur \( M \)}
-On peut alors finalement définir l'intégrale d'une \( n-\)forme sur toute la variété. En effet soit \( \omega \in \Omega^n(M) \), alors on considère une partition de l'unité \( (\rho_\alpha) \) subordonée à l'atlas. On dira alors que \( \omega \) est \textbf{intégrable} si et seulement si \( (\phi_\alpha^{-1})^*\rho_\alpha \omega  \) l'est pour tout \( \alpha \) et alors on définit son intégrale par:
+On peut alors finalement définir l'intégrale d'une \( n-\)forme sur toute la variété. En effet soit \( \omega \in \Omega^n(M) \), alors on considère une partition de l'unité \( (\rho_\alpha) \) subordonée à l'atlas. On dira alors que \( \omega \) est \textbf{intégrable} si et seulement si \( \phi_\alpha^*(\rho_\alpha \omega)  \) l'est pour tout \( \alpha \) et alors on définit son intégrale par:
 \[ 
    \int_M \omega := \sum_\alpha \int_{U_\alpha} \rho_\alpha \omega 
 \]
@@ -41,7 +41,15 @@ On peut alors montrer que celle ci est bien définie, ie:
    \item Elle ne dépend pas du choix de l'atlas orienté.
    \item Elle ne dépend pas du choix de la partition de l'unité.
 \end{itemize}
-\section{Exemples et cas particuliers}
+\section{Propriétés de l'intégrale}
+On peut alors facilement montrer que l'intégrale ainsi définie est \textbf{linéaire} et vérifie:
+\[ 
+   \int_M \omega = - \int_{-M} \omega 
+\]
+Cette identité découle alors directement du fait que \( \text{Id}: (M, \text{vol}) \longrightarrow (M, -\text{vol}) \) ne préserve pas l'orientation.
+\section{Intégrale sur \( M \)}
+L'intégrale ainsi définie a une utilité surtout théorique, dans les cas pratique où on veut calculer une intégrale explicitement elle est pour ainsi dire inutile. Si on veut pouvoir effectuer des calculs, on essaye plutôt de partitionner le support \(  A \) en cartes bien choisies (ie telles que la différence entre l'union des cartes et \( A \) se ramène au pire à un ensemble de mesure nulle). De cette façon, on se ramene à une somme d'intégrales sur des cartes. 
+\section{Intégrale usuelle comme cas particulier}
 On peut alors chercher à exprimer l'intégrale d'une fonction lisse à support compact sur un domaine simple comme un cas particulier d'intégrale d'une forme différentielle, et en effet c'est le cas:
 \begin{itemize}
    \item Si on considère la 1-forme \( \omega = f(x)dx \) et \( \Gamma = \ioo{a}{b} \subseteq \R\), on obtient:
@@ -53,22 +61,42 @@ On peut alors chercher à exprimer l'intégrale d'une fonction lisse à support 
       \int_\Sigma \omega := \int_{\ioo{0}{1}^2}  \Sigma^*\omega = \int_{\ioo{0}{1}^2}   \omega_{u, v}(\text{Id}(u, v)) = \int_{\ioo{0}{1}^2}  f(u, v)dudv
    \]
 \end{itemize}
-Aussi, ces dernières intégrales s'interpètent à nouveau comme des intégrales sur les variétés \( \ioo{a}{b}, \ioo{0}{1}^2 \) ? Peut on toujours interpréter le signe intégrale comme l'intégrale d'une forme sur une variété ?\<
-
-Néanmoins c'est bien une notion plus générale car elle nous permettra, à terme, de calculer l'intégrale de la 1-forme \( xdy + ydx \in \Omega^1(\R^2) \) qui n'est pas de la forme \( f(t)dt \) ceci sur une courbe (sous-variété de \( \R^2 \)), mais ce concept sera probablement omis car non nécessaire à Stokes et le temps manquera probablement.
+Néanmoins c'est bien une notion plus générale car elle nous permettra, à terme, de calculer l'intégrale de la 1-forme \( xdy + ydx \in \Omega^1(\R^2) \) qui n'est pas de la forme \( f(t)dt \) ceci sur une courbe (sous-variété de \( \R^2 \)), on donne un exemple dans la partie suivante sans expliquer la théorie sous-jaçente.
+\pagebreak 
+\section{Exemple moins simple}
+On considère le cercle \( \mathbb{S}^1 \) vu comme le bord de \( \mathbb{B}^1 \). Alors si on note \( \iota : \mathbb{S}^1 \hookrightarrow \R^2 \) l'inclusion, alors la forme de \( \R^2 \) suivante \(xdy - ydx\) se ramène sur le cercle en la forme:
+\[ 
+   \eta = \iota^*\omega \in \Omega^1(\mathbb{S}^1) 
+\]
+On peut alors chercher à intégrer \( \eta \) sur le cercle. On paramètrise alors celui ci par:
+\[ 
+   \begin{cases}
+      \gamma_1 : t \in \ioo{0}{\pi} \mapsto (\cos(t), \sin(t))\\
+      \gamma_1 : t \in \ioo{\pi}{2\pi} \mapsto (\cos(t), \sin(t))\\
+   \end{cases} 
+\]
+Alors ces paramétrages respectent bien l'orientation induite (on montre en effet qu'elle est trigonométrique), et on a alors:
+\[ 
+   \int_{\mathbb{S}^1} \eta = \int_{\ioo{0}{\pi}} \gamma_1^*\eta + \int_{\ioo{ \pi}{2\pi}} \gamma_2^*\eta = 2 \pi
+\]
 
 \chapter{Théorème de Stokes-Cartan}
-Dans tout les chapitres précédents, nous avons présenté un cadre théorique suffisant pour énoncer et comprendre le théorème fondamental de l'intégration, généralisation du théorème fondamental de l'analyse appellé \textbf{théorème de Stokes-Cartan}. On considère une variété \( M \) vérifiant plusieurs hypothèses:
-\begin{itemize}
-   \item Elle est \textbf{compacte}.
-   \item Elle est \textbf{orientable}.
-\end{itemize}
-On considère aussi une \( n-1 \) forme \( \omega \), alors on peut montrer le théorème suivant:
+Dans tout les chapitres précédents, nous avons présenté un cadre théorique suffisant pour énoncer et comprendre le théorème fondamental de l'intégration, généralisation du théorème fondamental de l'analyse.\<
+
+On considère une variété orientable \( M \) dont on muni le bord de l'orientation induite. Alors si \( \omega \in \Omega^{n-1}_c(M)\) et si on note \( \iota : \partial M \hookrightarrow M \), on peut montrer le \textbf{théorème de Stokes-Cartan}:
 \[ 
-   \int_M d\omega = \int_{\partial M} \omega
+   \int_M d\omega = \int_{\partial M} \iota^*\omega
 \]
-Où ici \( \partial M \) est munie de l'orientation induite par \( M \). On peut alors faire plusieurs remarques sur cet énoncé:
+\section{Quelques remarques}
+On peut alors faire plusieurs remarques sur cet énoncé:
 \begin{itemize}
    \item Si \( M \) est \textbf{sans bords}, alors on a \( \partial M = \emptyset \) donc l'intégrale est nulle.
-   \item Si \( M \) est de dimension \( 1 \), et notamment si \( M = \icc{a}{b} \), on retrouve le théorème fondamental de l'analyse.
+   \item Si \( M \) est de dimension \( 1 \), alors \( \omega = f(x) \) et on retrouve le théorème fondamental de l'analyse:
+   \[ 
+      \int_\Gamma df = \int_{\partial\Gamma} f = \sum_{x \in \partial\Gamma} \pm f(x)
+   \]
+   \item Si \( M \) est de dimension \( 2 \), alors \( \omega = P(x, y)dx + Q(x, y)dy \) et on retrouve le théorème de Green:
+   \[ 
+      \int_\Sigma \left(\partialD{Q}{x} - \partialD{P}{y}\right) dxdy = \int_{\partial \Sigma} P(x, y)dx + Q(x, y)dy
+   \]
 \end{itemize}

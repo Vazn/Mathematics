@@ -1,4 +1,4 @@
-\section*{\uline{Chapitre 4 - Variétés {:}}}
+\section*{\uline{Chapitre 3 - Variétés {:}}}
    \subsection*{La différentiabilité est bien définie {:}}
    Soit \( f : M \longrightarrow \R \), il s'agit de montrer que pour \( p \in M \) et deux cartes \( (U, \phi), (V, \psi) \) qui le contiennent, alors:
    \[ 
@@ -9,7 +9,101 @@
       f \circ \psi^{-1} = f \circ \phi^{-1} \circ \phi \circ \psi^{-1} = f \circ \phi^{-1} \circ c_{\psi, \phi}
    \]
    Où \( c \) est l'application de changement de carte associée. On en déduit donc que si \( f \circ \psi^{-1} \) est différentiable alors \(f \circ \phi^{-1}\). De manière analogue si \( f : M \longrightarrow N \) est différentiable pour deux cartes \( (U, \phi), (V, \psi) \) de \( p, f(p) \), alors par composition, on en déduis de même.
-\section*{\uline{Chapitre 7 - Espaces tangents dans \( \R^n \) {:}}}
+   \subsection*{Existence d'une partition de l'unité - Cas compact{:}}
+   Soit \( (U_\alpha, \psi_i) \) l'atlas de \( M \) qui est compacte pour simplifier. Alors pour tout \( p \in M \) on considère une famille \( (f_p)_{p \in M} \) de fonctions bosses lisses chacune supportée dans une carte \( (U_\alpha) \) qui contient \( p \). Alors on a directement que \( f_p(p) > 0 \) donc on peut considère le recouvrement de \( M \) par la famille consistuée des:
+   \[ 
+      O_p := \left\{ q \in M \; ; \; f_p(q) > 0 \right\} 
+   \]
+   C'est un recouvrement ouvert de \( M \), par compacité on peut en extraitre un recouvrement fini \( (O_i)_{i \leq k} \) et donc une famille finie de fonctions associées \( (f_i)_{i \leq k} \). Alors on pose la nouvelle famille de fonctions suivante:
+   \[ 
+      \phi_i = \frac{f_i}{\sum_{i \leq k} f_i }
+   \]
+   Le dénominateur est bien strictement positif en tout point de \( M \) car il existe une \( f_i \) strictement positive sur un voisinage de celui-ci. Alors, on a par construction:
+   \[ 
+      \begin{cases}
+         \sum_i \phi_i = 1\\
+         \text{supp}(\phi_i) = \text{supp}(f_i) \subseteq U_\alpha 
+      \end{cases} 
+   \]
+   Il ne reste qu'à réindexer la famille \( (\phi_i)_{i \leq n} \) par \( \alpha \). Pour ceci on pose:
+   \[ 
+      \rho_\alpha = \sum_J \phi_j \text{ avec } J := \left\{ i \leq k \; ; \; \text{supp}( \phi_i) \subseteq U_\alpha \right\} 
+   \] 
+   En d'autres termes on regroupe les \( \phi_i \) selon leur support, avec \( \rho_\alpha = 0\) si l'ensemble d'indice est vide. Alors on a bien une famille \( (\rho_\alpha) \) qui vérifie les propriétés voulues.
+\pagebreak
+\section*{\uline{Chapitre 4 - Variétés à bord {:}}}
+   \subsection*{Invariance par homéomorphisme {:}}
+      Soit \(U, V\) deux ouverts de \( \mathbb{H}^n \) et \(f : U \longrightarrow V\) un homéomorphisme, alors:
+      \begin{itemize}
+         \item Si \( p \in U \) et \( p \in \text{int}\mathbb{H}^n\), alors il existe une boule ouverte \( B(p, r) \) de \( \mathbb{R}^n \) incluse dans \( U \). Mais alors d'aprés le théorème d'invariance du domaine:
+         \[ 
+            f(B) \text{ est un ouvert de } \R^n 
+         \]
+         C'est donc un ouvert de \( \R^n \) inclu dans \( \mathbb{H}^n \), il est donc inclu dans l'intérieur de \( \mathbb{H}^n \) et donc \( f(p) \) est intérieur.
+         \item Si \( p \in U \) et \( p \in \partial\mathbb{H}^n\), alors par l'absurde supposons que \( f(p) \) soit intérieur, alors \( f^{-1}(f(p)) = p\) serait intérieur car \( f^{-1} \) est un homéomorphisme et préserve les points intérieurs. Absurde. 
+      \end{itemize}
+   \subsection*{Généralisation de la notion de variété {:}}
+      On considère une variété au sens du chapitre \( 3 \), alors chaque homéomorphisme de son atlas est un homéomorphisme sur un ouvert de \( \R^n \). Aussi on pose l'application suivante:
+      \begin{align*}
+         f: \R^n  &\longrightarrow \R^n\\
+         (x_1, \ldots, x_n) &\longrightarrow (x_1, \ldots, x_{n-1}, e^{x_n})
+      \end{align*}
+      Alors c'est facilement un difféomorphisme sur son image qui est \( \mathbb{H}^n_> \). Donc pour toute carte \( (U, \phi) \), on construit une nouvelle carte \( (U, f \circ \phi) \) et plus précisément, on a:
+      \begin{align*}
+         f \circ \phi : U &\longrightarrow V \subseteq \R^n\\
+         &p \longrightarrow (f \circ \phi)(p)
+      \end{align*}
+      On obtient bien un nouvel homéomorphisme (sur son image) par composition et par le théorème d'invariance du domaine l'ouvert \( V = (f \circ \phi)(U) \) obtenu est aussi un ouvert \textbf{de l'espace ambiant} \( \R^n \). Aussi cet ouvert est inclu dans le demi-espace par construction de \( f \), il s'écrit donc \( \mathbb{H}^n \cap V \), ie c'est un ouvert de \( \mathbb{H}^n \).\<
+
+      Aussi si on considère l'application de changement de carte \(f \circ \psi \circ \phi^{-1} \circ f^{-1}\), alors c'est un difféomorphisme par composition, on donc bien un structure de variété différentielle au sens du chapitre \( 4 \).
+   \subsection*{Le bord d'une variété est une variété différentielle {:}}
+      Soit \( M \) une variété variété à bord de dimension \( n \) de bord non-vide et d'atlas \( (U_\alpha, \phi_\alpha) \).
+      \begin{itemize}
+         \item Si \( p \in \partial M \) et si \( (U, \phi) \) est une carte qui contient \( p \), on a un homéomorphisme:
+         \[ 
+            \phi : U \longrightarrow \phi(U) \subseteq \mathbb{H}^n 
+         \]
+         Mais alors il se restreint en un homéomorphisme:
+         \[ 
+            \phi|_{\partial M} : U \cap \partial M \longrightarrow \phi(U) \cap \partial \mathbb{H}^n
+         \]
+         Aussi \( \phi(U) \cap \partial \mathbb{H}^n \) est un ouvert de \( \partial \mathbb{H}^n \) donc est homéomorphe à \( \R^{n-1} \). Finalement, on pose:
+         \[ 
+            \mathcal{A}_{ \partial M} :=  (U_\alpha \cap  \partial M, \phi_\alpha|_{\partial M})
+         \]
+         Ceci munit bien \( \partial M \) d'une structure de variété topologique de dimenson \( n-1 \).
+         \item Si \( p \in U \cap V\), alors l'application de changement de carte au bord est:
+         \[ 
+            \psi \circ \phi^{-1} : \phi(U \cap V) \cap \partial \mathbb{H}^n \longrightarrow \psi(U \cap V) \cap \partial \mathbb{H}^n
+         \]
+         C'est la restriction au bord de \( \mathbb{H}^n \) de l'application de changement de carte qui est différentiable sur l'ouvert \( \phi(U \cap V) \). Elle est donc différentiable par définition d'une application différentiable sur une partie quelconque.
+      \end{itemize}
+   \pagebreak
+   \subsection*{L'intérieur d'une variété est une variété différentielle {:}}
+      Soit \( M \) une variété à bord de dimension \( n \) et d'atlas \( (U_\alpha, \phi_\alpha) \).
+      \begin{itemize}
+         \item Si \( p \in \text{int}M \) et si \( (U, \phi) \) est une carte qui contient \( p \), on a un homéomorphisme:
+         \[ 
+            \phi : U \longrightarrow \phi(U) \subseteq \mathbb{H}^n 
+         \]
+         Mais alors il se restreint en un homéomorphisme:
+         \[ 
+            \phi|_{\text{int}M} : U \cap \text{int}M \longrightarrow \phi(U \cap \text{int}M) \subseteq \text{int}\mathbb{H}^n
+         \]
+         Aussi \( \text{int}\mathbb{H}^n \cong \R^{n} \) donc finalement, on pose:
+         \[ 
+            \mathcal{A}_{ \text{int}M} :=  (U_\alpha \cap  \text{int}M, \phi_\alpha|_{\text{int}M})
+         \]
+         Ceci munit bien \( \text{int}M \) d'une structure de variété topologique de dimenson \(n\).
+         \item Si \( p \in U \cap V\), alors l'application de changement de carte en l'intérieur est:
+         \[ 
+            \psi \circ \phi^{-1} : \phi(U \cap V) \cap \text{int}\mathbb{H}^n \longrightarrow \psi(U \cap V) \cap \text{int}\mathbb{H}^n
+         \]
+         C'est la restriction à un ouvert de l'application de changement de carte qui est différentiable sur l'ouvert \( \phi(U \cap V) \). Elle est donc différentiable.
+      \end{itemize}
+\pagebreak
+
+\section*{\uline{Chapitre 6 - Espaces tangents dans \( \R^n \) {:}}}
    \subsection*{Propriété des dérivations {:}}
    Si \( f \) est une fonction lisse constante égale à \( c \in \R \), et \( D \) une dérivation au point \( p \in \R^n \), alors \( Df = 0 \), en effet on a:
    \begin{flalign*}
@@ -37,15 +131,16 @@
    \]
    Donc toutes les composantes de \( v \) sont nulles et \( v = 0 \).\+
    \uline{Surjectivité:}
-   {\textbf{\color{red} A finir !}}
-\section*{\uline{Chapitre 8 - Espaces tangents dans \( M \) {:}}}
+   {\textbf{\color{red} Pas compris ...}}
+\pagebreak
+\section*{\uline{Chapitre 7 - Espaces tangents dans \( M \) {:}}}
    \subsection*{Propriété de la différentielle {:}}
       On considère \( f: M \longrightarrow N \) lisse et un point \( p \in M \), et on considère l'application suivante:
       \[ 
          df_p : D \in TM_p \longmapsto D( \cdot  \circ f) \in TN_{f(p)}
       \]
       \begin{itemize}
-         \item \textbf{Bien définie:} Si \( D \) est une dérivation en \( p \), alors \( g \circ f \) est bien lisse et on a: 
+         \item \textbf{Bien définie:} Si \( D \) est une dérivation en \( p \), et \( g, h \) sont deux fonctions lisses, alors on a: 
          \begin{flalign*}
             df_p(D)(gh) &= D(gh \circ f)\\
             &= D((g \circ f)(h \circ f))\\
@@ -65,18 +160,18 @@
          On a donc égalité des images et donc égalité des fonctions.
       \end{itemize}
    \subsection*{Propriété de structure {:}}
-      Finalement montrons que si \( f : M \longrightarrow N \) est un \textbf{difféomorphisme}, alors \( df_p \) en un \textbf{isomorphisme} en tout point. On utilisera le lemme (presque évident) suivant:
+      Finalement montrons que si \( f : M \longrightarrow N \) est un \textbf{difféomorphisme}, alors \( df_p \) en un \textbf{isomorphisme} en tout point. On utilisera le lemme (trivial) suivant:
       \[ 
          d(Id_M)_p = Id_{TM_p} 
       \]
-      Alors si \( f \) est un difféormorphisme, en tout point \( p \), on a:
+      Alors si \( f \) est un difféormorphisme, en tout point \( p \), on a d'aprés la règle de la chaîne:
       \[ 
          \begin{cases}
-            d(f^{-1} \circ f)_p = df^{-1}_{f(p)} \circ df_p = Id_{TM_p}\\
-            d(f \circ f^{-1})_{f(p)} = df_{p} \circ df^{-1}_{f(p)} = Id_{TN_{f(p)}}
+            d(f^{-1} \circ f)_p = d(f^{-1})_{f(p)} \circ df_p = Id_{TM_p}\\
+            d(f \circ f^{-1})_{f(p)} = df_{p} \circ d(f^{-1})_{f(p)} = Id_{TN_{f(p)}}
          \end{cases}
       \]
-      Finalement, ceci montre que \( df_p \) est bijective d'inverse \( df^{-1}_{f(p)} \) et linéaire par définition, on a donc bien:
+      Finalement, ceci montre que \( df_p \) est bijective d'inverse \( d(f^{-1})_{f(p)} \) et linéaire par définition, on a donc bien:
       \[ 
          TM_p \cong TN_{f(p)} 
       \]
@@ -84,7 +179,6 @@
       \[ 
          TM_p \cong T\R^n_{\phi(p)} \cong \R^n 
       \]
-
    \subsection*{Changement de représentation des vecteurs tangents {:}}
    Si \( (U, \phi), (V, \psi) \) sont deux cartes qui contiennent un point \( p \), alors si on note \( x_i, y_i \) les coordonées respectives dans la première et la deuxième carte et \( c = \psi \circ \phi^{-1} \) l'application de changement de carte alors pour toute fonction lisse \( g \), on a:   
    \begin{flalign*}
@@ -97,49 +191,34 @@
    \[ 
       \partialD{}{x_i}\biggr|_p = \sum_{j \leq n} \partialD{c_j}{x_i}(\phi(p)) \partialD{}{y_j}\biggr|_p
    \]
-   Si on note \( (x_1, \ldots, x_n)\) les composantes de \( \phi(p) \), on a donc:
-   \[ 
-      \partialD{}{x_i}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)} = \sum_{j \leq n} \partialD{c_j}{x_i}(x_1, \ldots, x_n) \partialD{}{y_j}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)}
-   \]
-   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) - Partie 1 {:}}
-      On définit donc le fibré tangent à \( M \) comme la réunion disjointe \( \bigsqcup_{p \in M} TM_p \), alors le seul objet à notre disposition est la projection:
+   \subsection*{Le fibré tangent est un variété topologique de dimension \( 2n \){:}}
+      On définit simultanément une \textbf{topologie} sur \( TM \) et une carte. Soit \( (U, \phi) \) une carte de \( M \), alors on définit:
       \[ 
          \begin{aligned}
-            \pi : TM &\longrightarrow M \\
-            (p, v) &\longmapsto p
-         \end{aligned} 
-      \]
-      On définit simultanément une \textbf{topologie} sur \( TM \) et une carte. Soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \)
-      \[ 
-         \begin{aligned}
-            \widetilde{\phi} : \pi^{-1}(U) &\longrightarrow \phi(U) \times \R^n \\
-            (p, v) &\longmapsto (\phi(p), v_1, \ldots, v_n)
+            \Phi : \pi^{-1}(U) &\longrightarrow \phi(U) \times T\R^n_p \\
+            (p, v) &\longmapsto (\phi(p), d\phi_{p}(v))
          \end{aligned}         
       \]
-         C'est en fait la plus petite topologie qui rende \( \pi \) continue.
-         On doit alors construire un atlas de \( TM \), soit \( (p, v) \in TM\), alors étant donnée une carte \( (U, \phi) \) qui contient \( p \), on remarque que \( \pi^{-1}(U) \) est un ouvert de \( TM \), et on définit un prototype de carte locale pour un point du fibré par:
-         \[ 
-            \begin{aligned}
-               \widetilde{\phi} : \pi^{-1}(U) &\longrightarrow \phi(U) \times \R^n \\
-               (p, v) &\longmapsto (\phi(p), v_1, \ldots, v_n)
-            \end{aligned}
-         \]
-         Où ici les \( (v_i) \) sont les coordonées du vecteur \( v \in TM_p \) dans la base associée à la carte locale \( \phi \).
-      Définissons maintenant l'atlas sur \( TM \), on considère l'atlas \( (U_i, \phi_i) \) de \( M \), alors elles recouvrent \( M \). On pose alors \((\pi^{-1}(U_i), \Phi_i)\) où \( \Phi_i \) est la carte locale définie plus haut. On doit montrer que:
-      \begin{enumerate}
-         \item Les \( \pi^{-1}(U_i) \) recouvrent \( TM \).
-         \item Les \( \Phi_i \) sont des homéomorphismes sur leurs images.
-         \item Les applications de changement de cartes sont lisses.
-      \end{enumerate}
-   \subsection*{Le fibré tangent est un variété de dimension \( 2n \) - Partie 2 {:}}
-      \begin{enumerate}
-         \item Soit \( (p, v) \) un point de \( TM \), alors si \( (U, \phi) \) est une carte qui contient \( p \), on a que \((p, v) \in \pi^{-1}(U)\), donc on a bien un recouvrement.
-         \item Les \( \widetilde{\phi}_i \) sont des bijections sur leurs images, en effet on peut écrire l'inverse pour tout \((x_1, \ldots, x_n, v_1, \ldots, v_n) \in \phi(U) \times \R^n \), on pose:
-         \[ 
-            \widetilde{\phi}^{-1}(x_1, \ldots, x_n, v_1, \ldots, v_n) = \left(\phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n} v_i\partialD{}{x_i}\bigg|_{\phi^{-1}(x_1, \ldots, x_n)}\right)
-         \]
-         Aussi, \( \widetilde{\phi}, \widetilde{\phi}^{-1} \) sont continues par composantes, pour la première composante car \( \phi \) est continue, et pour les autres ?
-         \item Les applications de changement de cartes sont lisses, en effet soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), alors \( (\pi^{-1}(U), \Phi), (\pi^{-1}(V), \Psi) \) sont les cartes correspondantes de \( TM \), alors:
+      Alors cette application est \textbf{bijective}, en effet on a:
+      \[ 
+         \begin{aligned}
+            \Phi^{-1} : \phi(U) \times T\R^n_p &\longrightarrow \pi^{-1}(U) \\
+            (x_1, \ldots, x_n, v_1, \ldots, v_n) &\longmapsto (\phi^{-1}(x_1, \ldots, x_n), d\phi^{-1}_{x_1, \ldots, x_n}(v_1, \ldots, v_n))
+         \end{aligned}         
+      \]
+      Alors on identifie par la suite \( T\R^n_p \) et \( \R^n \) et on définit une topologie sur \( TM \) comme suit:
+      \[ 
+         \mathcal{T}_{TM} := \left\{ U \subseteq TM \; ; \; \forall (V, \phi) \in \mathcal{A}_M \; , \; \Phi^{-1}(U \cap \pi^{-1}(V)) \in \mathcal{T}_{ \R^{2n}} \right\}  
+      \]
+      \textbf{\color{red} J'admet } les faits suivants (les démonstrations sont soit introuvables soit horribles):
+      \begin{itemize}
+         \item Cette topologie est séparée.
+         \item Les \( \pi^{-1}(U_\alpha) \) sont bien un recouvrement ouvert localement fini de \( TM \).
+         \item Les cartes \( \Phi_{\alpha} \) sont bien toutes des homéomorphismes sur une partie\footnote[1]{Plus rigoureusement à une partie elle même homéomorphe à une partie de \(\R^{2n}\), car \( T \R^n_p \cong \R^n \).} de \(\R^{2n}\).
+      \end{itemize}
+      Ceci munit \( TM \) d'une structure de variété topologique de dimension \( 2n \).
+   \subsection*{Le fibré tangent est un variété différentielle de dimension \( 2n \){:}}
+      Les applications de changement de cartes sont lisses, en effet soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), alors si \( (\pi^{-1}(U), \Phi), (\pi^{-1}(V), \Psi) \) sont deux cartes qui contiennent \( (p, v) \), alors:
          \[ 
             \begin{cases}
                E = \Phi(\pi^{-1}(U) \cap \pi^{-1}(V)) = \phi(U \cap V) \times \R^n\\
@@ -147,13 +226,31 @@
             \end{cases}
          \]
          Et donc on peut calculer l'application de changement de cartes:
-         \begin{align*}
+         \begin{flalign*}
             \Psi \circ \Phi^{-1}(x_1, \ldots, x_n, v_1, \ldots, v_n) 
-            &= \Psi\left(\phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n} v_i \partialD{}{x_i}\bigg|_{\phi^{-1}(x_1, \ldots, x_n)} \right)\\ 
-            &= \left(\psi \circ \phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n}\sum_{j \leq n} v_i \partialD{c_j}{x_i}(x_1, \ldots, x_n) \partialD{}{y_j}\biggr|_{\phi^{-1}(x_1, \ldots, x_n)} \right)
-         \end{align*} 
-      \end{enumerate}
-\section*{\uline{Chapitre 9 - Espaces cotangents dans \( M \) {:}}}
+            &= \Psi\left(\phi^{-1}(x_1, \ldots, x_n), d\phi^{-1}_{x_1, \ldots, x_n}(v_1, \ldots, v_n)\right) \shorteqnote{(Par définition)}\\ 
+            &= \left(\psi \circ \phi^{-1}(x_1, \ldots, x_n), d(\psi \circ \phi^{-1})_{x_1, \ldots, x_n}(v_1, \ldots, v_n)\right) \shorteqnote{(Règle de la chaîne)}\\
+            &= \left(\psi \circ \phi^{-1}(x_1, \ldots, x_n), \sum_{i \leq n} \partialD{\psi \circ \phi^{-1}}{x_1}(x_1, \ldots, x_n)v_i\right)
+         \end{flalign*} 
+         Les \( n \) premières composantes sont lisses car \( \psi  \circ \phi^{-1} \) l'est. Les \( n \) dernières le sont car toutes les dérivées partielles sont lisses et par combinaisons linéaires de fonctions lisses. On remarque néanmoins que si \( M \) était simplement \( \mathcal{C}^k \) alors \( TM \) serait \( \mathcal{C}^{k-1} \) par l'apparition des dérivées partielles.
+   \subsection*{Un champs de vecteurs est lisse ssi ses composantes le sont{:}}
+      Soit \( X: M \longrightarrow TM \) un champs de vecteur lisse et \( p \in M \), alors pour que le champs de vecteur soit lisse, il faut et il suffit qu'il le soit dans deux cartes bien choisies.\<
+      
+      On choisit \( (U, \phi) \) n'importe quelle carte qui contient \( p \) et \( (\pi^{-1}(U), \Phi) \) la carte induite par celle-ci (qui contient bien \( X(p) \)). Alors le champs de vecteurs est lisse si et seulement si:
+      \[ 
+         \Phi \circ X \circ \phi^{-1} \text{ est lisse.}
+      \]
+      \pagebreak
+
+      Or on a par calcul direct que:
+      \begin{flalign*}
+         \Phi \circ X \circ \phi^{-1}(x_1, \ldots, x_n) &= \Phi(X(p))\\
+         &= \Phi(p, \sum X_i(p)\partialD{}{x_i}\big|_{p}) \shorteqnote{On décompose \( X_p \) dans la base associée à \( \phi \).}\\
+         &= (p, X_1(p), \ldots, X_n(p))
+      \end{flalign*}
+      Cette application est bien lisse si et seulement si les \( n \) dernières composantes le sont, ie si les composantes du champs de vecteurs le sont. La preuve est la même pour les champs de covecteurs, tenseurs ...
+   \pagebreak
+\section*{\uline{Chapitre 8 - Espaces cotangents dans \( M \) {:}}}
    \subsection*{Différentielle abstraite et différentielle usuelle - Partie 1:}
       L'expression de la différentielle d'une fonction \( f : M \longrightarrow \R \) s'identifie à l'expression usuelle d'une différentielle, en effet, si \( v \in TM_p \), alors pour toute fonction lisse \( g : \R \longrightarrow \R \) on a:
       \begin{align*}
@@ -178,8 +275,9 @@
       \[ 
          df_p(v) = \sum_{i=1}^n\sum_{j=1}^m v_i \partialD{f_j}{x_i}(p)\partialD{}{y_j}\biggr|_{f(p)}
       \]
-\section*{\uline{Chapitre 10 - Formes différentielles dans \( M \) {:}}}
-      
+
+\pagebreak
+\section*{\uline{Chapitre 9 - Formes différentielles dans \( M \) {:}}}
    \subsection*{Le pullback commute avec la différentielle}
       Soit $x$ un fonction lisse sur $N$, alors d’après la règle de la chaîne:
       \begin{align*}
@@ -242,11 +340,11 @@
       $$
       Or par définition de la différentielle, on peut réecrire ceci en:
       \[ 
-         F^*\omega = (\omega \circ F) \left(\sum_{{j_1} \leq n} \partialD{F^{1}}{x_{j_1}}dx^{j_1}  \wedge \ldots \wedge  \sum_{{j_n} \leq n} \partialD{F^{n}}{x_{j_1}}dx^{j_1}\right)
+         F^*\omega = (\omega \circ F) \left(\sum_{{j_1} \leq n} \partialD{F^{1}}{x_{j_1}}dx^{j_1}  \wedge \ldots \wedge  \sum_{{j_n} \leq n} \partialD{F^{n}}{x_{j_1}}dx^{j_n}\right)
       \]
       Puis par multilinéarité on obtient:
       \[ 
-         F^*\omega = (\omega \circ F) \sum_{1 \leq j_1 < \ldots < j_n \leq n} \partialD{F^{1}}{x_{j_1}}\ldots\partialD{F^{n}}{x_{j_n}} dx^{j_1}  \wedge \ldots \wedge  dx^{j_n}
+         F^*\omega = (\omega \circ F) \sum_{1 \leq j_1, \ldots, j_p \leq n} \partialD{F^{1}}{x_{j_1}}\ldots\partialD{F^{n}}{x_{j_n}} dx^{j_1}  \wedge \ldots \wedge  dx^{j_n}
       \]
       Or on somme en fait sur tout les indices distincts donc de manière équivalente sur toutes les permutations des indices:
       \[ 
@@ -256,96 +354,24 @@
       \[ 
          F^*\omega = (\omega \circ F) \left(\sum_{\sigma \in S_n} \epsilon(\sigma)\partialD{F^{1}}{x_{\sigma(1)}}\ldots\partialD{F^{n}}{x_{\sigma(n)}}\right) dx^{1}\wedge \ldots \wedge  dx^{n} = (\omega \circ F)\text{det}(J_F)dx^1 \wedge \ldots \wedge dx^n
       \]
-   
-   \subsection*{Existence de la dérivée extérieure locale - Analyse {:}}
-      On procède par analyse-synthèse, et on considère une dérivée extérieure \( d \) qui vérifie les axiomes. Alors pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), on a nécessairement:
-      \begin{flalign*}
-         d\omega_p &= d\left(\sum_I \omega_I(p) dx^I\right)\\
-         &=\sum_I d(\omega_I(p) dx^I)\shorteqnote{(Linéarité)} \\
-         &= \sum_I d\omega_I(p) \wedge dx^I + \omega_I(p)d(dx^I)\shorteqnote{(Leibniz)}\\
-         &= \sum_I d\omega_I(p) \wedge dx^I
-      \end{flalign*}
-      La dernière ligne venant du fait que \( d(dx^I) = 0 \), en effet on explicite les indices et par une récurrence assez évidente et \( d^2 = 0 \) on conclut.
-   \subsection*{Existence de la dérivée extérieure locale - Synthèse {:}}
-      Pour tout \( p \in M \), pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), alors on définit dans les coordonées locales associées à une carte \( (U, \phi) \) l'opérateur suivant:
+   \subsection*{Une dérivée extérieure est locale {:}}
+      Si \( d \) est un opérateur de dérivée extérieure, alors si \( \omega = \eta \) sur un ouvert \( U \), alors si on considère une fonction bosse \( f \) sur \( U \), on a que \( f \omega = f \eta \) sur tout \(M\). En outre, d'aprés la règle de Leibniz:
       \[ 
-         d\omega_p = \sum_I d\omega_I(p) \wedge dx^I
+         \begin{cases}
+            d(f \omega)_p = df(p) \wedge \omega(p) + f(p)d\omega(p)\\
+            d(f \eta)_p = df(p) \wedge \eta(p) + f(p)d\eta(p)
+         \end{cases}
       \]
-      Alors on doit montrer que cet opérateur est bien une dérivée extérieure.
-   
-   \subsection*{Généralisation de la différentielle {:}}
-   Si \( f \in \Omega^0(M) \), c'est une fonction lisse, et alors \( d \) agit par définition par différentiation des coefficients, l'unique coefficient de la \( 0 \)-forme \( f \), étant elle même, on conclut.
-   \subsection*{Linéarité de la dérivée extérieure {:}}
-   On se donne \( \omega, \eta \) deux \( k \)-formes sur \( M \) ainsi que \( \lambda \) un scalaire, alors on a:
-   \[ 
-      d( \omega + \lambda\eta)_p = d\left( \sum_I (f_I + \lambda g_I)(p) dx^I\right) = \sum_I d(f_I + \lambda g_I)(p) \wedge dx^I = d\omega_p + \lambda d\eta_p
-   \]
-   \subsection*{Formule de Leibniz {:}}
-   On se donne \( \omega, \eta \) respectivement une \( k \)-forme et une \( l \)-forme sur \( M \) alors on a:
-   \[ 
-      \begin{cases}
-         \omega_p = \sum_I \omega_I(p)dx^I\\
-         \eta_p = \sum_J \eta_J(p)dx^J
-      \end{cases} 
-   \]
-   On a alors:
-   \[ 
-      (\omega \wedge \eta)_p = \sum_{I, J} (\omega_I\eta_J)(p)dx^I \wedge dx^J
-   \]
-   Appliquons la dérivée extérieure:
-   \[ 
-      d(\omega \wedge \eta)_p = \sum_{I, J} d(\omega_I\eta_J)(p) \wedge dx^I \wedge dx^J
-   \]
-   Les fonctions différentiées sont scalaires, donc on applique la règle du produit:
-   \begin{flalign*}
-      d(\omega \wedge \eta)_p &= \sum_{I, J} \left(d\omega_I(p)\eta_J(p) + \omega_I(p)d\eta_J(p)\right) \wedge dx^I \wedge dx^J \shorteqnote{(Par définition.)}\\
-      &= \sum_{I, J} d\omega_I(p)\eta_J(p)\wedge dx^I \wedge dx^J  + \sum_{I, J} \omega_I(p)d\eta_J(p) \wedge dx^I \wedge dx^J \shorteqnote{(Distributivité du produit extérieur.)}\\
-      &= \sum_{I, J} d\omega_I(p) \wedge dx^I \wedge \eta_J(p)dx^J  + \sum_{I, J} d\eta^J(p) \wedge \omega^I(p)dx^I \wedge dx^J \shorteqnote{(Bilinéarité du produit extérieur.)}\\
-      &= d(\omega \wedge \eta)_p + (-1)^k\sum_{I, J} \omega_I(p)dx^I \wedge d\eta_J(p) \wedge  dx^J \shorteqnote{$(\star)$}\\
-      &= d(\omega \wedge \eta)_p + (-1)^k(\omega \wedge d\eta)_p\\
-      &= (d\omega \wedge \eta + (-1)^k(\omega \wedge d\eta))_p
-   \end{flalign*}
-   Où pour trouver \((\star)\), on identifie le premier terme, et on utilise le fait que \( \eta_J(p), dx_I \) sont respectivement une \( 1- \) forme et une \( k \)-forme et il y a donc \( k \) échanges à faire et donc \( k \) application de l'antisymétrie.
-   \subsection*{Propriété fondamentale de la dérivée extérieure {:}}
-   On considère une \( k \) forme \( \omega = \sum_I \omega_I dx^I\), alors on a:
-   \[ 
-      d\omega = \sum_I d\omega_I \wedge dx_I = \sum_I \sum_{i \leq n} \partialD{\omega_I}{x_i}dx^i \wedge dx^I
-   \]
-   Et donc si on dérive à nouveau on obtient:
-   \[ 
-      dd\omega =  \sum_I \sum_{i \leq n} \sum_{j \leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i \wedge dx^I
-   \]
-   On peut alors montrer que pour \( I \) fixé, on a:
-   \[ 
-      \sum_{1 \leq i, j\leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i = 0
-   \]
-   En effet si \( i = j \) c'est évident, mais si \( i \neq j \), on a que:
-   \[ 
-      \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i + \frac{\partial^2 \omega_I}{\partial x_i \partial x_j} dx^i \wedge dx^j = 0
-   \]
-   En effet, \( \omega_I \) est une fonction lisse donc on applique Schwartz et les dérivées croisés sont égales, mais les produit extérieurs \( dx^i \wedge dx^j \) sont opposés. Ceci nous permet d'appairer les termes en \( n \) sommes nulles (il y a \( 2n \)) termes dans la somme).
-   \subsection*{Existence de la dérivée extérieure globale{:}}
-   Pour tout \( p \in M \), pour toute \( k- \)forme \( \omega \in \Omega^k(M)\), alors on définit dans les coordonées locales associées à une carte \( (U, \phi) \) l'opérateur suivant:
-   \[ 
-      d\omega_p = \sum_I d\omega_I(p) \wedge dx^I
-   \]
-   Alors on doit montrer que cet opérateur est bien défini, ie que \( d\omega_p \) ne dépends pas de la carte \( (U, \phi) \) choisie.
-   \subsection*{Bonne définition {:}}
-   Soit \( \omega \in \Omega^k(M) \), soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), montrons que \( d\omega_p \) est bien définie, on a dans les deux cartes:
-   \[ 
-      \begin{cases}
-         \omega_p = \sum_I a_I(p)dx^I \\
-         \omega_p = \sum_I b_I(p)dy^I
-      \end{cases} 
-   \]
-   Mais alors sur l'intersection de ces cartes, il existe une dérivée extérieure comme définie plus haut, et c'est un opérateur local donc on a l'implication suivante sur \( U \cap V \):
-   \[ 
-      \sum_I a_I(p)dx^I = \sum_I b_I(p)dy^I \implies \sum_I da_I(p) \wedge dx^I = \sum_I db_I(p) \wedge dy^I
-   \]
-
-   Dans toute la suite on considère $F : M \longrightarrow N$ une application lisse entre deux variétés.
-   \subsection*{Le pullback commute avec la dérivée extérieure}
-      Cette fois on considère une $k$ forme $\omega$, alors en coordonnées locales, on a:
+      Donc on en déduit que:
+      \[ 
+         df(p) \wedge \omega(p) + f(p)d\omega(p) = df(p) \wedge \eta(p) + f(p)d\eta(p)
+      \]
+      Alors on peut conclure car si \( p \in U \), on obtient par définition de \( f \) que \( f(p) = 1 \) et \( df(p) = 0 \) et donc:
+      \[ 
+         \forall p \in U \; ; \; d\omega(p) = d\eta(p)
+      \]
+   \subsection*{Une dérivée extérieure commute avec le pullback}
+      On considère une $k$ forme $\omega$ et \( F : M \longrightarrow N \) une application lisse,  alors en coordonnées locales, on a:
       \begin{align*}
          F^*d\omega &= F^*\left[\sum_{I} d\omega_{i_1, \ldots, i_n} \wedge dx^{i_1} \wedge \ldots \wedge dx^{i_n}\right]\\
          &= \sum_{I} F^*(d\omega_{i_1, \ldots, i_n} \wedge dx^{i_1}  \wedge \ldots \wedge dx^{i_n})\\
@@ -354,11 +380,100 @@
          &= \sum_{I} d(\omega_{i_1, \ldots, i_n} \circ F) \wedge d(x^{i_1} \circ F)  \wedge \ldots \wedge d(x^{i_n} \circ F)\\
          &= \sum_{I} d(\omega_{i_1, \ldots, i_n} \circ F) \wedge dF^{i_1}  \wedge \ldots \wedge  dF^{i_n}
       \end{align*}
-      D'autre part en dérivant l'expression en coordonées locales obtenu plus haut, on trouve bien l'égalité.
+      D'autre part en dérivant l'expression en coordonées locales du pullback ci-dessous, on obtient bien l'égalité:
+      \[ 
+         F^*\omega = \sum_{I} \omega_{i_1, \ldots, i_n} \circ F \wedge dF^{i_1}  \wedge \ldots \wedge  dF^{i_n}
+      \]
+   \subsection*{Forme nécessaire de la dérivée extérieure locale {:}}
+      On procède par analyse-synthèse, et on considère une dérivée extérieure \( d \) qui vérifie les axiomes. Alors pour toute \( k- \)forme \( \omega \in \Omega^k(U)\), on a nécessairement:
+      \begin{flalign*}
+         d\omega_p &= d\left(\sum_I \omega_I(p) dx^I\right)\\
+         &=\sum_I d(\omega_I(p) dx^I)\shorteqnote{(Linéarité)} \\
+         &= \sum_I d\omega_I(p) \wedge dx^I + \omega_I(p)d(dx^I)\shorteqnote{(Leibniz)}\\
+         &= \sum_I d\omega_I(p) \wedge dx^I
+      \end{flalign*}
+      La dernière ligne venant du fait que \( d^2 = 0 \) . Si une dérivée extérieure existe sur \( \Omega^k(U) \), alors elle est uniquement déterminée par la forme ci-dessus.
+   \subsection*{Existence de la dérivée extérieure locale{:}}
+      Pour tout \( p \in U \), pour toute \( k- \)forme \( \omega \in \Omega^k(U)\) l'opérateur suivant:
+      \[ 
+         d\omega_p = \sum_I d\omega_I(p) \wedge dx^I
+      \]
+      Alors on doit montrer que cet opérateur est bien une dérivée extérieure.
+      \begin{itemize}
+         \item \textbf{Généralisation:} Si \( f \in \Omega^0(U) \), c'est une fonction lisse, et alors \( d \) agit par définition par différentiation des coefficients, l'unique coefficient de la \( 0 \)-forme \( f \), étant elle même, on conclut.
+         \item \textbf{Linéarité:} Si \( \omega, \eta \) sont deux \( k \)-formes sur \( U \) ainsi que \( \lambda \) un scalaire, alors on a:
+         \[ 
+            d( \omega + \lambda\eta)_p = d\left( \sum_I (f_I + \lambda g_I)(p) dx^I\right) = \sum_I d(f_I + \lambda g_I)(p) \wedge dx^I = d\omega_p + \lambda d\eta_p
+         \]
+         \pagebreak
 
+         \item \textbf{Leibniz:} Si \( \omega, \eta \) sont respectivement une \( k \)-forme et une \( l \)-forme sur \( U \) alors on a:
+         \[ 
+            \begin{cases}
+               \omega_p = \sum_I \omega_I(p)dx^I\\
+               \eta_p = \sum_J \eta_J(p)dx^J
+            \end{cases} 
+         \]
+         On a alors:
+         \[ 
+            (\omega \wedge \eta)_p = \sum_{I, J} (\omega_I\eta_J)(p)dx^I \wedge dx^J
+         \]
+         Appliquons la dérivée extérieure:
+         \[ 
+            d(\omega \wedge \eta)_p = \sum_{I, J} d(\omega_I\eta_J)(p) \wedge dx^I \wedge dx^J
+         \]
+         Les fonctions différentiées sont scalaires, donc on applique la règle du produit:
+         \begin{flalign*}
+            d(\omega \wedge \eta)_p &= \sum_{I, J} \left(d\omega_I(p)\eta_J(p) + \omega_I(p)d\eta_J(p)\right) \wedge dx^I \wedge dx^J \shorteqnote{(Par définition.)}\\
+            &= \sum_{I, J} d\omega_I(p)\eta_J(p)\wedge dx^I \wedge dx^J  + \sum_{I, J} \omega_I(p)d\eta_J(p) \wedge dx^I \wedge dx^J\\
+            &= \sum_{I, J} d\omega_I(p) \wedge dx^I \wedge \eta_J(p)dx^J  + \sum_{I, J} d\eta^J(p) \wedge \omega^I(p)dx^I \wedge dx^J\\
+            &= d(\omega \wedge \eta)_p + (-1)^k\sum_{I, J} \omega_I(p)dx^I \wedge d\eta_J(p) \wedge  dx^J \shorteqnote{$(\star)$}\\
+            &= d(\omega \wedge \eta)_p + (-1)^k(\omega \wedge d\eta)_p\\
+            &= (d\omega \wedge \eta + (-1)^k(\omega \wedge d\eta))_p
+         \end{flalign*}
+         Où pour trouver \((\star)\), on identifie le premier terme, et on utilise le fait que \( \eta_J(p), dx_I \) sont respectivement une \( 1- \) forme et une \( k \)-forme et il y a donc \( k \) échanges à faire et donc \( k \) application de l'antisymétrie.
+         \item \textbf{Propriété fondamentale:} Si on considère une \( k \) forme \( \omega = \sum_I \omega_I dx^I\), alors on a:
+         \[ 
+            d\omega = \sum_I d\omega_I \wedge dx_I = \sum_I \sum_{i \leq n} \partialD{\omega_I}{x_i}dx^i \wedge dx^I
+         \]
+         Et donc si on dérive à nouveau on obtient:
+         \[ 
+            dd\omega =  \sum_I \sum_{i \leq n} \sum_{j \leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i \wedge dx^I
+         \]
+         On peut alors montrer que pour \( I \) fixé, on a:
+         \[ 
+            \sum_{1 \leq i, j\leq n} \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i = 0
+         \]
+         En effet si \( i = j \) c'est évident, mais si \( i \neq j \), on a que:
+         \[ 
+            \frac{\partial^2 \omega_I}{\partial x_j \partial x_i} dx^j \wedge dx^i + \frac{\partial^2 \omega_I}{\partial x_i \partial x_j} dx^i \wedge dx^j = 0
+         \]
+         En effet, \( \omega_I \) est une fonction lisse donc on applique Schwartz et les dérivées croisés sont égales, mais les produit extérieurs \( dx^i \wedge dx^j \) sont opposés. Ceci nous permet d'appairer les termes en \( n \) sommes nulles (il y a \( 2n \)) termes dans la somme).
+      \end{itemize}
+   On a donc bien montré qu'il existe bien une dérivée extérieure sur les \( k \)-formes définies sur une carte \( U \).
+   \pagebreak
+   \subsection*{Existence de la dérivée extérieure globale{:}}
+   On note \( d|_U \) l'unique dérivée extérieure sur une carte \( (U, \phi) \) trouvée ci-dessus. Pour tout \( p \in M \), pour toute \( k- \)forme \( \omega \in \Omega^k(M)\), alors on définit l'opérateur suivant:
+   \[ 
+      (d\omega)_p = (d|_U\omega)_p
+   \]
+   Soit \( \omega \in \Omega^k(M) \), soit \( (U, \phi), (V, \psi) \) deux cartes qui contiennent \( p \), montrons que \( d\omega_p \) est bien définie, ie que:
+   \[ 
+      (d|_U\omega)_p = (d|_V\omega)_p
+   \]
+   Sur \( U \cap V \), on a que les deux expressions en coordonées de \( \omega \) sont égales:
+   \[ 
+      \sum_I \omega_I dx^I = \sum_I \omega'_I dy^I
+   \]
+   Or, si on applique \( d|_U \), on obtient:
+   \[ 
+      d|_U\omega = \sum_I d\omega_I \wedge dx^I = \sum_I d\omega'_I \wedge dy^I = d|_V\omega
+   \]
+   Cette définition ne dépends donc pas du choix de la carte qui contient \( p \). En outre c'est bien une dérivée extérieure car \( d|_U \) en est une, et donc elle est locale.
+   \subsection*{Unicité de la dérivée extérieure globale{:}}
 \pagebreak
-\section*{\uline{Chapitre 11 - Orientation d'une variété{:}}}
-   \section{Deux classes d'équivalences}
+\section*{\uline{Chapitre 10 - Orientation d'une variété{:}}}
+   \subsection{Deux classes d'équivalences}
       Si \( M \) est connexe et \( \omega, \omega' \) sont deux formes volumes alors l'espace des formes volumes en un point est de dimension 1, on a donc l'existence d'une fonction lisse \( f \) telle que:
       \[ 
          \forall p \in M \; ; \; \omega_p = f(p) \omega_p' 
@@ -376,42 +491,44 @@
          \item Soit \( \omega = f\omega' \; ; \; f < 0 \) 
       \end{itemize}
       On a donc bien deux classes possibles sur une variété connexe, celle de \( \omega \) et celle de \( -\omega \). En outre si la variété n'est pas connexe, il suffit de faire ce raisonnement sur chaque composante connexe.
-   \section{Difféomorphismes qui préservent l'orientation}
-      On considére \( (M, \omega), (N, \eta) \) deux variétés orientées munies de leur atlas orienté. Alors on dira qu'un difféomorphisme \( F : M \longrightarrow N \) \textbf{respecte l'orientation} si et seulement si:
+   \subsection{Les changements de cartes ont un jacobien positif}
+      On se donne une forme volume \( \omega \) sur \( M \), ainsi que deux cartes \( (U, \phi), (V, \psi) \) positivement orientées qui contiennent un point \( p \in M\), alors on a que la forme \( \omega \) se ramène dans \( \R^n \) via la carte \( \phi \) en:
       \[ 
-         F^*\eta \sim \omega
+         \omega(x_1, \ldots, x_n) dx^1 \wedge \ldots \wedge dx^n
       \]
-      Or on a:
+      On applique la formule du pullback d'une forme volume pour le difféomorphisme de changement de carte et on obtient:
       \[ 
-         F^*\eta = (\widetilde{\eta} \circ F)\text{det}(J_F)dx^1 \wedge \ldots \wedge dx^n = \frac{\widetilde{\eta} \circ F}{\widetilde{\omega}}\text{det}(J_F) \omega
+         \omega(x_1, \ldots, x_n) dx^1 \wedge \ldots \wedge dx^n = \omega(y_1, \ldots, y_n) \text{det}(\text{Jac}(c)) dy^1 \wedge \ldots \wedge dy^n
       \]
-      La fraction étant positive car les cartes sont orientées positivement, on a donc que \( F \) respecte l'orientation si et seulement si:
+      Or les deux cartes sont orientées positivement par hypothèse, donc nécéssairement:
       \[ 
-         \text{det}(J_F) > 0
-      \]
-   
+         \begin{cases}
+            \omega(x_1, \ldots, x_n) > 0\\
+            \omega(y_1, \ldots, y_n) > 0
+         \end{cases}
+      \] 
+      On en déduit que le jacobien du changement de carte est positif.
    \subsection*{Existence d'un champs de vecteurs sortant}
       On souhait construire un champs de vecteurs $X$ sur $M$ tel que pour tout point du bord $\partial M$, $X(p)$ soit un vecteur sortant. On considère une partition de l'unité subordonnée à l'atlas que l'on note $\rho_\alpha$, alors pour toute carte $U_\alpha$ qui intersecte le bord, on définit un champs de vecteur sortant en coordonnées locales:
       $$
          X_\alpha(p) = -\frac{\partial}{\partial x_n}\bigg|_p
       $$
-      {\color{red}On peut alors étendre chacun de ces champs en un champs de vecteurs lisse $\widetilde{X_\alpha}$ sur $M$ qui vaut zéro partout et $X_\alpha$ sur $U_\alpha$.}\footnote{Ceci vient du fait que $\partial M$ est fermé apparemment ? Ne marche pas toujours ?}\\
-      
-      Alors on aimerait globaliser ce champs de vecteur en un champs de vecteur global par la partition de l'unité, on utilise la partition de l'unité et on pose:
+      Alors on aimerait globalise ce champs de vecteur en un champs de vecteur global par la partition de l'unité, on pose:
       $$
-         X = \sum_\alpha \rho_\alpha \widetilde{X_\alpha}
+         X = \sum_\alpha \rho_\alpha X_\alpha
       $$
       C'est bien un champs de vecteurs sur $M$, lisse car: 
       \begin{align*}
-         X(p) &= \sum_\alpha \rho_\alpha(p) \widetilde{X_\alpha}(p) \\
-         &= \sum_\alpha \rho_\alpha(p) \sum_{i \leq n}\widetilde{X_{\alpha,i}}(p)\frac{\partial}{\partial x_i}\bigg|_p\\
-         &= \sum_\alpha\sum_{i \leq n} \rho_\alpha(p)\widetilde{X_{\alpha,i}}(p)\frac{\partial}{\partial x_i}\bigg|_p\\
+         X(p) &= \sum_\alpha \rho_\alpha(p) X_\alpha(p) \\
+         &= \sum_\alpha \rho_\alpha(p) X_\alpha(p)\\
+         &= \sum_\alpha \rho_\alpha(p) \sum_{i \leq n}X_{\alpha, i}(p)\frac{\partial}{\partial x_i}\bigg|_p\\
+         &= \sum_{i \leq n}\sum_\alpha \rho_\alpha(p)X_{\alpha, i}(p)\frac{\partial}{\partial x_i}\bigg|_p
       \end{align*}
-      C'est une somme finie dont toutes les composantes sont lisses car les champs de vecteurs $\widetilde{X_\alpha}$ sont lisses. Aussi pour tout point du bord $p$, on a:
+      C'est une somme finie dont toutes les composantes sont lisses car les champs de vecteurs $\rho_\alpha X_\alpha$ sont lisses. Aussi pour tout point du bord $p$, alors \( p \in U_\alpha \cap \partial M \) et on a:
       $$
-         X(p) = \sum_\alpha \rho_\alpha(p)\widetilde{X_{\alpha,n}}(p)\frac{\partial}{\partial x_n}\bigg|_p = \left(- \sum_\alpha \rho_\alpha(p)\right)\frac{\partial}{\partial x_n}\bigg|_p = -\frac{\partial}{\partial x_n}\bigg|_p
+         (X(p))_n = \sum_\alpha \rho_\alpha(p) X_{\alpha, n}(p)\frac{\partial}{\partial x_n}\bigg|_p = -\frac{\partial}{\partial x_n}\bigg|_p 
       $$
-      Qui est bien un vecteur sortant.
+      Qui est bien un vecteur sortant.\<
    \subsection*{Construction d'une forme volume sur $\partial M$}
       On considère une variété orientable à bord $M$ et on note $\omega$ une forme volume sur $M$, montrons que l'on peut construire une forme volume sur $\partial M$. La construction est la suivante:
       \begin{itemize}
@@ -421,16 +538,34 @@
       \end{itemize}
       On sait déja que $\iota_S\omega$ est une $n-1$ forme lisse, supposons maintenant par l'absurde qu'il existe $p \in \partial M$ tel que cette forme s’annule. Ceci signifie que:
       $$
-         \forall (v_1, \ldots, v_{n-1}) \in T\partial M_p \; ; \; \iota_S\omega(v_1, \ldots, v_{n-1}) = 0
+         \forall (v_1, \ldots, v_{n-1}) \in T\partial M_p \; ; \; \iota_S\omega_p(v_1, \ldots, v_{n-1}) = 0
       $$
-      C'est donc en particulier vrai pour la base $(\frac{\partial}{\partial x_1}\big|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\big|_p)$, mais alors:
+      C'est donc en particulier vrai pour la base $\left(\frac{\partial}{\partial x_1}\big|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\big|_p\right)$, mais alors:
       $$
-      \iota_S\omega\left(\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) = \omega\left(\frac{\partial}{\partial x_n}\bigg|_p,\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) =0
+      \iota_S\omega_p\left(\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) = \omega_p\left(-\frac{\partial}{\partial x_n}\bigg|_p,\frac{\partial}{\partial x_1}\bigg|_p, \ldots, \frac{\partial}{\partial x_{n-1}}\bigg|_p\right) = 0
       $$
-      Et la famille sur laquelle on évalue $\omega$ est une base de $TM_p$ donc $\omega$ s'annule en ce point, absurde.
-   \subsection*{Expression dans une carte de la forme volume sur $\partial M$}
-      On considère une variété orientable à bord $M$ et on note $\omega$ une forme volume sur $M$ et $\iota_S\omega$ la forme volume induite sur $\partial M$, on aimerait expliciter l'exression de cette forme dans une carte.
+      Et la famille sur laquelle on évalue $\omega_p$ est une base de $TM_p$ donc $\omega$ s'annule en \( p \), absurde.
 
-
-\pagebreak
-
+   \subsection*{Expression de la forme volume induite}
+   On se donne une forme volume \( \omega \) sur \( M \) et un champs de vecteurs sortant \( S \) au bord de \( M \), on a alors pour tout point \( p \in \partial M \):
+   \begin{align*}
+      \forall (v_1, \ldots, v_{n-1}) \in T\partial M_p \; ; \; \iota_S\omega_p(v_1, \ldots, v_{n-1}) = \omega_p(S(p), v_1, \ldots, v_n) = \widetilde{\omega}(p)dx^1 \wedge \ldots \wedge dx^n(S(p), v_1, \ldots, v_n)
+   \end{align*}
+   Or ceci se ramène à un calcul de déterminant (simple car \( S(p) = - \partialD{}{x^n}\big|_p \)), ie il suffit de calculer:
+   \begin{align*}
+      dx^1 \wedge \ldots \wedge dx^n(S(p), v_1, \ldots, v_n) &= \begin{vmatrix}
+         S(p)_1 & v_{1, 1} & \ldots & v_{n, 1}\\
+         \vdots & \vdots & \ddots & \vdots\\
+         S(p)_n & v_{1, n} & \ldots & v_{n, n}
+         \end{vmatrix}\\
+      &= \begin{vmatrix}
+         0 & v_{1, 1} & \ldots & v_{n, 1}\\
+         \vdots & \vdots & \ddots & \vdots\\
+         -1 & v_{1, n} & \ldots & v_{n, n}
+         \end{vmatrix}\\
+      &= (-1)^n dx^1 \wedge \ldots \wedge dx^{n-1}(v_1, \ldots, v_n)
+   \end{align*}
+   Ceci étant vrai pour tout \( v_1, \ldots, v_{n-1} \), on trouve bien:
+   \[ 
+      \iota_S\omega_p = \widetilde{\omega}(p)(-1)^n dx^1 \wedge \ldots \wedge dx^{n-1}
+   \]
