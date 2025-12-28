@@ -1,0 +1,370 @@
+\chapter*{\chapterstyle{III -- Chaines de Markov}}
+\addcontentsline{toc}{section}{Introduction aux chaines de Markov}
+Dans ce chapitre, on étudie un premier exemple de \textit{processus stochastique discret}, ie une suite de variables aléatoires. On considère donc une suite de variables $ (X_n)_{n \in E}$ à valeurs dans un ensemble $E$ qu'on supposera dénombrable.
+
+On dira que est une \textbf{chaîne de Markov} si et seulement si elle vérifie la propriété suivante:
+$$
+   \forall i_0, \ldots, i_{n+1} \in E \; ; \; \mathbb{P}(X_{n+1} = i_{n+1} \big| X_0 = i_0, \ldots, X_n = i_n) = \mathbb{P}(X_{n+1} = i_{n+1} \,\big|\, X_n = i_n)
+$$
+On dira aussi plus conceptuellement que \textit{la donnée de la valeur future ne dépend que de la valeur présente.}
+On note alors plus généralement $\mathbb{P}(X_{n+1}=y \,\big|\, X_n = x) = Q_n(x,y)$. Aussi si la probabilité de passer de l'état $x$ à l'état $y$ ne dépends pas de $n$\footnote[1]{Ce qui peut toujours être supposé sans perte de généralité.}, alors on dira que la chaine de markov est \textbf{homogène}. On a alors l'application suivante:
+$$
+   \begin{aligned}
+      Q : E^2 &\longrightarrow \icc{0}{1}\\
+      (x,y) &\longmapsto \mathbb{P}(X_1=y \,\big|\, X_0 = x)
+   \end{aligned}
+$$
+On apelle cette application \textbf{matrice de transition} de la chaîne de Markov, en effet, dans le cas fini c'est exactement une matrice de taille $|E|$. Alors, on en déduis directement la caractérisation principale:
+\begin{center}
+   \textbf{Une chaîne de Markov est caractérisée par sa matrice et sa distribution initiale $\lambda = \mathbb{P}_{X_0}$. On dira alors que $X \sim \text{Markov}(Q, \lambda)$}
+\end{center}
+On peut alors de manière heuristique se représenter une chaine de Markov, ie une matrice de transition, sous une forme plus géométrique, en effet on peut toujours représenter une chaîne de Markov sous forme d'un \textbf{graphe orienté pondéré}, où chaque arête porte la probabilité de transition entre deux sommets comme on le verra plus loin.
+\subsection*{\subsecstyle{Exemples{:}}}
+Voici quelques exemples de différents type pour illustrer la définition:
+\begin{itemize}
+   \item \textbf{La chaîne à deux états:} On prends $E = \{1, 2\}$, alors la donnée d'une chaîne de Markov sur $E$ est équivalente à la donnée de deux réels $ \alpha, \beta \in \ioo{0}{1}$ qui donne la matrice de transition:
+   $$
+      Q = \begin{pmatrix}
+      1- \alpha & \alpha\\ \beta & 1- \beta
+      \end{pmatrix}
+   $$
+   Et le graphe suivant: TODO
+   \item \textbf{La marche aléatoire homogène:} On prends $\Z^k$, alors la donnée d'une chaîne de Markov sur $E$ est définie par la matrice de transition:
+   $$
+      Q(x, y) = \begin{cases} \frac{1}{k} \; ; \; \text{ si $y$ est voisin de $x$}\\ 0 \; ; \; \text{ sinon}\end{cases}
+   $$
+   De manière générale, sur n'importe quel graphe (localement fini), on peut définir une marche aléatoire homogène via:
+   $$
+      Q(x, y) = \begin{cases} \frac{1}{deg(x)} \; ; \; \text{ si $y$ est voisin de $x$}\\ 0 \; ; \; \text{ sinon}\end{cases}
+   $$
+   Et, par exemple sur $\Z^2$, on a le graphe suivant: TODO
+\end{itemize}
+\pagebreak
+\subsection*{\subsecstyle{Lois marginales{:}}}
+Par une simple application de la définition d'une chaîne $X \sim \text{Markov}(Q, \lambda)$, on peut montrer que:
+$$
+   \forall x_0, \ldots, x_{n+1} \in E \; ; \; \mathbb{P}(X_{n+1} = i_{n+1}, \ldots, X_0 = x_0) = \lambda(x_0)Q(x_0, x_1)Q(x_1, x_2)\ldots Q(x_{n}, x_{x+1})
+$$
+Puis alors on a facilement que pour tout $y$ dans $E$, on a:
+$$
+   \mathbb{P}(X_{n} = y \,\big|\, X_0 = x) = \sum_{x_1, \ldots, x_{n-1} \in E} \mathbb{P}(X_{n} = x, \ldots, X_0 = x_0) = \sum_{x_1, \ldots, x_{n-1} \in E} Q(x, x_1)Q(x_1, x_2)\ldots Q(x_{n-1}, y)
+$$
+Ceci s'identifie alors à un produit matriciel ! En effet on a:
+$$
+   \sum_{x_1, \ldots, x_{n-1} \in E} Q(x, x_1)Q(x_1, x_2)\ldots Q(x_{n-1}, y) = (Q^n)_{x, y}
+$$
+Et donc la loi de $X_n$ conditionnelement à $X_0 = x_0$ est donnée par $(Q^n)_{x, y}$, en outre on a donc que:
+$$
+   \forall y \in E \; ; \; \mathbb{P}(X_{n} = y) = \sum_{x \in E}\lambda(x)Q^n_{x, y}
+$$
+On appelle cette loi, \textbf{loi marginale} de la chaîne $(X_n)$. Elle sera particulièrement importante par la suite car un thème d'étude récurrent sur les chaînes de Markov consiste à étudier le comportement limite de cette loi.
+\subsection*{\subsecstyle{Caractérisation récursive{:}}}
+Si $X_0$ est variable aléatoire sur $E$ de loi $\lambda$ et que $(\xi_n)_{n \in N^*}$ est une suite de variables aléatoires iid à valeurs dans un ensemble $F$ et indépendante de $X_0$ , alors pour tout fonction mesurable $ G: E \times F \rightarrow E$, la suite définie par récurrence:
+$$
+   X_{n+1} = G(X_n, \xi_{n+1})
+$$
+Est une chaîne de markov sur $E$ de loi initiale $ \lambda$. En outre, toute chaîne de markov sur $E$ se réalise de la sorte, c'est un autre point de vue sur les chaînes de Markov. On a alors que :
+$$
+   Q(x, y) = \mathbb{P}(G(x, \xi_{1}) = j)
+$$
+Par exemple la marche aléatoire homogène sur $\Z$ se réalise via une suite iid $(\xi_n)$ de Rademacher de paramètre $p$ avec:
+$$
+   X_{n+1} = X_n + \xi_n
+$$
+\subsection*{\subsecstyle{Fonction d'une chaîne de Markov{:}}}
+Comme souvent lorsque l'on introduit un nouvel objet, on cherche à comprendre quels sont les fonctions qui préservent ces objets. On se donne une chaîne de markov $(X_n)$ sur $E$ et une fonction $f : E \longrightarrow F$. On cherche à savoir si la suite de variables aléatoires suivantes et une chaîne de Markov sur l'image de $F$:
+$$
+   Y_n = f(X_n)
+$$
+On supposera sans perte de généralité $f$ surjective. Alors peut montrer que c'est facilement le cas si $f$ est injective. Mais on peut aller plus loin, en effet si on considère la partition de $E$ en classe pour la relation 'avoir la même image par $f$', alors on peut définir une chaîne de markov sur $F$ si la probabilité de transition entre les classes ne dépends pas du représentant choisi, ie si la définition suivante à un sens:
+$$
+   Q(\tilde{x}, \tilde{y}) := Q(x, \tilde{y})
+$$
+Alors on définit:
+$$
+   Q(\tilde{x}, \tilde{y}) := Q(x, \tilde{y}) := \sum_{y \in \tilde{y}} Q(x, y)
+$$
+C'est une chaine de markov sur le quotient $E/\sim$. On peut alors identier les élements du quotient avec ceux de l'image par le théorème d'isomorphisme et alors définir $\tilde{Q}$ sur $F^2$ par:
+$$
+   \tilde{Q}(f(x), f(y)) = Q(\tilde{x}, \tilde{y})
+$$
+Par exemple pour la marche aléatoire homogène sur $\Z$ de probabibilité $\frac{1}{2}$ et la fonction $f(z) = |z|$, on trouve que cette fonction convient et que:
+$$
+   \forall x, y \in \N \; ; \; \tilde{Q}(x, y) = \1_{\{(x, y) = (0, 1)\}} + \frac{1}{2}\1_{\{|y-x| = 1\}}
+$$
+\subsection*{\subsecstyle{Classes de communication et chaînes irréductibles{:}}}
+On peut alors définir sur $E$ une relation d'équivalence, dite relation de communication et on dira que $x$ \textbf{mène à} $y$, et on note $x \rightarrow y$ si et seulement si:
+$$
+   \forall x, y \in E \; ; \; \mathbb{P}( \exists n \; ; \; X_n = y \;\big|\; X_0 = x) > 0
+$$
+Et on dira alors que $x$ \textbf{communique} avec $y$ si et seulement si:
+$$
+   x \rightarrow y \text{ et } y \rightarrow x
+$$
+Qu'on note alors $x \longleftrightarrow y$. Cette relation définit une relation d'équivalence sur $E$ et ses classes sont appelés \textbf{classes de communication} de $E$. Si une chaîne de Markov n'a qu'un classe de comunnication, on dira qu'elle est \textbf{irréductible}.
+
+Ce concept est fondamental est similaire à celui de composantes connexes en topologie, en effet, on verra qu'on se réduira surtout à l'étude de chaînes de markov irréductibles sans perte de généralité.
+\chapter*{\chapterstyle{III -- Temps d'arrêt et réccurence}}
+\addcontentsline{toc}{section}{Temps d'arrêt et réccurence}
+Dans ce chapitre on s'intéressera plus particulière aux propriétés de \textit{récurrence} d'une chaîne de Markov $(X_n) \sim \text{Markov}(Q, \lambda)$, qui consiste à répondre à la question suivante:
+\begin{center}
+   \textit{Etant donnée une chaine de Markov partant d'un état donné, y reviendra elle ? Et si oui avec quelle probabilité ?}
+\end{center}
+Pour ceci, on définit la notion de \textbf{temps d'arrêt}, de \textbf{récurrence} et de \textbf{récurrence positive}.
+
+\subsection*{\subsecstyle{Temps d'arrêt{:}}}
+On dira qu'une variable aléatoire $T$ à valeurs dans $\N \cup \{ \infty\}$ est un \textbf{temps d'arrêt} si et seulement si, on a:
+$$
+   \forall n \in \N \; ; \; \{ T \leq n\} \in \sigma(X_0, \ldots, X_n)
+$$
+En d'autres termes, $\{ T \leq n\}$ n'est déterminées que par les $n$ dernières valeurs. On peut aussi de manière équivalent le définir par la même propriété pour $\{ T > n\}$ ou $\{ T = n\}$. Quelques exemples classiques:
+\begin{itemize}
+   \item Une variable aléatoire constante $T \equiv n$ est un temps d'arrêt. En effet $\{T \equiv n\} \in \{\emptyset, \Omega\}$
+   \item Une variable aléatoire codant le \textbf{temps d'atteinte} d'une partie $A$ donnée ci-dessous, est un temps d'arrêt: 
+   $$
+      H_A := \inf\left\{ n \geq 0 \; ; \; X_n \in A  \right\}
+   $$
+   \item Une variable aléatoire codant le \textbf{temps de premier passage} d'une partie $A$ donnée ci-dessous, est un temps d'arrêt: 
+   $$
+      T_A := \inf\left\{ n \geq 1 \; ; \; X_n \in A  \right\}
+   $$
+\end{itemize}
+Les deux derniers exemples sont fondamentaux, pour prouver que ce sont des temps d'arrêt, on remarque que par exemple $\{H_A > n\} = \{X_0 \notin A, \ldots, X_n \notin A\}$.
+\subsection*{\subsecstyle{Propriétés des temps d'arrêt{:}}}
+On considère alors deux temps d'arrêts $T, M$, on a alors les propriétés suivantes:
+\begin{itemize}
+   \item La variable $\min\{T, M\}$ est un temps d'arrêt.
+   \item La variable $\max\{T, M\}$ est un temps d'arrêt.
+   \item La variable $T + M$ est un temps d'arrêt.
+\end{itemize}
+\subsection*{\subsecstyle{Propriété de Markov faible{:}}}
+On considère une chaîne de Markov $X \sim \text{Markov}(Q, \lambda)$, un état $x \in E$, un entier $n$. Alors on a la propriété suivante dite \textbf{propriété de Markov faible}, qui donne que conditionnelement à $X_n = x$, la chaîne décalée $(X_{k+n})_{k \in \N}$ est indépendante de tout évenement $A \in \sigma(X_0, \ldots, X_n)$, ie:
+$$
+   \forall B \subset E^\N \; ; \; \mathbb{P}(X_{k+n} \in B \, \big| \, \{X_n = x\} \cap A) =  \mathbb{P}(X_{k+n} \in B \, \big| \, X_n = x)
+$$
+Moralement, c'est une propriété \textit{d'oubli du passé}. L'information du passé peut être oubliée. 
+\subsection*{\subsecstyle{Propriété de Markov forte{:}}}
+Gràce à la notion de temps d'arrêt, on peut former la \textbf{propriété de Markov forte} qui donne alors pour tout temps d'arrêt fini $T$ que conditionnelement à $X_T = x$, la chaîne décalée $(X_{k+T})_{k \in \N}$ est indépendante de tout évenement $A \in \sigma(X_0, \ldots, X_T)$, ie:
+$$
+   \forall B \subset E^\N \; ; \; \mathbb{P}(X_{k+T} \in B \, \big| \, \{T < \infty, X_T = x\} \cap A) =  \mathbb{P}(X_{k+T} \in B \, \big| \, X_{T} = x)
+$$
+
+\pagebreak
+\subsection*{\subsecstyle{Probabilités d'atteinte, analyse à un pas{:}}}
+On peut donc chercher pour $x \in E$ et $A \subseteq E$ la probabilité d'atteinte de $A$ en partant de $x$, définie par:
+$$
+   h_A(x) := \mathbb{P}(H_A < \infty \,\big|\, X_0 = x)
+$$
+Ce sera une idée courante par la suite pour étudier la réccurence. En outre, il existe une méthode usuelle pour étudier ces problèmes appelées \textbf{analyse à un pas}. Elle consiste à \textbf{conditionner} cette probabilité une étape plus loin puis utiliser la propriété de Markov, en effet on a aprés disjonction de cas sur $x$ vérifie:
+$$
+   h_A(x) = \1_{x \in A} + \1_{x \notin A}\sum_{y \in E \backslash A} \mathbb{P}(X_1 = y)\mathbb{P}(H_A < \infty \,\big|\, X_1 = y, X_0 = x)
+$$
+Par la propriété de Markov, ceci est égal à: 
+$$
+   h_A(x) = \1_{x \in A} + \1_{x \notin A}\sum_{y \in E \backslash A} \mathbb{P}(X_1 = y)\mathbb{P}(H_A < \infty \,\big|\, X_1 = y)
+$$
+Qui donne un \textbf{système linéaire} ! En effet, on obtient: 
+$$
+   h_A(x) = \1_{x \in A} + \1_{x \notin A}\sum_{y \in E \backslash A} \mathbb{P}(X_1 = y)h_A(y)
+$$
+Il est souvent facilement résoluble, notamment dans le cas fini. Cette méthode ce généralise aussi au calcul de probabilité du type $\mathbb{P}(H_A = n)$ ou d'espérance du type $\mathbb{E}[H_A]$.
+\subsection*{\subsecstyle{Etat récurrent{:}}}
+On définit une variable aléatoire apellée \textbf{nombre de visites} en $x$ par:
+$$
+   V_x = \sum_{i = 1}^n \1_{X_i = x}
+$$
+Alors on définit les notions suivantes pour un état $x \in E$:
+\begin{itemize}
+   \item Il est dit \textbf{récurrent} si et seulement si $\mathbb{P}(V_x = \infty \,\big|\, X_0 = x) = 1$.
+   \item Il est dit \textbf{transcient} si et seulement si $\mathbb{P}(V_x < \infty \,\big|\, X_0 = x) = 1$.
+\end{itemize}
+On peut alors montrer que ces notions sont équivalentes à celles-ci:
+\begin{itemize}
+   \item Il est dit \textbf{récurrent} si et seulement si $\mathbb{P}(T_x < \infty \,\big|\, X_0 = x) = 1$.
+   \item Il est dit \textbf{transcient} si et seulement si $\mathbb{P}(T_x < \infty \,\big|\, X_0 = x) < 1$.
+\end{itemize}
+Et que l'on a une caractérisation\footnote[1]{On utilise pour montrer ceci que $\mathbb{P}(V_x > n) = \mathbb{P}(T_x < \infty)^n$ et est donc distribué géométriquement. On calcule ensuite son espérance et on obtient alors le critère.} en termes de \textbf{série} de la récurrence, en effet on a:
+$$
+   x \in E \text{ est récurrent } \iff \sum_{n \in \N} (Q^n)_{x, x} = \infty
+$$
+Par exemple on peut étudier la marche aléatoire uniforme sur $\Z$. On peut montrer que:
+$$
+   \mathbb{P}(X_n = m) = \1_{\{n+m \text{ pair}\}} \binom{n}{\frac{n+m}{2}}p^{\frac{n+m}{2}}(1-p)^{\frac{n-m}{2}}
+$$
+Donc:
+$$
+   \sum_{n \in \N} (Q^n)_{0, 0} = \sum_{n \in \N} \1_{\{n\text{ pair}\}} \binom{n}{\frac{n}{2}}p^{\frac{n}{2}}(1-p)^{\frac{n}{2}}
+$$
+Cette dernière est égale à:
+$$
+   \sum_{k \in \N} \binom{2k}{k}(p(1-p))^{k} = \sum_{k \in \N}u_k
+$$
+\pagebreak
+
+Puis en utilisant la formule de Stirling, on trouve l'équivalent:
+$$
+   u_k \sim \frac{(4p(1-p))^k}{\sqrt{\pi k}}
+$$
+Et donc finalement on a:
+\begin{itemize}
+   \item La marche aléatoire est \textbf{récurrente} si $p=\frac{1}{2}$.
+   \item La marche aléatoire est \textbf{transciente} si $p \neq \frac{1}{2}$.
+\end{itemize}
+Donc la marche aléatoire symétrique sur $\Z$ est récurrente, cette étude se généralise en le théorème de Polya:
+\begin{center}
+   \textbf{La marche aléatoire symétrique sur $\Z^d$ est récurrente si et seulement si $d \leq 2$.}
+\end{center}
+On peut montrer assez facilement que la récurrence est une \textbf{propriété des classes de communication}, et donc en particulier, si $(X_n)$ est irréductible, on dira que la chaîne est récurrente si n'importe quel état est récurrent. En outre dans ce cas, on a que si la chaîne est récurrente, l'état initial n'importe pas et:
+$$
+   \forall x \in E \; ; \;\mathbb{P}(T_x < \infty) = 1
+$$
+\subsection*{\subsecstyle{Etat récurrent positif{:}}}
+Il existe alors un propriété encore plus forte de récurrence qui sera utile par la suite, pour $x \in E$, on dira que $x$ est \textbf{récurrent positif} si et seulement si:
+$$
+   \mathbb{E}[T_x  \,\big|\, X_0 = x] < \infty
+$$
+C'est bien une propriété plus forte, en effet si cette espérance est finie, la probabilité de la variable correspondante est finie mais en revanche si $T_x$ est finie presque partout, a priori rien n'indique que son espérance soit finie. Cette propriété sera \textbf{trés} utile par la suite, et on peut la caractériser par les série, en effet on a que:
+$$
+   x \text{ est récurrent positif} \iff \frac{1}{n}\sum_{k \leq n-1} (Q^k)_{x, x} > 0
+$$ 
+La récurrence positif est aussi une propriété de classes de communication, on dira donc qu'une chaine irréductible est récurrent positive si et seulement si n'importe quel état l'est.
+\chapter*{\chapterstyle{III -- Etude asymptotique}}
+Dans cette dernière partie, on s'intéresse plus particulièrement aux propriétés \textbf{asymptotiques} de la chaîne de Markov. On énoncera notamment un analogue de la loi des grands nombres appelé \textbf{théorème ergodique}, et on cherchera des conditions pour que la chaîne de Markov admet une loi marginale limite, qu'on apellera \textbf{probabilité invariante}.
+
+\subsection*{\subsecstyle{Mesures invariantes{:}}}
+Soit $\pi$ une mesure sur $E$ (pas nécessairement finie), alors on dira qu'elle est \textbf{invariante} pour $Q$ si et seulement si:
+$$
+   \pi = \pi Q
+$$
+On remarque que tout multiple d'une mesure invariante est une mesure invariante et tout combinaison linéaire de mesure invariantes est invariante. En outre si la mesure est de probabilité, toute combinaison \textbf{convexe} de probabilités invariantes reste une probabilité invariante.
+\subsection*{\subsecstyle{Loi limite{:}}}
+La première rencontre avec une probabilité invariante que l'on peut avoir vient souvent de la propriété suivante:
+\begin{center}
+   \textbf{Si $X_n \longrightarrow X$ avec $X$ de loi $ \pi$, alors $\pi$ est une probabilité invariante.}
+\end{center}
+Par exemple, on peut considérer la chaîne a deux états, alors on a par diagonalisation:
+$$
+   Q^n = \begin{pmatrix}
+      1-\alpha & \alpha\\ \beta & 1-\beta 
+   \end{pmatrix}^n = \begin{pmatrix}
+      1 & -\frac\alpha\beta\\ 1 & 1 
+   \end{pmatrix}\begin{pmatrix}
+      1 & 0\\ 0 & -\alpha-\beta + 1
+   \end{pmatrix}^n\frac{1}{\alpha+\beta}\begin{pmatrix}
+      \beta & \alpha\\ -\beta & \beta
+   \end{pmatrix}
+$$
+Puis on calcule:
+$$
+   Q^n = \frac{1}{\alpha+\beta}\begin{pmatrix}
+      \beta + \alpha o(1)  & \alpha - \alpha o(1)\\ \beta-\beta o(1) & \alpha+\beta o(1)
+   \end{pmatrix} \longrightarrow \frac{1}{\alpha+\beta}\begin{pmatrix}
+      \beta & \alpha \\ \beta & \alpha
+   \end{pmatrix}
+$$
+Donc si $\lambda = ( \lambda_1, \lambda_2)$ est la probabilité initiale, alors on a:
+$$
+   \lambda Q^n \longrightarrow \frac{1}{\alpha+\beta} \begin{pmatrix}
+      \beta(\lambda_1 + \lambda_2)\\ \alpha(\lambda_1 + \lambda_2)
+   \end{pmatrix} = \frac{1}{\alpha+\beta} \begin{pmatrix}
+      \beta\\ \alpha
+   \end{pmatrix}
+$$
+Donc $ \pi = \frac{1}{\alpha+\beta} \begin{pmatrix}\beta\\ \alpha\end{pmatrix}$ est une probabilité invariante pour la chaîne à deux états.
+
+\subsection*{\subsecstyle{Aperiodicité{:}}}
+Une question naturelle est alors:
+\begin{center}
+   \textit{Existe-il une réciproque a ce résultat, ie si $X$ admet une probabilité invariante, as-t-on que $\mathbb{P}_{X_n} \longrightarrow \pi$ ?}
+\end{center}
+En général c'est faux, c'est néanmoins le cas si la chaîne est \textbf{apériodique}, pour définir ce concept, on définit la \textbf{période} d'un état $x \in E$ par:
+$$
+   \text{per}(x) := \text{pgcd}\{n \in \N \; ; \; (Q^n)_{x, x} > 0\}
+$$
+Moralement, on regarde les cycles de longeur $n$ qui partent de $x$ et y reviennent et on prends le pgcd de leur longueurs. Si une chaîne est apériodique, alors la réciproque est vraie, ie si $X_n$ admet une probabilité invariante $\pi$, alors pour toute distribution initiale $ \lambda$, on a que:
+$$
+   \mathbb{P}_{X_n} \longrightarrow \pi
+$$
+\subsection*{\subsecstyle{Conditions suffisantes pour obtenir une probabilité invariante{:}}}
+Il existe aussi des conditions plus simples pour trouver une probabilité invariante. En voici une liste non exhaustive:
+\begin{itemize}
+   \item \textbf{La méthode classique:} Résoudre le système d'inconnue $ \pi = (\pi_1, \ldots, \pi_n)$ suivant:
+   $$
+      \begin{cases}
+         \pi Q = \pi\\
+         \sum_{i \in \N} \pi_i = 1
+      \end{cases}
+   $$
+   \item \textbf{Les mesures réversibles:} On apelle \textbf{mesure réversible} toute mesure $ \pi = (\pi_1, \ldots, \pi_n)$ telle que:
+   $$
+      \forall x, y \in E \; ; \; \pi_xQ(x, y) = \pi_yQ(y, x)
+   $$
+   Si une telle mesure existe, elle est invariante, c'est en général plus simple que la méthode précédente.
+   \item \textbf{Les matrices bistochastiques:} On apelle \textbf{matrice bistochastique} une matrice telle que toute ligne ou colonne somme à 1 et tout ses coefficients sont positifs. Si $Q$ est bistochastique, alors elle admet la mesure uniforme comme probabilité invariante.
+\end{itemize}
+
+\subsection*{\subsecstyle{Existence de mesures invariantes{:}}}
+Les concepts précédents définis permettent alors de donner des conditions suffisantes pour l'existence de mesures invariantes. Dans la suite de cette section on supposera les chaînes de Markov \textbf{irréductibles}. Alors on a:
+\begin{itemize}
+   \item Toute chaîne de Markov \textbf{récurrente} admet une \textbf{mesure invariante}.
+   \item Toute chaîne de Markov \textbf{récurrente positive} admet une \textbf{probabilité invariante}.
+\end{itemize}
+C'est le critère principal qui nous permettra d'affirmer l'existence de telles mesures.
+
+\subsection*{\subsecstyle{Théorème ergodique{:}}}
+Dans la suite on suppose que $Q$ est irréductible et récurrente positive. On note $ \pi$ sa probabilité invariante. Alors pour toute fonction $f : E \longrightarrow \R$, telle que $f \in L^1(\pi)$ alors on a:
+$$
+   \frac{1}{n}\sum_{k \leq n} f(X_k) \overset{p.s.}{\longrightarrow}\sum_{x \in E} f(x)\pi(x)
+$$
+C'est en fait un analogue à la loi des grands nombres (dont la preuve découle non trivialement), qui moralement signifique que:
+\begin{center}
+   \textit{La moyenne empirique des valeurs de $f$ sur la chaîne de Markov converge vers l'espérance de $f$ contre une mesure invariante.}
+\end{center}
+\subsection*{\subsecstyle{Généralisation du théorème ergodique{:}}}
+On peut généraliser ce théorème à $f: E^2 \longrightarrow \R$ telle que $ \sum_{x, y \in E} |f(x, y)| \pi(x)Q(x, y) < \infty$ par:
+$$
+   \frac{1}{n}\sum_{k \leq n} f(X_{k}, X_{k+1}) \overset{p.s.}{\longrightarrow}\sum_{x, y \in E} f(x)\pi(x)Q(x, y)
+$$
+Et plus généralement à toute fonction $f: E^k \longrightarrow \R$ quitte à rajouter des termes dans l'espérance limite.
+\subsection*{\subsecstyle{Application du théorème ergodique{:}}}
+Ce théorème nous permet par exemple de calculer:
+\begin{itemize}
+   \item La proportion asymptotique d'un état fixé $y \in E$, on choisit la fonction $f(x) = \1_{\{x = y\}}$. 
+   \item La proportion asymptotique de changement d'états, on choisit la fonction $f(x, y) = \1_{\{x \neq y\}}$.
+\end{itemize}
+
+\chapter*{\chapterstyle{III -- Statistiques inférentielles}}
+\addcontentsline{toc}{section}{Statistiques inférentielles}
+Dans ce chapitre on introduit la démarche inverse à celle du probabiliste, ie celle du statisticien:
+\begin{center}
+   \textit{Etant donnée des réalisation d'une variable aléatoire dont je peux raisonnablement cerner le type, que puis je dire sur cette distribution ?}
+\end{center}
+Plus formellement, on observe une variable aléatoire $X$ à valeurs dans un espace probabilisable $(\Omega, \mathcal{A})$ appelé \textbf{espace des observations} et dont on ne connait pas la distribution.\<
+
+On définit un \textbf{modèle statistique} (paramétrique) comme le choix d'une famille de mesures de probabilités  $(\mathbb{P}_\theta)_{\theta \in \Theta}$ sur $X(\Omega)$ pour un espace des paramètres $\Theta \subseteq \R^d$. On suppose que cette  famille contient la "vraie" distribution de $X$. Notre objectif est alors d'utiliser l'observation pour réussir a obtenir des informations sur cette vraie distribution. Quelques exemples:
+\begin{itemize}
+   \item \textbf{Le modèle de Bernoulli:} Ici on choisit $\Theta = \icc{0}{1}$ et le modèle: 
+   $$
+      (\Omega, \mathcal{A}, \mathbb{P}_\theta) = (\{0, 1\}, \mathcal{P}(\Omega), \text{Bernoulli}(\theta))
+   $$
+   Notre observation modélise le résultat d'une expérience de Bernoulli.
+   \item \textbf{Le modèle de Bernoulli général:} Ici on choisit $\Theta = \icc{0}{1}$ et le modèle: 
+   $$
+      (\Omega, \mathcal{A}, \mathbb{P}_\theta) = (\{0, 1\}^\N, \mathcal{P}(\Omega), \text{Bernoulli}(\theta)^{\otimes \N})
+   $$
+   Notre observation modélise le résultat d'une infinité de réalisations iid d'une variable de Bernoulli.
+   \item \textbf{Le modèle exponentiel:} Ici on choisit $\Theta = \R_+$ et le modèle: 
+   $$
+      (\Omega, \mathcal{A}, \mathbb{P}_\theta) = (\R_+^\N, \mathcal{B}(\Omega), \mathcal{E}(\theta)^{\otimes \N})
+   $$
+   Notre observation modélise le résultat d'une infinité de réalisations iid d'une variable exponentielle.
+   \item \textbf{Le modèle Gaussien:} Ici on choisit $\Theta = \R \times \R_+$ et le modèle: 
+   $$
+      (\Omega, \mathcal{A}, \mathbb{P}_\theta) = (\R, \mathcal{B}(\Omega), \mathcal{N}(\theta)^{\otimes \N})
+   $$
+   Notre observation modélise le résultat d'une infinité de réalisations iid d'une variable gaussienne.
+\end{itemize}
+De manière générale, si $(\Omega, \mathcal{A}, \mathbb{P}_\theta)$ est un modèle statistique, l'observation est une réalisation d'une variable à valeurs dans ce modèle, et le modèle statistique $(\Omega^n, \mathcal{A}^{\otimes n}, \mathbb{P}_\theta)^{\otimes n}$ correspond à observer $n \in \N \cup \{ \infty \}$ observation iid du premier modèle.
+
+\subsection*{\subsecstyle{Estimateurs, biais, risque{:}}}
+Un des concepts principaux

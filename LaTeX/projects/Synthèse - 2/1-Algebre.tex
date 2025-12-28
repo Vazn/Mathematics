@@ -1,0 +1,588 @@
+\chapter*{\chapterstyle{I -- Introduction à la théorie des corps}}
+\addcontentsline{toc}{section}{Introduction à la théorie des corps}
+Dans ce chapitre, nous nous intéressons à la théorie des corps et des extensions de corps, c'est un chapitre fondamental dans l'étude générale des corps, des polynômes, voir même des groupes via la théorie de Galois.  Soit \(A\) un anneau commutatif dont tout les éléments non-nuls sont inversibles. Alors on dit que \(A\) est \textbf{un corps} et on le note en général \(K\). Voici quelques exemples de corps remarquables:
+\begin{itemize}
+   \item Les \textbf{réels} muni des opérations usuelles.
+   \item Les \textbf{complexes} muni des opérations usuelles.
+   \item Les \textbf{corps finis} dont (certains) exemples sont \(\mathbb{F}_p = \Z/p\Z\) pour \(p\) premier.
+   \item Les \textbf{nombres constructibles} à la règle et au compas.
+\end{itemize}
+\subsection*{\subsecstyle{Idéaux maximaux{:}}}
+Etant donné un anneau intègre et commutatif, on peut vouloir définir, de manière analogue aux idéaux premiers, les idéaux tels que \( A/I \) est un corps. On apelle de tels idéaux \textbf{idéaux maximaux} et ils vérifient:
+\[ 
+   \forall J \leq \mathbb{A} \; ; \; I \subseteq J \implies J = A \text{ ou } J = I 
+\]
+En fait ce sont exactement les idéaux maximaux pour l'inclusion. Cette définition, ainsi que le fait que les \( p\Z \) sont facilement maximaux, permet de montrer que \(\mathbb{F}_p = \Z/p\Z\) sont bien des corps.
+\subsection*{\subsecstyle{Morphismes de corps{:}}}
+Un morphisme de corps est alors simplement un morphisme d'anneaux. Néanmoins dans ce cas particulier, on peut noter la proposition suivante:
+\begin{center}
+   \textbf{Tout les morphismes de corps sont injectifs.}
+\end{center}
+En particulier ceci nous indique que l'étude des relations entre les corps se ramène à des études d'inclusion abstraites, car si deux corps sont reliés par un morphisme, alors l'un est nécessairement plongé dans l'autre, ou plutôt, l'un est nécessairement une extension de l'autre, ce qui motive la partie suivante.
+\subsection*{\subsecstyle{Extensions de corps {:}}}
+Soit $K, L$ deux corps, alors on dit que $L$ est une \textbf{extension} de $K$ ou encore que $K$ est un \textbf{sous-corps} de $L$ si on a $K \hookrightarrow L$, et on notera alors souvent $K \subseteq L$. On note alors les propriétés suivantes:
+\begin{itemize}
+   \item L'intersection d'une famille quelconque de sous-anneaux de $L$ reste un sous-anneau de $L$.
+   \item L'intersection d'une famille quelconque de sous-corps de $L$ reste un sous-corps de $L$.
+\end{itemize}
+Ceci permet la définition suivante, pour $A$ une partie quelconque de $L$, on définit:
+\begin{itemize}
+   \item $K[A]$ le \textbf{plus petit sous-anneau} de $L$ qui contient $A$.
+   \item $K(A)$ le \textbf{plus petit sous-corps} de $L$ qui contient $A$.
+\end{itemize}
+\pagebreak
+Qu'on peut alors caractériser par:
+\begin{itemize}
+   \item $K[A] = \left\{ P(a_1, \ldots, a_k) \; \big| \; k \in \N \; , \; (a_i)_{i \leq k} \in A \; , \; P \in K[X_1, \ldots, X_k] \right\} $ 
+   \item $K(A) = \left\{ F(a_1, \ldots, a_k) \; \big| \; k \in \N \; , \; (a_i)_{i \leq k} \in A \; , \; F \in K(X_1, \ldots, X_k) \right\}$
+\end{itemize}
+Ce sont les polynômes en les éléments de $A$, respectivement les fractions rationnelles\footnote[1]{On simplifie l'écriture pour le second ensemble, mais il faut évidemment que les fractions rationnelles considérées soient bien définies sur les éléments de $A$ considérés.} en les éléments de $A$. Cette caractérisation nous permet alors de construire facilement des extensions de corps intermédiaires si on connaît déja une extension de corps. Quelques exemples:
+\begin{itemize}
+   \item L'extension $\Q \subseteq \Q(\sqrt{2})$
+   \item L'extension $\R \subseteq \R(i) = \C$
+   \item L'extension $\R \subseteq \R(X)$
+   \item L'extension $\Q \subseteq \Q(A)$ où $A = \{\sqrt[n]{2} \; \big| \; n \in \N \}$
+\end{itemize}
+Si $L$ est une extension de corps de $K$ et si il existe une partie $A$ \textbf{finie} telle que $L = K(A)$, alors on dira que $L$ est une extension de \textbf{type fini}. Dans les exemples précédents, les trois premières extensions sont de type fini mais la dernière ne l'est pas.
+\subsection*{\subsecstyle{Extensions comme algèbres et degré {:}}}
+La donnée d'une extension $K \subseteq L$ peut être interprétée sous un autre point de vue, en effet l'existence d'une telle extension donne alors la structure suivante
+\begin{center}
+   \textbf{Le corps $L$ est muni d'une structure d'algèbre (et donc d'espace vectoriel) sur le corps $K$.}
+\end{center}
+En effet, on peut définir une multiplication "externe" des éléments de $L$ par les éléments de $K$. Ceci nous permet alors de parler de la \textbf{dimension} de $L$ en tant que $K$ espace vectoriel, qu'on note alors:
+$$
+   [L : K] := \text{dim}_K(L)
+$$
+On appelle alors cette dimension \textbf{le degré} de l'extension.
+\subsection*{\subsecstyle{Extensions finies et formules des degrés {:}}}
+Si la dimension ci-dessus est \textbf{finie} on dira que l'extension est finie. On considère maintenant deux extensions successives:
+$$
+   K \rightarrow L \rightarrow M
+$$
+Alors l'extension $K \subseteq M$ est finie si et seulement si $K \subseteq L$ et $L \subseteq M$ le sont et on a alors:
+$$
+   [M : K] = [L : K][M : L]
+$$
+On représente alors de manière générale ces extensions par un graphe orienté pondéré par les dimensions, et dans ce cas on a \textbf{TODO: Graphe}.
+
+En particulier, on a l'implication suivante:
+\begin{center}
+   \textbf{Une extension finie est de type fini.}
+\end{center}
+En effet si $K \subseteq L$ est finie, il suffit de considérer une base $(e_1, \ldots, e_n)$ et alors $L = K(e_1, \ldots, e_n)$.
+
+\pagebreak 
+\subsection*{\subsecstyle{Morphisme d'extension {:}}}
+Comme souvent lorsque l'on introduit une nouvelle structure mathématique, on cherche à définir des morphismes pour ces structures. Ici on peut définir le concept de \textbf{morphisme d'extension} entre deux extensions $K \subseteq L$ et $K \subseteq L'$.\<
+
+On dira que $ \phi : L \longrightarrow L'$ est un morphisme de $K$-extension si et seulement si c'est un morphisme de corps et qu'il fait commuter le diagramme suivant:
+\begin{center}
+   \begin{tikzpicture}
+      \begin{tikzcd} 
+         K \arrow[r, "i"] \arrow[dr, "i'"'] & L \arrow[d, "\phi"] \\ & L' 
+      \end{tikzcd}
+   \end{tikzpicture}
+\end{center}
+Ceci signifie simplement que l'on requiert aussi que $\phi|_K = \text{Id}_K$. Cette condition est aussi équivalente à demander que $\phi$ soit un morphisme de corps qui soit aussi un morphisme de $K$-algèbre. 
+\subsection*{\subsecstyle{Remarque sur les polynômes {:}}}
+On se place dans le contexte de la section précédente, on peut alors faire la remarque suivante:
+$$
+   \forall P \in K[X] \; ; \; \phi \circ P = P \circ \phi
+$$
+La contrainte demandée donne alors la propriété que les polynômes à coefficients dans le corps de base commutent avec $ \phi$. En outre, si par exemple $P$ admet une racine $l \in L$, alors $\phi(l)$ est une racine de $P$ dans $L'$.
+\chapter*{\chapterstyle{I -- Extensions algébriques}}
+\addcontentsline{toc}{section}{Elements algébriques, extensions algébriques}
+Dans cette partie, on définit un type particulier d'éléments d'une extension de corps, qui seront appelés \textbf{éléments algébriques}, puis un type d'extension particulièrement utile qui seront les \textbf{extensions algébriques}.
+\subsection*{\subsecstyle{Elements algébriques, transcendants {:}}}
+On considère une extension $K \subseteq L$ et un élement $x \in L$, alors on dira que $x$ est \textbf{algébrique sur $K$} si et seulement si:
+$$
+   \exists P \in K[X] \; ; \; P(x) = 0
+$$
+Si ce n'est pas le cas, on dira que $x$ est \textbf{transcendant}. Quelques exemples:
+\begin{itemize}
+   \item Le nombre $i$ est algébrique sur $\R$ car il est racine de $X^2 + 1$.
+   \item Le nombre $\sqrt2$ est algébrique sur $\Q$ car il est racine de $X^2 - 2$.
+   \item L'indéterminée $X$ est transcendante sur $\R$.
+   \item Le nombre $ \pi$ est transcendant sur $ \Q$, c'est un fait non-trivial.
+\end{itemize}
+Une remarque utile est alors que si $a, b$ sont algébriques sur $K$, alors leur somme, produit et quotient est aussi algébrique sur $K$, et donc l'ensemble des nombres algébriques sur $K$ forme un sous-corps de $L$.
+\subsection*{\subsecstyle{Annulateurs, polynôme minimal {:}}}
+Si $x \in L$ est un élement algébrique d'une extension $K \subseteq L$, on peut alors définir l'ensemble de ses annulateurs, ie:
+$$
+   \mathcal{A}_x := \left\{ P \in K[X] \big| P(x) = 0 \right\} 
+$$
+C'est un idéal, il admet donc un élément unitaire de plus petit degré (et donc irréductible), unique si on le demande unitaire, que l'on appelle \textbf{polynôme minimal} de $x$ sur $K$. On le notera par la suite $M_K(x)$.
+\subsection*{\subsecstyle{Extensions algébriques {:}}}
+On considère une extension $K \subseteq L$, on dira qu'elle est \textbf{algébrique} si et seulement si:
+$$
+   \forall x \in L \; ; \; x \text{ est algébrique sur } K
+$$
+Un premier cas simple est celui d'une extension de $K$ par un unique élément $x \in L$, on peut alors considérer le morphisme d'évaluation en $x$ donné par:
+$$
+   \begin{aligned}
+      ev_x: K[X] &\longrightarrow K[x] \subseteq L\\
+      P &\longmapsto P(x)
+   \end{aligned}
+$$
+On a alors deux cas:
+\begin{itemize}
+   \item Soit $x$ est transcendant et alors le noyau de ce morphisme est trivial et donc $K[X] \cong K[x]$, et alors leurs corps de fractions sont isomorphes, ie $K(X) \cong K(x)$ et donc: 
+   $$
+      [K(x) : K] = \infty
+   $$
+   \item Soit $x$ est algébrique et alors le noyau de ce morphisme est $(M) := (M_K(x))$ et cet idéal est maximal, dans ce cas, par une application du théorème d'isomorphisme\footnote[1]{En effet, $K[X]/(M) \cong K[x]$, donc $K[x]$ est un corps (et c'est le plus petit), ie $K[x] = K(x)$. En outre, la base $(1, \overline{X}, \ldots, \overline{X}^{n-1})$ est obtenue par division euclidienne.}, on trouve que: 
+   $$
+      [K(x) : K] = \text{deg}(M)
+   $$
+\end{itemize}
+\subsection*{\subsecstyle{Propriétés des extensions algébriques {:}}}
+On a alors les propriétés suivantes:
+\begin{itemize}
+   \item Si $K \subseteq L$ est \textbf{finie}, alors elle est \textbf{algébrique}.
+   \item Si $K \subseteq L$ est \textbf{algébrique et de type fini}, alors elle est \textbf{finie}.
+\end{itemize}
+Aussi, si $K \subseteq L$ est une extension quelconque et que $a, b \in L$ sont algébriques sur $K$, alors $a+b, ab, \frac{a}{b}$ sont aussi algébriques sur $K$, ie  l'ensemble des éléments de $L$ algébriques sur $K$ est un sous-corps de $L$.
+\subsection*{\subsecstyle{Corps de rupture d'un polynôme irréductible {:}}}
+On inverse alors le point de vue, on se donne un polynôme irréductible $P \in K[X]$ et on cherche à construire un corps tel que $P$ ait une racine.\<
+
+C'est en fait toujours possible ! Il suffit de considérer \textbf{l'unique} corps $K[X]/(P)$. Alors dans ce nouveau corps, le polynôme $P$ admet $\overline{X}$ comme racine.\<
+
+Si de plus on connaît\footnote[1]{Ce qui est toujours le cas car les clotûres algébriques existent toujours !} une extension $L$ de $K$ qui contiennent une racine $\alpha$ de $P$, alors on peut définir un \textbf{unique} isomorphisme qui réalise le corps de rupture par:
+$$
+   \begin{aligned}
+      \Phi_\alpha: K[X]/(P) &\longrightarrow K(\alpha)\\
+      \sum a_k\overline{X}^k   &\longmapsto \sum a_k\alpha^k\\
+   \end{aligned}   
+$$
+Si maintenant $L$ contient une racine \textbf{différente} $ \beta$ de $P$, alors il existe une autre réalisation $\Phi_{\beta}$ du corps de rupture $K(\alpha')$ donnée par le même procédé. Ces deux corps sont bien isomorphes et l'isomorphisme est \textbf{unique} et donné par:
+$$
+   \Psi = \Phi_{\beta} \circ \Phi^{-1}_{\alpha}
+$$
+En particulier on en déduit la propriété suivante:
+\begin{center}
+   \textbf{Deux réalisations $K(\alpha), K(\beta)$ d'un corps de rupture sont isomorphes par l'unique fonction qui envoie $ \alpha$ sur $\beta$ et fixe $K$.}
+\end{center}
+Quelques exemples:
+\begin{itemize}
+   \item Le corps $ \C$ est le corps de rupture de $X^2 + 1$ réalisé par $ \R(i)$ ou $\R(-i)$
+   \item Le corps $ \Q(\sqrt{2})$ est le corps de rupture de $X^2 - 2$ réalisé par $ \Q(\sqrt{2})$ ou $\Q(-\sqrt{2})$
+\end{itemize}
+Dans ces deux cas on a respectivement les isomorphismes suivants : $\{\text{Id}, i \mapsto -i\}$ et $\{\text{Id}, \sqrt2 \mapsto -\sqrt2\}$.
+\subsection*{\subsecstyle{Corps de décompostion d'un polynôme irréductible {:}}}
+On peut alors construire par récurrence et adjonction de racines, un corps tel que $P$ soit scindé. Un tel corps est appelé \textbf{corps de décomposition} de $P$.\<
+
+Si de plus on connaît\footnote[1]{Ce qui est toujours le cas car les clotûres algébriques existent toujours !} une extension $L$ de $K$ qui contiennent toutes les racines $(\alpha_i)_{i \leq n}$ de $P$, alors on peut définir un \textbf{unique} isomorphisme qui réalise le corps de décomposition par:
+$$
+   \begin{aligned}
+      \Phi: D_P &\longrightarrow L := K(\alpha_1, \ldots, \alpha_n)\\
+      \overline{X_i} &\longmapsto \alpha_i\\
+   \end{aligned}   
+$$
+Alors on peut faire de même qu'avec le corps de rupture et remarquer qu'ici un choix arbitraire est fait, celui de la numérotation des $\alpha_i$, mais n'importe quelle permutation des indice donne aussi une réalisation de $D_P$ ? Non il semblerait qu'il faille que la renumérotation des $(a_i)$ ne change aucune relation algébrique ???? TODO ...
+\subsection*{\subsecstyle{Corps algébriquement clos{:}}}
+Gràce à ces constructions on définit alors la notion de corps \textbf{algébriquement clos} comme étant tout corps $K$ tel que:
+\begin{center}
+   \textbf{Tout polynôme non constant de $ K[X]$ admet une racine dans $K$.}
+\end{center}
+On définit alors la \textbf{clotûre algébrique} d'un corps quelconque $K$ comme une extenstion de $K$ algébriquement close. On peut alors montrer le théorème fondamental suivant:
+\begin{center}
+   \textbf{Tout les corps admettent des clotûres algébriques.}
+\end{center}
+Par exemple $\C$ est la clotûre algébrique de $\R$, c'est le théorème de d'Alembert-Gauss.
+\chapter*{\chapterstyle{I -- Corps finis}}
+\addcontentsline{toc}{section}{Corps finis}
+Dans ce chapitre, on s'intéresse tout particulièrement à des corps particuliers, les corps $K$ de cardinal fini. Alors on rapelle qu'il existe le morphisme \textit{caractéristique} suivant:
+$$
+   \begin{aligned}
+      \phi: \Z &\longrightarrow K\\
+      n &\longmapsto n \cdot 1_K
+   \end{aligned}
+$$
+C'est un morphisme d'anneau intègre et on montre son noyau est soit trivial, soit de la forme $p\Z$ avec $p$ premier. On dira alors que $p$ est la \textbf{caractéristique} de $K$ et que l'image de $ \phi$, le sous-corps engendré par $1$ est appelé \textbf{sous corps premier} de $K$. 
+\begin{itemize}
+   \item Si la caractéristique est nulle, le sous-corps premier est (une copie de) $\Q$.
+   \item Si la caractéristique est $p$, le sous-corps premier est (une copie de) $\mathbb{F}_p := \Z/p\Z$.
+\end{itemize}
+
+\subsection*{\subsecstyle{Caractérisation{:}}}
+Si $K$ est un corps fini, il est de caractéristique $p$ et donc on a l'extension $\mathbb{F}_p \subseteq K$, donc $K$ est un $\mathbb{F}_p$ espace vectoriel, et il est de dimension finie $n$ car $K$ est fini. On en déduit alors que nécéssairement:
+$$
+   K \cong (\mathbb{F}_p)^n 
+$$
+Et donc $|K| = p^n$ nécéssairement. Ceci donne une forme nécessaire aux corps finis, ils sont tous de cardinal $p^n$. On peut même dire plus, en effet:
+\begin{center}
+   \textbf{Tout corps $K$ de cardinal $p^n$ est isomorphe au corps de décomposition de $X^{p^n} - X$ sur $\mathbb{F}_p$.}
+\end{center}
+On note ces corps $\mathbb{F}_{p^n}$, on peut alors montrer que de tels corps existent toujours, en effet, il existe toujours un polynôme $P \in \mathbb{F}_p[X]$ irréductible de degré $n$, et on considère alors:
+$$
+   \mathbb{F}_p[X]/(P)
+$$
+C'est une extension de degré $n$ de $\mathbb{F}_p$, ce corps est donc isomorphe à $\mathbb{F}_{p^n}$. Quelques exemples:
+\begin{itemize}
+   \item Le polynôme $P = X^2 + X + 1$ est irréductible sur $\mathbb{F}_2$, on peut donc construire $\mathbb{F}_4 = \mathbb{F}_2[X]/(P)$
+   \item Le polynôme $P = X^3 - X - 1$ est irréductible sur $\mathbb{F}_3$, on peut donc construire $\mathbb{F}_{27} = \mathbb{F}_3[X]/(P)$
+\end{itemize}
+\subsection*{\subsecstyle{Groupes multiplicatif{:}}}
+Beaucoup des propriétés des corps finis découlent de la propriété suivante:
+$$
+   (\mathbb{F}_{p^n}^\times, \times) \textbf{ est un groupe cyclique d'ordre } p^n - 1
+$$
+En particulier, les éléments non-nuls de $\mathbb{F}_{p^n}$ sont des racines $p^n - 1$-èmes de l'unité.
+\subsection*{\subsecstyle{Propriété d'inclusion{:}}}
+On peut alors montrer la propriété fondamentale suivante sur les corps finis:
+$$
+   \mathbb{F}_{p^n} \subseteq \mathbb{F}_{p^m} \iff n \mid m
+$$
+Par exemple $\mathbb{F}_4 \subseteq \mathbb{F}_{16}$ mais $\mathbb{F}_8 \not\subseteq \mathbb{F}_{16}$.
+\subsection*{\subsecstyle{Morphisme de Frobenius{:}}}
+Enfin, une propriété qui n'existe pas pour les extensions de corps quelconques, est qu'ici on a un automorphisme de corps, appelé \textbf{automorphisme de Frobenius} donné par:
+$$
+   \begin{aligned}
+      F: \mathbb{F}_{p^n} &\longrightarrow \mathbb{F}_{p^n}\\
+      x &\longmapsto x^p
+   \end{aligned}
+$$
+Cet automorphisme génère même une famille\footnote[1]{C'est en fait exactement l'ensemble des automorphismes de $\mathbb{F}_{p^n}$, en effet, si on fixe une racine $\alpha$ de $P$, alors $F^k : \mathbb{F}_{p}(\alpha) \longrightarrow \mathbb{F}_{p}(\alpha^p)$, l'isomorphisme entre deux réalisation de $\mathbb{F}_{p^n}$ (en tant que corps de rupture) qui envoie $\alpha$ sur $\alpha^p$.} d'automorphismes $(Id, F, F^2, \ldots, F^{n-1})$, le groupe cyclique engendré par $F$.
+
+\chapter*{\chapterstyle{I -- Théorie des représentations}}
+\addcontentsline{toc}{section}{Théorie des représentations}
+Dans ce chapitre, on développe la théorie moderne qui a permi d'étudier efficacement et de classifier les groupes, la \textbf{théorie des représentations}. On se donne un groupe $G$, au départ quelconque, et on se propose de chercher à définir une \textbf{action linéaire} de $G$ sur un espace vectoriel $V$, ie de définir une application:
+$$
+   \begin{aligned}
+      \rho : G \times V &\longrightarrow V\\
+      (g, v) &\longmapsto g(v)
+   \end{aligned}
+$$
+Qui vérifie les axiomes du action de groupe, et telle que:
+$$
+   \forall u,v \in V \; ; \; \forall \lambda \in \K \; ; \; g(u + \lambda v) = g(u) + \lambda g(v)
+$$
+Cette donnée, comme pour les actions classiques, se reformulent en la donnée du morphisme de structure:
+$$
+   \begin{aligned}
+      \rho : G &\longrightarrow GL(V)\\
+      g &\longmapsto (\rho(g) : v \longrightarrow g(v))
+   \end{aligned}
+$$
+On dira que la représentation est fidèle, resp. transitive si l'action correspondante l'est.
+\subsection*{\subsecstyle{Définition{:}}}
+Une représentation linéaire du groupe $G$ est un couple $(V, \rho)$ où $V$ est un espace vectoriel et $\rho$ une action linéaire comme définie ci-dessus. On note alors commodément $V$ la représentation quand le contexte le permet et:
+$$
+   g(v) := \rho(g)(v)
+$$
+Quelques exemple classiques qui seront généralisés par la suite:
+\begin{itemize}
+   \item Si $G = \Z$, une représentation est caractérisée par la donnée d'un automorphisme $f$.
+   \item Si $G = \Z^k$, une représentation est caractérisée par la donnée de $k$ automorphismes $f_1, \ldots, f_k$.
+   \item Si $G = \Z/k\Z$, une représentation est caractérisée par la donnée d'un automorphisme $f$ telle que $f^k = Id$.
+   \item Si $G = \mathfrak{S}_3$, on peut représenter ce groupe par son action naturelle sur une base de $\R^3$.
+   \item Si $G = \mathfrak{S}_3$, on peut représenter ce groupe par son action naturelle sur de $\K[X, Y, Z]$.
+\end{itemize}
+\subsection*{\subsecstyle{Sous-représentations{:}}}
+On se donne un groupe $G$ muni d'une représentation $V$ et on cherche à savoir si on peut décomposer l'action de $G$ sur $V$ en sous-actions sur des sous-espaces.\<
+
+On dira que $ W \leq V$ est une \textbf{sous-représentation} de $V$ si c'est un sous-espace $G$-stable, ie tel que l'action induite sur $W$ soit bien définie, plus formellement:
+$$
+   \forall v \in W \; ; \; g(v) \in W
+$$
+\subsection*{\subsecstyle{Morphisme de représentation{:}}}
+Comme souvent lorsque l'on introduit une nouvelle structure mathématique, on cherche à définir des morphismes pour ces structures. Ici on peut définir le concept de \textbf{morphisme de représentation} entre deux représentations $(V, \rho)$ et $(V', \rho')$. C'est la donnée d'un morphisme $\phi: V \longrightarrow V'$ compatible avec l'action de $G$, ie tel que:
+$$
+   \forall v \in V \; ; \; \phi(\rho(g)(v)) = \rho'(g)\phi(v)
+$$
+Et plus commodément, en rendant implicite les différentes actions, on notera souvent:
+$$
+   \forall v \in V \; ; \; \phi(g(v)) = g(\phi(v))
+$$
+On dira alors que $ \phi$ est un morphisme de représentation, ou encore une application $G$-linéaire.\pagebreak
+
+La propriété ci-dessus est aussi équivalente à faire commuter le diagramme suivant:
+\begin{center}
+   \begin{tikzcd}
+      V \arrow[d, "\rho(g)"'] \arrow[r, "\phi"] & V' \arrow[d, "\rho'(g)"] \\
+      V\arrow[r, "\phi"']              & V'
+   \end{tikzcd}
+\end{center}
+Quelques propriétés élémentaires des morphismes de représentations:
+\begin{itemize}
+   \item Le noyau d'un morphisme de représentation est une sous-représentation.
+   \item L'image d'un morphisme de représentation est une sous-représentation.
+\end{itemize}
+\subsection*{\subsecstyle{Constructions classiques{:}}}
+On se propose maintenant de construire des représentations nouvelles avec la donnée d'une ou plusieurs représentations de $G$. En voici une liste non-exhaustive:
+\begin{itemize}
+   \item \textbf{Représentation somme directe:} Si $(V, \rho)$ et $(V', \rho')$ sont deux représentations de $G$, alors on peut former:
+   $$
+      \begin{aligned}
+         \rho : G &\longrightarrow GL(V \oplus V')\\
+         g &\longmapsto (\rho(g), \rho'(g))
+      \end{aligned}
+   $$
+   On note alors cette représentation $\rho = \rho \oplus \rho'$. Ici la somme directe est \textbf{externe}. Si elle est interne, la propriété revient à dire que l'on peut décomposer une représentation sur une somme directe de sous-représentation.
+   \item \textbf{Représentation morphisme:} Si $(V, \rho)$ et $(V', \rho')$ sont deux représentations de $G$, alors on peut former:
+   $$
+      \begin{aligned}
+         \rho : G &\longrightarrow GL(\mathcal{L}(V, V'))\\
+         g &\longmapsto \rho'(g) \circ \phi \circ \rho(g)^{-1}
+      \end{aligned}
+   $$
+   On agit ici donc sur l'espace vectoriel des morphismes de $V$ dans $V'$. En particulier si $ V' = \K$, alors on note que $GL(\K) \cong \K^*$ et on obtient la représentation duale:
+   $$
+      \begin{aligned}
+         \rho : G &\longrightarrow GL(V^*)\\
+         g &\longmapsto \lambda(\phi \circ \rho(g)^{-1})
+      \end{aligned}
+   $$
+   \item \textbf{Représentation par permutation:} Si $G$ agit sur un ensemble \textbf{fini} $X = \{x_1, \ldots, x_n\}$, alors on peut toujours définir une représentation $(\K^n, \rho)$. En effet si $(e_{x_i})_{i \leq n}$ est une base de $ \K^n$, alors on peut définir:
+   $$
+      g(e_{x_i}) = e_{g(x_i)}
+   $$
+   Ceci définit bien une action linéaire de $G$ sur $\K^n$, on l'appelle la \textbf{représentation par permutation}.
+\end{itemize}
+\subsection*{\subsecstyle{Représentation régulière pour les groupes finis{:}}}
+Si $G$ est fini, il agit naturellement sur lui même via translation et on peut donc naturellement considérer sa représentation par permutation sur $(\K^{|G|}, \rho)$ qui, pour une base fixée $(e_g)_{g \in G}$ est définie par:
+$$
+   g(e_h) = e_{gh}
+$$
+\subsection*{\subsecstyle{Irréductibilité, complète reductibilité{:}}}
+On s'intéresse maintenant à une unique représentation $(V, \rho)$ et on souhaite étudier si elle admet des sous-représentation non-triviale. Si elle n'en admet pas, on dira qu'elle est \textbf{irréductible}.\<
+
+Dans l'autre cas, si elle admet une sous-représentation $W$ non triviale, se pose le problème suivant:
+\begin{center}
+   \textit{Peut on décomposer $\rho$ en $\rho_W \oplus \rho_{W'}$ ?}
+\end{center}
+Ici $W'$ serait alors une sous-représentation de $V$ qui soit \textbf{supplémentaire} avec $W$. Si un tel supplémentaire stable existe pour toute sous-représentation, on dira que $V$ est \textbf{complétement réductible}.
+\subsection*{\subsecstyle{Remarque sur les groupes finis{:}}}
+Si le groupe $G$ est fini et qu'on a une représentation sur un espace vectoriel $V$ qu'on supposera algébriquement clos, alors on peut remarquer que par le théorème de Lagrange:
+\begin{center}
+   \textbf{Le polynôme $X^{|G|}-1$ annule $ \rho(g)$, en particulier, cet endomorphisme est digonalisable.}
+\end{center}
+Réduire la représentation $V$, consiste alors à trouver une décomposition de $V$ telle que les endomorphismes $\rho(g)$ soit sous une forme réduite (généralement diagonale par blocs) \textbf{dans un même base adaptée}.\< 
+
+En particulier, si on arrive à réduire la représentation en somme de droites irréductibles, alors dans un base adaptée, cette décomposition diagonalise tout les $\rho(g)$ "simultanément".
+\subsection*{\subsecstyle{Autre remarque sur les groupes finis{:}}}
+Si le groupe $G$ est fini et qu'on a une représentation sur un espace vectoriel réel (resp. complexe) $V$, alors on peut toujours définir un \textbf{produit scalaire (resp. hermitien) invariant} par l'action de $G$. Cela signifie que pour un bon choix de base, on a la propriété suivante:
+\begin{center}
+   \textbf{Le groupe agit par isométries dans une base bien choisie.}
+\end{center}
+En particulier si le groupe est fini, alors la représentation s'identifie à un élement de  $O_n(\R)$ (resp. $U_n(\C)$), ie une matrice orthogonale (resp. unitaire) !
+
+\subsection*{\subsecstyle{Théorème de Maschke{:}}}
+On souhaite alors trouver une condition suffisante pour qu'une représentation soit complétement réductible, cette condition est donnée\footnote[1]{La preuve repose soit sur la construction d'un projecteur $G$-invariant, soit sur la construction d'un produit scalaire $G$-invariant.} par le \textbf{théorème de Maschke}:
+\begin{center}
+   Tout représentation de dimension \textbf{finie} d'un groupe \textbf{fini} sur un $\K$-espace vectoriel est complétement réductible si la caractéristique de $\K$ ne divise pas $|G|$.
+\end{center}
+En particulier, toute représentation réelle ou complexe de dimension finie est complétement réductible.
+\subsection*{\subsecstyle{Lemme de Schur{:}}}
+Un lemme utile pour le théorème final de ce chapitre est celui de Schur\footnote[2]{La preuve repose sur l'irréductibilité de $V$ et $W$ et les propriétés du noyau. Aussi car $\phi$ admet une valeur propre car $\K$ est clos.}. Si $V, W$ deux représentations \textbf{irréductibles} de dimension finie sur un corps $\K$ \textbf{algébriquement clos} et $ \phi: V \longrightarrow W$ un morphisme de représentations, alors:
+\begin{center}
+   Si $f \neq 0$, alors $f$ est un isomorphisme et de plus il s'identifie à une homotéthie $\lambda Id$.
+\end{center}
+\subsection*{\subsecstyle{Théorème de réduction {:}}}
+On suppose que $(V, \rho)$ est une représentation de $G$ qui vérifie les hypothèses des théorèmes précédents (fini, dimension finie, caractéristique, algébriquement clos). Alors on a une famille (finie) de sous représentations irréductibles $(E_i)_{i \leq k}$ telles que:
+$$
+   V = \bigoplus_{i=1}^k E_i
+$$
+En outre, deux telles représentations irréductibles peuvent être isomorphes et apparaitre plusieurs fois dans la décomposition, on peut donc les regrouper en $(V_i)_{i \leq r}$ par classe d'isomorphismes et obtenir une suite $(a_i)_{i \leq r}$ d'entiers tels que:
+$$
+   V = \bigoplus_{i=1}^r V_i^{\oplus a_i}
+$$
+Pour tout $i \leq r$, on appelle la composante $ V_i^{\oplus a_i}$ la \textbf{composante isotypique} de type $V_i$.\pagebreak 
+
+Ces composantes sont \textbf{canoniquement déterminées}, mais leur décomposition n'est pas unique. Par exemple le sous-espace $\{x \in V \; ; \; g(x) = x\}$ est la composante isotypique de $V$ correspondant à la représentation triviale, et on peut la décomposer de multiples façon en somme de droites.\<
+
+La partie suivante sur la \textbf{théorie des caractères}, va nous permettre de mieux comprendre cette décomposition et de la calculer.
+
+\chapter*{\chapterstyle{I -- Théorie des caractères}}
+\addcontentsline{toc}{section}{Théorie des caractères}
+Dans cette partie, on considère un groupe $G$ fini, et des représentations $(V, \rho)$ de dimension finie sur le corps des complexes. On aura besoin par la suite de définir l'entier $r$ le nombre de classes de conjugaison de $G$. Alors on définit le \textbf{caractère d'une représentation} par:
+$$
+   \begin{aligned}
+      \chi_\rho : G &\longrightarrow \C\\
+      g &\longmapsto \text{tr}(\rho(g))
+   \end{aligned}
+$$
+Cette construction est fondamentale, en effet on pourra montrer par la suite que ces fonctions permettent de detecter beaucoup de propriétés sur les réprésentations, notamment si elles sont isomorphes ou non, et leurs composantes isotypiques.
+\subsection*{\subsecstyle{Introduction et fonctions centrales{:}}}
+Une propriété fondamentale des caractères est la suivant:
+\begin{center}
+   \textbf{Un caractère est constant sur les classes de conjugaison.}
+\end{center}
+Ce fait, venant du fait que la trace est un invariant de similitude, permet de motiver l'introduction d'un espace fontionnel général, appelé \textbf{espace des fonctions centrales}, défini par:
+$$
+   \mathscr{C}(G):= \left\{ f \in \mathcal{F}(G, \C) \;\big|\; \forall g, h \in G \; , \; f(ghg^{-1}) = f(h)\right\} 
+$$
+C'est un espace vectoriel de dimension $r$, en effet une base est donnée par $(\1_{C_i})_{i \leq r}$ où $(C_i)_{i \leq r}$ est la liste des classes de conjugaison de $G$.
+\subsection*{\subsecstyle{Propriétés des caractères{:}}}
+On a alors les propriétés élémentaires suivantes pour les constructions usuelles:
+\begin{itemize}
+   \item \textbf{Représentation somme directe:} Si $(V, \rho)$ et $(V', \rho')$ sont deux représentations de $G$, alors on a:
+   $$
+      \chi_{V \oplus V'} = \chi_V + \chi_{V'}
+   $$
+   \item \textbf{Représentation morphisme:} Si $(V, \rho)$ et $(V', \rho')$ sont deux représentations de $G$, alors on a:
+   $$
+      \chi_{\mathcal{L}(V, V')} = \overline{\chi_V} \cdot \chi_{V'}
+   $$
+   \item \textbf{Représentation par permutation:} Si $G$ agit sur un ensemble \textbf{fini} $X = \{x_1, \ldots, x_n\}$, alors on considère la représentation par permutation et on a d'aprés les propriétés des matrices de permutations:
+   $$
+      \chi_{\C^n}(g) = |\text{Fix}(g)|
+   $$
+   \item \textbf{Caractère de l'inverse:} Si $(V, \rho)$ est une représentation de $G$, alors on a:
+   $$
+      \chi_{V}(g^{-1}) = \overline{\chi_V}(g) 
+   $$
+\end{itemize}
+\subsection*{\subsecstyle{Caractère de la représentation régulière{:}}}
+Dans le cas particulier de la représentation régulière, on a la description suivante:
+$$
+   \chi_\text{reg} = \1_{\{e\}}
+$$
+En effet la matrice de $g$ est une matrice de permutation qui permute les vecteurs de la base $(e_h)_{h \in H}$ et un terme diagonal est non nul ssi $e_h = e_{gh}$ ce qui n'est possible que si $g = e$.
+\subsection*{\subsecstyle{Structure hermitienne{:}}}
+Pour prouver le résultat principal de ce chapitre, on doit munir l'espace des fonctions centrales $\mathscr{C}(G)$ de la forme hermitienne suivante:
+$$
+   \dotproduct{f}{g} := \frac{1}{|G|} \sum_{g \in G} \overline{f}(g)h(g) 
+$$
+Cette forme munit $\mathscr{C}(G)$ d'une structure d'espace hermitien et donc d'une notion d'orthogonalité. Ceci nous permet de démontrer le théorème principal suivant:
+\begin{center}
+   \textbf{La famille des caractères irréductibles du groupe $G$ forme une base orthonormée de l'espace des fonctions centrales.}
+\end{center}
+Il y a donc exactement $r$ représentations irréductibles de $G$, la dimension de $\mathscr{C}(G)$. Ce n'était pas donné a priori que ce nombre soit seulement fini !
+\subsection*{\subsecstyle{Propriété fondamentale des caractères irréductibles{:}}}
+De ceci on peut déduire que le caractère d'une représentation $V$ détermine sa décomposition isotypique, en effet on a:
+$$
+   V = \bigoplus_{i = 1}^r V_i^{\oplus a_i} \implies \chi_V = \sum_{i=1}^r a_i \chi_{V_i}
+$$
+Et donc en particulier $a_i = \dotproduct{\chi_V}{\chi_{V_i}}$. En outre on a la formule suivante:
+$$
+   \dotproduct{\chi_V}{\chi_{V}} = \sum_{i = 1}^r a_i^2
+$$
+Et donc $V$ est \textbf{irréductible} ssi $\dotproduct{\chi_V}{\chi_{V}} = 1$. Ces théorèmes permettent donc de détecter l'irréductiblité d'une représentation et de trouver les multiplicités de sa décomposition isotypique. En particulier on a le théorème fondamental suivant:
+\begin{center}
+   \textbf{Deux représentations sont isomorphes si et seulement si leur caractères sont égaux.}
+\end{center}
+\subsection*{\subsecstyle{Retour sur la représentation régulière{:}}}
+On peut alors illustrer l'intérêt de la représentation régulière, en effet on a pour tout représentation irréductible $V_i$ que d'aprés le formule trouvée pour le caractère la représentation régulière:
+$$
+   \dotproduct{\chi_{V_{reg}}}{\chi_{V_i}} = \overline{\chi_i}(1) = \text{dim}(V_i)
+$$
+Elle permet donc de trouver les dimensions des représentation irréductibles, et on a donc la décomposition suivante:
+$$
+   V_{reg} = \bigoplus_{i = 1}^r V_i^{\text{dim}(V_i)}
+$$
+Ce qui permet d'en déduire par passage aux dimensions que:
+$$
+   |G| = \sum_{i = 1}^r \text{dim}(V_i)^2
+$$
+\subsection*{\subsecstyle{Table de caractères{:}}}
+On peut alors dresser une matrice de changement de base $P$ qui transforme la base des $(\1_{C_i})_{i \leq r}$ en celle des $(\chi_i)_{i \leq r}$ et donc une telle base à pour i-ème ligne les coordonées d'un vecteur de la nouvelle base $\chi_i$ dans la base des indicatrices, ie:
+$$
+   \chi_i = \sum_{j = 1}^r a_{i, j}\1_{C_j}
+$$
+En évaluant ceci sur $ g \in C_k$, on trouve les coefficients et on a:
+$$
+   \chi_i = \sum_{j = 1}^r \chi_i(C_j)\1_{C_j}
+$$\pagebreak
+
+Au final, on a la matrice suivante:
+\begin{itemize}
+   \item Chaque \textbf{ligne} de la table de caractères correspond à un caractère irréductible.
+   \item Chaque \textbf{colonne} de la table de caractères correspond à une classe de conjugaison.
+   \item L'entrée en position $(i, j)$ est $\chi_i(C_j)$.
+\end{itemize}
+\subsection*{\subsecstyle{Propriétés de la table de caractères{:}}}
+On a alors les propriétés fondamentales suivantes:
+\begin{itemize}
+   \item Les lignes sont \textbf{orthogonales}\footnote[1]{Attention à pondérer chaque classe par sa cardinalité pour calculer !} et de \textbf{de norme 1}.
+   En particulier la somme de toute ligne distincte de la représentation triviale est \textbf{nulle}\footnote[2]{Cette ligne est orthogonale à $\chi_{triv}$.}
+   \item Les colonnes sont \textbf{orthogonales}, ie:
+   $$
+      \forall i \neq j \; ; \; \sum_{k = 1}^r \overline{\chi_k}(C_i) \chi_k(C_j) = 0
+   $$
+   \item Les propriétés spécifiques de la représentation régulière nous donnent aussi que:
+      \begin{itemize}
+         \item La somme des carrés de la première colonne est \textbf{la cardinalité du groupe}, ie:
+         $$
+            \sum_{k = 1}^r |\chi_k(\{e\})|^2 = \sum_{k = 1}^r \text{dim}(V_k)^2 = |G|
+         $$
+         \item La somme d'une autre colonne est \textbf{nulle}, ie:
+         $$
+            \sum_{k = 1}^r \text{dim}(C_j)\chi_k(C_j) = 0
+         $$
+      \end{itemize}
+\end{itemize}
+Ces propriétés nous servent souvent à compléter une table de caractère.
+\subsection*{\subsecstyle{Exemple 1 - Table de $\mathfrak{S}_3${:}}}
+On considère le groupe $G = \mathfrak{S}_3$. Ses classes de conjugaison sont determinées par le type, on a donc:
+$$
+   (C_i)_{i \leq 3} = (\{e\}, \{(1\;2), (1\;3), (2\;3)\}, \{(1\;2\;3), (1\;3\;2)\})
+$$
+On doit donc trouver $3$ représentation irréductibles. On peut tout d'abord toujours donner la représentation triviale $\rho_{triv}$ de dimension $1$ et de caractère: 
+$$
+   \chi_{triv} = (1, 1, 1)
+$$
+La première étape consiste à utiliser que si $a, b$ sont les dimensions des deux représentations restantes, on doit avoir (somme de la première colonne) $1 + a^2 + b^2 = 6$ et donc $a = 1, b = 2$. On cherche donc une autre représentation de dimension $1$ et une de dimension $2$.\<
+
+Ensuite une \textbf{première stratégie} consiste à remarquer qu'un morphisme usuel, \textbf{la signature}, fournit bien une action de $G$ sur $\C$ et son caractère est donc:
+$$
+   \chi_{sign} = (1, -1, 1)
+$$
+On a donc la matrice suivante dont on peut alors compléter la dernière ligne par orthogonalité:
+\[
+   \begin{array}{c|ccc}
+      \mathfrak{S}_3 & (1, e) & (3, (12)) & (2, (123)) \\
+      \hline
+      \chi_{\mathrm{triv}} & 1 & 1 & 1 \\
+      \chi_{\mathrm{sign}} & 1 & -1 & 1 \\
+      \chi_{\C^2}  & 2 & * & *
+   \end{array}
+\]\pagebreak 
+
+Une \textbf{seconde stratégie} aurait aussi pu être de considérer la représentation naturelle de $G$ sur $\C^3$, alors elle se décompose en:
+$$
+   \rho_{perm} = \rho_{\C^2} \oplus \rho_{triv}
+$$
+Car $G$ agit comme l'identité sur la droite $\text{Vect}(1, 1, 1)$. Mais alors on peut montrer qu'il n'existe pas d'autre droite $G$-stable de $\C^3$ et donc $\rho_{\C^2}$ est irréductible et est bien la représentation recherchée. En outre on a:
+$$
+   \chi_{perm} = \chi_{\C^2} + \chi_{triv} = \chi_{\C^2} + 1
+$$
+Mais le caractère de la représentation par permutation est simplement le nombre de vecteurs fixés par une classe, on trouve donc $\chi_{\C^2} = (2, 0, -1)$. La table finale est dans tout les cas:
+\[
+   \begin{array}{c|ccc}
+      \mathfrak{S}_3 & (1, e) & (3, (12)) & (2, (123)) \\
+      \hline
+      \chi_{\mathrm{triv}} & 1 & 1 & 1 \\
+      \chi_{\mathrm{sign}} & 1 & -1 & 1 \\
+      \chi_{\C^2}  & 2 & 0 & -1
+   \end{array}
+\]
+\subsection*{\subsecstyle{Exemple 2 - Table de $\mathbb{F}_3${:}}}
+On considère le groupe $G = \mathbb{F}_3$. Le groupe est abélien donc ses classes de conjugaison sont:
+$$
+   (C_i)_{i \leq 3} = (\{e\}, \{1\}, \{2\})
+$$
+On doit donc trouver $3$ représentation irréductibles. On peut tout d'abord toujours donner la représentation triviale $\rho_{triv}$ de dimension $1$ et de caractère: 
+$$
+   \chi_{triv} = (1, 1, 1)
+$$
+La première étape consiste à utiliser que si $a, b$ sont les dimensions des deux représentations restantes, on doit avoir (somme de la première colonne) $1 + a^2 + b^2 = 3$ et donc $a = 1, b = 1$. On cherche donc deux autres représentations de dimension $1$.\<
+
+Ensuite une \textbf{stratégie} serait d'utiliser la cyclicité de $\mathbb{F}_3$, en effet on a que $\rho$ est caractérisée par l'image de $1$ et que nécessairement $\rho(1)^3 = 1$. On a donc trois choix possibles pour $\rho(1)$, ie:
+$$
+   \rho(1) \in \{1, j, j^2\}
+$$
+Et donc finalement on peut vérifier que ces trois morphismes définissent des représentations différentes (car ils ont des caractéres différents) et on obtient la table suivante:
+\[
+   \begin{array}{c|ccc}
+      \mathbb{F}_3 & (1,0) & (1, 1) & (1, 2) \\
+      \hline
+      \chi_{\mathrm{triv}} & 1 & 1 & 1 \\
+      \chi_{1} & 1 & j & j^2 \\
+      \chi_{2}  & 1 & j^2 & j
+   \end{array}
+\]
+Ce résultat se généralise pour les groupes abéliens finis.
+
+
+
